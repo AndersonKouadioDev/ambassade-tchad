@@ -1,6 +1,7 @@
 import { nextui } from "@nextui-org/theme";
 import type { Config } from "tailwindcss";
 import lineClamp from '@tailwindcss/line-clamp';
+import tailwindcssAnimate from "tailwindcss-animate";
 
 export default {
   darkMode: ["class"],
@@ -77,12 +78,12 @@ export default {
       },
     },
     darkMode: ["class"],
-  },
   plugins: [
     nextui(), 
-    require("tailwindcss-animate"),
+    tailwindcssAnimate,
     lineClamp,
   ],
   
+} 
 
 } satisfies Config;

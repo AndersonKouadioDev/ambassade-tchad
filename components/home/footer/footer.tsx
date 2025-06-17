@@ -49,9 +49,9 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="w-full bg-primary text-white pt-8 pb-6">
+    <footer className="w-full bg-primary text-white pt-8 pb-6 ">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="flex flex-row border-b-1 pb-3 justify-between">
+        <div className="flex flex-row border-b  border-white pb-3 justify-between ">
           <div className="flex flex-row text-center items-center gap-2">
             <Image
               src="/assets/images/logo_2.png"
@@ -76,7 +76,7 @@ const Footer = () => {
         </div>
 
         {/* Section principale en grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-10 ">
           {/* Info Ambassade & Réseaux Sociaux */}
           <div>
             <h2 className="text-sm font-semibold">

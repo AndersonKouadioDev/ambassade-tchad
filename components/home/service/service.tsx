@@ -1,6 +1,8 @@
+"use client";
+
 import { Button } from "@nextui-org/react";
 import Image from "next/image";
-import Link from "next/link";  // Importation de Link pour la navigation côté client
+import Link from "next/link";
 
 type Service = {
   picture: string;
@@ -8,7 +10,7 @@ type Service = {
   link: string;
 };
 
-const service: Service[] = [
+const services: Service[] = [
   {
     picture: "/assets/images/illustrations/page-accueil/card-items-1.png",
     title: "VISA",
@@ -43,44 +45,45 @@ const service: Service[] = [
 
 export default function Service() {
   return (
-    <div className="flex flex-col justify-around bg-muted p-6 lg:p-20 ">
-      <div className="flex flex-col justify-center gap-2">
-        <div className="flex flex-col md:flex-row justify-between my-4 sm:gap-4 gap-0 lg:gap-4">
-          <div className="md:text-lg lg:text-4xl text-center font-semibold md:text-start text-secondary sm:my-2 my-0 lg:my-2">
-            NOS SERVICES CONSULAIRES
-          </div>
-          <Button color="default" className="mt-4 text-secondary">
-            Voir plus
-          </Button>
-        </div>
+    <section className="bg-muted py-12 px-4 sm:px-8 lg:px-20">
+      {/* Titre + bouton */}
+      <div className="flex flex-col md:flex-row justify-between items-center mb-10 gap-4">
+        <h2 className="text-2xl lg:text-4xl font-bold text-secondary text-center md:text-left">
+          NOS SERVICES CONSULAIRES
+        </h2>
+        <Button color="default" className="text-secondary">
+          Voir plus
+        </Button>
       </div>
-      <div className="flex flex-row justify-around items-stretch gap-4 flex-wrap mt-3 lg:mt-10">
-        {service.map((items) => {
-          return (
-            <div
-              key={items.title}
-              className="flex flex-col mt-4 self-stretch rounded-xl shadow-2xl w-72 bg-card"
-            >
-              <div className="overflow-hidden rounded-xl relative">
-                <Image
-                  className="w-full h-60 object-cover"
-                  src={items.picture}
-                  alt={items.title}
-                  width={300}
-                  height={160}
-                  objectFit="cover"
-                />
-                {/* Utilisation de Link pour la navigation */}
-                <Link href={items.link} passHref>
-                  <Button color="secondary" className="text-white mx-auto w-4/5 absolute inset-x-0 bottom-4">
-                    {items.title}
-                  </Button>
-                </Link>
-              </div>
+
+      {/* Grille responsive */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {services.map((item) => (
+          <div
+            key={item.title}
+            className="bg-card rounded-2xl shadow-xl overflow-hidden group relative hover:shadow-2xl transition duration-300"
+          >
+            {/* Image */}
+            <div className="relative w-full h-60 overflow-hidden">
+              <Image
+                src={item.picture}
+                alt={item.title}
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-300"
+              />
             </div>
-          );
-        })}
+
+            {/* Bouton "accès au service" */}
+            <div className="absolute inset-x-0 bottom-4 flex justify-center">
+              <Link href={item.link} passHref>
+                <Button color="secondary" className="text-white padding-4 px-6 rounded-full shadow-lg hover:bg-[#003d99] transition duration-500">
+                  {item.title}
+                </Button>
+              </Link>
+            </div>
+          </div>
+        ))}
       </div>
-    </div>
+    </section>
   );
 }

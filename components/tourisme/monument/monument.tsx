@@ -99,20 +99,28 @@ export default function Monument() {
         {monument.map((item) => (
           <div
             key={item.title}
-            className="group bg-white shadow rounded-lg overflow-hidden cursor-pointer"
+            className="group relative bg-white shadow rounded-lg overflow-hidden cursor-pointer"
           >
-            {/* Image cliquable pour plein écran */}
+            {/* Image avec overlay "Voir +" */}
             <div
-              className="relative h-48 w-full"
+              className="relative h-48 w-full overflow-hidden"
               onClick={() => setSelectedImage(item.picture)}
             >
               <Image
                 src={item.picture}
                 alt={item.title}
                 fill
-                className="object-cover group-hover:scale-105 transition-transform duration-300"
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
               />
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <span className="text-white text-lg font-semibold bg-primary px-4 py-2 rounded-md shadow-md">
+                  Voir +
+                </span>
+              </div>
             </div>
+
+            {/* Titre et texte */}
             <div className="p-4">
               <h2 className="font-semibold text-lg text-secondary mb-2">
                 {item.title}
@@ -123,7 +131,7 @@ export default function Monument() {
         ))}
       </div>
 
-      {/* Fullscreen image */}
+      {/* Affichage plein écran */}
       {selectedImage && (
         <div
           className="fixed inset-0 z-50 bg-black bg-opacity-80 flex items-center justify-center cursor-zoom-out"
