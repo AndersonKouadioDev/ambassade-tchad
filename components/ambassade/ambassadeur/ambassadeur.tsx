@@ -46,7 +46,7 @@ export default function Ambassadeur() {
           <div className="font-mulish font-extrabold md:font-bold text-lg text-center py-8">
             Sincères et chalereuses salutations <br /> Son Excellence Monsieur Gonfouli
             SOUARIBA, <br /> Ambassadeur de la République du Tchad auprès de la
-            République de Turquie.
+            République de Côte d'Ivoire.
           </div>
         </div>
       </div>

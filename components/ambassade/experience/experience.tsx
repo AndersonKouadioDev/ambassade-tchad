@@ -26,9 +26,14 @@ const TeamMember = () => {
       job: "Conseillère Économique",
     },
     {
-      name: "Mr Nadjo KAINA",
-      picture: "/assets/images/illustrations/ambassade/team3.png",
+      name: "Mr KAINA Nadjo",
+      picture: "/assets/images/illustrations/ambassade/nadjo_kaina.jpg",
       job: "Attaché",
+    },
+    {
+      name: "Mr ALLADOUM Félix",
+      picture: "/assets/images/illustrations/ambassade/felix_alladoum.jpg",
+      job: "Chargé de la communication et des rélations publiques.",
     },
   ];
 
@@ -51,10 +56,10 @@ const TeamMember = () => {
           {agents.map((agent, index) => (
             <div 
               key={index} 
-              className="relative group w-72 h-96 bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300"
+              className="relative group w-72 h-97 bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300"
             >
               {/* Image */}
-              <div className="relative w-full h-60">
+              <div className="relative w-full h-80">
                 <Image
                   src={agent.picture}
                   alt={agent.name}

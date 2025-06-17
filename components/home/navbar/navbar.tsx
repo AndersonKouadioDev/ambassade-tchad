@@ -10,10 +10,8 @@ import {
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
-  // NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  // navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 
 export default function Head() {
@@ -31,26 +29,20 @@ export default function Head() {
       | undefined;
   }[] = [
     { name: "Accueil", link: "/" },
-    {
-      name: "L'Ambassade",
-      link: "/ambassade",
-    },
+    { name: "L'Ambassade", link: "/ambassade" },
     { name: "Services consulaires", link: "/consulaire" },
-    { name: "Investir au Tchad", link: "https://anie.td/accueil/qui-sommes-nous/" },
-    
+    {
+      name: "Investir au Tchad",
+      link: "https://anie.td/accueil/qui-sommes-nous/",
+    },
     {
       name: "Tourisme",
-
       children: [
         { name: "Site touristique", link: "/tourisme" },
         { name: "Le Tchad", link: "/tourisme/tchad-s" },
-        {
-          name: "les peuples et cultures",
-          link: "/tourisme/peuples-et-cultures",
-        },
+        { name: "les peuples et cultures", link: "/tourisme/peuples-et-cultures" },
       ],
     },
-    // { name: "Menus", link: "/menus" },
   ];
 
   return (
@@ -124,52 +116,59 @@ export default function Head() {
             {/* Menu Desktop */}
             <NavigationMenu>
               <NavigationMenuList>
-                {menuItems.map((menu, index) => {
-                  return (
-                    <NavigationMenuItem key={index}>
-                      {menu.children && !menu.link ? (
-                        <>
-                          <NavigationMenuTrigger className="bg-primary hover:bg-primary">
-                            <span
-                              key={menu.name}
-                              className="text-sm px-2 text-white hover:text-[#123682] transition-colors font-medium"
-                            >
-                              {menu.name}
-                            </span>
-                          </NavigationMenuTrigger>
+                {menuItems.map((menu, index) => (
+                  <NavigationMenuItem key={index}>
+                    {menu.children && !menu.link ? (
+                      <>
+                        <NavigationMenuTrigger className="bg-primary hover:bg-primary">
+                          <span className="text-sm px-2 text-white hover:text-[#123682] transition-colors font-medium">
+                            {menu.name}
+                          </span>
+                        </NavigationMenuTrigger>
 
-                          <NavigationMenuContent className="z-10">
-                            <ul className="grid w-[600px] bg-primary  gap-3 p-4">
-                              {menu?.children?.map((child, x) => {
-                                return (
-                                  <Link
-                                    href={child.link}
-                                    className="text-white hover:text-primary hover:bg-white p-2 rounded-lg"
-                                    key={x}
-                                  >
-                                    {child.name}
-                                  </Link>
-                                );
-                              })}
-                            </ul>
-                          </NavigationMenuContent>
-                        </>
-                      ) : (
-                        <Link
-                          key={menu.name}
-                          href={menu.link ?? ""}
-                          className={`text-sm px-2 ${
-                            pathname === menu.link
-                              ? "bg-white text-[#00205B] rounded-full"
-                              : "text-white hover:bg-[#123682] rounded-full transition-colors"
-                          }`}
-                        >
-                          {menu.name}
-                        </Link>
-                      )}
-                    </NavigationMenuItem>
-                  );
-                })}
+                        <NavigationMenuContent className="z-10">
+                          <ul className="grid w-[600px] bg-primary gap-3 p-4">
+                            {menu.children.map((child, i) => (
+                              <Link
+                                key={i}
+                                href={child.link}
+                                className="text-white hover:text-primary hover:bg-white p-2 rounded-lg"
+                              >
+                                {child.name}
+                              </Link>
+                            ))}
+                          </ul>
+                        </NavigationMenuContent>
+                      </>
+                    ) : menu.link?.startsWith("http") ? (
+                      // Ajout de lien externe s'il existe
+                      <a
+                        href={menu.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`text-sm px-2 ${
+                          pathname === menu.link
+                            ? "bg-white text-[#00205B] rounded-full"
+                            : "text-white hover:bg-[#123682] rounded-full transition-colors"
+                        }`}
+                      >
+                        {menu.name}
+                      </a>
+                    ) : (
+                      // Internal link
+                      <Link
+                        href={menu.link ?? ""}
+                        className={`text-sm px-2 ${
+                          pathname === menu.link
+                            ? "bg-white text-[#00205B] rounded-full"
+                            : "text-white hover:bg-[#123682] rounded-full transition-colors"
+                        }`}
+                      >
+                        {menu.name}
+                      </Link>
+                    )}
+                  </NavigationMenuItem>
+                ))}
               </NavigationMenuList>
             </NavigationMenu>
           </div>

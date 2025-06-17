@@ -68,7 +68,7 @@ export default function Photo(){
             <div className=" font-mulish text-secondary font-semibold text-center text-3xl">Galerie de Photos</div>
             <div className="flex flex-col items-center justify-center gap-4">
             <div className="flex flex-row justify-around items-stretch gap-4 flex-wrap mt-3 lg:mt-10">
-        {pictures.map((items) => {
+          {pictures.map((items) => {
           return (
             <div
               key={items.title} 

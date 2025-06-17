@@ -43,7 +43,7 @@ const service: Service[] = [
 
 export default function Service() {
   return (
-    <div className="flex flex-col justify-around bg-muted p-6 lg:p-20">
+    <div className="flex flex-col justify-around bg-muted p-6 lg:p-20 ">
       <div className="flex flex-col justify-center gap-2">
         <div className="flex flex-col md:flex-row justify-between my-4 sm:gap-4 gap-0 lg:gap-4">
           <div className="md:text-lg lg:text-4xl text-center font-semibold md:text-start text-secondary sm:my-2 my-0 lg:my-2">
