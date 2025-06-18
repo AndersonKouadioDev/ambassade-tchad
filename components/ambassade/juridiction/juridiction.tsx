@@ -1,11 +1,13 @@
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 export default function Juridictions(){
+    const t = useTranslations("ambassade.juridiction");
     return(
         <div className="font-mulish py-16 px-8 mb-96">
             <div className="flex flex-col">
                 <div className="ml-0 md:ml-24 text-center md:text-start" >
-                La République du Tchad compte plusieurs représentations diplomatiques et Consulaires à l’étranger (Décret N°0089/PR/ <br /> MAEIACID/2020 du 19 février 2020).
+                    {t("description")}
                 </div>
             <div className="flex flex-col md:flex-row justify-center gap-2 py-4">
                 <div className="bg-primary text-white px-2 md:px-40 py-1 font-medium rounded-full md:rounded-b-md cursor-pointer text-center">Ambassades et représentations permanentes</div>
@@ -29,24 +31,24 @@ export default function Juridictions(){
                         {/* Première colonne */}
                         <div className="flex-1">
                             <ol className="space-y-2 list-none pl-0 md:pl-5">
-                            <li>1. Algérie</li>
-                            <li>2. Afrique du Sud</li>
-                            <li>3. Côte D’Ivoire</li>
-                            <li>4. Arabie Saoudite</li>
-                            <li>5. Belgique</li>
-                            <li>6. Brésil</li>
-                            <li>7. Burkina Faso</li>
-                            <li>8. Cameroun</li>
-                            <li>9. Canada</li>
-                            <li>10. Suisse</li>
-                            <li>11. Congo</li>
-                            <li>12. Côte d’Ivoire</li>
-                            <li>13. Égypte</li>
-                            <li>14. Émirats Arabes Unis</li>
-                            <li>15. États-Unis d’Amérique</li>
-                            <li>16. Éthiopie</li>
-                            <li>17. Fédération de Russie</li>
-                            <li>18. France</li>
+                            <li>1. {t("algerie")}</li>
+                            <li>2. {t("afrique_du_sud")}</li>
+                            <li>3. {t("cote_d_ivoire")}</li>
+                            <li>4. {t("emirats_arabe_unis")}</li>
+                            <li>5. {t("belgique")}</li>
+                            <li>6. {t("bresil")}</li>
+                            <li>7. {t("burkina_faso")}</li>
+                            <li>8. {t("cameroun")}</li>
+                            <li>9. {t("canada")}</li>
+                            <li>10. {t("suisse")}</li>
+                            <li>11. {t("congo")}</li>
+                            <li>12. {t("egypte")}</li>
+                            <li>13. {t("etats_unis")}</li>
+                            <li>14. {t("france")}</li>
+                            <li>15. {t("ethiopie")}</li>
+                            <li>16. {t("federation_de_russie")}</li>
+                            <li>17. {t("gabon")}</li>
+                            <li>18. {t("guinee_equatoriale")}</li>
                             
                             </ol>
                         </div>
@@ -54,24 +56,22 @@ export default function Juridictions(){
                         {/* Deuxième colonne */}
                         <div className=" flex-1">
                             <ol className="space-y-2 list-none pl-0 md:pl-5">
-                            <li>19. Gabon</li>
-                            <li>20. Guinée Équatoriale</li>
-                            <li>21. Inde</li>
-                            <li>22. Japon</li>
-                            <li>23. Koweït</li>
-                            <li>24. Libye</li>
-                            <li>25. Mali</li>
-                            <li>26. Niger</li>
-                            <li>27. Nigeria</li>
-                            <li>28. Qatar</li>
-                            <li>29. New York (Représentation Permanente)</li>
-                            <li>30. République Centrafricaine</li>
-                            <li>31. République Démocratique du Congo</li>
-                            <li>32. République Populaire de Chine</li>
-                            <li>33. Royaume du Maroc</li>
-                            <li>34. Norvège</li>
-                            <li>35. Soudan</li>
-                            <li>36. Turquie</li>
+                            <li>19. {t("inde")}</li>
+                            <li>20. {t("japon")}</li>
+                            <li>21. {t("koweit")}</li>
+                            <li>22. {t("libye")}</li>
+                            <li>23. {t("mali")}</li>
+                            <li>24. {t("niger")}</li>
+                            <li>25. {t("nigeria")}</li>
+                            <li>26. {t("qatar")}</li>
+                            <li>27. {t("new_york")}</li>
+                            <li>28. {t("republique_centrafricaine")}</li>
+                            <li>29. {t("republique_democratique_du_congo")}</li>
+                            <li>30. {t("republique_populaire_de_chine")}</li>
+                            <li>31. {t("royaume_maroc")}</li>
+                            <li>32. {t("norvege")}</li>
+                            <li>33. {t("soudan")}</li>
+                            <li>34. {t("turquie")}</li>
                             </ol>
                         </div>
                         </div>

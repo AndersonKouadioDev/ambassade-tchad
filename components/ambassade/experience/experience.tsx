@@ -1,41 +1,40 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import { Facebook, Twitter, Instagram, Globe, Briefcase } from "lucide-react";
+import { useTranslations } from "next-intl";
+
+const agents = [
+  {
+    name: "M. SOUARIBA Gonfouli",
+    jobKey: "ambassadeur",
+    picture: "/assets/images/illustrations/ambassade/team1.png",
+  },
+  {
+    name: "M. ACHEIKH MAKAYE NIMIR",
+    jobKey: "premier_conseiller",
+    picture: "/assets/images/illustrations/ambassade/team4.png",
+  },
+  {
+    name: "Mme REMADJI Christelle",
+    jobKey: "conseillere_economique",
+    picture: "/assets/images/illustrations/ambassade/team2.png",
+  },
+  {
+    name: "Mr KAINA Nadjo",
+    jobKey: "attache",
+    picture: "/assets/images/illustrations/ambassade/nadjo_kaina.jpg",
+  },
+  {
+    name: "Mr ALLADOUM Félix",
+    jobKey: "charge_communication",
+    picture: "/assets/images/illustrations/ambassade/felix_alladoum.jpg",
+  },
+];
 
 const TeamMember = () => {
-  type Agent = {
-    name: string;
-    picture: string;
-    job: string;
-  };
-
-  const agents: Agent[] = [
-    {
-      name: "M. SOUARIBA Gonfouli",
-      picture: "/assets/images/illustrations/ambassade/team1.png",
-      job: "Ambassadeur du Tchad en CI ",
-    },
-    {
-      name: "M. ACHEIKH MAKAYE NIMIR",
-      picture: "/assets/images/illustrations/ambassade/team4.png",
-      job: "Premier Conseiller ",
-    },
-    {
-      name: "Mme REMADJI Christelle",
-      picture: "/assets/images/illustrations/ambassade/team2.png",
-      job: "Conseillère Économique",
-    },
-    {
-      name: "Mr KAINA Nadjo",
-      picture: "/assets/images/illustrations/ambassade/nadjo_kaina.jpg",
-      job: "Attaché",
-    },
-    {
-      name: "Mr ALLADOUM Félix",
-      picture: "/assets/images/illustrations/ambassade/felix_alladoum.jpg",
-      job: "Chargé de la communication et des rélations publiques.",
-    },
-  ];
+  const t = useTranslations("teams");
 
   const socialIcons = [
     { icon: <Facebook className="w-5 h-5" />, label: "Facebook" },
@@ -45,20 +44,23 @@ const TeamMember = () => {
   ];
 
   return (
-    <div className=" py-16">
+    <div className="py-16">
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center pb-10">
-          <h2 className="text-secondary text-3xl md:text-5xl font-semibold">L&apos;ÉQUIPE</h2>
-          <p className="text-secondary text-lg md:text-xl mt-2">Découvrez les membres qui font vivre l&apos;Ambassade</p>
+          <h2 className="text-secondary text-3xl md:text-5xl font-semibold">
+            {t("title")}
+          </h2>
+          <p className="text-secondary text-lg md:text-xl mt-2">
+            {t("description")}
+          </p>
         </div>
 
         <div className="flex flex-wrap justify-center gap-8">
           {agents.map((agent, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className="relative group w-72 h-97 bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300"
             >
-              {/* Image */}
               <div className="relative w-full h-80">
                 <Image
                   src={agent.picture}
@@ -69,14 +71,13 @@ const TeamMember = () => {
                 />
               </div>
 
-              {/* Infos */}
               <div className="p-5 text-center">
                 <h3 className="text-gray-800 font-bold text-lg">{agent.name}</h3>
                 <p className="text-gray-600 text-sm flex items-center justify-center gap-2 mt-1">
-                  <Briefcase className="w-4 h-4 text-gray-500" /> {agent.job}
+                  <Briefcase className="w-4 h-4 text-gray-500" />
+                  {t(`jobs.${agent.jobKey}`)}
                 </p>
 
-                {/* Réseaux sociaux */}
                 <div className="flex justify-center gap-4 mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   {socialIcons.slice(0, 3).map((social, idx) => (
                     <button

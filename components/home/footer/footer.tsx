@@ -1,33 +1,37 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import { Facebook } from "lucide-react";
 import Image from "next/image";
-import { Tooltip } from "@nextui-org/react";
+import { useTranslations } from "next-intl";
 
 const Footer = () => {
+  const t = useTranslations("footer");
+
   const mainLinks = [
-    { name: "L'Ambassade", href: "/ambassade" },
-    { name: "Services consulaires", href: "/consulaire" },
+    { name: t("mainLinks.ambassade"), href: "/ambassade" },
+    { name: t("mainLinks.consulaire"), href: "/consulaire" },
     {
-      name: "Investir Au Tchad",
+      name: t("mainLinks.investir"),
       href: "https://anie.td/accueil/qui-sommes-nous/",
     },
-    { name: "Tourisme", href: "/tourisme" },
-    { name: "Menus", href: "/menus" },
+    { name: t("mainLinks.tourisme"), href: "/tourisme" },
+    { name: t("mainLinks.menus"), href: "/menus" },
   ];
 
   const quickLinks = [
-    { name: "Le Tchad", href: "/tourisme/tchad-s" },
-    { name: "Events", href: "/events" },
-    { name: "Sites touristiques", href: "/tourisme/" },
+    { name: t("quickLinks.tchad"), href: "/tourisme/tchad-s" },
+    { name: t("quickLinks.events"), href: "/events" },
+    { name: t("quickLinks.sites"), href: "/tourisme/" },
   ];
 
   const legalLinks = [
-    { name: "À propos", href: "/a-propos" },
-    { name: "Critères", href: "/criteres" },
-    { name: "Confidentialité", href: "/confidentialite" },
-    { name: "Conditions", href: "/conditions" },
-    { name: "Clause de non-responsabilité", href: "/clause" },
+    { name: t("legal.a_propos"), href: "/a-propos" },
+    { name: t("legal.criteres"), href: "/criteres" },
+    { name: t("legal.confidentialite"), href: "/confidentialite" },
+    { name: t("legal.conditions"), href: "/conditions" },
+    { name: t("legal.clause"), href: "/clause" },
   ];
 
   const socialLinks = [
@@ -49,9 +53,9 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="w-full bg-primary text-white pt-8 pb-6 ">
+    <footer className="w-full bg-primary text-white pt-8 pb-6">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="flex flex-row border-b  border-white pb-3 justify-between ">
+        <div className="flex flex-row border-b border-white pb-3 justify-between">
           <div className="flex flex-row text-center items-center gap-2">
             <Image
               src="/assets/images/logo_2.png"
@@ -62,7 +66,7 @@ const Footer = () => {
               className="cursor-pointer"
             />
             <div className="text-2xl font-semibold font-blinker">
-              AMBASSADE DU TCHAD
+              {t("embassy")}
             </div>
           </div>
           <Image
@@ -75,18 +79,12 @@ const Footer = () => {
           />
         </div>
 
-        {/* Section principale en grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-10 ">
-          {/* Info Ambassade & Réseaux Sociaux */}
+        {/* Grid principal */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-10">
+          {/* Infos ambassade + Réseaux sociaux */}
           <div>
-            <h2 className="text-sm font-semibold">
-              Ambassade du Tchad en Côte d&apos;Ivoire
-            </h2>
-            {/* <p className="text-sm text-gray-300 mt-2">
-              Représentation permanente auprès des Organisations des Nations Unies à Abidjan.
-            </p> */}
+            <h2 className="text-sm font-semibold">{t("embassy")}</h2>
 
-            {/* Social Media Links */}
             <div className="flex flex-col gap-3 pt-4">
               {socialLinks.map((link, index) => (
                 <a
@@ -94,6 +92,7 @@ const Footer = () => {
                   href={link.href}
                   target="_blank"
                   className="flex items-center gap-2 bg-white rounded-lg px-4 py-2 hover:bg-gray-100 transition"
+                  rel="noopener noreferrer"
                 >
                   <span className="text-xl">{link.icon}</span>
                   <span className="text-sm font-medium text-gray-800">
@@ -106,10 +105,10 @@ const Footer = () => {
 
           {/* Navigation */}
           <div>
-            <h3 className="font-bold text-lg mb-4">Navigation</h3>
+            <h3 className="font-bold text-lg mb-4">{t("navTitle")}</h3>
             <ul className="space-y-3">
               {mainLinks.map((link) => (
-                <li key={link.name}>
+                <li key={link.href}>
                   <Link
                     href={link.href}
                     className="hover:text-gray-300 transition"
@@ -123,10 +122,10 @@ const Footer = () => {
 
           {/* Liens rapides */}
           <div>
-            <h3 className="font-bold text-lg mb-4">Liens rapides</h3>
+            <h3 className="font-bold text-lg mb-4">{t("quickLinksTitle")}</h3>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
-                <li key={link.name}>
+                <li key={link.href}>
                   <Link
                     href={link.href}
                     className="hover:text-gray-300 transition"
@@ -143,7 +142,7 @@ const Footer = () => {
         <div className="border-t border-white/20 pt-4">
           <ul className="flex flex-wrap gap-4 justify-center text-sm">
             {legalLinks.map((link, index) => (
-              <React.Fragment key={link.name}>
+              <React.Fragment key={link.href}>
                 <li>
                   <Link href={link.href} className="hover:text-gray-300">
                     {link.name}

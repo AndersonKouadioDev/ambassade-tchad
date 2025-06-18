@@ -1,18 +1,20 @@
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 export default function BreadcrumbNav() {
+  const t = useTranslations("ambassade.breadcrumbs");
   return (
     <nav className="text-white font-extralight text-lg">
       <ul className="flex space-x-2">
         <li>
           <Link href="/" className="text-white hover:underline">
-            Home
+            {t("home")}
           </Link>
         </li>
         <span>{">"}</span>
         <li>
           <Link href="/ambassade" className="text-white hover:underline">
-            L&apos;Ambassade
+            {t("ambassade")}
           </Link>
         </li>
         <span>{">"}</span>

@@ -1,8 +1,10 @@
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 
 export default function Photo(){
+    const t = useTranslations("photo");
 
     type Picture = {
         picture: string;
@@ -65,7 +67,7 @@ export default function Photo(){
     return(
         <div className="p-10 mb-6">
             
-            <div className=" font-mulish text-secondary font-semibold text-center text-3xl">Galerie de Photos</div>
+            <div className=" font-mulish text-secondary font-semibold text-center text-3xl">{t("description")}</div>
             <div className="flex flex-col items-center justify-center gap-4">
             <div className="flex flex-row justify-around items-stretch gap-4 flex-wrap mt-3 lg:mt-10">
           {pictures.map((items) => {

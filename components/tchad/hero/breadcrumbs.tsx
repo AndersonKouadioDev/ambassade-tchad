@@ -1,24 +1,26 @@
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 export default function BreadcrumbNav() {
+  const t = useTranslations("tourisme.tchad.breadcrumbs");
   return (
     <nav className="text-white font-extralight text-lg">
       <ul className="flex space-x-2">
         <li>
           <Link href="/" className="text-white hover:underline">
-            Home
+            {t("home")}
           </Link>
         </li>
         <span>{">"}</span>
         <li>
           <Link href="/tourisme" className="text-white hover:underline">
-            Tourisme
+            {t("tourism")}
           </Link>
         </li>
         <span>{">"}</span>
         <li>
           <Link href="#" className="text-white">
-            Le Tchad
+            {t("tchad")}
           </Link>
         </li>
       </ul>

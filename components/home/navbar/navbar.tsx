@@ -3,8 +3,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Mail, Phone, Search, Menu, X } from "lucide-react";
-import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { useState, useTransition } from "react";
+import { useLocale, useTranslations } from "next-intl";
 
 import {
   NavigationMenu,
@@ -16,40 +17,43 @@ import {
 
 export default function Head() {
   const pathname = usePathname();
-  const [menuOpen, setMenuOpen] = useState(false);
+  const router = useRouter();
+  const locale = useLocale();
+  const t = useTranslations("header");
 
-  const menuItems: {
-    name: string;
-    link?: string;
-    children?:
-      | {
-          name: string;
-          link: string;
-        }[]
-      | undefined;
-  }[] = [
-    { name: "Accueil", link: "/" },
-    { name: "L'Ambassade", link: "/ambassade" },
-    { name: "Services consulaires", link: "/consulaire" },
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [isPending, startTransition] = useTransition();
+
+  const switchLocale = (newLocale: string) => {
+    const segments = pathname.split("/");
+    segments[1] = newLocale;
+    const newPathname = segments.join("/");
+    startTransition(() => {
+      router.push(newPathname);
+    });
+  };
+
+  const menuItems = [
+    { name: t("accueil"), link: "/" },
+    { name: t("ambassade"), link: "/ambassade" },
+    { name: t("consulaire"), link: "/consulaire" },
     {
-      name: "Investir au Tchad",
+      name: t("investir"),
       link: "https://anie.td/accueil/qui-sommes-nous/",
     },
     {
-      name: "Tourisme",
+      name: t("tourisme"),
       children: [
-        { name: "Site touristique", link: "/tourisme" },
-        { name: "Le Tchad", link: "/tourisme/tchad-s" },
-        { name: "les peuples et cultures", link: "/tourisme/peuples-et-cultures" },
+        { name: t("site"), link: "/tourisme" },
+        { name: t("tchad"), link: "/tourisme/tchad-s" },
+        { name: t("peuples"), link: "/tourisme/peuples-et-cultures" },
       ],
     },
   ];
 
   return (
     <div className="w-full bg-primary p-4">
-      {/* Navbar container */}
       <div className="flex justify-between md:justify-center gap-0 md:gap-6 items-center max-w-6xl mx-auto">
-        {/* Logo */}
         <Link href="/">
           <Image
             src="/assets/images/logo.png"
@@ -61,59 +65,57 @@ export default function Head() {
           />
         </Link>
 
-        {/* Desktop Navigation */}
-        <div className="hidden lg:flex flex-col text-white">
-          {/* En-tête */}
+        {/* Desktop Nav */}
+        <div className="hidden lg:flex flex-col text-white w-full">
           <div className="flex justify-between items-center w-full">
             <div className="flex flex-col">
-              <span className="text-xl font-bold">
-                AMBASSADE DU TCHAD CÔTE D&apos;IVOIRE
-              </span>
+              <span className="text-xl font-bold">{t("titre")}</span>
             </div>
 
-            {/* Langues + Recherche */}
             <div className="flex gap-4 items-center">
               <div className="flex gap-2">
-                <Link
-                  href="/fr"
-                  className="text-sm text-red-500 hover:underline"
+                <button
+                  onClick={() => switchLocale("fr")}
+                  className={`text-sm ${
+                    locale === "fr" ? "text-red-500" : "text-white hover:underline"
+                  }`}
                 >
                   FR
-                </Link>
+                </button>
                 <span className="text-sm text-white">|</span>
-                <Link href="/en" className="text-sm text-white hover:underline">
+                <button
+                  onClick={() => switchLocale("en")}
+                  className={`text-sm ${
+                    locale === "en" ? "text-red-500" : "text-white hover:underline"
+                  }`}
+                >
                   EN
-                </Link>
+                </button>
               </div>
 
               <div className="flex items-center bg-[#123682] rounded-full px-6 py-1">
                 <Search className="text-white" size={24} />
                 <input
                   type="text"
-                  placeholder="Rechercher..."
+                  placeholder={t("recherche")}
                   className="bg-transparent text-white placeholder-white/70 focus:outline-none ml-2 w-52 text-sm"
                 />
               </div>
             </div>
           </div>
 
-          {/* Contacts + Menu */}
           <div className="border-t border-white flex justify-between items-center gap-4 mt-4 pt-2">
-            {/* Contacts */}
             <div className="flex flex-col text-white">
               <span className="flex items-center gap-2">
                 <Phone size={16} />
-                <span className="text-sm">Tel: +225 27 22 39 49 13</span>
+                <span className="text-sm">{t("tel")}</span>
               </span>
               <span className="flex items-center gap-2">
                 <Mail size={16} />
-                <span className="text-sm">
-                  Email: ambassade.tchadabj@ambatchad.ci
-                </span>
+                <span className="text-sm">{t("email")}</span>
               </span>
             </div>
 
-            {/* Menu Desktop */}
             <NavigationMenu>
               <NavigationMenuList>
                 {menuItems.map((menu, index) => (
@@ -131,7 +133,7 @@ export default function Head() {
                             {menu.children.map((child, i) => (
                               <Link
                                 key={i}
-                                href={child.link}
+                                href={`/${locale}${child.link}`}
                                 className="text-white hover:text-primary hover:bg-white p-2 rounded-lg"
                               >
                                 {child.name}
@@ -141,7 +143,6 @@ export default function Head() {
                         </NavigationMenuContent>
                       </>
                     ) : menu.link?.startsWith("http") ? (
-                      // Ajout de lien externe s'il existe
                       <a
                         href={menu.link}
                         target="_blank"
@@ -155,11 +156,10 @@ export default function Head() {
                         {menu.name}
                       </a>
                     ) : (
-                      // Internal link
                       <Link
-                        href={menu.link ?? ""}
+                        href={`/${locale}${menu.link ?? ""}`}
                         className={`text-sm px-2 ${
-                          pathname === menu.link
+                          pathname === `/${locale}${menu.link}`
                             ? "bg-white text-[#00205B] rounded-full"
                             : "text-white hover:bg-[#123682] rounded-full transition-colors"
                         }`}
@@ -174,7 +174,7 @@ export default function Head() {
           </div>
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile menu toggle */}
         <button
           className="lg:hidden text-white"
           onClick={() => setMenuOpen(!menuOpen)}
@@ -183,13 +183,12 @@ export default function Head() {
         </button>
       </div>
 
-      {/* Mobile Menu */}
       {menuOpen && (
         <div className="lg:hidden flex flex-col items-center text-white mt-4">
           {menuItems.map((item) => (
             <Link
               key={item.name}
-              href={item.link ?? ""}
+              href={`/${locale}${item.link ?? ""}`}
               className="py-2 text-lg w-full text-center border-b border-white"
               onClick={() => setMenuOpen(false)}
             >
