@@ -1,10 +1,10 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
 import { Facebook } from "lucide-react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation"; 
 
 const Footer = () => {
   const t = useTranslations("footer");
@@ -109,12 +109,20 @@ const Footer = () => {
             <ul className="space-y-3">
               {mainLinks.map((link) => (
                 <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="hover:text-gray-300 transition"
-                  >
-                    {link.name}
-                  </Link>
+                  {link.href.startsWith("http") ? (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-gray-300 transition"
+                    >
+                      {link.name}
+                    </a>
+                  ) : (
+                    <Link href={link.href} className="hover:text-gray-300 transition">
+                      {link.name}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -126,10 +134,7 @@ const Footer = () => {
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="hover:text-gray-300 transition"
-                  >
+                  <Link href={link.href} className="hover:text-gray-300 transition">
                     {link.name}
                   </Link>
                 </li>

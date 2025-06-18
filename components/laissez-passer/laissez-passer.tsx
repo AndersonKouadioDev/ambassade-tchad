@@ -1,37 +1,42 @@
-import React from 'react';
-import Image from 'next/image';
-import { Images } from 'lucide-react';
-import { Button } from '@nextui-org/react';
-import Link from 'next/link';
+"use client";
+
+import React from "react";
+import Image from "next/image";
+import { Images } from "lucide-react";
+import { Button } from "@nextui-org/react";
+import { useTranslations} from "next-intl";
+import {Link} from '@/i18n/navigation';
 
 export default function LaissezPasserForm() {
+  const t = useTranslations("laissez-passer.form");
+
   return (
     <div className="relative flex items-center justify-center w-full p-10 min-h-[calc(100vh-70px)]">
       {/* Image d'arrière-plan */}
       <Image
         className="absolute inset-0 w-full h-full object-cover"
         src="/assets/images/backgrounds/background_2.png"
-        alt="Background image"
+        alt={t("backgroundAlt")}
         fill
       />
-      <div className="absolute inset-0 bg-blue-800/50" /> {/* Superposition bleu semi-transparente */}
+      <div className="absolute inset-0 bg-blue-800/50" />
 
       {/* Formulaire */}
       <div className="relative w-full max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-6 z-10">
         {/* Close button */}
         <Link href="/" className="absolute right-4 top-4">
-                <button className=" text-gray-500 hover:text-gray-700">
-                  ✕
-                </button>
-                </Link>
+          <button className="text-gray-500 hover:text-gray-700" aria-label={t("close")}>
+            ✕
+          </button>
+        </Link>
 
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-gray-600 mb-4">Formulaire de demande de Laissez-passer</h1>
+          <h1 className="text-gray-600 mb-4">{t("title")}</h1>
           <div className="flex items-center justify-center gap-4">
-            <Image 
+            <Image
               src="/assets/images/illustrations/formulaire/logo.png"
-              alt="Chad Embassy Logo" 
+              alt={t("logoAlt")}
               width={300}
               height={150}
               className="mx-2"
@@ -47,6 +52,7 @@ export default function LaissezPasserForm() {
             name="image"
             accept="image/*"
             className="absolute inset-0 opacity-0 cursor-pointer"
+            aria-label={t("uploadPhoto")}
           />
         </div>
 
@@ -54,55 +60,55 @@ export default function LaissezPasserForm() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
           <input
             type="text"
-            placeholder="Nom"
+            placeholder={t("lastName")}
             className="w-full px-4 py-2 border border-gray-300 rounded-full"
           />
           <input
             type="text"
-            placeholder="Prénom"
+            placeholder={t("firstName")}
             className="w-full px-4 py-2 border border-gray-300 rounded-full"
           />
           <input
             type="text"
-            placeholder="Date de naissance"
+            placeholder={t("birthDate")}
             className="w-full px-4 py-2 border border-gray-300 rounded-full"
           />
           <input
             type="text"
-            placeholder="Lieu de naissance"
+            placeholder={t("birthPlace")}
             className="w-full px-4 py-2 border border-gray-300 rounded-full"
           />
           <input
             type="text"
-            placeholder="Nationalité"
+            placeholder={t("nationality")}
             className="w-full px-4 py-2 border border-gray-300 rounded-full"
           />
           <select className="w-full px-4 py-2 border border-gray-300 rounded-full">
-            <option value="">Sexe</option>
-            <option value="M">Masculin</option>
-            <option value="F">Féminin</option>
+            <option value="">{t("gender")}</option>
+            <option value="M">{t("male")}</option>
+            <option value="F">{t("female")}</option>
           </select>
           <select className="w-full px-4 py-2 border border-gray-300 rounded-full">
-            <option value="">Situation familiale</option>
-            <option value="single">Célibataire</option>
-            <option value="married">Marié(e)</option>
-            <option value="divorced">Divorcé(e)</option>
-            <option value="widowed">Veuf/Veuve</option>
+            <option value="">{t("maritalStatus")}</option>
+            <option value="single">{t("single")}</option>
+            <option value="married">{t("married")}</option>
+            <option value="divorced">{t("divorced")}</option>
+            <option value="widowed">{t("widowed")}</option>
           </select>
         </div>
 
         {/* Buttons */}
         <div className="flex justify-between">
           <Link href="/laissez-passer/condition">
-          <Button className="bg-transparent text-secondary border border-secondary">
-            Voir les conditions
-          </Button>
+            <Button className="bg-transparent text-secondary border border-secondary">
+              {t("seeConditions")}
+            </Button>
           </Link>
           <Button color="secondary" className="text-white">
-            Envoyer
+            {t("send")}
           </Button>
         </div>
       </div>
     </div>
   );
-};
+}

@@ -1,16 +1,17 @@
 "use client";
 
-import React from 'react';
-import Image from 'next/image';
-import { Button, Link } from '@nextui-org/react';
-import App from '../calendar/calendar';
-import { useTranslations } from 'next-intl';
+import React from "react";
+import Image from "next/image";
+import { Button } from "@nextui-org/react";
+import App from "../calendar/calendar";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation"; 
 
 export default function RDV() {
   const t = useTranslations("demandez-rdv");
 
   return (
-    <div className="relative flex items-center justify-center w-full p-10 min-p-10 min-h-[calc(100vh-70px)] font-mulish">
+    <div className="relative flex items-center justify-center w-full p-10 min-h-[calc(100vh-70px)] font-mulish">
       {/* Image d'arrière-plan */}
       <Image
         className="absolute inset-0 w-full h-full object-cover"
