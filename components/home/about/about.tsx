@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { Mail, Phone, Facebook } from "lucide-react";
-import Link from "next/link";
+import {Link} from '@/i18n/navigation';
 import { useTranslations } from "next-intl";
 
 export default function About() {

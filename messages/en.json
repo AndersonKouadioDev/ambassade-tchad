@@ -1,5 +1,4 @@
 {
-  
   "ambassadeur": {
     "title": "THE AMBASSADOR",
     "bienvenue": "Welcome to the Embassy's website.",
@@ -33,6 +32,8 @@
       "ambassade": "The ambassy"
     },
     "juridiction": {
+      "tiltle": "Embassies and Permanent Representations",
+      "post": "Consular Posts",
       "description": "The Republic of Chad has several diplomatic and consular representations abroad (Decree No. 0089/PR/MAEIACID/2020 of February 19, 2020).",
       "algerie": "Algeria",
       "afrique_du_sud": "South Africa",
@@ -125,7 +126,7 @@
       "bouton_ouvir": "Open now"
     },
     "passportForm": {
-      "ambassy":"AMBASSY OF CHAD",
+      "ambassy": "AMBASSY OF CHAD",
       "open": "Open now",
       "title": "Passport Application Form",
       "name": "Name",
@@ -290,7 +291,7 @@
         "main_cities": "Main cities: Sarh, Moundou, Abéché"
       }
     },
-     "geography": {
+    "geography": {
       "tabs": {
         "key_figures": "Key Figures",
         "history": "History",
@@ -348,7 +349,6 @@
         "peoples": "Peoples and Cultures"
       }
     },
-    
     "cultural": {
       "cultural-text": {
         "item1": "The first population census took place in 1993. It estimated Chad's total population at 6,280,000 individuals, of whom 5.7% were nomads (in the strict sense), the rest being sedentary, semi-sedentary, or transhumant. The second census in Chad's history, the most recent, was conducted more than fifteen years later, in 2009. Here are some key figures from this count: the total population stands at 11.03 million inhabitants (estimated at 12.8 million in 2016), with 50.6% under 15 years old and 50.7% women. The urban population is 22%, making Chad a predominantly rural country. This census highlights the very unequal geographical distribution of the population, with more than half concentrated in the southernmost 10% of the country. Thus, Chad has enormous density disparities, ranging from 52.4 inhabitants/km² in Logone Occidental to 0.1 inhabitants/km² in the regions of Borkou, Ennedi, and Tibesti, where the population barely exceeds 300,000 individuals in all three regions combined; note the extreme disparity between N'Djamena, nearly 1 million inhabitants, and the Tibesti region, 25,000 inhabitants!",
@@ -358,53 +358,51 @@
     },
     "monument": {
       "items": [
-      {
-        "title": "Lake Katam",
-        "subtitle": "Located in the Ennedi region, Lake Katam is one of the lakes in the Ounianga Kébir system. It is distinguished by its two parts separated by a narrow strip of sand, offering blue and green waters due to the presence of specific algae."
-      },
-      {
-        "title": "Lake Fianga",
-        "subtitle": "Lake Fianga, located on the border between Chad and Cameroon, is fed by the waters of the Logone and Mayo Kébbi. Its water levels vary according to the seasons, offering changing landscapes and rich biodiversity."
-      },
-      {
-        "title": "Lake Chad",
-        "subtitle": "Lake Chad is one of the largest lakes in Africa, although its surface area has decreased over the decades. It remains a vital resource for millions of people and is home to unique biodiversity."
-      },
-      {
-        "title": "Lake Yoa",
-        "subtitle": "Lake Yoa is the largest of the Ounianga Kébir lakes, with a depth reaching 20 meters. Located in the heart of the Sahara Desert, it is fed by fossil aquifers, evidence of a time when the region's climate was wetter."
-      },
-      {
-        "title": "tourism_1",
-        "subtitle": "Lake Yoa is the largest of the Ounianga Kébir lakes, with a depth reaching 20 meters. Located in the heart of the Sahara Desert, it is fed by fossil aquifers, evidence of a time when the region's climate was wetter."
-      },
-      {
-        "title": "tourism_2",
-        "subtitle": "Lake Yoa is the largest of the Ounianga Kébir lakes, with a depth reaching 20 meters. Located in the heart of the Sahara Desert, it is fed by fossil aquifers, evidence of a time when the region's climate was wetter."
-      },
-      {
-        "title": "tourism_3",
-        "subtitle": "Lake Yoa is the largest of the Ounianga Kébir lakes, with a depth reaching 20 meters. Located in the heart of the Sahara Desert, it is fed by fossil aquifers, evidence of a time when the region's climate was wetter."
-      },
-      {
-        "title": "tourism_4",
-        "subtitle": "Lake Yoa is the largest of the Ounianga Kébir lakes, with a depth reaching 20 meters. Located in the heart of the Sahara Desert, it is fed by fossil aquifers, evidence of a time when the region's climate was wetter."
-      },
-      {
-        "title": "tourism_5",
-        "subtitle": "Lake Yoa is the largest of the Ounianga Kébir lakes, with a depth reaching 20 meters. Located in the heart of the Sahara Desert, it is fed by fossil aquifers, evidence of a time when the region's climate was wetter."
-      },
-      {
-        "title": "tourism_6",
-        "subtitle": "Lake Yoa is the largest of the Ounianga Kébir lakes, with a depth reaching 20 meters. Located in the heart of the Sahara Desert, it is fed by fossil aquifers, evidence of a time when the region's climate was wetter."
-      }
+        {
+          "title": "Lake Katam",
+          "subtitle": "Located in the Ennedi region, Lake Katam is one of the lakes in the Ounianga Kébir system. It is distinguished by its two parts separated by a narrow strip of sand, offering blue and green waters due to the presence of specific algae."
+        },
+        {
+          "title": "Lake Fianga",
+          "subtitle": "Lake Fianga, located on the border between Chad and Cameroon, is fed by the waters of the Logone and Mayo Kébbi. Its water levels vary according to the seasons, offering changing landscapes and rich biodiversity."
+        },
+        {
+          "title": "Lake Chad",
+          "subtitle": "Lake Chad is one of the largest lakes in Africa, although its surface area has decreased over the decades. It remains a vital resource for millions of people and is home to unique biodiversity."
+        },
+        {
+          "title": "Lake Yoa",
+          "subtitle": "Lake Yoa is the largest of the Ounianga Kébir lakes, with a depth reaching 20 meters. Located in the heart of the Sahara Desert, it is fed by fossil aquifers, evidence of a time when the region's climate was wetter."
+        },
+        {
+          "title": "tourism_1",
+          "subtitle": "Lake Yoa is the largest of the Ounianga Kébir lakes, with a depth reaching 20 meters. Located in the heart of the Sahara Desert, it is fed by fossil aquifers, evidence of a time when the region's climate was wetter."
+        },
+        {
+          "title": "tourism_2",
+          "subtitle": "Lake Yoa is the largest of the Ounianga Kébir lakes, with a depth reaching 20 meters. Located in the heart of the Sahara Desert, it is fed by fossil aquifers, evidence of a time when the region's climate was wetter."
+        },
+        {
+          "title": "tourism_3",
+          "subtitle": "Lake Yoa is the largest of the Ounianga Kébir lakes, with a depth reaching 20 meters. Located in the heart of the Sahara Desert, it is fed by fossil aquifers, evidence of a time when the region's climate was wetter."
+        },
+        {
+          "title": "tourism_4",
+          "subtitle": "Lake Yoa is the largest of the Ounianga Kébir lakes, with a depth reaching 20 meters. Located in the heart of the Sahara Desert, it is fed by fossil aquifers, evidence of a time when the region's climate was wetter."
+        },
+        {
+          "title": "tourism_5",
+          "subtitle": "Lake Yoa is the largest of the Ounianga Kébir lakes, with a depth reaching 20 meters. Located in the heart of the Sahara Desert, it is fed by fossil aquifers, evidence of a time when the region's climate was wetter."
+        },
+        {
+          "title": "tourism_6",
+          "subtitle": "Lake Yoa is the largest of the Ounianga Kébir lakes, with a depth reaching 20 meters. Located in the heart of the Sahara Desert, it is fed by fossil aquifers, evidence of a time when the region's climate was wetter."
+        }
       ],
       "voirPlus": "See +",
       "lirePlus": "Read more",
       "lireMoins": "Read less"
     }
-
-
   },
   "passport": {
     "form": {
@@ -434,21 +432,68 @@
       }
     }
   },
-  "demandez-rdv":{
-  "title": "Request an appointment",
-  "section": {
-    "personalInfo": "Personal information",
-    "booking": "Booking"
+  "demandez-rdv": {
+    "title": "Request an appointment",
+    "section": {
+      "personalInfo": "Personal information",
+      "booking": "Booking"
+    },
+    "fields": {
+      "fullName": "Full name",
+      "email": "Email address",
+      "phone": "Phone number"
+    },
+    "buttons": {
+      "cancel": "Cancel",
+      "submit": "Submit"
+    }
   },
-  "fields": {
-    "fullName": "Full name",
-    "email": "Email address",
-    "phone": "Phone number"
+  "consulaire": {
+    "form": {
+      "backgroundAlt": "Background image",
+      "close": "Close the form",
+      "title": "Consular Card Form",
+      "logoAlt": "Embassy of Chad logo",
+      "uploadPhoto": "Upload a photo",
+      "lastName": "Last Name",
+      "firstName": "First Name",
+      "birthDate": "Date of Birth",
+      "birthPlace": "Place of Birth",
+      "nationality": "Nationality",
+      "gender": "Gender",
+      "male": "Male",
+      "female": "Female",
+      "maritalStatus": "Marital Status",
+      "single": "Single",
+      "married": "Married",
+      "divorced": "Divorced",
+      "widowed": "Widowed",
+      "seeConditions": "See conditions",
+      "send": "Send"
+    }
   },
-  "buttons": {
-    "cancel": "Cancel",
-    "submit": "Submit"
+  "laissez-passer": {
+    "form": {
+      "backgroundAlt": "Background image",
+      "close": "Close",
+      "title": "Laissez-passer Request Form",
+      "logoAlt": "Chad Embassy Logo",
+      "uploadPhoto": "Upload a photo",
+      "lastName": "Last Name",
+      "firstName": "First Name",
+      "birthDate": "Date of Birth",
+      "birthPlace": "Place of Birth",
+      "nationality": "Nationality",
+      "gender": "Gender",
+      "male": "Male",
+      "female": "Female",
+      "maritalStatus": "Marital Status",
+      "single": "Single",
+      "married": "Married",
+      "divorced": "Divorced",
+      "widowed": "Widowed",
+      "seeConditions": "See Conditions",
+      "send": "Submit"
+    }
   }
-}
-
 }

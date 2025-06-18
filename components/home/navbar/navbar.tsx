@@ -1,6 +1,5 @@
 "use client";
-
-import Link from "next/link";
+import {Link} from '@/i18n/navigation';
 import Image from "next/image";
 import { Mail, Phone, Search, Menu, X } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
@@ -131,13 +130,14 @@ export default function Head() {
                         <NavigationMenuContent className="z-10">
                           <ul className="grid w-[600px] bg-primary gap-3 p-4">
                             {menu.children.map((child, i) => (
-                              <Link
-                                key={i}
-                                href={`/${locale}${child.link}`}
-                                className="text-white hover:text-primary hover:bg-white p-2 rounded-lg"
-                              >
-                                {child.name}
-                              </Link>
+                              <li key={i}>
+                                <Link
+                                  href={child.link}
+                                  className="text-white hover:text-primary hover:bg-white p-2 rounded-lg"
+                                >
+                                  {child.name}
+                                </Link>
+                              </li>
                             ))}
                           </ul>
                         </NavigationMenuContent>
@@ -157,7 +157,7 @@ export default function Head() {
                       </a>
                     ) : (
                       <Link
-                        href={`/${locale}${menu.link ?? ""}`}
+                        href={menu.link ?? ""}
                         className={`text-sm px-2 ${
                           pathname === `/${locale}${menu.link}`
                             ? "bg-white text-[#00205B] rounded-full"
@@ -188,7 +188,7 @@ export default function Head() {
           {menuItems.map((item) => (
             <Link
               key={item.name}
-              href={`/${locale}${item.link ?? ""}`}
+              href={item.link ?? ""}
               className="py-2 text-lg w-full text-center border-b border-white"
               onClick={() => setMenuOpen(false)}
             >

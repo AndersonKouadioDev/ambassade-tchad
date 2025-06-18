@@ -3,8 +3,8 @@
 import Image from "next/image";
 import { Button } from "@nextui-org/react";
 import { FileText } from "lucide-react";
-import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation"; // ← Assure-toi que c’est bien le bon alias vers createNavigation()
 
 export default function Hero() {
   const t = useTranslations("home.hero");
