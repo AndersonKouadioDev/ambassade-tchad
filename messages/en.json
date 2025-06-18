@@ -217,6 +217,14 @@
         "tchad": "Chad"
       }
     },
+    "hero": {
+      "title":"Tourism"
+    },
+    "breadcrumbs": {
+      "home": "Home",
+      "tourism": "Tourism",
+      "site": "Tourist Sites"
+    },  
     "president": {
       "title": "A COUNTRY ON THE RISE",
       "imageAlt": "President profile",

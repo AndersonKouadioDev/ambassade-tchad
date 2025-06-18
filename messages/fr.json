@@ -217,6 +217,14 @@
                 "tchad": "Le Tchad"
             }
         },
+        "hero": {
+            "title":"Tourisme"
+        },
+        "breadcrumbs": {
+            "home": "Accueil",
+            "tourism": "Tourisme",
+            "site": "Sites touristiques"
+        },
         "president": {
             "title": "UN PAYS QUI ÉMERGE",
             "imageAlt": "Profil du président",
