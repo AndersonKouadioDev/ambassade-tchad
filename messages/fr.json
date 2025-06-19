@@ -142,8 +142,12 @@
             "married": "Marié(e)",
             "divorced": "Divorcé(e)",
             "widowed": "Veuf/Veuve",
+            "seeConditions":"Voir les conditions",
             "submit": "Envoyer",
-            "close": "Fermer"
+            "close": "Fermer",
+            "logoAlt":"Logo de l'ambassade du Tchad",
+            "backgroundAlt":"image de fond d'ecran",
+            "uploadPhoto": "Télécharger une photo"
         },
         "news": {
             "title": "ACTUALITÉS",
@@ -503,5 +507,63 @@
             "seeConditions": "Voir les conditions",
             "send": "Envoyer"
         }
+    },
+    "procuration": {
+    "title": "Formulaire de demande de procuration",
+    "nom": "Nom",
+    "prenom": "Prénom",
+    "date_naissance": "Date de naissance",
+    "lieu_naissance": "Lieu de naissance",
+    "nationalite": "Nationalité",
+    "sexe": "Sexe",
+    "sexe_m": "Masculin",
+    "sexe_f": "Féminin",
+    "situation_familiale": "Situation familiale",
+    "celibataire": "Célibataire",
+    "marie": "Marié(e)",
+    "divorce": "Divorcé(e)",
+    "veuf": "Veuf/Veuve",
+    "voir_conditions": "Voir les conditions",
+    "envoyer": "Envoyer"
+  },
+  "condition":{
+    "passport_diplomatique":{
+        "title":"Formulaire de demande de passeport",
+        "documents":"Documents à fournir",
+        "common_passport":"Passport Ordinaire",
+        "vip_passport":"Passport diplomatique",
+        "list":{
+            "first_condition":"Note verbale",
+            "second_condition":"Formulaire de demande de visa dûment rempli",
+            "third_condition":"copie de passeport",
+            "fourth_condition":"Passeport en cours de validité (6 mois minimum)",
+            "fifth_condition":"2 photos d'identité"
+        },
+        "see_form":"Voir le formulaire"
+    },
+    "passport_ordinaire":{
+        "title":"Formulaire de demande de passeport",
+        "documents":"Documents à fournir",
+        "common_passport":"Passport Ordinaire",
+        "vip_passport":"Passport diplomatique",
+        "list":{
+            "first_condition":"Formulaire de demande de visa dûment rempli",
+            "second_condition":"Lettre d'invitation ou certificat d'hébergement ou réservation d'hôtel",
+            "third_condition":"copie de passeport",
+            "fourth_condition":"Passeport en cours de validité (6 mois minimum)",
+            "fifth_condition":"2 photos d'identité"
+        },
+        "see_form":"Voir le formulaire"
+    },
+    "consulaire":{
+        "title":"Formulaire de carte consulaire",
+        "documents":"Documents à fournir",
+        "list":{
+            "first_condition":"Acte de Naissance",
+            "second_condition":"copie de passeport",
+            "third_condition":"2 photos d'identité"
+        },
+        "see_form":"Voir le formulaire"
     }
+  }
 }

@@ -1,8 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
-import { Button, Link } from '@nextui-org/react';
+import { Button} from '@nextui-org/react';
+import {Link} from '@/i18n/navigation'
+import { useTranslations } from 'next-intl';
 
 export default function Condition() {
+  const t = useTranslations("condition.consulaire")
   return (
     <div className="relative flex items-center justify-center w-full p-10 min-p-10 min-h-[calc(100vh-70px)] font-mulish">
       {/* Image d'arrière-plan */}
@@ -25,7 +28,7 @@ export default function Condition() {
 
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-gray-600 mb-4">Formulaire de carte consulaire</h1>
+          <h1 className="text-gray-600 mb-4">{t("title")}</h1>
           <div className="flex items-center justify-center gap-4">
             <Image 
               src="/assets/images/illustrations/formulaire/logo.png"
@@ -40,7 +43,7 @@ export default function Condition() {
         {/* Photo upload area */}
         <div className=" mx-auto mb-8 text-primary font-semibold flex items-start justify-start relative">
           <div>
-            Documents à fournir : 
+            {t("documents")} : 
           </div>
         </div>
 
@@ -51,9 +54,9 @@ export default function Condition() {
                 {/* Liste numérotée à gauche */}
                 <div className="w-auto md:w-1/2">
                     <ol className="list-decimal list-outside space-y-2 text-sm text-gray-700">
-                    <li>Acte de Naissance</li>
-                    <li>copie de passeport</li>
-                    <li>2 photos d’identité</li>
+                    <li>{t("list.first_condition")}</li>
+                    <li>{t("list.second_condition")}</li>
+                    <li>{t("list.third_condition")}</li>
                     </ol>
                 </div>
 
@@ -73,7 +76,7 @@ export default function Condition() {
         <div className="flex justify-between">
             <Link href="/consulaire">
           <Button className="bg-transparent text-secondary border border-secondary">
-            Voir le formulaire
+            {t("see_form")}
           </Button>
           </Link>
         </div>

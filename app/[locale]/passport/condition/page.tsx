@@ -1,8 +1,12 @@
 import React from 'react';
 import Image from 'next/image';
-import { Button, Link } from '@nextui-org/react';
+import { Button} from '@nextui-org/react';
+import { useTranslations } from 'next-intl';
+import {Link} from '@/i18n/navigation'
+
 
 export default function Condition() {
+  const t =useTranslations("condition.passport_ordinaire")
   return (
     <div className="relative flex items-center justify-center w-full p-10 min-h-[calc(100vh-70px)] font-mulish">
       {/* Image d'arrière-plan */}
@@ -25,7 +29,7 @@ export default function Condition() {
 
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-gray-600 mb-4">Formulaire de demande de passeport</h1>
+          <h1 className="text-gray-600 mb-4">{t("title")}</h1>
           <div className="flex items-center justify-center gap-4">
             <Image 
               src="/assets/images/illustrations/formulaire/logo.png"
@@ -40,15 +44,15 @@ export default function Condition() {
         {/* Photo upload area */}
         <div className=" mx-auto mb-8 text-primary font-semibold flex items-start justify-start relative">
           <div>
-            Documents à fournir : 
+            {t("documents")} : 
           </div>
         </div>
 
         {/* Navigation items */}
 
         <div className="flex flex-col md:flex-row justify-center items-center text-center gap-2 py-4">
-                <Link href="condition" className="w-full md:w-auto"><div className="bg-primary text-white px-2 md:px-20 py-1 rounded-full md:rounded-b-md cursor-pointer items-center text-center text-sm w-full md:w-auto">Passport Ordinaire</div></Link>
-                <Link href="condition-2" className="w-full md:w-auto"><div className="bg-gray-300 text-white px-2 md:px-20 py-1 rounded-full md:rounded-b-md hover:bg-gray-400 cursor-pointer items-center text-center text-sm w-full md:w-auto">Passeport Diplomatique</div></Link>
+                <Link href="condition" className="w-full md:w-auto"><div className="bg-primary text-white px-2 md:px-20 py-1 rounded-full md:rounded-b-md cursor-pointer items-center text-center text-sm w-full md:w-auto">{t("common_passport")}</div></Link>
+                <Link href="condition-2" className="w-full md:w-auto"><div className="bg-gray-300 text-white px-2 md:px-20 py-1 rounded-full md:rounded-b-md hover:bg-gray-400 cursor-pointer items-center text-center text-sm w-full md:w-auto">{t("vip_passport")}</div></Link>
         </div>
 
         {/* Form fields */}
@@ -56,11 +60,11 @@ export default function Condition() {
                 {/* Liste numérotée à gauche */}
                 <div className="w-auto md:w-1/2">
                     <ol className="list-decimal list-outside space-y-2 text-sm text-gray-700">
-                    <li>Formulaire de demande de visa dûment rempli</li>
-                    <li>Copie de passeport</li>
-                    <li>Passeport en cours de validité (6 mois minimum)</li>
-                    <li>Lettre d&apos;invitation ou certificat d&apos;hébergement ou réservation d&apos;hôtel</li>
-                    <li>2 photos d&apos;identité</li>
+                    <li>{t("list.first_condition")}</li>
+                    <li>{t("list.third_condition")}</li>
+                    <li>{t("list.fourth_condition")}</li>
+                    <li>{t("list.second_condition")}</li>
+                    <li>{t("list.fifth_condition")}</li>
                     </ol>
                 </div>
 
@@ -80,7 +84,7 @@ export default function Condition() {
         <div className="flex justify-between">
             <Link href="/passport">
           <Button className="bg-transparent text-secondary border border-secondary">
-            Voir le formulaire
+            {t("see_form")}
           </Button>
           </Link>
         </div>
