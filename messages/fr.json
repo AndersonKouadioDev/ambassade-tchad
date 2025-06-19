@@ -416,34 +416,7 @@
             "lireMoins": "Lire moins"
         }
     },
-    "passport": {
-        "form": {
-            "title": "Formulaire de demande de passeport",
-            "placeholders": {
-                "lastName": "Nom",
-                "firstName": "Prénom",
-                "birthDate": "Date de naissance",
-                "birthPlace": "Lieu de naissance",
-                "nationality": "Nationalité",
-                "gender": "Sexe",
-                "familyStatus": "Situation familiale"
-            },
-            "genderOptions": {
-                "M": "Masculin",
-                "F": "Féminin"
-            },
-            "familyStatusOptions": {
-                "single": "Célibataire",
-                "married": "Marié(e)",
-                "divorced": "Divorcé(e)",
-                "widowed": "Veuf/Veuve"
-            },
-            "buttons": {
-                "seeConditions": "Voir les conditions",
-                "submit": "Envoyer"
-            }
-        }
-    },
+    
     "demandez-rdv": {
         "title": "Demandez un rendez-vous",
         "section": {
@@ -561,6 +534,16 @@
         "list":{
             "first_condition":"Acte de Naissance",
             "second_condition":"copie de passeport",
+            "third_condition":"2 photos d'identité"
+        },
+        "see_form":"Voir le formulaire"
+    },
+    "laissez-passer":{
+        "title":"Formulaire de demande de Laissez-passer",
+        "documents":"Documents à fournir",
+        "list":{
+            "first_condition":"Ancien passeport/ Carte Consulaire",
+            "second_condition":"Acte de naissance",
             "third_condition":"2 photos d'identité"
         },
         "see_form":"Voir le formulaire"

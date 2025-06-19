@@ -566,6 +566,16 @@
         "third_condition": "2 ID photos"
       },
       "see_form": "See the form"
+    },
+    "laissez-passer": {
+      "title": "Passes Request Form",
+      "documents": "Required Documents",
+      "list": {
+      "first_condition": "Old passport/Consular Card",
+      "second_condition": "Birth certificate",
+      "third_condition": "2 ID photos"
+      },
+      "see_form": "See the form"
     }
   }
 }
