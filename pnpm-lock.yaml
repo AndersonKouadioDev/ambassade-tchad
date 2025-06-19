@@ -16,7 +16,7 @@ importers:
         version: 1.2.13(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       chicken-nation:
         specifier: 'file:'
-        version: file:(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(tailwindcss@3.4.17)
+        version: file:(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(tailwindcss@3.4.17)(typescript@5.8.3)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -6220,7 +6220,7 @@ snapshots:
       ansi-styles: 4.3.0
       supports-color: 7.2.0
 
-  chicken-nation@file:(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(tailwindcss@3.4.17):
+  chicken-nation@file:(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(tailwindcss@3.4.17)(typescript@5.8.3):
     dependencies:
       '@nextui-org/react': 2.6.11(@types/react@19.1.8)(framer-motion@11.18.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(tailwindcss@3.4.17)
       '@radix-ui/react-navigation-menu': 1.2.13(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -6229,6 +6229,7 @@ snapshots:
       framer-motion: 11.18.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       lucide-react: 0.471.2(react@19.1.0)
       next: 15.1.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      next-intl: 4.1.0(next@15.1.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)(typescript@5.8.3)
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
       tailwind-merge: 2.6.0
@@ -6244,6 +6245,7 @@ snapshots:
       - babel-plugin-react-compiler
       - sass
       - tailwindcss
+      - typescript
 
   chokidar@3.6.0:
     dependencies:
