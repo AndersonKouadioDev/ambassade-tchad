@@ -126,7 +126,7 @@
       "bouton_ouvir": "Open now"
     },
     "passportForm": {
-      "ambassy": "AMBASSY OF CHAD",
+      "ambassy": "EMBASSY OF CHAD",
       "open": "Open now",
       "title": "Passport Application Form",
       "name": "Name",
@@ -140,10 +140,15 @@
       "familyStatus": "Marital Status",
       "single": "Single",
       "married": "Married",
+      "seeConditions": "See Conditions",
       "divorced": "Divorced",
       "widowed": "Widowed",
       "submit": "Submit",
-      "close": "Close"
+      "close": "Close",
+      "logoAlt": "Embassy of Chad logo",
+      "backgroundAlt": "Background image",
+      "uploadPhoto": "Upload a photo"
+
     },
     "news": {
       "title": "NEWS",
@@ -484,7 +489,7 @@
     "form": {
       "backgroundAlt": "Background image",
       "close": "Close",
-      "title": "Laissez-passer Request Form",
+      "title": "Passes Request Form",
       "logoAlt": "Chad Embassy Logo",
       "uploadPhoto": "Upload a photo",
       "lastName": "Last Name",
@@ -502,6 +507,65 @@
       "widowed": "Widowed",
       "seeConditions": "See Conditions",
       "send": "Submit"
+    }
+  },
+    "procuration": {
+    "title": "Proxy Request Form",
+    "nom": "Last Name",
+    "prenom": "First Name",
+    "date_naissance": "Date of Birth",
+    "lieu_naissance": "Place of Birth",
+    "nationalite": "Nationality",
+    "sexe": "Gender",
+    "sexe_m": "Male",
+    "sexe_f": "Female",
+    "situation_familiale": "Marital Status",
+    "celibataire": "Single",
+    "marie": "Married",
+    "divorce": "Divorced",
+    "veuf": "Widowed",
+    "voir_conditions": "View Conditions",
+    "envoyer": "Submit"
+  },
+  "condition":{
+    "passport_diplomatique":{
+      "title": "Passport Application Form",
+      "documents": "Required Documents",
+      "common_passport": "Ordinary Passport",
+      "vip_passport": "Diplomatic Passport",
+      "list": {
+        "first_condition": "Verbal note",
+        "second_condition": "Duly completed visa application form",
+        "third_condition": "Copy of passport",
+        "fourth_condition": "Valid passport (minimum 6 months)",
+        "fifth_condition": "2 ID photos"
+      },
+      "see_form": "See the form"
+         
+    },
+    "passport_ordinaire": {
+      "title": "Passport Application Form",
+      "documents": "Required Documents",
+      "common_passport": "Ordinary Passport",
+      "vip_passport": "Diplomatic Passport",
+      "list": {
+      "first_condition": "Duly completed visa application form",
+      "second_condition": "Invitation letter or accommodation certificate or hotel reservation",
+      "third_condition": "Copy of passport",
+      "fourth_condition": "Valid passport (minimum 6 months)",
+      "fifth_condition": "2 ID photos"
+      },
+      "see_form": "See the form"
+    },
+    "consulaire": {
+      "title": "Consular Card Form",
+      "documents": "Required Documents",
+      "list": {
+        "first_condition": "Birth certificate",
+        "second_condition": "Copy of passport",
+        "third_condition": "2 ID photos"
+      },
+      "see_form": "See the form"
     }
   }
 }
