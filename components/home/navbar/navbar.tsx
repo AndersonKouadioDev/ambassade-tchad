@@ -1,5 +1,5 @@
 "use client";
-import {Link} from '@/i18n/navigation';
+import { Link } from '@/i18n/navigation';
 import Image from "next/image";
 import { Mail, Phone, Search, Menu, X } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
@@ -75,20 +75,26 @@ export default function Head() {
               <div className="flex gap-2">
                 <button
                   onClick={() => switchLocale("fr")}
-                  className={`text-sm ${
-                    locale === "fr" ? "text-red-500" : "text-white hover:underline"
-                  }`}
+                  className={`text-sm ${locale === "fr" ? "text-red-500" : "text-white hover:underline"
+                    }`}
                 >
                   FR
                 </button>
                 <span className="text-sm text-white">|</span>
                 <button
                   onClick={() => switchLocale("en")}
-                  className={`text-sm ${
-                    locale === "en" ? "text-red-500" : "text-white hover:underline"
-                  }`}
+                  className={`text-sm ${locale === "en" ? "text-red-500" : "text-white hover:underline"
+                    }`}
                 >
                   EN
+                </button>
+                <span className="text-sm text-white">|</span>
+                <button
+                  onClick={() => switchLocale("ar")}
+                  className={`text-sm ${locale === "ar" ? "text-red-500" : "text-white hover:underline"
+                    }`}
+                >
+                  AR
                 </button>
               </div>
 
@@ -147,22 +153,20 @@ export default function Head() {
                         href={menu.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`text-sm px-2 ${
-                          pathname === menu.link
-                            ? "bg-white text-[#00205B] rounded-full"
-                            : "text-white hover:bg-[#123682] rounded-full transition-colors"
-                        }`}
+                        className={`text-sm px-2 ${pathname === menu.link
+                          ? "bg-white text-[#00205B] rounded-full"
+                          : "text-white hover:bg-[#123682] rounded-full transition-colors"
+                          }`}
                       >
                         {menu.name}
                       </a>
                     ) : (
                       <Link
                         href={menu.link ?? ""}
-                        className={`text-sm px-2 ${
-                          pathname === `/${locale}${menu.link}`
-                            ? "bg-white text-[#00205B] rounded-full"
-                            : "text-white hover:bg-[#123682] rounded-full transition-colors"
-                        }`}
+                        className={`text-sm px-2 ${pathname === `/${locale}${menu.link}`
+                          ? "bg-white text-[#00205B] rounded-full"
+                          : "text-white hover:bg-[#123682] rounded-full transition-colors"
+                          }`}
                       >
                         {menu.name}
                       </Link>

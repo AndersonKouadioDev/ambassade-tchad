@@ -44,6 +44,9 @@ importers:
       react-dom:
         specifier: ^19.0.0
         version: 19.1.0(react@19.1.0)
+      rtl-detect-intl:
+        specifier: ^0.1.3
+        version: 0.1.3
       tailwind-merge:
         specifier: ^2.6.0
         version: 2.6.0
@@ -2942,6 +2945,9 @@ packages:
   reusify@1.1.0:
     resolution: {integrity: sha512-g6QUff04oZpHs0eG5p83rFLhHeV00ug/Yf9nZM6fLeUrPguBTkTQOdpAWWspMh55TZfVQDPaN3NQJfbVRAxdIw==}
     engines: {iojs: '>=1.0.0', node: '>=0.10.0'}
+
+  rtl-detect-intl@0.1.3:
+    resolution: {integrity: sha512-8QMjnOcKXe81PN0ifugoHLWIe4GOQQlyVoW2dve4bz4oS8nmNYbZeW63M2o8PPEzaGqX45nxH7niy4i6+PraSg==}
 
   run-parallel@1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
@@ -6010,6 +6016,7 @@ snapshots:
   chicken-nation@file:(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(tailwindcss@3.4.17)(typescript@5.8.3):
     dependencies:
       '@heroui/react': 2.7.10(@types/react@19.1.8)(framer-motion@11.18.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(tailwindcss@3.4.17)
+      '@heroui/theme': 2.4.17(tailwindcss@3.4.17)
       '@radix-ui/react-navigation-menu': 1.2.13(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       class-variance-authority: 0.7.1
       clsx: 2.1.1
@@ -7144,6 +7151,8 @@ snapshots:
       supports-preserve-symlinks-flag: 1.0.0
 
   reusify@1.1.0: {}
+
+  rtl-detect-intl@0.1.3: {}
 
   run-parallel@1.2.0:
     dependencies:

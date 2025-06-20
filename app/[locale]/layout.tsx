@@ -9,6 +9,7 @@ import localFont from "next/font/local";
 // import { Providers } from "@/providers/providers";
 import Head from "@/components/home/navbar/navbar";
 import Footer from "@/components/home/footer/footer";
+import rtlDetect from "rtl-detect-intl";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -62,9 +63,10 @@ export default async function RootLayout({
   }
 
   const messages = (await import(`@/messages/${locale}.json`)).default;
+  const langDir = rtlDetect.getLangDir(locale);
 
   return (
-    <html lang={locale}>
+    <html lang={locale} dir={langDir}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} ${signature.variable} ${mulish.variable} ${blinker.variable} antialiased`}
       >
