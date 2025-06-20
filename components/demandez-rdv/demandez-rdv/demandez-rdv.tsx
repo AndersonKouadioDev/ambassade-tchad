@@ -2,17 +2,16 @@
 
 import React from "react";
 import Image from "next/image";
-import { Button } from "@nextui-org/react";
-import App from "../calendar/calendar";
+import { Button } from "@heroui/react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import InertFixWrapper from "@/components/gestion_erreur_inert/InertFixWrapper";
+import { Calendar } from "@heroui/react";
 
 export default function RDV() {
   const t = useTranslations("demandez-rdv");
 
   return (
-    <div className="relative flex items-center justify-center w-full p-10 min-h-[calc(100vh-70px)] font-mulish">
+    <div className="relative flex items-center justify-center w-full p-6 md:p-10 min-h-[calc(100vh-70px)] font-mulish">
       {/* Image d'arrière-plan */}
       <Image
         className="absolute inset-0 w-full h-full object-cover"
@@ -68,24 +67,21 @@ export default function RDV() {
         </div>
 
         {/* Réservation */}
-        <div className="flex flex-col justify-start items-start gap-6 py-6">
-          <div className="text-primary font-semibold">
-            {t("section.booking")}
-          </div>
-          
-            <App />
-          
+        <div className="flex flex-col justify-start items-center gap-6 py-6">
+          <div className="text-primary font-semibold">{t("section.booking")}</div>
+          <Calendar showMonthAndYearPickers aria-label="Date (Show Month and Year Picker)" visibleMonths={2} className="hidden md:block" />
+          <Calendar showMonthAndYearPickers aria-label="Date (Show Month and Year Picker)" visibleMonths={1} className="md:hidden" />
         </div>
 
         {/* Buttons */}
         <div className="flex justify-start gap-3">
           <Link href="/">
-            <Button color="default" className="text-white">
+            <Button color="default">
               {t("buttons.cancel")}
             </Button>
           </Link>
           <Link href="#">
-            <Button className="bg-secondary text-white">
+            <Button color="secondary" className="text-white">
               {t("buttons.submit")}
             </Button>
           </Link>

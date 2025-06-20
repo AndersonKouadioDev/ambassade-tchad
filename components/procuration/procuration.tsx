@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { Images } from 'lucide-react';
-import { Button } from '@nextui-org/react';
+import { Button } from "@heroui/react";
 import { useTranslations } from 'next-intl';
 
 export default function ProcurationForm() {

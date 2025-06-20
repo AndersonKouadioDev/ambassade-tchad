@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { Button } from '@nextui-org/react';
+import { Button } from "@heroui/react";
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 

@@ -21,7 +21,7 @@ export default function Head() {
   const t = useTranslations("header");
 
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isPending, startTransition] = useTransition();
+  const [, startTransition] = useTransition();
 
   const switchLocale = (newLocale: string) => {
     const segments = pathname.split("/");

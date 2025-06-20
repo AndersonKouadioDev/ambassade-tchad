@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@nextui-org/react": "^2.6.11",
+    "@heroui/react": "2.7.10",
     "@radix-ui/react-navigation-menu": "^1.2.5",
     "chicken-nation": "file:",
     "class-variance-authority": "^0.7.1",
@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@heroui/theme": "^2.4.17",
     "@tailwindcss/line-clamp": "^0.4.4",
     "@types/node": "^20",
     "@types/react": "^19",
