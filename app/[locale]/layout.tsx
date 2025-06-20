@@ -6,7 +6,7 @@ import { routing } from "@/i18n/routing";
 import { Blinker, Geist, Geist_Mono, Mulish, Poppins } from "next/font/google";
 import "@/app/globals.css";
 import localFont from "next/font/local";
-import { Providers } from "@/providers/providers";
+// import { Providers } from "@/providers/providers";
 import Head from "@/components/home/navbar/navbar";
 import Footer from "@/components/home/footer/footer";
 

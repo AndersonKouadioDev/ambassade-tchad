@@ -1,4 +1,4 @@
-import Tourisme from '@/app/[locale]/tourisme/page';
+// import Tourisme from '@/app/[locale]/tourisme/page';
 import {Link} from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 
