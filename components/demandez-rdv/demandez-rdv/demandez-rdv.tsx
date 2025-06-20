@@ -5,7 +5,8 @@ import Image from "next/image";
 import { Button } from "@nextui-org/react";
 import App from "../calendar/calendar";
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation"; 
+import { Link } from "@/i18n/navigation";
+import InertFixWrapper from "@/components/gestion_erreur_inert/InertFixWrapper";
 
 export default function RDV() {
   const t = useTranslations("demandez-rdv");
@@ -32,9 +33,9 @@ export default function RDV() {
         <div className="text-center mb-8">
           <h1 className="text-gray-600 mb-4">{t("title")}</h1>
           <div className="flex items-center justify-center gap-4">
-            <Image 
+            <Image
               src="/assets/images/illustrations/formulaire/logo.png"
-              alt="Chad Embassy Logo" 
+              alt="Chad Embassy Logo"
               width={300}
               height={150}
               className="mx-2"
@@ -68,8 +69,12 @@ export default function RDV() {
 
         {/* Réservation */}
         <div className="flex flex-col justify-start items-start gap-6 py-6">
-          <div className="text-primary font-semibold">{t("section.booking")}</div>
-          <App />
+          <div className="text-primary font-semibold">
+            {t("section.booking")}
+          </div>
+          
+            <App />
+          
         </div>
 
         {/* Buttons */}

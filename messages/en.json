@@ -148,7 +148,6 @@
       "logoAlt": "Embassy of Chad logo",
       "backgroundAlt": "Background image",
       "uploadPhoto": "Upload a photo"
-
     },
     "news": {
       "title": "NEWS",
@@ -223,13 +222,13 @@
       }
     },
     "hero": {
-      "title":"Tourism"
+      "title": "Tourism"
     },
     "breadcrumbs": {
       "home": "Home",
       "tourism": "Tourism",
       "site": "Tourist Sites"
-    },  
+    },
     "president": {
       "title": "A COUNTRY ON THE RISE",
       "imageAlt": "President profile",
@@ -388,33 +387,23 @@
           "subtitle": "Lake Yoa is the largest of the Ounianga Kébir lakes, with a depth reaching 20 meters. Located in the heart of the Sahara Desert, it is fed by fossil aquifers, evidence of a time when the region's climate was wetter."
         },
         {
-          "title": "tourism_1",
-          "subtitle": "Lake Yoa is the largest of the Ounianga Kébir lakes, with a depth reaching 20 meters. Located in the heart of the Sahara Desert, it is fed by fossil aquifers, evidence of a time when the region's climate was wetter."
+          "title": "Goz Beïda National Park",
+          "subtitle": "Goz Beïda National Park is located in the Sila region, in southeastern Chad. Surrounded by impressive natural beauty, this park covers a vast area of approximately 3,625 square kilometers. Situated on the border with Sudan, the park lies in a transition zone between the Sahel and the savannah, giving it a great diversity of landscapes and wildlife."
         },
         {
-          "title": "tourism_2",
-          "subtitle": "Lake Yoa is the largest of the Ounianga Kébir lakes, with a depth reaching 20 meters. Located in the heart of the Sahara Desert, it is fed by fossil aquifers, evidence of a time when the region's climate was wetter."
+          "title": "Sena Oura National Park (PNSO)",
+          "subtitle": "Sena Oura National Park (PNSO) is a national park in Chad created on June 10, 2008, by Decree No. 14/PR/2008. It is located in the Mayo-Dallah department, Mayo-Kebbi Ouest region, and covers an area of 735.2 km². In 2022, during the 34th session of the UNESCO Council held from June 13 to 17, 2022, at the organization's headquarters in Paris, France, Sena Oura National Park was designated a UNESCO World Heritage Site. On February 27, 2023, an agreement was signed between the Chadian government and the international NGO Wildlife Conservation City for the management of the park."
         },
         {
-          "title": "tourism_3",
-          "subtitle": "Lake Yoa is the largest of the Ounianga Kébir lakes, with a depth reaching 20 meters. Located in the heart of the Sahara Desert, it is fed by fossil aquifers, evidence of a time when the region's climate was wetter."
-        },
-        {
-          "title": "tourism_4",
-          "subtitle": "Lake Yoa is the largest of the Ounianga Kébir lakes, with a depth reaching 20 meters. Located in the heart of the Sahara Desert, it is fed by fossil aquifers, evidence of a time when the region's climate was wetter."
-        },
-        {
-          "title": "tourism_5",
-          "subtitle": "Lake Yoa is the largest of the Ounianga Kébir lakes, with a depth reaching 20 meters. Located in the heart of the Sahara Desert, it is fed by fossil aquifers, evidence of a time when the region's climate was wetter."
-        },
-        {
-          "title": "tourism_6",
-          "subtitle": "Lake Yoa is the largest of the Ounianga Kébir lakes, with a depth reaching 20 meters. Located in the heart of the Sahara Desert, it is fed by fossil aquifers, evidence of a time when the region's climate was wetter."
+          "title": "Zah Soo National Park",
+          "subtitle": "Zah Soo National Park is a national park created on March 15, 2022. It is located in southwestern Chad near Cameroon and lies in a transition zone between Sudanian and Sahelian environments. Along with the Binder-Léré Wildlife Reserve, it is part of the Binder-Léré Protected Areas Complex (CAPBL). It includes a unique variety of wetlands as well as the country's largest waterfalls, the 'Zah Soo Falls,' with a steep drop of 45 meters and an area of 81,500 hectares."
         }
       ],
-      "voirPlus": "See +",
+      "voirGalerie": "View gallery",
       "lirePlus": "Read more",
-      "lireMoins": "Read less"
+      "lireMoins": "Read less",
+      "precedent": "Previous",
+      "suivant": "Next"
     }
   },
   "passport": {
@@ -509,7 +498,7 @@
       "send": "Submit"
     }
   },
-    "procuration": {
+  "procuration": {
     "title": "Proxy Request Form",
     "nom": "Last Name",
     "prenom": "First Name",
@@ -527,8 +516,8 @@
     "voir_conditions": "View Conditions",
     "envoyer": "Submit"
   },
-  "condition":{
-    "passport_diplomatique":{
+  "condition": {
+    "passport_diplomatique": {
       "title": "Passport Application Form",
       "documents": "Required Documents",
       "common_passport": "Ordinary Passport",
@@ -541,7 +530,6 @@
         "fifth_condition": "2 ID photos"
       },
       "see_form": "See the form"
-         
     },
     "passport_ordinaire": {
       "title": "Passport Application Form",
@@ -549,11 +537,11 @@
       "common_passport": "Ordinary Passport",
       "vip_passport": "Diplomatic Passport",
       "list": {
-      "first_condition": "Duly completed visa application form",
-      "second_condition": "Invitation letter or accommodation certificate or hotel reservation",
-      "third_condition": "Copy of passport",
-      "fourth_condition": "Valid passport (minimum 6 months)",
-      "fifth_condition": "2 ID photos"
+        "first_condition": "Duly completed visa application form",
+        "second_condition": "Invitation letter or accommodation certificate or hotel reservation",
+        "third_condition": "Copy of passport",
+        "fourth_condition": "Valid passport (minimum 6 months)",
+        "fifth_condition": "2 ID photos"
       },
       "see_form": "See the form"
     },
@@ -571,9 +559,9 @@
       "title": "Passes Request Form",
       "documents": "Required Documents",
       "list": {
-      "first_condition": "Old passport/Consular Card",
-      "second_condition": "Birth certificate",
-      "third_condition": "2 ID photos"
+        "first_condition": "Old passport/Consular Card",
+        "second_condition": "Birth certificate",
+        "third_condition": "2 ID photos"
       },
       "see_form": "See the form"
     }

@@ -142,11 +142,11 @@
             "married": "Marié(e)",
             "divorced": "Divorcé(e)",
             "widowed": "Veuf/Veuve",
-            "seeConditions":"Voir les conditions",
+            "seeConditions": "Voir les conditions",
             "submit": "Envoyer",
             "close": "Fermer",
-            "logoAlt":"Logo de l'ambassade du Tchad",
-            "backgroundAlt":"image de fond d'ecran",
+            "logoAlt": "Logo de l'ambassade du Tchad",
+            "backgroundAlt": "image de fond d'ecran",
             "uploadPhoto": "Télécharger une photo"
         },
         "news": {
@@ -222,7 +222,7 @@
             }
         },
         "hero": {
-            "title":"Tourisme"
+            "title": "Tourisme"
         },
         "breadcrumbs": {
             "home": "Accueil",
@@ -372,11 +372,11 @@
             "items": [
                 {
                     "title": "Lac Katam",
-                    "subtitle": "Situé dans la région de l'Ennedi, le lac Katam est l'un des lacs du système d'Ounianga Kébir. Il se distingue par ses deux parties séparées par une étroite langue de sable, offrant des eaux aux teintes bleues et vertes en raison de la présence d'algues spécifiques."
+                    "subtitle": "Situé dans la région de l'Ennedi, le lac Katam fait partie du système des lacs Ounianga Kébir. Il se distingue par ses deux parties séparées par une étroite bande de sable, offrant des eaux bleues et vertes dues à la présence d'algues spécifiques."
                 },
                 {
                     "title": "Lac Fianga",
-                    "subtitle": "Le lac Fianga, situé à la frontière entre le Tchad et le Cameroun, est alimenté par les eaux du Logone et du Mayo Kébbi. Ses niveaux d'eau varient selon les saisons, offrant des paysages changeants et une biodiversité riche."
+                    "subtitle": "Le lac Fianga, situé à la frontière entre le Tchad et le Cameroun, est alimenté par les eaux du Logone et du Mayo Kébbi. Son niveau varie selon les saisons, offrant des paysages changeants et une riche biodiversité."
                 },
                 {
                     "title": "Lac Tchad",
@@ -384,39 +384,29 @@
                 },
                 {
                     "title": "Lac Yoa",
-                    "subtitle": "Le lac Yoa est le plus grand des lacs d'Ounianga Kébir, avec une profondeur atteignant 20 mètres. Situé au cœur du désert du Sahara, il est alimenté par des nappes phréatiques fossiles, témoignant d'une époque où le climat de la région était plus humide."
+                    "subtitle": "Le lac Yoa est le plus grand des lacs Ounianga Kébir, avec une profondeur atteignant 20 mètres. Situé au cœur du désert du Sahara, il est alimenté par des aquifères fossiles, témoins d'une époque où le climat de la région était plus humide."
                 },
                 {
-                    "title": "tourisme_1",
-                    "subtitle": "Le lac Yoa est le plus grand des lacs d'Ounianga Kébir, avec une profondeur atteignant 20 mètres. Situé au cœur du désert du Sahara, il est alimenté par des nappes phréatiques fossiles, témoignant d'une époque où le climat de la région était plus humide."
+                    "title": "Parc National de Goz Beïda",
+                    "subtitle": "Le Parc National de Goz Beïda se trouve dans la région du Sila, au sud-est du Tchad. Entouré d'une beauté naturelle impressionnante, ce parc couvre une vaste superficie d'environ 3 625 kilomètres carrés. Situé à la frontière avec le Soudan, le parc se trouve dans une région de transition entre le Sahel et la savane, ce qui lui confère une grande diversité de paysages et de faune."
                 },
                 {
-                    "title": "tourisme_2",
-                    "subtitle": "Le lac Yoa est le plus grand des lacs d'Ounianga Kébir, avec une profondeur atteignant 20 mètres. Situé au cœur du désert du Sahara, il est alimenté par des nappes phréatiques fossiles, témoignant d'une époque où le climat de la région était plus humide."
+                    "title": "Parc National de Sena Oura (PNSO)",
+                    "subtitle": "Le parc national de Sena Oura (PNSO) est un parc national du Tchad créé le 10 juin 2008 par le décret N°14/PR/2008[1]. Il est situé dans le département de Mayo-Dallah, région du Mayo-Kebbi Ouest et dispose d'une surface de 735,2 km2. En 2022, lors de la 34e session du Conseil de l'Unesco, tenue du 13 au 17 juin 2022 au siège de l'organisation à Paris en France, le parc national de Sena Oura est place patrimoine mondiale de l'Unesco [archive]. Le 27 février 2023 un accord a été signé entre le gouvernement tchadien et l'ONG internationale Wildlife conservation city pour la gestion du Parc."
                 },
                 {
-                    "title": "tourisme_3",
-                    "subtitle": "Le lac Yoa est le plus grand des lacs d'Ounianga Kébir, avec une profondeur atteignant 20 mètres. Situé au cœur du désert du Sahara, il est alimenté par des nappes phréatiques fossiles, témoignant d'une époque où le climat de la région était plus humide."
-                },
-                {
-                    "title": "tourisme_4",
-                    "subtitle": "Le lac Yoa est le plus grand des lacs d'Ounianga Kébir, avec une profondeur atteignant 20 mètres. Situé au cœur du désert du Sahara, il est alimenté par des nappes phréatiques fossiles, témoignant d'une époque où le climat de la région était plus humide."
-                },
-                {
-                    "title": "tourisme_5",
-                    "subtitle": "Le lac Yoa est le plus grand des lacs d'Ounianga Kébir, avec une profondeur atteignant 20 mètres. Situé au cœur du désert du Sahara, il est alimenté par des nappes phréatiques fossiles, témoignant d'une époque où le climat de la région était plus humide."
-                },
-                {
-                    "title": "tourisme_6",
-                    "subtitle": "Le lac Yoa est le plus grand des lacs d'Ounianga Kébir, avec une profondeur atteignant 20 mètres. Situé au cœur du désert du Sahara, il est alimenté par des nappes phréatiques fossiles, témoignant d'une époque où le climat de la région était plus humide."
+                    "title": "Parc National de Zah Soo",
+                    "subtitle": "Le Parc National de Zah Soo est un parc national crée le 15 mars 2022[1],[2]. Il est situé au Sud-Ouest du Tchad à proximité du Cameroun et se trouve dans une zone de transition entre milieux soudaniens et sahéliens. Avec la Réserve de Faune de Binder-léré, il fait partie du Complexe d'Aires Protégées de BinderLéré (CAPBL). Il comprend une variété unique de zones humides ainsi que les plus grandes cascades du pays, les « Chutes Zah Soo », d'une dénivellation abrupte de 45 mètres avec une superficie de 81.500 hectares."
                 }
+                
             ],
-            "voirPlus": "Voir +",
+            "voirGalerie": "Voir la galerie",
             "lirePlus": "Lire plus",
-            "lireMoins": "Lire moins"
+            "lireMoins": "Lire moins",
+            "precedent": "Précédent",
+            "suivant": "Suivant"
         }
     },
-    
     "demandez-rdv": {
         "title": "Demandez un rendez-vous",
         "section": {
@@ -482,71 +472,71 @@
         }
     },
     "procuration": {
-    "title": "Formulaire de demande de procuration",
-    "nom": "Nom",
-    "prenom": "Prénom",
-    "date_naissance": "Date de naissance",
-    "lieu_naissance": "Lieu de naissance",
-    "nationalite": "Nationalité",
-    "sexe": "Sexe",
-    "sexe_m": "Masculin",
-    "sexe_f": "Féminin",
-    "situation_familiale": "Situation familiale",
-    "celibataire": "Célibataire",
-    "marie": "Marié(e)",
-    "divorce": "Divorcé(e)",
-    "veuf": "Veuf/Veuve",
-    "voir_conditions": "Voir les conditions",
-    "envoyer": "Envoyer"
-  },
-  "condition":{
-    "passport_diplomatique":{
-        "title":"Formulaire de demande de passeport",
-        "documents":"Documents à fournir",
-        "common_passport":"Passport Ordinaire",
-        "vip_passport":"Passport diplomatique",
-        "list":{
-            "first_condition":"Note verbale",
-            "second_condition":"Formulaire de demande de visa dûment rempli",
-            "third_condition":"copie de passeport",
-            "fourth_condition":"Passeport en cours de validité (6 mois minimum)",
-            "fifth_condition":"2 photos d'identité"
-        },
-        "see_form":"Voir le formulaire"
+        "title": "Formulaire de demande de procuration",
+        "nom": "Nom",
+        "prenom": "Prénom",
+        "date_naissance": "Date de naissance",
+        "lieu_naissance": "Lieu de naissance",
+        "nationalite": "Nationalité",
+        "sexe": "Sexe",
+        "sexe_m": "Masculin",
+        "sexe_f": "Féminin",
+        "situation_familiale": "Situation familiale",
+        "celibataire": "Célibataire",
+        "marie": "Marié(e)",
+        "divorce": "Divorcé(e)",
+        "veuf": "Veuf/Veuve",
+        "voir_conditions": "Voir les conditions",
+        "envoyer": "Envoyer"
     },
-    "passport_ordinaire":{
-        "title":"Formulaire de demande de passeport",
-        "documents":"Documents à fournir",
-        "common_passport":"Passport Ordinaire",
-        "vip_passport":"Passport diplomatique",
-        "list":{
-            "first_condition":"Formulaire de demande de visa dûment rempli",
-            "second_condition":"Lettre d'invitation ou certificat d'hébergement ou réservation d'hôtel",
-            "third_condition":"copie de passeport",
-            "fourth_condition":"Passeport en cours de validité (6 mois minimum)",
-            "fifth_condition":"2 photos d'identité"
+    "condition": {
+        "passport_diplomatique": {
+            "title": "Formulaire de demande de passeport",
+            "documents": "Documents à fournir",
+            "common_passport": "Passport Ordinaire",
+            "vip_passport": "Passport diplomatique",
+            "list": {
+                "first_condition": "Note verbale",
+                "second_condition": "Formulaire de demande de visa dûment rempli",
+                "third_condition": "copie de passeport",
+                "fourth_condition": "Passeport en cours de validité (6 mois minimum)",
+                "fifth_condition": "2 photos d'identité"
+            },
+            "see_form": "Voir le formulaire"
         },
-        "see_form":"Voir le formulaire"
-    },
-    "consulaire":{
-        "title":"Formulaire de carte consulaire",
-        "documents":"Documents à fournir",
-        "list":{
-            "first_condition":"Acte de Naissance",
-            "second_condition":"copie de passeport",
-            "third_condition":"2 photos d'identité"
+        "passport_ordinaire": {
+            "title": "Formulaire de demande de passeport",
+            "documents": "Documents à fournir",
+            "common_passport": "Passport Ordinaire",
+            "vip_passport": "Passport diplomatique",
+            "list": {
+                "first_condition": "Formulaire de demande de visa dûment rempli",
+                "second_condition": "Lettre d'invitation ou certificat d'hébergement ou réservation d'hôtel",
+                "third_condition": "copie de passeport",
+                "fourth_condition": "Passeport en cours de validité (6 mois minimum)",
+                "fifth_condition": "2 photos d'identité"
+            },
+            "see_form": "Voir le formulaire"
         },
-        "see_form":"Voir le formulaire"
-    },
-    "laissez-passer":{
-        "title":"Formulaire de demande de Laissez-passer",
-        "documents":"Documents à fournir",
-        "list":{
-            "first_condition":"Ancien passeport/ Carte Consulaire",
-            "second_condition":"Acte de naissance",
-            "third_condition":"2 photos d'identité"
+        "consulaire": {
+            "title": "Formulaire de carte consulaire",
+            "documents": "Documents à fournir",
+            "list": {
+                "first_condition": "Acte de Naissance",
+                "second_condition": "copie de passeport",
+                "third_condition": "2 photos d'identité"
+            },
+            "see_form": "Voir le formulaire"
         },
-        "see_form":"Voir le formulaire"
+        "laissez-passer": {
+            "title": "Formulaire de demande de Laissez-passer",
+            "documents": "Documents à fournir",
+            "list": {
+                "first_condition": "Ancien passeport/ Carte Consulaire",
+                "second_condition": "Acte de naissance",
+                "third_condition": "2 photos d'identité"
+            },
+            "see_form": "Voir le formulaire"
+        }
     }
-  }
 }
