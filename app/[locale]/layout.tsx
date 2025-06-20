@@ -10,40 +10,14 @@ import localFont from "next/font/local";
 import Head from "@/components/home/navbar/navbar";
 import Footer from "@/components/home/footer/footer";
 import rtlDetect from "rtl-detect-intl";
+import InertFixWrapper from "@/components/gestion_erreur_inert/InertFixWrapper";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const poppins = Poppins({
-  variable: "--poppins",
-  subsets: ["latin"],
-  weight: ["500"]
-});
-
-const mulish = Mulish({
-  variable: "--mulish",
-  subsets: ["latin"],
-  weight: ["500"]
-});
-
-const blinker = Blinker({
-  variable: "--blinker",
-  subsets: ["latin"],
-  weight: ["400"]
-});
-
-const signature = localFont({
-  src: "../fonts/maddison_signature/Maddison_Signature_DEMO.ttf",
-  variable: "--font-signature",
-});
-
+const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
+const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
+const poppins = Poppins({ variable: "--poppins", subsets: ["latin"], weight: ["500"] });
+const mulish = Mulish({ variable: "--mulish", subsets: ["latin"], weight: ["500"] });
+const blinker = Blinker({ variable: "--blinker", subsets: ["latin"], weight: ["400"] });
+const signature = localFont({ src: "../fonts/maddison_signature/Maddison_Signature_DEMO.ttf", variable: "--font-signature" });
 
 export const metadata: Metadata = {
   title: "Ambassade du Tchad",
@@ -52,16 +26,16 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
-  params
+  params,
 }: {
   children: React.ReactNode;
   params: { locale: string };
 }) {
-  const { locale } = await Promise.resolve(params);
+  const locale = params.locale;
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
-
+  
   const messages = (await import(`@/messages/${locale}.json`)).default;
   const langDir = rtlDetect.getLangDir(locale);
 
@@ -72,16 +46,14 @@ export default async function RootLayout({
       >
         <div className="font-blinker max-w-screen-2xl mx-auto">
           <NextIntlClientProvider locale={locale} messages={messages}>
-            <Head />
-            {children}
-            <Footer />
+            <InertFixWrapper>
+              <Head />
+              {children}
+              <Footer />
+            </InertFixWrapper>
           </NextIntlClientProvider>
         </div>
       </body>
     </html>
   );
 }
-
-
-
-
