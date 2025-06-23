@@ -90,6 +90,15 @@ export default function Head() {
                 >
                   EN
                 </button>
+                 <span className="text-sm text-white">|</span>
+                <button
+                  onClick={() => switchLocale("en")}
+                  className={`text-sm ${
+                    locale === "ar" ? "text-red-500" : "text-white hover:underline"
+                  }`}
+                >
+                  AR
+                </button>
               </div>
 
               <div className="flex items-center bg-[#123682] rounded-full px-6 py-1">
@@ -195,6 +204,46 @@ export default function Head() {
               {item.name}
             </Link>
           ))}
+          <div className="flex gap-4 items-center py-3">
+              <div className="flex gap-2">
+                <button
+                  onClick={() => switchLocale("fr")}
+                  className={`text-sm ${
+                    locale === "fr" ? "text-red-500" : "text-white hover:underline"
+                  }`}
+                >
+                  FR
+                </button>
+                <span className="text-sm text-white">|</span>
+                <button
+                  onClick={() => switchLocale("en")}
+                  className={`text-sm ${
+                    locale === "en" ? "text-red-500" : "text-white hover:underline"
+                  }`}
+                >
+                  EN
+                </button>
+                 <span className="text-sm text-white">|</span>
+                <button
+                  onClick={() => switchLocale("en")}
+                  className={`text-sm ${
+                    locale === "ar" ? "text-red-500" : "text-white hover:underline"
+                  }`}
+                >
+                  AR
+                </button>
+              </div>
+
+              
+            </div>
+            <div className="flex items-center bg-[#123682] rounded-full px-6 py-1">
+                <Search className="text-white" size={24} />
+                <input
+                  type="text"
+                  placeholder={t("recherche")}
+                  className="bg-transparent text-white placeholder-white/70 focus:outline-none ml-2 w-52 text-sm"
+                />
+              </div>
         </div>
       )}
     </div>
