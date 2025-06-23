@@ -1,5 +1,6 @@
 "use client";
-import {Link} from '@/i18n/navigation';
+
+import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import { Mail, Phone, Search, Menu, X } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
@@ -22,6 +23,7 @@ export default function Head() {
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [, startTransition] = useTransition();
+  const [openTourism, setOpenTourism] = useState(false);
 
   const switchLocale = (newLocale: string) => {
     const segments = pathname.split("/");
@@ -64,43 +66,20 @@ export default function Head() {
           />
         </Link>
 
-        {/* Desktop Nav */}
+        {/* Desktop navigation */}
         <div className="hidden lg:flex flex-col text-white w-full">
           <div className="flex justify-between items-center w-full">
             <div className="flex flex-col">
               <span className="text-xl font-bold">{t("titre")}</span>
             </div>
-
             <div className="flex gap-4 items-center">
               <div className="flex gap-2">
-                <button
-                  onClick={() => switchLocale("fr")}
-                  className={`text-sm ${
-                    locale === "fr" ? "text-red-500" : "text-white hover:underline"
-                  }`}
-                >
-                  FR
-                </button>
+                <button onClick={() => switchLocale("fr")} className={`text-sm ${locale === "fr" ? "text-red-500" : "text-white hover:underline"}`}>FR</button>
                 <span className="text-sm text-white">|</span>
-                <button
-                  onClick={() => switchLocale("en")}
-                  className={`text-sm ${
-                    locale === "en" ? "text-red-500" : "text-white hover:underline"
-                  }`}
-                >
-                  EN
-                </button>
-                 <span className="text-sm text-white">|</span>
-                <button
-                  onClick={() => switchLocale("en")}
-                  className={`text-sm ${
-                    locale === "ar" ? "text-red-500" : "text-white hover:underline"
-                  }`}
-                >
-                  AR
-                </button>
+                <button onClick={() => switchLocale("en")} className={`text-sm ${locale === "en" ? "text-red-500" : "text-white hover:underline"}`}>EN</button>
+                <span className="text-sm text-white">|</span>
+                <button onClick={() => switchLocale("ar")} className={`text-sm ${locale === "ar" ? "text-red-500" : "text-white hover:underline"}`}>AR</button>
               </div>
-
               <div className="flex items-center bg-[#123682] rounded-full px-6 py-1">
                 <Search className="text-white" size={24} />
                 <input
@@ -128,14 +107,13 @@ export default function Head() {
               <NavigationMenuList>
                 {menuItems.map((menu, index) => (
                   <NavigationMenuItem key={index}>
-                    {menu.children && !menu.link ? (
+                    {menu.children ? (
                       <>
                         <NavigationMenuTrigger className="bg-primary hover:bg-primary">
                           <span className="text-sm px-2 text-white hover:text-[#123682] transition-colors font-medium">
                             {menu.name}
                           </span>
                         </NavigationMenuTrigger>
-
                         <NavigationMenuContent className="z-10">
                           <ul className="grid w-[600px] bg-primary gap-3 p-4">
                             {menu.children.map((child, i) => (
@@ -183,7 +161,7 @@ export default function Head() {
           </div>
         </div>
 
-        {/* Mobile menu toggle */}
+        {/* Mobile menu button */}
         <button
           className="lg:hidden text-white"
           onClick={() => setMenuOpen(!menuOpen)}
@@ -192,58 +170,84 @@ export default function Head() {
         </button>
       </div>
 
+      {/* Mobile menu */}
       {menuOpen && (
         <div className="lg:hidden flex flex-col items-center text-white mt-4">
-          {menuItems.map((item) => (
-            <Link
-              key={item.name}
-              href={item.link ?? ""}
-              className="py-2 text-lg w-full text-center border-b border-white"
-              onClick={() => setMenuOpen(false)}
-            >
-              {item.name}
-            </Link>
-          ))}
-          <div className="flex gap-4 items-center py-3">
-              <div className="flex gap-2">
-                <button
-                  onClick={() => switchLocale("fr")}
-                  className={`text-sm ${
-                    locale === "fr" ? "text-red-500" : "text-white hover:underline"
-                  }`}
-                >
-                  FR
+          {menuItems.map((item) =>
+            item.children ? (
+              <div key={item.name} className="w-full text-center border-b border-white">
+                <button onClick={() => setOpenTourism(!openTourism)} className="py-2 text-lg w-full">
+                  {item.name}
                 </button>
-                <span className="text-sm text-white">|</span>
-                <button
-                  onClick={() => switchLocale("en")}
-                  className={`text-sm ${
-                    locale === "en" ? "text-red-500" : "text-white hover:underline"
-                  }`}
-                >
-                  EN
-                </button>
-                 <span className="text-sm text-white">|</span>
-                <button
-                  onClick={() => switchLocale("en")}
-                  className={`text-sm ${
-                    locale === "ar" ? "text-red-500" : "text-white hover:underline"
-                  }`}
-                >
-                  AR
-                </button>
+                {openTourism && (
+                  <div className="flex flex-col bg-primary px-4">
+                    {item.children.map((child) =>
+                      child.link?.startsWith("http") ? (
+                        <a
+                          key={child.name}
+                          href={child.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="py-2 text-sm text-white text-left hover:underline"
+                          onClick={() => setMenuOpen(false)}
+                        >
+                          {child.name}
+                        </a>
+                      ) : (
+                        <Link
+                          key={child.name}
+                          href={child.link}
+                          className="py-2 text-sm text-white text-left hover:underline"
+                          onClick={() => setMenuOpen(false)}
+                        >
+                          {child.name}
+                        </Link>
+                      )
+                    )}
+                  </div>
+                )}
               </div>
+            ) : item.link?.startsWith("http") ? (
+              <a
+                key={item.name}
+                href={item.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="py-2 text-lg w-full text-center border-b border-white"
+                onClick={() => setMenuOpen(false)}
+              >
+                {item.name}
+              </a>
+            ) : (
+              <Link
+                key={item.name}
+                href={item.link ?? ""}
+                className="py-2 text-lg w-full text-center border-b border-white"
+                onClick={() => setMenuOpen(false)}
+              >
+                {item.name}
+              </Link>
+            )
+          )}
 
-              
+          <div className="flex gap-4 items-center py-3">
+            <div className="flex gap-2">
+              <button onClick={() => switchLocale("fr")} className={`text-sm ${locale === "fr" ? "text-red-500" : "text-white hover:underline"}`}>FR</button>
+              <span className="text-sm text-white">|</span>
+              <button onClick={() => switchLocale("en")} className={`text-sm ${locale === "en" ? "text-red-500" : "text-white hover:underline"}`}>EN</button>
+              <span className="text-sm text-white">|</span>
+              <button onClick={() => switchLocale("ar")} className={`text-sm ${locale === "ar" ? "text-red-500" : "text-white hover:underline"}`}>AR</button>
             </div>
-            <div className="flex items-center bg-[#123682] rounded-full px-6 py-1">
-                <Search className="text-white" size={24} />
-                <input
-                  type="text"
-                  placeholder={t("recherche")}
-                  className="bg-transparent text-white placeholder-white/70 focus:outline-none ml-2 w-52 text-sm"
-                />
-              </div>
+          </div>
+
+          <div className="flex items-center bg-[#123682] rounded-full px-6 py-1">
+            <Search className="text-white" size={24} />
+            <input
+              type="text"
+              placeholder={t("recherche")}
+              className="bg-transparent text-white placeholder-white/70 focus:outline-none ml-2 w-52 text-sm"
+            />
+          </div>
         </div>
       )}
     </div>

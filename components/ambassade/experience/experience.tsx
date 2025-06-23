@@ -7,34 +7,41 @@ import { useTranslations } from "next-intl";
 
 const agents = [
   {
+    id: "souariba",
     name: "M. SOUARIBA Gonfouli",
     jobKey: "ambassadeur",
     picture: "/assets/images/illustrations/ambassade/team1.png",
   },
   {
+    id: "acheikh",
     name: "M. ACHEIKH MAKAYE NIMIR",
     jobKey: "premier_conseiller",
     picture: "/assets/images/illustrations/ambassade/team4.png",
   },
   {
+    id: "remadji",
     name: "Mme REMADJI Christelle",
     jobKey: "conseillere_economique",
     picture: "/assets/images/illustrations/ambassade/team2.png",
   },
   {
+    id: "kaina",
     name: "Mr KAINA Nadjo",
     jobKey: "attache",
     picture: "/assets/images/illustrations/ambassade/nadjo_kaina.jpg",
   },
   {
+    id: "alladoum",
     name: "Mr ALLADOUM Félix",
     jobKey: "charge_communication",
     picture: "/assets/images/illustrations/ambassade/felix_alladoum.jpg",
   },
 ];
 
+
 const TeamMember = () => {
   const t = useTranslations("teams");
+  const tAgents  = useTranslations("agents");
 
   const socialIcons = [
     { icon: <Facebook className="w-5 h-5" />, label: "Facebook" },
@@ -72,7 +79,7 @@ const TeamMember = () => {
               </div>
 
               <div className="p-5 text-center">
-                <h3 className="text-gray-800 font-bold text-lg">{agent.name}</h3>
+                <h3 className="text-gray-800 font-bold text-lg">{tAgents(agent.id, { default: agent.name })}</h3>
                 <p className="text-gray-600 text-sm flex items-center justify-center gap-2 mt-1">
                   <Briefcase className="w-4 h-4 text-gray-500" />
                   {t(`jobs.${agent.jobKey}`)}

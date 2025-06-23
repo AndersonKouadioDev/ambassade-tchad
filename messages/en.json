@@ -93,7 +93,13 @@
       "confidentialite": "Privacy",
       "conditions": "Terms",
       "clause": "Disclaimer"
+    },
+    "socials": {
+      "tchad_diplomatie": "CHAD DIPLOMACY",
+      "sgg": "General Secretariat of the Government",
+      "ambassade_ci": "Embassy of Chad in Côte d'Ivoire"
     }
+    
   },
   "header": {
     "accueil": "Home",

@@ -93,6 +93,11 @@
             "confidentialite": "Confidentialité",
             "conditions": "Conditions",
             "clause": "Clause de non-responsabilité"
+        },
+        "socials": {
+            "tchad_diplomatie": "TCHAD DIPLOMATIE",
+            "sgg": "Secrétariat général du gouvernement",
+            "ambassade_ci": "Ambassade du Tchad en Côte d'Ivoire"
         }
     },
     "header": {

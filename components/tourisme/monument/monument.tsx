@@ -132,17 +132,13 @@ export default function Monument() {
               <motion.div
                 key={gallery.images[gallery.currentIndex]}
                 className="relative flex-1 h-[70vh] md:h-auto rounded-md overflow-hidden cursor-zoom-in"
-                layout
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
               >
                 <Image
                   src={gallery.images[gallery.currentIndex]}
                   alt={`Image ${gallery.currentIndex + 1}`}
-                  fill
-                  className="object-contain"
-                  sizes="(max-width: 768px) 100vw, 70vw"
+                  width={800}
+                  height={600}
+                  className="object-contain w-full h-auto max-h-[70vh] mx-auto"
                   priority
                 />
               </motion.div>

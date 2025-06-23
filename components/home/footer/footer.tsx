@@ -4,7 +4,7 @@ import React from "react";
 import { Facebook } from "lucide-react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation"; 
+import { Link } from "@/i18n/navigation";
 
 const Footer = () => {
   const t = useTranslations("footer");
@@ -38,20 +38,19 @@ const Footer = () => {
     {
       href: "https://www.facebook.com/share/1Dx5XFzv8D/",
       icon: <Facebook className="w-6 h-6 text-[#002B7F]" />,
-      name: "TCHAD DIPLOMATIE",
+      name: t("socials.tchad_diplomatie"),
     },
     {
       href: "https://www.facebook.com/share/1B6ViF7jTe/",
       icon: <Facebook className="w-6 h-6 text-[#002B7F]" />,
-      name: "Secrétariat général du gouvernement",
+      name: t("socials.sgg"),
     },
     {
       href: "https://www.facebook.com/share/1Dx5XFzv8D/",
       icon: <Facebook className="w-6 h-6 text-[#002B7F]" />,
-      name: "Ambassade du Tchad en Côte d'Ivoire",
+      name: t("socials.ambassade_ci"),
     },
   ];
-
   return (
     <footer className="w-full bg-primary text-white pt-8 pb-6">
       <div className="max-w-6xl mx-auto px-6">
@@ -119,7 +118,10 @@ const Footer = () => {
                       {link.name}
                     </a>
                   ) : (
-                    <Link href={link.href} className="hover:text-gray-300 transition">
+                    <Link
+                      href={link.href}
+                      className="hover:text-gray-300 transition"
+                    >
                       {link.name}
                     </Link>
                   )}
@@ -134,7 +136,10 @@ const Footer = () => {
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="hover:text-gray-300 transition">
+                  <Link
+                    href={link.href}
+                    className="hover:text-gray-300 transition"
+                  >
                     {link.name}
                   </Link>
                 </li>
