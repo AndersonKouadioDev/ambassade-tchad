@@ -21,7 +21,37 @@
     }
   },
   "photo": {
-    "description": "Photo Gallery"
+    "description": "Photo Gallery",
+    "searchPlaceholder": "Search for a photo...",
+    "pictures": [
+      "Meeting with the community",
+      "Meeting with the community",
+      "Meeting with H.E. President Alassane Ouattara",
+      "Meeting with the Ivorian government"
+    ],
+    "hero": {
+      "title": "Photo Gallery"
+    },
+    "breadcrumbs": {
+      "home": "Home",
+      "photo": "Photo Gallery"
+    }
+  },
+  "video": {
+    "description": "Our official videos",
+    "searchPlaceholder": "Search for a video...",
+    "videos": [
+      "Embassy Conference",
+      "Official Visit",
+      "President's Message"
+    ],
+    "hero": {
+      "title": "Video Gallery"
+    },
+    "breadcrumbs": {
+      "home": "Home",
+      "video": "Video Gallery"
+    }
   },
   "ambassade": {
     "hero": {
@@ -99,7 +129,6 @@
       "sgg": "General Secretariat of the Government",
       "ambassade_ci": "Embassy of Chad in Côte d'Ivoire"
     }
-    
   },
   "header": {
     "accueil": "Home",
@@ -108,6 +137,10 @@
     "investir": "Invest in Chad",
     "tourisme": "Tourism",
     "site": "Tourist Sites",
+    "photos": "Photo Gallery",
+    "videos": "Video Gallery",
+    "actualité": "News",
+    "event": "Events",
     "tchad": "Chad",
     "peuples": "Peoples and Cultures",
     "email": "Email: ambassade.tchadabj@ambatchad.ci",
@@ -214,6 +247,17 @@
           "alt": "Monument in Chad"
         }
       ]
+    }
+  },
+  "event":{
+    "description":"ambassy events space",
+    "searchPlaceholder":"Search for an event...",
+    "hero": {
+      "title": "Events"
+    },
+    "breadcrumbs": {
+      "home": "Home",
+      "event": "Events"
     }
   },
   "tourisme": {

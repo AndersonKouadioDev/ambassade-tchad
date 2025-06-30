@@ -1,547 +1,591 @@
 {
-    "ambassadeur": {
-        "title": "L'AMBASSADEUR",
-        "bienvenue": "Bienvenue sur le site de l'Ambassade.",
-        "nom": "Gonfouli SOUARIBA",
-        "poste": "Ambassadeur du Tchad en Côte d'Ivoire",
-        "texte": "La République du Tchad, pays de Toumaï, de par sa position géographique stratégique, occupe une place de choix au cœur du continent africain. Le pays, après une transition politique réussie en trois années, sous le leadership du Maréchal du Tchad, Mahamat Idriss DEBY ITNO, Président de la République, Chef de l'État, amorce des pas de géant pour son décollage économique. Le programme politique du Chef de l'État est structuré autour de douze chantiers, comprenant chacun plusieurs actions notamment la paix, la sécurité nationale, la promotion d'un État solidaire.\nLe programme de développement intitulé \"Vision 2030, le Tchad que nous voulons\", axé sur l'agenda 2063 de l'Union Africaine et de l'agenda 2030 des Nations Unies promulgués par les Chefs des États membres de l'Union Africaine est en cours d'exécution. Ce programme basé sur une exécution pragmatique a pour objectif de faire du Tchad un pays émergent à l'horizon 2030.\nL'Ambassade du Tchad en République de Côte d'Ivoire a juridiction dans quatre autres pays notamment : le Ghana, la Guinée, la Sierra Leone et le Liberia. Les objectifs principaux de la mission sont le maintien et le renforcement des relations diplomatiques entre le Tchad et ces cinq pays. Cette diplomatie tous azimuts embrasse les domaines aussi variés que l'économie, la culture et tout ce que comporte la coopération moderne entre les pays épris de paix et ayant en partage des intérêts communs.\nLa mission de la Haute Représentation du Tchad en Côte d'Ivoire consiste également à protéger les intérêts de sa communauté dans les cinq pays de sa juridiction, conformément aux usages diplomatiques.\nLa plateforme qui vous est proposée constitue une référence unique et efficace pour obtenir des informations générales sur le Tchad, afin de promouvoir efficacement le commerce, les investissements, le tourisme et la culture.\nToute l'équipe de l'Ambassade sera toujours à votre disposition pour vous réserver un accueil chaleureux, pas seulement aux Tchadiens, mais à tous ceux d'autres pays qui souhaitent avoir des informations essentielles sur les services que nous offrons, notamment la délivrance des visas et autres documents administratifs (carte consulaire, acte de naissance, acte de mariage et de décès).\nEn attendant une visite physique que nous espérons proche, soyez les bienvenus au \"Tchad virtuel\".",
-        "vision": "« Vision 2030, le Tchad que nous voulons »",
-        "salutation": "Sincères et chaleureuses salutations",
-        "signature": "Son Excellence Monsieur Gonfouli SOUARIBA, Ambassadeur de la République du Tchad auprès de la République de Côte d'Ivoire."
+  "ambassadeur": {
+    "title": "L'AMBASSADEUR",
+    "bienvenue": "Bienvenue sur le site de l'Ambassade.",
+    "nom": "Gonfouli SOUARIBA",
+    "poste": "Ambassadeur du Tchad en Côte d'Ivoire",
+    "texte": "La République du Tchad, pays de Toumaï, de par sa position géographique stratégique, occupe une place de choix au cœur du continent africain. Le pays, après une transition politique réussie en trois années, sous le leadership du Maréchal du Tchad, Mahamat Idriss DEBY ITNO, Président de la République, Chef de l'État, amorce des pas de géant pour son décollage économique. Le programme politique du Chef de l'État est structuré autour de douze chantiers, comprenant chacun plusieurs actions notamment la paix, la sécurité nationale, la promotion d'un État solidaire.\nLe programme de développement intitulé \"Vision 2030, le Tchad que nous voulons\", axé sur l'agenda 2063 de l'Union Africaine et de l'agenda 2030 des Nations Unies promulgués par les Chefs des États membres de l'Union Africaine est en cours d'exécution. Ce programme basé sur une exécution pragmatique a pour objectif de faire du Tchad un pays émergent à l'horizon 2030.\nL'Ambassade du Tchad en République de Côte d'Ivoire a juridiction dans quatre autres pays notamment : le Ghana, la Guinée, la Sierra Leone et le Liberia. Les objectifs principaux de la mission sont le maintien et le renforcement des relations diplomatiques entre le Tchad et ces cinq pays. Cette diplomatie tous azimuts embrasse les domaines aussi variés que l'économie, la culture et tout ce que comporte la coopération moderne entre les pays épris de paix et ayant en partage des intérêts communs.\nLa mission de la Haute Représentation du Tchad en Côte d'Ivoire consiste également à protéger les intérêts de sa communauté dans les cinq pays de sa juridiction, conformément aux usages diplomatiques.\nLa plateforme qui vous est proposée constitue une référence unique et efficace pour obtenir des informations générales sur le Tchad, afin de promouvoir efficacement le commerce, les investissements, le tourisme et la culture.\nToute l'équipe de l'Ambassade sera toujours à votre disposition pour vous réserver un accueil chaleureux, pas seulement aux Tchadiens, mais à tous ceux d'autres pays qui souhaitent avoir des informations essentielles sur les services que nous offrons, notamment la délivrance des visas et autres documents administratifs (carte consulaire, acte de naissance, acte de mariage et de décès).\nEn attendant une visite physique que nous espérons proche, soyez les bienvenus au \"Tchad virtuel\".",
+    "vision": "« Vision 2030, le Tchad que nous voulons »",
+    "salutation": "Sincères et chaleureuses salutations",
+    "signature": "Son Excellence Monsieur Gonfouli SOUARIBA, Ambassadeur de la République du Tchad auprès de la République de Côte d'Ivoire."
+  },
+  "teams": {
+    "title": "L'ÉQUIPE",
+    "description": "Découvrez les membres qui font vivre l'Ambassade",
+    "jobs": {
+      "ambassadeur": "Ambassadeur du Tchad en CI",
+      "premier_conseiller": "Premier Conseiller",
+      "conseillere_economique": "Conseillère Économique",
+      "attache": "Attaché",
+      "charge_communication": "Chargé de la communication et des rélations publiques."
+    }
+  },
+  "photo": {
+    "description": "Galerie Photo",
+    "searchPlaceholder": "Rechercher une photo...",
+    "pictures": [
+      "Rencontre avec la communauté",
+      "Rencontre avec la communauté",
+      "Rencontre avec SEM le Président de la République Alasane Ouattara",
+      "Rencontre avec le gouvernement ivoirien"
+    ],
+    "hero": {
+      "title": "Galerie Photo"
     },
-    "teams": {
-        "title": "L'ÉQUIPE",
-        "description": "Découvrez les membres qui font vivre l'Ambassade",
-        "jobs": {
-            "ambassadeur": "Ambassadeur du Tchad en CI",
-            "premier_conseiller": "Premier Conseiller",
-            "conseillere_economique": "Conseillère Économique",
-            "attache": "Attaché",
-            "charge_communication": "Chargé de la communication et des rélations publiques."
+    "breadcrumbs": {
+      "home": "Accueil",
+      "photo": "Galerie Photo"
+    }
+  },
+  "video":{
+    "description": "Nos vidéos officielles",
+    "searchPlaceholder": "Rechercher une vidéo...",
+    "videos": [
+      "Conférence Ambassade",
+      "Visite Officielle",
+      "Message du Président"
+    ],
+    "hero": {
+      "title": "Galerie Vidéo"
+    },
+    "breadcrumbs": {
+      "home": "Accueil",
+      "video": "Galerie Vidéo"
+    }
+  },
+  "ambassade": {
+    "hero": {
+      "title": "L'ambassade"
+    },
+    "breadcrumbs": {
+      "home": "Accueil",
+      "ambassade": "L'ambassade"
+    },
+    "juridiction": {
+      "tiltle": "Ambassades et représentations permanentes",
+      "post": "Postes consulaires",
+      "description": "La République du Tchad compte plusieurs représentations diplomatiques et consulaires à l'étranger (Décret N°0089/PR/MAEIACID/2020 du 19 février 2020).",
+      "algerie": "Algérie",
+      "afrique_du_sud": "Afrique du Sud",
+      "cote_d_ivoire": "Côte d'Ivoire",
+      "emirats_arabe_unis": "Émirats Arabes Unis",
+      "belgique": "Belgique",
+      "bresil": "Brésil",
+      "burkina_faso": "Burkina Faso",
+      "cameroun": "Cameroun",
+      "canada": "Canada",
+      "suisse": "Suisse",
+      "congo": "Congo",
+      "egypte": "Égypte",
+      "etats_unis": "États-Unis d'Amérique",
+      "france": "France",
+      "ethiopie": "Éthiopie",
+      "federation_de_russie": "Fédération de Russie",
+      "gabon": "Gabon",
+      "guinee_equatoriale": "Guinée Équatoriale",
+      "inde": "Inde",
+      "japon": "Japon",
+      "koweit": "Koweït",
+      "libye": "Libye",
+      "mali": "Mali",
+      "niger": "Niger",
+      "nigeria": "Nigéria",
+      "qatar": "Qatar",
+      "new_york": "New York (Représentation Permanente)",
+      "republique_centrafricaine": "République Centrafricaine",
+      "republique_democratique_du_congo": "République Démocratique du Congo",
+      "republique_populaire_de_chine": "République Populaire de Chine",
+      "royaume_maroc": "Royaume du Maroc",
+      "norvege": "Norvège",
+      "soudan": "Soudan",
+      "turquie": "Turquie"
+    }
+  },
+  "footer": {
+    "embassy": "Ambassade du Tchad en Côte d'Ivoire",
+    "navTitle": "Navigation",
+    "quickLinksTitle": "Liens rapides",
+    "mainLinks": {
+      "ambassade": "L'Ambassade",
+      "consulaire": "Services consulaires",
+      "investir": "Investir Au Tchad",
+      "tourisme": "Tourisme",
+      "menus": "Menus"
+    },
+    "quickLinks": {
+      "tchad": "Le Tchad",
+      "events": "Évènements",
+      "sites": "Sites touristiques"
+    },
+    "legal": {
+      "a_propos": "À propos",
+      "criteres": "Critères",
+      "confidentialite": "Confidentialité",
+      "conditions": "Conditions",
+      "clause": "Clause de non-responsabilité"
+    },
+    "socials": {
+      "tchad_diplomatie": "TCHAD DIPLOMATIE",
+      "sgg": "Secrétariat général du gouvernement",
+      "ambassade_ci": "Ambassade du Tchad en Côte d'Ivoire"
+    }
+  },
+  "header": {
+    "accueil": "Accueil",
+    "ambassade": "L'Ambassade",
+    "consulaire": "Services consulaires",
+    "investir": "Investir au Tchad",
+    "photos": "Galérie Photos",
+    "videos": "Galérie Vidéos",
+    "actualité": "Actualité",
+    "event": "Évènements",
+    "tourisme": "Tourisme",
+    "site": "Site touristique",
+    "tchad": "Le Tchad",
+    "peuples": "Les peuples et cultures",
+    "email": "Email: ambassade.tchadabj@ambatchad.ci",
+    "tel": "Tel: +225 27 22 39 49 13",
+    "recherche": "Rechercher...",
+    "titre": "AMBASSADE DU TCHAD CÔTE D'IVOIRE"
+  },
+  "about": {
+    "phoneLabel": "Numéro de téléphone",
+    "facebookLabel": "Facebook",
+    "facebookLink": "Ambassade du Tchad en Côte d'Ivoire",
+    "emailLabel": "Adresse Email",
+    "emailValue": "ambassade.tchadabj@ambatchad.ci"
+  },
+  "home": {
+    "hero": {
+      "title": "Bienvenue sur le Site officiel de l'ambassade",
+      "description_tchad": " de la republique de Tchad ",
+      "description_cote_d_ivoire": " en Côte d'Ivoire",
+      "bouton_contact": "Prendre un rendez-vous",
+      "demande_carte_consulaire": "Demande de carte consulaire et visa",
+      "bouton_ouvir": "Ouvrir maintenant"
+    },
+    "passportForm": {
+      "ambassy": "AMBASSADE DU TCHAD",
+      "open": "Ouvrir maintenant",
+      "title": "Formulaire de demande de passeport",
+      "name": "Nom",
+      "surname": "Prénom",
+      "birthDate": "Date de naissance",
+      "birthPlace": "Lieu de naissance",
+      "nationality": "Nationalité",
+      "gender": "Sexe",
+      "male": "Masculin",
+      "female": "Féminin",
+      "familyStatus": "Situation familiale",
+      "single": "Célibataire",
+      "married": "Marié(e)",
+      "divorced": "Divorcé(e)",
+      "widowed": "Veuf/Veuve",
+      "seeConditions": "Voir les conditions",
+      "submit": "Envoyer",
+      "close": "Fermer",
+      "logoAlt": "Logo de l'ambassade du Tchad",
+      "backgroundAlt": "image de fond d'ecran",
+      "uploadPhoto": "Télécharger une photo"
+    },
+    "news": {
+      "title": "ACTUALITÉS",
+      "items": [
+        {
+          "date": "10 Oct",
+          "alt": "Monument tchadien",
+          "title": "Participation de S.E. Mariam Ali Moussa, Ambassadeur et Représentante Permanente du Tchad auprès de la FAO à la 50ème édition du Comité de la Sécurité Alimentaire mondiale de la FAO à Rome du 10 au 14 octobre 2022"
+        },
+        {
+          "date": "10 Oct",
+          "alt": "Conférence FAO",
+          "title": "Participation de S.E. Mariam Ali Moussa, Ambassadeur et Représentante Permanente du Tchad auprès de la FAO à la 50ème édition du Comité de la Sécurité Alimentaire mondiale de la FAO à Rome du 10 au 14 octobre 2022"
+        },
+        {
+          "date": "10 Oct",
+          "alt": "Événement diplomatique",
+          "title": "Participation de S.E. Mariam Ali Moussa, Ambassadeur et Représentante Permanente du Tchad auprès de la FAO à la 50ème édition du Comité de la Sécurité Alimentaire mondiale de la FAO à Rome du 10 au 14 octobre 2022"
         }
+      ]
     },
-    "photo": {
-        "description": "Galerie Photo"
-    },
-    "ambassade": {
-        "hero": {
-            "title": "L'ambassade"
+    "services": {
+      "description": "Accédez à nos services consulaires et culturels",
+      "seeMore": "Voir plus",
+      "items": [
+        {
+          "title": "VISA"
         },
-        "breadcrumbs": {
-            "home": "Accueil",
-            "ambassade": "L'ambassade"
+        {
+          "title": "LAISSEZ-PASSER"
         },
-        "juridiction": {
-            "tiltle": "Ambassades et représentations permanentes",
-            "post": "Postes consulaires",
-            "description": "La République du Tchad compte plusieurs représentations diplomatiques et consulaires à l'étranger (Décret N°0089/PR/MAEIACID/2020 du 19 février 2020).",
-            "algerie": "Algérie",
-            "afrique_du_sud": "Afrique du Sud",
-            "cote_d_ivoire": "Côte d'Ivoire",
-            "emirats_arabe_unis": "Émirats Arabes Unis",
-            "belgique": "Belgique",
-            "bresil": "Brésil",
-            "burkina_faso": "Burkina Faso",
-            "cameroun": "Cameroun",
-            "canada": "Canada",
-            "suisse": "Suisse",
-            "congo": "Congo",
-            "egypte": "Égypte",
-            "etats_unis": "États-Unis d'Amérique",
-            "france": "France",
-            "ethiopie": "Éthiopie",
-            "federation_de_russie": "Fédération de Russie",
-            "gabon": "Gabon",
-            "guinee_equatoriale": "Guinée Équatoriale",
-            "inde": "Inde",
-            "japon": "Japon",
-            "koweit": "Koweït",
-            "libye": "Libye",
-            "mali": "Mali",
-            "niger": "Niger",
-            "nigeria": "Nigéria",
-            "qatar": "Qatar",
-            "new_york": "New York (Représentation Permanente)",
-            "republique_centrafricaine": "République Centrafricaine",
-            "republique_democratique_du_congo": "République Démocratique du Congo",
-            "republique_populaire_de_chine": "République Populaire de Chine",
-            "royaume_maroc": "Royaume du Maroc",
-            "norvege": "Norvège",
-            "soudan": "Soudan",
-            "turquie": "Turquie"
+        {
+          "title": "CARTE CONSULAIRE"
+        },
+        {
+          "title": "SERVICE ÉCONOMIQUE"
+        },
+        {
+          "title": "SERVICE CULTUREL"
+        },
+        {
+          "title": "AUTRES DOCUMENTS"
         }
+      ]
     },
-    "footer": {
-        "embassy": "Ambassade du Tchad en Côte d'Ivoire",
-        "navTitle": "Navigation",
-        "quickLinksTitle": "Liens rapides",
-        "mainLinks": {
-            "ambassade": "L'Ambassade",
-            "consulaire": "Services consulaires",
-            "investir": "Investir Au Tchad",
-            "tourisme": "Tourisme",
-            "menus": "Menus"
+    "events": {
+      "items": [
+        {
+          "title": "L'Ambassade",
+          "alt": "Façade de l'Ambassade du Tchad"
         },
-        "quickLinks": {
-            "tchad": "Le Tchad",
-            "events": "Évènements",
-            "sites": "Sites touristiques"
+        {
+          "title": "Services consulaires",
+          "alt": "Passeports sur une carte"
         },
-        "legal": {
-            "a_propos": "À propos",
-            "criteres": "Critères",
-            "confidentialite": "Confidentialité",
-            "conditions": "Conditions",
-            "clause": "Clause de non-responsabilité"
-        },
-        "socials": {
-            "tchad_diplomatie": "TCHAD DIPLOMATIE",
-            "sgg": "Secrétariat général du gouvernement",
-            "ambassade_ci": "Ambassade du Tchad en Côte d'Ivoire"
+        {
+          "title": "Le Tchad",
+          "alt": "Monument au Tchad"
         }
+      ]
+    }
+  },
+  "event":{
+    "description": " Espace Évènements de l'Ambassade",
+    "searchPlaceholder": "Rechercher un évènement...",
+    "hero": {
+      "title": "Évènements"
     },
-    "header": {
-        "accueil": "Accueil",
-        "ambassade": "L'Ambassade",
-        "consulaire": "Services consulaires",
-        "investir": "Investir au Tchad",
-        "tourisme": "Tourisme",
-        "site": "Site touristique",
-        "tchad": "Le Tchad",
-        "peuples": "Les peuples et cultures",
-        "email": "Email: ambassade.tchadabj@ambatchad.ci",
-        "tel": "Tel: +225 27 22 39 49 13",
-        "recherche": "Rechercher...",
-        "titre": "AMBASSADE DU TCHAD CÔTE D'IVOIRE"
+    "breadcrumbs": {
+      "home": "Accueil",
+      "event": "Évènements"
+    }
+  },
+  "tourisme": {
+    "tchad": {
+      "hero": {
+        "title": "Tourisme"
+      },
+      "breadcrumbs": {
+        "home": "Accueil",
+        "tourism": "Tourisme",
+        "tchad": "Le Tchad"
+      }
     },
-    "about": {
-        "phoneLabel": "Numéro de téléphone",
-        "facebookLabel": "Facebook",
-        "facebookLink": "Ambassade du Tchad en Côte d'Ivoire",
-        "emailLabel": "Adresse Email",
-        "emailValue": "ambassade.tchadabj@ambatchad.ci"
+    "hero": {
+      "title": "Tourisme"
     },
-    "home": {
-        "hero": {
-            "title": "Bienvenue sur le Site officiel de l'ambassade",
-            "description_tchad": " de la republique de Tchad ",
-            "description_cote_d_ivoire": " en Côte d'Ivoire",
-            "bouton_contact": "Prendre un rendez-vous",
-            "demande_carte_consulaire": "Demande de carte consulaire et visa",
-            "bouton_ouvir": "Ouvrir maintenant"
+    "breadcrumbs": {
+      "home": "Accueil",
+      "tourism": "Tourisme",
+      "site": "Sites touristiques"
+    },
+    "president": {
+      "title": "UN PAYS QUI ÉMERGE",
+      "imageAlt": "Profil du président",
+      "projectTitle": "MON PROJET POUR LE TCHAD",
+      "chantiers": [
+        {
+          "title": "CHANTIER 1",
+          "description": "RENFORCER LA PAIX, LA RÉCONCILIATION NATIONALE ET LA SÉCURITÉ POUR TOUS LES TCHADIENS"
         },
-        "passportForm": {
-            "ambassy": "AMBASSADE DU TCHAD",
-            "open": "Ouvrir maintenant",
-            "title": "Formulaire de demande de passeport",
-            "name": "Nom",
-            "surname": "Prénom",
-            "birthDate": "Date de naissance",
-            "birthPlace": "Lieu de naissance",
-            "nationality": "Nationalité",
-            "gender": "Sexe",
-            "male": "Masculin",
-            "female": "Féminin",
-            "familyStatus": "Situation familiale",
-            "single": "Célibataire",
-            "married": "Marié(e)",
-            "divorced": "Divorcé(e)",
-            "widowed": "Veuf/Veuve",
-            "seeConditions": "Voir les conditions",
-            "submit": "Envoyer",
-            "close": "Fermer",
-            "logoAlt": "Logo de l'ambassade du Tchad",
-            "backgroundAlt": "image de fond d'ecran",
-            "uploadPhoto": "Télécharger une photo"
+        {
+          "title": "CHANTIER 2",
+          "description": "RÉFORMER L'ÉTAT, BÂTIR UNE RÉPUBLIQUE FORTE ET JUSTE"
         },
-        "news": {
-            "title": "ACTUALITÉS",
-            "items": [
-                {
-                    "date": "10 Oct",
-                    "alt": "Monument tchadien",
-                    "title": "Participation de S.E. Mariam Ali Moussa, Ambassadeur et Représentante Permanente du Tchad auprès de la FAO à la 50ème édition du Comité de la Sécurité Alimentaire mondiale de la FAO à Rome du 10 au 14 octobre 2022"
-                },
-                {
-                    "date": "10 Oct",
-                    "alt": "Conférence FAO",
-                    "title": "Participation de S.E. Mariam Ali Moussa, Ambassadeur et Représentante Permanente du Tchad auprès de la FAO à la 50ème édition du Comité de la Sécurité Alimentaire mondiale de la FAO à Rome du 10 au 14 octobre 2022"
-                },
-                {
-                    "date": "10 Oct",
-                    "alt": "Événement diplomatique",
-                    "title": "Participation de S.E. Mariam Ali Moussa, Ambassadeur et Représentante Permanente du Tchad auprès de la FAO à la 50ème édition du Comité de la Sécurité Alimentaire mondiale de la FAO à Rome du 10 au 14 octobre 2022"
-                }
-            ]
+        {
+          "title": "CHANTIER 3",
+          "description": "PROMOUVOIR UN ÉTAT SOLIDAIRE POUR TOUS"
         },
-        "services": {
-            "description": "Accédez à nos services consulaires et culturels",
-            "seeMore": "Voir plus",
-            "items": [
-                {
-                    "title": "VISA"
-                },
-                {
-                    "title": "LAISSEZ-PASSER"
-                },
-                {
-                    "title": "CARTE CONSULAIRE"
-                },
-                {
-                    "title": "SERVICE ÉCONOMIQUE"
-                },
-                {
-                    "title": "SERVICE CULTUREL"
-                },
-                {
-                    "title": "AUTRES DOCUMENTS"
-                }
-            ]
+        {
+          "title": "CHANTIER 4",
+          "description": "REFONDER LE SYSTÈME ÉDUCATIF ET BÂTIR UN PLAN AMBITIEUX POUR LA JEUNESSE ET LES SPORTS"
         },
-        "events": {
-            "items": [
-                {
-                    "title": "L'Ambassade",
-                    "alt": "Façade de l'Ambassade du Tchad"
-                },
-                {
-                    "title": "Services consulaires",
-                    "alt": "Passeports sur une carte"
-                },
-                {
-                    "title": "Le Tchad",
-                    "alt": "Monument au Tchad"
-                }
-            ]
+        {
+          "title": "CHANTIER 5",
+          "description": "PROMOUVOIR LES DROITS DE LA FEMME ET SON RÔLE DANS LA SOCIÉTÉ"
+        },
+        {
+          "title": "CHANTIER 6",
+          "description": "DÉVELOPPER UNE ÉCONOMIE RÉSILIENTE ET DIVERSIFIÉE"
+        },
+        {
+          "title": "CHANTIER 7",
+          "description": "RENDRE L'EAU ET L'ÉNERGIE ACCESSIBLES À TOUS"
+        },
+        {
+          "title": "CHANTIER 8",
+          "description": "CONSTRUIRE LES INFRASTRUCTURES DU DÉSENCLAVEMENT"
+        },
+        {
+          "title": "CHANTIER 9",
+          "description": "INDUSTRIALISER NOTRE AGRICULTURE ET NOTRE ÉLEVAGE"
+        },
+        {
+          "title": "CHANTIER 10",
+          "description": "POURSUIVRE LA MODERNISATION DE NOTRE SYSTÈME DE SANTÉ"
+        },
+        {
+          "title": "CHANTIER 11",
+          "description": "RENFORCER LE RAYONNEMENT DU TCHAD À L'ÉTRANGER ET FAIRE DE LA DIASPORA UN VÉRITABLE LEVIER DE DÉVELOPPEMENT"
+        },
+        {
+          "title": "CHANTIER 12",
+          "description": "PROMOUVOIR LES MERVEILLES CULTURELLES ET TOURISTIQUES DU TCHAD"
         }
+      ]
     },
-    "tourisme": {
-        "tchad": {
-            "hero": {
-                "title": "Tourisme"
-            },
-            "breadcrumbs": {
-                "home": "Accueil",
-                "tourism": "Tourisme",
-                "tchad": "Le Tchad"
-            }
-        },
-        "hero": {
-            "title": "Tourisme"
-        },
-        "breadcrumbs": {
-            "home": "Accueil",
-            "tourism": "Tourisme",
-            "site": "Sites touristiques"
-        },
-        "president": {
-            "title": "UN PAYS QUI ÉMERGE",
-            "imageAlt": "Profil du président",
-            "projectTitle": "MON PROJET POUR LE TCHAD",
-            "chantiers": [
-                {
-                    "title": "CHANTIER 1",
-                    "description": "RENFORCER LA PAIX, LA RÉCONCILIATION NATIONALE ET LA SÉCURITÉ POUR TOUS LES TCHADIENS"
-                },
-                {
-                    "title": "CHANTIER 2",
-                    "description": "RÉFORMER L'ÉTAT, BÂTIR UNE RÉPUBLIQUE FORTE ET JUSTE"
-                },
-                {
-                    "title": "CHANTIER 3",
-                    "description": "PROMOUVOIR UN ÉTAT SOLIDAIRE POUR TOUS"
-                },
-                {
-                    "title": "CHANTIER 4",
-                    "description": "REFONDER LE SYSTÈME ÉDUCATIF ET BÂTIR UN PLAN AMBITIEUX POUR LA JEUNESSE ET LES SPORTS"
-                },
-                {
-                    "title": "CHANTIER 5",
-                    "description": "PROMOUVOIR LES DROITS DE LA FEMME ET SON RÔLE DANS LA SOCIÉTÉ"
-                },
-                {
-                    "title": "CHANTIER 6",
-                    "description": "DÉVELOPPER UNE ÉCONOMIE RÉSILIENTE ET DIVERSIFIÉE"
-                },
-                {
-                    "title": "CHANTIER 7",
-                    "description": "RENDRE L'EAU ET L'ÉNERGIE ACCESSIBLES À TOUS"
-                },
-                {
-                    "title": "CHANTIER 8",
-                    "description": "CONSTRUIRE LES INFRASTRUCTURES DU DÉSENCLAVEMENT"
-                },
-                {
-                    "title": "CHANTIER 9",
-                    "description": "INDUSTRIALISER NOTRE AGRICULTURE ET NOTRE ÉLEVAGE"
-                },
-                {
-                    "title": "CHANTIER 10",
-                    "description": "POURSUIVRE LA MODERNISATION DE NOTRE SYSTÈME DE SANTÉ"
-                },
-                {
-                    "title": "CHANTIER 11",
-                    "description": "RENFORCER LE RAYONNEMENT DU TCHAD À L'ÉTRANGER ET FAIRE DE LA DIASPORA UN VÉRITABLE LEVIER DE DÉVELOPPEMENT"
-                },
-                {
-                    "title": "CHANTIER 12",
-                    "description": "PROMOUVOIR LES MERVEILLES CULTURELLES ET TOURISTIQUES DU TCHAD"
-                }
-            ]
-        },
-        "statistic": {
-            "tabs": {
-                "key_figures": "Chiffres clés",
-                "history": "Histoire",
-                "geography": "Géographie"
-            },
-            "list": {
-                "capital": "Capitale : N'Djamena",
-                "area": "Superficie : 1 284 000 km²",
-                "population": "Population : 16 877 357 habitants (2020)",
-                "density": "Densité : 13 habitants/km²",
-                "religions": "Religions : Islam (~60 %) - Christianisme (~30 %) - Autres (10 %)",
-                "languages": "Langues officielles : arabe et français",
-                "currency": "Monnaie : Franc CFA",
-                "gdp": "PIB (en milliards de CFA) : 3 232",
-                "gdp_per_capita": "PIB par habitant : 1 000 US$",
-                "main_cities": "Principales villes : Sarh, Moundou, Abéché"
-            }
-        },
-        "geography": {
-            "tabs": {
-                "key_figures": "Chiffres clés",
-                "history": "Histoire",
-                "geography": "Géographie"
-            },
-            "sections": {
-                "general": [
-                    "Pont entre le Maghreb et l'Afrique subsaharienne, carrefour des caravanes transsahariennes et berceau des civilisations nomades, le Tchad incarne les contrastes entre le désert du nord et la savane du sud, entre les traditions musulmanes ascétiques et les rituels animistes ou chrétiens élaborés, entre les populations nomades vivant de leurs chameaux et pâturages, et les agriculteurs sédentaires façonnant la terre et lui donnant un visage humain.",
-                    "Le Tchad est un pays d'Afrique centrale couvrant 1 284 000 km², dont 560 000 km² sont agricoles. Classé 20e au monde par sa superficie, le Tchad est le cinquième plus grand pays d'Afrique après le Soudan, l'Algérie, la République Démocratique du Congo et la Libye.",
-                    "C'est un vaste pays (deux fois la taille de la France), mais enclavé et éloigné de la mer. Il se trouve à 1 700 km de Douala (Cameroun) et à 2 400 km de Port-Soudan sur la mer Rouge.",
-                    "Il partage des frontières avec le Soudan à l'est, la République centrafricaine et le Cameroun au sud, le Nigeria à l'ouest, le Niger au nord-ouest et la Libye au nord."
-                ],
-                "relief": {
-                    "title": "Relief",
-                    "items": [
-                        "Le relief du Tchad est en forme de cuvette bordée par deux chaînes de montagnes et de plateaux : au nord par le massif du Tibesti (3 415 m au volcan Emi Koussi) et à l'est par le plateau gréseux de l’Ouaddaï (1 360 m) s’inclinant vers le sud-ouest. Le point le plus bas est le lac Tchad, bassin alimenté par les plaines inondables du Chari et du Logone.",
-                        "Ces deux rivières forment le seul réseau hydrographique permanent : le Chari coule sur 1 200 km depuis la République centrafricaine et le Logone, son principal affluent, prend sa source au Cameroun sur plus de 1 000 km. Elles se rejoignent près de la capitale. Elles sont partiellement navigables quatre mois par an. Il existe cinq principaux lacs : Tchad, Fitri, Iro, Léré et Tekem."
-                    ]
-                },
-                "climate": {
-                    "title": "Climat et Végétation",
-                    "items": [
-                        "Le sud bénéficie d'un climat tropical humide (zone soudanienne, la plus arrosée et la plus peuplée), avec des savanes boisées et des forêts clairsemées près des villages en raison d’une coupe excessive de bois. La zone centrale a un climat sahélien avec une steppe épineuse et une saison sèche plus longue que la saison des pluies. La région nord, sous climat désertique saharien, couvre la moitié du pays avec des paysages saisissants.",
-                        "L'harmattan, vent continental sec et chaud, souffle de l'est et du nord-ouest. La mousson, équatoriale, humide et fraîche, vient du sud-ouest et marque la transition entre la saison sèche et la saison des pluies.",
-                        "Le Tchad compte 600 000 hectares de forêts classées et 400 000 hectares de parcs nationaux. Les deux parcs les plus importants sont le parc national de Zakouma au Salamat et le parc de Manda dans la région de Sarh, connus pour leur biodiversité."
-                    ]
-                }
-            }
-        },
-        "history": {
-            "tabs": {
-                "key_figures": "Chiffres clés",
-                "history": "Histoire",
-                "geography": "Géographie"
-            },
-            "content": [
-                "L'histoire du Tchad remonte au Xe siècle, lorsque les Sao s'installèrent au sud du lac Tchad. Ces Sao, aujourd'hui disparus, sont les ancêtres de plusieurs populations de la région tchadienne, dont les Kotokos, un important groupe de chasseurs et de pêcheurs. De nombreux objets en terre cuite et en bronze fabriqués par les Sao représentant des humains et des animaux ont été retrouvés au sud du lac Tchad.",
-                "Dans la seconde moitié du XIXe siècle, l'Europe découvre l'existence du Tchad à travers les récits des voyageurs Cheik El Toussi, Barth (1857) et Nachtigal (1879).",
-                "Plusieurs États puissants se sont constitués, affrontés et dominés tour à tour : le royaume du Kanem-Bornou, le sultanat du Baguirmi et le puissant empire du Ouaddaï ont successivement étendu leur domination sur la majeure partie du pays actuel entre le IXe et la fin du XVIIIe siècle.",
-                "La fondation de N'Djamena (anciennement Fort-Lamy), future capitale du Tchad, et le retour de la paix dans le royaume du Baguirmi et le royaume voisin du Ouaddaï mirent fin aux luttes. Le Tchad ne fut pleinement constitué qu'en 1913.",
-                "En 1940, Félix Eboué, gouverneur du Tchad, décide de rallier le pays à la France libre. C'est du Tchad que le général Leclerc put partir, et les soldats tchadiens étaient à Paris pour la Libération.",
-                "Proclamé république le 28 novembre 1958, le Tchad accède à la souveraineté internationale le 11 août 1960. Depuis, le pays connaît une évolution institutionnelle et politique.",
-                "Des années de dictature et de parti unique ont freiné l'émergence de toute culture démocratique et de pluralisme politique.",
-                "Les régimes successifs ont favorisé le régionalisme, le tribalisme, le népotisme, les inégalités sociales, les violations des droits de l'homme et des libertés fondamentales, entraînant la guerre, la violence politique, la haine, l'intolérance et la méfiance entre les différentes communautés composant la nation tchadienne. Cependant, cette crise institutionnelle et politique, qui a duré plus de trois décennies, n'a pas entamé la détermination du peuple tchadien à bâtir une nation digne, libre et prospère.",
-                "Le Tchad vit aujourd'hui dans une démocratie pluraliste avec un président et un parlement élus."
-            ]
-        },
-        "peuples-et-cultures": {
-            "hero": {
-                "title": "Tourisme"
-            },
-            "breadcrumbs": {
-                "home": "Accueil",
-                "tourism": "Tourisme",
-                "peoples": "Peuples et cultures"
-            }
-        },
-        "cultural": {
-            "cultural-text": {
-                "item1": "Le premier recensement de la population a eu lieu en 1993. Il évaluait la population totale du Tchad à 6 280 000 individus, dont 5,7 % de nomades (au sens strict), le reste étant constitué de sédentaires, semi-sédentaires ou transhumants. Le deuxième recensement de l’histoire du Tchad, le dernier en date, a été effectué plus de quinze ans plus tard, en 2009. Voici quelques données clefs de ce dénombrement : la population totale s’élève à 11,03 millions d’habitants (elle est estimée à 12,8 millions en 2016), dont 50,6 % de moins de 15 ans et 50,7 % de femmes. La population urbaine s’élève à 22 %, faisant du Tchad un pays majoritairement rural. Ce recensement met en évidence la très inégale répartition géographique de la population, plus de la moitié étant concentrée dans les 10 % du pays les plus au sud. Ainsi, on trouve au Tchad des disparités de densité énormes, allant de 52,4 hab/km² dans le Logone occidental à 0,1 hab/km² dans les régions du Borkou, de l’Ennedi et du Tibesti, où la population ne dépasse guère 300 000 individus dans les trois régions confondues ; à noter l’extrême disparité entre N’Djamena, près de 1 million d’habitants et la région du Tibesti, 25 000 habitants !",
-                "item2": "Les régions les plus densément peuplées sont le Logone oriental et le Logone occidental, le Mayo Kebbi Est et Ouest et le Tandjilé, toutes situées au sud-ouest, et le Ouaddaï (721 000 habitants) à l’est du pays.La population tchadienne est jeune (la moitié a moins de 15 ans), peu instruite (taux d’analphabétisme de 65 %, taux de scolarisation de 75 % dans le Sud, contre moins de 8 % dans le Nord). Elle subsiste grâce à l’agriculture (83 % de la population active dépend du secteur primaire). Les conditions de vie sont précaires : 88,6 % des habitations sont encore construites en matériaux traditionnels, 76,4 % des habitants consomment une eau douteuse (mare ou puits non aménagé) ; 79 % des Tchadiens n’utilisent pas de latrines, 1 % des ménages ont accès à l’électricité, et 99,5 % n’ont recours qu’au bois ou au charbon de bois comme source d’énergie pour la cuisson des aliments.",
-                "item3": "Par ailleurs, le Tchad, de par sa situation géographique, constitue un véritable carrefour entre le monde arabe et le monde subsaharien. Les relations ancestrales de commerce transsaharien, les vagues successives de migration de populations venues du nord et de l’est, les rivalités qui s’en sont suivies avec les peuples autochtones et les traditionnelles razzias d’esclaves ont conduit ces deux mondes à se côtoyer et à se métisser, dans un brassage de couleurs et de traits, de coutumes et de religions. Le Tchad est donc un véritable kaléidoscope ethnique. Lorsqu’en 1968 le projet d’une carte linguistique de l’Atlas du Tchad a été présenté au ministre de l’Education nationale, celui-ci l’a examiné longuement avant de soupirer : ” Et dire qu’il faut que nous en fassions une nation ! “."
-            }
-        },
-        "monument": {
-            "items": [
-                {
-                    "title": "Lac Katam",
-                    "subtitle": "Situé dans la région de l'Ennedi, le lac Katam fait partie du système des lacs Ounianga Kébir. Il se distingue par ses deux parties séparées par une étroite bande de sable, offrant des eaux bleues et vertes dues à la présence d'algues spécifiques."
-                },
-                {
-                    "title": "Lac Fianga",
-                    "subtitle": "Le lac Fianga, situé à la frontière entre le Tchad et le Cameroun, est alimenté par les eaux du Logone et du Mayo Kébbi. Son niveau varie selon les saisons, offrant des paysages changeants et une riche biodiversité."
-                },
-                {
-                    "title": "Lac Tchad",
-                    "subtitle": "Le lac Tchad est l'un des plus grands lacs d'Afrique, bien que sa superficie ait diminué au fil des décennies. Il reste une ressource vitale pour des millions de personnes et abrite une biodiversité unique."
-                },
-                {
-                    "title": "Lac Yoa",
-                    "subtitle": "Le lac Yoa est le plus grand des lacs Ounianga Kébir, avec une profondeur atteignant 20 mètres. Situé au cœur du désert du Sahara, il est alimenté par des aquifères fossiles, témoins d'une époque où le climat de la région était plus humide."
-                },
-                {
-                    "title": "Parc National de Goz Beïda",
-                    "subtitle": "Le Parc National de Goz Beïda se trouve dans la région du Sila, au sud-est du Tchad. Entouré d'une beauté naturelle impressionnante, ce parc couvre une vaste superficie d'environ 3 625 kilomètres carrés. Situé à la frontière avec le Soudan, le parc se trouve dans une région de transition entre le Sahel et la savane, ce qui lui confère une grande diversité de paysages et de faune."
-                },
-                {
-                    "title": "Parc National de Sena Oura (PNSO)",
-                    "subtitle": "Le parc national de Sena Oura (PNSO) est un parc national du Tchad créé le 10 juin 2008 par le décret N°14/PR/2008[1]. Il est situé dans le département de Mayo-Dallah, région du Mayo-Kebbi Ouest et dispose d'une surface de 735,2 km2. En 2022, lors de la 34e session du Conseil de l'Unesco, tenue du 13 au 17 juin 2022 au siège de l'organisation à Paris en France, le parc national de Sena Oura est place patrimoine mondiale de l'Unesco [archive]. Le 27 février 2023 un accord a été signé entre le gouvernement tchadien et l'ONG internationale Wildlife conservation city pour la gestion du Parc."
-                },
-                {
-                    "title": "Parc National de Zah Soo",
-                    "subtitle": "Le Parc National de Zah Soo est un parc national crée le 15 mars 2022[1],[2]. Il est situé au Sud-Ouest du Tchad à proximité du Cameroun et se trouve dans une zone de transition entre milieux soudaniens et sahéliens. Avec la Réserve de Faune de Binder-léré, il fait partie du Complexe d'Aires Protégées de BinderLéré (CAPBL). Il comprend une variété unique de zones humides ainsi que les plus grandes cascades du pays, les « Chutes Zah Soo », d'une dénivellation abrupte de 45 mètres avec une superficie de 81.500 hectares."
-                }
-                
-            ],
-            "voirGalerie": "Voir la galerie",
-            "lirePlus": "Lire plus",
-            "lireMoins": "Lire moins",
-            "precedent": "Précédent",
-            "suivant": "Suivant"
-        }
+    "statistic": {
+      "tabs": {
+        "key_figures": "Chiffres clés",
+        "history": "Histoire",
+        "geography": "Géographie"
+      },
+      "list": {
+        "capital": "Capitale : N'Djamena",
+        "area": "Superficie : 1 284 000 km²",
+        "population": "Population : 16 877 357 habitants (2020)",
+        "density": "Densité : 13 habitants/km²",
+        "religions": "Religions : Islam (~60 %) - Christianisme (~30 %) - Autres (10 %)",
+        "languages": "Langues officielles : arabe et français",
+        "currency": "Monnaie : Franc CFA",
+        "gdp": "PIB (en milliards de CFA) : 3 232",
+        "gdp_per_capita": "PIB par habitant : 1 000 US$",
+        "main_cities": "Principales villes : Sarh, Moundou, Abéché"
+      }
     },
-    "demandez-rdv": {
-        "title": "Demandez un rendez-vous",
-        "section": {
-            "personalInfo": "Informations personnelles",
-            "booking": "Réservation"
+    "geography": {
+      "tabs": {
+        "key_figures": "Chiffres clés",
+        "history": "Histoire",
+        "geography": "Géographie"
+      },
+      "sections": {
+        "general": [
+          "Pont entre le Maghreb et l'Afrique subsaharienne, carrefour des caravanes transsahariennes et berceau des civilisations nomades, le Tchad incarne les contrastes entre le désert du nord et la savane du sud, entre les traditions musulmanes ascétiques et les rituels animistes ou chrétiens élaborés, entre les populations nomades vivant de leurs chameaux et pâturages, et les agriculteurs sédentaires façonnant la terre et lui donnant un visage humain.",
+          "Le Tchad est un pays d'Afrique centrale couvrant 1 284 000 km², dont 560 000 km² sont agricoles. Classé 20e au monde par sa superficie, le Tchad est le cinquième plus grand pays d'Afrique après le Soudan, l'Algérie, la République Démocratique du Congo et la Libye.",
+          "C'est un vaste pays (deux fois la taille de la France), mais enclavé et éloigné de la mer. Il se trouve à 1 700 km de Douala (Cameroun) et à 2 400 km de Port-Soudan sur la mer Rouge.",
+          "Il partage des frontières avec le Soudan à l'est, la République centrafricaine et le Cameroun au sud, le Nigeria à l'ouest, le Niger au nord-ouest et la Libye au nord."
+        ],
+        "relief": {
+          "title": "Relief",
+          "items": [
+            "Le relief du Tchad est en forme de cuvette bordée par deux chaînes de montagnes et de plateaux : au nord par le massif du Tibesti (3 415 m au volcan Emi Koussi) et à l'est par le plateau gréseux de l’Ouaddaï (1 360 m) s’inclinant vers le sud-ouest. Le point le plus bas est le lac Tchad, bassin alimenté par les plaines inondables du Chari et du Logone.",
+            "Ces deux rivières forment le seul réseau hydrographique permanent : le Chari coule sur 1 200 km depuis la République centrafricaine et le Logone, son principal affluent, prend sa source au Cameroun sur plus de 1 000 km. Elles se rejoignent près de la capitale. Elles sont partiellement navigables quatre mois par an. Il existe cinq principaux lacs : Tchad, Fitri, Iro, Léré et Tekem."
+          ]
         },
-        "fields": {
-            "fullName": "Nom et Prénom",
-            "email": "Adresse mail",
-            "phone": "Numéro de téléphone"
-        },
-        "buttons": {
-            "cancel": "Annuler",
-            "submit": "Enregistrer"
+        "climate": {
+          "title": "Climat et Végétation",
+          "items": [
+            "Le sud bénéficie d'un climat tropical humide (zone soudanienne, la plus arrosée et la plus peuplée), avec des savanes boisées et des forêts clairsemées près des villages en raison d’une coupe excessive de bois. La zone centrale a un climat sahélien avec une steppe épineuse et une saison sèche plus longue que la saison des pluies. La région nord, sous climat désertique saharien, couvre la moitié du pays avec des paysages saisissants.",
+            "L'harmattan, vent continental sec et chaud, souffle de l'est et du nord-ouest. La mousson, équatoriale, humide et fraîche, vient du sud-ouest et marque la transition entre la saison sèche et la saison des pluies.",
+            "Le Tchad compte 600 000 hectares de forêts classées et 400 000 hectares de parcs nationaux. Les deux parcs les plus importants sont le parc national de Zakouma au Salamat et le parc de Manda dans la région de Sarh, connus pour leur biodiversité."
+          ]
         }
+      }
+    },
+    "history": {
+      "tabs": {
+        "key_figures": "Chiffres clés",
+        "history": "Histoire",
+        "geography": "Géographie"
+      },
+      "content": [
+        "L'histoire du Tchad remonte au Xe siècle, lorsque les Sao s'installèrent au sud du lac Tchad. Ces Sao, aujourd'hui disparus, sont les ancêtres de plusieurs populations de la région tchadienne, dont les Kotokos, un important groupe de chasseurs et de pêcheurs. De nombreux objets en terre cuite et en bronze fabriqués par les Sao représentant des humains et des animaux ont été retrouvés au sud du lac Tchad.",
+        "Dans la seconde moitié du XIXe siècle, l'Europe découvre l'existence du Tchad à travers les récits des voyageurs Cheik El Toussi, Barth (1857) et Nachtigal (1879).",
+        "Plusieurs États puissants se sont constitués, affrontés et dominés tour à tour : le royaume du Kanem-Bornou, le sultanat du Baguirmi et le puissant empire du Ouaddaï ont successivement étendu leur domination sur la majeure partie du pays actuel entre le IXe et la fin du XVIIIe siècle.",
+        "La fondation de N'Djamena (anciennement Fort-Lamy), future capitale du Tchad, et le retour de la paix dans le royaume du Baguirmi et le royaume voisin du Ouaddaï mirent fin aux luttes. Le Tchad ne fut pleinement constitué qu'en 1913.",
+        "En 1940, Félix Eboué, gouverneur du Tchad, décide de rallier le pays à la France libre. C'est du Tchad que le général Leclerc put partir, et les soldats tchadiens étaient à Paris pour la Libération.",
+        "Proclamé république le 28 novembre 1958, le Tchad accède à la souveraineté internationale le 11 août 1960. Depuis, le pays connaît une évolution institutionnelle et politique.",
+        "Des années de dictature et de parti unique ont freiné l'émergence de toute culture démocratique et de pluralisme politique.",
+        "Les régimes successifs ont favorisé le régionalisme, le tribalisme, le népotisme, les inégalités sociales, les violations des droits de l'homme et des libertés fondamentales, entraînant la guerre, la violence politique, la haine, l'intolérance et la méfiance entre les différentes communautés composant la nation tchadienne. Cependant, cette crise institutionnelle et politique, qui a duré plus de trois décennies, n'a pas entamé la détermination du peuple tchadien à bâtir une nation digne, libre et prospère.",
+        "Le Tchad vit aujourd'hui dans une démocratie pluraliste avec un président et un parlement élus."
+      ]
+    },
+    "peuples-et-cultures": {
+      "hero": {
+        "title": "Tourisme"
+      },
+      "breadcrumbs": {
+        "home": "Accueil",
+        "tourism": "Tourisme",
+        "peoples": "Peuples et cultures"
+      }
+    },
+    "cultural": {
+      "cultural-text": {
+        "item1": "Le premier recensement de la population a eu lieu en 1993. Il évaluait la population totale du Tchad à 6 280 000 individus, dont 5,7 % de nomades (au sens strict), le reste étant constitué de sédentaires, semi-sédentaires ou transhumants. Le deuxième recensement de l’histoire du Tchad, le dernier en date, a été effectué plus de quinze ans plus tard, en 2009. Voici quelques données clefs de ce dénombrement : la population totale s’élève à 11,03 millions d’habitants (elle est estimée à 12,8 millions en 2016), dont 50,6 % de moins de 15 ans et 50,7 % de femmes. La population urbaine s’élève à 22 %, faisant du Tchad un pays majoritairement rural. Ce recensement met en évidence la très inégale répartition géographique de la population, plus de la moitié étant concentrée dans les 10 % du pays les plus au sud. Ainsi, on trouve au Tchad des disparités de densité énormes, allant de 52,4 hab/km² dans le Logone occidental à 0,1 hab/km² dans les régions du Borkou, de l’Ennedi et du Tibesti, où la population ne dépasse guère 300 000 individus dans les trois régions confondues ; à noter l’extrême disparité entre N’Djamena, près de 1 million d’habitants et la région du Tibesti, 25 000 habitants !",
+        "item2": "Les régions les plus densément peuplées sont le Logone oriental et le Logone occidental, le Mayo Kebbi Est et Ouest et le Tandjilé, toutes situées au sud-ouest, et le Ouaddaï (721 000 habitants) à l’est du pays.La population tchadienne est jeune (la moitié a moins de 15 ans), peu instruite (taux d’analphabétisme de 65 %, taux de scolarisation de 75 % dans le Sud, contre moins de 8 % dans le Nord). Elle subsiste grâce à l’agriculture (83 % de la population active dépend du secteur primaire). Les conditions de vie sont précaires : 88,6 % des habitations sont encore construites en matériaux traditionnels, 76,4 % des habitants consomment une eau douteuse (mare ou puits non aménagé) ; 79 % des Tchadiens n’utilisent pas de latrines, 1 % des ménages ont accès à l’électricité, et 99,5 % n’ont recours qu’au bois ou au charbon de bois comme source d’énergie pour la cuisson des aliments.",
+        "item3": "Par ailleurs, le Tchad, de par sa situation géographique, constitue un véritable carrefour entre le monde arabe et le monde subsaharien. Les relations ancestrales de commerce transsaharien, les vagues successives de migration de populations venues du nord et de l’est, les rivalités qui s’en sont suivies avec les peuples autochtones et les traditionnelles razzias d’esclaves ont conduit ces deux mondes à se côtoyer et à se métisser, dans un brassage de couleurs et de traits, de coutumes et de religions. Le Tchad est donc un véritable kaléidoscope ethnique. Lorsqu’en 1968 le projet d’une carte linguistique de l’Atlas du Tchad a été présenté au ministre de l’Education nationale, celui-ci l’a examiné longuement avant de soupirer : ” Et dire qu’il faut que nous en fassions une nation ! “."
+      }
+    },
+    "monument": {
+      "items": [
+        {
+          "title": "Lac Katam",
+          "subtitle": "Situé dans la région de l'Ennedi, le lac Katam fait partie du système des lacs Ounianga Kébir. Il se distingue par ses deux parties séparées par une étroite bande de sable, offrant des eaux bleues et vertes dues à la présence d'algues spécifiques."
+        },
+        {
+          "title": "Lac Fianga",
+          "subtitle": "Le lac Fianga, situé à la frontière entre le Tchad et le Cameroun, est alimenté par les eaux du Logone et du Mayo Kébbi. Son niveau varie selon les saisons, offrant des paysages changeants et une riche biodiversité."
+        },
+        {
+          "title": "Lac Tchad",
+          "subtitle": "Le lac Tchad est l'un des plus grands lacs d'Afrique, bien que sa superficie ait diminué au fil des décennies. Il reste une ressource vitale pour des millions de personnes et abrite une biodiversité unique."
+        },
+        {
+          "title": "Lac Yoa",
+          "subtitle": "Le lac Yoa est le plus grand des lacs Ounianga Kébir, avec une profondeur atteignant 20 mètres. Situé au cœur du désert du Sahara, il est alimenté par des aquifères fossiles, témoins d'une époque où le climat de la région était plus humide."
+        },
+        {
+          "title": "Parc National de Goz Beïda",
+          "subtitle": "Le Parc National de Goz Beïda se trouve dans la région du Sila, au sud-est du Tchad. Entouré d'une beauté naturelle impressionnante, ce parc couvre une vaste superficie d'environ 3 625 kilomètres carrés. Situé à la frontière avec le Soudan, le parc se trouve dans une région de transition entre le Sahel et la savane, ce qui lui confère une grande diversité de paysages et de faune."
+        },
+        {
+          "title": "Parc National de Sena Oura (PNSO)",
+          "subtitle": "Le parc national de Sena Oura (PNSO) est un parc national du Tchad créé le 10 juin 2008 par le décret N°14/PR/2008[1]. Il est situé dans le département de Mayo-Dallah, région du Mayo-Kebbi Ouest et dispose d'une surface de 735,2 km2. En 2022, lors de la 34e session du Conseil de l'Unesco, tenue du 13 au 17 juin 2022 au siège de l'organisation à Paris en France, le parc national de Sena Oura est place patrimoine mondiale de l'Unesco [archive]. Le 27 février 2023 un accord a été signé entre le gouvernement tchadien et l'ONG internationale Wildlife conservation city pour la gestion du Parc."
+        },
+        {
+          "title": "Parc National de Zah Soo",
+          "subtitle": "Le Parc National de Zah Soo est un parc national crée le 15 mars 2022[1],[2]. Il est situé au Sud-Ouest du Tchad à proximité du Cameroun et se trouve dans une zone de transition entre milieux soudaniens et sahéliens. Avec la Réserve de Faune de Binder-léré, il fait partie du Complexe d'Aires Protégées de BinderLéré (CAPBL). Il comprend une variété unique de zones humides ainsi que les plus grandes cascades du pays, les « Chutes Zah Soo », d'une dénivellation abrupte de 45 mètres avec une superficie de 81.500 hectares."
+        }
+      ],
+      "voirGalerie": "Voir la galerie",
+      "lirePlus": "Lire plus",
+      "lireMoins": "Lire moins",
+      "precedent": "Précédent",
+      "suivant": "Suivant"
+    }
+  },
+  "demandez-rdv": {
+    "title": "Demandez un rendez-vous",
+    "section": {
+      "personalInfo": "Informations personnelles",
+      "booking": "Réservation"
+    },
+    "fields": {
+      "fullName": "Nom et Prénom",
+      "email": "Adresse mail",
+      "phone": "Numéro de téléphone"
+    },
+    "buttons": {
+      "cancel": "Annuler",
+      "submit": "Enregistrer"
+    }
+  },
+  "consulaire": {
+    "form": {
+      "backgroundAlt": "Image d'arrière-plan",
+      "close": "Fermer le formulaire",
+      "title": "Formulaire de carte consulaire",
+      "logoAlt": "Logo de l'ambassade du Tchad",
+      "uploadPhoto": "Télécharger une photo",
+      "lastName": "Nom",
+      "firstName": "Prénom",
+      "birthDate": "Date de naissance",
+      "birthPlace": "Lieu de naissance",
+      "nationality": "Nationalité",
+      "gender": "Sexe",
+      "male": "Masculin",
+      "female": "Féminin",
+      "maritalStatus": "Situation familiale",
+      "single": "Célibataire",
+      "married": "Marié(e)",
+      "divorced": "Divorcé(e)",
+      "widowed": "Veuf/Veuve",
+      "seeConditions": "Voir les conditions",
+      "send": "Envoyer"
+    }
+  },
+  "laissez-passer": {
+    "form": {
+      "backgroundAlt": "Image d'arrière-plan",
+      "close": "Fermer",
+      "title": "Formulaire de demande de Laissez-passer",
+      "logoAlt": "Logo de l'ambassade du Tchad",
+      "uploadPhoto": "Téléverser une photo",
+      "lastName": "Nom",
+      "firstName": "Prénom",
+      "birthDate": "Date de naissance",
+      "birthPlace": "Lieu de naissance",
+      "nationality": "Nationalité",
+      "gender": "Sexe",
+      "male": "Masculin",
+      "female": "Féminin",
+      "maritalStatus": "Situation familiale",
+      "single": "Célibataire",
+      "married": "Marié(e)",
+      "divorced": "Divorcé(e)",
+      "widowed": "Veuf/Veuve",
+      "seeConditions": "Voir les conditions",
+      "send": "Envoyer"
+    }
+  },
+  "procuration": {
+    "title": "Formulaire de demande de procuration",
+    "nom": "Nom",
+    "prenom": "Prénom",
+    "date_naissance": "Date de naissance",
+    "lieu_naissance": "Lieu de naissance",
+    "nationalite": "Nationalité",
+    "sexe": "Sexe",
+    "sexe_m": "Masculin",
+    "sexe_f": "Féminin",
+    "situation_familiale": "Situation familiale",
+    "celibataire": "Célibataire",
+    "marie": "Marié(e)",
+    "divorce": "Divorcé(e)",
+    "veuf": "Veuf/Veuve",
+    "voir_conditions": "Voir les conditions",
+    "envoyer": "Envoyer"
+  },
+  "condition": {
+    "passport_diplomatique": {
+      "title": "Formulaire de demande de passeport",
+      "documents": "Documents à fournir",
+      "common_passport": "Passport Ordinaire",
+      "vip_passport": "Passport diplomatique",
+      "list": {
+        "first_condition": "Note verbale",
+        "second_condition": "Formulaire de demande de visa dûment rempli",
+        "third_condition": "copie de passeport",
+        "fourth_condition": "Passeport en cours de validité (6 mois minimum)",
+        "fifth_condition": "2 photos d'identité"
+      },
+      "see_form": "Voir le formulaire"
+    },
+    "passport_ordinaire": {
+      "title": "Formulaire de demande de passeport",
+      "documents": "Documents à fournir",
+      "common_passport": "Passport Ordinaire",
+      "vip_passport": "Passport diplomatique",
+      "list": {
+        "first_condition": "Formulaire de demande de visa dûment rempli",
+        "second_condition": "Lettre d'invitation ou certificat d'hébergement ou réservation d'hôtel",
+        "third_condition": "copie de passeport",
+        "fourth_condition": "Passeport en cours de validité (6 mois minimum)",
+        "fifth_condition": "2 photos d'identité"
+      },
+      "see_form": "Voir le formulaire"
     },
     "consulaire": {
-        "form": {
-            "backgroundAlt": "Image d'arrière-plan",
-            "close": "Fermer le formulaire",
-            "title": "Formulaire de carte consulaire",
-            "logoAlt": "Logo de l'ambassade du Tchad",
-            "uploadPhoto": "Télécharger une photo",
-            "lastName": "Nom",
-            "firstName": "Prénom",
-            "birthDate": "Date de naissance",
-            "birthPlace": "Lieu de naissance",
-            "nationality": "Nationalité",
-            "gender": "Sexe",
-            "male": "Masculin",
-            "female": "Féminin",
-            "maritalStatus": "Situation familiale",
-            "single": "Célibataire",
-            "married": "Marié(e)",
-            "divorced": "Divorcé(e)",
-            "widowed": "Veuf/Veuve",
-            "seeConditions": "Voir les conditions",
-            "send": "Envoyer"
-        }
+      "title": "Formulaire de carte consulaire",
+      "documents": "Documents à fournir",
+      "list": {
+        "first_condition": "Acte de Naissance",
+        "second_condition": "copie de passeport",
+        "third_condition": "2 photos d'identité"
+      },
+      "see_form": "Voir le formulaire"
     },
     "laissez-passer": {
-        "form": {
-            "backgroundAlt": "Image d'arrière-plan",
-            "close": "Fermer",
-            "title": "Formulaire de demande de Laissez-passer",
-            "logoAlt": "Logo de l'ambassade du Tchad",
-            "uploadPhoto": "Téléverser une photo",
-            "lastName": "Nom",
-            "firstName": "Prénom",
-            "birthDate": "Date de naissance",
-            "birthPlace": "Lieu de naissance",
-            "nationality": "Nationalité",
-            "gender": "Sexe",
-            "male": "Masculin",
-            "female": "Féminin",
-            "maritalStatus": "Situation familiale",
-            "single": "Célibataire",
-            "married": "Marié(e)",
-            "divorced": "Divorcé(e)",
-            "widowed": "Veuf/Veuve",
-            "seeConditions": "Voir les conditions",
-            "send": "Envoyer"
-        }
-    },
-    "procuration": {
-        "title": "Formulaire de demande de procuration",
-        "nom": "Nom",
-        "prenom": "Prénom",
-        "date_naissance": "Date de naissance",
-        "lieu_naissance": "Lieu de naissance",
-        "nationalite": "Nationalité",
-        "sexe": "Sexe",
-        "sexe_m": "Masculin",
-        "sexe_f": "Féminin",
-        "situation_familiale": "Situation familiale",
-        "celibataire": "Célibataire",
-        "marie": "Marié(e)",
-        "divorce": "Divorcé(e)",
-        "veuf": "Veuf/Veuve",
-        "voir_conditions": "Voir les conditions",
-        "envoyer": "Envoyer"
-    },
-    "condition": {
-        "passport_diplomatique": {
-            "title": "Formulaire de demande de passeport",
-            "documents": "Documents à fournir",
-            "common_passport": "Passport Ordinaire",
-            "vip_passport": "Passport diplomatique",
-            "list": {
-                "first_condition": "Note verbale",
-                "second_condition": "Formulaire de demande de visa dûment rempli",
-                "third_condition": "copie de passeport",
-                "fourth_condition": "Passeport en cours de validité (6 mois minimum)",
-                "fifth_condition": "2 photos d'identité"
-            },
-            "see_form": "Voir le formulaire"
-        },
-        "passport_ordinaire": {
-            "title": "Formulaire de demande de passeport",
-            "documents": "Documents à fournir",
-            "common_passport": "Passport Ordinaire",
-            "vip_passport": "Passport diplomatique",
-            "list": {
-                "first_condition": "Formulaire de demande de visa dûment rempli",
-                "second_condition": "Lettre d'invitation ou certificat d'hébergement ou réservation d'hôtel",
-                "third_condition": "copie de passeport",
-                "fourth_condition": "Passeport en cours de validité (6 mois minimum)",
-                "fifth_condition": "2 photos d'identité"
-            },
-            "see_form": "Voir le formulaire"
-        },
-        "consulaire": {
-            "title": "Formulaire de carte consulaire",
-            "documents": "Documents à fournir",
-            "list": {
-                "first_condition": "Acte de Naissance",
-                "second_condition": "copie de passeport",
-                "third_condition": "2 photos d'identité"
-            },
-            "see_form": "Voir le formulaire"
-        },
-        "laissez-passer": {
-            "title": "Formulaire de demande de Laissez-passer",
-            "documents": "Documents à fournir",
-            "list": {
-                "first_condition": "Ancien passeport/ Carte Consulaire",
-                "second_condition": "Acte de naissance",
-                "third_condition": "2 photos d'identité"
-            },
-            "see_form": "Voir le formulaire"
-        }
+      "title": "Formulaire de demande de Laissez-passer",
+      "documents": "Documents à fournir",
+      "list": {
+        "first_condition": "Ancien passeport/ Carte Consulaire",
+        "second_condition": "Acte de naissance",
+        "third_condition": "2 photos d'identité"
+      },
+      "see_form": "Voir le formulaire"
     }
+  }
 }

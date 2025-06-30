@@ -2,8 +2,9 @@ import { heroui } from "@heroui/theme";
 import type { Config } from "tailwindcss";
 import lineClamp from '@tailwindcss/line-clamp';
 import tailwindcssAnimate from "tailwindcss-animate";
+import aspectRatio from '@tailwindcss/aspect-ratio';
 
-export default {
+const config: Config = {
   darkMode: ["class"],
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -27,16 +28,6 @@ export default {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
-          // 50: "#FDE9DA",
-          // 100: "#FAD2B5",
-          // 200: "#F8BC91",
-          // 300: "#F6A66C",
-          // 400: "#F38F47",
-          // 500: "hsl(var(--primary))",
-          // 600: "#D66C1E",
-          // 700: "#BB5E1A",
-          // 800: "#A15117",
-          // 900: "#864313",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -76,14 +67,23 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      animation: {
+        fadeIn: "fadeIn 0.3s ease-out",
+      },
+      keyframes: {
+        fadeIn: {
+          "0%": { opacity: "0", transform: "scale(0.95)" },
+          "100%": { opacity: "1", transform: "scale(1)" },
+        },
+      },
     },
-    darkMode: ["class"],
+  },
   plugins: [
-    heroui(), 
+    // heroui() // ← à vérifier si c'est bien un plugin Tailwind, sinon supprime cette ligne
     tailwindcssAnimate,
     lineClamp,
+    aspectRatio,
   ],
-  
-} 
+};
 
-} satisfies Config;
+export default config;
