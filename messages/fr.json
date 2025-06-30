@@ -146,7 +146,8 @@
     "email": "Email: ambassade.tchadabj@ambatchad.ci",
     "tel": "Tel: +225 27 22 39 49 13",
     "recherche": "Rechercher...",
-    "titre": "AMBASSADE DU TCHAD CÔTE D'IVOIRE"
+    "titre": "AMBASSADE DU TCHAD CÔTE D'IVOIRE",
+    "media":"Centre de Media"
   },
   "about": {
     "phoneLabel": "Numéro de téléphone",
@@ -164,6 +165,7 @@
       "demande_carte_consulaire": "Demande de carte consulaire et visa",
       "bouton_ouvir": "Ouvrir maintenant"
     },
+   
     "passportForm": {
       "ambassy": "AMBASSADE DU TCHAD",
       "open": "Ouvrir maintenant",
@@ -190,6 +192,7 @@
     },
     "news": {
       "title": "ACTUALITÉS",
+      "searchPlaceholder": "Rechercher une actualité...",
       "items": [
         {
           "date": "10 Oct",
@@ -206,7 +209,14 @@
           "alt": "Événement diplomatique",
           "title": "Participation de S.E. Mariam Ali Moussa, Ambassadeur et Représentante Permanente du Tchad auprès de la FAO à la 50ème édition du Comité de la Sécurité Alimentaire mondiale de la FAO à Rome du 10 au 14 octobre 2022"
         }
-      ]
+      ],
+      "hero": {
+        "title": "ACTUALITÉS"
+      },
+      "breadcrumbs": {
+        "home": "Accueil",
+        "news": "Actualités"
+      }
     },
     "services": {
       "description": "Accédez à nos services consulaires et culturels",

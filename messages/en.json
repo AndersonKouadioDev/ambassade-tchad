@@ -146,7 +146,8 @@
     "email": "Email: ambassade.tchadabj@ambatchad.ci",
     "tel": "Phone: +225 27 22 39 49 13",
     "recherche": "Search...",
-    "titre": "EMBASSY OF CHAD IN CÔTE D'IVOIRE"
+    "titre": "EMBASSY OF CHAD IN CÔTE D'IVOIRE",
+    "media": "Media Center"
   },
   "about": {
     "phoneLabel": "Phone number",
@@ -190,6 +191,7 @@
     },
     "news": {
       "title": "NEWS",
+      "searchPlaceholder":"Search for a news...",
       "items": [
         {
           "date": "10 Oct",
@@ -206,7 +208,15 @@
           "alt": "Diplomatic event",
           "title": "Participation of H.E. Mariam Ali Moussa, Ambassador and Permanent Representative of Chad to the FAO, at the 50th edition of the FAO Committee on World Food Security in Rome from October 10 to 14, 2022"
         }
-      ]
+      ],
+      "hero": {
+        "title": "NEWS",
+        "description": "Discover the latest news from the Embassy"
+      },
+      "breadcrumbs": {
+        "home": "Home",
+        "news": "News"
+      }
     },
     "services": {
       "description": "Access our consular and cultural services",

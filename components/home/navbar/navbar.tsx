@@ -39,12 +39,12 @@ export default function Head() {
     { name: t("ambassade"), link: "/ambassade" },
     { name: t("consulaire"), link: "/consulaire" },
     {
-      name: t("event"),
+      name: t("media"),
       children: [
+        { name: t("event"), link: "/event" },
+        { name: t("actualité"), link: "/news" },
         { name: t("photos"), link: "/galerie/galerie-photos" },
         { name: t("videos"), link: "/galerie/galerie-videos" },
-        { name: t("actualité"), link: "/news" },
-        { name: t("event"), link: "/event" },
       ],
     },
     {
@@ -59,7 +59,6 @@ export default function Head() {
         { name: t("peuples"), link: "/tourisme/peuples-et-cultures" },
       ],
     },
-     
   ];
 
   return (
@@ -84,11 +83,38 @@ export default function Head() {
             </div>
             <div className="flex gap-4 items-center">
               <div className="flex gap-2">
-                <button onClick={() => switchLocale("fr")} className={`text-sm ${locale === "fr" ? "text-red-500" : "text-white hover:underline"}`}>FR</button>
+                <button
+                  onClick={() => switchLocale("fr")}
+                  className={`text-sm ${
+                    locale === "fr"
+                      ? "text-red-500"
+                      : "text-white hover:underline"
+                  }`}
+                >
+                  FR
+                </button>
                 <span className="text-sm text-white">|</span>
-                <button onClick={() => switchLocale("en")} className={`text-sm ${locale === "en" ? "text-red-500" : "text-white hover:underline"}`}>EN</button>
+                <button
+                  onClick={() => switchLocale("en")}
+                  className={`text-sm ${
+                    locale === "en"
+                      ? "text-red-500"
+                      : "text-white hover:underline"
+                  }`}
+                >
+                  EN
+                </button>
                 <span className="text-sm text-white">|</span>
-                <button onClick={() => switchLocale("ar")} className={`text-sm ${locale === "ar" ? "text-red-500" : "text-white hover:underline"}`}>AR</button>
+                <button
+                  onClick={() => switchLocale("ar")}
+                  className={`text-sm ${
+                    locale === "ar"
+                      ? "text-red-500"
+                      : "text-white hover:underline"
+                  }`}
+                >
+                  AR
+                </button>
               </div>
               <div className="flex items-center bg-[#123682] rounded-full px-6 py-1">
                 <Search className="text-white" size={24} />
@@ -185,8 +211,14 @@ export default function Head() {
         <div className="lg:hidden flex flex-col items-center text-white mt-4">
           {menuItems.map((item) =>
             item.children ? (
-              <div key={item.name} className="w-full text-center border-b border-white">
-                <button onClick={() => setOpenTourism(!openTourism)} className="py-2 text-lg w-full">
+              <div
+                key={item.name}
+                className="w-full text-center border-b border-white"
+              >
+                <button
+                  onClick={() => setOpenTourism(!openTourism)}
+                  className="py-2 text-lg w-full"
+                >
                   {item.name}
                 </button>
                 {openTourism && (
@@ -242,11 +274,38 @@ export default function Head() {
 
           <div className="flex gap-4 items-center py-3">
             <div className="flex gap-2">
-              <button onClick={() => switchLocale("fr")} className={`text-sm ${locale === "fr" ? "text-red-500" : "text-white hover:underline"}`}>FR</button>
+              <button
+                onClick={() => switchLocale("fr")}
+                className={`text-sm ${
+                  locale === "fr"
+                    ? "text-red-500"
+                    : "text-white hover:underline"
+                }`}
+              >
+                FR
+              </button>
               <span className="text-sm text-white">|</span>
-              <button onClick={() => switchLocale("en")} className={`text-sm ${locale === "en" ? "text-red-500" : "text-white hover:underline"}`}>EN</button>
+              <button
+                onClick={() => switchLocale("en")}
+                className={`text-sm ${
+                  locale === "en"
+                    ? "text-red-500"
+                    : "text-white hover:underline"
+                }`}
+              >
+                EN
+              </button>
               <span className="text-sm text-white">|</span>
-              <button onClick={() => switchLocale("ar")} className={`text-sm ${locale === "ar" ? "text-red-500" : "text-white hover:underline"}`}>AR</button>
+              <button
+                onClick={() => switchLocale("ar")}
+                className={`text-sm ${
+                  locale === "ar"
+                    ? "text-red-500"
+                    : "text-white hover:underline"
+                }`}
+              >
+                AR
+              </button>
             </div>
           </div>
 
