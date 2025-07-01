@@ -24,38 +24,37 @@ export default function News() {
 
   return (
     <section className="w-full max-w-7xl mx-auto px-4 py-12">
+      {/* Barres de recherche : Titre + Date */}
+      <div className="flex flex-col md:flex-row gap-6 justify-center items-center mb-20">
+        {/* Recherche par titre */}
+        <div className="relative w-full max-w-md">
+          <input
+            type="text"
+            placeholder={t("searchPlaceholder")}
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-full py-3 pl-12 pr-4 text-sm rounded-full bg-gray-100 focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white shadow-sm"
+          />
+          <Search className="absolute top-1/2 left-4 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
+        </div>
+
+        {/* Recherche par date */}
+        <div className="relative w-full max-w-md">
+          <input
+            type="date"
+            value={searchDate}
+            onChange={(e) => setSearchDate(e.target.value)}
+            className="w-full py-3 pl-12 pr-4 text-sm rounded-full bg-gray-100 focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white shadow-sm appearance-none"
+          />
+          <Calendar className="absolute top-1/2 left-4 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
+        </div>
+      </div>
       {/* Titre + Navigation */}
       <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
         <h2 className="text-3xl font-bold text-secondary text-center md:text-left">
           {t("title")}
         </h2>
-
-        {/* Barres de recherche : Titre + Date */}
-        <div className="flex flex-col md:flex-row gap-6 justify-center items-center mb-20">
-          {/* Recherche par titre */}
-          <div className="relative w-full max-w-md">
-            <input
-              type="text"
-              placeholder={t("searchPlaceholder")}
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="w-full py-3 pl-12 pr-4 text-sm rounded-full bg-gray-100 focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white shadow-sm"
-            />
-            <Search className="absolute top-1/2 left-4 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
-          </div>
-
-          {/* Recherche par date */}
-          <div className="relative w-full max-w-md">
-            <input
-              type="date"
-              value={searchDate}
-              onChange={(e) => setSearchDate(e.target.value)}
-              className="w-full py-3 pl-12 pr-4 text-sm rounded-full bg-gray-100 focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white shadow-sm appearance-none"
-            />
-            <Calendar className="absolute top-1/2 left-4 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
-          </div>
-        </div>
-        <div className="hidden md:flex gap-2">
+        <div className="hidden md:flex gap-2 mt-10">
           <button
             type="button"
             className="p-2 bg-gray-200 hover:bg-gray-300 rounded"

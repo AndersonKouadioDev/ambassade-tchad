@@ -260,7 +260,7 @@
     }
   },
   "event":{
-    "description":"ambassy events space",
+    "description":"Ambassy events space",
     "searchPlaceholder":"Search for an event...",
     "hero": {
       "title": "Events"
