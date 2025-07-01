@@ -1,13 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, Search, X } from "lucide-react";
+import { Calendar, ChevronLeft, ChevronRight, Search, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 export default function GaleryPhotos() {
   const t = useTranslations("photo");
   const [search, setSearch] = useState("");
+  const [searchDate, setSearchDate] = useState("");
 
   type Picture = {
     picture: string;
@@ -53,27 +54,41 @@ export default function GaleryPhotos() {
       <h2 className="text-3xl font-bold text-center text-secondary mb-8 font-mulish">
         {t("description")}
       </h2>
-      {/* Barre de recherche */}
-      <div className="relative max-w-md mx-auto w-full mb-20">
-        <input
-          type="text"
-          placeholder={t("searchPlaceholder")}
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="w-full py-3 pl-12 pr-4 text-sm rounded-full bg-gray-100 focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white shadow-sm"
-        />
-        <Search className="absolute top-1/2 left-4 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
+      {/* Barres de recherche : Titre + Date */}
+      <div className="flex flex-col md:flex-row gap-6 justify-center items-center mb-20">
+        {/* Recherche par titre */}
+        <div className="relative w-full max-w-md">
+          <input
+            type="text"
+            placeholder={t("searchPlaceholder")}
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-full py-3 pl-12 pr-4 text-sm rounded-full bg-gray-100 focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white shadow-sm"
+          />
+          <Search className="absolute top-1/2 left-4 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
+        </div>
+
+        {/* Recherche par date */}
+        <div className="relative w-full max-w-md">
+          <input
+            type="date"
+            value={searchDate}
+            onChange={(e) => setSearchDate(e.target.value)}
+            className="w-full py-3 pl-12 pr-4 text-sm rounded-full bg-gray-100 focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white shadow-sm appearance-none"
+          />
+          <Calendar className="absolute top-1/2 left-4 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
+        </div>
       </div>
 
       <div className="flex flex-col items-center">
-        <div className="w-full">
-          <h1 className="text-lg font-bold text-secondary mb-8 font-mulish">2025-06-30</h1>
+        <div className="text-red-600 w-full font-semibold">
+          20/10/2024
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 mb-8 px-10">
           {pictures.slice(start, start + visibleCount).map((item, index) => (
             <div
               key={index}
-              className="bg-card shadow-lg rounded-2xl overflow-hidden cursor-pointer"
+              className="bg-card shadow-lg rounded-2xl overflow-hidden cursor-pointer "
               onClick={() => setSelectedImage(item.picture)}
             >
               <Image
@@ -83,30 +98,7 @@ export default function GaleryPhotos() {
                 height={250}
                 className="w-full h-80 object-cover transition-transform transform hover:scale-105"
               />
-              <div className="p-4 text-center text-sm text-gray-600 font-semibold  tracking-wide">
-                {item.title}
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="w-full">
-          <h1 className="text-lg font-bold text-secondary mb-8 font-mulish">2025-06-29</h1>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 mb-8 px-10">
-          {pictures.slice(start, start + visibleCount).map((item, index) => (
-            <div
-              key={index}
-              className="bg-card shadow-lg rounded-2xl overflow-hidden cursor-pointer"
-              onClick={() => setSelectedImage(item.picture)}
-            >
-              <Image
-                src={item.picture}
-                alt={item.title}
-                width={300}
-                height={250}
-                className="w-full h-80 object-cover transition-transform transform hover:scale-105"
-              />
-              <div className="p-4 text-center text-sm text-gray-600 font-semibold  tracking-wide">
+              <div className="p-4 text-center text-sm text-gray-600 font-semibold  tracking-wide ">
                 {item.title}
               </div>
             </div>

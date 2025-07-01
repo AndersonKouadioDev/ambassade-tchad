@@ -1,6 +1,6 @@
 "use client";
 
-import { Search } from "lucide-react";
+import { Calendar, Search } from "lucide-react";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 
@@ -12,6 +12,7 @@ type Video = {
 
 export default function VideoGallery() {
   const [search, setSearch] = useState("");
+  const [searchDate, setSearchDate] = useState("");
   const t = useTranslations("video");
 
   const videos: Video[] = [
@@ -30,8 +31,10 @@ export default function VideoGallery() {
         {t("description")}
       </h2>
 
-       {/* Barre de recherche */}
-        <div className="relative max-w-md mx-auto w-full mb-20">
+        {/* Barres de recherche : Titre + Date */}
+      <div className="flex flex-col md:flex-row gap-6 justify-center items-center mb-20">
+        {/* Recherche par titre */}
+        <div className="relative w-full max-w-md">
           <input
             type="text"
             placeholder={t("searchPlaceholder")}
@@ -41,6 +44,18 @@ export default function VideoGallery() {
           />
           <Search className="absolute top-1/2 left-4 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
         </div>
+
+        {/* Recherche par date */}
+        <div className="relative w-full max-w-md">
+          <input
+            type="date"
+            value={searchDate}
+            onChange={(e) => setSearchDate(e.target.value)}
+            className="w-full py-3 pl-12 pr-4 text-sm rounded-full bg-gray-100 focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white shadow-sm appearance-none"
+          />
+          <Calendar className="absolute top-1/2 left-4 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
+        </div>
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {videos.map((video) => (
           <div
