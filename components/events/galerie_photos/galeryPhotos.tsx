@@ -66,11 +66,14 @@ export default function GaleryPhotos() {
       </div>
 
       <div className="flex flex-col items-center">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-2 mb-8 px-10">
-          {pictures.slice(start, start + visibleCount).map((item) => (
+        <div className="w-full">
+          <h1 className="text-lg font-bold text-secondary mb-8 font-mulish">2025-06-30</h1>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 mb-8 px-10">
+          {pictures.slice(start, start + visibleCount).map((item, index) => (
             <div
-              key={item.title}
-              className="bg-card shadow-lg rounded-2xl overflow-hidden cursor-pointer transition-transform transform hover:scale-105"
+              key={index}
+              className="bg-card shadow-lg rounded-2xl overflow-hidden cursor-pointer"
               onClick={() => setSelectedImage(item.picture)}
             >
               <Image
@@ -78,7 +81,7 @@ export default function GaleryPhotos() {
                 alt={item.title}
                 width={300}
                 height={250}
-                className="w-full h-80 object-cover"
+                className="w-full h-80 object-cover transition-transform transform hover:scale-105"
               />
               <div className="p-4 text-center text-sm text-gray-600 font-semibold  tracking-wide">
                 {item.title}
@@ -86,7 +89,29 @@ export default function GaleryPhotos() {
             </div>
           ))}
         </div>
-
+        <div className="w-full">
+          <h1 className="text-lg font-bold text-secondary mb-8 font-mulish">2025-06-29</h1>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 mb-8 px-10">
+          {pictures.slice(start, start + visibleCount).map((item, index) => (
+            <div
+              key={index}
+              className="bg-card shadow-lg rounded-2xl overflow-hidden cursor-pointer"
+              onClick={() => setSelectedImage(item.picture)}
+            >
+              <Image
+                src={item.picture}
+                alt={item.title}
+                width={300}
+                height={250}
+                className="w-full h-80 object-cover transition-transform transform hover:scale-105"
+              />
+              <div className="p-4 text-center text-sm text-gray-600 font-semibold  tracking-wide">
+                {item.title}
+              </div>
+            </div>
+          ))}
+        </div>
         <div className="md:flex gap-3">
           <button
             onClick={handlePrev}
@@ -111,7 +136,7 @@ export default function GaleryPhotos() {
         >
           <div
             className="relative max-w-4xl w-full mx-4"
-            onClick={(e) => e.stopPropagation()} // Prevent close on image click
+            onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={() => setSelectedImage(null)}

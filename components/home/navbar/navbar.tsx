@@ -39,12 +39,12 @@ export default function Head() {
     { name: t("ambassade"), link: "/ambassade" },
     { name: t("consulaire"), link: "/consulaire" },
     {
-      name: t("event"),
+      name: t("media"),
       children: [
-        { name: t("photos"), link: "/galerie/galerie-photos" },
-        { name: t("videos"), link: "/galerie/galerie-videos" },
         { name: t("actualité"), link: "/news" },
         { name: t("event"), link: "/event" },
+        { name: t("photos"), link: "/galerie/galerie-photos" },
+        { name: t("videos"), link: "/galerie/galerie-videos" },
       ],
     },
     {

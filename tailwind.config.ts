@@ -79,7 +79,7 @@ const config: Config = {
     },
   },
   plugins: [
-    // heroui() // ← à vérifier si c'est bien un plugin Tailwind, sinon supprime cette ligne
+    heroui(),
     tailwindcssAnimate,
     lineClamp,
     aspectRatio,

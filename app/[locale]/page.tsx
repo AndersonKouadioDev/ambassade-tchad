@@ -9,11 +9,11 @@ import About from "@/components/home/about/about";
 export default function Home() {
   return (
     <div>
-      <Hero/>
+      <Hero />
       {/* <Presentation/> */}
-      <Event/>
-      <Service/>
-      <About/>
+      <Event />
+      <Service />
+      <About />
     </div>
   );
 }
