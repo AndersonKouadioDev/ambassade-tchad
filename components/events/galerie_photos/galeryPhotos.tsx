@@ -33,10 +33,7 @@ export default function GaleryPhotos() {
       title: t("pictures.3"),
     },
   ];
-  const filteredPictures = pictures.filter((item) =>
-    item.title.toLowerCase().includes(search.toLowerCase())
-  );
-
+ 
   const [start, setStart] = useState(0);
   const visibleCount = 6;
   const [selectedImage, setSelectedImage] = useState<string | null>(null);

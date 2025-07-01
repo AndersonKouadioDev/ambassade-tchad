@@ -21,10 +21,6 @@ export default function VideoGallery() {
     { title: t("videos.2"), youtubeId: "3JZ_D3ELwOQ" },
   ];
 
-    const filteredNews = videos.filter((item) =>
-    item.title.toLowerCase().includes(search.toLowerCase())
-  );
-
   return (
     <section className="px-6 py-12 bg-white">
       <h2 className="text-3xl font-bold text-center text-secondary mb-10 font-mulish">
