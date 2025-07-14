@@ -147,7 +147,8 @@
     "tel": "Phone: +225 27 22 39 49 13",
     "recherche": "Search...",
     "titre": "EMBASSY OF CHAD IN CÔTE D'IVOIRE",
-    "media": "Media Center"
+    "media": "Media Center",
+    "connexion": "Login"
   },
   "about": {
     "phoneLabel": "Phone number",
@@ -624,6 +625,55 @@
         "third_condition": "2 ID photos"
       },
       "see_form": "See the form"
+    }
+  },
+  "auth": {
+    "login": {
+      "alert": "PLEASE RE-AUTHENTICATE TO CONTINUE",
+      "title": "Sign in to my account",
+      "subtitle": "Fields marked with * are required.",
+      "email": {
+        "label": "Email address",
+        "placeholder": "Email address",
+        "help": "Expected email format: firstname@mail.com"
+      },
+      "password": {
+        "label": "Password",
+        "placeholder": "Password"
+      },
+      "showPassword": "Show password",
+      "submit": "Sign in",
+      "forgotPassword": "Forgot password?",
+      "newUser": "New User?",
+      "createAccount": "Create account"
+    },
+    "forgotPassword": {
+      "alert": "PLEASE RE-AUTHENTICATE TO CONTINUE",
+      "title": "You must change your password.",
+      "description": "Enter your chosen password. It must be different from your last 5 passwords and must contain at least 12 characters including at least 1 number [0 to 9] and 1 uppercase letter. Special characters are allowed, except for the following characters % & < = > | \"",
+      "oldPassword": {
+        "label": "Old password",
+        "placeholder": "Current password"
+      },
+      "newPassword": {
+        "label": "New password",
+        "placeholder": "New password"
+      },
+      "confirmPassword": {
+        "label": "Confirm new password",
+        "placeholder": "Confirm new password"
+      },
+      "showPassword": "Show password",
+      "update": "Update",
+      "backToAccount": "Back to my account"
+    },
+    "hero": {
+      "title": "Candidate space",
+      "breadcrumb": {
+        "home": "Home",
+        "menu": "Menu",
+        "visaRequest": "Visa request - consular card"
+      }
     }
   }
 }

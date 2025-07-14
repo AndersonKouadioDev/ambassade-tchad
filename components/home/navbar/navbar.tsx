@@ -2,7 +2,7 @@
 
 import { Link } from "@/i18n/navigation";
 import Image from "next/image";
-import { Mail, Phone, Search, Menu, X } from "lucide-react";
+import { Mail, Phone, Search, Menu, X, User } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { useLocale, useTranslations } from "next-intl";
@@ -124,6 +124,12 @@ export default function Head() {
                   className="bg-transparent text-white placeholder-white/70 focus:outline-none ml-2 w-52 text-sm"
                 />
               </div>
+              <Link href="/auth">
+                <button className="flex items-center gap-2 bg-secondary hover:bg-red-600 text-white px-4 py-2 rounded-full transition-colors">
+                  <User size={16} />
+                  <span className="text-sm font-medium">{t("connexion")}</span>
+                </button>
+              </Link>
             </div>
           </div>
 
@@ -272,7 +278,7 @@ export default function Head() {
             )
           )}
 
-          <div className="flex gap-4 items-center py-3">
+          <div className="flex flex-col gap-4 items-center py-3">
             <div className="flex gap-2">
               <button
                 onClick={() => switchLocale("fr")}
@@ -307,6 +313,12 @@ export default function Head() {
                 AR
               </button>
             </div>
+            <Link href="/auth">
+              <button className="flex items-center gap-2 bg-secondary hover:bg-red-600 text-white px-4 py-2 rounded-full transition-colors">
+                <User size={16} />
+                <span className="text-sm font-medium">{t("connexion")}</span>
+              </button>
+            </Link>
           </div>
 
           <div className="flex items-center bg-[#123682] rounded-full px-6 py-1">

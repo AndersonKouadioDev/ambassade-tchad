@@ -147,7 +147,8 @@
     "tel": "Tel: +225 27 22 39 49 13",
     "recherche": "Rechercher...",
     "titre": "AMBASSADE DU TCHAD CÔTE D'IVOIRE",
-    "media":"Centre de Media"
+    "media":"Centre de Media",
+    "connexion": "Connexion"
   },
   "about": {
     "phoneLabel": "Numéro de téléphone",
@@ -260,7 +261,7 @@
     }
   },
   "event":{
-    "description": " Espace Évènements de l'Ambassade",
+    "description": "Espace Évènements de l'Ambassade",
     "searchPlaceholder": "Rechercher un évènement...",
     "hero": {
       "title": "Évènements"
@@ -268,7 +269,53 @@
     "breadcrumbs": {
       "home": "Accueil",
       "event": "Évènements"
-    }
+    },
+    "filters": {
+      "all": "Tous les événements",
+      "upcoming": "À venir",
+      "past": "Passés",
+      "category": "Catégorie",
+      "date": "Rechercher par date",
+      "status": "Statut",
+      "allStatus": "Tous les statuts",
+      "published": "Publié",
+      "unpublished": "Non publié",
+      "draft": "Brouillon",
+      "pending": "En attente",
+      "validated": "Validé",
+      "rejected": "Rejeté",
+      "cancelled": "Annulé",
+      "archived": "Archivé"
+    },
+    "categories": {
+      "conference": "Conférence",
+      "ceremony": "Cérémonie",
+      "meeting": "Réunion",
+      "cultural": "Culturel",
+      "other": "Autre"
+    },
+    "details": {
+      "backToEvents": "Retour aux événements",
+      "previous": "Précédent",
+      "next": "Suivant",
+      "register": "S&apos;inscrire",
+      "share": "Partager",
+      "practicalInfo": "Informations pratiques",
+      "date": "Date",
+      "time": "Heure",
+      "location": "Lieu",
+      "organizer": "Organisateur",
+      "capacity": "Capacité",
+      "registration": "Inscription",
+      "required": "Requise",
+      "deadline": "avant le",
+      "contact": "Contact",
+      "email": "Email",
+      "phone": "Téléphone",
+      "tags": "Tags",
+      "relatedEvents": "Événements similaires"
+    },
+    "featured": "À la une"
   },
   "tourisme": {
     "tchad": {
@@ -596,6 +643,55 @@
         "third_condition": "2 photos d'identité"
       },
       "see_form": "Voir le formulaire"
+    }
+  },
+  "auth": {
+    "login": {
+      "alert": "VEUILLEZ VOUS RÉ-AUTHENTIFIER POUR CONTINUER",
+      "title": "Se connecter à mon compte",
+      "subtitle": "Les champs annotés d'un * sont obligatoires.",
+      "email": {
+        "label": "Adresse électrique",
+        "placeholder": "Adresse électronique",
+        "help": "Le format email attendu est : prenom@mail.fr"
+      },
+      "password": {
+        "label": "Mot de passe",
+        "placeholder": "Mot de passe"
+      },
+      "showPassword": "Afficher le mot de passe",
+      "submit": "Se connecter",
+      "forgotPassword": "Mot de passe oublié ?",
+      "newUser": "Nouvel Utilisateur ?",
+      "createAccount": "Créer un compte"
+    },
+    "forgotPassword": {
+      "alert": "VEUILLEZ VOUS RÉ-AUTHENTIFIER POUR CONTINUER",
+      "title": "Vous devez changer votre mot de passe.",
+      "description": "Saisissez le mot de passe de votre choix. Il doit être différent de vos 5 derniers mots de passe et doit contenir 12 caractères minimum dont au moins 1 chiffre [0 à 9] et 1 lettre en majuscule. Les caractères spéciaux sont autorisés, hormis les caractères suivants % & < = > | \"",
+      "oldPassword": {
+        "label": "Ancien mot de passe",
+        "placeholder": "Mot de passe actuel"
+      },
+      "newPassword": {
+        "label": "Nouveau mot de passe",
+        "placeholder": "Nouveau mot de passe"
+      },
+      "confirmPassword": {
+        "label": "Confirmez le nouveau mot de passe",
+        "placeholder": "Confirmer le nouveau mot de passe"
+      },
+      "showPassword": "Afficher le mot de passe",
+      "update": "Mettre à jour",
+      "backToAccount": "Revenir à mon compte"
+    },
+    "hero": {
+      "title": "Espace candidat",
+      "breadcrumb": {
+        "home": "Accueil",
+        "menu": "Menu",
+        "visaRequest": "Demande de visa - carte consulaire"
+      }
     }
   }
 }

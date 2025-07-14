@@ -3,43 +3,47 @@
 import Image from "next/image";
 import { Calendar, ChevronLeft, ChevronRight, Search, X } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { useState, useMemo } from "react";
+import { getAllPhotos, searchPhotos } from "@/lib/gallery-store";
+// Import seulement les fonctions utilisées
 
 export default function GaleryPhotos() {
   const t = useTranslations("photo");
   const [search, setSearch] = useState("");
   const [searchDate, setSearchDate] = useState("");
-
-  type Picture = {
-    picture: string;
-    title: string;
-  };
-
-  const pictures: Picture[] = [
-    {
-      picture: "/assets/images/illustrations/ambassade/card_1.png",
-      title: t("pictures.0"),
-    },
-    {
-      picture: "/assets/images/illustrations/ambassade/card_2.png",
-      title: t("pictures.1"),
-    },
-    {
-      picture: "/assets/images/illustrations/ambassade/card_3.png",
-      title: t("pictures.2"),
-    },
-    {
-      picture: "/assets/images/illustrations/ambassade/card_4.png",
-      title: t("pictures.3"),
-    },
-  ];
+  
+  // Récupérer toutes les photos
+  const allPhotos = useMemo(() => getAllPhotos(), []);
+  
+  // Filtrer les photos en fonction de la recherche
+  const filteredPhotos = useMemo(() => {
+    if (!search && !searchDate) return allPhotos;
+    
+    let filtered = allPhotos;
+    
+    if (search) {
+      filtered = searchPhotos(search);
+    }
+    
+    if (searchDate) {
+      const selectedDate = new Date(searchDate);
+      filtered = filtered.filter(photo => {
+        const photoDate = new Date(photo.createdAt);
+        return photoDate.getFullYear() === selectedDate.getFullYear() && 
+               photoDate.getMonth() === selectedDate.getMonth() && 
+               photoDate.getDate() === selectedDate.getDate();
+      });
+    }
+    
+    return filtered;
+  }, [search, searchDate, allPhotos]);
  
   const [start, setStart] = useState(0);
   const visibleCount = 6;
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const handleNext = () => {
-    if (start + visibleCount < pictures.length) setStart(start + visibleCount);
+    if (start + visibleCount < filteredPhotos.length) setStart(start + visibleCount);
   };
 
   const handlePrev = () => {
@@ -72,50 +76,68 @@ export default function GaleryPhotos() {
             value={searchDate}
             onChange={(e) => setSearchDate(e.target.value)}
             className="w-full py-3 pl-12 pr-4 text-sm rounded-full bg-gray-100 focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white shadow-sm appearance-none"
+            aria-label={t("searchByDate")}
+            title={t("searchByDate")}
           />
           <Calendar className="absolute top-1/2 left-4 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
         </div>
       </div>
 
       <div className="flex flex-col items-center">
-        <div className="text-red-600 w-full font-semibold">
-          20/10/2024
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 mb-8 px-10">
-          {pictures.slice(start, start + visibleCount).map((item, index) => (
-            <div
-              key={index}
-              className="bg-card shadow-lg rounded-2xl overflow-hidden cursor-pointer "
-              onClick={() => setSelectedImage(item.picture)}
-            >
-              <Image
-                src={item.picture}
-                alt={item.title}
-                width={300}
-                height={250}
-                className="w-full h-80 object-cover transition-transform transform hover:scale-105"
-              />
-              <div className="p-4 text-center text-sm text-gray-600 font-semibold  tracking-wide ">
-                {item.title}
+        {filteredPhotos.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-8 px-10">
+            {filteredPhotos.slice(start, start + visibleCount).map((photo) => (
+              <div
+                key={photo.id}
+                className="bg-card shadow-lg rounded-2xl overflow-hidden cursor-pointer"
+                onClick={() => setSelectedImage(photo.imageUrl)}
+              >
+                <Image
+                  src={photo.imageUrl}
+                  alt={photo.title || 'Photo de l\'ambassade'}
+                  width={300}
+                  height={250}
+                  className="w-full h-80 object-cover transition-transform transform hover:scale-105"
+                />
+                <div className="p-4">
+                  <h3 className="text-center text-sm font-semibold text-gray-800 tracking-wide mb-1">
+                    {photo.title || t("untitled")}
+                  </h3>
+                  {photo.description && (
+                    <p className="text-xs text-gray-600 text-center">
+                      {photo.description}
+                    </p>
+                  )}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+        ) : (
+          <div className="py-12 text-center">
+            <p className="text-lg text-gray-600">
+              {t("noPhotos")}
+            </p>
+          </div>
+        )}
         </div>
         <div className="md:flex gap-3">
           <button
             onClick={handlePrev}
             className="p-2 bg-gray-100 hover:bg-gray-200 rounded-full shadow"
+            aria-label={t("previous")}
+            title={t("previous")}
           >
             <ChevronLeft className="w-6 h-6 text-gray-700" />
           </button>
           <button
             onClick={handleNext}
             className="p-2 bg-secondary hover:bg-red-600 text-white rounded-full shadow"
+            aria-label={t("next")}
+            title={t("next")}
           >
             <ChevronRight className="w-6 h-6" />
           </button>
         </div>
-      </div>
 
       {/* Clean Lightbox */}
       {selectedImage && (
@@ -130,6 +152,8 @@ export default function GaleryPhotos() {
             <button
               onClick={() => setSelectedImage(null)}
               className="absolute top-4 right-4 text-white bg-black bg-opacity-10 hover:bg-opacity-70 rounded-full p-2 z-50"
+              aria-label={t("close")}
+              title={t("close")}
             >
               <X className="w-6 h-6" />
             </button>

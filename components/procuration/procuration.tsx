@@ -1,83 +1,92 @@
 "use client";
-
-import React from 'react';
-import Image from 'next/image';
-import { Images } from 'lucide-react';
-import { Button } from "@heroui/react";
-import { useTranslations } from 'next-intl';
+import FormulaireGenerique from "@/components/ui/FormulaireGenerique";
+import ConditionsModal from "@/components/ui/ConditionsModal";
+import React, { useState } from "react";
+import { ArrowUpFromLine } from "lucide-react";
 
 export default function ProcurationForm() {
-  const t = useTranslations("procuration");
+  const [files, setFiles] = useState<File[]>([]);
+  const [isConditionsModalOpen, setIsConditionsModalOpen] = useState(false);
+
+  function handleFilesChange(e: React.ChangeEvent<HTMLInputElement>) {
+    if (e.target.files) {
+      setFiles(Array.from(e.target.files));
+    }
+  }
+  const fields = [
+    { type: "file" as const, name: "photo", label: "Photo", accept: "image/*" },
+    { type: "text" as const, name: "lastName", label: "Nom", placeholder: "Nom" },
+    { type: "text" as const, name: "firstName", label: "Prénom", placeholder: "Prénom" },
+    { type: "text" as const, name: "birthDate", label: "Date de naissance", placeholder: "Date de naissance" },
+    { type: "text" as const, name: "birthPlace", label: "Lieu de naissance", placeholder: "Lieu de naissance" },
+    { type: "text" as const, name: "nationality", label: "Nationalité", placeholder: "Nationalité" },
+    { type: "select" as const, name: "gender", label: "Sexe", options: [
+      { value: "M", label: "Masculin" },
+      { value: "F", label: "Féminin" }
+    ] },
+    { type: "select" as const, name: "maritalStatus", label: "Situation familiale", options: [
+      { value: "single", label: "Célibataire" },
+      { value: "married", label: "Marié(e)" },
+      { value: "divorced", label: "Divorcé(e)" },
+      { value: "widowed", label: "Veuf/Veuve" }
+    ] },
+    { type: "text" as const, name: "mandataire", label: "Nom du mandataire", placeholder: "Nom du mandataire" },
+    { type: "text" as const, name: "mandatairePiece", label: "Pièce justificative du mandataire", placeholder: "Pièce justificative du mandataire" },
+    { type: "text" as const, name: "mandataireContact", label: "Contact du mandataire", placeholder: "Contact du mandataire" },
+    { type: "text" as const, name: "objet", label: "Objet de la procuration", placeholder: "Objet de la procuration" },
+  ];
 
   return (
-    <div className="relative flex items-center justify-center w-full p-10 min-h-[calc(100vh-70px)]">
-      {/* Image d'arrière-plan */}
-      <Image
-        className="absolute inset-0 w-full h-full object-cover"
-        src="/assets/images/backgrounds/background_2.png"
-        alt="Background image"
-        fill
-      />
-      <div className="absolute inset-0 bg-blue-800/50" />
-
-      {/* Formulaire */}
-      <div className="relative w-full max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-6 z-10">
-        <button className="absolute right-4 top-4 text-gray-500 hover:text-gray-700">✕</button>
-
-        <div className="text-center mb-8">
-          <h1 className="text-gray-600 mb-4">{t("title")}</h1>
-          <div className="flex items-center justify-center gap-4">
-            <Image 
-              src="/assets/images/illustrations/formulaire/logo.png"
-              alt="Chad Embassy Logo" 
-              width={300}
-              height={150}
-              className="mx-2"
-            />
+    <>
+      <form className="w-full">
+        <FormulaireGenerique
+          title="Formulaire de demande de procuration"
+          logoSrc="/assets/images/illustrations/formulaire/logo.png"
+          fields={fields}
+          buttons={[]}
+          onSubmit={() => {}}
+        />
+        {/* Section pièces à fournir */}
+        <div className="mb-4 ml-16">
+          <div className="font-semibold text-gray-700 dark:text-white mb-1">Pièces à fournir</div>
+          <div className="text-xs text-gray-400 mb-2">Importez jusqu&apos;à 10 fichiers compatibles. 100 MB max. par fichier.</div>
+          <div className="w-72 border-2 border-[#003399] rounded-full hover:bg-blue-50">
+            <label className="flex items-center gap-2 px-4 py-2 text-[#003399] cursor-pointer w-full justify-start">
+              <ArrowUpFromLine size={20} />
+              <span className="text-left">Ajouter un fichier</span>
+              <input type="file" multiple className="hidden" onChange={handleFilesChange} />
+            </label>
           </div>
+          {files.length > 0 && (
+            <div className="mt-2 text-xs text-gray-600 dark:text-gray-300">{files.length} fichier(s) sélectionné(s)</div>
+          )}
         </div>
-
-        <div className="w-32 h-40 mx-auto mb-8 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center bg-white bg-opacity-80 relative">
-          <Images className="mx-auto mb-2 text-gray-400" size={24} />
-          <input
-            type="file"
-            name="image"
-            accept="image/*"
-            className="absolute inset-0 opacity-0 cursor-pointer"
-          />
+        {/* Boutons d'action tout en bas */}
+        <div className="flex justify-between mt-8">
+          <button 
+            type="button"
+            onClick={() => setIsConditionsModalOpen(true)}
+            className="bg-transparent text-[#F44C27] border border-[#F44C27] px-6 py-2 rounded-full font-semibold hover:bg-[#fff0ed] transition"
+          >
+            Voir les conditions
+          </button>
+          <button type="submit" className="bg-[#F44C27] text-white px-6 py-2 rounded-full font-semibold shadow hover:bg-[#e13a1a] transition">Envoyer</button>
         </div>
+      </form>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-          <input type="text" placeholder={t("nom")} className="w-full px-4 py-2 border border-gray-300 rounded-full" />
-          <input type="text" placeholder={t("prenom")} className="w-full px-4 py-2 border border-gray-300 rounded-full" />
-          <input type="text" placeholder={t("date_naissance")} className="w-full px-4 py-2 border border-gray-300 rounded-full" />
-          <input type="text" placeholder={t("lieu_naissance")} className="w-full px-4 py-2 border border-gray-300 rounded-full" />
-          <input type="text" placeholder={t("nationalite")} className="w-full px-4 py-2 border border-gray-300 rounded-full" />
-          
-          <select className="w-full px-4 py-2 border border-gray-300 rounded-full">
-            <option value="">{t("sexe")}</option>
-            <option value="M">{t("sexe_m")}</option>
-            <option value="F">{t("sexe_f")}</option>
-          </select>
-
-          <select className="w-full px-4 py-2 border border-gray-300 rounded-full">
-            <option value="">{t("situation_familiale")}</option>
-            <option value="single">{t("celibataire")}</option>
-            <option value="married">{t("marie")}</option>
-            <option value="divorced">{t("divorce")}</option>
-            <option value="widowed">{t("veuf")}</option>
-          </select>
-        </div>
-
-        <div className="flex justify-between">
-          <Button className="bg-transparent text-secondary border border-secondary">
-            {t("voir_conditions")}
-          </Button>
-          <Button color="secondary" className="text-white">
-            {t("envoyer")}
-          </Button>
-        </div>
-      </div>
-    </div>
+      {/* Modal des conditions */}
+      <ConditionsModal
+        isOpen={isConditionsModalOpen}
+        onClose={() => setIsConditionsModalOpen(false)}
+        title="Formulaire de demande de procuration"
+        documentsLabel="Documents à fournir :"
+        conditionsList={[
+          // À compléter par l'utilisateur
+          'Copie de la pièce d’identité du mandant',
+          'Copie de la pièce d’identité du mandataire',
+          'Lettre de procuration signée',
+        ]}
+      />
+    </>
   );
-}
+} 

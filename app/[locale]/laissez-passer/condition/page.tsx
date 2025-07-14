@@ -8,13 +8,7 @@ export default function Condition() {
   const t = useTranslations("condition.laissez-passer")
   return (
     <div className="relative flex items-center justify-center w-full p-10 min-h-[calc(100vh-70px)] font-mulish">
-      {/* Image d'arrière-plan */}
-      <Image
-        className="absolute inset-0 w-full h-full object-cover"
-        src="/assets/images/backgrounds/background_2.png"
-        alt="Background image"
-        fill
-      />
+   
       <div className="absolute inset-0 bg-blue-800/50" /> {/* Superposition bleu semi-transparente */}
 
       {/* Formulaire */}

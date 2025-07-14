@@ -6,11 +6,11 @@ import { routing } from "@/i18n/routing";
 import { Blinker, Geist, Geist_Mono, Mulish, Poppins } from "next/font/google";
 import "@/app/globals.css";
 import localFont from "next/font/local";
-// import { Providers } from "@/providers/providers";
 import Head from "@/components/home/navbar/navbar";
 import Footer from "@/components/home/footer/footer";
 import rtlDetect from "rtl-detect-intl";
-import InertFixWrapper from "@/components/gestion_erreur_inert/InertFixWrapper";
+import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
@@ -40,17 +40,19 @@ export default async function RootLayout({
   const langDir = rtlDetect.getLangDir(locale);
 
   return (
-    <html lang={locale} dir={langDir}>
+    <html lang={locale} dir={langDir} suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} ${signature.variable} ${mulish.variable} ${blinker.variable} antialiased`}
       >
-        <div className="font-blinker max-w-screen-2xl mx-auto">
+        <div className="font-blinker w-full">
           <NextIntlClientProvider locale={locale} messages={messages}>
-            <InertFixWrapper>
-              <Head />
-              {children}
-              <Footer />
-            </InertFixWrapper>
+            <ThemeProvider>
+              <ClientLayoutWrapper>
+                <Head />
+                {children}
+                <Footer />
+              </ClientLayoutWrapper>
+            </ThemeProvider>
           </NextIntlClientProvider>
         </div>
       </body>

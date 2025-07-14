@@ -11,8 +11,7 @@
   "dependencies": {
     "@heroui/react": "2.7.10",
     "@radix-ui/react-navigation-menu": "^1.2.13",
-    "@tailwindcss/aspect-ratio": "^0.4.2",
-    "chicken-nation": "file:",
+    "@tailwindcss/aspect-ratio": "^0.4.2", 
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
