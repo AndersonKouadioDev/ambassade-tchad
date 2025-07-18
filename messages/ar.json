@@ -657,5 +657,219 @@
         "visaRequest": "طلب تأشيرة - بطاقة قنصلية"
       }
     }
+  },
+  "espaceClient": {
+    "nouvelleDemande": {
+      "subtitle": "طلب جديد",
+      "description": "اختر نوع الخدمة التي تريد التقدم لها",
+      "startRequest": "بدء الطلب",
+      "viewAllServices": "عرض جميع الخدمات",
+      "services": {
+        "visa": {
+          "title": "تأشيرة",
+          "description": "طلبات التأشيرة على جوازات السفر العادية المقدمة في كوت ديفوار تتم معالجتها من قبل سفارة تشاد في أبيدجان، الجهة الوحيدة المخولة لاتخاذ قرارات التأشيرة. تساعدك خدمتنا في إعداد ملف طلبك، والتحقق من مطابقة الوثائق، وحجز المواعيد مع السفارة، وحتى متابعة الطلب.",
+          "priceLabel": "السعر",
+          "price": "50,000 فرنك أفريقي"
+        },
+        "carteConsulaire": {
+          "title": "بطاقة قنصلية",
+          "description": "البطاقة القنصلية هي وثيقة رسمية تصدرها سفارة تشاد تشهد على تسجيلك لدى التمثيل الدبلوماسي. تسهل إجراءاتك الإدارية والوصول إلى خدمات معينة مخصصة للمواطنين التشاديين في الخارج. يساعدك فريقنا في إعداد الملف والتحقق من الوثائق الداعمة ومتابعة طلبك.",
+          "priceLabel": "السعر",
+          "price": "20,000 فرنك أفريقي"
+        },
+        "passeport": {
+          "title": "جواز سفر",
+          "description": "جواز السفر هو وثيقة سفر آمنة تصدرها سفارة تشاد. يسمح لأي مواطن تشادي بالسفر إلى الخارج وإثبات هويته. نرشدك في إعداد ملفك وحجز المواعيد وتتبع تقدم طلبك.",
+          "priceLabel": "السعر",
+          "price": "60,000 فرنك أفريقي"
+        },
+        "laissezPasser": {
+          "title": "تصريح مرور",
+          "description": "تصريح المرور هو وثيقة استثنائية تُصدر للسماح لمواطن تشادي بدون جواز سفر بالعودة إلى تشاد أو تسوية وضعه. تخبرك خدمتنا عن شروط الأهلية والوثائق المطلوبة وتساعدك خلال الإجراء.",
+          "priceLabel": "السعر",
+          "price": "15,000 فرنك أفريقي"
+        },
+        "procuration": {
+          "title": "توكيل",
+          "description": "التوكيل يسمح للمواطن التشادي بتخويل شخص للقيام بالإجراءات الإدارية نيابة عنه لدى السلطات التشادية. نساعدك في صياغة التوكيل وإعداد الملف ومتابعة الطلب.",
+          "priceLabel": "السعر",
+          "price": "10,000 فرنك أفريقي"
+        },
+        "certificatNationalite": {
+          "title": "شهادة جنسية",
+          "description": "شهادة الجنسية هي وثيقة رسمية تشهد على الجنسية التشادية للشخص. غالباً ما تكون مطلوبة لإجراءات إدارية أو قانونية مختلفة. يساعدك فريقنا في إعداد الملف والتحقق من الوثائق الداعمة ومتابعة طلبك.",
+          "priceLabel": "السعر",
+          "price": "20,000 فرنك أفريقي"
+        }
+      }
+    },
+    "demande": {
+      "title": "طلب {service}",
+      "description": "املأ النموذج أدناه لطلب {service}",
+      "documentsRequis": "الوثائق المطلوبة",
+      "documentsAFournir": "الوثائق المطلوب تقديمها",
+      "informationImportante": "معلومات مهمة",
+      "documentsValidite": "يجب أن تكون جميع الوثائق سارية المفعول ومطابقة للمتطلبات القنصلية."
+    },
+    "mesDemandesClient": {
+      "title": "طلباتي",
+      "description": "اعثر هنا على تاريخ وحالة جميع طلباتك لدى سفارة تشاد.",
+      "filtrer": "تصفية حسب",
+      "noTicket": "رقم التذكرة",
+      "placeholderTicket": "مثال: T001",
+      "typeService": "نوع الخدمة",
+      "statut": "الحالة",
+      "tous": "الكل",
+      "appliquer": "تطبيق",
+      "listeDemandes": "قائمة الطلبات"
+    },
+    "quickActions": {
+      "title": "خدمات سريعة",
+      "description": "الوصول السريع إلى جميع نماذج الطلبات القنصلية",
+      "nouvelleDemandeButton": "تقديم طلب جديد",
+      "modalTitle": "اختر الوثيقة المطلوبة",
+      "documents": {
+        "passeport": {
+          "label": "جواز سفر",
+          "description": "تقدم بطلب للحصول على جواز سفر تشادي بيومتري"
+        },
+        "laissez-passer": {
+          "label": "تصريح مرور",
+          "description": "احصل على تصريح مرور للعودة إلى تشاد"
+        },
+        "procuration": {
+          "label": "توكيل",
+          "description": "وكل شخصاً للقيام بإجراءاتك"
+        },
+        "carte-consulaire": {
+          "label": "بطاقة قنصلية",
+          "description": "سجل في السفارة"
+        },
+        "certificat-nationalite": {
+          "label": "شهادة جنسية",
+          "description": "أثبت جنسيتك التشادية"
+        },
+        "visa": {
+          "label": "تأشيرة",
+          "description": "تقدم بطلب للحصول على تأشيرة سفر"
+        }
+      }
+    },
+    "header": {
+      "searchPlaceholder": "بحث...",
+      "notifications": "الإشعارات",
+      "messages": "الرسائل",
+      "viewAllNotifications": "عرض جميع الإشعارات",
+      "viewAllMessages": "عرض جميع الرسائل"
+    },
+    "sidebar": {
+      "dashboard": "لوحة التحكم",
+      "nouvelleDemandeLabel": "تقديم طلب جديد",
+      "mesDemandes": "طلباتي",
+      "monProfil": "ملفي الشخصي",
+      "deconnexion": "تسجيل الخروج",
+     "embassyName": "السفارة تشاد"
+    },
+    "dashboard": {
+      "bonjour": "مرحباً",
+      "nomUtilisateur": "تيين فيراند",
+      "etape": "الخطوة",
+      "service": "الخدمة",
+      "typeService": "الاسترداد",
+      "demande": "الطلب",
+      "typeDemande": "تأشيرة",
+      "bienvenue": "مرحباً بك في مساحتك الشخصية.",
+      "progression": "التقدم",
+      "periodeDate": "من 01 يوليو - 31 يوليو",
+      "achevementPrevu": "الإنجاز المتوقع",
+      "dateAchevement": "16 يوليو 2025",
+      "dureeJours": "14 يوماً",
+      "progressSteps": {
+        "processus": "عملية",
+        "deTraitement": "المعالجة"
+      },
+      "requestsTable": {
+        "title": "طلباتي الجارية",
+        "ticketNumber": "رقم التذكرة",
+        "serviceConcerne": "الخدمة المعنية",
+        "dateSubmission": "تاريخ التقديم",
+        "currentStatus": "الحالة الحالية",
+        "action": "إجراء",
+        "voir": "عرض",
+        "ticket": "تذكرة",
+        "date": "تاريخ",
+        "voirToutesDemandes": "عرض جميع الطلبات",
+        "status": {
+          "nouveau": "جديد",
+          "enCours": "قيد المعالجة",
+          "enAttente": "في الانتظار",
+          "pretARetirer": "جاهز للاستلام"
+        }
+      },
+      "newsCarousel": {
+        "title": "الأخبار"
+      },
+      "messages": {
+        "title": "الرسائل",
+        "modal": {
+          "title": "جميع الرسائل",
+          "markAsRead": "مراجعة كمقروء",
+          "markAsUnread": "مراجعة كغير مقروء",
+          "close": "إغلاق",
+          "empty": "لا توجد رسائل",
+          "read": "مقروء",
+          "unread": "غير مقروء",
+          "reply": "رد"
+        }
+      }
+    },
+    "notifications": {
+      "title": "الإشعارات",
+      "listeAlertes": "قائمة أحدث التنبيهات والتحديثات المهمة",
+      "statut": "الحالة",
+      "notification": "إشعار",
+      "voirToutes": "عرض جميع الإشعارات",
+      "status": {
+        "enCours": "قيد المعالجة",
+        "En Cours": "قيد المعالجة",
+        "requis": "مطلوب",
+        "Requis": "مطلوب",
+        "pretARetirer": "جاهز للاستلام",
+        "Prêt À Retirer": "جاهز للاستلام"
+      },
+      "modal": {
+        "title": "جميع الإشعارات",
+        "markAsRead": "مراجعة كمقروء",
+        "markAsUnread": "مراجعة كغير مقروء",
+        "close": "إغلاق",
+        "empty": "لا توجد إشعارات",
+        "read": "مقروء",
+        "unread": "غير مقروء",
+        "all": "الكل"
+      }
+    },
+    "profil": {
+      "title": "ملفي الشخصي",
+      "description": "اعثر هنا على تاريخ وحالة جميع طلباتك لدى سفارة تشاد.",
+      "modifierCompte": "تعديل الحساب",
+      "modifierMotDePasse": "تغيير كلمة المرور",
+      "supprimerCompte": "حذف الحساب",
+      "champsObligatoires": "الحقول المعلمة بـ * مطلوبة.",
+      "monIdentite": "هويتي",
+      "nom": "الاسم الأخير",
+      "prenom": "الاسم الأول",
+      "langueLabel": "اللغة التي تريد ملء طلب التأشيرة بها",
+      "francais": "الفرنسية",
+      "anglais": "الإنجليزية",
+      "arabe": "العربية",
+      "enregistrer": "حفظ",
+      "mesDemandes": "طلباتي",
+      "voirProfil": "عرض الملف الشخصي",
+      "modifierProfil": "تعديل الملف الشخصي",
+      "annuler": "إلغاء",
+      "motDePasseActuel": "كلمة المرور الحالية",
+      "nouveauMotDePasse": "كلمة المرور الجديدة",
+      "confirmerMotDePasse": "تأكيد كلمة المرور الجديدة"
+    }
   }
 }

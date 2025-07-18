@@ -10,7 +10,6 @@ import Head from "@/components/home/navbar/navbar";
 import Footer from "@/components/home/footer/footer";
 import rtlDetect from "rtl-detect-intl";
 import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
-import { ThemeProvider } from "@/components/ThemeProvider";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
@@ -29,9 +28,9 @@ export default async function RootLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  const locale = params.locale;
+  const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
@@ -46,13 +45,11 @@ export default async function RootLayout({
       >
         <div className="font-blinker w-full">
           <NextIntlClientProvider locale={locale} messages={messages}>
-            <ThemeProvider>
-              <ClientLayoutWrapper>
-                <Head />
-                {children}
-                <Footer />
-              </ClientLayoutWrapper>
-            </ThemeProvider>
+            <ClientLayoutWrapper>
+              <Head />
+              {children}
+              <Footer />
+            </ClientLayoutWrapper>
           </NextIntlClientProvider>
         </div>
       </body>

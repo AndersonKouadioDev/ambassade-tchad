@@ -30,12 +30,6 @@ export default function VisaForm() {
         ] },
       ]}
       buttons={[
-          { 
-            label: "Voir les conditions", 
-            type: "button", 
-            onClick: () => setIsConditionsModalOpen(true),
-            variant: "outline" 
-          },
         { label: "Envoyer", type: "submit", variant: "primary" }
       ]}
       onSubmit={(values) => {

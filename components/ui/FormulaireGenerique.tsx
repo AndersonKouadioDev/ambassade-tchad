@@ -33,15 +33,21 @@ export default function FormulaireGenerique({
 }: FormulaireGeneriqueProps) {
   const [values, setValues] = useState<Record<string, unknown>>({});
   const [filePreviews, setFilePreviews] = useState<Record<string, string>>({});
+  const [uploadingFiles, setUploadingFiles] = useState<Record<string, boolean>>({});
+  const [showToast, setShowToast] = useState(false);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLTextAreaElement>) {
     const target = e.target;
     const { name, value } = target;
     if (target instanceof HTMLInputElement && target.type === "file" && target.files && target.files[0]) {
+      setUploadingFiles((prev) => ({ ...prev, [name]: true }));
       setValues((v) => ({ ...v, [name]: target.files![0] }));
       const reader = new FileReader();
       reader.onload = (ev) => {
         setFilePreviews((prev) => ({ ...prev, [name]: ev.target?.result as string }));
+        setUploadingFiles((prev) => ({ ...prev, [name]: false }));
+        setShowToast(true);
+        setTimeout(() => setShowToast(false), 3000);
       };
       reader.readAsDataURL(target.files[0]);
     } else {
@@ -80,8 +86,13 @@ export default function FormulaireGenerique({
                 return (
                   <div key={field.name} className="col-span-1 md:col-span-2 flex flex-col items-center mb-4">
                     <div className="w-40 h-40 border-2 border-dashed border-gray-300 rounded-xl flex items-center justify-center bg-white dark:bg-gray-900 bg-opacity-80 relative">
-                      {filePreviews[field.name] ? (
-                        <Image src={filePreviews[field.name]} alt={field.label} fill className="object-cover rounded-lg" />
+                      {uploadingFiles[field.name] ? (
+                        <div className="flex flex-col items-center">
+                          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#F44C27] mb-2"></div>
+                          <span className="text-xs text-gray-500">Upload...</span>
+                        </div>
+                      ) : filePreviews[field.name] ? (
+                        <Image src={filePreviews[field.name]} alt={field.label} fill className="object-contain rounded-lg" />
                       ) : (
                         <Images className="mx-auto mb-2 text-gray-400" size={24} />
                       )}
@@ -92,6 +103,7 @@ export default function FormulaireGenerique({
                         className="absolute inset-0 opacity-0 cursor-pointer"
                         aria-label={field.label}
                         onChange={handleChange}
+                        disabled={uploadingFiles[field.name]}
                       />
                     </div>
                     <span className="mt-2 text-gray-500 dark:text-gray-300 text-sm">{field.label}</span>
@@ -200,6 +212,18 @@ export default function FormulaireGenerique({
           </div>
         </form>
       </div>
+      
+      {/* Toast de succès */}
+      {showToast && (
+        <div className="fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-slide-in">
+          <div className="flex items-center gap-2">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            </svg>
+            Fichier uploadé avec succès !
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -13,21 +13,34 @@ const notifications = [
 
 export default function Dashboard() {
   return (
-    <>
+    <div className="space-y-6">
       <DashboardHeader />
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 mt-8">
-        <div className="col-span-3"><RequestsTablePro /></div>
-        <div className="col-span-2"><NewsCarouselPro /></div>
+      
+      {/* Section principale avec tableau et news */}
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 lg:gap-6">
+        {/* Tableau des demandes - prend plus d'espace sur desktop */}
+        <div className="xl:col-span-2 order-1">
+          <RequestsTablePro />
+        </div>
+        
+        {/* News carousel - stack sur mobile */}
+        <div className="xl:col-span-1 order-2">
+          <NewsCarouselPro />
+        </div>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
-        <div className="col-span-3 flex flex-col gap-6 mt-8">
-         
+      
+      {/* Section notifications et actions rapides */}
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 lg:gap-6">
+        {/* Notifications - plus large sur desktop */}
+        <div className="xl:col-span-2 order-1">
           <Notifications notifications={notifications} />
         </div>
-        <div className="col-span-2 flex flex-col gap-6 mt-8">
+        
+        {/* Actions rapides - sidebar sur desktop */}
+        <div className="xl:col-span-1 order-2">
           <QuickActions />
         </div>
       </div>
-    </>
+    </div>
   );
 } 

@@ -7,10 +7,18 @@ import { ArrowUpFromLine } from "lucide-react";
 export default function CertificatNationaliteForm() {
   const [files, setFiles] = useState<File[]>([]);
   const [isConditionsModalOpen, setIsConditionsModalOpen] = useState(false);
+  const [isUploadingFiles, setIsUploadingFiles] = useState(false);
+  const [showToast, setShowToast] = useState(false);
 
   function handleFilesChange(e: React.ChangeEvent<HTMLInputElement>) {
     if (e.target.files) {
-      setFiles(Array.from(e.target.files));
+      setIsUploadingFiles(true);
+      setTimeout(() => {
+        setFiles(Array.from(e.target.files!));
+        setIsUploadingFiles(false);
+        setShowToast(true);
+        setTimeout(() => setShowToast(false), 3000);
+      }, 800);
     }
   }
   // Champs principaux pour le certificat de nationalité
@@ -47,11 +55,23 @@ export default function CertificatNationaliteForm() {
         <div className="mb-4 ml-16">
           <div className="font-semibold text-gray-700 dark:text-white mb-1">Pièces à fournir</div>
           <div className="text-xs text-gray-400 mb-2">Importez jusqu&apos;à 10 fichiers compatibles. 100 MB max. par fichier.</div>
-          <div className="w-72 border-2 border-[#003399] rounded-full hover:bg-blue-50">
-            <label className="flex items-center gap-2 px-4 py-2 text-[#003399] cursor-pointer w-full justify-start">
-              <ArrowUpFromLine size={20} />
-              <span className="text-left">Ajouter un fichier</span>
-              <input type="file" multiple className="hidden" onChange={handleFilesChange} />
+          <div className="w-72 border-2 border-blue-800 rounded-full hover:bg-blue-50">
+            <label className="flex items-center gap-2 px-4 py-2 text-blue-800 cursor-pointer w-full justify-start">
+              {isUploadingFiles ? (
+                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-blue-800"></div>
+              ) : (
+                <ArrowUpFromLine size={20} />
+              )}
+              <span className="text-left">
+                {isUploadingFiles ? 'Upload en cours...' : 'Ajouter un fichier'}
+              </span>
+              <input 
+                type="file" 
+                multiple 
+                className="hidden" 
+                onChange={handleFilesChange} 
+                disabled={isUploadingFiles}
+              />
             </label>
           </div>
           {files.length > 0 && (
@@ -59,15 +79,8 @@ export default function CertificatNationaliteForm() {
           )}
         </div>
         {/* Boutons d'action tout en bas */}
-        <div className="flex justify-between mt-8">
-          <button 
-            type="button"
-            onClick={() => setIsConditionsModalOpen(true)}
-            className="bg-transparent text-[#F44C27] border border-[#F44C27] px-6 py-2 rounded-full font-semibold hover:bg-[#fff0ed] transition"
-          >
-            Voir les conditions
-          </button>
-          <button type="submit" className="bg-[#F44C27] text-white px-6 py-2 rounded-full font-semibold shadow hover:bg-[#e13a1a] transition">Envoyer</button>
+        <div className="flex justify-end mt-8">
+          <button type="submit" className="bg-orange-500 text-white px-6 py-2 rounded-full font-semibold shadow hover:bg-orange-600 transition">Envoyer</button>
         </div>
       </form>
 
@@ -86,6 +99,18 @@ export default function CertificatNationaliteForm() {
           "Tout document prouvant la nationalité tchadienne (si disponible)"
         ]}
       />
+      
+      {/* Toast de succès */}
+      {showToast && (
+        <div className="fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-slide-in">
+          <div className="flex items-center gap-2">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            </svg>
+            Fichiers uploadés avec succès !
+          </div>
+        </div>
+      )}
     </>
   );
 } 

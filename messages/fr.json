@@ -693,5 +693,445 @@
         "visaRequest": "Demande de visa - carte consulaire"
       }
     }
+  },
+  "espaceClient": {
+    "navigation": {
+      "dashboard": "Tableau de bord",
+      "newRequest": "Nouvelle demande",
+      "myRequests": "Mes demandes",
+      "profile": "Profil",
+      "logout": "Déconnexion"
+    },
+    "common": {
+      "back": "Retour",
+      "next": "Suivant",
+      "previous": "Précédent",
+      "submit": "Envoyer",
+      "cancel": "Annuler",
+      "save": "Enregistrer",
+      "edit": "Modifier",
+      "delete": "Supprimer",
+      "view": "Voir",
+      "download": "Télécharger",
+      "upload": "Téléverser",
+      "search": "Rechercher",
+      "filter": "Filtrer",
+      "all": "Tous",
+      "none": "Aucun",
+      "yes": "Oui",
+      "no": "Non",
+      "loading": "Chargement...",
+      "error": "Erreur",
+      "success": "Succès",
+      "warning": "Avertissement",
+      "info": "Information"
+    },
+    "nouvelleDemande": {
+      "title": "Nouvelle demande",
+      "subtitle": "Choisir un service",
+      "description": "Une liste claire des services consulaires offerts par l'Ambassade du Tchad.",
+      "startRequest": "Commencer la demande",
+      "viewAllServices": "Voir Toutes Les Services",
+      "services": {
+        "visa": {
+          "title": "Demande de visa",
+          "description": "Les demandes de visa sur passeport ordinaire déposées en Côte d'Ivoire sont instruites par l'ambassade du TCHAD à Abidjan, seul habilité à prendre les décisions en matière de visas.\n\nNotre service vous assiste dans la préparation de votre dossier de demande, la vérification de la conformité des documents, la prise de rendez-vous avec l'ambassade, et même dans le suivi de la demande.",
+          "price": "50 000 FCFA",
+          "priceLabel": "FRAIS DE DEMANDE DE VISA"
+        },
+        "carteConsulaire": {
+          "title": "Demande de carte consulaire",
+          "description": "La carte consulaire est un document officiel délivré par l'Ambassade du Tchad permettant d'attester de votre inscription auprès de la représentation diplomatique. Elle facilite vos démarches administratives et l'accès à certains services réservés aux ressortissants tchadiens à l'étranger.\n\nNotre équipe vous accompagne dans la constitution du dossier, la vérification des pièces justificatives et le suivi de votre demande.",
+          "price": "20 000 FCFA",
+          "priceLabel": "FRAIS DE CARTE CONSULAIRE"
+        },
+        "passeport": {
+          "title": "Demande de Passeport",
+          "description": "Le passeport est un document de voyage sécurisé délivré par l'Ambassade du Tchad. Il permet à tout citoyen tchadien de voyager à l'étranger et de prouver son identité.\n\nNous vous guidons dans la préparation de votre dossier, la prise de rendez-vous et le suivi de l'avancement de votre demande.",
+          "price": "60 000 FCFA",
+          "priceLabel": "FRAIS DE PASSEPORT"
+        },
+        "laissezPasser": {
+          "title": "Demande de Laissez-passer",
+          "description": "Le laissez-passer est un document exceptionnel délivré pour permettre à un citoyen tchadien dépourvu de passeport de rentrer au Tchad ou de régulariser sa situation.\n\nNotre service vous informe sur les conditions d'éligibilité, les pièces à fournir et vous accompagne dans la procédure.",
+          "price": "15 000 FCFA",
+          "priceLabel": "FRAIS DE LAISSEZ-PASSER"
+        },
+        "procuration": {
+          "title": "Demande de Procuration",
+          "description": "La procuration permet à un citoyen tchadien de mandater une personne pour effectuer des démarches administratives en son nom auprès des autorités tchadiennes.\n\nNous vous assistons dans la rédaction de la procuration, la constitution du dossier et le suivi de la demande.",
+          "price": "10 000 FCFA",
+          "priceLabel": "FRAIS DE PROCURATION"
+        },
+        "certificatNationalite": {
+          "title": "Demande de certificat de nationalité",
+          "description": "Le certificat de nationalité est un document officiel attestant de la nationalité tchadienne d'une personne. Il est souvent exigé pour diverses démarches administratives ou juridiques.\n\nNotre équipe vous accompagne dans la constitution du dossier, la vérification des pièces justificatives et le suivi de votre demande.",
+          "price": "20 000 FCFA",
+          "priceLabel": "FRAIS DE CERTIFICAT DE NATIONALITÉ"
+        }
+      }
+    },
+    "formulaire": {
+      "title": "Demande de {type}",
+      "description": "Remplissez le formulaire ci-dessous pour votre demande de {type}",
+      "documentsRequired": "Documents requis",
+      "documentsToProvide": "Documents à fournir",
+      "importantInfo": "Information importante",
+      "importantInfoText": "Tous les documents doivent être en cours de validité et conformes aux exigences consulaires.",
+      "filesToProvide": "Pièces à fournir",
+      "fileUploadInfo": "Importez jusqu'à 10 fichiers compatibles. 100 MB max. par fichier.",
+      "addFile": "Ajouter un fichier",
+      "uploading": "Upload en cours...",
+      "fileSelected": "fichier(s) sélectionné(s)",
+      "uploadSuccess": "Fichier uploadé avec succès !",
+      "multipleFilesSuccess": "Fichiers uploadés avec succès !",
+      "fields": {
+        "photo": "Photo",
+        "lastName": "Nom",
+        "firstName": "Prénom",
+        "birthDate": "Date de naissance",
+        "birthPlace": "Lieu de naissance",
+        "nationality": "Nationalité",
+        "gender": "Sexe",
+        "male": "Masculin",
+        "female": "Féminin",
+        "maritalStatus": "Situation familiale",
+        "single": "Célibataire",
+        "married": "Marié(e)",
+        "divorced": "Divorcé(e)",
+        "widowed": "Veuf/Veuve",
+        "childOf": "Fils/Fille de",
+        "andOf": "Et de",
+        "profession": "Profession",
+        "address": "Domicile",
+        "contact": "Contact",
+        "passportType": "Type de passeport",
+        "passportNumber": "Numéro du passeport",
+        "issueDate": "Date de délivrance",
+        "expiryDate": "Date d'expiration de la validité",
+        "mainDestination": "Destination principale",
+        "employerAddress": "Adresse de l'employeur",
+        "employerPhone": "Numéro de téléphone de l'employeur",
+        "visaType": "Type de Visa",
+        "duration": "Durée (mois)",
+        "status": "État",
+        "observations": "Observations",
+        "destination": "Se rendant à",
+        "accompaniedBy": "Accompagné (e) de",
+        "accompagnateur": "Le nom de l'accompagnateur(trice)",
+        "travelReason": "Motif de voyage",
+        "validUntil": "Valable jusqu'au",
+        "pieceType": "Pièce justificative",
+        "pieceNumber": "Numéro de pièce justificative",
+        "tchadAddress": "Adresse au Tchad",
+        "fatherName": "Nom du père",
+        "motherName": "Nom de la mère",
+        "requestReason": "Motif de la demande"
+      }
+    },
+    "mesDemandesPage": {
+      "title": "Mes demandes",
+      "description": "Retrouvez ici l'historique et le statut de toutes vos demandes auprès de l'Ambassade du Tchad.",
+      "filterBy": "FILTRER PAR",
+      "ticketNumber": "N°TICKET",
+      "serviceType": "TYPE DE SERVICE",
+      "status": "STATUT",
+      "apply": "Appliquer",
+      "requestsList": "Listes des demandes",
+      "ticketPlaceholder": "Ex: T001",
+      "allServices": "Tous",
+      "allStatuses": "Tous",
+      "services": {
+        "CONSULAT": "Consulat",
+        "VISA": "Visa",
+        "PASSEPORT": "Passeport",
+        "CARTE CONSULAIRE": "Carte consulaire",
+        "LAISSEZ-PASSER": "Laissez-passer",
+        "PROCURATION": "Procuration"
+      },
+      "statuses": {
+        "Nouveau": "Nouveau",
+        "En Cours": "En cours",
+        "En Attente": "En attente",
+        "Prêt À Retirer": "Prêt à retirer"
+      }
+    },
+    "quickActions": {
+      "title": "Services Rapides",
+      "description": "Accédez rapidement à tous vos formulaires de demande consulaire",
+      "newRequest": "Faire une nouvelle demande",
+      "chooseDocument": "Choisissez le document à demander",
+      "documentDescriptions": {
+        "passeport": "Demandez un passeport biométrique tchadien",
+        "laissezPasser": "Obtenez un laissez-passer pour rentrer au Tchad",
+        "procuration": "Mandatez une personne pour vos démarches",
+        "carteConsulaire": "Inscrivez-vous auprès de l'ambassade",
+        "certificatNationalite": "Justifiez votre nationalité tchadienne",
+        "visa": "Demandez un visa pour voyager"
+      }
+    },
+    "documents": {
+      "visa": [
+        "Formulaire de demande de visa dûment rempli",
+        "Copie de passeport",
+        "Passeport en cours de validité (6 mois minimum)",
+        "Lettre d'invitation ou certificat d'hébergement ou réservation d'hôtel",
+        "2 photos d'identité"
+      ],
+      "carteConsulaire": [
+        "Acte de Naissance",
+        "Copie de passeport",
+        "2 photos d'identité"
+      ],
+      "laissezPasser": [
+        "Ancien passeport/ Carte Consulaire",
+        "Acte de naissance",
+        "2 photos d'identité"
+      ],
+      "passeport": [
+        "Formulaire de demande de visa dûment rempli",
+        "Copie de passeport",
+        "Passeport en cours de validité (6 mois minimum)",
+        "Lettre d'invitation ou certificat d'hébergement ou réservation d'hôtel",
+        "2 photos d'identité"
+      ],
+      "procuration": [
+        "Pièce d'identité du mandant",
+        "Pièce d'identité du mandataire",
+        "Justificatif de domicile",
+        "Objet de la procuration"
+      ],
+      "certificatNationalite": [
+        "Acte de naissance",
+        "Pièce d'identité",
+        "Justificatif de nationalité",
+        "2 photos d'identité"
+      ]
+    },
+    "nouvelleDemande": {
+      "subtitle": "Nouvelle demande",
+      "description": "Sélectionnez le type de service pour lequel vous souhaitez faire une demande",
+      "startRequest": "Commencer la demande",
+      "viewAllServices": "Voir tous les services",
+      "services": {
+        "visa": {
+          "title": "Visa",
+          "description": "Les demandes de visa sur passeport ordinaire déposées en Côte d'Ivoire sont instruites par l'ambassade du TCHAD à Abidjan, seul habilité à prendre les décisions en matière de visas. Notre service vous assiste dans la préparation de votre dossier de demande, la vérification de la conformité des documents, la prise de rendez-vous avec l'ambassade, et même dans le suivi de la demande.",
+          "priceLabel": "Prix",
+          "price": "50 000 FCFA"
+        },
+        "carteConsulaire": {
+          "title": "Carte Consulaire",
+          "description": "La carte consulaire est un document officiel délivré par l'Ambassade du Tchad permettant d'attester de votre inscription auprès de la représentation diplomatique. Elle facilite vos démarches administratives et l'accès à certains services réservés aux ressortissants tchadiens à l'étranger. Notre équipe vous accompagne dans la constitution du dossier, la vérification des pièces justificatives et le suivi de votre demande.",
+          "priceLabel": "Prix",
+          "price": "20 000 FCFA"
+        },
+        "passeport": {
+          "title": "Passeport",
+          "description": "Le passeport est un document de voyage sécurisé délivré par l'Ambassade du Tchad. Il permet à tout citoyen tchadien de voyager à l'étranger et de prouver son identité. Nous vous guidons dans la préparation de votre dossier, la prise de rendez-vous et le suivi de l'avancement de votre demande.",
+          "priceLabel": "Prix",
+          "price": "60 000 FCFA"
+        },
+        "laissezPasser": {
+          "title": "Laissez-passer",
+          "description": "Le laissez-passer est un document exceptionnel délivré pour permettre à un citoyen tchadien dépourvu de passeport de rentrer au Tchad ou de régulariser sa situation. Notre service vous informe sur les conditions d'éligibilité, les pièces à fournir et vous accompagne dans la procédure.",
+          "priceLabel": "Prix",
+          "price": "15 000 FCFA"
+        },
+        "procuration": {
+          "title": "Procuration",
+          "description": "La procuration permet à un citoyen tchadien de mandater une personne pour effectuer des démarches administratives en son nom auprès des autorités tchadiennes. Nous vous assistons dans la rédaction de la procuration, la constitution du dossier et le suivi de la demande.",
+          "priceLabel": "Prix",
+          "price": "10 000 FCFA"
+        },
+        "certificatNationalite": {
+          "title": "Certificat de Nationalité",
+          "description": "Le certificat de nationalité est un document officiel attestant de la nationalité tchadienne d'une personne. Il est souvent exigé pour diverses démarches administratives ou juridiques. Notre équipe vous accompagne dans la constitution du dossier, la vérification des pièces justificatives et le suivi de votre demande.",
+          "priceLabel": "Prix",
+          "price": "20 000 FCFA"
+        }
+      }
+    },
+    "demande": {
+      "title": "Demande de {service}",
+      "description": "Remplissez le formulaire ci-dessous pour votre demande de {service}",
+      "documentsRequis": "Documents requis",
+      "documentsAFournir": "Documents à fournir",
+      "informationImportante": "Information importante",
+      "documentsValidite": "Tous les documents doivent être en cours de validité et conformes aux exigences consulaires."
+    },
+    "mesDemandesClient": {
+      "title": "Mes demandes",
+      "description": "Retrouvez ici l'historique et le statut de toutes vos demandes auprès de l'Ambassade du Tchad.",
+      "filtrer": "FILTRER PAR",
+      "noTicket": "N°TICKET",
+      "placeholderTicket": "Ex: T001",
+      "typeService": "TYPE DE SERVICE",
+      "statut": "STATUT",
+      "tous": "Tous",
+      "appliquer": "Appliquer",
+      "listeDemandes": "Listes des demandes"
+    },
+    "quickActions": {
+      "title": "Services Rapides",
+      "description": "Accédez rapidement à tous vos formulaires de demande consulaire",
+      "nouvelleDemandeButton": "Faire une nouvelle demande",
+      "modalTitle": "Choisissez le document à demander",
+      "documents": {
+        "passeport": {
+          "label": "Passeport",
+          "description": "Demandez un passeport biométrique tchadien"
+        },
+        "laissez-passer": {
+          "label": "Laissez-passer",
+          "description": "Obtenez un laissez-passer pour rentrer au Tchad"
+        },
+        "procuration": {
+          "label": "Procuration",
+          "description": "Mandatez une personne pour vos démarches"
+        },
+        "carte-consulaire": {
+          "label": "Carte consulaire",
+          "description": "Inscrivez-vous auprès de l'ambassade"
+        },
+        "certificat-nationalite": {
+          "label": "Certificat de nationalité",
+          "description": "Justifiez votre nationalité tchadienne"
+        },
+        "visa": {
+          "label": "Visa",
+          "description": "Demandez un visa pour voyager"
+        }
+      }
+    },
+    "header": {
+      "searchPlaceholder": "Rechercher...",
+      "notifications": "Notifications",
+      "messages": "Messages",
+      "viewAllNotifications": "Voir toutes les notifications",
+      "viewAllMessages": "Voir tous les messages"
+    },
+    "sidebar": {
+      "embassyName": "Ambassade du Tchad",
+      "dashboard": "Mon Tableau De Bord",
+      "nouvelleDemandeLabel": "Faire Une Nouvelle Demande",
+      "mesDemandes": "Mes Demandes",
+      "monProfil": "Mon Profil",
+      "deconnexion": "Déconnexion"
+    },
+    "dashboard": {
+      "bonjour": "Bonjour",
+      "nomUtilisateur": "Tiene Ferand",
+      "etape": "Étape",
+      "service": "Service",
+      "typeService": "Recouvrement",
+      "demande": "Demande",
+      "typeDemande": "Visa",
+      "bienvenue": "Bienvenue sur votre espace personnel.",
+      "progression": "Progression",
+      "periodeDate": "Du 01 juil- 31 juil",
+      "achevementPrevu": "Achèvement prévu",
+      "dateAchevement": "16 Juillet 2025",
+      "dureeJours": "14 Jours",
+      "progressSteps": {
+        "processus": "Processus",
+        "deTraitement": "de traitement"
+      },
+      "requestsTable": {
+        "title": "Mes demandes en cours",
+        "ticketNumber": "N° TICKET",
+        "serviceConcerne": "SERVICE CONCERNÉ",
+        "dateSubmission": "DATE DE SOUMISSION",
+        "currentStatus": "STATUT ACTUEL",
+        "action": "ACTION",
+        "voir": "Voir",
+        "ticket": "Ticket",
+        "date": "Date",
+        "voirToutesDemandes": "Voir Toutes Les Demandes",
+        "status": {
+          "nouveau": "Nouveau",
+          "enCours": "En Cours",
+          "enAttente": "En Attente",
+          "pretARetirer": "Prêt À Retirer"
+        }
+      },
+      "newsCarousel": {
+        "title": "Actualités"
+      },
+      "messages": {
+        "title": "Messages",
+        "modal": {
+          "title": "Tous les messages",
+          "markAsRead": "Marquer comme lu",
+          "markAsUnread": "Marquer comme non lu",
+          "close": "Fermer",
+          "empty": "Aucun message",
+          "read": "Lu",
+          "unread": "Non lu",
+          "reply": "Répondre"
+        }
+      }
+    },
+    "messages": {
+      "title": "Messages",
+      "modal": {
+        "title": "Tous les messages",
+        "markAsRead": "Marquer comme lu",
+        "markAsUnread": "Marquer comme non lu",
+        "close": "Fermer",
+        "empty": "Aucun message",
+        "read": "Lu",
+        "unread": "Non lu",
+        "reply": "Répondre"
+      }
+    },
+    "notifications": {
+      "title": "Notifications",
+      "listeAlertes": "Liste des dernières alertes et mises à jour importantes",
+      "statut": "Statut",
+      "notification": "Notification",
+      "voirToutes": "Voir Toutes Les Notifications",
+      "status": {
+        "enCours": "En Cours",
+        "En Cours": "En Cours",
+        "requis": "Requis",
+        "Requis": "Requis",
+        "pretARetirer": "Prêt À Retirer",
+        "Prêt À Retirer": "Prêt À Retirer"
+      },
+      "modal": {
+        "title": "Toutes les notifications",
+        "markAsRead": "Marquer comme lu",
+        "markAsUnread": "Marquer comme non lu",
+        "close": "Fermer",
+        "empty": "Aucune notification",
+        "read": "Lu",
+        "unread": "Non lu",
+        "all": "Toutes"
+      }
+    },
+    "profil": {
+      "title": "Mon Profil",
+      "description": "Retrouvez ici l'historique et le statut de toutes vos demandes auprès de l'Ambassade du Tchad.",
+      "modifierCompte": "Modifier le compte",
+      "modifierMotDePasse": "Modifier mon mot de passe",
+      "supprimerCompte": "Supprimer mon compte",
+      "champsObligatoires": "Les champs annotés d'un * sont obligatoires.",
+      "monIdentite": "Mon identité",
+      "nom": "Nom",
+      "prenom": "Prénom (s)",
+      "langueLabel": "Langue dans laquelle vous souhaitez renseigner votre demande de visa",
+      "francais": "Français",
+      "anglais": "Anglais",
+      "arabe": "Arabe",
+      "enregistrer": "Enregistrer",
+      "mesDemandes": "Mes demandes",
+      "voirProfil": "Voir le profil",
+      "modifierProfil": "Modifier le profil",
+      "annuler": "Annuler",
+      "motDePasseActuel": "Mot de passe actuel",
+      "nouveauMotDePasse": "Nouveau mot de passe",
+      "confirmerMotDePasse": "Confirmer le nouveau mot de passe"
+    }
   }
 }

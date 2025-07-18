@@ -675,5 +675,220 @@
         "visaRequest": "Visa request - consular card"
       }
     }
+  },
+  "espaceClient": {
+    "nouvelleDemande": {
+      "subtitle": "New Request",
+      "description": "Select the type of service you wish to apply for",
+      "startRequest": "Start Request",
+      "viewAllServices": "View All Services",
+      
+      "services": {
+        "visa": {
+          "title": "Visa",
+          "description": "Visa applications on ordinary passports submitted in Côte d'Ivoire are processed by the Embassy of CHAD in Abidjan, the only entity authorized to make visa decisions. Our service assists you in preparing your application file, verifying document compliance, booking appointments with the embassy, and even following up on your application.",
+          "priceLabel": "Price",
+          "price": "50,000 FCFA"
+        },
+        "carteConsulaire": {
+          "title": "Consular Card",
+          "description": "The consular card is an official document issued by the Chad Embassy that certifies your registration with the diplomatic representation. It facilitates your administrative procedures and access to certain services reserved for Chadian nationals abroad. Our team assists you in preparing the file, verifying supporting documents, and following up on your application.",
+          "priceLabel": "Price",
+          "price": "20,000 FCFA"
+        },
+        "passeport": {
+          "title": "Passport",
+          "description": "The passport is a secure travel document issued by the Chad Embassy. It allows any Chadian citizen to travel abroad and prove their identity. We guide you in preparing your file, booking appointments, and tracking the progress of your application.",
+          "priceLabel": "Price",
+          "price": "60,000 FCFA"
+        },
+        "laissezPasser": {
+          "title": "Laissez-passer",
+          "description": "The laissez-passer is an exceptional document issued to allow a Chadian citizen without a passport to return to Chad or regularize their situation. Our service informs you about eligibility conditions, required documents, and assists you throughout the procedure.",
+          "priceLabel": "Price",
+          "price": "15,000 FCFA"
+        },
+        "procuration": {
+          "title": "Power of Attorney",
+          "description": "The power of attorney allows a Chadian citizen to authorize a person to carry out administrative procedures on their behalf with Chadian authorities. We assist you in drafting the power of attorney, preparing the file, and following up on the application.",
+          "priceLabel": "Price",
+          "price": "10,000 FCFA"
+        },
+        "certificatNationalite": {
+          "title": "Nationality Certificate",
+          "description": "The nationality certificate is an official document attesting to a person's Chadian nationality. It is often required for various administrative or legal procedures. Our team assists you in preparing the file, verifying supporting documents, and following up on your application.",
+          "priceLabel": "Price",
+          "price": "20,000 FCFA"
+        }
+      }
+    },
+    "demande": {
+      "title": "Request for {service}",
+      "description": "Fill out the form below for your {service} request",
+      "documentsRequis": "Required Documents",
+      "documentsAFournir": "Documents to Provide",
+      "informationImportante": "Important Information",
+      "documentsValidite": "All documents must be valid and comply with consular requirements."
+    },
+    "mesDemandesClient": {
+      "title": "My Requests",
+      "description": "Find here the history and status of all your requests with the Chad Embassy.",
+      "filtrer": "FILTER BY",
+      "noTicket": "TICKET NO.",
+      "placeholderTicket": "Ex: T001",
+      "typeService": "SERVICE TYPE",
+      "statut": "STATUS",
+      "tous": "All",
+      "appliquer": "Apply",
+      "listeDemandes": "Request List"
+    },
+    "quickActions": {
+      "title": "Quick Services",
+      "description": "Quickly access all your consular request forms",
+      "nouvelleDemandeButton": "Make a New Request",
+      "modalTitle": "Choose the document to request",
+      "documents": {
+        "passeport": {
+          "label": "Passport",
+          "description": "Apply for a Chadian biometric passport"
+        },
+        "laissez-passer": {
+          "label": "Laissez-passer",
+          "description": "Get a laissez-passer to return to Chad"
+        },
+        "procuration": {
+          "label": "Power of Attorney",
+          "description": "Authorize someone for your procedures"
+        },
+        "carte-consulaire": {
+          "label": "Consular Card",
+          "description": "Register with the embassy"
+        },
+        "certificat-nationalite": {
+          "label": "Nationality Certificate",
+          "description": "Prove your Chadian nationality"
+        },
+        "visa": {
+          "label": "Visa",
+          "description": "Apply for a travel visa"
+        }
+      }
+    },
+    "header": {
+      "searchPlaceholder": "Search...",
+      "notifications": "Notifications",
+      "messages": "Messages",
+      "viewAllNotifications": "View all notifications",
+      "viewAllMessages": "View all messages"
+    },
+    "sidebar": {
+      "dashboard": "My Dashboard",
+      "nouvelleDemandeLabel": "Make A New Request",
+      "mesDemandes": "My Requests",
+      "monProfil": "My Profile",
+      "deconnexion": "Logout",
+      "embassyName": "Embassy of Chad"
+    },
+    "dashboard": {
+      "bonjour": "Hello",
+      "nomUtilisateur": "Tiene Ferand",
+      "etape": "Step",
+      "service": "Service",
+      "typeService": "Recovery",
+      "demande": "Request",
+      "typeDemande": "Visa",
+      "bienvenue": "Welcome to your personal space.",
+      "progression": "Progress",
+      "periodeDate": "From Jul 01 - Jul 31",
+      "achevementPrevu": "Expected completion",
+      "dateAchevement": "July 16, 2025",
+      "dureeJours": "14 Days",
+      "progressSteps": {
+        "processus": "Process",
+        "deTraitement": "of processing"
+      },
+      "requestsTable": {
+        "title": "My pending requests",
+        "ticketNumber": "TICKET N°",
+        "serviceConcerne": "RELATED SERVICE",
+        "dateSubmission": "SUBMISSION DATE",
+        "currentStatus": "CURRENT STATUS",
+        "action": "ACTION",
+        "voir": "View",
+        "ticket": "Ticket",
+        "date": "Date",
+        "voirToutesDemandes": "View All Requests",
+        "status": {
+          "nouveau": "New",
+          "enCours": "In Progress",
+          "enAttente": "Pending",
+          "pretARetirer": "Ready To Collect"
+        }
+      },
+      "newsCarousel": {
+        "title": "News"
+      },
+      "messages": {
+        "title": "Messages",
+        "modal": {
+          "title": "All messages",
+          "markAsRead": "Mark as read",
+          "markAsUnread": "Mark as unread",
+          "close": "Close",
+          "empty": "No messages",
+          "read": "Read",
+          "unread": "Unread",
+          "reply": "Reply"
+        }
+      }
+    },
+    "notifications": {
+      "title": "Notifications",
+      "listeAlertes": "List of latest alerts and important updates",
+      "statut": "Status",
+      "notification": "Notification",
+      "voirToutes": "View All Notifications",
+      "status": {
+        "enCours": "In Progress",
+        "En Cours": "In Progress",
+        "requis": "Required",
+        "Requis": "Required",
+        "pretARetirer": "Ready To Collect",
+        "Prêt À Retirer": "Ready To Collect"
+      },
+      "modal": {
+        "title": "All notifications",
+        "markAsRead": "Mark as read",
+        "markAsUnread": "Mark as unread",
+        "close": "Close",
+        "empty": "No notifications",
+        "read": "Read",
+        "unread": "Unread",
+        "all": "All"
+      }
+    },
+    "profil": {
+      "title": "My Profile",
+      "description": "Find here the history and status of all your requests with the Chad Embassy.",
+      "modifierCompte": "Edit account",
+      "modifierMotDePasse": "Change my password",
+      "supprimerCompte": "Delete my account",
+      "champsObligatoires": "Fields marked with * are required.",
+      "monIdentite": "My identity",
+      "nom": "Last Name",
+      "prenom": "First Name(s)",
+      "langueLabel": "Language in which you want to fill out your visa application",
+      "francais": "French",
+      "anglais": "English",
+      "arabe": "Arabic",
+      "enregistrer": "Save",
+      "mesDemandes": "My requests",
+      "voirProfil": "View profile",
+      "modifierProfil": "Edit profile",
+      "annuler": "Cancel",
+      "motDePasseActuel": "Current password",
+      "nouveauMotDePasse": "New password",
+      "confirmerMotDePasse": "Confirm new password"
+    }
   }
 }

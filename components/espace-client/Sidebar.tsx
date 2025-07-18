@@ -6,11 +6,11 @@ import SidebarFooter from './SidebarFooter';
 
 export default function Sidebar({ open, setOpen }: { open: boolean; setOpen: (b: boolean) => void }) {
   return (
-    <SidebarConfigProvider>
+    <SidebarConfigProvider setOpen={setOpen} open={open}>
       {/* Backdrop mobile */}
       {open && (
         <div
-          className="fixed inset-0 bg-black/30 z-40 md:hidden"
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
           onClick={() => setOpen(false)}
         />
       )}
@@ -20,12 +20,12 @@ export default function Sidebar({ open, setOpen }: { open: boolean; setOpen: (b:
 }
 
 function SidebarInner({ open }: { open: boolean }) {
-  const { setHovered } = useSidebarConfig();
+  const { setHovered, collapsed } = useSidebarConfig();
   return (
     <aside
       className={
-        `bg-white dark:bg-blue-900 border-r   dark:border-blue-900 flex flex-col min-h-screen transition-all duration-300 relative
-        ${open ? 'fixed top-0 left-0 z-50 w-80 max-w-full h-full translate-x-0 pointer-events-auto opacity-100 md:static md:w-72 md:z-auto md:h-auto md:max-w-none md:pointer-events-auto md:opacity-100 md:block' : 'hidden md:block md:static md:w-72 md:z-auto md:h-auto md:max-w-none md:pointer-events-auto md:opacity-100'}
+        `bg-blue-900 border-r border-blue-900 flex flex-col h-screen transition-all duration-300 relative overflow-hidden
+        ${open ? `fixed top-0 left-0 z-50 w-72 max-w-[85vw] h-screen translate-x-0 pointer-events-auto opacity-100 md:static ${collapsed ? 'md:w-16' : 'md:w-72'} md:z-auto md:h-screen md:max-w-none md:pointer-events-auto md:opacity-100 md:block` : `hidden md:block md:static ${collapsed ? 'md:w-16' : 'md:w-72'} md:z-auto md:h-screen md:max-w-none md:pointer-events-auto md:opacity-100`}
         `
       }
       onMouseEnter={() => setHovered(true)}

@@ -12,7 +12,7 @@ export default function Accordion({ title, children, defaultOpen = false }: Acco
   return (
     <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm mb-4 border border-gray-100 dark:border-gray-700 overflow-hidden">
       <button
-        className="w-full flex items-center justify-between px-6 py-4 text-left font-bold text-[#181F2B] dark:text-white text-lg focus:outline-none transition"
+        className="w-full flex items-center justify-between px-6 py-4 text-left font-bold text-gray-900 dark:text-white text-lg focus:outline-none transition"
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
       >

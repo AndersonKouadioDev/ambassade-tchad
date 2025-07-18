@@ -33,12 +33,12 @@ export default function DemandeDetail() {
     ...steps.slice(2).map((s, idx) => <span key={idx + 2}>{s.label}</span>)
   ];
   return (
-    <div className="bg-[#F6F8FA] dark:bg-gray-900 min-h-screen w-full p-4 md:p-8">
+    <div className="w-full">
       <div className="mx-auto">
-        <h1 className="text-2xl font-bold text-[#181F2B] dark:text-white mb-1">Suivi de la Demande N° {demande.ticket}</h1>
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">Suivi de la Demande N° {demande.ticket}</h1>
         <p className="text-gray-500 dark:text-gray-300 mb-6">Retrouvez ici l&apos;historique et le statut de toutes vos demandes auprès de l&apos;Ambassade du Tchad.</p>
         <div className="bg-white dark:bg-gray-800 rounded-xl shadow p-0 md:p-8 mb-8">
-          <div className="text-xl font-bold text-[#181F2B] dark:text-white mb-4 px-4 pt-4">Listes des demandes</div>
+          <div className="text-xl font-bold text-gray-900 dark:text-white mb-4 px-4 pt-4">Listes des demandes</div>
           <DemandeTable demande={demande} />
           <HistoriqueTraitement steps={steps} progression={progression} />
           <div className="w-full flex justify-center">
