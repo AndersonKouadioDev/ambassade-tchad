@@ -1,271 +1,126 @@
 "use client";
 
-import React, { useState } from "react";
-import Image from "next/image";
-import { Button } from "@heroui/react";
-import { Eye, EyeOff, Mail, Lock, User, Phone } from "lucide-react";
+import { useState } from "react";
+import { useTranslations } from "next-intl";
+import { useSearchParams } from "next/navigation";
+import LoginForm from "./login-form";
+import RegisterForm from "./register-form";
+import ForgotPasswordForm from "./forgot-password-form";
+
+type AuthTab = "login" | "register" | "forgot-password";
 
 export default function AuthForm() {
-  const [isLogin, setIsLogin] = useState(true);
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const t = useTranslations("auth");
+  const searchParams = useSearchParams();
+  const [activeTab, setActiveTab] = useState<AuthTab>("login");
+  const message = searchParams.get("message");
 
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-    confirmPassword: "",
-    firstName: "",
-    lastName: "",
-    phone: "",
-  });
+  // Si il y a un message de succès d'inscription, afficher l'onglet login
+  if (message === "inscription_success" && activeTab !== "login") {
+    setActiveTab("login");
+  }
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const tabs = [
+    { id: "login", label: t("login.title"), icon: "🔐" },
+    { id: "register", label: t("register.title"), icon: "📝" },
+    { id: "forgot-password", label: t("forgotPassword.title"), icon: "🔑" },
+  ];
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Logic for handling form submission
-    console.log("Form submitted:", formData);
+  const renderForm = () => {
+    switch (activeTab) {
+      case "login":
+        return <LoginForm />;
+      case "register":
+        return <RegisterForm />;
+      case "forgot-password":
+        return <ForgotPasswordForm />;
+      default:
+        return <LoginForm />;
+    }
   };
 
   return (
-    <div className="flex min-h-screen">
-      {/* Section Image (Gauche) */}
-      <div className="hidden lg:flex lg:w-1/2 relative">
-        <Image
-          src="/assets/images/backgrounds/bg-ambassade-1.png"
-          alt="Ambassade du Tchad"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary/70 flex items-center justify-center">
-          <div className="text-center text-white p-8">
-            <div className="mb-8">
-              <Image
-                src="/assets/images/logo_2.png"
-                alt="Logo Ambassade"
-                width={120}
-                height={120}
-                className="mx-auto mb-4"
-              />
+    <div className="max-w-md mx-auto p-8 flex flex-col items-center justify-center min-h-[60vh]">
+      <div className="w-full bg-white/80 rounded-xl shadow-lg p-8">
+        {/* Message de succès d'inscription */}
+        {message === "inscription_success" && (
+          <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
+            <div className="flex items-center">
+              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span className="text-sm font-medium">
+                Inscription réussie ! Vous pouvez maintenant vous connecter.
+              </span>
             </div>
-            <h1 className="text-4xl font-bold mb-4">
-              Bienvenue
-            </h1>
-            <p className="text-xl mb-6">
-              Ambassade du Tchad en Côte d&apos;Ivoire
-            </p>
-            <p className="text-lg opacity-90">
-              Accédez à votre espace personnel pour profiter de nos services consulaires
-            </p>
           </div>
+        )}
+
+        {/* Onglets */}
+        <div className="flex mb-6 border-b border-gray-200">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id as AuthTab)}
+              className={`flex-1 py-3 px-4 text-sm font-medium transition-colors ${
+                activeTab === tab.id
+                  ? "text-blue-600 border-b-2 border-blue-600 bg-blue-50"
+                  : "text-gray-500 hover:text-gray-700 hover:bg-gray-50"
+              }`}
+            >
+              <div className="flex items-center justify-center gap-2">
+                <span>{tab.icon}</span>
+                <span className="hidden sm:inline">{tab.label}</span>
+              </div>
+            </button>
+          ))}
         </div>
-      </div>
 
-      {/* Section Formulaire (Droite) */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center p-8 bg-gray-50">
-        <div className="w-full max-w-md">
-          {/* Logo mobile */}
-          <div className="lg:hidden text-center mb-8">
-            <Image
-              src="/assets/images/logo_2.png"
-              alt="Logo Ambassade"
-              width={80}
-              height={80}
-              className="mx-auto mb-4"
-            />
-            <h2 className="text-2xl font-bold text-primary">
-              Ambassade du Tchad
-            </h2>
-          </div>
+        {/* Formulaire actif */}
+        <div className="mt-6">
+          {renderForm()}
+        </div>
 
-          {/* Tabs */}
-          <div className="flex bg-gray-200 rounded-lg p-1 mb-8">
-            <button
-              type="button"
-              onClick={() => setIsLogin(true)}
-              className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
-                isLogin
-                  ? "bg-white text-primary shadow-sm"
-                  : "text-gray-600 hover:text-gray-800"
-              }`}
-            >
-              Connexion
-            </button>
-            <button
-              type="button"
-              onClick={() => setIsLogin(false)}
-              className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
-                !isLogin
-                  ? "bg-white text-primary shadow-sm"
-                  : "text-gray-600 hover:text-gray-800"
-              }`}
-            >
-              Inscription
-            </button>
-          </div>
-
-          {/* Formulaire */}
-          <form onSubmit={handleSubmit} className="space-y-6">
-            {!isLogin && (
-              <>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="relative">
-                    <User className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
-                    <input
-                      type="text"
-                      name="firstName"
-                      placeholder="Prénom"
-                      value={formData.firstName}
-                      onChange={handleInputChange}
-                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                      required={!isLogin}
-                    />
-                  </div>
-                  <div className="relative">
-                    <User className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
-                    <input
-                      type="text"
-                      name="lastName"
-                      placeholder="Nom"
-                      value={formData.lastName}
-                      onChange={handleInputChange}
-                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                      required={!isLogin}
-                    />
-                  </div>
-                </div>
-                <div className="relative">
-                  <Phone className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
-                  <input
-                    type="tel"
-                    name="phone"
-                    placeholder="Numéro de téléphone"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                    required={!isLogin}
-                  />
-                </div>
-              </>
-            )}
-
-            <div className="relative">
-              <Mail className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
-              <input
-                type="email"
-                name="email"
-                placeholder="Adresse email"
-                value={formData.email}
-                onChange={handleInputChange}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                required
-              />
-            </div>
-
-            <div className="relative">
-              <Lock className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
-              <input
-                type={showPassword ? "text" : "password"}
-                name="password"
-                placeholder="Mot de passe"
-                value={formData.password}
-                onChange={handleInputChange}
-                className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                required
-              />
+        {/* Liens de navigation entre onglets */}
+        <div className="mt-6 pt-6 border-t border-gray-200">
+          {activeTab === "login" && (
+            <div className="flex flex-col sm:flex-row gap-4 text-center">
               <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-3 h-5 w-5 text-gray-400 hover:text-gray-600"
+                onClick={() => setActiveTab("register")}
+                className="text-blue-600 hover:text-blue-800 text-sm font-medium"
               >
-                {showPassword ? <EyeOff /> : <Eye />}
+                Pas encore de compte ? S'inscrire
+              </button>
+              <button
+                onClick={() => setActiveTab("forgot-password")}
+                className="text-gray-600 hover:text-gray-800 text-sm font-medium"
+              >
+                Mot de passe oublié ?
               </button>
             </div>
+          )}
 
-            {!isLogin && (
-              <div className="relative">
-                <Lock className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
-                <input
-                  type={showConfirmPassword ? "text" : "password"}
-                  name="confirmPassword"
-                  placeholder="Confirmer le mot de passe"
-                  value={formData.confirmPassword}
-                  onChange={handleInputChange}
-                  className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                  required={!isLogin}
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute right-3 top-3 h-5 w-5 text-gray-400 hover:text-gray-600"
-                >
-                  {showConfirmPassword ? <EyeOff /> : <Eye />}
-                </button>
-              </div>
-            )}
+          {activeTab === "register" && (
+            <div className="text-center">
+              <button
+                onClick={() => setActiveTab("login")}
+                className="text-blue-600 hover:text-blue-800 text-sm font-medium"
+              >
+                Déjà un compte ? Se connecter
+              </button>
+            </div>
+          )}
 
-            {isLogin && (
-              <div className="flex items-center justify-between">
-                <label className="flex items-center">
-                  <input
-                    type="checkbox"
-                    className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
-                  />
-                  <span className="ml-2 text-sm text-gray-600">
-                    Se souvenir de moi
-                  </span>
-                </label>
-                <button
-                  type="button"
-                  className="text-sm text-primary hover:text-primary/80"
-                >
-                  Mot de passe oublié ?
-                </button>
-              </div>
-            )}
-
-            <Button
-              type="submit"
-              color="primary"
-              className="w-full py-3 text-white font-medium"
-              size="lg"
-            >
-              {isLogin ? "Se connecter" : "S'inscrire"}
-            </Button>
-          </form>
-
-          {/* Liens supplémentaires */}
-          <div className="mt-6 text-center text-sm text-gray-600">
-            {isLogin ? (
-              <p>
-                Pas encore de compte ?{" "}
-                <button
-                  type="button"
-                  onClick={() => setIsLogin(false)}
-                  className="text-primary hover:text-primary/80 font-medium"
-                >
-                  Créez-en un
-                </button>
-              </p>
-            ) : (
-              <p>
-                Déjà un compte ?{" "}
-                <button
-                  type="button"
-                  onClick={() => setIsLogin(true)}
-                  className="text-primary hover:text-primary/80 font-medium"
-                >
-                  Connectez-vous
-                </button>
-              </p>
-            )}
-          </div>
+          {activeTab === "forgot-password" && (
+            <div className="text-center">
+              <button
+                onClick={() => setActiveTab("login")}
+                className="text-blue-600 hover:text-blue-800 text-sm font-medium"
+              >
+                Retour à la connexion
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>

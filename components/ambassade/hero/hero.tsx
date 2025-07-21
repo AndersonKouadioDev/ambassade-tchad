@@ -21,12 +21,8 @@ export default function Hero() {
         <div className=" mx-auto relative right-0 lg:right-80 justify-start p-8 flex flex-col gap-6">
           <div className="text-5xl">{t("title")}</div>
           <BreadcrumbNav/>
-        </div>
-
-        
-      </div>
-
-      
+        </div>        
+      </div> 
     </div>
   );
 }

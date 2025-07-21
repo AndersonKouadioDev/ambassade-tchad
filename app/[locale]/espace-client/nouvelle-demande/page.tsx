@@ -1,142 +1,130 @@
-import Accordion from '@/components/espace-client/Accordion';
-import NewsCarouselPro from '@/components/espace-client/NewsCarouselPro';
-import QuickActions from '@/components/espace-client/QuickActions';
-import NavigationButton from '@/components/espace-client/NavigationButton';
-import React from 'react';
-import { useTranslations } from 'next-intl';
+'use client';
+
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import { useLocale } from 'next-intl';
+
+const serviceTypes = [
+  {
+    id: 'visa',
+    title: 'Visa',
+    description: 'Demande de visa pour séjour au Tchad',
+    href: '/espace-client/nouvelle-demande/visa',
+    features: ['Court séjour', 'Long séjour', 'Transit', 'Affaires', 'Étudiant', 'Travail']
+  },
+  {
+    id: 'birth-act',
+    title: 'Acte de naissance',
+    description: "Demande d'acte de naissance",
+    href: '/espace-client/nouvelle-demande/birth-act',
+    features: ['Copie intégrale', 'Extrait avec filiation', 'Extrait sans filiation']
+  },
+  {
+    id: 'consular-card',
+    title: 'Carte consulaire',
+    description: 'Demande de carte consulaire',
+    href: '/espace-client/nouvelle-demande/consular-card',
+    features: ["Carte nationale d'identité", 'Justificatif de résidence']
+  },
+  {
+    id: 'laissez-passer',
+    title: 'Laissez-passer',
+    description: 'Demande de laissez-passer',
+    href: '/espace-client/nouvelle-demande/laissez-passer',
+    features: ['Urgence', 'Voyage temporaire', 'Retour au pays']
+  },
+  {
+    id: 'marriage-capacity',
+    title: 'Certificat de capacité matrimoniale',
+    description: 'Demande de certificat de capacité matrimoniale',
+    href: '/espace-client/nouvelle-demande/marriage-capacity',
+    features: ['Mariage civil', 'Mariage religieux', 'Justificatif de célibat']
+  },
+  {
+    id: 'death-act',
+    title: 'Acte de décès',
+    description: "Demande d'acte de décès",
+    href: '/espace-client/nouvelle-demande/death-act',
+    features: ['Copie intégrale', 'Extrait', 'Certificat de décès']
+  },
+  {
+    id: 'power-of-attorney',
+    title: 'Procuration',
+    description: 'Demande de procuration',
+    href: '/espace-client/nouvelle-demande/power-of-attorney',
+    features: ['Procuration générale', 'Procuration spéciale', 'Mandat']
+  },
+  {
+    id: 'nationality-certificate',
+    title: 'Certificat de nationalité',
+    description: 'Demande de certificat de nationalité tchadienne',
+    href: '/espace-client/nouvelle-demande/nationality-certificate',
+    features: ['Certificat de nationalité', 'Justificatif de citoyenneté']
+  }
+];
 
 export default function NouvelleDemande() {
-  const t = useTranslations('espaceClient.nouvelleDemande');
+  const { data: session, status } = useSession();
+  const router = useRouter();
+  const locale = useLocale();
+
+  if (status === 'loading') {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600 mx-auto"></div>
+          <p className="mt-4 text-gray-600">Chargement...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!session) {
+    router.push('/auth?callbackUrl=/espace-client/nouvelle-demande');
+    return null;
+  }
+
+  const handleNavigate = (href: string) => {
+    router.push(`/${locale}${href}`);
+  };
 
   return (
-    <div className="w-full">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
-        {/* Colonne gauche : accordéon services */}
-        <div className="lg:col-span-7 flex flex-col gap-3">
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">{t('subtitle')}</h1>
-          <p className="text-gray-500 dark:text-gray-300 mb-3">{t('description')}</p>
-          <Accordion title={t('services.visa.title')} defaultOpen>
-            <div className="text-gray-700 dark:text-gray-200 mb-3 text-sm">
-              {t('services.visa.description')}
-            </div>
-            <div className="flex flex-col md:flex-row items-center gap-3 bg-gray-50 dark:bg-gray-800 rounded-xl p-3 mb-3">
-              <div className="flex-1 flex items-center gap-2">
-                <span className="text-xs text-gray-500 dark:text-gray-300">{t('services.visa.priceLabel')} :</span>
-                <span className="font-bold text-lg dark:text-white">{t('services.visa.price')}</span>
-              </div>
-              <div className="flex-1 flex justify-end">
-                <NavigationButton 
-                  href="/espace-client/nouvelle-demande/visa"
-                  className="bg-orange-500 hover:bg-orange-600 text-white font-semibold text-lg px-6 py-2 rounded-2xl shadow transition-all w-full md:w-auto"
-                >
-                  {t('startRequest')}
-                </NavigationButton>
-              </div>
-            </div>
-          </Accordion>
-          <Accordion title={t('services.carteConsulaire.title')}>
-            <div className="text-gray-700 dark:text-gray-200 mb-3 text-sm">
-              {t('services.carteConsulaire.description')}
-            </div>
-            <div className="flex flex-col md:flex-row items-center gap-3 bg-gray-50 dark:bg-gray-800 rounded-xl p-3 mb-3">
-              <div className="flex-1 flex items-center gap-2">
-                <span className="text-xs text-gray-500 dark:text-gray-300">{t('services.carteConsulaire.priceLabel')} :</span>
-                <span className="font-bold text-lg dark:text-white">{t('services.carteConsulaire.price')}</span>
-              </div>
-              <div className="flex-1 flex justify-end">
-                <NavigationButton 
-                  href="/espace-client/nouvelle-demande/carte-consulaire"
-                  className="bg-orange-500 hover:bg-orange-600 text-white font-semibold text-lg px-6 py-2 rounded-2xl shadow transition-all w-full md:w-auto"
-                >
-                  {t('startRequest')}
-                </NavigationButton>
-              </div>
-            </div>
-          </Accordion>
-          <Accordion title={t('services.passeport.title')}>
-            <div className="text-gray-700 dark:text-gray-200 mb-3 text-sm">
-              {t('services.passeport.description')}
-            </div>
-            <div className="flex flex-col md:flex-row items-center gap-3 bg-gray-50 dark:bg-gray-800 rounded-xl p-3 mb-3">
-              <div className="flex-1 flex items-center gap-2">
-                <span className="text-xs text-gray-500 dark:text-gray-300">{t('services.passeport.priceLabel')} :</span>
-                <span className="font-bold text-lg dark:text-white">{t('services.passeport.price')}</span>
-              </div>
-              <div className="flex-1 flex justify-end">
-                <NavigationButton 
-                  href="/espace-client/nouvelle-demande/passeport"
-                  className="bg-orange-500 hover:bg-orange-600 text-white font-semibold text-lg px-6 py-2 rounded-2xl shadow transition-all w-full md:w-auto"
-                >
-                  {t('startRequest')}
-                </NavigationButton>
-              </div>
-            </div>
-          </Accordion>
-          <Accordion title={t('services.laissezPasser.title')}>
-            <div className="text-gray-700 dark:text-gray-200 mb-3 text-sm">
-              {t('services.laissezPasser.description')}
-            </div>
-            <div className="flex flex-col md:flex-row items-center gap-3 bg-gray-50 dark:bg-gray-800 rounded-xl p-3 mb-3">
-              <div className="flex-1 flex items-center gap-2">
-                <span className="text-xs text-gray-500 dark:text-gray-300">{t('services.laissezPasser.priceLabel')} :</span>
-                <span className="font-bold text-lg dark:text-white">{t('services.laissezPasser.price')}</span>
-              </div>
-              <div className="flex-1 flex justify-end">
-                <NavigationButton 
-                  href="/espace-client/nouvelle-demande/laissez-passer"
-                  className="bg-orange-500 hover:bg-orange-600 text-white font-semibold text-lg px-6 py-2 rounded-2xl shadow transition-all w-full md:w-auto"
-                >
-                  {t('startRequest')}
-                </NavigationButton>
-              </div>
-            </div>
-          </Accordion>
-          <Accordion title={t('services.procuration.title')}>
-            <div className="text-gray-700 dark:text-gray-200 mb-3 text-sm">
-              {t('services.procuration.description')}
-            </div>
-            <div className="flex flex-col md:flex-row items-center gap-3 bg-gray-50 dark:bg-gray-800 rounded-xl p-3 mb-3">
-              <div className="flex-1 flex items-center gap-2">
-                <span className="text-xs text-gray-500 dark:text-gray-300">{t('services.procuration.priceLabel')} :</span>
-                <span className="font-bold text-lg dark:text-white">{t('services.procuration.price')}</span>
-              </div>
-              <div className="flex-1 flex justify-end">
-                <NavigationButton 
-                  href="/espace-client/nouvelle-demande/procuration"
-                  className="bg-orange-500 hover:bg-orange-600 text-white font-semibold text-lg px-6 py-2 rounded-2xl shadow transition-all w-full md:w-auto"
-                >
-                  {t('startRequest')}
-                </NavigationButton>
-              </div>
-            </div>
-          </Accordion>
-          <Accordion title={t('services.certificatNationalite.title')}>
-            <div className="text-gray-700 dark:text-gray-200 mb-3 text-sm">
-              {t('services.certificatNationalite.description')}
-            </div>
-            <div className="flex flex-col md:flex-row items-center gap-3 bg-gray-50 dark:bg-gray-800 rounded-xl p-3 mb-3">
-              <div className="flex-1 flex items-center gap-2">
-                <span className="text-xs text-gray-500 dark:text-gray-300">{t('services.certificatNationalite.priceLabel')} :</span>
-                <span className="font-bold text-lg dark:text-white">{t('services.certificatNationalite.price')}</span>
-              </div>
-              <div className="flex-1 flex justify-end">
-                <NavigationButton 
-                  href="/espace-client/nouvelle-demande/certificat-nationalite"
-                  className="bg-orange-500 hover:bg-orange-600 text-white font-semibold text-lg px-6 py-2 rounded-2xl shadow transition-all w-full md:w-auto"
-                >
-                  {t('startRequest')}
-                </NavigationButton>
-              </div>
-            </div>
-          </Accordion>
-          <div className="flex justify-end mt-2">
-            <a href="#" className="text-orange-500 text-sm font-semibold hover:underline">{t('viewAllServices')}</a>
-          </div>
+    <div className="min-h-screen bg-gray-50 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mb-8 text-center">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            Nouvelle demande
+          </h1>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            Sélectionnez le type de service pour lequel vous souhaitez faire une demande.
+          </p>
         </div>
-        {/* Colonne droite : actualités + services rapides */}
-        <div className="lg:col-span-5 flex flex-col gap-4 w-full">
-          <NewsCarouselPro />
-          <QuickActions />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {serviceTypes.map((service) => (
+            <div
+              key={service.id}
+              className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-200 cursor-pointer p-6"
+              onClick={() => handleNavigate(service.href)}
+            >
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                {service.title}
+              </h3>
+              <p className="text-sm text-gray-600 mb-4">
+                {service.description}
+              </p>
+              <ul className="mb-4 text-xs text-gray-500">
+                {service.features.map((feature, index) => (
+                  <li key={index}>• {feature}</li>
+                ))}
+              </ul>
+              <button
+                className="w-full px-4 py-2 rounded-lg text-white font-medium bg-blue-600 hover:bg-blue-700"
+                onClick={e => { e.stopPropagation(); handleNavigate(service.href); }}
+              >
+                Commencer
+              </button>
+            </div>
+          ))}
         </div>
       </div>
     </div>

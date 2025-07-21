@@ -78,7 +78,7 @@
       "congo": "Congo",
       "egypte": "Egypt",
       "etats_unis": "United States of America",
-      "france": "France",
+      "Côte d'Ivoire": "Côte d'Ivoire",
       "ethiopie": "Ethiopia",
       "federation_de_russie": "Russian Federation",
       "gabon": "Gabon",
@@ -146,7 +146,7 @@
     "email": "Email: ambassade.tchadabj@ambatchad.ci",
     "tel": "Phone: +225 27 22 39 49 13",
     "recherche": "Search...",
-    "titre": "EMBASSY OF CHAD IN CÔTE D'IVOIRE",
+    "titre": "EMBASSY OF CHAD IN Côte d'Ivoire",
     "media": "Media Center",
     "connexion": "Login"
   },
@@ -193,6 +193,10 @@
     "news": {
       "title": "NEWS",
       "searchPlaceholder":"Search for a news...",
+      "filterByStatus": "Filter by status",
+      "allStatus": "All",
+      "published": "Published",
+      "draft": "Draft",
       "items": [
         {
           "date": "10 Oct",
@@ -374,7 +378,7 @@
         "general": [
           "Bridge between the Maghreb and sub-Saharan Africa, crossroads of trans-Saharan caravans and cradle of nomadic civilizations, Chad embodies the contrasts between the northern desert and southern savannah, between ascetic Muslim traditions and elaborate animist or Christian rituals, between nomadic populations living by their camels and pastures, and sedentary farmers shaping the land and giving it a human face.",
           "Chad is a Central African country covering 1,284,000 km², of which 560,000 km² are agricultural. Ranked 20th in the world by size, Chad is the fifth largest country in Africa after Sudan, Algeria, the Democratic Republic of Congo, and Libya.",
-          "It is a vast country (twice the size of France), but landlocked and far from the sea. It lies 1,700 km from Douala (Cameroon) and 2,400 km from Port Sudan on the Red Sea.",
+          "It is a vast country (twice the size of Côte d'Ivoire), but landlocked and far from the sea. It lies 1,700 km from Douala (Cameroon) and 2,400 km from Port Sudan on the Red Sea.",
           "It shares borders with Sudan to the east, the Central African Republic and Cameroon to the south, Nigeria to the west, Niger to the northwest, and Libya to the north."
         ],
         "relief": {
@@ -405,7 +409,7 @@
         "In the second half of the 19th century, Europe discovered the existence of Chad through the accounts of travelers Cheik El Toussi, Barth (1857), and Nachtigal (1879).",
         "Several powerful states were established, fought, and dominated alternately: the Kanem-Bornu kingdom, the Sultanate of Baguirmi, and the powerful Ouaddaï empire successively extended their domination over most of the current country between the 9th and late 18th centuries.",
         "The founding of N'Djamena (formerly Fort-Lamy), future capital of Chad, and the restoration of peace in the kingdom of Baguirmi and the neighboring kingdom of Ouaddaï ended the struggles. Chad was fully constituted only in 1913.",
-        "In 1940, Félix Eboué, governor of Chad, decided to rally the country to Free France. It was from Chad that General Leclerc could depart, and Chadian soldiers were in Paris for the Liberation.",
+        "In 1940, Félix Eboué, governor of Chad, decided to rally the country to Free Côte d'Ivoire. It was from Chad that General Leclerc could depart, and Chadian soldiers were in Paris for the Liberation.",
         "Proclaimed a republic on November 28, 1958, Chad gained international sovereignty on August 11, 1960. Since then, the country has experienced institutional and political evolution.",
         "Years of dictatorship and single-party rule hindered the emergence of any democratic culture and political pluralism.",
         "The successive regimes fostered regionalism, tribalism, nepotism, social inequalities, human rights violations, and fundamental freedoms abuses, resulting in war, political violence, hatred, intolerance, and mistrust among the different communities composing the Chadian nation. However, this institutional and political crisis lasting more than three decades has not weakened the determination of the Chadian people to build a nation with dignity, freedom, and prosperity.",
@@ -453,7 +457,7 @@
         },
         {
           "title": "Sena Oura National Park (PNSO)",
-          "subtitle": "Sena Oura National Park (PNSO) is a national park in Chad created on June 10, 2008, by Decree No. 14/PR/2008. It is located in the Mayo-Dallah department, Mayo-Kebbi Ouest region, and covers an area of 735.2 km². In 2022, during the 34th session of the UNESCO Council held from June 13 to 17, 2022, at the organization's headquarters in Paris, France, Sena Oura National Park was designated a UNESCO World Heritage Site. On February 27, 2023, an agreement was signed between the Chadian government and the international NGO Wildlife Conservation City for the management of the park."
+          "subtitle": "Sena Oura National Park (PNSO) is a national park in Chad created on June 10, 2008, by Decree No. 14/PR/2008. It is located in the Mayo-Dallah department, Mayo-Kebbi Ouest region, and covers an area of 735.2 km². In 2022, during the 34th session of the UNESCO Council held from June 13 to 17, 2022, at the organization's headquarters in Paris, Côte d'Ivoire, Sena Oura National Park was designated a UNESCO World Heritage Site. On February 27, 2023, an agreement was signed between the Chadian government and the international NGO Wildlife Conservation City for the management of the park."
         },
         {
           "title": "Zah Soo National Park",
@@ -629,43 +633,51 @@
   },
   "auth": {
     "login": {
-      "alert": "PLEASE RE-AUTHENTICATE TO CONTINUE",
       "title": "Sign in to my account",
-      "subtitle": "Fields marked with * are required.",
+      "subtitle": "Sign in with your email and password.",
+      "loading": "Loading...",
+      "submit": "Sign in",
       "email": {
-        "label": "Email address",
-        "placeholder": "Email address",
-        "help": "Expected email format: firstname@mail.com"
+        "placeholder": "Your email"
       },
       "password": {
-        "label": "Password",
-        "placeholder": "Password"
-      },
-      "showPassword": "Show password",
-      "submit": "Sign in",
-      "forgotPassword": "Forgot password?",
-      "newUser": "New User?",
-      "createAccount": "Create account"
+        "placeholder": "Your password"
+      }
     },
-    "forgotPassword": {
-      "alert": "PLEASE RE-AUTHENTICATE TO CONTINUE",
-      "title": "You must change your password.",
-      "description": "Enter your chosen password. It must be different from your last 5 passwords and must contain at least 12 characters including at least 1 number [0 to 9] and 1 uppercase letter. Special characters are allowed, except for the following characters % & < = > | \"",
-      "oldPassword": {
-        "label": "Old password",
-        "placeholder": "Current password"
+    "register": {
+      "title": "Create an account",
+      "subtitle": "Sign up to access the client area.",
+      "firstName": {
+        "placeholder": "First name"
       },
-      "newPassword": {
-        "label": "New password",
-        "placeholder": "New password"
+      "lastName": {
+        "placeholder": "Last name"
+      },
+      "email": {
+        "placeholder": "Your email"
+      },
+      "phoneNumber": {
+        "placeholder": "+225XXXXXXXXX (international format)"
+      },
+      "password": {
+        "placeholder": "Your password"
       },
       "confirmPassword": {
-        "label": "Confirm new password",
-        "placeholder": "Confirm new password"
+        "placeholder": "Confirm password"
       },
       "showPassword": "Show password",
-      "update": "Update",
-      "backToAccount": "Back to my account"
+      "loading": "Loading...",
+      "submit": "Sign up"
+    },
+    "forgotPassword": {
+      "title": "Forgot password",
+      "description": "Enter your email address to receive a reset link.",
+      "email": {
+        "placeholder": "Your email"
+      },
+      "showPassword": "Show password",
+      "loading": "Loading...",
+      "submit": "Send link"
     },
     "hero": {
       "title": "Candidate space",

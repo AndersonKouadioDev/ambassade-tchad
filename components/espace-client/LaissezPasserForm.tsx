@@ -3,12 +3,19 @@ import FormulaireGenerique from "@/components/ui/FormulaireGenerique";
 import ConditionsModal from "@/components/ui/ConditionsModal";
 import React, { useState } from "react";
 import { ArrowUpFromLine } from "lucide-react";
+import { useSession } from "next-auth/react";
+import { useLocale } from "next-intl";
+import { useRouter } from "next/navigation";
+import { createDemande } from "@/src/actions/demande-request.action";
 
 export default function LaissezPasserForm() {
   const [files, setFiles] = useState<File[]>([]);
   const [isConditionsModalOpen, setIsConditionsModalOpen] = useState(false);
   const [isUploadingFiles, setIsUploadingFiles] = useState(false);
   const [showToast, setShowToast] = useState(false);
+  const { data: session } = useSession();
+  const locale = useLocale();
+  const router = useRouter();
 
   function handleFilesChange(e: React.ChangeEvent<HTMLInputElement>) {
     if (e.target.files) {
@@ -47,15 +54,43 @@ export default function LaissezPasserForm() {
     { type: "text" as const, name: "contact", label: "Contact", placeholder: "Contact" },
   ];
 
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    files.forEach((file) => formData.append("documents", file));
+    formData.append("locale", locale);
+
+    const details: Record<string, any> = {};
+    fields.forEach(field => {
+      if (field.type !== "file") {
+        details[field.name] = formData.get(field.name);
+      }
+    });
+
+    const result = await createDemande({
+      type: "LAISSEZ_PASSER",
+      details,
+      contactPhoneNumber: formData.get("contact") as string,
+      documents: files,
+      locale,
+      tokenFromClient: session?.user?.token,
+    });
+
+    if (result.success) {
+      router.push(`/${locale}/espace-client/mes-demandes?success=true`);
+    } else {
+      alert(result.error || "Erreur lors de la création de la demande");
+    }
+  }
+
   return (
     <>
-    <form className="w-full">
+    <form className="w-full" onSubmit={handleSubmit}>
       <FormulaireGenerique
         title="Formulaire de demande de Laissez-passer"
         logoSrc="/assets/images/illustrations/formulaire/logo.png"
         fields={fields}
         buttons={[]}
-        onSubmit={() => {}}
       />
       {/* Section pièces à fournir */}
       <div className="mb-4 ml-16">
@@ -102,7 +137,6 @@ export default function LaissezPasserForm() {
           '2 photos d’identité'
         ]}
       />
-      
       {/* Toast de succès */}
       {showToast && (
         <div className="fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-slide-in">

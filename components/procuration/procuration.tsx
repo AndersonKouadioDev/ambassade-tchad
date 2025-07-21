@@ -3,10 +3,17 @@ import FormulaireGenerique from "@/components/ui/FormulaireGenerique";
 import ConditionsModal from "@/components/ui/ConditionsModal";
 import React, { useState } from "react";
 import { ArrowUpFromLine } from "lucide-react";
+import { useSession } from "next-auth/react";
+import { useLocale } from "next-intl";
+import { useRouter } from "next/navigation";
+import { createDemande } from "@/src/actions/demande-request.action";
 
 export default function ProcurationForm() {
   const [files, setFiles] = useState<File[]>([]);
   const [isConditionsModalOpen, setIsConditionsModalOpen] = useState(false);
+  const { data: session } = useSession();
+  const locale = useLocale();
+  const router = useRouter();
 
   function handleFilesChange(e: React.ChangeEvent<HTMLInputElement>) {
     if (e.target.files) {
@@ -36,15 +43,43 @@ export default function ProcurationForm() {
     { type: "text" as const, name: "objet", label: "Objet de la procuration", placeholder: "Objet de la procuration" },
   ];
 
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    files.forEach((file) => formData.append("documents", file));
+    formData.append("locale", locale);
+
+    const details: Record<string, any> = {};
+    fields.forEach(field => {
+      if (field.type !== "file") {
+        details[field.name] = formData.get(field.name);
+      }
+    });
+
+    const result = await createDemande({
+      type: "POWER_OF_ATTORNEY",
+      details,
+      contactPhoneNumber: formData.get("mandataireContact") as string,
+      documents: files,
+      locale,
+      tokenFromClient: session?.user?.token,
+    });
+
+    if (result.success) {
+      router.push(`/${locale}/espace-client/mes-demandes?success=true`);
+    } else {
+      alert(result.error || "Erreur lors de la création de la demande");
+    }
+  }
+
   return (
     <>
-      <form className="w-full">
+      <form className="w-full" onSubmit={handleSubmit}>
         <FormulaireGenerique
           title="Formulaire de demande de procuration"
           logoSrc="/assets/images/illustrations/formulaire/logo.png"
           fields={fields}
           buttons={[]}
-          onSubmit={() => {}}
         />
         {/* Section pièces à fournir */}
         <div className="mb-4 ml-16">
@@ -82,8 +117,8 @@ export default function ProcurationForm() {
         documentsLabel="Documents à fournir :"
         conditionsList={[
           // À compléter par l'utilisateur
-          'Copie de la pièce d’identité du mandant',
-          'Copie de la pièce d’identité du mandataire',
+          'Copie de la pièce d\'identité du mandant',
+          'Copie de la pièce d\'identité du mandataire',
           'Lettre de procuration signée',
         ]}
       />

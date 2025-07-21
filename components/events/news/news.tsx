@@ -7,38 +7,48 @@ import { Calendar, ChevronLeft, ChevronRight, Search } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { News } from "@/lib/types";
 import { newsData } from "@/lib/news-store";
-import { formatNewsDate, searchNews, filterNewsByDate, getNewsExcerpt } from "@/lib/news-utils";
+import {
+  formatNewsDate,
+  searchNews,
+  filterNewsByDate,
+  getNewsExcerpt,
+} from "@/lib/news-utils";
 
 export default function NewsComponent() {
-  const t = useTranslations("news");
+  const t = useTranslations("home.news");
+
+  console.log("Traductions filters:", t); // <== ici
+
   const [search, setSearch] = useState("");
   const [searchDate, setSearchDate] = useState("");
-  const [publishedFilter, setPublishedFilter] = useState<'all' | 'published' | 'draft'>('published');
-  
+  const [publishedFilter, setPublishedFilter] = useState<
+    "all" | "published" | "draft"
+  >("published");
+
   // Récupération des actualités depuis le store
   const allNews = useMemo(() => newsData, []);
-  
+
   // Filtrage des actualités
   const filteredNews = useMemo(() => {
     let news = allNews;
-    
+
     // Filtrage par statut de publication
-    if (publishedFilter === 'published') {
-      news = news.filter(item => item.published);
-    } else if (publishedFilter === 'draft') {
-      news = news.filter(item => !item.published);
+    if (publishedFilter === "published") {
+      news = news.filter((item) => item.published);
+    } else if (publishedFilter === "draft") {
+      news = news.filter((item) => !item.published);
     }
-    
+
     // Filtrage par recherche textuelle
     if (search.trim()) {
       news = searchNews(news, search);
     }
-    
+
     // Filtrage par date
     if (searchDate) {
       news = filterNewsByDate(news, searchDate);
     }
-    
+
     return news;
   }, [allNews, search, searchDate, publishedFilter]);
 
@@ -70,12 +80,16 @@ export default function NewsComponent() {
           />
           <Calendar className="absolute top-1/2 left-4 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
         </div>
-        
+
         {/* Filtre par statut de publication */}
         <div className="relative w-full max-w-md">
           <select
             value={publishedFilter}
-            onChange={(e) => setPublishedFilter(e.target.value as 'all' | 'published' | 'draft')}
+            onChange={(e) =>
+              setPublishedFilter(
+                e.target.value as "all" | "published" | "draft"
+              )
+            }
             className="w-full py-3 pl-12 pr-4 text-sm rounded-full bg-gray-100 focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white shadow-sm appearance-none"
             aria-label={t("filterByStatus")}
             title={t("filterByStatus")}
@@ -87,7 +101,7 @@ export default function NewsComponent() {
           <Calendar className="absolute top-1/2 left-4 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
         </div>
       </div>
-      
+
       {/* Titre + Navigation */}
       <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
         <h2 className="text-3xl font-bold text-secondary text-center md:text-left">
@@ -136,7 +150,7 @@ export default function NewsComponent() {
                   <div className="absolute bottom-0 left-0 bg-secondary text-white px-4 py-2 text-sm font-semibold">
                     {formatNewsDate(item.createdAt)}
                   </div>
-                  
+
                   {/* Badge pour les actualités non publiées */}
                   {!item.published && (
                     <div className="absolute top-4 right-4">
@@ -145,7 +159,7 @@ export default function NewsComponent() {
                       </span>
                     </div>
                   )}
-                  
+
                   {/* Overlay hover */}
                   <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>

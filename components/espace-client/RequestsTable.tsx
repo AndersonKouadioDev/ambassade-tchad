@@ -1,3 +1,5 @@
+import { useLocale } from 'next-intl';
+
 interface Request {
   ticket: string;
   service: string;
@@ -17,6 +19,7 @@ const statusColors: Record<string, string> = {
 };
 
 export default function RequestsTable({ requests }: RequestsTableProps) {
+  const locale = useLocale();
   return (
     <div className="bg-white rounded-xl shadow p-4 mb-6">
       <div className="font-bold text-blue-900 mb-4">Mes demandes en cours</div>
@@ -43,7 +46,7 @@ export default function RequestsTable({ requests }: RequestsTableProps) {
         </tbody>
       </table>
       <div className="text-right mt-2">
-        <a href="#" className="text-blue-700 text-xs font-semibold hover:underline">Voir Toutes Les Demandes</a>
+        <a href={`/${locale}/espace-client/mes-demandes`} className="text-blue-700 text-xs font-semibold hover:underline">Voir Toutes Les Demandes</a>
       </div>
     </div>
   );
