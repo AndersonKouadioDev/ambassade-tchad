@@ -1,4 +1,4 @@
-// Client API pour les appels vers le backend
+import { ServiceType } from '@/types/request.types';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8081/api/v1';
 
@@ -10,8 +10,9 @@ export interface ApiResponse<T = any> {
 }
 
 export interface RequestData {
-  serviceType: string;
+  serviceType: ServiceType;
   visaDetails?: string;
+  passportDetails?: string;
   birthActDetails?: string;
   consularCardDetails?: string;
   laissezPasserDetails?: string;
@@ -30,19 +31,18 @@ class ApiClient {
     this.baseUrl = baseUrl;
   }
 
-  private async getAuthHeaders(): Promise<Record<string, string>> {
+  private async getAuthHeaders(tokenOverride?: string): Promise<Record<string, string>> {
     const headers: Record<string, string> = {
       'Content-Type': 'application/json',
     };
 
-    // Si on est côté client, on peut récupérer le token depuis le localStorage ou une session
-    if (typeof window !== 'undefined') {
-      const token = localStorage.getItem('auth-token') || sessionStorage.getItem('auth-token');
-      if (token) {
-        headers['Authorization'] = `Bearer ${token}`;
-      }
+    let token = tokenOverride;
+    if (!token && typeof window !== 'undefined') {
+      token = localStorage.getItem('auth-token') || sessionStorage.getItem('auth-token') || undefined;
     }
-
+    if (token) {
+      headers['Authorization'] = `Bearer ${token}`;
+    }
     return headers;
   }
 
@@ -61,7 +61,7 @@ class ApiClient {
         success: true,
         data,
       };
-    } catch (error) {
+    } catch {
       return {
         success: false,
         error: 'Erreur lors du parsing de la réponse',
@@ -69,50 +69,100 @@ class ApiClient {
     }
   }
 
-  async createRequest(requestData: RequestData): Promise<ApiResponse> {
+  async createRequest(requestData: RequestData & { token?: string }): Promise<ApiResponse> {
     try {
-      const headers = await this.getAuthHeaders();
-      
-      // Si on a des fichiers, on utilise FormData
-      if (requestData.documents && requestData.documents.length > 0) {
+      const headers = await this.getAuthHeaders(requestData.token);
+
+      if (requestData.documents?.length) {
         const formData = new FormData();
-        
-        // Ajouter les données JSON
         const jsonData = { ...requestData };
         delete jsonData.documents;
-        formData.append('data', JSON.stringify(jsonData));
-        
-        // Ajouter les fichiers
-        requestData.documents.forEach((file, index) => {
-          formData.append(`documents`, file);
+        // Suppression de requestId de visaDetails si présent
+        if (jsonData.visaDetails) {
+          try {
+            let details = typeof jsonData.visaDetails === 'string' ? JSON.parse(jsonData.visaDetails) : jsonData.visaDetails;
+            if (details && typeof details === 'object') {
+              // Supprime requestId si présent
+              if ('requestId' in details) {
+                delete details.requestId;
+              }
+              // Convertit les dates au format ISO si besoin
+              const toISODate = (dateStr: string) => {
+                if (!dateStr) return dateStr;
+                if (/T/.test(dateStr)) return dateStr;
+                return new Date(dateStr).toISOString();
+              };
+              if (details.personBirthDate) {
+                details.personBirthDate = toISODate(details.personBirthDate);
+              }
+              if (details.passportIssueDate) {
+                details.passportIssueDate = toISODate(details.passportIssueDate);
+              }
+              if (details.passportExpirationDate) {
+                details.passportExpirationDate = toISODate(details.passportExpirationDate);
+              }
+            }
+            jsonData.visaDetails = JSON.stringify(details);
+          } catch (e) {
+            // Si parsing échoue, on laisse tel quel
+          }
+        }
+        // Suppression de requestId de birthActDetails si présent
+        if (jsonData.birthActDetails) {
+          try {
+            let details = typeof jsonData.birthActDetails === 'string' ? JSON.parse(jsonData.birthActDetails) : jsonData.birthActDetails;
+            if (details && typeof details === 'object') {
+              if ('requestId' in details) delete details.requestId;
+              if ('personGender' in details) delete details.personGender;
+              // Conversion forcée de la date
+              if (details.personBirthDate) {
+                details.personBirthDate = new Date(details.personBirthDate).toISOString();
+              }
+              console.log('Détail final birthActDetails avant stringify:', details);
+            }
+            jsonData.birthActDetails = JSON.stringify(details);
+          } catch (e) {}
+        }
+        // Ajoute explicitement contactPhoneNumber à plat dans le FormData
+        const contactPhoneNumber = requestData.contactPhoneNumber || jsonData.contactPhoneNumber || '';
+        Object.entries(jsonData).forEach(([key, value]) => {
+          formData.append(key, typeof value === 'string' ? value : JSON.stringify(value));
         });
-
-        // Mettre à jour les headers pour FormData
+        formData.set('contactPhoneNumber', contactPhoneNumber);
+        console.log('FormData contactPhoneNumber envoyé :', formData.get('contactPhoneNumber'));
+        // Ajoute chaque fichier s'il y en a
+        requestData.documents.forEach(file => formData.append('documents', file));
         delete headers['Content-Type'];
-        
+        console.log('Payload FormData (clé data):', JSON.stringify(jsonData));
         const response = await fetch(`${this.baseUrl}/demandes`, {
           method: 'POST',
           headers,
           body: formData,
         });
-
+        console.log('response', response);
         return this.handleResponse(response);
       } else {
-        // Pas de fichiers, on envoie du JSON
+        // S'il n'y a pas de documents, NE PAS ajouter le champ 'documents'.
+        // Le backend doit gérer le cas où 'documents' est absent ou undefined.
+        const formData = new FormData();
+        const jsonData = { ...requestData };
+        delete jsonData.documents;
+        Object.entries(jsonData).forEach(([key, value]) => {
+          formData.append(key, typeof value === 'string' ? value : JSON.stringify(value));
+        });
+        delete headers['Content-Type'];
+        console.log('Payload FormData (clé data):', JSON.stringify(jsonData));
         const response = await fetch(`${this.baseUrl}/demandes`, {
           method: 'POST',
           headers,
-          body: JSON.stringify(requestData),
+          body: formData,
         });
-
+        console.log('response', response);
         return this.handleResponse(response);
       }
     } catch (error) {
-      console.error('Erreur lors de la création de la demande:', error);
-      return {
-        success: false,
-        error: 'Erreur de connexion au serveur',
-      };
+      console.error('Erreur création demande:', error);
+      return { success: false, error: 'Erreur de connexion au serveur' };
     }
   }
 
@@ -125,7 +175,7 @@ class ApiClient {
     try {
       const headers = await this.getAuthHeaders();
       const params = new URLSearchParams();
-      
+
       if (filters) {
         Object.entries(filters).forEach(([key, value]) => {
           if (value) params.append(key, value.toString());
@@ -139,77 +189,58 @@ class ApiClient {
 
       return this.handleResponse(response);
     } catch (error) {
-      console.error('Erreur lors de la récupération des demandes:', error);
-      return {
-        success: false,
-        error: 'Erreur de connexion au serveur',
-      };
+      console.error('Erreur récupération demandes:', error);
+      return { success: false, error: 'Erreur de connexion au serveur' };
     }
   }
 
   async getRequestById(requestId: string): Promise<ApiResponse> {
     try {
       const headers = await this.getAuthHeaders();
-      
       const response = await fetch(`${this.baseUrl}/demandes/${requestId}`, {
         method: 'GET',
         headers,
       });
-
       return this.handleResponse(response);
     } catch (error) {
-      console.error('Erreur lors de la récupération de la demande:', error);
-      return {
-        success: false,
-        error: 'Erreur de connexion au serveur',
-      };
+      console.error('Erreur récupération demande:', error);
+      return { success: false, error: 'Erreur de connexion au serveur' };
     }
   }
 
   async updateRequest(requestId: string, updateData: Partial<RequestData>): Promise<ApiResponse> {
     try {
       const headers = await this.getAuthHeaders();
-      
       const response = await fetch(`${this.baseUrl}/demandes/${requestId}`, {
         method: 'PUT',
         headers,
         body: JSON.stringify(updateData),
       });
-
       return this.handleResponse(response);
     } catch (error) {
-      console.error('Erreur lors de la mise à jour de la demande:', error);
-      return {
-        success: false,
-        error: 'Erreur de connexion au serveur',
-      };
+      console.error('Erreur mise à jour demande:', error);
+      return { success: false, error: 'Erreur de connexion au serveur' };
     }
   }
 
   async deleteRequest(requestId: string): Promise<ApiResponse> {
     try {
       const headers = await this.getAuthHeaders();
-      
       const response = await fetch(`${this.baseUrl}/demandes/${requestId}`, {
         method: 'DELETE',
         headers,
       });
-
       return this.handleResponse(response);
     } catch (error) {
-      console.error('Erreur lors de la suppression de la demande:', error);
-      return {
-        success: false,
-        error: 'Erreur de connexion au serveur',
-      };
+      console.error('Erreur suppression demande:', error);
+      return { success: false, error: 'Erreur de connexion au serveur' };
     }
   }
 
   async uploadDocument(file: File): Promise<ApiResponse> {
     try {
       const headers = await this.getAuthHeaders();
-      delete headers['Content-Type']; // FormData gère le Content-Type
-
+      delete headers['Content-Type'];
       const formData = new FormData();
       formData.append('file', file);
 
@@ -221,18 +252,14 @@ class ApiClient {
 
       return this.handleResponse(response);
     } catch (error) {
-      console.error('Erreur lors de l\'upload du document:', error);
-      return {
-        success: false,
-        error: 'Erreur de connexion au serveur',
-      };
+      console.error('Erreur upload document:', error);
+      return { success: false, error: 'Erreur de connexion au serveur' };
     }
   }
 
   async getRequestStats(): Promise<ApiResponse> {
     try {
       const headers = await this.getAuthHeaders();
-      
       const response = await fetch(`${this.baseUrl}/demandes/stats`, {
         method: 'GET',
         headers,
@@ -240,48 +267,40 @@ class ApiClient {
 
       return this.handleResponse(response);
     } catch (error) {
-      console.error('Erreur lors de la récupération des statistiques:', error);
-      return {
-        success: false,
-        error: 'Erreur de connexion au serveur',
-      };
+      console.error('Erreur récupération stats:', error);
+      return { success: false, error: 'Erreur de connexion au serveur' };
     }
   }
 }
 
-// Instance singleton du client API
 export const apiClient = new ApiClient();
 
-// Fonctions utilitaires pour les demandes spécifiques
-export const visaApi = {
-  create: (visaData: any, contactPhoneNumber?: string, documents?: File[]) => {
-    return apiClient.createRequest({
-      serviceType: 'VISA',
-      visaDetails: JSON.stringify(visaData),
-      contactPhoneNumber,
-      documents,
-    });
-  },
-};
+// ========= APIS SPÉCIFIQUES PAR TYPE =========
 
-export const passportApi = {
-  create: (passportData: any, contactPhoneNumber?: string, documents?: File[]) => {
-    return apiClient.createRequest({
-      serviceType: 'PASSPORT',
-      passportDetails: JSON.stringify(passportData),
-      contactPhoneNumber,
-      documents,
-    });
-  },
-};
+function buildRequestClient(serviceType: ServiceType, detailKey: keyof RequestData) {
+  return {
+    create: (
+      data: any,
+      contactPhoneNumber?: string,
+      documents?: File[],
+      token?: string
+    ) => {
+      return apiClient.createRequest({
+        serviceType,
+        [detailKey]: JSON.stringify(data),
+        contactPhoneNumber,
+        documents,
+        token,
+      } as any);
+    },
+  };
+}
 
-export const consularCardApi = {
-  create: (cardData: any, contactPhoneNumber?: string, documents?: File[]) => {
-    return apiClient.createRequest({
-      serviceType: 'CONSULAR_CARD',
-      consularCardDetails: JSON.stringify(cardData),
-      contactPhoneNumber,
-      documents,
-    });
-  },
-}; 
+export const visaApi = buildRequestClient(ServiceType.VISA, 'visaDetails');
+export const birthActApi = buildRequestClient(ServiceType.BIRTH_ACT_APPLICATION, 'birthActDetails');
+export const consularCardApi = buildRequestClient(ServiceType.CONSULAR_CARD, 'consularCardDetails');
+export const laissezPasserApi = buildRequestClient(ServiceType.LAISSEZ_PASSER, 'laissezPasserDetails');
+export const marriageCapacityApi = buildRequestClient(ServiceType.MARRIAGE_CAPACITY_ACT, 'marriageCapacityActDetails');
+export const deathActApi = buildRequestClient(ServiceType.DEATH_ACT_APPLICATION, 'deathActDetails');
+export const powerOfAttorneyApi = buildRequestClient(ServiceType.POWER_OF_ATTORNEY, 'powerOfAttorneyDetails');
+export const nationalityCertificateApi = buildRequestClient(ServiceType.NATIONALITY_CERTIFICATE, 'nationalityCertificateDetails');

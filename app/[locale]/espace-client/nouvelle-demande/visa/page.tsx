@@ -3,7 +3,7 @@
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
-import VisaForm from '@/components/espace-client/VisaForm';
+import VisaForm from '@/components/espace-client/form_news_request/VisaForm';
 
 export default function VisaRequestPage() {
   const { data: session, status } = useSession();

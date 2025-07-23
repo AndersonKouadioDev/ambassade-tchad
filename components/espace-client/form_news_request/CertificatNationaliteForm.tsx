@@ -3,19 +3,12 @@ import FormulaireGenerique from "@/components/ui/FormulaireGenerique";
 import ConditionsModal from "@/components/ui/ConditionsModal";
 import React, { useState } from "react";
 import { ArrowUpFromLine } from "lucide-react";
-import { useSession } from "next-auth/react";
-import { useLocale } from "next-intl";
-import { useRouter } from "next/navigation";
-import { createDemande } from "@/src/actions/demande-request.action";
 
-export default function LaissezPasserForm() {
+export default function CertificatNationaliteForm() {
   const [files, setFiles] = useState<File[]>([]);
   const [isConditionsModalOpen, setIsConditionsModalOpen] = useState(false);
   const [isUploadingFiles, setIsUploadingFiles] = useState(false);
   const [showToast, setShowToast] = useState(false);
-  const { data: session } = useSession();
-  const locale = useLocale();
-  const router = useRouter();
 
   function handleFilesChange(e: React.ChangeEvent<HTMLInputElement>) {
     if (e.target.files) {
@@ -28,7 +21,7 @@ export default function LaissezPasserForm() {
       }, 800);
     }
   }
-  // Champs principaux
+  // Champs principaux pour le certificat de nationalité
   const fields = [
     { type: "file" as const, name: "photo", label: "Photo", accept: "image/*" },
     { type: "text" as const, name: "lastName", label: "Nom", placeholder: "Nom" },
@@ -40,62 +33,28 @@ export default function LaissezPasserForm() {
       { value: "M", label: "Masculin" },
       { value: "F", label: "Féminin" }
     ] },
-    { type: "text" as const, name: "childOf", label: "Fils/Fille de", placeholder: "Fils/Fille de" },
-    { type: "text" as const, name: "andOf", label: "Et de", placeholder: "Et de" },
+    { type: "text" as const, name: "fatherName", label: "Nom du père", placeholder: "Nom du père" },
+    { type: "text" as const, name: "motherName", label: "Nom de la mère", placeholder: "Nom de la mère" },
     { type: "text" as const, name: "profession", label: "Profession", placeholder: "Profession" },
     { type: "text" as const, name: "address", label: "Domicile", placeholder: "Domicile" },
-    { type: "text" as const, name: "destination", label: "Se rendant à", placeholder: "Se rendant à" },
-    { type: "text" as const, name: "accompaniedBy", label: "Accompagné (e) de", placeholder: "Accompagné (e) de" },
-    { type: "text" as const, name: "accompagnateur", label: "Le nom de l'accompagnateur(trice)", placeholder: "Le nom de l'accompagnateur(trice)" },
-    { type: "textarea" as const, name: "motif", label: "Motif de voyage", placeholder: "Motif de voyage", className: "min-h-[80px]" },
-    { type: "text" as const, name: "validUntil", label: "Valable jusqu'au", placeholder: "Valable jusqu'au" },
-    { type: "text" as const, name: "pieceType", label: "Pièce justificative", placeholder: "Pièce justificative" },
-    { type: "text" as const, name: "pieceNumber", label: "Numéro de pièce justificative", placeholder: "Numéro de pièce justificative" },
+    { type: "textarea" as const, name: "motif", label: "Motif de la demande", placeholder: "Motif de la demande", className: "min-h-[80px]" },
     { type: "text" as const, name: "contact", label: "Contact", placeholder: "Contact" },
   ];
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    files.forEach((file) => formData.append("documents", file));
-    formData.append("locale", locale);
-
-    const details: Record<string, any> = {};
-    fields.forEach(field => {
-      if (field.type !== "file") {
-        details[field.name] = formData.get(field.name);
-      }
-    });
-
-    const result = await createDemande({
-      type: "LAISSEZ_PASSER",
-      details,
-      contactPhoneNumber: formData.get("contact") as string,
-      documents: files,
-      locale,
-      tokenFromClient: session?.user?.token,
-    });
-
-    if (result.success) {
-      router.push(`/${locale}/espace-client/mes-demandes?success=true`);
-    } else {
-      alert(result.error || "Erreur lors de la création de la demande");
-    }
-  }
-
   return (
     <>
-    <form className="w-full" onSubmit={handleSubmit}>
-      <FormulaireGenerique
-        title="Formulaire de demande de Laissez-passer"
-        logoSrc="/assets/images/illustrations/formulaire/logo.png"
-        fields={fields}
-        buttons={[]}
-      />
-      {/* Section pièces à fournir */}
-      <div className="mb-4 ml-16">
-        <div className="font-semibold text-gray-700 dark:text-white mb-1">Pièces à fournir</div>
-        <div className="text-xs text-gray-400 mb-2">Importez jusqu&apos;à 10 fichiers compatibles. 100 MB max. par fichier.</div>
+      <form className="w-full">
+        <FormulaireGenerique
+          title="Formulaire de demande de Certificat de nationalité"
+          logoSrc="/assets/images/illustrations/formulaire/logo.png"
+          fields={fields}
+          buttons={[]}
+          onSubmit={() => {}}
+        />
+        {/* Section pièces à fournir */}
+        <div className="mb-4 ml-16">
+          <div className="font-semibold text-gray-700 dark:text-white mb-1">Pièces à fournir</div>
+          <div className="text-xs text-gray-400 mb-2">Importez jusqu&apos;à 10 fichiers compatibles. 100 MB max. par fichier.</div>
           <div className="w-72 border-2 border-blue-800 rounded-full hover:bg-blue-50">
             <label className="flex items-center gap-2 px-4 py-2 text-blue-800 cursor-pointer w-full justify-start">
               {isUploadingFiles ? (
@@ -115,28 +74,32 @@ export default function LaissezPasserForm() {
               />
             </label>
           </div>
-        {files.length > 0 && (
-          <div className="mt-2 text-xs text-gray-600 dark:text-gray-300">{files.length} fichier(s) sélectionné(s)</div>
-        )}
-      </div>
-      {/* Boutons d'action tout en bas */}
-      <div className="flex justify-end mt-8">
-        <button type="submit" className="bg-orange-500 text-white px-6 py-2 rounded-full font-semibold shadow hover:bg-orange-600 transition">Envoyer</button>
-      </div>
-    </form>
+          {files.length > 0 && (
+            <div className="mt-2 text-xs text-gray-600 dark:text-gray-300">{files.length} fichier(s) sélectionné(s)</div>
+          )}
+        </div>
+        {/* Boutons d'action tout en bas */}
+        <div className="flex justify-end mt-8">
+          <button type="submit" className="bg-orange-500 text-white px-6 py-2 rounded-full font-semibold shadow hover:bg-orange-600 transition">Envoyer</button>
+        </div>
+      </form>
 
       {/* Modal des conditions */}
       <ConditionsModal
         isOpen={isConditionsModalOpen}
         onClose={() => setIsConditionsModalOpen(false)}
-        title="Formulaire de demande de Laissez-passer"
+        title="Formulaire de demande de Certificat de nationalité"
         documentsLabel="Documents à fournir :"
         conditionsList={[
-          'Ancien passeport/ Carte Consulaire',
-          'Acte de naissance',
-          '2 photos d’identité'
+          "Copie intégrale de l'acte de naissance ou jugement supplétif",
+          "Copie de la carte d'identité nationale ou du passeport (si disponible)",
+          "Justificatif de domicile",
+          "2 photos d'identité récentes",
+          "Copie de l'acte de naissance du père ou de la mère (si possible)",
+          "Tout document prouvant la nationalité tchadienne (si disponible)"
         ]}
       />
+      
       {/* Toast de succès */}
       {showToast && (
         <div className="fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-slide-in">

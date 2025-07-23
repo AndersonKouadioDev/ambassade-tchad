@@ -119,10 +119,7 @@ export async function createVisaRequest(
 }
 
 export async function createVisaRequestWithFormData(
-  visaData: VisaRequestDetailsInput,
-  contactPhoneNumber?: string,
-  documents?: File[]
-) {
+visaData: VisaRequestDetailsInput, contactPhoneNumber?: string, documents?: File[], existingDocuments?: Document[]) {
   // On ne vérifie plus la session ici, c'est le front qui doit envoyer le token si besoin
 
   const validatedVisaFields = visaRequestDetailsSchema.safeParse(visaData);

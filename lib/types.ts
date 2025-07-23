@@ -1,6 +1,8 @@
 // Types partagés entre le frontend et le backend
 // Source: interfaces.d.ts fourni par le développeur backend
 
+import { ServiceType } from '@/types/request.types';
+
 // Base interface
 export interface BaseEntity {
     id: string;
@@ -74,6 +76,19 @@ export interface Video extends BaseEntity {
     title?: string;
     description?: string;
     youtubeUrl: string;
+}
+
+export interface Service {
+  id: string;
+  type: ServiceType;
+  name: string;
+  description?: string;
+  defaultPrice: number;
+  isPriceVariable: boolean;
+  updatedById?: string;
+  updatedBy?: User;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 // API response types

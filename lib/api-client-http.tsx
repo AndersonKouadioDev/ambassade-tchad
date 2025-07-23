@@ -1,3 +1,4 @@
+// lib/api-client-http.ts
 import axios, {
   AxiosInstance,
   AxiosRequestConfig,
@@ -16,7 +17,6 @@ class ApiClientHttp {
       },
     });
 
-    // Intercepteur de réponse pour gérer les erreurs
     this.axiosInstance.interceptors.response.use(
       (response) => response,
       async (error: AxiosError) => {
@@ -31,20 +31,34 @@ class ApiClientHttp {
             console.error('Erreur pendant la déconnexion automatique :', logoutError);
           }
         }
-
         return Promise.reject(error);
       }
     );
   }
 
+  // Ajoute le token manuellement si besoin (pour serveur ou client)
+  private getAuthHeaders(token?: string) {
+    const headers: Record<string, string> = {
+      'Content-Type': 'application/json',
+    };
+    if (token) {
+      headers['Authorization'] = `Bearer ${token}`;
+    } else if (typeof window !== 'undefined') {
+      const storedToken = localStorage.getItem('auth-token') || sessionStorage.getItem('auth-token');
+      if (storedToken) headers['Authorization'] = `Bearer ${storedToken}`;
+    }
+    return headers;
+  }
+
   async request<T = any>(options: {
     endpoint: string;
-    method: Method; // utilisation du type `Method` d'Axios
+    method: Method;
     data?: any;
     params?: Record<string, any>;
+    token?: string;
     config?: AxiosRequestConfig;
   }): Promise<T> {
-    const { endpoint, method, data, params, config } = options;
+    const { endpoint, method, data, params, token, config } = options;
 
     try {
       const response = await this.axiosInstance.request<T>({
@@ -52,9 +66,9 @@ class ApiClientHttp {
         method,
         data,
         params,
+        headers: this.getAuthHeaders(token),
         ...config,
       });
-
       return response.data;
     } catch (error) {
       if (axios.isAxiosError(error)) {

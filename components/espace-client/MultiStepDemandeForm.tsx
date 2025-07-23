@@ -123,7 +123,7 @@ export default function MultiStepDemandeForm<T extends Record<string, any>>({ st
                   errorMessage={(errors[field.name as keyof T] as any)?.message}
                   variant="bordered"
                 >
-                  {field.options?.map(opt => (
+                  {(field.options ?? []).map(opt => (
                     <SelectItem key={opt.value}>{opt.label}</SelectItem>
                   ))}
                 </Select>

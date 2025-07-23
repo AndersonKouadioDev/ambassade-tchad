@@ -4,12 +4,12 @@ import { useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 // import VisaForm from '@/components/espace-client/VisaForm';
-import VisaForm from '@/components/espace-client/VisaForm';
-import ConsulaireCardForm from '@/components/espace-client/ConsulaireCardForm';
-import LaissezPasserForm from '@/components/espace-client/LaissezPasserForm';
+import VisaForm from '@/components/espace-client/form_news_request/VisaForm';
+import ConsulaireCardForm from '@/components/espace-client/form_news_request/ConsulaireCardForm';
+import LaissezPasserForm from '@/components/espace-client/form_news_request/LaissezPasserForm';
 import ProcurationForm from '@/components/procuration/procuration';
 import ComingSoonForm from '@/components/espace-client/ComingSoonForm';
-import BirthActForm from '@/components/espace-client/BirthActForm';
+import BirthActForm from '@/components/espace-client/form_news_request/BirthActForm';
 import { ArrowLeft, FileText, AlertCircle } from 'lucide-react';
 
 // Configuration des types de demandes
@@ -170,10 +170,10 @@ export default function NouvelleDemandeType() {
   }
 
   // Si le formulaire n'est pas encore développé
-  if (requestConfig.component) {
-    const FormComponent = requestConfig.component;
-    return <FormComponent />;
-  }
+  // if (requestConfig.component) {
+  //   const FormComponent = requestConfig.component;
+  //   return <FormComponent />;
+  // }
 
   // Pour l'instant, tous les formulaires affichent le message "Coming Soon"
   return (
@@ -225,12 +225,22 @@ export default function NouvelleDemandeType() {
           </div>
         )}
 
-        {/* Coming Soon Form */}
-        <ComingSoonForm
-          title={requestConfig.title}
-          description={requestConfig.description}
-          processingTime={requestConfig.processingTime}
-        />
+        {/* Affichage dynamique du formulaire ou fallback */}
+        {requestType === 'visa' ? (
+          <VisaForm
+            request={{}}
+            onSuccess={handleSuccess}
+            onError={handleError}
+          />
+        ) : requestConfig.component ? (
+          <requestConfig.component />
+        ) : (
+          <ComingSoonForm
+            title={requestConfig.title}
+            description={requestConfig.description}
+            processingTime={requestConfig.processingTime}
+          />
+        )}
       </div>
     </div>
   );
