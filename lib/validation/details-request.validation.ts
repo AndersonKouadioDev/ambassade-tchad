@@ -92,31 +92,39 @@ export const consularCardRequestDetailsSchema = z.object({
 
 // ==================== LAISSEZ-PASSER ====================
 
+
 export const laissezPasserRequestDetailsSchema = z.object({
-  requestId: z.string().uuid(),
-  personFirstName: z.string(),
-  personLastName: z.string(),
-  personBirthDate: z.string().or(z.date()),
-  personBirthPlace: z.string(),
+  personFirstName: z.string().min(1, "Le prénom est requis"),
+  personLastName: z.string().min(1, "Le nom est requis"),
+  personBirthDate: z.string().min(1, "La date de naissance est requise")
+    .refine(val => !isNaN(new Date(val).getTime()), {
+      message: "Date invalide"
+    }),
+  personBirthPlace: z.string().min(1, "Le lieu de naissance est requis"),
   personProfession: z.string().optional(),
-  personNationality: z.string(),
+  personNationality: z.string().min(1, "La nationalité est requise"),
   personDomicile: z.string().optional(),
   fatherFullName: z.string().optional(),
   motherFullName: z.string().optional(),
-  destination: z.string().optional(),
-  travelReason: z.string().optional(),
-  accompanied: z.boolean().optional(),
+  destination: z.string().min(1, "La destination est requise"),
+  travelReason: z.string().min(1, "Le motif du voyage est requis"),
+  accompanied: z.boolean().default(false),
+  justificationDocumentType: JustificationDocumentTypeEnum.optional(),
+  justificationDocumentNumber: z.string().optional(),
+  laissezPasserExpirationDate: z.string().min(1, "La date d'expiration est requise")
+    .refine(val => !isNaN(new Date(val).getTime()), {
+      message: "Date invalide"
+    }),
+  contactPhoneNumber: z.string().min(1, "Le numéro de contact est requis")
+    .regex(/^\+?[0-9\s\-]+$/, "Numéro de téléphone invalide"),
   accompanierFirstName: z.string().optional(),
   accompanierLastName: z.string().optional(),
   accompanierBirthDate: z.string().optional(),
   accompanierBirthPlace: z.string().optional(),
   accompanierNationality: z.string().optional(),
   accompanierDomicile: z.string().optional(),
-  justificationDocumentType: JustificationDocumentTypeEnum.optional(),
-  justificationDocumentNumber: z.string().optional(),
-  laissezPasserExpirationDate: z.string().or(z.date()),
 }).superRefine((data, ctx) => {
-  if (data.accompanied === true) {
+  if (data.accompanied) {
     if (!data.accompanierFirstName) {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
@@ -137,6 +145,12 @@ export const laissezPasserRequestDetailsSchema = z.object({
         message: "La date de naissance de l'accompagnateur est requise",
         path: ["accompanierBirthDate"]
       });
+    } else if (isNaN(new Date(data.accompanierBirthDate).getTime())) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Date de naissance invalide",
+        path: ["accompanierBirthDate"]
+      });
     }
     if (!data.accompanierBirthPlace) {
       ctx.addIssue({
@@ -152,29 +166,10 @@ export const laissezPasserRequestDetailsSchema = z.object({
         path: ["accompanierNationality"]
       });
     }
-    if (!data.accompanierDomicile) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: "Le domicile de l'accompagnateur est requis",
-        path: ["accompanierDomicile"]
-      });
-    }
   }
 });
 
-// Accompanier (utilisé pour les enfants accompagnant un adulte par ex.)
-
-
-export const accompanierSchema = z.object({
-  laissezPasserRequestDetailsId: z.string().uuid(),
-  firstName: z.string(),
-  lastName: z.string(),
-  birthDate: z.string().or(z.date()),
-  birthPlace: z.string(),
-  nationality: z.string(),
-  domicile: z.string().optional(),
-});
-
+export type LaissezPasserFormInput = z.infer<typeof laissezPasserRequestDetailsSchema>;
 // ==================== MARRIAGE CAPACITY ====================
 
 export const marriageCapacityActRequestDetailsSchema = z.object({

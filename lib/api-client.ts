@@ -134,6 +134,10 @@ class ApiClient {
         requestData.documents.forEach(file => formData.append('documents', file));
         delete headers['Content-Type'];
         console.log('Payload FormData (clé data):', JSON.stringify(jsonData));
+        // Log détaillé du FormData envoyé
+        for (let pair of formData.entries()) {
+          console.log('FormData:', pair[0], pair[1]);
+        }
         const response = await fetch(`${this.baseUrl}/demandes`, {
           method: 'POST',
           headers,

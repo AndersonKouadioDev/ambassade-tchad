@@ -6,10 +6,11 @@ import { useSession } from 'next-auth/react';
 // import VisaForm from '@/components/espace-client/VisaForm';
 import VisaForm from '@/components/espace-client/form_news_request/VisaForm';
 import ConsulaireCardForm from '@/components/espace-client/form_news_request/ConsulaireCardForm';
-import LaissezPasserForm from '@/components/espace-client/form_news_request/LaissezPasserForm';
+// import LaissezPasserForm from '@/components/espace-client/form_news_request/LaissezPasserForm';
 import ProcurationForm from '@/components/procuration/procuration';
 import ComingSoonForm from '@/components/espace-client/ComingSoonForm';
 import BirthActForm from '@/components/espace-client/form_news_request/BirthActForm';
+import CertificatNationaliteForm from '@/components/espace-client/form_news_request/CertificatNationaliteForm';
 import { ArrowLeft, FileText, AlertCircle } from 'lucide-react';
 
 // Configuration des types de demandes
@@ -44,13 +45,13 @@ const requestTypes = {
     documents: [],
     processingTime: '10-20 jours'
   },
-  'laissez-passer': {
-    title: 'Demande de Laissez-passer',
-    description: 'Remplissez ce formulaire pour demander un laissez-passer.',
-    component: LaissezPasserForm,
-    documents: [],
-    processingTime: '2-5 jours'
-  },
+  // 'laissez-passer': {
+  //   title: 'Demande de Laissez-passer',
+  //   description: 'Remplissez ce formulaire pour demander un laissez-passer.',
+  //   component: LaissezPasserForm,
+  //   documents: [],
+  //   processingTime: '2-5 jours'
+  // },
   'marriage-capacity': {
     title: 'Certificat de Capacité Matrimoniale',
     description: 'Demande de certificat de capacité matrimoniale - Formulaire en cours de développement.',
@@ -75,7 +76,7 @@ const requestTypes = {
   'nationality-certificate': {
     title: 'Certificat de Nationalité',
     description: 'Demande de certificat de nationalité tchadienne - Formulaire en cours de développement.',
-    component: null,
+    component: CertificatNationaliteForm,
     documents: [],
     processingTime: '7-15 jours'
   }
