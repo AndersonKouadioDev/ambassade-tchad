@@ -13,6 +13,7 @@ import CertificatNationaliteForm from '@/components/espace-client/form_news_requ
 import { ArrowLeft, FileText, AlertCircle } from 'lucide-react';
 import ProcurationForm from '@/components/espace-client/form_news_request/ProcurationForm';
 import DeathActForm from '@/components/espace-client/form_news_request/DeathActForm';
+import MarriageCapacityActForm from '@/components/espace-client/form_news_request/MarriageCapacityActForm';
 
 // Configuration des types de demandes
 const requestTypes = {
@@ -56,7 +57,7 @@ const requestTypes = {
   'marriage-capacity': {
     title: 'Certificat de Capacité Matrimoniale',
     description: 'Demande de certificat de capacité matrimoniale - Formulaire en cours de développement.',
-    component: null,
+    component: MarriageCapacityActForm,
     documents: [],
     processingTime: '5-10 jours'
   },
