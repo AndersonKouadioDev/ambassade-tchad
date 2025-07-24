@@ -7,11 +7,11 @@ import { useSession } from 'next-auth/react';
 import VisaForm from '@/components/espace-client/form_news_request/VisaForm';
 import ConsulaireCardForm from '@/components/espace-client/form_news_request/ConsulaireCardForm';
 // import LaissezPasserForm from '@/components/espace-client/form_news_request/LaissezPasserForm';
-import ProcurationForm from '@/components/procuration/procuration';
 import ComingSoonForm from '@/components/espace-client/ComingSoonForm';
 import BirthActForm from '@/components/espace-client/form_news_request/BirthActForm';
 import CertificatNationaliteForm from '@/components/espace-client/form_news_request/CertificatNationaliteForm';
 import { ArrowLeft, FileText, AlertCircle } from 'lucide-react';
+import ProcurationForm from '@/components/espace-client/form_news_request/ProcurationForm';
 
 // Configuration des types de demandes
 const requestTypes = {

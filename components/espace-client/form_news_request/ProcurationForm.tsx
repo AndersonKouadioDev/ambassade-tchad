@@ -156,18 +156,18 @@ export default function ProcurationForm() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Prénom *</label>
-          <input {...register('principalFirstName')} className={`w-full px-4 py-2 border rounded-md ${errors.principalFirstName ? 'border-red-500' : 'border-gray-300'}`} />
+          <input {...register('principalFirstName')} placeholder="Ex: Mahamat" className={`w-full px-4 py-2 border rounded-md ${errors.principalFirstName ? 'border-red-500' : 'border-gray-300'}`} />
           {errors.principalFirstName && <p className="text-red-500 text-xs mt-1">{errors.principalFirstName.message}</p>}
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Nom *</label>
-          <input {...register('principalLastName')} className={`w-full px-4 py-2 border rounded-md ${errors.principalLastName ? 'border-red-500' : 'border-gray-300'}`} />
+          <input {...register('principalLastName')} placeholder="Ex: Idriss" className={`w-full px-4 py-2 border rounded-md ${errors.principalLastName ? 'border-red-500' : 'border-gray-300'}`} />
           {errors.principalLastName && <p className="text-red-500 text-xs mt-1">{errors.principalLastName.message}</p>}
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Type de pièce justificative</label>
           <select {...register('principalJustificationDocumentType')} className="w-full px-4 py-2 border border-gray-300 rounded-md" defaultValue="">
-            <option value="">Sélectionnez</option>
+            <option value="">Sélectionnez le type de pièce</option>
             {Object.values(JustificationDocumentType).map(type => (
               <option key={type} value={type}>{type}</option>
             ))}
@@ -175,11 +175,11 @@ export default function ProcurationForm() {
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Numéro de pièce justificative</label>
-          <input {...register('principalIdDocumentNumber')} className="w-full px-4 py-2 border border-gray-300 rounded-md" />
+          <input {...register('principalIdDocumentNumber')} placeholder="Ex: CNI123456" className="w-full px-4 py-2 border border-gray-300 rounded-md" />
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Adresse</label>
-          <input {...register('principalAddress')} className="w-full px-4 py-2 border border-gray-300 rounded-md" />
+          <input {...register('principalAddress')} placeholder="Ex: 12 rue de N'Djamena" className="w-full px-4 py-2 border border-gray-300 rounded-md" />
         </div>
       </div>
     </div>
@@ -191,18 +191,18 @@ export default function ProcurationForm() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Prénom *</label>
-          <input {...register('agentFirstName')} className={`w-full px-4 py-2 border rounded-md ${errors.agentFirstName ? 'border-red-500' : 'border-gray-300'}`} />
+          <input {...register('agentFirstName')} placeholder="Ex: Fatimé" className={`w-full px-4 py-2 border rounded-md ${errors.agentFirstName ? 'border-red-500' : 'border-gray-300'}`} />
           {errors.agentFirstName && <p className="text-red-500 text-xs mt-1">{errors.agentFirstName.message}</p>}
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Nom *</label>
-          <input {...register('agentLastName')} className={`w-full px-4 py-2 border rounded-md ${errors.agentLastName ? 'border-red-500' : 'border-gray-300'}`} />
+          <input {...register('agentLastName')} placeholder="Ex: Abakar" className={`w-full px-4 py-2 border rounded-md ${errors.agentLastName ? 'border-red-500' : 'border-gray-300'}`} />
           {errors.agentLastName && <p className="text-red-500 text-xs mt-1">{errors.agentLastName.message}</p>}
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Type de pièce justificative</label>
           <select {...register('agentJustificationDocumentType')} className="w-full px-4 py-2 border border-gray-300 rounded-md" defaultValue="">
-            <option value="">Sélectionnez</option>
+            <option value="">Sélectionnez le type de pièce</option>
             {Object.values(JustificationDocumentType).map(type => (
               <option key={type} value={type}>{type}</option>
             ))}
@@ -210,11 +210,11 @@ export default function ProcurationForm() {
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Numéro de pièce justificative</label>
-          <input {...register('agentIdDocumentNumber')} className="w-full px-4 py-2 border border-gray-300 rounded-md" />
+          <input {...register('agentIdDocumentNumber')} placeholder="Ex: CNI654321" className="w-full px-4 py-2 border border-gray-300 rounded-md" />
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Adresse</label>
-          <input {...register('agentAddress')} className="w-full px-4 py-2 border border-gray-300 rounded-md" />
+          <input {...register('agentAddress')} placeholder="Ex: 34 avenue du Tchad" className="w-full px-4 py-2 border border-gray-300 rounded-md" />
         </div>
       </div>
     </div>
@@ -226,15 +226,15 @@ export default function ProcurationForm() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Type de procuration</label>
-          <input {...register('powerOfType')} className="w-full px-4 py-2 border border-gray-300 rounded-md" />
+          <input {...register('powerOfType')} placeholder="Ex: Générale, Spéciale..." className="w-full px-4 py-2 border border-gray-300 rounded-md" />
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Motif</label>
-          <input {...register('reason')} className="w-full px-4 py-2 border border-gray-300 rounded-md" />
+          <input {...register('reason')} placeholder="Ex: Délégation de signature" className="w-full px-4 py-2 border border-gray-300 rounded-md" />
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Numéro de contact *</label>
-          <input {...register('contactPhoneNumber')} className={`w-full px-4 py-2 border rounded-md ${errors.contactPhoneNumber ? 'border-red-500' : 'border-gray-300'}`} />
+          <input {...register('contactPhoneNumber')} placeholder="Ex: +225 01 23 45 67 89" className={`w-full px-4 py-2 border rounded-md ${errors.contactPhoneNumber ? 'border-red-500' : 'border-gray-300'}`} />
           {errors.contactPhoneNumber && <p className="text-red-500 text-xs mt-1">{errors.contactPhoneNumber.message}</p>}
         </div>
         <div className="md:col-span-2">
