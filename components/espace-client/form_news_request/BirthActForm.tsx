@@ -83,7 +83,9 @@ export default function BirthActForm() {
       case 2:
         return ['fatherFullName', 'motherFullName'];
       case 3:
-        return ['requestType', 'contactPhoneNumber'];
+        return ['requestType'];
+      case 4:
+        return ['contactPhoneNumber'];
       default:
         return [];
     }
@@ -233,11 +235,6 @@ export default function BirthActForm() {
             </select>
             {renderError(errors.requestType)}
           </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Numéro de téléphone <span className="text-red-500">*</span></label>
-            <input {...register('contactPhoneNumber')} className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" placeholder="Numéro de téléphone" />
-            {renderError(errors.contactPhoneNumber)}
-          </div>
         </div>
         {/* Affichage dynamique du prix */}
         <div className="flex items-center justify-end mt-4">
@@ -252,6 +249,12 @@ export default function BirthActForm() {
   const renderStep4 = () => (
     <div className="space-y-6">
       <h3 className="text-lg font-semibold text-gray-900 mb-4">Documents et récapitulatif</h3>
+      {/* Champ numéro de contact déplacé ici */}
+      <div className="mb-4">
+        <label className="block text-sm font-medium text-gray-700 mb-1">Numéro de téléphone *</label>
+        <input {...register('contactPhoneNumber')} className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" placeholder="Numéro de téléphone" />
+        {renderError(errors.contactPhoneNumber)}
+      </div>
       <div className="space-y-4">
         <label className="block text-sm font-medium text-gray-700">Documents à joindre (PDF, JPG, PNG) *</label>
         <div
