@@ -374,7 +374,7 @@ export default function LaissezPasserForm() {
     }
   };
 
-  // Dans onSubmit, vérifie la présence d'au moins un fichier justificatif
+  // Dans onSubmit, vérifie la présence d'au moins un fichier justificatif en tableau
   const onSubmit = async (data: LaissezPasserFormInput) => {
     if (!uploadedFiles || uploadedFiles.length === 0) {
       toast.error('Au moins un fichier justificatif est obligatoire.');
