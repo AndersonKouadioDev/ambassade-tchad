@@ -3,10 +3,8 @@
 import { useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { useSession } from 'next-auth/react';
-// import VisaForm from '@/components/espace-client/VisaForm';
 import VisaForm from '@/components/espace-client/form_news_request/VisaForm';
 import ConsulaireCardForm from '@/components/espace-client/form_news_request/ConsulaireCardForm';
-// import LaissezPasserForm from '@/components/espace-client/form_news_request/LaissezPasserForm';
 import ComingSoonForm from '@/components/espace-client/ComingSoonForm';
 import BirthActForm from '@/components/espace-client/form_news_request/BirthActForm';
 import CertificatNationaliteForm from '@/components/espace-client/form_news_request/CertificatNationaliteForm';
@@ -14,6 +12,7 @@ import { ArrowLeft, FileText, AlertCircle } from 'lucide-react';
 import ProcurationForm from '@/components/espace-client/form_news_request/ProcurationForm';
 import DeathActForm from '@/components/espace-client/form_news_request/DeathActForm';
 import MarriageCapacityActForm from '@/components/espace-client/form_news_request/MarriageCapacityActForm';
+import LaissezPasserForm from '@/components/espace-client/form_news_request/LaissezPasserForm';
 
 // Configuration des types de demandes
 const requestTypes = {
@@ -47,13 +46,13 @@ const requestTypes = {
     documents: [],
     processingTime: '10-20 jours'
   },
-  // 'laissez-passer': {
-  //   title: 'Demande de Laissez-passer',
-  //   description: 'Remplissez ce formulaire pour demander un laissez-passer.',
-  //   component: LaissezPasserForm,
-  //   documents: [],
-  //   processingTime: '2-5 jours'
-  // },
+  'laissez-passer': {
+    title: 'Demande de Laissez-passer',
+    description: 'Remplissez ce formulaire pour demander un laissez-passer.',
+    component: LaissezPasserForm,
+    documents: [],
+    processingTime: '2-5 jours'
+  },
   'marriage-capacity': {
     title: 'Certificat de Capacité Matrimoniale',
     description: 'Demande de certificat de capacité matrimoniale - Formulaire en cours de développement.',
@@ -236,7 +235,7 @@ export default function NouvelleDemandeType() {
             onError={handleError}
           />
         ) : requestConfig.component ? (
-          <requestConfig.component />
+          <requestConfig.component request={{}} />
         ) : (
           <ComingSoonForm
             title={requestConfig.title}

@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { toast } from 'react-toastify';
 import { useRouter, useParams } from 'next/navigation';
 import { marriageCapacityApi } from '@/lib/api-client';
@@ -20,13 +20,13 @@ const marriageCapacitySchema = z.object({
   wifeNationality: z.string().min(1, 'La nationalité de l’épouse est requise'),
   wifeDomicile: z.string().optional(),
   contactPhoneNumber: z.string().min(1, 'Le numéro de contact est requis').regex(/^\+?[0-9\s\-]+$/, 'Numéro de téléphone invalide'),
-  justificativeFile: z.any().refine(file => file instanceof File, 'La pièce justificative est requise'),
+  justificativeFile: z.any().optional(),
 });
 
 type MarriageCapacityFormInput = z.infer<typeof marriageCapacitySchema>;
 
 export default function MarriageCapacityActForm() {
-  const { register, handleSubmit, formState: { errors }, setValue, trigger, watch, reset } = useForm<MarriageCapacityFormInput>({
+  const { register, handleSubmit, formState: { errors }, trigger, reset, setValue } = useForm<MarriageCapacityFormInput>({
     resolver: zodResolver(marriageCapacitySchema),
     mode: 'onBlur',
     defaultValues: {
@@ -49,7 +49,8 @@ export default function MarriageCapacityActForm() {
 
   const totalSteps = 3;
   const [currentStep, setCurrentStep] = useState(1);
-  const [uploadedFile, setUploadedFile] = useState<File | null>(null);
+  const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [prixActe, setPrixActe] = useState<number | null>(null);
   const [showSuccess, setShowSuccess] = useState(false);
@@ -111,7 +112,7 @@ export default function MarriageCapacityActForm() {
       const response = await marriageCapacityApi.create(
         payload,
         contactPhoneNumber,
-        uploadedFile ? [uploadedFile] : undefined
+        uploadedFiles
       );
       if (response.success) {
         setShowSuccess(true);
@@ -126,7 +127,7 @@ export default function MarriageCapacityActForm() {
           });
         }, 1000);
         reset();
-        setUploadedFile(null);
+        setUploadedFiles([]);
         setCurrentStep(1);
       } else {
         toast.error(response.error || "Erreur lors de l'envoi de la demande");
@@ -229,38 +230,87 @@ export default function MarriageCapacityActForm() {
 
   const renderStep3 = () => (
     <div className="space-y-6">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">Contact, pièce justificative et prix</h3>
+      <h3 className="text-lg font-semibold text-gray-900 mb-4">Contact, pièces justificatives et prix</h3>
       <div className="mb-4">
         <span className="text-lg font-semibold text-green-700">
           Prix à payer : {prixActe?.toLocaleString() ?? '10,000'} FCFA
         </span>
       </div>
       <div className="mb-4">
-        <label className="block text-sm font-medium text-gray-700 mb-1">Numéro de contact *</label>
-        <input {...register('contactPhoneNumber')} placeholder="Ex: +225 01 23 45 67 89" className={`w-full px-4 py-2 border rounded-md ${errors.contactPhoneNumber ? 'border-red-500' : 'border-gray-300'}`} />
-        {errors.contactPhoneNumber && <p className="text-red-500 text-xs mt-1">{errors.contactPhoneNumber.message}</p>}
-      </div>
-      <div className="mb-4">
-        <label className="block text-sm font-medium text-gray-700 mb-1">Pièce justificative *</label>
-        <input
-          type="file"
-          accept="image/*,.pdf"
-          onChange={e => {
-            setUploadedFile(e.target.files?.[0] || null);
-            setValue('justificativeFile', e.target.files?.[0] || undefined, { shouldValidate: true });
+        <label className="block text-sm font-medium text-gray-700 mb-1">Pièces justificatives *</label>
+        <div
+          className={
+            `w-full border-2 border-dashed rounded-md p-4 text-center cursor-pointer transition-colors ` +
+            `hover:border-blue-400 bg-gray-50`
+          }
+          onClick={() => fileInputRef.current?.click()}
+          onDragOver={e => { e.preventDefault(); e.stopPropagation(); }}
+          onDrop={e => {
+            e.preventDefault();
+            e.stopPropagation();
+            if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+              setUploadedFiles(prev => [...prev, ...Array.from(e.dataTransfer.files)]);
+            }
           }}
-          className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
-        />
-        {errors.justificativeFile && (
-          <p className="text-red-500 text-xs mt-1">
-            {typeof errors.justificativeFile === 'object' && errors.justificativeFile !== null && 'message' in errors.justificativeFile
-              ? (errors.justificativeFile as { message?: string }).message
-              : typeof errors.justificativeFile === 'string'
-                ? errors.justificativeFile
-                : ''}
-          </p>
+        >
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept="application/pdf,image/*"
+            multiple
+            className="hidden"
+            onChange={e => {
+              const files = e.target.files ? Array.from(e.target.files) : [];
+              if (files.length > 0) {
+                setUploadedFiles(prev => {
+                  const newFiles = [...prev, ...files];
+                  setValue('justificativeFile', newFiles, { shouldValidate: true });
+                  return newFiles;
+                });
+              }
+            }}
+          />
+          <div className="flex flex-col items-center justify-center gap-2">
+            <span className="text-blue-700 font-semibold">Glissez-déposez vos fichiers ici ou cliquez pour sélectionner</span>
+            <span className="text-xs text-gray-500">Formats acceptés : PDF, images. Plusieurs fichiers possibles.</span>
+            <span className="text-xs text-gray-500">{uploadedFiles.length} fichier{uploadedFiles.length > 1 ? 's' : ''} sélectionné{uploadedFiles.length > 1 ? 's' : ''}</span>
+          </div>
+        </div>
+        {uploadedFiles.length > 0 && (
+          <ul className="mt-4 flex flex-wrap gap-4">
+            {uploadedFiles.map((file, idx) => (
+              <li key={idx} className="relative flex flex-col items-center w-24">
+                {file.type.startsWith('image/') ? (
+                  <img
+                    src={URL.createObjectURL(file)}
+                    alt={file.name}
+                    className="w-20 h-20 object-cover rounded shadow border"
+                  />
+                ) : (
+                  <div className="w-20 h-20 flex items-center justify-center bg-gray-200 rounded shadow border">
+                    <svg className="w-8 h-8 text-red-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
+                    </svg>
+                  </div>
+                )}
+                <span className="text-xs mt-1 truncate w-full text-center" title={file.name}>{file.name}</span>
+                <button
+                  type="button"
+                  onClick={e => {
+                    e.stopPropagation();
+                    setUploadedFiles(prev => {
+                      const newFiles = prev.filter((_, i) => i !== idx);
+                      setValue('justificativeFile', newFiles.length > 0 ? newFiles : undefined, { shouldValidate: true });
+                      return newFiles;
+                    });
+                  }}
+                  className="absolute -top-2 -right-2 bg-white border border-gray-300 rounded-full w-6 h-6 flex items-center justify-center text-red-500 hover:bg-red-100"
+                  title="Supprimer"
+                >✕</button>
+              </li>
+            ))}
+          </ul>
         )}
-        {uploadedFile && <div className="mt-2 text-sm text-gray-700">Fichier sélectionné : {uploadedFile.name}</div>}
       </div>
     </div>
   );
@@ -320,7 +370,7 @@ export default function MarriageCapacityActForm() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 disabled:opacity-60 disabled:cursor-not-allowed"
+              className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-blue-600 disabled:opacity-60 disabled:cursor-not-allowed"
             >
               {isSubmitting ? 'Envoi en cours...' : 'Soumettre la demande'}
             </button>

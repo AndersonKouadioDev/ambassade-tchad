@@ -1,7 +1,8 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { OriginCountryParentRelationshipType } from '@/types/request.types';
 import { toast } from 'react-toastify';
 import { nationalityCertificateApi } from '@/lib/api-client';
@@ -21,13 +22,13 @@ const nationalityCertificateSchema = z.object({
       message: 'Le lien de parenté est requis',
     }),
   contactPhoneNumber: z.string().min(1, 'Le numéro de contact est requis').regex(/^\+?[0-9\s\-]+$/, 'Numéro de téléphone invalide'),
-  justificativeFile: z.any().refine(file => file instanceof File, 'La pièce justificative est requise'),
+  justificativeFile: z.any().optional(),
 });
 
 type NationalityCertificateFormInput = z.infer<typeof nationalityCertificateSchema>;
 
 export default function CertificatNationaliteForm() {
-  const { register, handleSubmit, formState: { errors }, setValue, trigger, watch, reset } = useForm<NationalityCertificateFormInput>({
+  const { register, handleSubmit, formState: { errors }, trigger, reset, setValue } = useForm<NationalityCertificateFormInput>({
     resolver: zodResolver(nationalityCertificateSchema),
     mode: 'onBlur',
     defaultValues: {
@@ -46,7 +47,8 @@ export default function CertificatNationaliteForm() {
 
   const totalSteps = 3;
   const [currentStep, setCurrentStep] = useState(1);
-  const [uploadedFile, setUploadedFile] = useState<File | null>(null);
+  const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [prixActe, setPrixActe] = useState<number | null>(null);
   const [showSuccess, setShowSuccess] = useState(false);
@@ -80,9 +82,9 @@ export default function CertificatNationaliteForm() {
       case 1:
         return ['applicantFirstName', 'applicantLastName', 'applicantBirthDate', 'applicantBirthPlace', 'applicantNationality'];
       case 2:
-        return ['originCountryParentFirstName', 'originCountryParentLastName', 'originCountryParentRelationship', 'contactPhoneNumber'];
+        return ['originCountryParentFirstName', 'originCountryParentLastName', 'originCountryParentRelationship'];
       case 3:
-        return ['justificativeFile'];
+        return ['contactPhoneNumber', 'justificativeFile'];
       default:
         return [];
     }
@@ -90,7 +92,7 @@ export default function CertificatNationaliteForm() {
 
   const nextStep = async () => {
     const fieldsToValidate = getFieldsForStep(currentStep);
-    const isValidStep = await trigger(fieldsToValidate as any);
+    const isValidStep = await trigger(fieldsToValidate as Parameters<typeof trigger>[0]);
     if (isValidStep && currentStep < totalSteps) {
       setCurrentStep(currentStep + 1);
     } else if (!isValidStep) {
@@ -99,10 +101,11 @@ export default function CertificatNationaliteForm() {
   };
 
   const onSubmit = async (data: NationalityCertificateFormInput) => {
+    console.log('submit', data);
     setIsSubmitting(true);
     try {
       // Prépare le payload
-      const { contactPhoneNumber, justificativeFile, ...details } = data;
+      const { contactPhoneNumber, ...details } = data;
       const payload = {
         ...details,
         applicantBirthDate: new Date(data.applicantBirthDate).toISOString(),
@@ -110,11 +113,11 @@ export default function CertificatNationaliteForm() {
       const response = await nationalityCertificateApi.create(
         payload,
         contactPhoneNumber,
-        uploadedFile ? [uploadedFile] : undefined
+        uploadedFiles
       );
       if (response.success) {
         setShowSuccess(true);
-        let timer = setInterval(() => {
+        const timer = setInterval(() => {
           setSuccessCountdown((prev) => {
             if (prev <= 1) {
               clearInterval(timer);
@@ -125,12 +128,12 @@ export default function CertificatNationaliteForm() {
           });
         }, 1000);
         reset();
-        setUploadedFile(null);
+        setUploadedFiles([]);
         setCurrentStep(1);
       } else {
         toast.error(response.error || "Erreur lors de l'envoi de la demande");
       }
-    } catch (error) {
+    } catch {
       toast.error('Une erreur est survenue lors de la soumission');
     } finally {
       setIsSubmitting(false);
@@ -144,27 +147,27 @@ export default function CertificatNationaliteForm() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Prénom *</label>
-          <input {...register('applicantFirstName')} className={`w-full px-4 py-2 border rounded-md ${errors.applicantFirstName ? 'border-red-500' : 'border-gray-300'}`} />
+          <input {...register('applicantFirstName')} placeholder="Ex: Mahamat" className={`w-full px-4 py-2 border rounded-md ${errors.applicantFirstName ? 'border-red-500' : 'border-gray-300'}`} />
           {errors.applicantFirstName && <p className="text-red-500 text-xs mt-1">{errors.applicantFirstName.message}</p>}
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Nom *</label>
-          <input {...register('applicantLastName')} className={`w-full px-4 py-2 border rounded-md ${errors.applicantLastName ? 'border-red-500' : 'border-gray-300'}`} />
+          <input {...register('applicantLastName')} placeholder="Ex: Idriss" className={`w-full px-4 py-2 border rounded-md ${errors.applicantLastName ? 'border-red-500' : 'border-gray-300'}`} />
           {errors.applicantLastName && <p className="text-red-500 text-xs mt-1">{errors.applicantLastName.message}</p>}
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Date de naissance *</label>
-          <input type="date" {...register('applicantBirthDate')} className={`w-full px-4 py-2 border rounded-md ${errors.applicantBirthDate ? 'border-red-500' : 'border-gray-300'}`} />
+          <input type="date" {...register('applicantBirthDate')} placeholder="Date de naissance" className={`w-full px-4 py-2 border rounded-md ${errors.applicantBirthDate ? 'border-red-500' : 'border-gray-300'}`} />
           {errors.applicantBirthDate && <p className="text-red-500 text-xs mt-1">{errors.applicantBirthDate.message}</p>}
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Lieu de naissance *</label>
-          <input {...register('applicantBirthPlace')} className={`w-full px-4 py-2 border rounded-md ${errors.applicantBirthPlace ? 'border-red-500' : 'border-gray-300'}`} />
+          <input {...register('applicantBirthPlace')} placeholder="Ex: N'Djamena" className={`w-full px-4 py-2 border rounded-md ${errors.applicantBirthPlace ? 'border-red-500' : 'border-gray-300'}`} />
           {errors.applicantBirthPlace && <p className="text-red-500 text-xs mt-1">{errors.applicantBirthPlace.message}</p>}
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Nationalité *</label>
-          <input {...register('applicantNationality')} className={`w-full px-4 py-2 border rounded-md ${errors.applicantNationality ? 'border-red-500' : 'border-gray-300'}`} />
+          <input {...register('applicantNationality')} placeholder="Ex: Tchadienne" className={`w-full px-4 py-2 border rounded-md ${errors.applicantNationality ? 'border-red-500' : 'border-gray-300'}`} />
           {errors.applicantNationality && <p className="text-red-500 text-xs mt-1">{errors.applicantNationality.message}</p>}
         </div>
       </div>
@@ -177,12 +180,12 @@ export default function CertificatNationaliteForm() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Prénom du parent *</label>
-          <input {...register('originCountryParentFirstName')} className={`w-full px-4 py-2 border rounded-md ${errors.originCountryParentFirstName ? 'border-red-500' : 'border-gray-300'}`} />
+          <input {...register('originCountryParentFirstName')} placeholder="Ex: Youssouf" className={`w-full px-4 py-2 border rounded-md ${errors.originCountryParentFirstName ? 'border-red-500' : 'border-gray-300'}`} />
           {errors.originCountryParentFirstName && <p className="text-red-500 text-xs mt-1">{errors.originCountryParentFirstName.message}</p>}
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Nom du parent *</label>
-          <input {...register('originCountryParentLastName')} className={`w-full px-4 py-2 border rounded-md ${errors.originCountryParentLastName ? 'border-red-500' : 'border-gray-300'}`} />
+          <input {...register('originCountryParentLastName')} placeholder="Ex: Abakar" className={`w-full px-4 py-2 border rounded-md ${errors.originCountryParentLastName ? 'border-red-500' : 'border-gray-300'}`} />
           {errors.originCountryParentLastName && <p className="text-red-500 text-xs mt-1">{errors.originCountryParentLastName.message}</p>}
         </div>
         <div>
@@ -193,11 +196,6 @@ export default function CertificatNationaliteForm() {
             <option value={OriginCountryParentRelationshipType.MOTHER}>Mère</option>
           </select>
           {errors.originCountryParentRelationship && <p className="text-red-500 text-xs mt-1">{errors.originCountryParentRelationship.message}</p>}
-        </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Numéro de contact *</label>
-          <input {...register('contactPhoneNumber')} className={`w-full px-4 py-2 border rounded-md ${errors.contactPhoneNumber ? 'border-red-500' : 'border-gray-300'}`} />
-          {errors.contactPhoneNumber && <p className="text-red-500 text-xs mt-1">{errors.contactPhoneNumber.message}</p>}
         </div>
       </div>
     </div>
@@ -212,26 +210,88 @@ export default function CertificatNationaliteForm() {
         </span>
       </div>
       <div className="mb-4">
-        <label className="block text-sm font-medium text-gray-700 mb-1">Pièce justificative *</label>
-        <input
-          type="file"
-          accept="image/*,.pdf"
-          onChange={e => {
-            setUploadedFile(e.target.files?.[0] || null);
-            setValue('justificativeFile', e.target.files?.[0] || undefined, { shouldValidate: true });
+        <label className="block text-sm font-medium text-gray-700 mb-1">Pièces justificatives *</label>
+        <div
+          className={
+            `w-full border-2 border-dashed rounded-md p-4 text-center cursor-pointer transition-colors ` +
+            `hover:border-blue-400 bg-gray-50`
+          }
+          onClick={() => fileInputRef.current?.click()}
+          onDragOver={e => { e.preventDefault(); e.stopPropagation(); }}
+          onDrop={e => {
+            e.preventDefault();
+            e.stopPropagation();
+            if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+              setUploadedFiles(prev => [...prev, ...Array.from(e.dataTransfer.files)]);
+            }
           }}
-          className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
-        />
-        {errors.justificativeFile && (
-          <p className="text-red-500 text-xs mt-1">
-            {typeof errors.justificativeFile === 'object' && errors.justificativeFile !== null && 'message' in errors.justificativeFile
-              ? (errors.justificativeFile as { message?: string }).message
-              : typeof errors.justificativeFile === 'string'
-                ? errors.justificativeFile
-                : ''}
-          </p>
+        >
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept="application/pdf,image/*"
+            multiple
+            className="hidden"
+            onChange={e => {
+              const files = e.target.files ? Array.from(e.target.files) : [];
+              if (files.length > 0) {
+                setUploadedFiles(prev => {
+                  const newFiles = [...prev, ...files];
+                  setValue('justificativeFile', newFiles, { shouldValidate: true });
+                  return newFiles;
+                });
+              }
+            }}
+          />
+          <div className="flex flex-col items-center justify-center gap-2">
+            <span className="text-blue-700 font-semibold">Glissez-déposez vos fichiers ici ou cliquez pour sélectionner</span>
+            <span className="text-xs text-gray-500">Formats acceptés : PDF, images. Plusieurs fichiers possibles.</span>
+            <span className="text-xs text-gray-500">{uploadedFiles.length} fichier{uploadedFiles.length > 1 ? 's' : ''} sélectionné{uploadedFiles.length > 1 ? 's' : ''}</span>
+          </div>
+        </div>
+        {uploadedFiles.length > 0 && (
+          <ul className="mt-4 flex flex-wrap gap-4">
+            {uploadedFiles.map((file, idx) => (
+              <li key={idx} className="relative flex flex-col items-center w-24">
+                {file.type.startsWith('image/') ? (
+                  <Image
+                    src={URL.createObjectURL(file)}
+                    alt={file.name}
+                    width={80}
+                    height={80}
+                    className="w-20 h-20 object-cover rounded shadow border"
+                  />
+                ) : (
+                  <div className="w-20 h-20 flex items-center justify-center bg-gray-200 rounded shadow border">
+                    <svg className="w-8 h-8 text-red-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
+                    </svg>
+                  </div>
+                )}
+                <span className="text-xs mt-1 truncate w-full text-center" title={file.name}>{file.name}</span>
+                <button
+                  type="button"
+                  onClick={e => {
+                    e.stopPropagation();
+                    setUploadedFiles(prev => {
+                      const newFiles = prev.filter((_, i) => i !== idx);
+                      setValue('justificativeFile', newFiles.length > 0 ? newFiles : undefined, { shouldValidate: true });
+                      return newFiles;
+                    });
+                  }}
+                  className="absolute -top-2 -right-2 bg-white border border-gray-300 rounded-full w-6 h-6 flex items-center justify-center text-red-500 hover:bg-red-100"
+                  title="Supprimer"
+                >✕</button>
+              </li>
+            ))}
+          </ul>
         )}
-        {uploadedFile && <div className="mt-2 text-sm text-gray-700">Fichier sélectionné : {uploadedFile.name}</div>}
+      </div>
+      {/* Champ numéro de contact déplacé ici */}
+      <div className="mb-4">
+        <label className="block text-sm font-medium text-gray-700 mb-1">Numéro de contact *</label>
+        <input {...register('contactPhoneNumber')} placeholder="Ex: +225 01 23 45 67 89" className={`w-full px-4 py-2 border rounded-md ${errors.contactPhoneNumber ? 'border-red-500' : 'border-gray-300'}`} />
+        {errors.contactPhoneNumber && <p className="text-red-500 text-xs mt-1">{errors.contactPhoneNumber.message}</p>}
       </div>
     </div>
   );
@@ -242,14 +302,21 @@ export default function CertificatNationaliteForm() {
         <svg className="w-16 h-16 text-green-500 mb-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
         </svg>
-        <h2 className="text-2xl font-bold text-green-700 mb-2">Demande envoyée avec succès !</h2>
-        <p className="text-gray-700 mb-4">Vous allez être redirigé vers vos demandes dans {successCountdown} seconde{successCountdown > 1 ? 's' : ''}...</p>
+        <h2 className="text-2xl font-bold text-green-700 mb-2">Demande envoyée avec succès&nbsp;!</h2>
+        <p className="text-gray-700 mb-4">Vous allez être redirigé vers vos demandes dans {successCountdown} seconde{successCountdown > 1 ? '&nbsp;s' : ''}...</p>
         <div className="w-full h-2 bg-green-100 rounded-full overflow-hidden mb-2">
           <div className="h-2 bg-green-500 transition-all duration-1000" style={{ width: `${(successCountdown/5)*100}%` }}></div>
         </div>
       </div>
     );
   }
+
+  // Log des erreurs de validation RHF
+  console.log('form errors', errors);
+  // Affichage global des erreurs de validation
+  {Object.keys(errors).length > 0 && (
+    <div className="text-red-600 text-sm mb-4">Veuillez corriger les erreurs dans le formulaire avant de soumettre.</div>
+  )}
 
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-xl">
@@ -273,7 +340,7 @@ export default function CertificatNationaliteForm() {
               {i < totalSteps - 1 && (
                 <div
                   className={`flex-1 h-1 mx-2 ${
-                    currentStep > i + 1 ? 'bg-green-500' : 'bg-gray-200'
+                    currentStep > i + 1 ? 'bg-orange-500' : 'bg-gray-200'
                   }`}
                 />
               )}
@@ -307,7 +374,7 @@ export default function CertificatNationaliteForm() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 disabled:opacity-60 disabled:cursor-not-allowed"
+              className="px-4 py-2 bg-orange-600 text-white rounded-md hover:bg-blue-600 disabled:opacity-60 disabled:cursor-not-allowed"
             >
               {isSubmitting ? 'Envoi en cours...' : 'Soumettre la demande'}
             </button>

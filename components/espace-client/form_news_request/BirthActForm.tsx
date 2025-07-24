@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useSession } from 'next-auth/react';
@@ -8,16 +9,9 @@ import { useLocale } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { birthActRequestDetailsSchema } from '@/lib/validation/details-request.validation';
 import { BirthActRequestType } from '@/types/request.types';
-import { ServiceType } from '@/types/request.types';
-import { Service } from '@/lib/types';
 import { birthActApi } from '@/lib/api-client';
 import type { z } from 'zod';
 type BirthActFormInput = z.infer<typeof birthActRequestDetailsSchema>;
-
-const genderOptions = [
-  { value: 'MALE', label: 'Masculin' },
-  { value: 'FEMALE', label: 'Féminin' },
-];
 
 export default function BirthActForm() {
   const { data: session } = useSession();
@@ -26,6 +20,7 @@ export default function BirthActForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [showSuccess, setShowSuccess] = useState(false);
   const [successCountdown, setSuccessCountdown] = useState(5);
   const totalSteps = 4;
@@ -81,15 +76,6 @@ export default function BirthActForm() {
     }
   }, [setValue, watch]);
 
-  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const files = Array.from(event.target.files || []);
-    setUploadedFiles(prev => [...prev, ...files]);
-  };
-
-  const removeFile = (index: number) => {
-    setUploadedFiles(prev => prev.filter((_, i) => i !== index));
-  };
-
   const getFieldsForStep = (step: number): (keyof BirthActFormInput)[] => {
     switch (step) {
       case 1:
@@ -118,6 +104,10 @@ export default function BirthActForm() {
   };
 
   const onSubmit = async (data: BirthActFormInput) => {
+    if (!uploadedFiles || uploadedFiles.length === 0) {
+      alert('Au moins un fichier justificatif est obligatoire.');
+      return;
+    }
     setIsSubmitting(true);
     // Conversion explicite de la date au format ISO-8601
     if (data.personBirthDate && typeof data.personBirthDate === 'string' && !data.personBirthDate.includes('T')) {
@@ -263,21 +253,78 @@ export default function BirthActForm() {
     <div className="space-y-6">
       <h3 className="text-lg font-semibold text-gray-900 mb-4">Documents et récapitulatif</h3>
       <div className="space-y-4">
-        <label className="block text-sm font-medium text-gray-700">Documents à joindre (PDF, JPG, PNG)</label>
-        <input type="file" multiple accept=".pdf,.jpg,.jpeg,.png" onChange={handleFileUpload} className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
+        <label className="block text-sm font-medium text-gray-700">Documents à joindre (PDF, JPG, PNG) *</label>
+        <div
+          className={
+            `w-full border-2 border-dashed rounded-md p-4 text-center cursor-pointer transition-colors ` +
+            `hover:border-blue-400 bg-gray-50`
+          }
+          onClick={() => fileInputRef.current?.click()}
+          onDragOver={e => { e.preventDefault(); e.stopPropagation(); }}
+          onDrop={e => {
+            e.preventDefault();
+            e.stopPropagation();
+            if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+              setUploadedFiles(prev => [...prev, ...Array.from(e.dataTransfer.files)]);
+            }
+          }}
+        >
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept="application/pdf,image/*"
+            multiple
+            className="hidden"
+            onChange={e => {
+              const files = e.target.files ? Array.from(e.target.files) : [];
+              if (files.length > 0) {
+                setUploadedFiles(prev => [...prev, ...files]);
+              }
+            }}
+          />
+          <span className="text-blue-700 font-semibold">Glissez-déposez vos fichiers ici ou cliquez pour sélectionner</span>
+          <span className="text-xs text-gray-500">Formats acceptés : PDF, images. Plusieurs fichiers possibles.</span>
+          <span className="text-xs text-gray-500">{uploadedFiles.length} fichier{uploadedFiles.length > 1 ? 's' : ''} sélectionné{uploadedFiles.length > 1 ? 's' : ''}</span>
+        </div>
+      </div>
         {uploadedFiles.length > 0 && (
-          <div className="space-y-2">
-            <p className="text-sm font-medium text-gray-700">Fichiers sélectionnés :</p>
-            {uploadedFiles.map((file, index) => (
-              <div key={index} className="flex items-center justify-between p-2 bg-gray-50 rounded">
-                <span className="text-sm text-gray-600">{file.name}</span>
-                <button type="button" onClick={() => removeFile(index)} className="text-red-500 hover:text-red-700 ml-2">Supprimer</button>
-              </div>
+          <ul className="mt-4 flex flex-wrap gap-4">
+            {uploadedFiles.map((file, idx) => (
+              <li key={idx} className="relative flex flex-col items-center w-24">
+                {file.type.startsWith('image/') ? (
+                  <Image
+                    src={URL.createObjectURL(file)}
+                    alt={file.name}
+                    width={80}
+                    height={80}
+                    className="w-20 h-20 object-cover rounded shadow border"
+                  />
+                ) : (
+                  <div className="w-20 h-20 flex items-center justify-center bg-gray-200 rounded shadow border">
+                    <svg className="w-8 h-8 text-red-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
+                    </svg>
+                  </div>
+                )}
+                <span className="text-xs mt-1 truncate w-full text-center" title={file.name}>{file.name}</span>
+                <button
+                  type="button"
+                  onClick={e => {
+                    e.stopPropagation();
+                    setUploadedFiles(prev => prev.filter((_, i) => i !== idx));
+                  }}
+                  className="absolute -top-2 -right-2 bg-white border border-gray-300 rounded-full w-6 h-6 flex items-center justify-center text-red-500 hover:bg-red-100"
+                  title="Supprimer"
+                >✕</button>
+              </li>
             ))}
-          </div>
+          </ul>
+        )}
+        {isSubmitting && uploadedFiles.length === 0 && (
+          <p className="text-red-500 text-xs mt-1">Au moins un fichier justificatif est obligatoire.</p>
         )}
       </div>
-    </div>
+  
   );
 
   if (showSuccess) {
@@ -289,8 +336,8 @@ export default function BirthActForm() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2l4-4" />
           </svg>
         </div>
-        <h2 className="text-2xl font-bold text-green-600 mb-2">Demande envoyée avec succès !</h2>
-        <p className="text-gray-700 mb-4">Vous allez être redirigé vers vos demandes dans {successCountdown} seconde{successCountdown > 1 ? 's' : ''}...</p>
+        <h2 className="text-2xl font-bold text-green-600 mb-2">Demande envoyée avec succès&nbsp;!</h2>
+        <p className="text-gray-700 mb-4">Vous allez être redirigé vers vos demandes dans {successCountdown} seconde{successCountdown > 1 ? '&nbsp;s' : ''}...</p>
         <div className="w-full h-2 bg-green-100 rounded-full overflow-hidden">
           <div className="h-2 bg-green-500 transition-all duration-1000" style={{ width: `${(successCountdown/5)*100}%` }}></div>
         </div>
