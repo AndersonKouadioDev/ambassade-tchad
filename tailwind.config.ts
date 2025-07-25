@@ -81,7 +81,6 @@ const config: Config = {
   plugins: [
     heroui(),
     tailwindcssAnimate,
-    lineClamp,
     aspectRatio,
   ],
 };

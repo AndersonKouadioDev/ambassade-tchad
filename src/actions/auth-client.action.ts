@@ -1,13 +1,11 @@
 'use server';
 
-import { cookies } from 'next/headers';
 import { Method } from 'axios';
 
 import { validateData } from '@/utils/formdata-zod.utilities';
 import { ActionResult } from '@/types';
 import { apiClientHttp } from '@/lib/api-client-http';
 import {
-    completeOtpSchema,
     registerClientSchema,
     resetPasswordSchema,
     loginSchema,
