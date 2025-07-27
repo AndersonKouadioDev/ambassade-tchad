@@ -752,39 +752,184 @@
       "statut": "STATUS",
       "tous": "All",
       "appliquer": "Apply",
-      "listeDemandes": "Request List"
+      "listeDemandes": "Request List",
+      "demandesEnAttente": "Pending Requests",
+      "toutesVosDemandes": "All Your Requests",
+      "aucuneDemandeTrouvee": "No requests found",
+      "aucuneDemandeMessage": "You have no requests at the moment.",
+      "reessayer": "Retry",
+      "sessionNonTrouvee": "Session not found. Please log in again.",
+      "erreurChargement": "Error loading requests",
+      "erreurInconnue": "Unknown error",
+      "pagePrecedente": "Previous page",
+      "pageSuivante": "Next page",
+      "demandes": "requests",
+      "page": "Page",
+      "sur": "of",
+      "services": {
+        "carteConsulaire": "Consular Card",
+        "visa": "Visa",
+        "laissezPasser": "Laissez-passer",
+        "procuration": "Power of Attorney",
+        "acteCapaciteMariage": "Marriage Capacity Certificate",
+        "acteDeces": "Death Certificate",
+        "certificatNationalite": "Nationality Certificate",
+        "acteNaissance": "Birth Certificate"
+      },
+      "statuts": {
+        "NEW": "New",
+        "IN_PROGRESS": "In Progress",
+        "PENDING": "Pending",
+        "COMPLETED": "Completed",
+        "READY_TO_PICKUP": "Ready to Pickup",
+        "REJECTED": "Rejected"
+      },
+      "documents": {
+        "title": "Documents provided",
+        "aucunDocument": "No documents provided for this request",
+        "telecharger": "Download",
+        "uploadedOn": "Uploaded on",
+        "nonSpecifie": "Not specified"
+      }
     },
     "quickActions": {
-      "title": "Quick Services",
-      "description": "Quickly access all your consular request forms",
+      "title": "Quick Actions",
+      "description": "Quick access to main features",
+      "modalTitle": "Available Quick Actions",
       "nouvelleDemandeButton": "Make a New Request",
-      "modalTitle": "Choose the document to request",
+      "newRequest": "New Request",
+      "viewRequests": "View My Requests",
+      "updateProfile": "Update Profile",
+      "downloadDocuments": "Download Documents",
+      "contactSupport": "Contact Support",
+      "viewNotifications": "View Notifications",
+      "checkStatus": "Check Status",
+      "scheduleAppointment": "Schedule Appointment",
+      "viewHistory": "View History",
+      "exportData": "Export Data",
+      "settings": "Settings",
+      "help": "Help",
+      "feedback": "Give Feedback",
+      "emergencyContact": "Emergency Contact",
       "documents": {
-        "passeport": {
-          "label": "Passport",
-          "description": "Apply for a Chadian biometric passport"
+        "visa": {
+          "label": "Visa",
+          "description": "Apply for a travel visa",
+          "route": "/espace-client/nouvelle-demande/visa"
+        },
+        "birth-act": {
+          "label": "Birth Certificate",
+          "description": "Apply for a birth certificate",
+          "route": "/espace-client/nouvelle-demande/birth-act"
+        },
+        "consular-card": {
+          "label": "Consular Card",
+          "description": "Register with the embassy",
+          "route": "/espace-client/nouvelle-demande/consular-card"
         },
         "laissez-passer": {
           "label": "Laissez-passer",
-          "description": "Get a laissez-passer to return to Chad"
+          "description": "Get a laissez-passer to return to Chad",
+          "route": "/espace-client/nouvelle-demande/laissez-passer"
         },
-        "procuration": {
+        "marriage-capacity": {
+          "label": "Marriage Capacity Certificate",
+          "description": "Apply for a marriage capacity certificate",
+          "route": "/espace-client/nouvelle-demande/marriage-capacity"
+        },
+        "death-act": {
+          "label": "Death Certificate",
+          "description": "Apply for a death certificate",
+          "route": "/espace-client/nouvelle-demande/death-act"
+        },
+        "power-of-attorney": {
           "label": "Power of Attorney",
-          "description": "Authorize someone for your procedures"
+          "description": "Authorize someone for your procedures",
+          "route": "/espace-client/nouvelle-demande/power-of-attorney"
         },
-        "carte-consulaire": {
-          "label": "Consular Card",
-          "description": "Register with the embassy"
-        },
-        "certificat-nationalite": {
+        "nationality-certificate": {
           "label": "Nationality Certificate",
-          "description": "Prove your Chadian nationality"
-        },
-        "visa": {
-          "label": "Visa",
-          "description": "Apply for a travel visa"
+          "description": "Prove your Chadian nationality",
+          "route": "/espace-client/nouvelle-demande/nationality-certificate"
+        }
+      },
+      "modal": {
+        "title": "Available Quick Actions",
+        "subtitle": "Select an action to continue",
+        "close": "Close",
+        "cancel": "Cancel",
+        "confirm": "Confirm",
+        "loading": "Loading...",
+        "noActions": "No actions available",
+        "selectAction": "Select an action",
+        "actionDescription": "Action description",
+        "proceed": "Continue",
+        "back": "Back",
+        "search": "Search for an action",
+        "filter": "Filter actions",
+        "allActions": "All actions",
+        "recentActions": "Recent actions",
+        "favoriteActions": "Favorite actions",
+        "categories": {
+          "requests": "Requests",
+          "documents": "Documents",
+          "support": "Support",
+          "settings": "Settings",
+          "help": "Help"
         }
       }
+    },
+    "services": {
+      "visa": "Visa Application",
+      "carteConsulaire": "Consular Card",
+      "passeport": "Passport",
+      "laissezPasser": "Laissez-passer",
+      "procuration": "Power of Attorney",
+      "certificatNationalite": "Nationality Certificate",
+      "acteNaissance": "Birth Certificate",
+      "acteDeces": "Death Certificate",
+      "capaciteMariage": "Marriage Capacity Certificate"
+    },
+    "formFields": {
+      "personFirstName": "First Name",
+      "personLastName": "Last Name",
+      "personGender": "Gender",
+      "personNationality": "Nationality",
+      "personBirthDate": "Date of Birth",
+      "personBirthPlace": "Place of Birth",
+      "personMaritalStatus": "Marital Status",
+      "personProfession": "Profession",
+      "personDomicile": "Domicile",
+      "personAddressInOriginCountry": "Address in Country of Origin",
+      "fatherFullName": "Father's Full Name",
+      "motherFullName": "Mother's Full Name",
+      "passportType": "Passport Type",
+      "passportNumber": "Passport Number",
+      "passportIssuedBy": "Issued By",
+      "passportIssueDate": "Passport Issue Date",
+      "passportExpirationDate": "Passport Expiration Date",
+      "employerAddress": "Employer Address",
+      "employerPhoneNumber": "Employer Phone Number",
+      "visaType": "Visa Type",
+      "durationMonths": "Duration (months)",
+      "destinationState": "Destination",
+      "visaExpirationDate": "Visa Expiration Date",
+      "requestType": "Request Type",
+      "justificationDocumentType": "Justification Document Type",
+      "justificationDocumentNumber": "Justification Document Number",
+      "contactPhoneNumber": "Phone Number"
+    },
+    "requestTypes": {
+      "NEWBORN": "Newborn",
+      "RENEWAL": "Renewal"
+    },
+    "session": {
+      "expiresIn": "Session expires in:",
+      "sessionTime": "Session:",
+      "expired": "Session expired",
+      "warningMessage": "Your session expires in 5 minutes. Please save your work.",
+      "expiredMessage": "Your session has expired. You will be automatically logged out.",
+      "logout": "Logout"
     },
     "header": {
       "searchPlaceholder": "Search...",
@@ -815,6 +960,24 @@
       "achevementPrevu": "Expected completion",
       "dateAchevement": "July 16, 2025",
       "dureeJours": "14 Days",
+      "quickActions": {
+        "title": "Quick Actions",
+        "description": "Quick access to main features",
+        "newRequest": "New Request",
+        "viewRequests": "View My Requests",
+        "updateProfile": "Update Profile",
+        "downloadDocuments": "Download Documents",
+        "contactSupport": "Contact Support",
+        "viewNotifications": "View Notifications",
+        "checkStatus": "Check Status",
+        "scheduleAppointment": "Schedule Appointment",
+        "viewHistory": "View History",
+        "exportData": "Export Data",
+        "settings": "Settings",
+        "help": "Help",
+        "feedback": "Give Feedback",
+        "emergencyContact": "Emergency Contact"
+      },
       "progressSteps": {
         "processus": "Process",
         "deTraitement": "of processing"
@@ -832,9 +995,21 @@
         "voirToutesDemandes": "View All Requests",
         "status": {
           "nouveau": "New",
+          "NEW": "New",
           "enCours": "In Progress",
+          "PROCESSING": "In Progress",
           "enAttente": "Pending",
-          "pretARetirer": "Ready To Collect"
+          "PENDING": "Pending",
+          "pretARetirer": "Ready to Collect",
+          "COMPLETED": "Ready to Collect",
+          "rejete": "Rejected",
+          "REJECTED": "Rejected",
+          "annule": "Cancelled",
+          "CANCELLED": "Cancelled",
+          "requis": "Required",
+          "REQUIRED": "Required",
+          "termine": "Completed",
+          "FINISHED": "Completed"
         }
       },
       "newsCarousel": {
@@ -862,34 +1037,41 @@
       "voirToutes": "View All Notifications",
       "status": {
         "enCours": "In Progress",
-        "En Cours": "In Progress",
+        "PROCESSING": "In Progress",
         "requis": "Required",
+        "REQUIRED": "Required",
+        "pretARetirer": "Ready to Collect",
+        "COMPLETED": "Ready to Collect",
+        "nouveau": "New",
+        "NEW": "New",
+        "enAttente": "Pending",
+        "PENDING": "Pending",
+        "rejete": "Rejected",
+        "REJECTED": "Rejected",
+        "annule": "Cancelled",
+        "CANCELLED": "Cancelled",
+        "termine": "Completed",
+        "FINISHED": "Completed",
         "Requis": "Required",
-        "pretARetirer": "Ready To Collect",
-        "Prêt À Retirer": "Ready To Collect"
+        "En Cours": "In Progress",
+        "Prêt À Retirer": "Ready to Collect"
       },
-      "modal": {
-        "title": "All notifications",
-        "markAsRead": "Mark as read",
-        "markAsUnread": "Mark as unread",
-        "close": "Close",
-        "empty": "No notifications",
-        "read": "Read",
-        "unread": "Unread",
-        "all": "All"
-      }
+      "noNotifications": "No notifications",
+      "markAllAsRead": "Mark all as read",
+      "markAsRead": "Mark as read",
+      "markAsUnread": "Mark as unread"
     },
     "profil": {
       "title": "My Profile",
-      "description": "Find here the history and status of all your requests with the Chad Embassy.",
+      "description": "Manage your profile",
       "modifierCompte": "Edit account",
       "modifierMotDePasse": "Change my password",
       "supprimerCompte": "Delete my account",
       "champsObligatoires": "Fields marked with * are required.",
       "monIdentite": "My identity",
-      "nom": "Last Name",
-      "prenom": "First Name(s)",
-      "langueLabel": "Language in which you want to fill out your visa application",
+      "nom": "Last name",
+      "prenom": "First name(s)",
+      "langueLabel": "Language in which you want to fill your visa application",
       "francais": "French",
       "anglais": "English",
       "arabe": "Arabic",
@@ -901,6 +1083,16 @@
       "motDePasseActuel": "Current password",
       "nouveauMotDePasse": "New password",
       "confirmerMotDePasse": "Confirm new password"
+    },
+    "historiqueTraitement": {
+      "titre": "Processing History",
+      "service": "Service",
+      "statut": "Status",
+      "soumission": "Submission date",
+      "progression": "Progress",
+      "achevementPrevu": "Expected completion",
+      "jours": "days",
+      "enRetard": "Overdue"
     }
   }
 }

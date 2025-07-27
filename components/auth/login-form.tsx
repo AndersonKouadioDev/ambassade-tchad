@@ -1,11 +1,16 @@
 "use client";
 
-import { signIn, useSession } from "next-auth/react";
+import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useLocale } from "next-intl";
+import { signIn, useSession } from "next-auth/react";
+import { useEffect } from "react";
 
 export default function LoginForm() {
+  const t = useTranslations("auth.login");
   const router = useRouter();
+  const locale = useLocale();
   const { data: session, status } = useSession();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -38,57 +43,92 @@ export default function LoginForm() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
-      <form
-        onSubmit={handleLogin}
-        className="w-full max-w-2xl bg-white shadow-lg rounded-2xl p-10 space-y-6"
-      >
-        <h2 className="text-3xl font-semibold text-center text-gray-800">Connexion</h2>
+    <form onSubmit={handleLogin} className="space-y-6 max-w-lg ml-0 px-4">
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+          Adresse Email
+        </label>
+        <input
+          id="email"
+          type="email"
+          placeholder="votre@email.com"
+          required
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all"
+        />
+      </div>
 
-        <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-            Email
-          </label>
-          <input
-            id="email"
-            type="email"
-            placeholder="votre@email.com"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-          />
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+          Mot de passe
+        </label>
+        <input
+          id="password"
+          type="password"
+          placeholder="••••••••"
+          required
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="w-full px-[100px] py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all"
+        />
+      </div>
+
+      {error && (
+        <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
+          <p className="text-red-600 text-sm flex items-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-4 w-4 mr-2"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                clipRule="evenodd"
+              />
+            </svg>
+            {error}
+          </p>
         </div>
+      )}
 
-        <div>
-          <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
-            Mot de passe
-          </label>
-          <input
-            id="password"
-            type="password"
-            placeholder="Votre mot de passe"
-            required
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-          />
-        </div>
-
-        {error && (
-          <div className="p-3 bg-red-100 border border-red-200 rounded-lg">
-            <p className="text-red-600 text-sm">{error}</p>
-          </div>
-        )}
-
+      <div className="pt-2">
         <button
           disabled={loading}
           type="submit"
-          className="w-full py-3 bg-primary text-white text-lg font-semibold rounded-lg hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+          className="w-full py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white text-lg font-semibold rounded-lg hover:from-orange-600 hover:to-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 disabled:opacity-70 disabled:cursor-not-allowed transition-all shadow-md hover:shadow-lg"
         >
-          {loading ? "Connexion en cours..." : "Se connecter"}
+          {loading ? (
+            <span className="flex items-center justify-center">
+              <svg
+                className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                ></circle>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                ></path>
+              </svg>
+              Connexion en cours...
+            </span>
+          ) : (
+            "Se connecter"
+          )}
         </button>
-      </form>
-    </div>
+      </div>
+    </form>
   );
 }

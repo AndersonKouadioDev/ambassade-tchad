@@ -9,6 +9,7 @@ import { LayoutDashboard, FileText, FolderOpen, User, LogOut } from 'lucide-reac
 export default function SidebarMenuList() {
   const { collapsed, hovered } = useSidebarConfig();
   const t = useTranslations('espaceClient.sidebar');
+  const tServices = useTranslations('espaceClient.services');
   const params = useParams();
   const pathname = usePathname();
   const locale = params.locale as string;
@@ -36,12 +37,12 @@ export default function SidebarMenuList() {
       if (match) {
         const serviceType = match[1];
         const serviceLabels: Record<string, string> = {
-          'visa': 'Demande de Visa',
-          'carte-consulaire': 'Carte Consulaire',
-          'passeport': 'Passeport',
-          'laissez-passer': 'Laissez-passer',
-          'procuration': 'Procuration',
-          'certificat-nationalite': 'Certificat de Nationalité'
+          'visa': tServices('visa'),
+          'carte-consulaire': tServices('carteConsulaire'),
+          'passeport': tServices('passeport'),
+          'laissez-passer': tServices('laissezPasser'),
+          'procuration': tServices('procuration'),
+          'certificat-nationalite': tServices('certificatNationalite')
         };
         
         return [{

@@ -3,15 +3,22 @@
 import ProgressSteps from './ProgressSteps';
 import { Calendar } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { useSession } from 'next-auth/react';
 
 export default function DashboardHeader() {
   const t = useTranslations('espaceClient.dashboard');
+  const { data: session } = useSession();
+  
+  // Extraire le nom et prénom de la session
+  const userName = session?.user?.name || 'Utilisateur';
   
   return (
     <div className="w-full bg-gray-50 dark:bg-gray-800 rounded-xl flex flex-col lg:flex-row items-center lg:items-start justify-center lg:justify-between px-4 py-4 lg:px-8 lg:py-6 gap-4 lg:gap-8">
       {/* Bloc gauche */}
       <div className="flex flex-col w-full lg:min-w-[20px] lg:w-auto items-center lg:items-start text-center lg:text-left">
-        <div className="text-orange-500 text-lg lg:text-2xl font-bold mb-2">{t('bonjour')}<br className="hidden lg:block" /><span className="lg:hidden"> </span>{t('nomUtilisateur')}</div>
+        <div className="text-gray-900 text-md lg:text-md font-bold mb-2">
+          {t('bonjour')} <span className="text-md text-blue-600 dark:text-white">{userName}</span>
+        </div>
         <div className="text-base lg:text-2xl font-bold text-gray-900 dark:text-white mb-1">{t('etape')} 1</div>
         <div className="text-sm lg:text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
           {t('service')} : {t('typeService')}<br />

@@ -47,7 +47,7 @@ export const visaRequestDetailsSchema = z.object({
   employerPhoneNumber: z.string().optional(),
 
   visaType: VisaTypeEnum,
-  durationMonths: z.number({ message: 'La durée du séjour est requise.' }).int().min(1, { message: 'La durée doit être d’au moins 1 mois.' }),
+  durationMonths: z.number().optional(),
   destinationState: z.string().optional(),
   visaExpirationDate: z.string().or(z.date()).optional(),
 });

@@ -1,6 +1,6 @@
 import { ServiceType } from '@/types/request.types';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8081/api/v1';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BACKEND_URL || 'http://localhost:8081/api/v1';
 
 export interface ApiResponse<T = any> {
   success: boolean;
@@ -42,6 +42,7 @@ class ApiClient {
     }
     if (token) {
       headers['Authorization'] = `Bearer ${token}`;
+      console.log('Authorization header envoyé:', headers['Authorization']);
     }
     return headers;
   }
@@ -198,9 +199,9 @@ class ApiClient {
     }
   }
 
-  async getRequestById(requestId: string): Promise<ApiResponse> {
+  async getRequestById(requestId: string, tokenOverride?: string): Promise<ApiResponse> {
     try {
-      const headers = await this.getAuthHeaders();
+      const headers = await this.getAuthHeaders(tokenOverride);
       const response = await fetch(`${this.baseUrl}/demandes/${requestId}`, {
         method: 'GET',
         headers,
@@ -274,6 +275,15 @@ class ApiClient {
       console.error('Erreur récupération stats:', error);
       return { success: false, error: 'Erreur de connexion au serveur' };
     }
+  }
+
+  async getRequestByTicket(ticket: string, tokenOverride?: string): Promise<ApiResponse> {
+    const headers = await this.getAuthHeaders(tokenOverride);
+    const response = await fetch(`${this.baseUrl}/demandes/${ticket}`, {
+      method: 'GET',
+      headers,
+    });
+    return this.handleResponse(response);
   }
 }
 

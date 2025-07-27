@@ -2,10 +2,12 @@
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
+import { useLocale } from "next-intl";
 
 export default function ForgotPasswordForm() {
     const t = useTranslations('auth.forgotPassword');
     const router = useRouter();
+    const locale = useLocale();
     const [email, setEmail] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
@@ -44,7 +46,6 @@ export default function ForgotPasswordForm() {
                 return;
             }
 
-            // Succès
             setSuccess(true);
             setEmail('');
             
@@ -57,73 +58,71 @@ export default function ForgotPasswordForm() {
 
     if (success) {
         return (
-            <div className="max-w-md mx-auto p-8 flex flex-col items-center justify-center min-h-[60vh]">
-                <div className="w-full bg-white/80 rounded-xl shadow-lg p-8">
-                    <div className="flex flex-col items-center mb-6">
-                        <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-green-500 to-emerald-400 flex items-center justify-center mb-2 shadow-md">
-                            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                        </div>
-                        <h2 className="text-2xl font-bold text-gray-800 mb-1">Email envoyé !</h2>
-                        <p className="text-gray-500 text-sm text-center">
-                            Un email de réinitialisation a été envoyé à votre adresse email.
-                        </p>
-                    </div>
-                    <button
-                        onClick={() => router.push('/auth')}
-                        className="w-full py-2 rounded-lg bg-gradient-to-tr from-blue-500 to-cyan-400 text-white font-semibold shadow-md"
-                    >
-                        Retour à la connexion
-                    </button>
+            <div className="text-center space-y-6">
+                <div className="mx-auto w-16 h-16 rounded-full bg-green-100 flex items-center justify-center">
+                    <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
                 </div>
+                <h3 className="text-xl font-bold text-gray-800">Email envoyé !</h3>
+                <p className="text-gray-500">
+                    Un email de réinitialisation a été envoyé à votre adresse email.
+                </p>
+                <button
+                    onClick={() => router.push(`/${locale}/auth`)}
+                    className="w-full py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg font-medium"
+                >
+                    Retour à la connexion
+                </button>
             </div>
         );
     }
 
     return (
-        <div className="max-w-md mx-auto p-8 flex flex-col items-center justify-center min-h-[60vh]">
-            <div className="w-full bg-white/80 rounded-xl shadow-lg p-8">
-                <div className="flex flex-col items-center mb-6">
-                    <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-orange-500 to-red-400 flex items-center justify-center mb-2 shadow-md">
-                        <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
-                        </svg>
-                    </div>
-                    <h2 className="text-2xl font-bold text-gray-800 mb-1">{t('title')}</h2>
-                    <p className="text-gray-500 text-sm text-center">{t('description')}</p>
-                </div>
-
-                <form onSubmit={handleForgotPassword} className="flex flex-col gap-4">
-                    <input
-                        type="email"
-                        placeholder={t('email.placeholder')}
-                        required
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        className="input input-bordered rounded-lg px-4 py-2"
-                        autoFocus
-                    />
-
-                    {error && <p className="text-red-600 text-sm">{error}</p>}
-
-                    <button
-                        disabled={loading}
-                        type="submit"
-                        className="btn-primary w-full py-2 rounded-lg bg-gradient-to-tr from-orange-500 to-red-400 text-white font-semibold shadow-md"
-                    >
-                        {loading ? t('loading') : t('submit')}
-                    </button>
-
-                    <button
-                        type="button"
-                        onClick={() => router.push('/auth')}
-                        className="text-blue-600 hover:text-blue-800 text-sm font-medium"
-                    >
-                        Retour à la connexion
-                    </button>
-                </form>
+        <form onSubmit={handleForgotPassword} className="space-y-6 max-w-lg ml-0 px-4">
+            <div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                    Adresse Email
+                </label>
+                <input
+                    id="email"
+                    type="email"
+                    placeholder="votre@email.com"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full px-[100px] py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all"
+                />
             </div>
-        </div>
+
+            {error && (
+                <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
+                    <p className="text-red-600 text-sm flex items-center">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-4 w-4 mr-2"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                        >
+                            <path
+                                fillRule="evenodd"
+                                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                                clipRule="evenodd"
+                            />
+                        </svg>
+                        {error}
+                    </p>
+                </div>
+            )}
+
+            <button
+                disabled={loading}
+                type="submit"
+                className="w-full py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white text-lg font-semibold rounded-lg hover:from-orange-600 hover:to-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 disabled:opacity-70 disabled:cursor-not-allowed transition-all shadow-md hover:shadow-lg"
+            >
+                {loading ? 'Envoi en cours...' : 'Envoyer'}
+            </button>
+
+        </form>
     );
-} 
+}

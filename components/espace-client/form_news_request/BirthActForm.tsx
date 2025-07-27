@@ -32,14 +32,22 @@ export default function BirthActForm() {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8081/api/v1'}/demandes/services`);
         const data = await res.json();
         console.log('Réponse API services:', data);
-        const arr = Array.isArray(data) ? data : Array.isArray(data.data) ? data.data : [];
-        arr.forEach((s: any) => console.log('Type service:', s.type));
-        const service = arr.find((s: any) => (s.type + '').trim().toUpperCase() === 'BIRTH_ACT_APPLICATION');
-        console.log('Service trouvé (string, insensitive):', service);
-        setPrixActe(service ? service.defaultPrice : null);
+        const services = Array.isArray(data) ? data : Array.isArray(data.data) ? data.data : [];
+        console.log('Services disponibles:', services.map((s: any) => s.type));
+        
+        const service = services.find((s: any) => s.type === 'BIRTH_ACT_APPLICATION');
+        console.log('Service BIRTH_ACT_APPLICATION trouvé:', service);
+        
+        if (service && service.defaultPrice) {
+          console.log('Prix trouvé:', service.defaultPrice);
+          setPrixActe(service.defaultPrice);
+        } else {
+          console.log('Service BIRTH_ACT_APPLICATION non trouvé ou prix manquant, fallback à 3000 FCFA');
+          setPrixActe(3000); // Fallback
+        }
       } catch (e) {
         console.error('Erreur fetch prix:', e);
-        setPrixActe(null);
+        setPrixActe(null); // Fallback en cas d'erreur
       }
     }
     fetchPrice();
@@ -83,7 +91,9 @@ export default function BirthActForm() {
       case 2:
         return ['fatherFullName', 'motherFullName'];
       case 3:
-        return ['requestType', 'contactPhoneNumber'];
+        return ['requestType'];
+      case 4:
+        return ['contactPhoneNumber'];
       default:
         return [];
     }
@@ -233,16 +243,11 @@ export default function BirthActForm() {
             </select>
             {renderError(errors.requestType)}
           </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Numéro de téléphone <span className="text-red-500">*</span></label>
-            <input {...register('contactPhoneNumber')} className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" placeholder="Numéro de téléphone" />
-            {renderError(errors.contactPhoneNumber)}
-          </div>
         </div>
         {/* Affichage dynamique du prix */}
         <div className="flex items-center justify-end mt-4">
           <span className="text-lg font-semibold text-green-700">
-            Prix à payer : {prixActe !== null ? prixActe.toLocaleString() + ' FCFA' : '...'}
+            Prix à payer : {prixActe ? prixActe.toLocaleString() + ' FCFA' : '3,000 FCFA'}
           </span>
         </div>
       </div>
@@ -252,6 +257,12 @@ export default function BirthActForm() {
   const renderStep4 = () => (
     <div className="space-y-6">
       <h3 className="text-lg font-semibold text-gray-900 mb-4">Documents et récapitulatif</h3>
+      {/* Champ numéro de contact déplacé ici */}
+      <div className="mb-4">
+        <label className="block text-sm font-medium text-gray-700 mb-1">Numéro de téléphone *</label>
+        <input {...register('contactPhoneNumber')} className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" placeholder="Numéro de téléphone" />
+        {renderError(errors.contactPhoneNumber)}
+      </div>
       <div className="space-y-4">
         <label className="block text-sm font-medium text-gray-700">Documents à joindre (PDF, JPG, PNG) *</label>
         <div
@@ -363,9 +374,18 @@ export default function BirthActForm() {
         {currentStep === 2 && renderStep2()}
         {currentStep === 3 && renderStep3()}
         {currentStep === 4 && renderStep4()}
-        {/* Affichage global des erreurs */}
+        {/* Affichage global des erreurs - version sécurisée */}
         {Object.keys(errors).length > 0 && (
-          <pre style={{ color: 'red' }}>{JSON.stringify(errors, null, 2)}</pre>
+          <div className="p-4 bg-red-50 border border-red-200 rounded-md">
+            <h4 className="text-red-800 font-medium mb-2">Erreurs de validation :</h4>
+            <ul className="text-red-700 text-sm space-y-1">
+              {Object.entries(errors).map(([field, error]) => (
+                <li key={field}>
+                  <strong>{field}:</strong> {error?.message || 'Erreur de validation'}
+                </li>
+              ))}
+            </ul>
+          </div>
         )}
         <div className="flex justify-between pt-6 border-t border-gray-200">
           {currentStep > 1 && (

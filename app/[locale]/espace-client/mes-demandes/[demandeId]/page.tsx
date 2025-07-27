@@ -4,10 +4,21 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import { useSession } from "next-auth/react";
 import ProgressSteps from '@/components/espace-client/ProgressSteps';
-import DocumentsSection from '@/components/espace-client/DocumentsSection';
 import DemandeDetailsSection from '@/components/espace-client/DemandeDetailsSection';
 import DemandeTable from '@/components/espace-client/DemandeTable';
 import HistoriqueTraitement from '@/components/espace-client/HistoriqueTraitement';
+import StatusTimeline from '@/components/espace-client/StatusTimeline';
+import { apiClient } from '@/lib/api-client';
+
+interface Document {
+  id: string;
+  filename: string;
+  originalName: string;
+  mimeType: string;
+  size: number;
+  url: string;
+  uploadedAt: string;
+}
 
 interface DemandeDetail {
   id: string;
@@ -22,6 +33,7 @@ interface DemandeDetail {
   contactPhoneNumber: string;
   observations: string | null;
   amount: number;
+  documents?: Document[];
   visaDetails: any;
   birthActDetails: any;
   consularCardDetails: any;
@@ -47,64 +59,13 @@ export default function DemandeDetail() {
       setError(null);
 
       try {
-        console.log('Loading demande detail for ID:', demandeId);
-        
-        // Simuler un délai de chargement
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        
-        // Données mock basées sur l'ID de la demande
-        const mockDemande: DemandeDetail = {
-          id: demandeId,
-          ticketNumber: demandeId,
-          userId: "66300ba2-82d9-4f92-8566-e901b508ec2b",
-          serviceType: "VISA",
-          status: "NEW",
-          submissionDate: "2025-07-17T14:02:57.780Z",
-          updatedAt: "2025-07-17T14:02:57.780Z",
-          completionDate: null,
-          issuedDate: null,
-          contactPhoneNumber: "2250709682009",
-          observations: null,
-          amount: 35000,
-          visaDetails: {
-            id: "6cdce376-1202-40e3-82c5-f713f792764e",
-            requestId: demandeId,
-            personFirstName: "Felicia",
-            personLastName: "Mponou",
-            personGender: "FEMALE",
-            personNationality: "ivoirienne",
-            personBirthDate: "1990-05-10T20:00:00.000Z",
-            personBirthPlace: "abidjan",
-            personMaritalStatus: "SINGLE",
-            passportType: "ORDINARY",
-            passportNumber: "FR12345678",
-            passportIssuedBy: "sneidai",
-            passportIssueDate: "2020-01-01T20:00:00.000Z",
-            passportExpirationDate: "2030-01-01T20:00:00.000Z",
-            profession: "Développeur",
-            employerAddress: "10 rue de Paris",
-            employerPhoneNumber: "+2250124536578",
-            visaType: "SHORT_STAY",
-            durationMonths: 3,
-            destinationState: "Abidjan",
-            visaExpirationDate: null,
-            createdAt: "2025-07-17T14:02:57.780Z",
-            updatedAt: "2025-07-17T14:02:57.780Z"
-          },
-          birthActDetails: null,
-          consularCardDetails: null,
-          laissezPasserDetails: null,
-          marriageCapacityActDetails: null,
-          deathActDetails: null,
-          powerOfAttorneyDetails: null,
-          nationalityCertificateDetails: null
-        };
-        
-        console.log('Using mock data for now:', mockDemande);
-        setDemande(mockDemande);
-        
+        // Appel API réel avec token et ticket
+        const token = session?.user?.token;
+        console.log('TOKEN UTILISÉ POUR API:', token);
+        const res = await apiClient.getRequestByTicket(demandeId, token);
+        if (!res.success || !res.data) throw new Error(res.error || 'Erreur lors du chargement de la demande');
+        setDemande(res.data);
       } catch (e: any) {
-        console.error('Error:', e);
         setError(e.message || 'Erreur inconnue');
       } finally {
         setLoading(false);
@@ -244,13 +205,28 @@ export default function DemandeDetail() {
             Détails de la demande
           </div>
           {demandeFormatted && <DemandeTable demande={demandeFormatted} />}
-          <HistoriqueTraitement steps={steps} progression={progression} />
+          <HistoriqueTraitement 
+            steps={steps} 
+            progression={progression} 
+            serviceType={demande.serviceType}
+            status={demande.status}
+            submissionDate={demande.submissionDate}
+          />
           <div className="w-full flex justify-center">
             <ProgressSteps percent={progression} steps={steps.length} labels={steps.map(s => s.label)} />
           </div>
         </div>
         
-        <DocumentsSection />
+        {/* Timeline détaillée du statut */}
+        <StatusTimeline 
+          currentStatus={demande.status}
+          submissionDate={demande.submissionDate}
+          updatedAt={demande.updatedAt}
+          completionDate={demande.completionDate}
+          issuedDate={demande.issuedDate}
+        />
+        
+        {/* <DocumentsSection /> */}
         <DemandeDetailsSection demande={demande} />
       </div>
     </div>

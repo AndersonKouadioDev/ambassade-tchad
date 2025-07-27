@@ -233,7 +233,8 @@ export default function ProcurationForm() {
           <label className="block text-sm font-medium text-gray-700 mb-1">Motif</label>
           <input {...register('reason')} placeholder="Ex: Délégation de signature" className="w-full px-4 py-2 border border-gray-300 rounded-md" />
         </div>
-        <div>
+        {/* Champ numéro de contact déplacé ici */}
+        <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700 mb-1">Numéro de contact *</label>
           <input {...register('contactPhoneNumber')} placeholder="Ex: +225 01 23 45 67 89" className={`w-full px-4 py-2 border rounded-md ${errors.contactPhoneNumber ? 'border-red-500' : 'border-gray-300'}`} />
           {errors.contactPhoneNumber && <p className="text-red-500 text-xs mt-1">{errors.contactPhoneNumber.message}</p>}
