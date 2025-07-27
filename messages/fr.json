@@ -464,9 +464,21 @@
       "description": "Retrouvez ici l'historique et le statut de toutes vos demandes auprès de l'Ambassade du Tchad.",
       "quickActions": {
         "title": "Actions rapides",
+        "description": "Accédez rapidement aux fonctionnalités principales",
         "newRequest": "Nouvelle demande",
         "viewRequests": "Voir mes demandes",
-        "updateProfile": "Mettre à jour le profil"
+        "updateProfile": "Mettre à jour le profil",
+        "downloadDocuments": "Télécharger documents",
+        "contactSupport": "Contacter le support",
+        "viewNotifications": "Voir notifications",
+        "checkStatus": "Vérifier statut",
+        "scheduleAppointment": "Prendre rendez-vous",
+        "viewHistory": "Voir historique",
+        "exportData": "Exporter données",
+        "settings": "Paramètres",
+        "help": "Aide",
+        "feedback": "Donner un avis",
+        "emergencyContact": "Contact d'urgence"
       },
       "recentRequests": {
         "title": "Demandes récentes",
@@ -501,9 +513,21 @@
         "voirToutesDemandes": "Voir Toutes Les Demandes",
         "status": {
           "nouveau": "Nouveau",
+          "NEW": "Nouveau",
           "enCours": "En Cours",
+          "PROCESSING": "En Cours",
           "enAttente": "En Attente",
-          "pretARetirer": "Prêt À Retirer"
+          "PENDING": "En Attente",
+          "pretARetirer": "Prêt À Retirer",
+          "COMPLETED": "Prêt À Retirer",
+          "rejete": "Rejeté",
+          "REJECTED": "Rejeté",
+          "annule": "Annulé",
+          "CANCELLED": "Annulé",
+          "requis": "Requis",
+          "REQUIRED": "Requis",
+          "termine": "Terminé",
+          "FINISHED": "Terminé"
         }
       },
       "newsCarousel": {
@@ -540,6 +564,31 @@
     },
     "notifications": {
       "title": "Notifications",
+      "listeAlertes": "Liste des dernières alertes et mises à jour importantes",
+      "statut": "Statut",
+      "notification": "Notification",
+      "voirToutes": "Voir Toutes Les Notifications",
+      "status": {
+        "enCours": "En Cours",
+        "PROCESSING": "En Cours",
+        "requis": "Requis",
+        "REQUIRED": "Requis",
+        "pretARetirer": "Prêt À Retirer",
+        "COMPLETED": "Prêt À Retirer",
+        "nouveau": "Nouveau",
+        "NEW": "Nouveau",
+        "enAttente": "En Attente",
+        "PENDING": "En Attente",
+        "rejete": "Rejeté",
+        "REJECTED": "Rejeté",
+        "annule": "Annulé",
+        "CANCELLED": "Annulé",
+        "termine": "Terminé",
+        "FINISHED": "Terminé",
+        "Requis": "Requis",
+        "En Cours": "En Cours",
+        "Prêt À Retirer": "Prêt À Retirer"
+      },
       "noNotifications": "Aucune notification",
       "markAllAsRead": "Tout marquer comme lu",
       "markAsRead": "Marquer comme lu",
@@ -547,9 +596,142 @@
     },
     "quickActions": {
       "title": "Actions rapides",
+      "description": "Accédez rapidement aux fonctionnalités principales",
+      "modalTitle": "Actions rapides disponibles",
+      "nouvelleDemandeButton": "Faire une nouvelle demande",
       "newRequest": "Nouvelle demande",
       "viewRequests": "Voir mes demandes",
-      "updateProfile": "Mettre à jour le profil"
+      "updateProfile": "Mettre à jour le profil",
+      "downloadDocuments": "Télécharger documents",
+      "contactSupport": "Contacter le support",
+      "viewNotifications": "Voir notifications",
+      "checkStatus": "Vérifier statut",
+      "scheduleAppointment": "Prendre rendez-vous",
+      "viewHistory": "Voir historique",
+      "exportData": "Exporter données",
+      "settings": "Paramètres",
+      "help": "Aide",
+      "feedback": "Donner un avis",
+      "emergencyContact": "Contact d'urgence",
+      "documents": {
+        "visa": {
+          "label": "Visa",
+          "description": "Demander un visa de voyage",
+          "route": "/espace-client/nouvelle-demande/visa"
+        },
+        "birth-act": {
+          "label": "Acte de naissance",
+          "description": "Demander un acte de naissance",
+          "route": "/espace-client/nouvelle-demande/birth-act"
+        },
+        "consular-card": {
+          "label": "Carte consulaire",
+          "description": "S'inscrire auprès de l'ambassade",
+          "route": "/espace-client/nouvelle-demande/consular-card"
+        },
+        "laissez-passer": {
+          "label": "Laissez-passer",
+          "description": "Obtenir un laissez-passer pour retourner au Tchad",
+          "route": "/espace-client/nouvelle-demande/laissez-passer"
+        },
+        "marriage-capacity": {
+          "label": "Certificat de capacité matrimoniale",
+          "description": "Demander un certificat de capacité matrimoniale",
+          "route": "/espace-client/nouvelle-demande/marriage-capacity"
+        },
+        "death-act": {
+          "label": "Acte de décès",
+          "description": "Demander un acte de décès",
+          "route": "/espace-client/nouvelle-demande/death-act"
+        },
+        "power-of-attorney": {
+          "label": "Procuration",
+          "description": "Autoriser quelqu'un pour vos démarches",
+          "route": "/espace-client/nouvelle-demande/power-of-attorney"
+        },
+        "nationality-certificate": {
+          "label": "Certificat de nationalité",
+          "description": "Prouver votre nationalité tchadienne",
+          "route": "/espace-client/nouvelle-demande/nationality-certificate"
+        }
+      },
+      "modal": {
+        "title": "Actions rapides disponibles",
+        "subtitle": "Sélectionnez une action pour continuer",
+        "close": "Fermer",
+        "cancel": "Annuler",
+        "confirm": "Confirmer",
+        "loading": "Chargement...",
+        "noActions": "Aucune action disponible",
+        "selectAction": "Sélectionner une action",
+        "actionDescription": "Description de l'action",
+        "proceed": "Continuer",
+        "back": "Retour",
+        "search": "Rechercher une action",
+        "filter": "Filtrer les actions",
+        "allActions": "Toutes les actions",
+        "recentActions": "Actions récentes",
+        "favoriteActions": "Actions favorites",
+        "categories": {
+          "requests": "Demandes",
+          "documents": "Documents",
+          "support": "Support",
+          "settings": "Paramètres",
+          "help": "Aide"
+        }
+      }
+    },
+    "services": {
+      "visa": "Demande de Visa",
+      "carteConsulaire": "Carte Consulaire",
+      "passeport": "Passeport",
+      "laissezPasser": "Laissez-passer",
+      "procuration": "Procuration",
+      "certificatNationalite": "Certificat de Nationalité",
+      "acteNaissance": "Acte de naissance",
+      "acteDeces": "Acte de décès",
+      "capaciteMariage": "Certificat de capacité matrimoniale"
+    },
+    "formFields": {
+      "personFirstName": "Prénom",
+      "personLastName": "Nom",
+      "personGender": "Genre",
+      "personNationality": "Nationalité",
+      "personBirthDate": "Date de naissance",
+      "personBirthPlace": "Lieu de naissance",
+      "personMaritalStatus": "État civil",
+      "personProfession": "Profession",
+      "personDomicile": "Domicile",
+      "personAddressInOriginCountry": "Adresse au pays d'origine",
+      "fatherFullName": "Nom complet du père",
+      "motherFullName": "Nom complet de la mère",
+      "passportType": "Type de passeport",
+      "passportNumber": "Numéro de passeport",
+      "passportIssuedBy": "Délivré par",
+      "passportIssueDate": "Date de délivrance du passeport",
+      "passportExpirationDate": "Expiration du passeport",
+      "employerAddress": "Adresse de l'employeur",
+      "employerPhoneNumber": "Téléphone de l'employeur",
+      "visaType": "Type de visa",
+      "durationMonths": "Durée (mois)",
+      "destinationState": "Destination",
+      "visaExpirationDate": "Expiration du visa",
+      "requestType": "Type de demande",
+      "justificationDocumentType": "Type de justificatif",
+      "justificationDocumentNumber": "Numéro du justificatif",
+      "contactPhoneNumber": "Numéro de téléphone"
+    },
+    "requestTypes": {
+      "NEWBORN": "Nouveau-né",
+      "RENEWAL": "Renouvellement"
+    },
+    "session": {
+      "expiresIn": "Session expire dans :",
+      "sessionTime": "Session :",
+      "expired": "Session expirée",
+      "warningMessage": "Votre session expire dans 5 minutes. Veuillez sauvegarder votre travail.",
+      "expiredMessage": "Votre session a expiré. Vous allez être déconnecté automatiquement.",
+      "logout": "Déconnexion"
     },
     "navigation": {
       "dashboard": "Tableau de bord",
@@ -755,11 +937,76 @@
     },
     "mesDemandesClient": {
       "title": "Mes demandes",
-      "description": "Consultez vos demandes"
+      "description": "Retrouvez ici l'historique et le statut de toutes vos demandes auprès de l'Ambassade du Tchad.",
+      "filtrer": "FILTRER PAR",
+      "noTicket": "N° TICKET",
+      "placeholderTicket": "Ex: T001",
+      "typeService": "TYPE DE SERVICE",
+      "statut": "STATUT",
+      "tous": "Tous",
+      "appliquer": "Appliquer",
+      "listeDemandes": "Liste des demandes",
+      "demandesEnAttente": "Demandes en attente",
+      "toutesVosDemandes": "Toutes vos demandes",
+      "aucuneDemandeTrouvee": "Aucune demande trouvée",
+      "aucuneDemandeMessage": "Vous n'avez aucune demande pour le moment.",
+      "reessayer": "Réessayer",
+      "sessionNonTrouvee": "Session non trouvée. Veuillez vous reconnecter.",
+      "erreurChargement": "Erreur lors du chargement des demandes",
+      "erreurInconnue": "Erreur inconnue",
+      "pagePrecedente": "Page précédente",
+      "pageSuivante": "Page suivante",
+      "demandes": "demandes",
+      "page": "Page",
+      "sur": "sur",
+      "services": {
+        "carteConsulaire": "Carte Consulaire",
+        "visa": "Visa",
+        "laissezPasser": "Laissez-passer",
+        "procuration": "Procuration",
+        "acteCapaciteMariage": "Acte de Capacité de Mariage",
+        "acteDeces": "Acte de Décès",
+        "certificatNationalite": "Certificat de Nationalité",
+        "acteNaissance": "Acte de Naissance"
+      },
+      "statuts": {
+        "NEW": "Nouveau",
+        "IN_PROGRESS": "En cours",
+        "PENDING": "En attente",
+        "COMPLETED": "Terminé",
+        "READY_TO_PICKUP": "Prêt à retirer",
+        "REJECTED": "Rejeté"
+      },
+      "documents": {
+        "title": "Documents fournis",
+        "aucunDocument": "Aucun document fourni pour cette demande",
+        "telecharger": "Télécharger",
+        "uploadedOn": "Uploadé le",
+        "nonSpecifie": "Non spécifié"
+      }
     },
     "profil": {
       "title": "Mon Profil",
-      "description": "Gérez votre profil"
+      "description": "Gérez votre profil",
+      "modifierCompte": "Modifier le compte",
+      "modifierMotDePasse": "Modifier mon mot de passe",
+      "supprimerCompte": "Supprimer mon compte",
+      "champsObligatoires": "Les champs annotés d'un * sont obligatoires.",
+      "monIdentite": "Mon identité",
+      "nom": "Nom",
+      "prenom": "Prénom (s)",
+      "langueLabel": "Langue dans laquelle vous souhaitez renseigner votre demande de visa",
+      "francais": "Français",
+      "anglais": "Anglais",
+      "arabe": "Arabe",
+      "enregistrer": "Enregistrer",
+      "mesDemandes": "Mes demandes",
+      "voirProfil": "Voir le profil",
+      "modifierProfil": "Modifier le profil",
+      "annuler": "Annuler",
+      "motDePasseActuel": "Mot de passe actuel",
+      "nouveauMotDePasse": "Nouveau mot de passe",
+      "confirmerMotDePasse": "Confirmer le nouveau mot de passe"
     }
   },
   "messages": {
@@ -787,7 +1034,32 @@
       "requis": "Requis",
       "Requis": "Requis",
       "pretARetirer": "Prêt À Retirer",
-      "Prêt À Retirer": "Prêt À Retirer"
+      "Prêt À Retirer": "Prêt À Retirer",
+      "nouveau": "Nouveau",
+      "NEW": "Nouveau",
+      "PROCESSING": "En Cours",
+      "PENDING": "En Attente",
+      "COMPLETED": "Prêt À Retirer",
+      "rejete": "Rejeté",
+      "REJECTED": "Rejeté",
+      "annule": "Annulé",
+      "CANCELLED": "Annulé",
+      "REQUIRED": "Requis",
+      "termine": "Terminé",
+      "FINISHED": "Terminé",
+      "enAttente": "En Attente",
+      "urgent": "Urgent",
+      "URGENT": "Urgent",
+      "important": "Important",
+      "IMPORTANT": "Important",
+      "info": "Information",
+      "INFO": "Information",
+      "warning": "Avertissement",
+      "WARNING": "Avertissement",
+      "error": "Erreur",
+      "ERROR": "Erreur",
+      "success": "Succès",
+      "SUCCESS": "Succès"
     },
     "modal": {
       "title": "Toutes les notifications",

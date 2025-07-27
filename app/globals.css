@@ -138,3 +138,22 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+@media print {
+  body * {
+    visibility: hidden !important;
+  }
+  .printable, .printable * {
+    visibility: visible !important;
+  }
+  .printable {
+    position: absolute !important;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    background: white !important;
+    color: black !important;
+    z-index: 9999;
+    box-shadow: none !important;
+  }
+}

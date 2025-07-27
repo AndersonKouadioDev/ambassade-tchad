@@ -145,40 +145,40 @@ export default function ConsulaireCardForm() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Prénom *</label>
-          <input {...register('personFirstName')} className={`w-full px-4 py-2 border rounded-md ${errors.personFirstName ? 'border-red-500' : 'border-gray-300'}`} />
+          <input {...register('personFirstName')} placeholder="Ex: Mahamat" className={`w-full px-4 py-2 border rounded-md ${errors.personFirstName ? 'border-red-500' : 'border-gray-300'}`} />
           {errors.personFirstName && <p className="text-red-500 text-xs mt-1">{errors.personFirstName.message}</p>}
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Nom *</label>
-          <input {...register('personLastName')} className={`w-full px-4 py-2 border rounded-md ${errors.personLastName ? 'border-red-500' : 'border-gray-300'}`} />
+          <input {...register('personLastName')} placeholder="Ex: Abakar" className={`w-full px-4 py-2 border rounded-md ${errors.personLastName ? 'border-red-500' : 'border-gray-300'}`} />
           {errors.personLastName && <p className="text-red-500 text-xs mt-1">{errors.personLastName.message}</p>}
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Date de naissance *</label>
-          <input type="date" {...register('personBirthDate')} className={`w-full px-4 py-2 border rounded-md ${errors.personBirthDate ? 'border-red-500' : 'border-gray-300'}`} />
+          <input type="date" {...register('personBirthDate')} placeholder="JJ/MM/AAAA" className={`w-full px-4 py-2 border rounded-md ${errors.personBirthDate ? 'border-red-500' : 'border-gray-300'}`} />
           {errors.personBirthDate && <p className="text-red-500 text-xs mt-1">{errors.personBirthDate.message}</p>}
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Lieu de naissance *</label>
-          <input {...register('personBirthPlace')} className={`w-full px-4 py-2 border rounded-md ${errors.personBirthPlace ? 'border-red-500' : 'border-gray-300'}`} />
+          <input {...register('personBirthPlace')} placeholder="Ex: N'Djamena" className={`w-full px-4 py-2 border rounded-md ${errors.personBirthPlace ? 'border-red-500' : 'border-gray-300'}`} />
           {errors.personBirthPlace && <p className="text-red-500 text-xs mt-1">{errors.personBirthPlace.message}</p>}
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Nationalité *</label>
-          <input {...register('personNationality')} className={`w-full px-4 py-2 border rounded-md ${errors.personNationality ? 'border-red-500' : 'border-gray-300'}`} />
+          <input {...register('personNationality')} placeholder="Ex: Tchadienne" className={`w-full px-4 py-2 border rounded-md ${errors.personNationality ? 'border-red-500' : 'border-gray-300'}`} />
           {errors.personNationality && <p className="text-red-500 text-xs mt-1">{errors.personNationality.message}</p>}
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Profession</label>
-          <input {...register('personProfession')} className="w-full px-4 py-2 border border-gray-300 rounded-md" />
+          <input {...register('personProfession')} placeholder="Ex: Enseignant" className="w-full px-4 py-2 border border-gray-300 rounded-md" />
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Domicile</label>
-          <input {...register('personDomicile')} className="w-full px-4 py-2 border border-gray-300 rounded-md" />
+          <input {...register('personDomicile')} placeholder="Ex: Cocody, Abidjan" className="w-full px-4 py-2 border border-gray-300 rounded-md" />
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Adresse au pays d'origine</label>
-          <input {...register('personAddressInOriginCountry')} className="w-full px-4 py-2 border border-gray-300 rounded-md" />
+          <input {...register('personAddressInOriginCountry')} placeholder="Ex: Quartier Moursal, N'Djamena" className="w-full px-4 py-2 border border-gray-300 rounded-md" />
         </div>
       </div>
     </div>
@@ -190,11 +190,11 @@ export default function ConsulaireCardForm() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Nom du père</label>
-          <input {...register('fatherFullName')} className="w-full px-4 py-2 border border-gray-300 rounded-md" />
+          <input {...register('fatherFullName')} placeholder="Ex: Abakar Mahamat" className="w-full px-4 py-2 border border-gray-300 rounded-md" />
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Nom de la mère</label>
-          <input {...register('motherFullName')} className="w-full px-4 py-2 border border-gray-300 rounded-md" />
+          <input {...register('motherFullName')} placeholder="Ex: Fatimé Oumar" className="w-full px-4 py-2 border border-gray-300 rounded-md" />
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Type de pièce justificative</label>
@@ -207,11 +207,11 @@ export default function ConsulaireCardForm() {
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Numéro de pièce justificative</label>
-          <input {...register('justificationDocumentNumber')} className="w-full px-4 py-2 border border-gray-300 rounded-md" />
+          <input {...register('justificationDocumentNumber')} placeholder="Ex: CNI123456" className="w-full px-4 py-2 border border-gray-300 rounded-md" />
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Adresse au pays d'origine</label>
-          <input {...register('personAddressInOriginCountry')} className="w-full px-4 py-2 border border-gray-300 rounded-md" />
+          <input {...register('personAddressInOriginCountry')} placeholder="Ex: Quartier Moursal, N'Djamena" className="w-full px-4 py-2 border border-gray-300 rounded-md" />
         </div>
       </div>
     </div>

@@ -36,7 +36,7 @@ export default function AuthPage() {
             </div>
             {/* Formulaire centré */}
             <div className="flex justify-center items-start w-full mt-8 md:mt-12 lg:mt-16">
-                <div className="w-full max-w-xl p-6 md:p-10 z-20">
+                <div className="w-full  p-6 md:p-10]">
                     <AuthForm />
                 </div>
             </div>

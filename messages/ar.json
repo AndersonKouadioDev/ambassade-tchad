@@ -729,37 +729,130 @@
       "statut": "الحالة",
       "tous": "الكل",
       "appliquer": "تطبيق",
-      "listeDemandes": "قائمة الطلبات"
+      "listeDemandes": "قائمة الطلبات",
+      "demandesEnAttente": "الطلبات المعلقة",
+      "toutesVosDemandes": "جميع طلباتك",
+      "aucuneDemandeTrouvee": "لم يتم العثور على طلبات",
+      "aucuneDemandeMessage": "ليس لديك أي طلبات في الوقت الحالي.",
+      "reessayer": "إعادة المحاولة",
+      "sessionNonTrouvee": "لم يتم العثور على الجلسة. يرجى إعادة تسجيل الدخول.",
+      "erreurChargement": "خطأ في تحميل الطلبات",
+      "erreurInconnue": "خطأ غير معروف",
+      "pagePrecedente": "الصفحة السابقة",
+      "pageSuivante": "الصفحة التالية",
+      "demandes": "طلبات",
+      "page": "صفحة",
+      "sur": "من",
+      "services": {
+        "carteConsulaire": "بطاقة قنصلية",
+        "visa": "تأشيرة",
+        "laissezPasser": "تصريح مرور",
+        "procuration": "توكيل",
+        "acteCapaciteMariage": "شهادة أهلية زواج",
+        "acteDeces": "شهادة وفاة",
+        "certificatNationalite": "شهادة جنسية",
+        "acteNaissance": "شهادة ميلاد"
+      },
+      "statuts": {
+        "NEW": "جديد",
+        "IN_PROGRESS": "قيد المعالجة",
+        "PENDING": "معلق",
+        "COMPLETED": "مكتمل",
+        "READY_TO_PICKUP": "جاهز للاستلام",
+        "REJECTED": "مرفوض"
+      },
+      "documents": {
+        "title": "الوثائق المقدمة",
+        "aucunDocument": "لا توجد وثائق مقدمة لهذا الطلب",
+        "telecharger": "تحميل",
+        "uploadedOn": "تم الرفع في",
+        "nonSpecifie": "غير محدد"
+      }
     },
     "quickActions": {
-      "title": "خدمات سريعة",
-      "description": "الوصول السريع إلى جميع نماذج الطلبات القنصلية",
+      "title": "إجراءات سريعة",
+      "description": "وصول سريع إلى الميزات الرئيسية",
+      "modalTitle": "الإجراءات السريعة المتاحة",
       "nouvelleDemandeButton": "تقديم طلب جديد",
-      "modalTitle": "اختر الوثيقة المطلوبة",
+      "newRequest": "طلب جديد",
+      "viewRequests": "عرض طلباتي",
+      "updateProfile": "تحديث الملف الشخصي",
+      "downloadDocuments": "تحميل المستندات",
+      "contactSupport": "اتصل بالدعم",
+      "viewNotifications": "عرض الإشعارات",
+      "checkStatus": "فحص الحالة",
+      "scheduleAppointment": "حجز موعد",
+      "viewHistory": "عرض السجل",
+      "exportData": "تصدير البيانات",
+      "settings": "الإعدادات",
+      "help": "المساعدة",
+      "feedback": "إعطاء رأي",
+      "emergencyContact": "جهة اتصال الطوارئ",
       "documents": {
-        "passeport": {
-          "label": "جواز سفر",
-          "description": "تقدم بطلب للحصول على جواز سفر تشادي بيومتري"
+        "visa": {
+          "label": "تأشيرة",
+          "description": "تقدم بطلب للحصول على تأشيرة سفر",
+          "route": "/espace-client/nouvelle-demande/visa"
+        },
+        "birth-act": {
+          "label": "شهادة ميلاد",
+          "description": "تقدم بطلب للحصول على شهادة ميلاد",
+          "route": "/espace-client/nouvelle-demande/birth-act"
+        },
+        "consular-card": {
+          "label": "بطاقة قنصلية",
+          "description": "سجل في السفارة",
+          "route": "/espace-client/nouvelle-demande/consular-card"
         },
         "laissez-passer": {
           "label": "تصريح مرور",
-          "description": "احصل على تصريح مرور للعودة إلى تشاد"
+          "description": "احصل على تصريح مرور للعودة إلى تشاد",
+          "route": "/espace-client/nouvelle-demande/laissez-passer"
         },
-        "procuration": {
+        "marriage-capacity": {
+          "label": "شهادة أهلية زواج",
+          "description": "تقدم بطلب للحصول على شهادة أهلية زواج",
+          "route": "/espace-client/nouvelle-demande/marriage-capacity"
+        },
+        "death-act": {
+          "label": "شهادة وفاة",
+          "description": "تقدم بطلب للحصول على شهادة وفاة",
+          "route": "/espace-client/nouvelle-demande/death-act"
+        },
+        "power-of-attorney": {
           "label": "توكيل",
-          "description": "وكل شخصاً للقيام بإجراءاتك"
+          "description": "وكل شخصاً للقيام بإجراءاتك",
+          "route": "/espace-client/nouvelle-demande/power-of-attorney"
         },
-        "carte-consulaire": {
-          "label": "بطاقة قنصلية",
-          "description": "سجل في السفارة"
-        },
-        "certificat-nationalite": {
+        "nationality-certificate": {
           "label": "شهادة جنسية",
-          "description": "أثبت جنسيتك التشادية"
-        },
-        "visa": {
-          "label": "تأشيرة",
-          "description": "تقدم بطلب للحصول على تأشيرة سفر"
+          "description": "أثبت جنسيتك التشادية",
+          "route": "/espace-client/nouvelle-demande/nationality-certificate"
+        }
+      },
+      "modal": {
+        "title": "الإجراءات السريعة المتاحة",
+        "subtitle": "اختر إجراءاً للمتابعة",
+        "close": "إغلاق",
+        "cancel": "إلغاء",
+        "confirm": "تأكيد",
+        "loading": "جاري التحميل...",
+        "noActions": "لا توجد إجراءات متاحة",
+        "selectAction": "اختر إجراءاً",
+        "actionDescription": "وصف الإجراء",
+        "proceed": "متابعة",
+        "back": "رجوع",
+        "search": "البحث عن إجراء",
+        "filter": "تصفية الإجراءات",
+        "allActions": "جميع الإجراءات",
+        "recentActions": "الإجراءات الحديثة",
+        "favoriteActions": "الإجراءات المفضلة",
+        "categories": {
+          "requests": "الطلبات",
+          "documents": "المستندات",
+          "support": "الدعم",
+          "settings": "الإعدادات",
+          "help": "المساعدة"
         }
       }
     },
@@ -792,6 +885,24 @@
       "achevementPrevu": "الإنجاز المتوقع",
       "dateAchevement": "16 يوليو 2025",
       "dureeJours": "14 يوماً",
+      "quickActions": {
+        "title": "إجراءات سريعة",
+        "description": "وصول سريع إلى الميزات الرئيسية",
+        "newRequest": "طلب جديد",
+        "viewRequests": "عرض طلباتي",
+        "updateProfile": "تحديث الملف الشخصي",
+        "downloadDocuments": "تحميل المستندات",
+        "contactSupport": "اتصل بالدعم",
+        "viewNotifications": "عرض الإشعارات",
+        "checkStatus": "فحص الحالة",
+        "scheduleAppointment": "حجز موعد",
+        "viewHistory": "عرض السجل",
+        "exportData": "تصدير البيانات",
+        "settings": "الإعدادات",
+        "help": "المساعدة",
+        "feedback": "إعطاء رأي",
+        "emergencyContact": "جهة اتصال الطوارئ"
+      },
       "progressSteps": {
         "processus": "عملية",
         "deTraitement": "المعالجة"
@@ -809,9 +920,21 @@
         "voirToutesDemandes": "عرض جميع الطلبات",
         "status": {
           "nouveau": "جديد",
+          "NEW": "جديد",
           "enCours": "قيد المعالجة",
+          "PROCESSING": "قيد المعالجة",
           "enAttente": "في الانتظار",
-          "pretARetirer": "جاهز للاستلام"
+          "PENDING": "في الانتظار",
+          "pretARetirer": "جاهز للاستلام",
+          "COMPLETED": "جاهز للاستلام",
+          "rejete": "مرفوض",
+          "REJECTED": "مرفوض",
+          "annule": "ملغي",
+          "CANCELLED": "ملغي",
+          "requis": "مطلوب",
+          "REQUIRED": "مطلوب",
+          "termine": "مكتمل",
+          "FINISHED": "مكتمل"
         }
       },
       "newsCarousel": {
@@ -833,40 +956,47 @@
     },
     "notifications": {
       "title": "الإشعارات",
-      "listeAlertes": "قائمة أحدث التنبيهات والتحديثات المهمة",
+      "listeAlertes": "قائمة آخر التنبيهات والتحديثات المهمة",
       "statut": "الحالة",
       "notification": "إشعار",
       "voirToutes": "عرض جميع الإشعارات",
       "status": {
         "enCours": "قيد المعالجة",
-        "En Cours": "قيد المعالجة",
+        "PROCESSING": "قيد المعالجة",
         "requis": "مطلوب",
-        "Requis": "مطلوب",
+        "REQUIRED": "مطلوب",
         "pretARetirer": "جاهز للاستلام",
+        "COMPLETED": "جاهز للاستلام",
+        "nouveau": "جديد",
+        "NEW": "جديد",
+        "enAttente": "في الانتظار",
+        "PENDING": "في الانتظار",
+        "rejete": "مرفوض",
+        "REJECTED": "مرفوض",
+        "annule": "ملغي",
+        "CANCELLED": "ملغي",
+        "termine": "مكتمل",
+        "FINISHED": "مكتمل",
+        "Requis": "مطلوب",
+        "En Cours": "قيد المعالجة",
         "Prêt À Retirer": "جاهز للاستلام"
       },
-      "modal": {
-        "title": "جميع الإشعارات",
-        "markAsRead": "مراجعة كمقروء",
-        "markAsUnread": "مراجعة كغير مقروء",
-        "close": "إغلاق",
-        "empty": "لا توجد إشعارات",
-        "read": "مقروء",
-        "unread": "غير مقروء",
-        "all": "الكل"
-      }
+      "noNotifications": "لا توجد إشعارات",
+      "markAllAsRead": "تحديد الكل كمقروء",
+      "markAsRead": "تحديد كمقروء",
+      "markAsUnread": "تحديد كغير مقروء"
     },
     "profil": {
       "title": "ملفي الشخصي",
-      "description": "اعثر هنا على تاريخ وحالة جميع طلباتك لدى سفارة تشاد.",
+      "description": "إدارة ملفك الشخصي",
       "modifierCompte": "تعديل الحساب",
       "modifierMotDePasse": "تغيير كلمة المرور",
       "supprimerCompte": "حذف الحساب",
-      "champsObligatoires": "الحقول المعلمة بـ * مطلوبة.",
+      "champsObligatoires": "الحقول المشار إليها بـ * مطلوبة.",
       "monIdentite": "هويتي",
-      "nom": "الاسم الأخير",
+      "nom": "الاسم",
       "prenom": "الاسم الأول",
-      "langueLabel": "اللغة التي تريد ملء طلب التأشيرة بها",
+      "langueLabel": "اللغة التي ترغب في استخدامها لطلب التأشيرة",
       "francais": "الفرنسية",
       "anglais": "الإنجليزية",
       "arabe": "العربية",
@@ -879,5 +1009,57 @@
       "nouveauMotDePasse": "كلمة المرور الجديدة",
       "confirmerMotDePasse": "تأكيد كلمة المرور الجديدة"
     }
+  },
+  "services": {
+    "visa": "طلب تأشيرة",
+    "carteConsulaire": "بطاقة قنصلية",
+    "passeport": "جواز سفر",
+    "laissezPasser": "تصريح مرور",
+    "procuration": "توكيل",
+    "certificatNationalite": "شهادة جنسية",
+    "acteNaissance": "شهادة ميلاد",
+    "acteDeces": "شهادة وفاة",
+    "capaciteMariage": "شهادة أهلية زواج"
+  },
+  "formFields": {
+    "personFirstName": "الاسم الأول",
+    "personLastName": "اسم العائلة",
+    "personGender": "الجنس",
+    "personNationality": "الجنسية",
+    "personBirthDate": "تاريخ الميلاد",
+    "personBirthPlace": "مكان الميلاد",
+    "personMaritalStatus": "الحالة المدنية",
+    "personProfession": "المهنة",
+    "personDomicile": "المسكن",
+    "personAddressInOriginCountry": "العنوان في بلد المنشأ",
+    "fatherFullName": "اسم الأب الكامل",
+    "motherFullName": "اسم الأم الكامل",
+    "passportType": "نوع جواز السفر",
+    "passportNumber": "رقم جواز السفر",
+    "passportIssuedBy": "صادر من",
+    "passportIssueDate": "تاريخ إصدار جواز السفر",
+    "passportExpirationDate": "تاريخ انتهاء صلاحية جواز السفر",
+    "employerAddress": "عنوان صاحب العمل",
+    "employerPhoneNumber": "رقم هاتف صاحب العمل",
+    "visaType": "نوع التأشيرة",
+    "durationMonths": "المدة (أشهر)",
+    "destinationState": "الوجهة",
+    "visaExpirationDate": "تاريخ انتهاء صلاحية التأشيرة",
+    "requestType": "نوع الطلب",
+    "justificationDocumentType": "نوع وثيقة التبرير",
+    "justificationDocumentNumber": "رقم وثيقة التبرير",
+    "contactPhoneNumber": "رقم الهاتف"
+  },
+  "requestTypes": {
+    "NEWBORN": "مولود جديد",
+    "RENEWAL": "تجديد"
+  },
+  "session": {
+    "expiresIn": "تنتهي الجلسة في:",
+    "sessionTime": "الجلسة:",
+    "expired": "انتهت صلاحية الجلسة",
+    "warningMessage": "تنتهي جلستك في 5 دقائق. يرجى حفظ عملك.",
+    "expiredMessage": "انتهت صلاحية جلستك. سيتم تسجيل خروجك تلقائياً.",
+    "logout": "تسجيل الخروج"
   }
 }

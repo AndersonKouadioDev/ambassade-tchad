@@ -3,10 +3,13 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
+import { useLocale } from "next-intl";
+import PhoneInput from "@/components/ui/PhoneInput";
 
 export default function RegisterForm() {
   const t = useTranslations("auth.register");
   const router = useRouter();
+  const locale = useLocale();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -24,6 +27,13 @@ export default function RegisterForm() {
     setFormData(prev => ({
       ...prev,
       [name]: value
+    }));
+  };
+
+  const handlePhoneChange = (value: string) => {
+    setFormData(prev => ({
+      ...prev,
+      phoneNumber: value
     }));
   };
 
@@ -49,16 +59,12 @@ export default function RegisterForm() {
       return false;
     }
 
-    // Validation du numéro de téléphone
     if (formData.phoneNumber) {
-      const phoneRegex = /^\+[1-9]\d{1,14}$/;
-      if (!phoneRegex.test(formData.phoneNumber)) {
-        setError("Format de téléphone invalide. Utilisez le format international avec l'indicatif du pays (ex: +225XXXXXXXXX)");
-        return false;
-      }
-      
-      if (formData.phoneNumber.length > 20) {
-        setError("Le numéro de téléphone ne doit pas dépasser 20 caractères");
+      // Le composant PhoneInput gère déjà la validation et le formatage
+      // Vérification basique : doit commencer par + et avoir au moins 10 chiffres pour la Côte d'Ivoire
+      const digitsOnly = formData.phoneNumber.replace(/\D/g, '');
+      if (digitsOnly.length < 10) {
+        setError("Le numéro de téléphone doit contenir au moins 10 chiffres");
         return false;
       }
     }
@@ -95,12 +101,7 @@ export default function RegisterForm() {
         return;
       }
 
-      // Inscription réussie
-      console.log("Inscription réussie:", data);
-      setError("");
-      
-      // Rediriger vers la page de connexion avec un message de succès
-      router.push("/auth?message=inscription_success");
+      router.push(`/${locale}/auth?message=inscription_success`);
       
     } catch (err) {
       setLoading(false);
@@ -110,103 +111,167 @@ export default function RegisterForm() {
   }
 
   return (
-    <div className="max-w-md mx-auto p-8 flex flex-col items-center justify-center min-h-[60vh]">
-      <div className="w-full bg-white/80 rounded-xl shadow-lg p-8">
-        <div className="flex flex-col items-center mb-6">
-          <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-green-500 to-emerald-400 flex items-center justify-center mb-2 shadow-md">
-            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
-            </svg>
-          </div>
-          <h2 className="text-2xl font-bold text-gray-800 mb-1">{t("title")}</h2>
-          <p className="text-gray-500 text-sm text-center">{t("subtitle")}</p>
-        </div>
-
-        <form onSubmit={handleRegister} className="flex flex-col gap-4">
-          <div className="grid grid-cols-2 gap-3">
-            <input
-              type="text"
-              name="firstName"
-              placeholder={t("firstName.placeholder")}
-              required
-              value={formData.firstName}
-              onChange={handleInputChange}
-              className="input input-bordered rounded-lg px-4 py-2"
-            />
-            <input
-              type="text"
-              name="lastName"
-              placeholder={t("lastName.placeholder")}
-              required
-              value={formData.lastName}
-              onChange={handleInputChange}
-              className="input input-bordered rounded-lg px-4 py-2"
-            />
-          </div>
-
+    <form onSubmit={handleRegister} className="space-y-4 max-w-xl ml-0 px-4 max-h-[70vh] overflow-y-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div>
+          <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">
+            Prénom
+          </label>
           <input
-            type="email"
-            name="email"
-            placeholder={t("email.placeholder")}
+            id="firstName"
+            type="text"
+            name="firstName"
+            placeholder={t("firstName.placeholder")}
             required
-            value={formData.email}
+            value={formData.firstName}
             onChange={handleInputChange}
-            className="input input-bordered rounded-lg px-4 py-2"
+            className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all"
           />
-
+        </div>
+        <div>
+          <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-1">
+            Nom
+          </label>
           <input
-            type="tel"
-            name="phoneNumber"
-            placeholder={t("phoneNumber.placeholder")}
-            value={formData.phoneNumber}
+            id="lastName"
+            type="text"
+            name="lastName"
+            placeholder={t("lastName.placeholder")}
+            required
+            value={formData.lastName}
             onChange={handleInputChange}
-            className="input input-bordered rounded-lg px-4 py-2"
+            className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all"
           />
+        </div>
+      </div>
 
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+          Email
+        </label>
+        <input
+          id="email"
+          type="email"
+          name="email"
+          placeholder={t("email.placeholder")}
+          required
+          value={formData.email}
+          onChange={handleInputChange}
+          className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all"
+        />
+      </div>
+
+      <div>
+        <label htmlFor="phoneNumber" className="block text-sm font-medium text-gray-700 mb-1">
+          Téléphone (optionnel)
+        </label>
+        <PhoneInput
+          value={formData.phoneNumber}
+          onChange={handlePhoneChange}
+          placeholder={t("phoneNumber.placeholder")}
+          className="w-full"
+        />
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div>
+          <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+            Mot de passe
+          </label>
           <input
+            id="password"
             type={showPassword ? "text" : "password"}
             name="password"
             placeholder={t("password.placeholder")}
             required
             value={formData.password}
             onChange={handleInputChange}
-            className="input input-bordered rounded-lg px-4 py-2"
+            className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all"
           />
-
+        </div>
+        <div>
+          <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-1">
+            Confirmer le mot de passe
+          </label>
           <input
+            id="confirmPassword"
             type={showPassword ? "text" : "password"}
             name="confirmPassword"
             placeholder={t("confirmPassword.placeholder")}
             required
             value={formData.confirmPassword}
             onChange={handleInputChange}
-            className="input input-bordered rounded-lg px-4 py-2"
+            className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all"
           />
-
-          <div className="flex items-center gap-2">
-            <input
-              id="showPassword"
-              type="checkbox"
-              checked={showPassword}
-              onChange={() => setShowPassword(!showPassword)}
-              className="rounded border-gray-300"
-            />
-            <label htmlFor="showPassword" className="text-sm text-gray-600">
-              {t("showPassword")}
-            </label>
-          </div>
-
-          {error && <p className="text-red-600 text-sm">{error}</p>}
-
-          <button
-            disabled={loading}
-            type="submit"
-            className="btn-primary w-full py-2 rounded-lg bg-gradient-to-tr from-green-500 to-emerald-400 text-white font-semibold shadow-md"
-          >
-            {loading ? t("loading") : t("submit")}
-          </button>
-        </form>
+        </div>
       </div>
-    </div>
+
+      <div className="flex items-center">
+        <input
+          id="showPassword"
+          type="checkbox"
+          checked={showPassword}
+          onChange={() => setShowPassword(!showPassword)}
+          className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+        />
+        <label htmlFor="showPassword" className="ml-2 block text-sm text-gray-700">
+          Afficher les mots de passe
+        </label>
+      </div>
+
+      {error && (
+        <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
+          <p className="text-red-600 text-sm flex items-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-4 w-4 mr-2"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                clipRule="evenodd"
+              />
+            </svg>
+            {error}
+          </p>
+        </div>
+      )}
+
+      <button
+        disabled={loading}
+        type="submit"
+        className="w-full py-2.5 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-lg font-semibold rounded-lg hover:from-blue-700 hover:to-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-70 disabled:cursor-not-allowed transition-all shadow-md hover:shadow-lg"
+      >
+        {loading ? (
+          <span className="flex items-center justify-center">
+            <svg
+              className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                className="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                strokeWidth="4"
+              ></circle>
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              ></path>
+            </svg>
+            Inscription en cours...
+          </span>
+        ) : (
+          "S'inscrire"
+        )}
+      </button>
+    </form>
   );
-} 
+}

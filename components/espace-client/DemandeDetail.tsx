@@ -4,6 +4,17 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { useTranslations } from 'next-intl';
+import { Download, FileText, Image, File } from 'lucide-react';
+
+interface Document {
+  id: string;
+  filename: string;
+  originalName: string;
+  mimeType: string;
+  size: number;
+  url: string;
+  uploadedAt: string;
+}
 
 interface DemandeDetail {
   id: string;
@@ -18,6 +29,7 @@ interface DemandeDetail {
   contactPhoneNumber: string;
   observations: string | null;
   amount: number;
+  documents: Document[];
   visaDetails: any;
   birthActDetails: any;
   consularCardDetails: any;
@@ -29,6 +41,7 @@ interface DemandeDetail {
 }
 
 export default function DemandeDetail() {
+  console.log('DemandeDetail component loaded'); // Debug: vérifier si le composant se charge
   const t = useTranslations('espaceClient');
   const params = useParams();
   const { data: session } = useSession();
@@ -37,6 +50,8 @@ export default function DemandeDetail() {
   const [error, setError] = useState<string | null>(null);
 
   const demandeId = params.demandeId as string;
+  console.log('DemandeId:', demandeId); // Debug: vérifier l'ID de la demande
+  console.log('Session:', session); // Debug: vérifier la session
 
   useEffect(() => {
     const fetchDemandeDetail = async () => {
@@ -71,6 +86,19 @@ export default function DemandeDetail() {
         }
 
         const data = await res.json();
+        console.log('API Response:', data); // Debug: voir la structure complète
+        console.log('Documents field:', data.documents); // Debug: voir le champ documents
+        console.log('Files field:', data.files); // Debug: voir si c'est 'files' au lieu de 'documents'
+        console.log('Attachments field:', data.attachments); // Debug: voir si c'est 'attachments'
+        console.log('All keys:', Object.keys(data)); // Debug: voir toutes les clés disponibles
+        
+        // Vérifier différents noms possibles pour les documents
+        if (data.files && !data.documents) {
+          data.documents = data.files;
+        } else if (data.attachments && !data.documents) {
+          data.documents = data.attachments;
+        }
+        
         setDemande(data);
       } catch (e: any) {
         console.error('Fetch error:', e);
@@ -121,6 +149,107 @@ export default function DemandeDetail() {
     return colors[status] || 'bg-gray-100 text-gray-700';
   };
 
+  const formatFileSize = (bytes: number) => {
+    if (bytes === 0) return '0 Bytes';
+    const k = 1024;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+  };
+
+  const getFileIcon = (mimeType: string) => {
+    if (mimeType.startsWith('image/')) {
+      return <Image className="w-5 h-5 text-blue-500" />;
+    } else if (mimeType.includes('pdf')) {
+      return <FileText className="w-5 h-5 text-red-500" />;
+    } else {
+      return <File className="w-5 h-5 text-gray-500" />;
+    }
+  };
+
+  const handleDownload = async (document: Document) => {
+    try {
+      const response = await fetch(document.url, {
+        headers: {
+          'Authorization': `Bearer ${session?.user?.token}`,
+        },
+      });
+      
+      if (response.ok) {
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = document.originalName;
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+      }
+    } catch (error) {
+      console.error('Erreur lors du téléchargement:', error);
+    }
+  };
+
+  const renderDocumentsSection = () => {
+    console.log('Demande object:', demande); // Debug: voir l'objet demande
+    console.log('Documents array:', demande?.documents); // Debug: voir le tableau documents
+    console.log('Documents length:', demande?.documents?.length); // Debug: voir la longueur
+    
+    if (!demande?.documents || demande.documents.length === 0) {
+      console.log('No documents found, showing empty state'); // Debug: voir si on affiche l'état vide
+      return (
+        <div className="bg-white rounded-lg shadow-sm p-6">
+          <h2 className="text-xl font-semibold text-gray-900 mb-4">{t('mesDemandesClient.documents.title')}</h2>
+          <div className="text-center py-8">
+            <FileText className="mx-auto h-12 w-12 text-gray-400 mb-4" />
+            <p className="text-gray-500">{t('mesDemandesClient.documents.aucunDocument')}</p>
+          </div>
+        </div>
+      );
+    }
+
+    console.log('Rendering documents section with', demande.documents.length, 'documents'); // Debug: voir si on rend la section
+    return (
+      <div className="bg-white rounded-lg shadow-sm p-6">
+        <h2 className="text-xl font-semibold text-gray-900 mb-4">
+          {t('mesDemandesClient.documents.title')} ({demande.documents.length})
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {demande.documents.map((document) => (
+            <div key={document.id} className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+              <div className="flex items-start justify-between mb-3">
+                <div className="flex items-center gap-2">
+                  {getFileIcon(document.mimeType)}
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-medium text-gray-900 truncate" title={document.originalName}>
+                      {document.originalName}
+                    </p>
+                    <p className="text-xs text-gray-500">
+                      {formatFileSize(document.size)}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-center justify-between text-xs text-gray-500 mb-3">
+                <span>
+                  {t('mesDemandesClient.documents.uploadedOn')} {new Date(document.uploadedAt).toLocaleDateString('fr-FR')}
+                </span>
+              </div>
+              <button
+                onClick={() => handleDownload(document)}
+                className="w-full flex items-center justify-center gap-2 px-3 py-2 text-sm font-medium text-blue-600 bg-blue-50 rounded-md hover:bg-blue-100 transition-colors"
+              >
+                <Download className="w-4 h-4" />
+                {t('mesDemandesClient.documents.telecharger')}
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  };
+
   const renderVisaDetails = (details: any) => {
     if (!details) return null;
     return (
@@ -128,36 +257,28 @@ export default function DemandeDetail() {
         <h4 className="font-semibold text-gray-900 mb-3">Détails du Visa</h4>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700">Nom</label>
+            <label className="block text-sm font-medium text-gray-700">Nom complet</label>
             <p className="text-gray-900">{details.personFirstName} {details.personLastName}</p>
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Genre</label>
-            <p className="text-gray-900">{details.personGender}</p>
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Nationalité</label>
-            <p className="text-gray-900">{details.personNationality}</p>
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">Date de naissance</label>
             <p className="text-gray-900">{new Date(details.personBirthDate).toLocaleDateString('fr-FR')}</p>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">Lieu de naissance</label>
-            <p className="text-gray-900">{details.personBirthPlace}</p>
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Profession</label>
-            <p className="text-gray-900">{details.profession}</p>
+            <label className="block text-sm font-medium text-gray-700">Nationalité</label>
+            <p className="text-gray-900">{details.personNationality}</p>
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">Type de visa</label>
             <p className="text-gray-900">{details.visaType}</p>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">Durée (mois)</label>
-            <p className="text-gray-900">{details.durationMonths}</p>
+            <label className="block text-sm font-medium text-gray-700">Numéro de passeport</label>
+            <p className="text-gray-900">{details.passportNumber}</p>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Profession</label>
+            <p className="text-gray-900">{details.profession || t('mesDemandesClient.documents.nonSpecifie')}</p>
           </div>
         </div>
       </div>
@@ -171,7 +292,7 @@ export default function DemandeDetail() {
         <h4 className="font-semibold text-gray-900 mb-3">Détails de la Carte Consulaire</h4>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700">Nom</label>
+            <label className="block text-sm font-medium text-gray-700">Nom complet</label>
             <p className="text-gray-900">{details.personFirstName} {details.personLastName}</p>
           </div>
           <div>
@@ -179,20 +300,12 @@ export default function DemandeDetail() {
             <p className="text-gray-900">{new Date(details.personBirthDate).toLocaleDateString('fr-FR')}</p>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">Lieu de naissance</label>
-            <p className="text-gray-900">{details.personBirthPlace}</p>
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Profession</label>
-            <p className="text-gray-900">{details.personProfession}</p>
-          </div>
-          <div>
             <label className="block text-sm font-medium text-gray-700">Nationalité</label>
             <p className="text-gray-900">{details.personNationality}</p>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">Domicile</label>
-            <p className="text-gray-900">{details.personDomicile}</p>
+            <label className="block text-sm font-medium text-gray-700">Profession</label>
+            <p className="text-gray-900">{details.profession || t('mesDemandesClient.documents.nonSpecifie')}</p>
           </div>
         </div>
       </div>
@@ -309,7 +422,7 @@ export default function DemandeDetail() {
         </div>
 
         {/* Détails spécifiques selon le type de service */}
-        <div className="bg-white rounded-lg shadow-sm p-6">
+        <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
           <h2 className="text-xl font-semibold text-gray-900 mb-4">Détails de la demande</h2>
           
           {demande.visaDetails && renderVisaDetails(demande.visaDetails)}
@@ -324,6 +437,19 @@ export default function DemandeDetail() {
               <p className="text-gray-900 bg-gray-50 p-3 rounded-lg">{demande.observations}</p>
             </div>
           )}
+        </div>
+
+        {/* Section Documents */}
+        {renderDocumentsSection()}
+
+        {/* Section Debug temporaire */}
+        <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
+          <h2 className="text-xl font-semibold text-gray-900 mb-4">Debug - Données brutes</h2>
+          <div className="bg-gray-100 p-4 rounded-lg">
+            <pre className="text-xs overflow-auto">
+              {JSON.stringify(demande, null, 2)}
+            </pre>
+          </div>
         </div>
 
         {/* Bouton retour */}
