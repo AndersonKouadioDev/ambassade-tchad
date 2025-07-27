@@ -554,6 +554,42 @@
       "dateAchevement": "Date d'achèvement",
       "dureeJours": "14 Jours"
     },
+    "historiqueTraitement": {
+      "titre": "Historique du Traitement",
+      "service": "Service",
+      "statut": "Statut",
+      "soumission": "Date de soumission",
+      "progression": "Progression",
+      "achevementPrevu": "Achèvement prévu",
+      "jours": "jours",
+      "enRetard": "En retard"
+    },
+    "statusTimeline": {
+      "titre": "Chronologie du Statut",
+      "enCours": "En cours",
+      "etapes": {
+        "soumission": {
+          "titre": "Demande soumise",
+          "description": "Votre demande a été reçue et enregistrée dans notre système"
+        },
+        "verification": {
+          "titre": "Vérification",
+          "description": "Vérification de la complétude et de la validité des documents"
+        },
+        "traitement": {
+          "titre": "En traitement",
+          "description": "Votre demande est en cours de traitement par nos services"
+        },
+        "pret": {
+          "titre": "Prêt à retirer",
+          "description": "Votre document est prêt et peut être retiré"
+        },
+        "termine": {
+          "titre": "Terminé",
+          "description": "Votre demande a été complètement traitée"
+        }
+      }
+    },
     "header": {
       "title": "Espace Client",
       "notifications": "Notifications",

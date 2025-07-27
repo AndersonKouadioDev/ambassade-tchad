@@ -7,6 +7,7 @@ import ProgressSteps from '@/components/espace-client/ProgressSteps';
 import DemandeDetailsSection from '@/components/espace-client/DemandeDetailsSection';
 import DemandeTable from '@/components/espace-client/DemandeTable';
 import HistoriqueTraitement from '@/components/espace-client/HistoriqueTraitement';
+import StatusTimeline from '@/components/espace-client/StatusTimeline';
 import { apiClient } from '@/lib/api-client';
 
 interface Document {
@@ -204,11 +205,26 @@ export default function DemandeDetail() {
             Détails de la demande
           </div>
           {demandeFormatted && <DemandeTable demande={demandeFormatted} />}
-          <HistoriqueTraitement steps={steps} progression={progression} />
+          <HistoriqueTraitement 
+            steps={steps} 
+            progression={progression} 
+            serviceType={demande.serviceType}
+            status={demande.status}
+            submissionDate={demande.submissionDate}
+          />
           <div className="w-full flex justify-center">
             <ProgressSteps percent={progression} steps={steps.length} labels={steps.map(s => s.label)} />
           </div>
         </div>
+        
+        {/* Timeline détaillée du statut */}
+        <StatusTimeline 
+          currentStatus={demande.status}
+          submissionDate={demande.submissionDate}
+          updatedAt={demande.updatedAt}
+          completionDate={demande.completionDate}
+          issuedDate={demande.issuedDate}
+        />
         
         {/* <DocumentsSection /> */}
         <DemandeDetailsSection demande={demande} />

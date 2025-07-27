@@ -1008,6 +1008,16 @@
       "motDePasseActuel": "كلمة المرور الحالية",
       "nouveauMotDePasse": "كلمة المرور الجديدة",
       "confirmerMotDePasse": "تأكيد كلمة المرور الجديدة"
+    },
+    "historiqueTraitement": {
+      "titre": "تاريخ المعالجة",
+      "service": "الخدمة",
+      "statut": "الحالة",
+      "soumission": "تاريخ التقديم",
+      "progression": "التقدم",
+      "achevementPrevu": "الانتهاء المتوقع",
+      "jours": "أيام",
+      "enRetard": "متأخر"
     }
   },
   "services": {

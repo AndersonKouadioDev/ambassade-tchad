@@ -1083,6 +1083,16 @@
       "motDePasseActuel": "Current password",
       "nouveauMotDePasse": "New password",
       "confirmerMotDePasse": "Confirm new password"
+    },
+    "historiqueTraitement": {
+      "titre": "Processing History",
+      "service": "Service",
+      "statut": "Status",
+      "soumission": "Submission date",
+      "progression": "Progress",
+      "achevementPrevu": "Expected completion",
+      "jours": "days",
+      "enRetard": "Overdue"
     }
   }
 }

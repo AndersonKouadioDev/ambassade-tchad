@@ -89,7 +89,14 @@ export default function ProfilSection() {
   
   const handlePasswordSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!session?.user?.token) return;
+    if (!session?.user?.token) {
+      console.error('No token found in session');
+      toast.error('Session invalide. Veuillez vous reconnecter.');
+      return;
+    }
+
+    console.log('Token available:', !!session.user.token);
+    console.log('Token length:', session.user.token.length);
 
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).{8,15}$/;
     if (!passwordRegex.test(passwordData.newPassword)) {
@@ -100,7 +107,10 @@ export default function ProfilSection() {
       toast.error('La confirmation du mot de passe ne correspond pas.');
       return;
     }
+
     try {
+      console.log('Sending password change request...');
+      
       const res = await fetch('http://localhost:8081/api/v1/auth/demandeur/change-password', {
         method: 'PUT',
         headers: {
@@ -114,14 +124,54 @@ export default function ProfilSection() {
           confirmPassword: passwordData.confirmPassword,
         }),
       });
-      if (!res.ok) throw new Error('Erreur lors de la modification du mot de passe');
+
+      console.log('Response status:', res.status);
+
+      if (!res.ok) {
+        const errorText = await res.text();
+        console.error('Error response:', errorText);
+        
+        // Gestion spécifique de l'erreur de mot de passe invalide
+        if (res.status === 401 && errorText.includes('Mot de passe actuel invalide')) {
+          toast.error('Le mot de passe actuel est incorrect. Veuillez vérifier votre saisie.');
+          return;
+        }
+        
+        // Essayer un format alternatif si le premier échoue
+        if (res.status === 401) {
+          console.log('Trying alternative format...');
+          const altRes = await fetch('http://localhost:8081/api/v1/auth/demandeur/change-password', {
+            method: 'PUT',
+            headers: {
+              'Authorization': `Bearer ${session.user.token}`,
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              currentPassword: passwordData.currentPassword,
+              newPassword: passwordData.newPassword,
+            }),
+          });
+          
+          console.log('Alternative response status:', altRes.status);
+          if (altRes.ok) {
+            toast.success('Mot de passe changé avec succès ! Vous allez être déconnecté pour vous reconnecter avec votre nouveau mot de passe.');
+            setActiveTab('view');
+            setPasswordData({ currentPassword: '', newPassword: '', confirmPassword: '' });
+            signOut();
+            return;
+          }
+        }
+        
+        throw new Error(`Erreur ${res.status}: ${errorText || 'Erreur lors de la modification du mot de passe'}`);
+      }
       
       toast.success('Mot de passe changé avec succès ! Vous allez être déconnecté pour vous reconnecter avec votre nouveau mot de passe.');
       setActiveTab('view');
       setPasswordData({ currentPassword: '', newPassword: '', confirmPassword: '' });
-      signOut(); // Déconnexion automatique après le changement de mot de passe réussi
-    } catch (e) {
-      toast.error('Échec du changement de mot de passe');
+      signOut();
+    } catch (e: any) {
+      console.error('Password change error:', e);
+      toast.error(e.message || 'Échec du changement de mot de passe');
     }
   };
 
