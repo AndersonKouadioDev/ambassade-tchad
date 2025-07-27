@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import { useSession } from "next-auth/react";
 import ProgressSteps from '@/components/espace-client/ProgressSteps';
-import DocumentsSection from '@/components/espace-client/DocumentsSection';
 import DemandeDetailsSection from '@/components/espace-client/DemandeDetailsSection';
 import DemandeTable from '@/components/espace-client/DemandeTable';
 import HistoriqueTraitement from '@/components/espace-client/HistoriqueTraitement';
