@@ -8,7 +8,7 @@ import { getAllVideos, searchVideos, filterVideosByDate, extractYoutubeId } from
 export default function VideoGallery() {
   const [search, setSearch] = useState("");
   const [searchDate, setSearchDate] = useState("");
-  const t = useTranslations("video");
+  const t = useTranslations("gallery.video");
   
   // Récupérer toutes les vidéos
   const allVideos = useMemo(() => getAllVideos(), []);

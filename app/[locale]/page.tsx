@@ -3,6 +3,7 @@ import Hero from "@/components/home/hero/hero";
 import Event from "@/components/home/event/event";
 import Service from "@/components/home/service/service";
 import About from "@/components/home/about/about";
+import President from "@/components/tourisme/president/president";
 
 
 
@@ -11,6 +12,7 @@ export default function Home() {
     <div>
       <Hero />
       {/* <Presentation/> */}
+      <President />
       <Event />
       <Service />
       <About />

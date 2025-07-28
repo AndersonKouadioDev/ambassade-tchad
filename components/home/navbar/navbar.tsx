@@ -128,6 +128,7 @@ export default function Head() {
           <div className="flex justify-between items-center w-full">
             <div className="flex flex-col">
               <span className="text-xl font-bold">{t("titre")}</span>
+              <span className="text-base text-white/80">Ghana - Sierra Leone - Guinée Conakry - Liberia</span>
             </div>
             <div className="flex gap-4 items-center">
               <div className="flex gap-2">

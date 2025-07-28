@@ -8,7 +8,7 @@ import { getAllPhotos, searchPhotos } from "@/lib/gallery-store";
 // Import seulement les fonctions utilisées
 
 export default function GaleryPhotos() {
-  const t = useTranslations("photo");
+  const t = useTranslations("gallery.photo");
   const [search, setSearch] = useState("");
   const [searchDate, setSearchDate] = useState("");
   
