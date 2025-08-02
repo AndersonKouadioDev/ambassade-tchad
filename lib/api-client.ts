@@ -279,7 +279,7 @@ class ApiClient {
 
   async getRequestByTicket(ticket: string, tokenOverride?: string): Promise<ApiResponse> {
     const headers = await this.getAuthHeaders(tokenOverride);
-    const response = await fetch(`${this.baseUrl}/demandes/${ticket}`, {
+    const response = await fetch(`${this.baseUrl}/demandes/demandeur/${ticket}`, {
       method: 'GET',
       headers,
     });

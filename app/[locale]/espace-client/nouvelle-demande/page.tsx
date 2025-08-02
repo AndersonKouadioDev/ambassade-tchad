@@ -10,7 +10,7 @@ const serviceTypes = [
     title: 'Visa',
     description: 'Demande de visa pour séjour au Tchad',
     href: '/espace-client/nouvelle-demande/visa',
-    features: ['Court séjour', 'Long séjour', 'Transit', 'Affaires', 'Étudiant', 'Travail']
+    features: ['Court séjour', 'Long séjour',]
   },
   {
     id: 'birth-act',
@@ -103,30 +103,37 @@ export default function NouvelleDemande() {
           {serviceTypes.map((service) => (
             <div
               key={service.id}
-              className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-200 cursor-pointer p-6"
+              className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-200 cursor-pointer p-6 flex flex-col h-full"
               onClick={() => handleNavigate(service.href)}
             >
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                {service.title}
-              </h3>
-              <p className="text-sm text-gray-600 mb-4">
-                {service.description}
-              </p>
-              <ul className="mb-4 text-xs text-gray-500">
-                {service.features.map((feature, index) => (
-                  <li key={index}>• {feature}</li>
-                ))}
-              </ul>
-              <button
-                className="w-full px-4 py-2 rounded-lg text-white font-medium bg-blue-600 hover:bg-blue-700"
-                onClick={e => { e.stopPropagation(); handleNavigate(service.href); }}
-              >
-                Commencer
-              </button>
+              <div className="flex-grow">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  {service.title}
+                </h3>
+                <p className="text-sm text-gray-600 mb-4">
+                  {service.description}
+                </p>
+                <ul className="mb-4 text-xs text-gray-500">
+                  {service.features.map((feature, index) => (
+                    <li key={index}>• {feature}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="mt-auto pt-4">
+                <button
+                  className="w-full px-4 py-2 rounded-lg text-white font-medium bg-blue-600 hover:bg-blue-700"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleNavigate(service.href);
+                  }}
+                >
+                  Commencer
+                </button>
+              </div>
             </div>
           ))}
         </div>
       </div>
     </div>
   );
-} 
+}
