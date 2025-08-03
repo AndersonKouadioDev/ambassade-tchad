@@ -33,12 +33,10 @@ export enum ServiceType {
   AUTRE = 'AUTRE'
 }
 
-export enum VisaType {
-  TOURISTIQUE = 'TOURISTIQUE',
-  ETUDIANT = 'ETUDIANT',
-  AFFAIRES = 'AFFAIRES',
-  TRANSIT = 'TRANSIT'
-}
+// export enum VisaType {
+//   SHORT_STAY = 'SHORT_STAY',
+//   LONG_STAY = 'LONG_STAY',
+// }
 
 export enum JustificationDocumentType {
   ACTE_NAISSANCE = 'ACTE_NAISSANCE',

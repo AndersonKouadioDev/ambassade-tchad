@@ -1,27 +1,36 @@
 "use client";
 
-import { useRouter } from 'next/navigation';
+import Link from "next/link";
+import { useLocale } from "next-intl";
+import React from "react";
 
 interface NavigationButtonProps {
   href: string;
   children: React.ReactNode;
   className?: string;
   onClick?: () => void;
+  locale?: string;
 }
 
-export default function NavigationButton({ href, children, className, onClick }: NavigationButtonProps) {
-  const router = useRouter();
+export default function NavigationButton({
+  href,
+  children,
+  className,
+  onClick,
+  locale,
+}: NavigationButtonProps) {
+  const currentLocale = useLocale();
+  const finalLocale = currentLocale;
 
-  const handleClick = () => {
-    if (onClick) {
-      onClick();
-    }
-    router.push(href);
-  };
+  // Force un slash initial
+  const normalizedHref = href.startsWith("/") ? href : `/${href}`;
+  const finalHref = `/${finalLocale}${normalizedHref}`;
 
   return (
-    <button onClick={handleClick} className={className}>
-      {children}
-    </button>
+    <Link href={finalHref} passHref>
+      <button type="button" className={className} onClick={onClick}>
+        {children}
+      </button>
+    </Link>
   );
 }
