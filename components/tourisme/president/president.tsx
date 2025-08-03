@@ -7,7 +7,7 @@ export default function President() {
   const t = useTranslations("tourisme.president");
 
   return (
-    <div className="p-8 mb-10">
+    <div className="p-8 mb-10 max-w-screen-2xl mx-auto">
       <div className="flex flex-col justify-center gap-10">
         <div className="text-secondary ml-0 md:ml-4 text-3xl font-semibold text-center md:text-start">
           {t("title")}

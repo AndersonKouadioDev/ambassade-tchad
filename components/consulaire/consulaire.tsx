@@ -16,20 +16,13 @@ import {
 } from "lucide-react";
 
 const services = [
-  // {
-  //   id: "passport",
-  //   icon: <Passport className="w-8 h-8" />,
-  //   title: "passport.title",
-  //   description: "passport.description",
-  //   link: "/passport",
-  //   color: "bg-blue-500"
-  // },
+  
   {
     id: "laissezPasser",
     icon: <FileText className="w-8 h-8" />,
     title: "laissezPasser.title",
     description: "laissezPasser.description",
-    link: "/laissez-passer",
+    link: "/espace-client/nouvelle-demande/laissez-passer",
     color: "bg-green-500"
   },
   {
@@ -37,7 +30,7 @@ const services = [
     icon: <CreditCard className="w-8 h-8" />,
     title: "consularCard.title",
     description: "consularCard.description",
-    link: "/consulaire",
+    link: "/espace-client/nouvelle-demande/consular-card",
     color: "bg-purple-500"
   },
   {
@@ -45,7 +38,7 @@ const services = [
     icon: <Globe className="w-8 h-8" />,
     title: "visa.title",
     description: "visa.description",
-    link: "/consulaire",
+    link: "/espace-client/nouvelle-demande/visa",
     color: "bg-orange-500"
   },
   {
@@ -53,7 +46,7 @@ const services = [
     icon: <FileSignature className="w-8 h-8" />,
     title: "procuration.title",
     description: "procuration.description",
-    link: "/procuration",
+    link: "/espace-client/nouvelle-demande/power-of-attorney",
     color: "bg-red-500"
   },
   {
@@ -85,7 +78,7 @@ const services = [
     icon: <Building className="w-8 h-8" />,
     title: "nationality.title",
     description: "nationality.description",
-    link: "/espace-client/nouvelle-demande/nationality",
+    link: "/espace-client/nouvelle-demande/nationality-certificate",
     color: "bg-teal-500"
   }
 ];
@@ -95,7 +88,7 @@ export default function ConsulaireForm() {
 
   return (
     <div className="py-16 bg-gray-50 min-h-[calc(100vh-70px)]">
-      <div className="max-w-4xl mx-auto px-4">
+      <div className="max-w-screen-lg mx-auto px-4">
         <div className="text-center pb-12">
           <h1 className="text-secondary text-3xl md:text-5xl font-semibold mb-4">
             {t("title")}

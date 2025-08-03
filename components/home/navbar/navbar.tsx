@@ -111,7 +111,7 @@ export default function Head() {
 
   return (
     <div className="w-full bg-primary p-4">
-      <div className="flex justify-between md:justify-center gap-0 md:gap-6 items-center max-w-6xl mx-auto">
+      <div className="flex justify-between md:justify-center gap-0 md:gap-6 items-center max-w-screen-2xl mx-auto px-4w">
         <Link href="/">
           <Image
             src="/assets/images/logo.png"
@@ -127,8 +127,8 @@ export default function Head() {
         <div className="hidden lg:flex flex-col text-white w-full">
           <div className="flex justify-between items-center w-full">
             <div className="flex flex-col">
-              <span className="text-xl font-bold">{t("titre")}</span>
-              <span className="text-base text-white/80">Ghana - Sierra Leone - Guinée Conakry - Liberia</span>
+              <span className="text-xl font-bold uppercase">{t("titre")}</span>
+              <span className="text-base text-white/80 uppercase">Ghana - Sierra Leone - Guinée Conakry - Liberia</span>
             </div>
             <div className="flex gap-4 items-center">
               <div className="flex gap-2">

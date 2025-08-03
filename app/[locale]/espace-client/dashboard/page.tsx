@@ -33,7 +33,7 @@ export default function Dashboard() {
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 lg:gap-6">
         {/* Notifications - plus large sur desktop */}
         <div className="xl:col-span-2 order-1">
-          <Notifications notifications={notifications} />
+          <Notifications notifications={[]} />
         </div>
         
         {/* Actions rapides - sidebar sur desktop */}

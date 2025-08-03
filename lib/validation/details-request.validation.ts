@@ -5,7 +5,6 @@ import {
   Gender,
   MaritalStatus,
   PassportType,
-  VisaType,
   BirthActRequestType,
   JustificationDocumentType,
   OriginCountryParentRelationshipType,
@@ -17,10 +16,15 @@ import {
 const GenderEnum = z.nativeEnum(Gender);
 const MaritalStatusEnum = z.nativeEnum(MaritalStatus);
 const PassportTypeEnum = z.nativeEnum(PassportType);
-const VisaTypeEnum = z.nativeEnum(VisaType);
 const BirthActRequestTypeEnum = z.nativeEnum(BirthActRequestType);
 const JustificationDocumentTypeEnum = z.nativeEnum(JustificationDocumentType);
 const OriginCountryParentRelationshipTypeEnum = z.nativeEnum(OriginCountryParentRelationshipType);
+
+
+export enum VisaType {
+  SHORT_STAY = 'SHORT_STAY',
+  LONG_STAY = 'LONG_STAY',
+}
 
 // ==================== VISA ====================
 
@@ -45,8 +49,7 @@ export const visaRequestDetailsSchema = z.object({
   profession: z.string().optional(),
   employerAddress: z.string().optional(),
   employerPhoneNumber: z.string().optional(),
-
-  visaType: VisaTypeEnum,
+  visaType: z.nativeEnum(VisaType),
   durationMonths: z.number().min(1, { message: 'La durée doit être d\'au moins 1 mois' }),
   destinationState: z.string().optional(),
   visaExpirationDate: z.string().or(z.date()).optional(),

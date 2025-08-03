@@ -3,16 +3,17 @@
 import React, { useState } from 'react';
 import NavigationButton from '@/components/espace-client/NavigationButton';
 import { useTranslations } from 'next-intl';
+import { link } from 'fs';
 
 const DOCUMENTS = [
-  { key: 'visa', label: 'Visa', route: '/espace-client/nouvelle-demande/visa' },
-  { key: 'birth-act', label: 'Acte de naissance', route: '/espace-client/nouvelle-demande/birth-act' },
-  { key: 'consular-card', label: 'Carte consulaire', route: '/espace-client/nouvelle-demande/consular-card' },
-  { key: 'laissez-passer', label: 'Laissez-passer', route: '/espace-client/nouvelle-demande/laissez-passer' },
-  { key: 'marriage-capacity', label: 'Certificat de capacité matrimoniale', route: '/espace-client/nouvelle-demande/marriage-capacity' },
-  { key: 'death-act', label: 'Acte de décès', route: '/espace-client/nouvelle-demande/death-act' },
-  { key: 'power-of-attorney', label: 'Procuration', route: '/espace-client/nouvelle-demande/power-of-attorney' },
-  { key: 'nationality-certificate', label: 'Certificat de nationalité', route: '/espace-client/nouvelle-demande/nationality-certificate' },
+  { key: 'visa', label: 'Visa', link: '/app/espace-client/nouvelle-demande/visa/page.tsx' },
+  { key: 'birth-act', label: 'Acte de naissance', link: '/espace-client/nouvelle-demande/birth-act' },
+  { key: 'consular-card', label: 'Carte consulaire', link: '/espace-client/nouvelle-demande/consular-card' },
+  { key: 'laissez-passer', label: 'Laissez-passer', link: '/espace-client/nouvelle-demande/laissez-passer' },
+  { key: 'marriage-capacity', label: 'Certificat de capacité matrimoniale', link: '/espace-client/nouvelle-demande/marriage-capacity' },
+  { key: 'death-act', label: 'Acte de décès', link: '/espace-client/nouvelle-demande/death-act' },
+  { key: 'power-of-attorney', label: 'Procuration', link: '/espace-client/nouvelle-demande/power-of-attorney' },
+  { key: 'nationality-certificate', label: 'Certificat de nationalité', link: '/espace-client/nouvelle-demande/nationality-certificate' },
 ];
 
 export default function QuickActions() {
@@ -56,7 +57,7 @@ export default function QuickActions() {
                 {DOCUMENTS.map(doc => (
                   <NavigationButton
                     key={doc.key}
-                    href={doc.route}
+                    href={doc.link}
                     className="group flex flex-col items-center justify-center p-6 rounded-2xl border border-[#EDF1F7] dark:border-gray-700 bg-gray-50/80 dark:bg-gray-800/80 font-semibold text-lg shadow-md hover:shadow-2xl hover:bg-[#F6F8FA] dark:hover:bg-gray-700 transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#F44C27] scale-100 hover:scale-105 hover:-rotate-1 relative"
                     onClick={() => handleCardClick(doc)}
                   >

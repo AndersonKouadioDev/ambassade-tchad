@@ -153,10 +153,11 @@ export interface Request extends BaseEntity {
     submissionDate: Date;
     completionDate?: Date;
     issuedDate?: Date;
-    contactPhoneNumber?: string;
+    contactPhoneNumber: string;
     observations?: string;
     amount: number;
 }
+
 
 export interface RequestWithRelations extends Request {
     user?: User;
