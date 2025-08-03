@@ -15,7 +15,7 @@ import {
 } from "@/lib/news-utils";
 
 export default function NewsComponent() {
-  const t = useTranslations("home.news");
+  const t = useTranslations("news");
 
   console.log("Traductions filters:", t); // <== ici
 

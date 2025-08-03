@@ -2,7 +2,7 @@ import { useTranslations } from "next-intl";
 import {Link} from '@/i18n/navigation';
 
 export default function BreadcrumbNav() {
-  const t = useTranslations("photo.breadcrumbs");
+  const t = useTranslations("gallery.photo.breadcrumbs");
   return (
     <nav className="text-white font-extralight text-lg">
       <ul className="flex space-x-2">

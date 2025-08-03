@@ -31,7 +31,7 @@ export default function Ambassadeur() {
           <div className="text-secondary text-xl md:text-3xl font-semibold">
             {t('bienvenue')}
           </div>
-          <div className="font-mulish text-sm md:text-base text-justify">
+          <div className="font-mulish text-sm md:text-base text-justify text-black">
             {t('texte')}
             <br />
             <span className="font-bold">{t('vision')}</span>

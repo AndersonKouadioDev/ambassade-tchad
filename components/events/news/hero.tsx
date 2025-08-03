@@ -5,7 +5,7 @@ import BreadcrumbNav from "./breadcrumbs";
 
 
 export default function Hero() {
-  const t = useTranslations("home.news.hero");
+  const t = useTranslations("news.hero");
   return (
     <div className="relative flex items-center justify-between w-full h-[calc(100vh-200px)]">
       <Image

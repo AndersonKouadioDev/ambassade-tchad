@@ -10,6 +10,7 @@ import { visaApi } from '@/lib/api-client';
 import { useRouter } from 'next/navigation';
 import { useLocale } from 'next-intl';
 import { useTranslations } from 'next-intl';
+import { useSession } from 'next-auth/react';
 
 type VisaFormInput = z.infer<typeof visaRequestDetailsSchema> & { contactPhoneNumber: string };
 
@@ -52,6 +53,7 @@ export default function VisaForm({ request, onSuccess, onError }: VisaFormProps)
   const router = useRouter();
   const locale = useLocale();
   const t = useTranslations('espaceClient.formFields');
+  const { data: session } = useSession();
   const totalSteps = 4;
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -180,12 +182,21 @@ export default function VisaForm({ request, onSuccess, onError }: VisaFormProps)
     setIsSubmitting(true);
     // Retirer contactPhoneNumber de visaDetails
     const { contactPhoneNumber, ...visaDetails } = data;
+    
     try {
+      // Récupérer le token de session NextAuth
+      const token = (session?.user as any)?.token;
+      
+      if (!token) {
+        onError?.('Session non valide. Veuillez vous reconnecter.');
+        return;
+      }
+      
       const result = await visaApi.create(
         visaDetails, // sans contactPhoneNumber
         contactPhoneNumber, // à la racine
         uploadedFiles,
-        localStorage.getItem('auth-token') || ''
+        token
       );
       
       if (result.success) {
@@ -204,6 +215,7 @@ export default function VisaForm({ request, onSuccess, onError }: VisaFormProps)
         onError?.(result.error || 'Erreur lors de la création de la demande');
       }
     } catch (error) {
+      console.error('Erreur lors de la soumission:', error);
       onError?.('Une erreur inattendue s\'est produite');
     } finally {
       setIsSubmitting(false);
