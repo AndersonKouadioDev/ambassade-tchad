@@ -53,6 +53,7 @@ export const visaRequestDetailsSchema = z.object({
   durationMonths: z.number().min(1, { message: 'La durée doit être d\'au moins 1 mois' }),
   destinationState: z.string().optional(),
   visaExpirationDate: z.string().or(z.date()).optional(),
+  contactPhoneNumber: z.string().optional(),
 });
 
 
@@ -73,6 +74,7 @@ export const birthActRequestDetailsSchema = z.object({
   personGender: GenderEnum.optional(),
   contactPhoneNumber: z.string().min(6, 'Numéro de téléphone requis'),
 });
+export type BirthActRequestDetails = z.infer<typeof birthActRequestDetailsSchema>
 
 // ==================== CONSULAR CARD ====================
 
@@ -92,6 +94,7 @@ export const consularCardRequestDetailsSchema = z.object({
   justificationDocumentNumber: z.string().optional(),
   cardExpirationDate: z.string().or(z.date()).optional(),
 });
+export type ConsularCardRequestDetails = z.infer<typeof consularCardRequestDetailsSchema>
 
 // ==================== LAISSEZ-PASSER ====================
 
@@ -190,7 +193,7 @@ export const marriageCapacityActRequestDetailsSchema = z.object({
   wifeNationality: z.string(),
   wifeDomicile: z.string().optional(),
 });
-
+export type MarriageCapacityActRequestDetails = z.infer<typeof marriageCapacityActRequestDetailsSchema>
 // ==================== DEATH ACT ====================
 
 export const deathActRequestDetailsSchema = z.object({
@@ -201,7 +204,7 @@ export const deathActRequestDetailsSchema = z.object({
   deceasedDeathDate: z.string().or(z.date()),
   deceasedNationality: z.string(),
 });
-
+export type DeathActRequestDetails = z.infer<typeof deathActRequestDetailsSchema>
 // ==================== POWER OF ATTORNEY ====================
 
 export const powerOfAttorneyRequestDetailsSchema = z.object({
@@ -219,7 +222,7 @@ export const powerOfAttorneyRequestDetailsSchema = z.object({
   powerOfType: z.string().optional(),
   reason: z.string().optional(),
 });
-
+export type PowerOfAttorneyRequestDetails = z.infer<typeof powerOfAttorneyRequestDetailsSchema>
 // ==================== NATIONALITY CERTIFICATE ====================
 
 export const nationalityCertificateRequestDetailsSchema = z.object({
@@ -233,3 +236,5 @@ export const nationalityCertificateRequestDetailsSchema = z.object({
   originCountryParentLastName: z.string(),
   originCountryParentRelationship: OriginCountryParentRelationshipTypeEnum,
 });
+
+export type NationalityCertificateRequestDetails = z.infer<typeof nationalityCertificateRequestDetailsSchema>

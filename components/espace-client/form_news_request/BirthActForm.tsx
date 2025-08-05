@@ -8,7 +8,7 @@ import { useSession } from 'next-auth/react';
 import { useLocale } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { birthActRequestDetailsSchema } from '@/lib/validation/details-request.validation';
-import { BirthActRequestType } from '@/types/request.types';
+import { BirthActRequestType, Service } from '@/types/request.types';
 import { birthActApi } from '@/lib/api-client';
 import type { z } from 'zod';
 type BirthActFormInput = z.infer<typeof birthActRequestDetailsSchema>;
@@ -33,9 +33,9 @@ export default function BirthActForm() {
         const data = await res.json();
         console.log('Réponse API services:', data);
         const services = Array.isArray(data) ? data : Array.isArray(data.data) ? data.data : [];
-        console.log('Services disponibles:', services.map((s: any) => s.type));
+        console.log('Services disponibles:', services.map((s:Service) => s.type));
         
-        const service = services.find((s: any) => s.type === 'BIRTH_ACT_APPLICATION');
+        const service = services.find((s: Service) => s.type === 'BIRTH_ACT_APPLICATION');
         console.log('Service BIRTH_ACT_APPLICATION trouvé:', service);
         
         if (service && service.defaultPrice) {
@@ -358,7 +358,7 @@ export default function BirthActForm() {
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white rounded-xl shadow-md">
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-gray-800 mb-2">Demande d'Acte de Naissance</h1>
+        <h1 className="text-2xl font-bold text-gray-800 mb-2">Demande d&apos;Acte de Naissance</h1>
         <div className="w-full bg-gray-200 rounded-full h-2.5">
           <div 
             className="bg-blue-600 h-2.5 rounded-full" 

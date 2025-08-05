@@ -20,11 +20,11 @@ interface MultiStepDemandeFormProps<T> {
   steps: { title: string; fields: StepField[] }[];
   schema: any; // Zod schema
   type: string; // ex: 'CONSULAR_CARD'
-  detailsKey: string; // ex: 'consularCardDetails'
+  // detailsKey: string; // ex: 'consularCardDetails'
   contactField: string; // ex: 'contact' ou 'contactPhoneNumber'
 }
 
-export default function MultiStepDemandeForm<T extends Record<string, any>>({ steps, schema, type, detailsKey, contactField }: MultiStepDemandeFormProps<T>) {
+export default function MultiStepDemandeForm<T extends Record<string, any>>({ steps, schema, type, contactField }: MultiStepDemandeFormProps<T>) {
   const { data: session } = useSession();
   const locale = useLocale();
   const router = useRouter();
@@ -38,7 +38,7 @@ export default function MultiStepDemandeForm<T extends Record<string, any>>({ st
     handleSubmit,
     formState: { errors, isValid },
     trigger,
-    getValues,
+    // getValues,
   } = useForm<T>({
     resolver: zodResolver(schema),
     mode: "onChange",

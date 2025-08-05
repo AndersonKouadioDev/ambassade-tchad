@@ -9,6 +9,7 @@ import DemandeTable from '@/components/espace-client/DemandeTable';
 import HistoriqueTraitement from '@/components/espace-client/HistoriqueTraitement';
 import StatusTimeline from '@/components/espace-client/StatusTimeline';
 import { apiClient } from '@/lib/api-client';
+import { BirthActRequestDetails, ConsularCardRequestDetails, DeathActRequestDetails, LaissezPasserFormInput, MarriageCapacityActRequestDetails, NationalityCertificateRequestDetails, PowerOfAttorneyRequestDetails, VisaRequestDetails } from "@/lib/validation/details-request.validation";
 
 interface Document {
   id: string;
@@ -34,14 +35,14 @@ interface DemandeDetail {
   observations: string | null;
   amount: number;
   documents?: Document[];
-  visaDetails: any;
-  birthActDetails: any;
-  consularCardDetails: any;
-  laissezPasserDetails: any;
-  marriageCapacityActDetails: any;
-  deathActDetails: any;
-  powerOfAttorneyDetails: any;
-  nationalityCertificateDetails: any;
+  visaDetails: VisaRequestDetails;
+  birthActDetails: BirthActRequestDetails;
+  consularCardDetails: ConsularCardRequestDetails;
+  laissezPasserDetails:LaissezPasserFormInput ;
+  marriageCapacityActDetails: MarriageCapacityActRequestDetails;
+  deathActDetails: DeathActRequestDetails;
+  powerOfAttorneyDetails: PowerOfAttorneyRequestDetails;
+  nationalityCertificateDetails: NationalityCertificateRequestDetails;
 }
 
 export default function DemandeDetail() {
@@ -65,17 +66,21 @@ export default function DemandeDetail() {
         const res = await apiClient.getRequestByTicket(demandeId, token);
         if (!res.success || !res.data) throw new Error(res.error || 'Erreur lors du chargement de la demande');
         setDemande(res.data);
-      } catch (e: any) {
-        setError(e.message || 'Erreur inconnue');
-      } finally {
-        setLoading(false);
+      } catch (e) {
+      if (e instanceof Error) {
+        setError(e.message);
+      } else {
+        setError('Erreur inconnue');
       }
+    } finally {
+      setLoading(false);
+    }
     };
 
     if (demandeId) {
       fetchDemandeDetail();
     }
-  }, [demandeId]);
+  }, [demandeId, session?.user?.token]);
 
   // Fonction pour traduire les types de service
   const translateServiceType = (serviceType: string) => {

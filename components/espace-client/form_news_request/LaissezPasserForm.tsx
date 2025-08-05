@@ -1,12 +1,13 @@
-import { FieldError, useForm, SubmitHandler } from 'react-hook-form';
+import {useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { JustificationDocumentType } from '@/types/request.types';
+import { JustificationDocumentType, Service } from '@/types/request.types';
 import React, { useEffect, useState, useRef } from "react";
 import { laissezPasserApi } from '@/lib/api-client';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 import { useLocale } from 'next-intl';
+import Image from 'next/image';
 
 // Schéma de validation
 export const laissezPasserRequestDetailsSchema = z.object({
@@ -54,8 +55,6 @@ export default function LaissezPasserForm() {
     trigger, 
     watch,
     reset,
-    control,
-    clearErrors
   } = useForm<LaissezPasserFormInput>({
     resolver: zodResolver(laissezPasserRequestDetailsSchema) as any,
     mode: 'onBlur',
@@ -321,9 +320,9 @@ export default function LaissezPasserForm() {
         const data = await res.json();
         console.log('Réponse API services:', data);
         const service = Array.isArray(data) 
-          ? (data as any[]).find((s: any) => s.type === 'LAISSEZ_PASSER')
+          ? (data as Service[]).find((s: Service) => s.type === 'LAISSEZ_PASSER')
           : Array.isArray(data.data) 
-            ? (data.data as any[]).find((s: any) => s.type === 'LAISSEZ_PASSER')
+            ? (data.data as Service[]).find((s: Service) => s.type === 'LAISSEZ_PASSER')
             : null;
         console.log('Service LAISSEZ_PASSER trouvé:', service);
         if (service && service.defaultPrice) {
@@ -404,7 +403,7 @@ export default function LaissezPasserForm() {
 
       if (response.success) {
         setShowSuccess(true);
-        let timer = setInterval(() => {
+        const timer = setInterval(() => {
           setSuccessCountdown((prev) => {
             if (prev <= 1) {
               clearInterval(timer);
@@ -583,7 +582,7 @@ export default function LaissezPasserForm() {
             {uploadedFiles.map((file, idx) => (
               <li key={idx} className="relative flex flex-col items-center w-24">
                 {file.type.startsWith('image/') ? (
-                  <img
+                  <Image
                     src={URL.createObjectURL(file)}
                     alt={file.name}
                     className="w-20 h-20 object-cover rounded shadow border"

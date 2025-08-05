@@ -31,7 +31,7 @@ export default function Header({ setSidebarOpen }: HeaderProps) {
   const t = useTranslations('espaceClient.header');
   const router = useRouter();
   const pathname = usePathname();
-  const [isPending, startTransition] = useTransition();
+  const [ startTransition] = useTransition();
   const [notificationsOpen, setNotificationsOpen] = useState(false);
   const [messagesOpen, setMessagesOpen] = useState(false);
   const [notificationsModalOpen, setNotificationsModalOpen] = useState(false);

@@ -1,0 +1,22 @@
+import { baseURL } from "@/config";
+import { getTokenInfo, logout } from "@/feature/auth/actions/auth.action";
+import { Api } from "ak-api-http";
+
+export const api = new Api({
+  baseUrl: baseURL, // Base URL de l'API
+  timeout: 10000, // Timeout de la requête
+  headers: {
+    "Content-Type": "application/json", // En-têtes par défaut
+  },
+  maxRetries: 3, // Nombre de tentatives de re tentative
+  retryDelay: 1000, // Delais entre les tentatives
+  enableAuth: true, // Authentification activée
+  getSession: async () => {
+    const jwt = await getTokenInfo()
+    return {
+      accessToken: jwt?.accessToken ?? "",
+    }
+  },// Récupération du token
+  signOut: logout, // Déconnexion automatique si la requête échoue avec un code 401
+  debug: process.env.NODE_ENV === "development", // Debug activé en mode développement
+});

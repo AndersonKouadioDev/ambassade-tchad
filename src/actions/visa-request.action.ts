@@ -1,42 +1,7 @@
-'use server';
+import { revalidatePath } from "next/cache";
 
-import { revalidatePath } from 'next/cache';
-import { redirect } from 'next/navigation';
-import { useLocale } from 'next-intl';
-import { 
-  createDemandRequestSchema, 
-  visaRequestDetailsSchema,
-  type CreateDemandRequestInput,
-  type VisaRequestDetailsInput 
-} from '@/src/schemas/visa-request.schemas';
-import { apiClient } from '@/lib/api-client';
-
-// Utilitaire d'appel API sécurisé
-async function apiRequest({ endpoint, method = 'GET', data, token, headers = {} }) {
-  const allHeaders = {
-    'Content-Type': 'application/json',
-    ...headers,
-  };
-  if (token) {
-    allHeaders['Authorization'] = `Bearer ${token}`;
-  }
-  const res = await fetch(endpoint, {
-    method,
-    headers: allHeaders,
-    body: data ? JSON.stringify(data) : undefined,
-  });
-  const result = await res.json();
-  if (!res.ok) throw new Error(result.message || 'Erreur API');
-  return result;
-}
-
-export async function createVisaRequest(
-  prevState: any,
-  formData: FormData
-) {
-  // Récupère la locale depuis le formulaire ou par défaut 'fr'
+export async function createVisaRequest(formData: FormData) {
   const locale = formData.get('locale') || 'fr';
-  // Récupère le token côté serveur
   const token = formData.get('token');
 
   if (!token) {
@@ -60,7 +25,6 @@ export async function createVisaRequest(
 
   const { serviceType, contactPhoneNumber, documents } = validatedFields.data;
 
-  // Extraire les données du visa depuis le formData
   const visaData = {
     personFirstName: formData.get('personFirstName') as string,
     personLastName: formData.get('personLastName') as string,
@@ -101,7 +65,6 @@ export async function createVisaRequest(
       documents: documents as File[],
     };
 
-    // Utilise l'utilitaire pour envoyer la requête avec le token
     await apiRequest({
       endpoint: 'http://localhost:8081/api/v1/demandes',
       method: 'POST',
@@ -111,50 +74,10 @@ export async function createVisaRequest(
 
     revalidatePath(`/${locale}/espace-client/mes-demandes`);
     return { success: true };
-  } catch (error: any) {
-    return {
-      error: error.message || 'Une erreur inattendue s\'est produite.',
-    };
+  } catch (e) {
+    if (e instanceof Error) {
+      return { error: e.message };
+    }
+    return { error: 'Erreur inconnue.' };
   }
 }
-
-export async function createVisaRequestWithFormData(
-visaData: VisaRequestDetailsInput, contactPhoneNumber?: string, documents?: File[], existingDocuments?: Document[]) {
-  // On ne vérifie plus la session ici, c'est le front qui doit envoyer le token si besoin
-
-  const validatedVisaFields = visaRequestDetailsSchema.safeParse(visaData);
-
-  if (!validatedVisaFields.success) {
-    return {
-      error: 'Données de visa invalides.',
-      details: validatedVisaFields.error.flatten().fieldErrors,
-    };
-  }
-
-  try {
-    const requestData = {
-      serviceType: 'VISA',
-      visaDetails: JSON.stringify(visaData),
-      contactPhoneNumber,
-      documents,
-    };
-
-    // Envoie la requête à l'API (ajoute le token dans les headers si besoin)
-    const result = await apiClient.createRequest(requestData);
-
-    if (result.success) {
-      return {
-        success: true,
-        data: result.data,
-      };
-    } else {
-      return {
-        error: result.error || 'Erreur lors de la création de la demande.',
-      };
-    }
-  } catch (error) {
-    return {
-      error: 'Une erreur inattendue s\'est produite.',
-    };
-  }
-} 

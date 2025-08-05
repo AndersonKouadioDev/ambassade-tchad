@@ -14,13 +14,13 @@ export default function Ambassadeur() {
       <div className="flex flex-col-reverse lg:flex-row items-stretch justify-around gap-4 lg:gap-12">
         <div className="relative w-full max-w-96 h-[400px] lg:h-[650px] mx-auto">
           <Image
-            src="/assets/images/illustrations/ambassade/ambassadeur.png"
+            src="/assets/images/illustrations/ambassade/ambassadeur_tchad.jpg"
             alt="ambassadeur"
             fill
             className="object-cover"
           />
           <div className="absolute inset-x-0 bottom-4 flex justify-center">
-            <div className="flex flex-col gap-2 justify-start font-mulish border px-6 border-white text-white">
+            <div className="flex flex-col gap-2 justify-start font-mulish border px-6 border-primary text-white rounded-md shadow-sm bg-primary">
               <div className="text-xl">{t('nom')}</div>
               <div className="text-base">{t('poste')}</div>
             </div>

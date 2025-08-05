@@ -2,10 +2,11 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import React, { useState, useEffect, useRef } from 'react';
-import { JustificationDocumentType } from '@/types/request.types';
+import { JustificationDocumentType, Service } from '@/types/request.types';
 import { toast } from 'react-toastify';
 import { powerOfAttorneyApi } from '@/lib/api-client';
 import { useRouter, useParams } from 'next/navigation';
+import Image from 'next/image';
 
 const procurationSchema = z.object({
   principalFirstName: z.string().min(1, 'Le prénom du mandant est requis'),
@@ -66,12 +67,12 @@ export default function ProcurationForm() {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8081/api/v1'}/demandes/services`);
         const data = await res.json();
         const service = Array.isArray(data)
-          ? (data as any[]).find((s: any) => s.type === 'POWER_OF_ATTORNEY')
+          ? (data as Service[]).find((s: Service) => s.type === 'POWER_OF_ATTORNEY')
           : Array.isArray(data.data)
-            ? (data.data as any[]).find((s: any) => s.type === 'POWER_OF_ATTORNEY')
+            ? (data.data as Service[]).find((s: Service) => s.type === 'POWER_OF_ATTORNEY')
             : null;
         setPrixActe(service ? service.defaultPrice : null);
-      } catch (e) {
+      } catch (error) {
         setPrixActe(null);
       }
     }
@@ -104,7 +105,7 @@ export default function ProcurationForm() {
   const onSubmit = async (data: ProcurationFormInput) => {
     setIsSubmitting(true);
     try {
-      const { contactPhoneNumber, justificativeFile, ...details } = data;
+      const { contactPhoneNumber, ...details } = data;
       const payload = { ...details };
       const response = await powerOfAttorneyApi.create(
         payload,
@@ -113,7 +114,7 @@ export default function ProcurationForm() {
       );
       if (response.success) {
         setShowSuccess(true);
-        let timer = setInterval(() => {
+        const timer = setInterval(() => {
           setSuccessCountdown((prev) => {
             if (prev <= 1) {
               clearInterval(timer);
@@ -284,7 +285,7 @@ export default function ProcurationForm() {
               {uploadedFiles.map((file, idx) => (
                 <li key={idx} className="relative flex flex-col items-center w-24">
                   {file.type.startsWith('image/') ? (
-                    <img
+                    <Image
                       src={URL.createObjectURL(file)}
                       alt={file.name}
                       className="w-20 h-20 object-cover rounded shadow border"

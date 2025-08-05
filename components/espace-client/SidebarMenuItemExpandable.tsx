@@ -18,7 +18,7 @@ interface SidebarMenuItemExpandableProps {
   collapsed: boolean;
   hovered: boolean;
   subRoutes?: SubRoute[];
-  hasActiveSubRoute?: boolean;
+  // hasActiveSubRoute?: boolean;
 }
 
 export default function SidebarMenuItemExpandable({ 
@@ -28,7 +28,7 @@ export default function SidebarMenuItemExpandable({
   collapsed, 
   hovered, 
   subRoutes = [],
-  hasActiveSubRoute = false
+  // hasActiveSubRoute = false
 }: SidebarMenuItemExpandableProps) {
   const pathname = usePathname();
   const { setOpen } = useSidebarConfig();

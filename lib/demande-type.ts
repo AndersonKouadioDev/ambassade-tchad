@@ -6,16 +6,6 @@ import {
   PassportType,
   VisaType,
   JustificationDocumentType,
-  OriginCountryParentRelationshipType,
-  DemandeFormType,
-  VisaRequestForm,
-  BirthActRequestForm,
-  ConsularCardRequestForm,
-  LaissezPasserRequestForm,
-  PowerOfAttorneyRequestForm,
-  NationalityCertificateRequestForm,
-  MarriageCapacityActRequestForm,
-  DeathActRequestForm
 } from "./demande-types-client";
 
 export const DOCUMENTS = [

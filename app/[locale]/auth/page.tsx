@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
-import AuthForm from '@/components/auth/auth-form';
+import AuthForm from '@/feature/auth/components/auth-form';
 // import { useTranslations } from 'next-intl'; // Supprimé car inutilisé au niveau module
 
 export const metadata: Metadata = {
@@ -9,10 +9,6 @@ export const metadata: Metadata = {
     keywords: 'connexion, inscription, ambassade tchad, espace membre',
 };
 
-function Breadcrumb() {
-    // Les hooks React ne doivent pas être utilisés ici si ce composant reste server
-    return null;
-}
 
 export default function AuthPage() {
     return (

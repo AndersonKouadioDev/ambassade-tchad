@@ -81,7 +81,7 @@ class ApiClient {
         // Suppression de requestId de visaDetails si présent
         if (jsonData.visaDetails) {
           try {
-            let details = typeof jsonData.visaDetails === 'string' ? JSON.parse(jsonData.visaDetails) : jsonData.visaDetails;
+            const details = typeof jsonData.visaDetails === 'string' ? JSON.parse(jsonData.visaDetails) : jsonData.visaDetails;
             if (details && typeof details === 'object') {
               // Supprime requestId si présent
               if ('requestId' in details) {
@@ -104,14 +104,14 @@ class ApiClient {
               }
             }
             jsonData.visaDetails = JSON.stringify(details);
-          } catch (e) {
+          } catch (error) {
             // Si parsing échoue, on laisse tel quel
           }
         }
         // Suppression de requestId de birthActDetails si présent
         if (jsonData.birthActDetails) {
           try {
-            let details = typeof jsonData.birthActDetails === 'string' ? JSON.parse(jsonData.birthActDetails) : jsonData.birthActDetails;
+            const details = typeof jsonData.birthActDetails === 'string' ? JSON.parse(jsonData.birthActDetails) : jsonData.birthActDetails;
             if (details && typeof details === 'object') {
               if ('requestId' in details) delete details.requestId;
               if ('personGender' in details) delete details.personGender;
@@ -136,7 +136,7 @@ class ApiClient {
         delete headers['Content-Type'];
         console.log('Payload FormData (clé data):', JSON.stringify(jsonData));
         // Log détaillé du FormData envoyé
-        for (let pair of formData.entries()) {
+        for (const pair of formData.entries()) {
           console.log('FormData:', pair[0], pair[1]);
         }
         const response = await fetch(`${this.baseUrl}/demandes`, {

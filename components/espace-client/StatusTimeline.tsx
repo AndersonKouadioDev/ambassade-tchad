@@ -1,5 +1,5 @@
 import { useTranslations } from 'next-intl';
-import { CheckCircle, Clock, AlertCircle, FileText, UserCheck, Package } from 'lucide-react';
+import { CheckCircle, Clock, FileText, UserCheck, Package } from 'lucide-react';
 
 interface StatusStep {
   id: string;
@@ -90,16 +90,16 @@ export default function StatusTimeline({
     }
   };
 
-  const getLineColor = (status: 'completed' | 'current' | 'pending') => {
-    switch (status) {
-      case 'completed':
-        return 'bg-green-500';
-      case 'current':
-        return 'bg-orange-500';
-      case 'pending':
-        return 'bg-gray-300';
-    }
-  };
+  // const getLineColor = (status: 'completed' | 'current' | 'pending') => {
+  //   switch (status) {
+  //     case 'completed':
+  //       return 'bg-green-500';
+  //     case 'current':
+  //       return 'bg-orange-500';
+  //     case 'pending':
+  //       return 'bg-gray-300';
+  //   }
+  // };
 
   return (
     <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 shadow-sm p-6 mb-8">

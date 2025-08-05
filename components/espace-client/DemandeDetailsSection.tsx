@@ -1,5 +1,5 @@
-import { useSession } from 'next-auth/react';
-
+import {BirthActRequestDetails, ConsularCardRequestDetails, MarriageCapacityActRequestDetails, NationalityCertificateRequestDetails, PowerOfAttorneyRequestDetails, VisaRequestDetails } from '@/lib/validation/details-request.validation';
+import Image from 'next/image';
 interface Document {
   id: string;
   filename: string;
@@ -24,14 +24,14 @@ interface DemandeDetailsSectionProps {
     observations: string | null;
     amount: number;
     documents?: Document[];
-    visaDetails: any;
-    birthActDetails: any;
-    consularCardDetails: any;
+    visaDetails: VisaRequestDetails;
+    birthActDetails: BirthActRequestDetails;
+    consularCardDetails: ConsularCardRequestDetails;
     laissezPasserDetails: any;
-    marriageCapacityActDetails: any;
+    marriageCapacityActDetails: MarriageCapacityActRequestDetails;
     deathActDetails: any;
-    powerOfAttorneyDetails: any;
-    nationalityCertificateDetails: any;
+    powerOfAttorneyDetails: PowerOfAttorneyRequestDetails;
+    nationalityCertificateDetails: NationalityCertificateRequestDetails;
   };
 }
 
@@ -122,7 +122,7 @@ export default function DemandeDetailsSection({ demande }: DemandeDetailsSection
           // Affichage des accompagnateurs si accompagné
           if (demande.laissezPasserDetails.accompanied && demande.laissezPasserDetails.accompaniers?.length) {
             fields.push(['Accompagnateurs',
-              demande.laissezPasserDetails.accompaniers.map((acc: any, idx: number) =>
+              demande.laissezPasserDetails.accompaniers.map((acc: any) =>
                 `${acc.firstName} ${acc.lastName} (${new Date(acc.birthDate).toLocaleDateString('fr-FR')}, ${acc.nationality})`
               ).join(' ; ')
             ]);
@@ -181,7 +181,7 @@ export default function DemandeDetailsSection({ demande }: DemandeDetailsSection
             ['Domicile', demande.birthActDetails.personDomicile],
             ['Nom du père', demande.birthActDetails.fatherFullName],
             ['Nom de la mère', demande.birthActDetails.motherFullName],
-            ['Type de demande', translateEnum(demande.birthActDetails.requestType, 'BirthActRequestType')],
+            ['Type de demande', demande.birthActDetails.requestType],
           ];
         }
         break;
@@ -256,17 +256,19 @@ export default function DemandeDetailsSection({ demande }: DemandeDetailsSection
     <div className="bg-white rounded-lg border border-gray-200 shadow-md overflow-hidden printable">
       {/* Logo Ambassade (affiché en haut, visible à l'écran et à l'impression) */}
       <div className="flex justify-center items-center flex-col py-4 print:py-2">
-        <img
+        <Image
           src="/assets/images/logo.png"
           alt="Logo Ambassade du Tchad"
           className="h-20 w-auto mb-2 print:mb-0"
+          width={100}
+          height={100}
           style={{ maxHeight: '80px', objectFit: 'contain' }}
         />
         <div className="text-center">
           <div className="font-bold text-lg md:text-2xl text-gray-900 print:text-black">Ambassade de la République du Tchad</div>
           <div className="text-sm md:text-base text-gray-700 print:text-black">Section Consulaire</div>
           <div className="text-xs md:text-sm text-gray-600 print:text-black mt-1">
-           Abidjan, cocody 2 Plateaux vallons, Côte d'Ivoire<br/>
+           Abidjan, cocody 2 Plateaux vallons, Côte d&apos;Ivoire<br/>
             Tél : +225 01245578485 &nbsp;|&nbsp; Email : contact@ambassade-tchad.com
           </div>
         </div>

@@ -15,8 +15,7 @@ interface HistoriqueTraitementProps {
   estimatedCompletionDate?: string;
 }
 
-export default function HistoriqueTraitement({ 
-  steps, 
+export default function HistoriqueTraitement({  
   progression, 
   serviceType, 
   status, 

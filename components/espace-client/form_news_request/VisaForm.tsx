@@ -9,14 +9,14 @@ import {
   Gender,
   MaritalStatus,
   PassportType,
+  Service,
 } from "@/types/request.types";
 import { visaApi } from "@/lib/api-client";
 import { useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
 import { useTranslations } from "next-intl";
 import { useSession } from "next-auth/react";
-import { Request } from "@/types/request.types"; 
-
+import Image from "next/image";
 type VisaFormInput = z.infer<typeof visaRequestDetailsSchema> & {
   contactPhoneNumber: string;
 };
@@ -57,8 +57,6 @@ const REQUIRED_FIELDS: (keyof VisaFormInput)[] = [
 ];
 
 export default function VisaForm({
-  request,
-  onSuccess,
   onError,
 }: VisaFormProps) {
   const router = useRouter();
@@ -84,12 +82,12 @@ export default function VisaForm({
         );
         const data = await res.json();
         const service = Array.isArray(data)
-          ? (data as any[]).find((s: any) => s.type === "VISA")
+          ? (data as Service[]).find((s: Service) => s.type === "VISA")
           : Array.isArray(data.data)
-          ? (data.data as any[]).find((s: any) => s.type === "VISA")
+          ? (data.data as Service[]).find((s: Service) => s.type === "VISA")
           : null;
         setPrixBase(service ? service.defaultPrice : null);
-      } catch (e) {
+      } catch (error) {
         setPrixBase(null);
       }
     }
@@ -107,7 +105,7 @@ export default function VisaForm({
     resolver: zodResolver(visaRequestDetailsSchema) as any,
     mode: "onBlur",
     defaultValues: {
-      requestId: crypto.randomUUID(),
+      requestId: "", // Sera généré côté client
       contactPhoneNumber: "",
       personFirstName: "",
       personLastName: "",
@@ -129,6 +127,11 @@ export default function VisaForm({
       visaType: undefined,
     },
   });
+
+  // Générer le requestId côté client pour éviter les erreurs d'hydratation
+  useEffect(() => {
+    setValue("requestId", crypto.randomUUID());
+  }, [setValue]);
 
   // Calcul du prix en fonction de la durée
   const durationMonths = watch("durationMonths");
@@ -169,14 +172,6 @@ export default function VisaForm({
     </label>
   );
 
-  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const files = Array.from(event.target.files || []);
-    setUploadedFiles((prev) => [...prev, ...files]);
-  };
-
-  const removeUploadedFile = (index: number) => {
-    setUploadedFiles((prev) => prev.filter((_, i) => i !== index));
-  };
 
   const getFieldsForStep = (step: number): (keyof VisaFormInput)[] => {
     switch (step) {
@@ -765,9 +760,11 @@ export default function VisaForm({
                 className="relative flex flex-col items-center w-24"
               >
                 {file.type.startsWith("image/") ? (
-                  <img
+                  <Image
                     src={URL.createObjectURL(file)}
                     alt={file.name}
+                    width={80}
+                    height={80}
                     className="w-20 h-20 object-cover rounded shadow border"
                   />
                 ) : (

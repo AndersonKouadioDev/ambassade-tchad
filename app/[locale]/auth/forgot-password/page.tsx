@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import ForgotPasswordForm from '@/components/auth/forgot-password-form';
+import ForgotPasswordForm from '@/feature/auth/components/forgot-password-form';
 import { useTranslations } from 'next-intl';
 
 function Breadcrumb() {

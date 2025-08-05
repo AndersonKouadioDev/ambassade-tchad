@@ -3,7 +3,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
-import { OriginCountryParentRelationshipType } from '@/types/request.types';
+import { OriginCountryParentRelationshipType, Service } from '@/types/request.types';
 import { toast } from 'react-toastify';
 import { nationalityCertificateApi } from '@/lib/api-client';
 import { useRouter, useParams } from 'next/navigation';
@@ -56,7 +56,7 @@ export default function CertificatNationaliteForm() {
   const router = useRouter();
   const params = useParams();
   const locale = Array.isArray(params?.locale) ? params.locale[0] : params?.locale || 'fr';
-
+  const error = null;
   // Récupération du prix dynamique
   useEffect(() => {
     async function fetchPrice() {
@@ -64,12 +64,12 @@ export default function CertificatNationaliteForm() {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8081/api/v1'}/demandes/services`);
         const data = await res.json();
         const service = Array.isArray(data)
-          ? (data as any[]).find((s: any) => s.type === 'NATIONALITY_CERTIFICATE')
+          ? (data as Service[]).find((s: Service) => s.type === 'NATIONALITY_CERTIFICATE')
           : Array.isArray(data.data)
-            ? (data.data as any[]).find((s: any) => s.type === 'NATIONALITY_CERTIFICATE')
+            ? (data.data as Service[]).find((s: Service) => s.type === 'NATIONALITY_CERTIFICATE')
             : null;
         setPrixActe(service ? service.defaultPrice : null);
-      } catch (e) {
+      } catch (error) {
         setPrixActe(null);
       }
     }
@@ -176,7 +176,7 @@ export default function CertificatNationaliteForm() {
 
   const renderStep2 = () => (
     <div className="space-y-6">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">Informations sur le parent d'origine et contact</h3>
+      <h3 className="text-lg font-semibold text-gray-900 mb-4">Informations sur le parent d&apos;origine et contact</h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Prénom du parent *</label>
