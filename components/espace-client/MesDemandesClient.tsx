@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import RequestsTablePro, { RequestItem } from '@/components/espace-client/RequestsTablePro';
 import { useTranslations } from 'next-intl';
 import { useSession } from 'next-auth/react';
+import { api } from '@/lib/api';
 
 const SERVICES = [
   'Carte Consulaire',
@@ -50,36 +51,19 @@ export default function MesDemandesClient() {
         setError(t('sessionNonTrouvee'));
         return;
       }
-
       setLoading(true);
       setError(null);
       try {
-        const headers: Record<string, string> = {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        };
-
-        if (session.user?.token) {
-          headers['Authorization'] = `Bearer ${session.user.token}`;
-        }
-
-        const res = await fetch(`http://localhost:8081/api/v1/demandes/me?page=${page}&limit=${limit}`, {
+        const data = await api.request({
+          endpoint: `/demandes/me?page=${page}&limit=${limit}`,
           method: 'GET',
-          credentials: 'include',
-          headers,
+
         });
-        
-        if (!res.ok) {
-          const errorText = await res.text();
-          throw new Error(`Erreur ${res.status}: ${errorText || t('erreurChargement')}`);
-        }
-        
-        const data = await res.json();
         setTotalPages(data.meta?.lastPage || 1);
         setTotal(data.meta?.total || 0);
-        
+
         const demandes = data?.data || [];
-        
+
         const translateServiceType = (serviceType: string) => {
           const translations: Record<string, string> = {
             'CONSULAR_CARD': t('services.carteConsulaire'),
@@ -100,8 +84,11 @@ export default function MesDemandesClient() {
           date: d.submissionDate ? new Date(d.submissionDate).toLocaleDateString('fr-FR') : '',
           status: d.status || d.statut || '',
         }));
-        
+
         setRequests(mapped);
+
+
+
       } catch (e: any) {
         console.error('Fetch error:', e);
         setError(e.message || t('erreurInconnue'));
@@ -112,7 +99,7 @@ export default function MesDemandesClient() {
     fetchRequests();
   }, [session, page, t]);
 
-  // Fonction pour générer les boutons de pagination
+  // Fonction pour générer les boutons 
   const renderPagination = () => {
     const pagesToShow = 5; // Nombre de pages à afficher autour de la page actuelle
     let startPage = Math.max(1, page - Math.floor(pagesToShow / 2));
@@ -132,7 +119,7 @@ export default function MesDemandesClient() {
         <div className="text-sm text-gray-600">
           {total} {t('demandes')} • {t('page')} {page} {t('sur')} {totalPages}
         </div>
-        
+
         <div className="flex items-center gap-1">
           {/* Bouton Précédent */}
           <button
@@ -289,8 +276,8 @@ export default function MesDemandesClient() {
                 </div>
                 <div className="ml-3">
                   <p className="text-sm text-red-700">{error}</p>
-                  <button 
-                    onClick={() => window.location.reload()} 
+                  <button
+                    onClick={() => window.location.reload()}
                     className="mt-2 inline-flex items-center px-3 py-1 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
                   >
                     {t('reessayer')}
@@ -332,7 +319,7 @@ export default function MesDemandesClient() {
                   {t('toutesVosDemandes')} ({total})
                 </h3>
               </div>
-              
+
               <div className="overflow-x-auto">
                 <RequestsTablePro filters={filters} requests={requests} />
               </div>

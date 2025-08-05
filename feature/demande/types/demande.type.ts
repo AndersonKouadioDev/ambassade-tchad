@@ -14,7 +14,6 @@ import { IUser } from "./user.type";
 export enum Genre {
     MALE = 'MALE',
     FEMALE = 'FEMALE',
-    OTHER = 'OTHER'
 }
 
 export enum SituationMatrimoniale {
@@ -22,7 +21,6 @@ export enum SituationMatrimoniale {
     MARRIED = 'MARRIED',
     DIVORCED = 'DIVORCED',
     WIDOWED = 'WIDOWED',
-    OTHER = 'OTHER'
 }
 
 
