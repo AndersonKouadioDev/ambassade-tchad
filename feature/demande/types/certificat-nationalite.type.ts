@@ -10,13 +10,13 @@ export interface ICertificatNationaliteDetails {
     requestId: string;
     applicantFirstName: string;
     applicantLastName: string;
-    applicantBirthDate: Date;
+    applicantBirthDate: string;
     applicantBirthPlace: string;
     applicantNationality: string;
     originCountryParentFirstName: string;
     originCountryParentLastName: string;
     originCountryParentRelationship: PaysParentType;
-    createdAt: Date;
-    updatedAt: Date;
+    createdAt: string;
+    updatedAt: string;
     request?: IDemande;
 }

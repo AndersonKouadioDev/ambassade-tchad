@@ -5,11 +5,11 @@ export interface IDecesDetails {
     requestId: string;
     deceasedFirstName: string;
     deceasedLastName: string;
-    deceasedBirthDate: Date;
-    deceasedDeathDate: Date;
+    deceasedBirthDate: string;
+    deceasedDeathDate: string;
     deceasedNationality: string;
-    createdAt: Date;
-    updatedAt: Date;
+    createdAt: string;
+    updatedAt: string;
 
     request?: IDemande;
 }

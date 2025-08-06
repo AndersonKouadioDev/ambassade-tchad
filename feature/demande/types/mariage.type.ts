@@ -5,18 +5,18 @@ export interface IMariageDetails {
     requestId: string;
     husbandFirstName: string;
     husbandLastName: string;
-    husbandBirthDate: Date;
+    husbandBirthDate: string;
     husbandBirthPlace: string;
     husbandNationality: string;
     husbandDomicile?: string;
     wifeFirstName: string;
     wifeLastName: string;
-    wifeBirthDate: Date;
+    wifeBirthDate: string;
     wifeBirthPlace: string;
     wifeNationality: string;
     wifeDomicile?: string;
-    createdAt: Date;
-    updatedAt: Date;
+    createdAt: string;
+    updatedAt: string;
 
     request?: IDemande;
 }

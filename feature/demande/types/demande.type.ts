@@ -45,14 +45,14 @@ export interface IDemande {
     userId: string;
     serviceType: ServiceType;
     status: DemandeStatus;
-    submissionDate: Date;
-    completionDate?: Date;
-    issuedDate?: Date;
+    submissionDate: string;
+    completionDate?: string;
+    issuedDate?: string;
     contactPhoneNumber?: string;
     observations?: string;
     amount: number;
-    createdAt: Date;
-    updatedAt: Date;
+    createdAt: string;
+    updatedAt: string;
 
     user?: IUser;
     documents?: IDocument[];

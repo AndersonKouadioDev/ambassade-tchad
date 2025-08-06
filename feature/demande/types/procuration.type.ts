@@ -17,7 +17,7 @@ export interface IProcurationDetails {
     principalAddress?: string;
     powerOfType?: string;
     reason?: string;
-    createdAt: Date;
-    updatedAt: Date;
+    createdAt: string;
+    updatedAt: string;
     request?: IDemande;
 }

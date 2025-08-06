@@ -1,11 +1,9 @@
 import { z } from 'zod';
-import { ServiceType } from '../types/service.type';
 import { Genre, SituationMatrimoniale } from '../types/demande.type';
 import { PassportType, VisaType } from '../types/visa.type';
 
 
 export const VisaRequestDetailsSchema = z.object({
-  serviceType: z.nativeEnum(ServiceType).default(ServiceType.VISA).optional(),
   personFirstName: z.string({ message: 'Le prénom est obligatoire.' })
     .min(1, { message: 'Le prénom est obligatoire.' })
     .max(255, { message: 'Le prénom ne doit pas dépasser 255 caractères.' }),

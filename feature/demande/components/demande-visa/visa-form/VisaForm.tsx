@@ -1,49 +1,32 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { VisaRequestDetails, visaRequestDetailsSchema, VisaType } from "@/lib/validation/details-request.validation";
-import type { z } from "zod";
-import {
-  Gender,
-  MaritalStatus,
-  PassportType,
-  Service,
-} from "@/types/request.types";
-import { visaApi } from "@/lib/api-client";
-import { useLocale } from "next-intl";
 import { useTranslations } from "next-intl";
-import { useSession } from "next-auth/react";
-import Image from "next/image";
-import { useCreateDemandRequestMutation } from "@/feature/demande/queries/demande.mutation";
+import { useVisaRequestCreateMutation } from "@/feature/demande/queries/demande.mutation";
 import { ImageDragDrop, ImageFile } from "@/components/block/image-drap-drop";
 import { useRouter } from "@/i18n/navigation";
-import Service from "@/components/home/service/service";
-import { ServiceType } from "@/feature/demande/types/service.type";
-import { Genre } from "@/feature/demande/types/demande.type";
-type VisaFormInput = z.infer<typeof visaRequestDetailsSchema> & {
-  contactPhoneNumber: string;
-};
-
-interface Document {
-  id: number;
-  name: string;
-  url: string;
-}
-
-interface RequestWithRelations {
-  contactPhoneNumber?: string;
-  documents?: Document[];
-}
+import {
+  DemandeCreateDTO,
+  DemandeCreateSchema,
+} from "@/feature/demande/schema/demande.schema";
+import { useState } from "react";
+import { PassportType, VisaType } from "@/feature/demande/types/visa.type";
+import {
+  Genre,
+  IDemande,
+  SituationMatrimoniale,
+} from "@/feature/demande/types/demande.type";
 
 interface VisaFormProps {
-  request: RequestWithRelations;
-  onSuccess?: () => void;
-  onError?: (error: string) => void;
+  demande?: IDemande;
 }
 
-const REQUIRED_FIELDS: (keyof VisaFormInput)[] = [
+type VisaFormInputKeys =
+  | keyof NonNullable<DemandeCreateDTO["visaDetails"]>
+  | "contactPhoneNumber";
+
+const REQUIRED_FIELDS: VisaFormInputKeys[] = [
   "personFirstName",
   "personLastName",
   "personGender",
@@ -61,14 +44,15 @@ const REQUIRED_FIELDS: (keyof VisaFormInput)[] = [
   "contactPhoneNumber",
 ];
 
-const isFieldRequired = (fieldName: keyof VisaFormInput): boolean => {
+const isFieldRequired = (fieldName: VisaFormInputKeys): boolean => {
   return REQUIRED_FIELDS.includes(fieldName);
 };
+
 const FieldLabel = ({
   name,
   label,
 }: {
-  name: keyof VisaFormInput;
+  name: VisaFormInputKeys;
   label: string;
 }) => (
   <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -77,10 +61,9 @@ const FieldLabel = ({
   </label>
 );
 
-export default function VisaForm({
-  onError,
-}: VisaFormProps) {
+export default function VisaForm({ demande }: VisaFormProps) {
   const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -88,38 +71,42 @@ export default function VisaForm({
     setValue,
     trigger,
     watch,
-  } = useForm<VisaRequestDetails>({
-    resolver: zodResolver(visaRequestDetailsSchema),
+  } = useForm<DemandeCreateDTO>({
+    resolver: zodResolver(DemandeCreateSchema),
     mode: "onBlur",
     defaultValues: {
-      requestId: "", // Sera généré côté client
-      contactPhoneNumber: "",
-      personFirstName: "",
-      personLastName: "",
-      personGender: undefined,
-      personNationality: "",
-      personBirthDate: "",
-      personBirthPlace: "",
-      personMaritalStatus: undefined,
-      passportType: undefined,
-      passportNumber: "",
-      passportIssuedBy: "",
-      passportIssueDate: "",
-      passportExpirationDate: "",
-      profession: "",
-      employerAddress: "",
-      employerPhoneNumber: "",
-      durationMonths: 1,
-      destinationState: "",
-      visaType: undefined,
+      contactPhoneNumber: demande?.contactPhoneNumber || "",
+      visaDetails: {
+        personFirstName: demande?.visaDetails?.personFirstName || "",
+        personLastName: demande?.visaDetails?.personLastName || "",
+        personGender: demande?.visaDetails?.personGender || undefined,
+        personNationality: demande?.visaDetails?.personNationality || "",
+        personBirthDate: demande?.visaDetails?.personBirthDate || "",
+        personBirthPlace: demande?.visaDetails?.personBirthPlace || "",
+        personMaritalStatus:
+          demande?.visaDetails?.personMaritalStatus || undefined,
+        passportType: demande?.visaDetails?.passportType || undefined,
+        passportNumber: demande?.visaDetails?.passportNumber || "",
+        passportIssuedBy: demande?.visaDetails?.passportIssuedBy || "",
+        passportIssueDate: demande?.visaDetails?.passportIssueDate || "",
+        passportExpirationDate:
+          demande?.visaDetails?.passportExpirationDate || "",
+        profession: demande?.visaDetails?.profession || "",
+        employerAddress: demande?.visaDetails?.employerAddress || "",
+        employerPhoneNumber: demande?.visaDetails?.employerPhoneNumber || "",
+        durationMonths: demande?.visaDetails?.durationMonths || 1,
+        destinationState: demande?.visaDetails?.destinationState || "",
+        visaType: demande?.visaDetails?.visaType || undefined,
+      },
     },
   });
 
-  // Hook de mutation pour créer la demande
+  console.log("=== WATCH INITIAL ===", watch());
+
   const {
     mutateAsync: createVisaRequestMutation,
     isPending: createVisaRequestPending,
-  } = useCreateDemandRequestMutation();
+  } = useVisaRequestCreateMutation();
 
   const t = useTranslations("espaceClient.formFields");
   const [currentStep, setCurrentStep] = useState(1);
@@ -127,35 +114,36 @@ export default function VisaForm({
   const [uploadedFiles, setUploadedFiles] = useState<ImageFile[]>([]);
   const [showSuccess, setShowSuccess] = useState(false);
   const [successCountdown, setSuccessCountdown] = useState(5);
-  const getFieldsForStep = (step: number): (keyof VisaFormInput)[] => {
+
+  const getFieldsForStep = (step: number): string[] => {
     switch (step) {
       case 1:
         return [
-          "personFirstName",
-          "personLastName",
-          "personGender",
-          "personNationality",
-          "personBirthDate",
-          "personBirthPlace",
-          "personMaritalStatus",
+          "visaDetails.personFirstName",
+          "visaDetails.personLastName",
+          "visaDetails.personGender",
+          "visaDetails.personNationality",
+          "visaDetails.personBirthDate",
+          "visaDetails.personBirthPlace",
+          "visaDetails.personMaritalStatus",
         ];
       case 2:
         return [
-          "passportType",
-          "passportNumber",
-          "passportIssuedBy",
-          "passportIssueDate",
-          "passportExpirationDate",
+          "visaDetails.passportType",
+          "visaDetails.passportNumber",
+          "visaDetails.passportIssuedBy",
+          "visaDetails.passportIssueDate",
+          "visaDetails.passportExpirationDate",
         ];
       case 3:
         return [
-          "profession",
-          "employerAddress",
-          "employerPhoneNumber",
-          "durationMonths",
-          "destinationState",
-          "visaType",
-        ]; // 'visaExpirationDate' retiré car optionnel
+          "visaDetails.profession",
+          "visaDetails.employerAddress",
+          "visaDetails.employerPhoneNumber",
+          "visaDetails.durationMonths",
+          "visaDetails.destinationState",
+          "visaDetails.visaType",
+        ];
       case 4:
         return ["contactPhoneNumber"];
       default:
@@ -177,58 +165,30 @@ export default function VisaForm({
     }
   };
 
-  const onSubmit = async (data: VisaFormInput) => {
-    if (!uploadedFiles || uploadedFiles.length === 0) {
-      onError?.("Au moins un fichier justificatif est obligatoire.");
-      return;
-    }
-    // Retirer contactPhoneNumber de visaDetails
-    const { contactPhoneNumber, ...visaDetails } = data;
-    const files = uploadedFiles.filter((file) => file.file !== undefined).map((file) => file.file);
+  const onSubmit = async (data: DemandeCreateDTO) => {
     try {
-
-      // const result = await visaApi.create(
-      //   visaDetails, // sans contactPhoneNumber
-      //   contactPhoneNumber, // à la racine
-      //   files,
-      // );
-      const result = createVisaRequestMutation({
-        visaDetails:{
-          ...visaDetails,
-          personGender: visaDetails.personGender as Genre,
-          // genre: visaDetails.personGender as Gender,
-         
-        },
-
-        files,
-        serviceType: ServiceType.VISA,
+      await createVisaRequestMutation({
+        data: data,
+        uploadedFiles: uploadedFiles,
       });
 
-      if (result.success) {
-        setShowSuccess(true);
-        const timer = setInterval(() => {
-          setSuccessCountdown((prev) => {
-            if (prev <= 1) {
-              clearInterval(timer);
-              router.push(`/espace-client/mes-demandes?success=true`);
-              return 0;
-            }
-            return prev - 1;
-          });
-        }, 1000);
-      } else {
-        onError?.(result.error || "Erreur lors de la création de la demande");
-      }
+      setShowSuccess(true);
+      const timer = setInterval(() => {
+        setSuccessCountdown((prev) => {
+          if (prev <= 1) {
+            clearInterval(timer);
+            router.push(`/espace-client/mes-demandes?success=true`);
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
     } catch (error) {
-      console.error("Erreur lors de la soumission:", error);
-      onError?.("Une erreur inattendue s'est produite");
+      // console.error("Erreur lors de la soumission:", error);
     } finally {
       setCurrentStep(1);
     }
   };
-
- 
-
 
   const renderStep1 = () => (
     <div className="space-y-6">
@@ -239,11 +199,11 @@ export default function VisaForm({
         <div>
           <FieldLabel name="personFirstName" label={t("personFirstName")} />
           <input
-            {...register("personFirstName")}
+            {...register("visaDetails.personFirstName")}
             placeholder="Ex: Mahamat"
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
           />
-          {errors.personFirstName && (
+          {errors.visaDetails?.personFirstName && (
             <div className="flex items-center mt-1 text-red-600 text-sm">
               <svg
                 className="w-4 h-4 mr-1"
@@ -258,18 +218,18 @@ export default function VisaForm({
                   d="M12 9v2m0 4h.01M21 12A9 9 0 113 12a9 9 0 0118 0z"
                 />
               </svg>
-              {errors.personFirstName.message}
+              {errors.visaDetails.personFirstName.message}
             </div>
           )}
         </div>
         <div>
           <FieldLabel name="personLastName" label={t("personLastName")} />
           <input
-            {...register("personLastName")}
+            {...register("visaDetails.personLastName")}
             placeholder="Ex: Abakar"
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
           />
-          {errors.personLastName && (
+          {errors.visaDetails?.personLastName && (
             <div className="flex items-center mt-1 text-red-600 text-sm">
               <svg
                 className="w-4 h-4 mr-1"
@@ -284,24 +244,24 @@ export default function VisaForm({
                   d="M12 9v2m0 4h.01M21 12A9 9 0 113 12a9 9 0 0118 0z"
                 />
               </svg>
-              {errors.personLastName.message}
+              {errors.visaDetails.personLastName.message}
             </div>
           )}
         </div>
         <div>
           <FieldLabel name="personGender" label={t("personGender")} />
           <select
-            {...register("personGender")}
+            {...register("visaDetails.personGender")}
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
           >
             <option value="">Sélectionnez...</option>
-            {Object.values(Gender).map((gender) => (
+            {Object.values(Genre).map((gender) => (
               <option key={gender} value={gender}>
                 {gender}
               </option>
             ))}
           </select>
-          {errors.personGender && (
+          {errors.visaDetails?.personGender && (
             <div className="flex items-center mt-1 text-red-600 text-sm">
               <svg
                 className="w-4 h-4 mr-1"
@@ -316,18 +276,18 @@ export default function VisaForm({
                   d="M12 9v2m0 4h.01M21 12A9 9 0 113 12a9 9 0 0118 0z"
                 />
               </svg>
-              {errors.personGender.message}
+              {errors.visaDetails.personGender.message}
             </div>
           )}
         </div>
         <div>
           <FieldLabel name="personNationality" label={t("personNationality")} />
           <input
-            {...register("personNationality")}
+            {...register("visaDetails.personNationality")}
             placeholder="Ex: Tchadienne"
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
           />
-          {errors.personNationality && (
+          {errors.visaDetails?.personNationality && (
             <div className="flex items-center mt-1 text-red-600 text-sm">
               <svg
                 className="w-4 h-4 mr-1"
@@ -342,7 +302,7 @@ export default function VisaForm({
                   d="M12 9v2m0 4h.01M21 12A9 9 0 113 12a9 9 0 0118 0z"
                 />
               </svg>
-              {errors.personNationality.message}
+              {errors.visaDetails.personNationality.message}
             </div>
           )}
         </div>
@@ -350,11 +310,10 @@ export default function VisaForm({
           <FieldLabel name="personBirthDate" label={t("personBirthDate")} />
           <input
             type="date"
-            {...register("personBirthDate")}
-            placeholder="JJ/MM/AAAA"
+            {...register("visaDetails.personBirthDate")}
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
           />
-          {errors.personBirthDate && (
+          {errors.visaDetails?.personBirthDate && (
             <div className="flex items-center mt-1 text-red-600 text-sm">
               <svg
                 className="w-4 h-4 mr-1"
@@ -369,18 +328,18 @@ export default function VisaForm({
                   d="M12 9v2m0 4h.01M21 12A9 9 0 113 12a9 9 0 0118 0z"
                 />
               </svg>
-              {errors.personBirthDate.message}
+              {errors.visaDetails.personBirthDate.message}
             </div>
           )}
         </div>
         <div>
           <FieldLabel name="personBirthPlace" label={t("personBirthPlace")} />
           <input
-            {...register("personBirthPlace")}
+            {...register("visaDetails.personBirthPlace")}
             placeholder="Ex: N'Djamena"
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
           />
-          {errors.personBirthPlace && (
+          {errors.visaDetails?.personBirthPlace && (
             <div className="flex items-center mt-1 text-red-600 text-sm">
               <svg
                 className="w-4 h-4 mr-1"
@@ -395,7 +354,7 @@ export default function VisaForm({
                   d="M12 9v2m0 4h.01M21 12A9 9 0 113 12a9 9 0 0118 0z"
                 />
               </svg>
-              {errors.personBirthPlace.message}
+              {errors.visaDetails.personBirthPlace.message}
             </div>
           )}
         </div>
@@ -406,17 +365,17 @@ export default function VisaForm({
           label={t("personMaritalStatus")}
         />
         <select
-          {...register("personMaritalStatus")}
+          {...register("visaDetails.personMaritalStatus")}
           className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
         >
           <option value="">Sélectionnez...</option>
-          {Object.values(MaritalStatus).map((status) => (
+          {Object.values(SituationMatrimoniale).map((status) => (
             <option key={status} value={status}>
               {status}
             </option>
           ))}
         </select>
-        {errors.personMaritalStatus && (
+        {errors.visaDetails?.personMaritalStatus && (
           <div className="flex items-center mt-1 text-red-600 text-sm">
             <svg
               className="w-4 h-4 mr-1"
@@ -431,7 +390,7 @@ export default function VisaForm({
                 d="M12 9v2m0 4h.01M21 12A9 9 0 113 12a9 9 0 0118 0z"
               />
             </svg>
-            {errors.personMaritalStatus.message}
+            {errors.visaDetails.personMaritalStatus.message}
           </div>
         )}
       </div>
@@ -447,7 +406,7 @@ export default function VisaForm({
         <div>
           <FieldLabel name="passportType" label={t("passportType")} />
           <select
-            {...register("passportType")}
+            {...register("visaDetails.passportType")}
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
           >
             <option value="">Sélectionnez le type de passeport</option>
@@ -457,35 +416,35 @@ export default function VisaForm({
               </option>
             ))}
           </select>
-          {errors.passportType && (
+          {errors.visaDetails?.passportType && (
             <p className="text-red-500 text-sm mt-1">
-              {errors.passportType.message}
+              {errors.visaDetails.passportType.message}
             </p>
           )}
         </div>
         <div>
           <FieldLabel name="passportNumber" label={t("passportNumber")} />
           <input
-            {...register("passportNumber")}
+            {...register("visaDetails.passportNumber")}
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
             placeholder="Ex: AB123456"
           />
-          {errors.passportNumber && (
+          {errors.visaDetails?.passportNumber && (
             <p className="text-red-500 text-sm mt-1">
-              {errors.passportNumber.message}
+              {errors.visaDetails.passportNumber.message}
             </p>
           )}
         </div>
         <div className="md:col-span-2">
           <FieldLabel name="passportIssuedBy" label={t("passportIssuedBy")} />
           <input
-            {...register("passportIssuedBy")}
+            {...register("visaDetails.passportIssuedBy")}
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
             placeholder="Ex: République du Tchad"
           />
-          {errors.passportIssuedBy && (
+          {errors.visaDetails?.passportIssuedBy && (
             <p className="text-red-500 text-sm mt-1">
-              {errors.passportIssuedBy.message}
+              {errors.visaDetails.passportIssuedBy.message}
             </p>
           )}
         </div>
@@ -493,12 +452,12 @@ export default function VisaForm({
           <FieldLabel name="passportIssueDate" label={t("passportIssueDate")} />
           <input
             type="date"
-            {...register("passportIssueDate")}
+            {...register("visaDetails.passportIssueDate")}
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
           />
-          {errors.passportIssueDate && (
+          {errors.visaDetails?.passportIssueDate && (
             <p className="text-red-500 text-sm mt-1">
-              {errors.passportIssueDate.message}
+              {errors.visaDetails.passportIssueDate.message}
             </p>
           )}
         </div>
@@ -509,12 +468,12 @@ export default function VisaForm({
           />
           <input
             type="date"
-            {...register("passportExpirationDate")}
+            {...register("visaDetails.passportExpirationDate")}
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
           />
-          {errors.passportExpirationDate && (
+          {errors.visaDetails?.passportExpirationDate && (
             <p className="text-red-500 text-sm mt-1">
-              {errors.passportExpirationDate.message}
+              {errors.visaDetails.passportExpirationDate.message}
             </p>
           )}
         </div>
@@ -532,26 +491,26 @@ export default function VisaForm({
           <div>
             <FieldLabel name="profession" label={t("personProfession")} />
             <input
-              {...register("profession")}
+              {...register("visaDetails.profession")}
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
               placeholder="Ex: Ingénieur"
             />
-            {errors.profession && (
+            {errors.visaDetails?.profession && (
               <p className="text-red-500 text-sm mt-1">
-                {errors.profession.message}
+                {errors.visaDetails.profession.message}
               </p>
             )}
           </div>
           <div>
             <FieldLabel name="employerAddress" label={t("employerAddress")} />
             <input
-              {...register("employerAddress")}
+              {...register("visaDetails.employerAddress")}
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
               placeholder="Ex: 123 Rue de la Paix, Abidjan"
             />
-            {errors.employerAddress && (
+            {errors.visaDetails?.employerAddress && (
               <p className="text-red-500 text-sm mt-1">
-                {errors.employerAddress.message}
+                {errors.visaDetails.employerAddress.message}
               </p>
             )}
           </div>
@@ -561,13 +520,13 @@ export default function VisaForm({
               label={t("employerPhoneNumber")}
             />
             <input
-              {...register("employerPhoneNumber")}
+              {...register("visaDetails.employerPhoneNumber")}
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
               placeholder="Ex: +225 01 23 45 67 89"
             />
-            {errors.employerPhoneNumber && (
+            {errors.visaDetails?.employerPhoneNumber && (
               <p className="text-red-500 text-sm mt-1">
-                {errors.employerPhoneNumber.message}
+                {errors.visaDetails.employerPhoneNumber.message}
               </p>
             )}
           </div>
@@ -577,7 +536,7 @@ export default function VisaForm({
             <FieldLabel name="durationMonths" label={t("durationMonths")} />
             <input
               type="number"
-              {...register("durationMonths", {
+              {...register("visaDetails.durationMonths", {
                 valueAsNumber: true,
               })}
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
@@ -585,22 +544,22 @@ export default function VisaForm({
               min="1"
               max="12"
             />
-            {errors.durationMonths && (
+            {errors.visaDetails?.durationMonths && (
               <p className="text-red-500 text-sm mt-1">
-                {errors.durationMonths.message}
+                {errors.visaDetails.durationMonths.message}
               </p>
             )}
           </div>
           <div>
             <FieldLabel name="destinationState" label={t("destinationState")} />
             <input
-              {...register("destinationState")}
+              {...register("visaDetails.destinationState")}
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
               placeholder="Ex: N'Djamena"
             />
-            {errors.destinationState && (
+            {errors.visaDetails?.destinationState && (
               <p className="text-red-500 text-sm mt-1">
-                {errors.destinationState.message}
+                {errors.visaDetails.destinationState.message}
               </p>
             )}
           </div>
@@ -608,34 +567,29 @@ export default function VisaForm({
         <div>
           <FieldLabel name="visaType" label={t("visaType")} />
           <select
-            {...register("visaType")}
+            {...register("visaDetails.visaType")}
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 bg-gray-100 uppercase"
             disabled
           >
             <option value="">Déterminé automatiquement...</option>
             {Object.values(VisaType).map((type) => (
               <option key={type} value={type}>
-                {type === VisaType.SHORT_STAY
-                  ? "Court sejour"
-                  : "Long sejour"}
+                {type === VisaType.SHORT_STAY ? "Court sejour" : "Long sejour"}
               </option>
             ))}
           </select>
           <p className="text-sm text-gray-600 mt-1">
             Le type de visa est automatiquement déterminé selon la durée :
-            {watch("durationMonths") <= 3 ? " Court séjour" : " Long séjour"}
+            {watch("visaDetails.durationMonths") <= 3
+              ? " Court séjour"
+              : " Long séjour"}
           </p>
-          {errors.visaType && (
+          {errors.visaDetails?.visaType && (
             <p className="text-red-500 text-sm mt-1">
-              {errors.visaType.message}
+              {errors.visaDetails.visaType.message}
             </p>
           )}
         </div>
-        {/* <div className="flex items-center justify-end mt-4">
-          <span className="text-lg font-semibold text-green-700">
-            Prix à payer : {prixVisa.toLocaleString()} FCFA
-          </span>
-        </div> */}
       </div>
     );
   };
@@ -645,7 +599,6 @@ export default function VisaForm({
       <h3 className="text-lg font-semibold text-gray-900 mb-4">
         Documents et récapitulatif
       </h3>
-      {/* Champ numéro de contact déplacé ici */}
       <div className="mb-4">
         <FieldLabel name="contactPhoneNumber" label={t("contactPhoneNumber")} />
         <input
@@ -757,7 +710,8 @@ export default function VisaForm({
               type="submit"
               disabled={createVisaRequestPending}
               className="px-6 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
-            >{createVisaRequestPending ? 'En cours...' : 'Soumettre'}
+            >
+              {createVisaRequestPending ? "En cours..." : "Soumettre"}
               {createVisaRequestPending ? (
                 <span className="flex items-center">
                   <svg

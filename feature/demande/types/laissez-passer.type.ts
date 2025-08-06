@@ -6,7 +6,7 @@ export interface ILaissezPasserDetails {
     requestId: string;
     personFirstName: string;
     personLastName: string;
-    personBirthDate: Date;
+    personBirthDate: string;
     personBirthPlace: string;
     personProfession?: string;
     personNationality: string;
@@ -18,9 +18,9 @@ export interface ILaissezPasserDetails {
     accompanied: boolean;
     justificationDocumentType?: DocumentJustificationType;
     justificationDocumentNumber?: string;
-    laissezPasserExpirationDate: Date;
-    createdAt: Date;
-    updatedAt: Date;
+    laissezPasserExpirationDate: string;
+    createdAt: string;
+    updatedAt: string;
 
     accompaniers?: IAccompagnateur[];
 
@@ -33,10 +33,10 @@ export interface IAccompagnateur {
     laissezPasserRequestDetailsId: string;
     firstName: string;
     lastName: string;
-    birthDate: Date;
+    birthDate: string;
     birthPlace: string;
     nationality: string;
     domicile?: string;
-    createdAt: Date;
-    updatedAt: Date;
+    createdAt: string;
+    updatedAt: string;
 }
