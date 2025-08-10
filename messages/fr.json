@@ -157,7 +157,7 @@
       "description": "Plus de 60 ans d'excellence diplomatique"
     },
     "hero": {
-      "title": "Ambassade du Tchad - Section Héros",
+      "title": "Ambassade du Tchad",
       "description": "Bienvenue sur la page de l'Ambassade du Tchad."
     },
     "breadcrumbs": {
@@ -1372,7 +1372,7 @@
   },
   "ambassadeur": {
     "title": "L'Ambassadeur",
-    "nom": "M. Gonfouli SOUARIBA",
+    "nom": "SEM. Gonfouli SOUARIBA",
     "poste": "Ambassadeur du Tchad en Côte d'Ivoire",
     "bienvenue": "Bienvenue à l'Ambassade du Tchad en Côte d'Ivoire",
     "texte": "La République du Tchad, pays de Toumaï, de par sa position géographique stratégique, occupe une place de choix au cœur du continent africain. Le pays, après une transition politique réussie en trois années sous le leadership du Maréchal du Tchad, Mahamat Idriss DEBY ITNO, Président de la République, Chef de l'État, amorce des pas de géant pour son décollage économique. Le programme politique du Chef de l'État est structuré autour de douze chantiers, comprenant chacun plusieurs actions, notamment la paix, la sécurité nationale, la promotion d'un État solidaire. Le programme de développement intitulé \"Vision 2030, le Tchad que nous voulons\", axé sur l'agenda 2063 de l'Union Africaine et l'agenda 2030 des Nations Unies, promulgués par les Chefs des États membres de l'Union Africaine, est en cours d'exécution. Ce programme, basé sur une exécution pragmatique, a pour objectif de faire du Tchad un pays émergent à l'horizon 2030. L'Ambassade du Tchad en République de Côte d'Ivoire a juridiction dans quatre autres pays, notamment le Ghana, la Guinée, la Sierra Leone et le Liberia. Les objectifs principaux de la mission sont le maintien et le renforcement des relations diplomatiques entre le Tchad et ces cinq pays. Cette diplomatie tous azimuts embrasse des domaines aussi variés que l'économie, la culture et tout ce que comporte la coopération moderne entre les pays épris de paix et ayant en partage des intérêts communs. La mission de la Haute Représentation du Tchad en Côte d'Ivoire consiste également à protéger les intérêts de sa communauté dans les cinq pays de sa juridiction, conformément aux usages diplomatiques. La plateforme qui vous est proposée constitue une référence unique et efficace pour obtenir des informations générales sur le Tchad, afin de promouvoir efficacement le commerce, les investissements, le tourisme et la culture. Toute l'équipe de l'Ambassade sera toujours à votre disposition pour vous réserver un accueil chaleureux, pas seulement aux Tchadiens, mais à tous ceux d'autres pays qui souhaitent avoir des informations essentielles sur les services que nous offrons, notamment la délivrance des visas et autres documents administratifs (carte consulaire, acte de naissance, acte de mariage et de décès). En attendant une visite physique que nous espérons proche, soyez les bienvenus au \"Tchad virtuel.\"",
@@ -1392,7 +1392,7 @@
     }
   },
   "agents": {
-    "souariba": "M. SOUARIBA Gonfouli",
+    "souariba": "SEM. SOUARIBA Gonfouli",
     "acheikh": "M. ACHEIKH MAKAYE NIMIR",
     "remadji": "Mme REMADJI Christelle",
     "kaina": "Mr KAINA Nadjo",

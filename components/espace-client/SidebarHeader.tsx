@@ -4,7 +4,7 @@ import { useSidebarConfig } from './SidebarConfigContext';
 
 export default function SidebarHeader() {
   const t = useTranslations('espaceClient.sidebar');
-  const { collapsed, setCollapsed, hovered, setOpen } = useSidebarConfig();
+  const { collapsed, setCollapsed, setOpen } = useSidebarConfig();
   
   const handleToggle = () => {
     // Sur mobile (< md), fermer la sidebar

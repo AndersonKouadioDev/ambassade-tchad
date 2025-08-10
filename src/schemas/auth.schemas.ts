@@ -40,7 +40,7 @@ export const loginSchema = z.object({
       }
     ),
 });
-export type LoginSchema = z.infer<typeof loginSchema>;
+export type LoginSchemaDTO = z.infer<typeof loginSchema>;
 
 // --- Change Password Schema ---
 export const changePasswordSchema = z.object({

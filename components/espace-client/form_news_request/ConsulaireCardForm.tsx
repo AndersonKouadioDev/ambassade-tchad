@@ -2,10 +2,11 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import React, { useState, useEffect, useRef } from 'react';
-import { JustificationDocumentType } from '@/types/request.types';
+import { JustificationDocumentType, Service } from '@/types/request.types';
 import { toast } from 'react-toastify';
 import { consularCardApi } from '@/lib/api-client';
 import { useRouter, useParams } from 'next/navigation';
+import Image from "next/image";
 
 const consularCardSchema = z.object({
   personFirstName: z.string().min(1, 'Le prénom est requis'),
@@ -66,12 +67,12 @@ export default function ConsulaireCardForm() {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8081/api/v1'}/demandes/services`);
         const data = await res.json();
         const service = Array.isArray(data)
-          ? (data as any[]).find((s: any) => s.type === 'CONSULAR_CARD')
+          ? (data as Service[]).find((s: Service) => s.type === 'CONSULAR_CARD')
           : Array.isArray(data.data)
-            ? (data.data as any[]).find((s: any) => s.type === 'CONSULAR_CARD')
+            ? (data.data as Service[]).find((s: Service) => s.type === 'CONSULAR_CARD')
             : null;
         setPrixActe(service ? service.defaultPrice : null);
-      } catch (e) {
+      } catch (error) {
         setPrixActe(null);
       }
     }
@@ -104,7 +105,7 @@ export default function ConsulaireCardForm() {
   const onSubmit = async (data: ConsularCardFormInput) => {
     setIsSubmitting(true);
     try {
-      const { contactPhoneNumber, justificativeFile, ...details } = data;
+      const { contactPhoneNumber, ...details } = data;
       const payload = {
         ...details,
         personBirthDate: new Date(data.personBirthDate).toISOString(),
@@ -116,7 +117,7 @@ export default function ConsulaireCardForm() {
       );
       if (response.success) {
         setShowSuccess(true);
-        let timer = setInterval(() => {
+        const timer = setInterval(() => {
           setSuccessCountdown((prev) => {
             if (prev <= 1) {
               clearInterval(timer);
@@ -177,7 +178,7 @@ export default function ConsulaireCardForm() {
           <input {...register('personDomicile')} placeholder="Ex: Cocody, Abidjan" className="w-full px-4 py-2 border border-gray-300 rounded-md" />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Adresse au pays d'origine</label>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Adresse au pays d&apos;origine</label>
           <input {...register('personAddressInOriginCountry')} placeholder="Ex: Quartier Moursal, N'Djamena" className="w-full px-4 py-2 border border-gray-300 rounded-md" />
         </div>
       </div>
@@ -210,7 +211,7 @@ export default function ConsulaireCardForm() {
           <input {...register('justificationDocumentNumber')} placeholder="Ex: CNI123456" className="w-full px-4 py-2 border border-gray-300 rounded-md" />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Adresse au pays d'origine</label>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Adresse au pays d&apos;origine</label>
           <input {...register('personAddressInOriginCountry')} placeholder="Ex: Quartier Moursal, N'Djamena" className="w-full px-4 py-2 border border-gray-300 rounded-md" />
         </div>
       </div>
@@ -270,7 +271,7 @@ export default function ConsulaireCardForm() {
             {uploadedFiles.map((file, idx) => (
               <li key={idx} className="relative flex flex-col items-center w-24">
                 {file.type.startsWith('image/') ? (
-                  <img
+                  <Image
                     src={URL.createObjectURL(file)}
                     alt={file.name}
                     className="w-20 h-20 object-cover rounded shadow border"

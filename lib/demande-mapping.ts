@@ -6,7 +6,6 @@ import {
   PassportType,
   VisaType,
   JustificationDocumentType,
-  OriginCountryParentRelationshipType
 } from "./demande-types";
 
 export const DOCUMENTS = [

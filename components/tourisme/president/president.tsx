@@ -42,6 +42,19 @@ export default function President() {
             </ul>
           </div>
         </div>
+
+        {/* Lien de téléchargement PDF */}
+        <div className="text-center mt-8">
+          <a
+            href="/assets/document/projet_presidentiel.pdf"
+            download
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-primary text-white font-semibold px-6 py-3 rounded-lg shadow hover:bg-orange-500 transition-colors"
+          >
+            📄 Télécharger le plan présidentiel (PDF)
+          </a>
+        </div>
       </div>
     </div>
   );

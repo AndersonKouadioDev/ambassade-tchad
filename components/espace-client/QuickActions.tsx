@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import NavigationButton from '@/components/espace-client/NavigationButton';
 import { useTranslations } from 'next-intl';
-import { link } from 'fs';
+// import { link } from 'fs';
 
 const DOCUMENTS = [
   { key: 'visa', label: 'Visa', link: '/app/espace-client/nouvelle-demande/visa/page.tsx' },

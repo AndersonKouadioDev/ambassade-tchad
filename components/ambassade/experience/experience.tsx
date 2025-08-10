@@ -10,25 +10,25 @@ const agents = [
     id: "souariba",
     name: "M. SOUARIBA Gonfouli",
     jobKey: "ambassadeur",
-    picture: "/assets/images/illustrations/ambassade/team1.png",
+    picture: "/assets/images/illustrations/ambassade/ambassadeur_teams.jpg",
   },
   {
     id: "acheikh",
     name: "M. ACHEIKH MAKAYE NIMIR",
     jobKey: "premier_conseiller",
-    picture: "/assets/images/illustrations/ambassade/team4.png",
+    picture: "/assets/images/illustrations/ambassade/check_nimir.jpg",
   },
   {
     id: "remadji",
     name: "Mme REMADJI Christelle",
     jobKey: "conseillere_economique",
-    picture: "/assets/images/illustrations/ambassade/team2.png",
+    picture: "/assets/images/illustrations/ambassade/christelle.jpg",
   },
   {
     id: "kaina",
     name: "Mr KAINA Nadjo",
     jobKey: "attache",
-    picture: "/assets/images/illustrations/ambassade/nadjo_kaina.jpg",
+    picture: "/assets/images/illustrations/ambassade/kaina_nadjo.jpg",
   }
 ];
 

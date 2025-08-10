@@ -1,23 +1,23 @@
 'use server';
 
 // Utilitaire d'appel API sécurisé
-async function apiRequest({ endpoint, method = 'GET', data, token, headers = {} }) {
-  const allHeaders = {
-    'Content-Type': 'application/json',
-    ...headers,
-  };
-  if (token) {
-    allHeaders['Authorization'] = `Bearer ${token}`;
-  }
-  const res = await fetch(endpoint, {
-    method,
-    headers: allHeaders,
-    body: data ? JSON.stringify(data) : undefined,
-  });
-  const result = await res.json();
-  if (!res.ok) throw new Error(result.message || 'Erreur API');
-  return result;
-}
+// async function apiRequest({ endpoint, method = 'GET', data, token, headers = {} }) {
+//   const allHeaders = {
+//     'Content-Type': 'application/json',
+//     ...headers,
+//   };
+//   if (token) {
+//     allHeaders['Authorization'] = `Bearer ${token}`;
+//   }
+//   const res = await fetch(endpoint, {
+//     method,
+//     headers: allHeaders,
+//     body: data ? JSON.stringify(data) : undefined,
+//   });
+//   const result = await res.json();
+//   if (!res.ok) throw new Error(result.message || 'Erreur API');
+//   return result;
+// }
 
 // Action générique pour toutes les demandes
 export async function createDemande({
@@ -25,7 +25,6 @@ export async function createDemande({
   details,
   contactPhoneNumber,
   documents,
-  locale = 'fr',
   tokenFromClient,
 }) {
   const token = tokenFromClient;

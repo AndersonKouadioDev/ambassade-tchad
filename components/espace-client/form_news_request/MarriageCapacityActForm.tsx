@@ -5,6 +5,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { toast } from 'react-toastify';
 import { useRouter, useParams } from 'next/navigation';
 import { marriageCapacityApi } from '@/lib/api-client';
+import { Service } from '@/types/request.types';
+import Image from 'next/image';
 
 const marriageCapacitySchema = z.object({
   husbandFirstName: z.string().min(1, 'Le prénom de l’époux est requis'),
@@ -65,12 +67,12 @@ export default function MarriageCapacityActForm() {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8081/api/v1'}/demandes/services`);
         const data = await res.json();
         const service = Array.isArray(data)
-          ? (data as any[]).find((s: any) => s.type === 'MARRIAGE_CAPACITY_ACT')
+          ? (data as Service[]).find((s: Service) => s.type === 'MARRIAGE_CAPACITY_ACT')
           : Array.isArray(data.data)
-            ? (data.data as any[]).find((s: any) => s.type === 'MARRIAGE_CAPACITY_ACT')
+            ? (data.data as Service[]).find((s: Service) => s.type === 'MARRIAGE_CAPACITY_ACT')
             : null;
         setPrixActe(service ? service.defaultPrice : null);
-      } catch (e) {
+      } catch (error) {
         setPrixActe(null);
       }
     }
@@ -103,7 +105,7 @@ export default function MarriageCapacityActForm() {
   const onSubmit = async (data: MarriageCapacityFormInput) => {
     setIsSubmitting(true);
     try {
-      const { contactPhoneNumber, justificativeFile, ...details } = data;
+      const { contactPhoneNumber, ...details } = data;
       const payload = {
         ...details,
         husbandBirthDate: new Date(data.husbandBirthDate).toISOString(),
@@ -116,7 +118,7 @@ export default function MarriageCapacityActForm() {
       );
       if (response.success) {
         setShowSuccess(true);
-        let timer = setInterval(() => {
+        const timer = setInterval(() => {
           setSuccessCountdown((prev) => {
             if (prev <= 1) {
               clearInterval(timer);
@@ -156,7 +158,7 @@ export default function MarriageCapacityActForm() {
 
   const renderStep1 = () => (
     <div className="space-y-6">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">Informations sur l'époux</h3>
+      <h3 className="text-lg font-semibold text-gray-900 mb-4">Informations sur l&apos;époux</h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Prénom *</label>
@@ -193,7 +195,7 @@ export default function MarriageCapacityActForm() {
 
   const renderStep2 = () => (
     <div className="space-y-6">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">Informations sur l'épouse</h3>
+      <h3 className="text-lg font-semibold text-gray-900 mb-4">Informations sur l&apos;épouse</h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Prénom *</label>
@@ -287,7 +289,7 @@ export default function MarriageCapacityActForm() {
             {uploadedFiles.map((file, idx) => (
               <li key={idx} className="relative flex flex-col items-center w-24">
                 {file.type.startsWith('image/') ? (
-                  <img
+                  <Image
                     src={URL.createObjectURL(file)}
                     alt={file.name}
                     className="w-20 h-20 object-cover rounded shadow border"

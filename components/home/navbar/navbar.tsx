@@ -63,7 +63,7 @@ export default function Head() {
       children: [
         { name: t("site"), link: "/tourisme" },
         { name: t("tchad"), link: "/tourisme/tchad-s" },
-        { name: t("peuples"), link: "/tourisme/peuples-et-cultures" },
+        // { name: t("peuples"), link: "/tourisme/peuples-et-cultures" },
       ],
     },
   ];

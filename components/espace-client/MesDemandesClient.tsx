@@ -116,7 +116,7 @@ export default function MesDemandesClient() {
   const renderPagination = () => {
     const pagesToShow = 5; // Nombre de pages à afficher autour de la page actuelle
     let startPage = Math.max(1, page - Math.floor(pagesToShow / 2));
-    let endPage = Math.min(totalPages, startPage + pagesToShow - 1);
+    const endPage = Math.min(totalPages, startPage + pagesToShow - 1);
 
     if (endPage - startPage + 1 < pagesToShow) {
       startPage = Math.max(1, endPage - pagesToShow + 1);

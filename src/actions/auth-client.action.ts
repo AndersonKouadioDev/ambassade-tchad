@@ -31,7 +31,7 @@ function formDataToObject(formData: FormData): Record<string, unknown> {
 }
 
 // Inscription
-export async function registerClient(prevState: any, formData: FormData): Promise<ActionResult<any>> {
+export async function registerClient( formData: FormData): Promise<ActionResult<any>> {
     const dataObj = formDataToObject(formData);
     const { success, data, errors } = validateData(registerClientSchema, dataObj);
 
@@ -58,7 +58,7 @@ export async function registerClient(prevState: any, formData: FormData): Promis
 }
 
 // Connexion
-export async function login(prevState: any, formData: FormData): Promise<ActionResult<any>> {
+export async function login( formData: FormData): Promise<ActionResult<any>> {
     const dataObj = formDataToObject(formData);
     const { success, data, errors } = validateData(loginSchema, dataObj);
 
@@ -131,7 +131,7 @@ export async function login(prevState: any, formData: FormData): Promise<ActionR
 // }
 
 // Réinitialisation du mot de passe
-export async function resetPassword(prevState: any, formData: FormData): Promise<ActionResult<any>> {
+export async function resetPassword( formData: FormData): Promise<ActionResult<any>> {
     const dataObj = formDataToObject(formData);
     const { success, data, errors } = validateData(resetPasswordSchema, dataObj);
 
@@ -163,7 +163,7 @@ export async function getClientProfile() {
         return await apiClientHttp.request({
             ...authEndpoints.profile,
         });
-    } catch (error: any) {
+    } catch (error) {
         throw new Error('Erreur lors de la récupération du profil');
     }
 }
@@ -174,7 +174,7 @@ export async function refreshAccessToken() {
         return await apiClientHttp.request({
             ...authEndpoints.refresh,
         });
-    } catch (error: any) {
+    } catch (error) {
         throw new Error('Erreur lors du refresh token');
     }
 }

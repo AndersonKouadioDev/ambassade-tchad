@@ -262,6 +262,7 @@ export interface BirthActRequestDetails extends BaseEntity {
 }
 
 export interface ConsularCardRequestDetails extends BaseEntity {
+    profession: string;
     requestId: string;
     personFirstName: string;
     personLastName: string;

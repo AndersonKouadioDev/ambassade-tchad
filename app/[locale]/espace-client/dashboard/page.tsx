@@ -4,11 +4,11 @@ import DashboardHeader from '@/components/espace-client/DashboardHeader';
 import RequestsTablePro from '@/components/espace-client/RequestsTablePro';
 import NewsCarouselPro from '@/components/espace-client/NewsCarouselPro';
 
-const notifications = [
-  { text: 'Votre Demande De Visa Ticket N°T001 Est Passée Au Statut', status: 'En Cours' },
-  { text: 'Documents Supplémentaires Nécessaire Pour Votre Demande De Visa Ticket N°T001 Est Passée Au Statut', status: 'Requis' },
-  { text: 'Votre Visa Ticket N°T001 Est Prêt À Être Retiré À L\'ambassade Du Tchad.', status: 'Prêt À Retirer' },
-];
+// const notifications = [
+//   { text: 'Votre Demande De Visa Ticket N°T001 Est Passée Au Statut', status: 'En Cours' },
+//   { text: 'Documents Supplémentaires Nécessaire Pour Votre Demande De Visa Ticket N°T001 Est Passée Au Statut', status: 'Requis' },
+//   { text: 'Votre Visa Ticket N°T001 Est Prêt À Être Retiré À L\'ambassade Du Tchad.', status: 'Prêt À Retirer' },
+// ];
  
 
 export default function Dashboard() {

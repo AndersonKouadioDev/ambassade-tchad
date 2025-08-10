@@ -5,6 +5,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { toast } from 'react-toastify';
 import { useRouter, useParams } from 'next/navigation';
 import { deathActApi } from '@/lib/api-client';
+import { Service } from '@/types/request.types';
+import Image from 'next/image';
 
 const deathActSchema = z.object({
   deceasedFirstName: z.string().min(1, 'Le prénom du défunt est requis'),
@@ -51,12 +53,12 @@ export default function DeathActForm() {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8081/api/v1'}/demandes/services`);
         const data = await res.json();
         const service = Array.isArray(data)
-          ? (data as any[]).find((s: any) => s.type === 'DEATH_ACT_APPLICATION')
+          ? (data as Service[]).find((s: Service) => s.type === 'DEATH_ACT_APPLICATION')
           : Array.isArray(data.data)
-            ? (data.data as any[]).find((s: any) => s.type === 'DEATH_ACT_APPLICATION')
+            ? (data.data as Service[]).find((s: Service) => s.type === 'DEATH_ACT_APPLICATION')
             : null;
         setPrixActe(service ? service.defaultPrice : null);
-      } catch (e) {
+      } catch (error) {
         setPrixActe(null);
       }
     }
@@ -89,7 +91,7 @@ export default function DeathActForm() {
   const onSubmit = async (data: DeathActFormInput) => {
     setIsSubmitting(true);
     try {
-      const { contactPhoneNumber, justificativeFile, ...details } = data;
+      const { contactPhoneNumber, ...details } = data;
       const payload = {
         ...details,
         deceasedBirthDate: new Date(data.deceasedBirthDate).toISOString(),
@@ -102,7 +104,7 @@ export default function DeathActForm() {
       );
       if (response.success) {
         setShowSuccess(true);
-        let timer = setInterval(() => {
+        const timer = setInterval(() => {
           setSuccessCountdown((prev) => {
             if (prev <= 1) {
               clearInterval(timer);
@@ -244,7 +246,7 @@ export default function DeathActForm() {
             {uploadedFiles.map((file, idx) => (
               <li key={idx} className="relative flex flex-col items-center w-24">
                 {file.type.startsWith('image/') ? (
-                  <img
+                  <Image
                     src={URL.createObjectURL(file)}
                     alt={file.name}
                     className="w-20 h-20 object-cover rounded shadow border"

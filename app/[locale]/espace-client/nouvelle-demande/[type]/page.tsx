@@ -14,73 +14,73 @@ import DeathActForm from '@/components/espace-client/form_news_request/DeathActF
 import MarriageCapacityActForm from '@/components/espace-client/form_news_request/MarriageCapacityActForm';
 import LaissezPasserForm from '@/components/espace-client/form_news_request/LaissezPasserForm';
 
-// Configuration des types de demandes
 const requestTypes = {
   visa: {
     title: 'Demande de Visa',
-    description: 'Remplissez ce formulaire pour soumettre votre demande de visa. Assurez-vous d\'avoir tous les documents nécessaires avant de commencer.',
+    description:
+      'Remplissez ce formulaire pour soumettre votre demande de visa. Assurez-vous d&apos;avoir tous les documents nécessaires avant de commencer.',
     component: VisaForm,
     documents: [
       'Passeport valide (minimum 6 mois de validité)',
-      'Photo d\'identité récente',
+      'Photo d&apos;identité récente',
       'Justificatif de ressources financières',
-      'Réservation d\'hôtel ou invitation',
-      'Billet d\'avion aller-retour',
+      'Réservation d&apos;hôtel ou invitation',
+      'Billet d&apos;avion aller-retour',
       'Assurance voyage',
       'Justificatif de profession',
-      'Casier judiciaire (si applicable)'
+      'Casier judiciaire (si applicable)',
     ],
-    processingTime: '5-15 jours ouvrables'
+    processingTime: '5-15 jours ouvrables',
   },
   'birth-act': {
-    title: "Demande d'Acte de Naissance",
+    title: "Demande d&apos;Acte de Naissance",
     description: "Remplissez ce formulaire pour demander un acte de naissance.",
     component: BirthActForm,
     documents: [],
-    processingTime: '3-7 jours'
+    processingTime: '3-7 jours',
   },
   'consular-card': {
     title: 'Demande de Carte Consulaire',
     description: 'Remplissez ce formulaire pour demander une carte consulaire.',
     component: ConsulaireCardForm,
     documents: [],
-    processingTime: '10-20 jours'
+    processingTime: '10-20 jours',
   },
   'laissez-passer': {
     title: 'Demande de Laissez-passer',
     description: 'Remplissez ce formulaire pour demander un laissez-passer.',
     component: LaissezPasserForm,
     documents: [],
-    processingTime: '2-5 jours'
+    processingTime: '2-5 jours',
   },
   'marriage-capacity': {
     title: 'Certificat de Capacité Matrimoniale',
     description: 'Demande de certificat de capacité matrimoniale - Formulaire en cours de développement.',
     component: MarriageCapacityActForm,
     documents: [],
-    processingTime: '5-10 jours'
+    processingTime: '5-10 jours',
   },
   'death-act': {
-    title: 'Demande d\'Acte de Décès',
-    description: 'Demande d\'acte de décès - Formulaire en cours de développement.',
+    title: "Demande d&apos;Acte de Décès",
+    description: "Demande d&apos;acte de décès - Formulaire en cours de développement.",
     component: DeathActForm,
     documents: [],
-    processingTime: '3-7 jours'
+    processingTime: '3-7 jours',
   },
   'power-of-attorney': {
     title: 'Demande de Procuration',
     description: 'Remplissez ce formulaire pour demander une procuration.',
     component: ProcurationForm,
     documents: [],
-    processingTime: '3-5 jours'
+    processingTime: '3-5 jours',
   },
   'nationality-certificate': {
     title: 'Certificat de Nationalité',
     description: 'Demande de certificat de nationalité tchadienne - Formulaire en cours de développement.',
     component: CertificatNationaliteForm,
     documents: [],
-    processingTime: '7-15 jours'
-  }
+    processingTime: '7-15 jours',
+  },
 };
 
 export default function NouvelleDemandeType() {
@@ -116,11 +116,9 @@ export default function NouvelleDemandeType() {
             <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <AlertCircle className="w-8 h-8 text-red-600" />
             </div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">
-              Type de demande non trouvé
-            </h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">Type de demande non trouvé</h2>
             <p className="text-gray-600 mb-6">
-              Le type de demande "{requestType}" n'existe pas.
+              Le type de demande &quot;{requestType}&quot; n&apos;existe pas.
             </p>
             <button
               className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
@@ -153,9 +151,7 @@ export default function NouvelleDemandeType() {
             <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <FileText className="w-8 h-8 text-green-600" />
             </div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">
-              Demande créée avec succès !
-            </h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">Demande créée avec succès !</h2>
             <p className="text-gray-600 mb-6">
               Votre demande a été soumise. Vous recevrez bientôt un email de confirmation.
             </p>
@@ -171,17 +167,9 @@ export default function NouvelleDemandeType() {
     );
   }
 
-  // Si le formulaire n'est pas encore développé
-  // if (requestConfig.component) {
-  //   const FormComponent = requestConfig.component;
-  //   return <FormComponent />;
-  // }
-
-  // Pour l'instant, tous les formulaires affichent le message "Coming Soon"
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
         <div className="mb-8">
           <button
             className="flex items-center text-gray-600 hover:text-gray-900 mb-4"
@@ -190,33 +178,30 @@ export default function NouvelleDemandeType() {
             <ArrowLeft className="w-4 h-4 mr-2" />
             Retour
           </button>
-          
+
           <div className="text-center">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">
-              {requestConfig.title}
-            </h1>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              {requestConfig.description}
-            </p>
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">{requestConfig.title}</h1>
+            <p className="text-gray-600 max-w-2xl mx-auto">{requestConfig.description}</p>
           </div>
         </div>
 
-        {/* Instructions */}
         {requestConfig.documents.length > 0 && (
           <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">
-              Documents requis
-            </h3>
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">Documents requis</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-600">
               <ul className="space-y-2">
-                {requestConfig.documents.slice(0, Math.ceil(requestConfig.documents.length / 2)).map((doc, index) => (
-                  <li key={index}>• {doc}</li>
-                ))}
+                {requestConfig.documents
+                  .slice(0, Math.ceil(requestConfig.documents.length / 2))
+                  .map((doc, index) => (
+                    <li key={index}>• {doc}</li>
+                  ))}
               </ul>
               <ul className="space-y-2">
-                {requestConfig.documents.slice(Math.ceil(requestConfig.documents.length / 2)).map((doc, index) => (
-                  <li key={index}>• {doc}</li>
-                ))}
+                {requestConfig.documents
+                  .slice(Math.ceil(requestConfig.documents.length / 2))
+                  .map((doc, index) => (
+                    <li key={index}>• {doc}</li>
+                  ))}
               </ul>
             </div>
             <div className="mt-4 p-3 bg-blue-50 rounded-lg">
@@ -227,13 +212,8 @@ export default function NouvelleDemandeType() {
           </div>
         )}
 
-        {/* Affichage dynamique du formulaire ou fallback */}
         {requestType === 'visa' ? (
-          <VisaForm
-            request={{}}
-            onSuccess={handleSuccess}
-            onError={handleError}
-          />
+          <VisaForm request={{}} onSuccess={handleSuccess} onError={handleError} />
         ) : requestConfig.component ? (
           <requestConfig.component request={{}} />
         ) : (
