@@ -11,7 +11,7 @@ import { DemandeStatus } from '../types/demande.type';
 import { ServiceType } from '../types/service.type';
 
 
-export const DemandCreateSchema = z.object({
+export const DemandeCreateSchema = z.object({
   serviceType: z.nativeEnum(ServiceType, { message: 'Type de service invalide.' }),
   visaDetails: VisaRequestDetailsSchema.optional(),
   birthActDetails: ActeNaissanceDetailsSchema.optional(),
@@ -27,7 +27,7 @@ export const DemandCreateSchema = z.object({
   documents: z.array(z.any()).optional(),
 });
 
-export type DemandCreateDTO = z.infer<typeof DemandCreateSchema>;
+export type DemandeCreateDTO = z.infer<typeof DemandeCreateSchema>;
 
 export const DemandUpdateSchema = z.object({
   status: z.nativeEnum(DemandeStatus, { message: 'Statut invalide.' }),

@@ -9,14 +9,14 @@ export interface IActeNaissanceDetails {
     requestId: string;
     personFirstName: string;
     personLastName: string;
-    personBirthDate: Date;
+    personBirthDate: string;
     personBirthPlace: string;
     personNationality: string;
     personDomicile?: string;
     fatherFullName: string;
     motherFullName: string;
     requestType: ActeNaissanceType;
-    createdAt: Date;
-    updatedAt: Date;
+    createdAt: string;
+    updatedAt: string;
     request?: IDemande;
 }

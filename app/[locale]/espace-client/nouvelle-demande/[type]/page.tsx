@@ -1,85 +1,88 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { useRouter, useParams } from 'next/navigation';
-import { useSession } from 'next-auth/react';
-import VisaForm from '@/components/espace-client/form_news_request/VisaForm';
-import ConsulaireCardForm from '@/components/espace-client/form_news_request/ConsulaireCardForm';
-import ComingSoonForm from '@/components/espace-client/ComingSoonForm';
-import BirthActForm from '@/components/espace-client/form_news_request/BirthActForm';
-import CertificatNationaliteForm from '@/components/espace-client/form_news_request/CertificatNationaliteForm';
-import { ArrowLeft, FileText, AlertCircle } from 'lucide-react';
-import ProcurationForm from '@/components/espace-client/form_news_request/ProcurationForm';
-import DeathActForm from '@/components/espace-client/form_news_request/DeathActForm';
-import MarriageCapacityActForm from '@/components/espace-client/form_news_request/MarriageCapacityActForm';
-import LaissezPasserForm from '@/components/espace-client/form_news_request/LaissezPasserForm';
+import { useState } from "react";
+import { useRouter, useParams } from "next/navigation";
+import { useSession } from "next-auth/react";
+import ConsulaireCardForm from "@/components/espace-client/form_news_request/ConsulaireCardForm";
+import ComingSoonForm from "@/components/espace-client/ComingSoonForm";
+import BirthActForm from "@/components/espace-client/form_news_request/BirthActForm";
+import CertificatNationaliteForm from "@/components/espace-client/form_news_request/CertificatNationaliteForm";
+import { ArrowLeft, FileText, AlertCircle } from "lucide-react";
+import ProcurationForm from "@/components/espace-client/form_news_request/ProcurationForm";
+import DeathActForm from "@/components/espace-client/form_news_request/DeathActForm";
+import MarriageCapacityActForm from "@/components/espace-client/form_news_request/MarriageCapacityActForm";
+import LaissezPasserForm from "@/components/espace-client/form_news_request/LaissezPasserForm";
+import VisaForm from "@/feature/demande/components/demande-visa/visa-form/VisaForm";
 
 const requestTypes = {
   visa: {
-    title: 'Demande de Visa',
+    title: "Demande de Visa",
     description:
-      'Remplissez ce formulaire pour soumettre votre demande de visa. Assurez-vous d&apos;avoir tous les documents nécessaires avant de commencer.',
+      "Remplissez ce formulaire pour soumettre votre demande de visa. Assurez-vous d&apos;avoir tous les documents nécessaires avant de commencer.",
     component: VisaForm,
     documents: [
-      'Passeport valide (minimum 6 mois de validité)',
-      'Photo d&apos;identité récente',
-      'Justificatif de ressources financières',
-      'Réservation d&apos;hôtel ou invitation',
-      'Billet d&apos;avion aller-retour',
-      'Assurance voyage',
-      'Justificatif de profession',
-      'Casier judiciaire (si applicable)',
+      "Passeport valide (minimum 6 mois de validité)",
+      "Photo d&apos;identité récente",
+      "Justificatif de ressources financières",
+      "Réservation d&apos;hôtel ou invitation",
+      "Billet d&apos;avion aller-retour",
+      "Assurance voyage",
+      "Justificatif de profession",
+      "Casier judiciaire (si applicable)",
     ],
-    processingTime: '5-15 jours ouvrables',
+    processingTime: "5-15 jours ouvrables",
   },
-  'birth-act': {
+  "birth-act": {
     title: "Demande d&apos;Acte de Naissance",
     description: "Remplissez ce formulaire pour demander un acte de naissance.",
     component: BirthActForm,
     documents: [],
-    processingTime: '3-7 jours',
+    processingTime: "3-7 jours",
   },
-  'consular-card': {
-    title: 'Demande de Carte Consulaire',
-    description: 'Remplissez ce formulaire pour demander une carte consulaire.',
+  "consular-card": {
+    title: "Demande de Carte Consulaire",
+    description: "Remplissez ce formulaire pour demander une carte consulaire.",
     component: ConsulaireCardForm,
     documents: [],
-    processingTime: '10-20 jours',
+    processingTime: "10-20 jours",
   },
-  'laissez-passer': {
-    title: 'Demande de Laissez-passer',
-    description: 'Remplissez ce formulaire pour demander un laissez-passer.',
+  "laissez-passer": {
+    title: "Demande de Laissez-passer",
+    description: "Remplissez ce formulaire pour demander un laissez-passer.",
     component: LaissezPasserForm,
     documents: [],
-    processingTime: '2-5 jours',
+    processingTime: "2-5 jours",
   },
-  'marriage-capacity': {
-    title: 'Certificat de Capacité Matrimoniale',
-    description: 'Demande de certificat de capacité matrimoniale - Formulaire en cours de développement.',
+  "marriage-capacity": {
+    title: "Certificat de Capacité Matrimoniale",
+    description:
+      "Demande de certificat de capacité matrimoniale - Formulaire en cours de développement.",
     component: MarriageCapacityActForm,
     documents: [],
-    processingTime: '5-10 jours',
+    processingTime: "5-10 jours",
   },
-  'death-act': {
+  "death-act": {
     title: "Demande d&apos;Acte de Décès",
-    description: "Demande d&apos;acte de décès - Formulaire en cours de développement.",
+    description:
+      "Demande d&apos;acte de décès - Formulaire en cours de développement.",
     component: DeathActForm,
     documents: [],
-    processingTime: '3-7 jours',
+    processingTime: "3-7 jours",
   },
-  'power-of-attorney': {
-    title: 'Demande de Procuration',
-    description: 'Remplissez ce formulaire pour demander une procuration.',
+  "power-of-attorney": {
+    title: "Demande de Procuration",
+    description: "Remplissez ce formulaire pour demander une procuration.",
     component: ProcurationForm,
     documents: [],
-    processingTime: '3-5 jours',
+    processingTime: "3-5 jours",
   },
-  'nationality-certificate': {
-    title: 'Certificat de Nationalité',
-    description: 'Demande de certificat de nationalité tchadienne - Formulaire en cours de développement.',
+  "nationality-certificate": {
+    title: "Certificat de Nationalité",
+    description:
+      "Demande de certificat de nationalité tchadienne - Formulaire en cours de développement.",
     component: CertificatNationaliteForm,
     documents: [],
-    processingTime: '7-15 jours',
+    processingTime: "7-15 jours",
   },
 };
 
@@ -92,7 +95,7 @@ export default function NouvelleDemandeType() {
   const requestType = params.type as string;
   const requestConfig = requestTypes[requestType as keyof typeof requestTypes];
 
-  if (status === 'loading') {
+  if (status === "loading") {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
@@ -104,7 +107,9 @@ export default function NouvelleDemandeType() {
   }
 
   if (!session) {
-    router.push(`/auth?callbackUrl=/espace-client/nouvelle-demande/${requestType}`);
+    router.push(
+      `/auth?callbackUrl=/espace-client/nouvelle-demande/${requestType}`
+    );
     return null;
   }
 
@@ -116,13 +121,15 @@ export default function NouvelleDemandeType() {
             <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <AlertCircle className="w-8 h-8 text-red-600" />
             </div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">Type de demande non trouvé</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">
+              Type de demande non trouvé
+            </h2>
             <p className="text-gray-600 mb-6">
               Le type de demande &quot;{requestType}&quot; n&apos;existe pas.
             </p>
             <button
               className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
-              onClick={() => router.push('/espace-client/nouvelle-demande')}
+              onClick={() => router.push("/espace-client/nouvelle-demande")}
             >
               Retour à la sélection
             </button>
@@ -132,16 +139,16 @@ export default function NouvelleDemandeType() {
     );
   }
 
-  const handleSuccess = () => {
-    setShowSuccess(true);
-    setTimeout(() => {
-      router.push('/espace-client/mes-demandes');
-    }, 3000);
-  };
+  // const handleSuccess = () => {
+  //   setShowSuccess(true);
+  //   setTimeout(() => {
+  //     router.push("/espace-client/mes-demandes");
+  //   }, 3000);
+  // };
 
-  const handleError = (error: string) => {
-    console.error('Erreur lors de la création de la demande:', error);
-  };
+  // const handleError = (error: string) => {
+  //   console.error("Erreur lors de la création de la demande:", error);
+  // };
 
   if (showSuccess) {
     return (
@@ -151,13 +158,16 @@ export default function NouvelleDemandeType() {
             <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <FileText className="w-8 h-8 text-green-600" />
             </div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">Demande créée avec succès !</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">
+              Demande créée avec succès !
+            </h2>
             <p className="text-gray-600 mb-6">
-              Votre demande a été soumise. Vous recevrez bientôt un email de confirmation.
+              Votre demande a été soumise. Vous recevrez bientôt un email de
+              confirmation.
             </p>
             <button
               className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
-              onClick={() => router.push('/espace-client/mes-demandes')}
+              onClick={() => router.push("/espace-client/mes-demandes")}
             >
               Voir mes demandes
             </button>
@@ -180,14 +190,20 @@ export default function NouvelleDemandeType() {
           </button>
 
           <div className="text-center">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">{requestConfig.title}</h1>
-            <p className="text-gray-600 max-w-2xl mx-auto">{requestConfig.description}</p>
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+              {requestConfig.title}
+            </h1>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              {requestConfig.description}
+            </p>
           </div>
         </div>
 
         {requestConfig.documents.length > 0 && (
           <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Documents requis</h3>
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              Documents requis
+            </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-600">
               <ul className="space-y-2">
                 {requestConfig.documents
@@ -206,16 +222,17 @@ export default function NouvelleDemandeType() {
             </div>
             <div className="mt-4 p-3 bg-blue-50 rounded-lg">
               <p className="text-sm text-blue-800">
-                <strong>Durée de traitement :</strong> {requestConfig.processingTime}
+                <strong>Durée de traitement :</strong>{" "}
+                {requestConfig.processingTime}
               </p>
             </div>
           </div>
         )}
 
-        {requestType === 'visa' ? (
-          <VisaForm request={{}} onSuccess={handleSuccess} onError={handleError} />
+        {requestType === "visa" ? (
+          <VisaForm />
         ) : requestConfig.component ? (
-          <requestConfig.component request={{}} />
+          <requestConfig.component />
         ) : (
           <ComingSoonForm
             title={requestConfig.title}

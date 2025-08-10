@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 // import { useTranslations } from "next-intl";
-import { useRouter } from "next/navigation";
 // import { useLocale } from "next-intl";
 import { signIn, useSession } from "next-auth/react";
 import { useEffect } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { login } from "../actions/auth.action";
+import { useRouter } from "@/i18n/navigation";
 
 export default function LoginForm() {
   // const t = useTranslations("auth.login");
@@ -22,7 +22,7 @@ export default function LoginForm() {
 
   useEffect(() => {
     if (status === "authenticated") {
-      router.push("/");
+      router.push("/espace-client/dashboard");
     }
   }, [status, router]);
 
@@ -40,7 +40,8 @@ export default function LoginForm() {
       setError("Identifiants incorrects");
       return;
     }
-    router.push("/espace-client/dashboard");
+    // router.push("/espace-client/dashboard");
+    window.location.reload();
   }
 
   return (

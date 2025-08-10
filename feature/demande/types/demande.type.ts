@@ -14,7 +14,6 @@ import { IUser } from "./user.type";
 export enum Genre {
     MALE = 'MALE',
     FEMALE = 'FEMALE',
-    OTHER = 'OTHER'
 }
 
 export enum SituationMatrimoniale {
@@ -22,7 +21,6 @@ export enum SituationMatrimoniale {
     MARRIED = 'MARRIED',
     DIVORCED = 'DIVORCED',
     WIDOWED = 'WIDOWED',
-    OTHER = 'OTHER'
 }
 
 
@@ -47,14 +45,14 @@ export interface IDemande {
     userId: string;
     serviceType: ServiceType;
     status: DemandeStatus;
-    submissionDate: Date;
-    completionDate?: Date;
-    issuedDate?: Date;
+    submissionDate: string;
+    completionDate?: string;
+    issuedDate?: string;
     contactPhoneNumber?: string;
     observations?: string;
     amount: number;
-    createdAt: Date;
-    updatedAt: Date;
+    createdAt: string;
+    updatedAt: string;
 
     user?: IUser;
     documents?: IDocument[];

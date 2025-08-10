@@ -20,23 +20,23 @@ export interface IVisaDetails {
     personLastName: string;
     personGender: Genre;
     personNationality: string;
-    personBirthDate: Date;
+    personBirthDate: string;
     personBirthPlace: string;
     personMaritalStatus: SituationMatrimoniale;
     passportType: PassportType;
     passportNumber: string;
     passportIssuedBy: string;
-    passportIssueDate: Date;
-    passportExpirationDate: Date;
+    passportIssueDate: string;
+    passportExpirationDate: string;
     profession?: string;
     employerAddress?: string;
     employerPhoneNumber?: string;
     visaType: VisaType;
     durationMonths: number;
     destinationState?: string;
-    visaExpirationDate?: Date;
-    createdAt: Date;
-    updatedAt: Date;
+    visaExpirationDate?: string;
+    createdAt: string;
+    updatedAt: string;
 
     request?: IDemande;
 

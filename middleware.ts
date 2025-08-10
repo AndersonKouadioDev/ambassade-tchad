@@ -4,7 +4,7 @@ import createIntlMiddleware from "next-intl/middleware";
 import { routing } from "./i18n/routing";
 import { auth } from "@/lib/auth";
 
-export const publicRoutes = ["/"];
+export const publicRoutes = ["/","/auth"];
 
 // Middleware d'internationalisation
 const intlMiddleware = createIntlMiddleware(routing);
@@ -32,7 +32,7 @@ export default async function middleware(req: NextRequest) {
       }
 
       const encodedCallbackUrl = encodeURIComponent(callbackUrl);
-      const loginUrl = new URL(`/?callbackUrl=${encodedCallbackUrl}`, req.url);
+      const loginUrl = new URL(`/auth/?callbackUrl=${encodedCallbackUrl}`, req.url);
 
       return Response.redirect(loginUrl);
     }
@@ -42,7 +42,7 @@ export default async function middleware(req: NextRequest) {
 }
 export const config = {
   matcher: [
-    "/((?!.+\\.[\\w]+$|_next|_vercel).*)",
+    "/((?!.+\\.[\\w]+$|_next|_vercel|api/auth).*)",
     "/",
     "/(api|trpc)(.*)",
     "/espace-client/:path*",

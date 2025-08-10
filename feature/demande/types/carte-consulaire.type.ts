@@ -12,7 +12,7 @@ export interface ICarteConsulaireDetails {
     requestId: string;
     personFirstName: string;
     personLastName: string;
-    personBirthDate: Date;
+    personBirthDate: string;
     personBirthPlace: string;
     personProfession?: string;
     personNationality: string;
@@ -22,9 +22,9 @@ export interface ICarteConsulaireDetails {
     motherFullName?: string;
     justificationDocumentType?: DocumentJustificationType;
     justificationDocumentNumber?: string;
-    cardExpirationDate?: Date;
-    createdAt: Date;
-    updatedAt: Date;
+    cardExpirationDate?: string;
+    createdAt: string;
+    updatedAt: string;
 
     request?: IDemande;
 }
