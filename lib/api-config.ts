@@ -1,7 +1,7 @@
 // Configuration de l'API
 export const API_CONFIG = {
   // URL de base de l'API
-  BASE_URL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8081/api/v1',
+  BASE_URL: process.env.NEXT_PUBLIC_API_BACKEND_URL || 'http://localhost:8081/api/v1',
   
   // Endpoints d'authentification
   AUTH: {

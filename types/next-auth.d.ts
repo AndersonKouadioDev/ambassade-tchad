@@ -7,6 +7,8 @@ declare module "next-auth" {
       email: string;
       name: string;
       status: UserStatus;
+      accessToken: string;
+      refreshToken?: string;
     } & DefaultSession["user"];
     error?: string;
   }

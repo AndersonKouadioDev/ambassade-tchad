@@ -39,7 +39,13 @@ export const useVisaRequestCreateMutation = () => {
             if (!result.success) {
                 throw new Error(result.errorsInString || "Une erreur est survenue lors de la validation des données.");
             }
-            return createDemandRequestAction(result.data as FormData);
+            const response = await createDemandRequestAction(result.data as FormData);
+
+            if (!response.success) {
+                throw new Error(response.error!);
+            }
+
+            return response.data!;
            
 
         },

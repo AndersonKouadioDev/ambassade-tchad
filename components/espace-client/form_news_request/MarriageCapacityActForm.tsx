@@ -64,7 +64,7 @@ export default function MarriageCapacityActForm() {
   useEffect(() => {
     async function fetchPrice() {
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8081/api/v1'}/demandes/services`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_BACKEND_URL || 'http://localhost:8081/api/v1'}/demandes/services`);
         const data = await res.json();
         const service = Array.isArray(data)
           ? (data as Service[]).find((s: Service) => s.type === 'MARRIAGE_CAPACITY_ACT')

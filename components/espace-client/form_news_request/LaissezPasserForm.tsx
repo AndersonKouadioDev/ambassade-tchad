@@ -316,7 +316,7 @@ export default function LaissezPasserForm() {
   useEffect(() => {
     async function fetchPrice() {
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8081/api/v1'}/demandes/services`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_BACKEND_URL || 'http://localhost:8081/api/v1'}/demandes/services`);
         const data = await res.json();
         console.log('Réponse API services:', data);
         const service = Array.isArray(data) 

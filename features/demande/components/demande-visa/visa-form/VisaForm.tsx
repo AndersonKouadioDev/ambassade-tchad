@@ -3,20 +3,20 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
-import { useVisaRequestCreateMutation } from "@/feature/demande/queries/demande.mutation";
+import { useVisaRequestCreateMutation } from "@/features/demande/queries/demande.mutation";
 import { ImageDragDrop, ImageFile } from "@/components/block/image-drap-drop";
 import { useRouter } from "@/i18n/navigation";
 import {
   DemandeCreateDTO,
   DemandeCreateSchema,
-} from "@/feature/demande/schema/demande.schema";
+} from "@/features/demande/schema/demande.schema";
 import { useState } from "react";
-import { PassportType, VisaType } from "@/feature/demande/types/visa.type";
+import { PassportType, VisaType } from "@/features/demande/types/visa.type";
 import {
   Genre,
   IDemande,
   SituationMatrimoniale,
-} from "@/feature/demande/types/demande.type";
+} from "@/features/demande/types/demande.type";
 
 interface VisaFormProps {
   demande?: IDemande;

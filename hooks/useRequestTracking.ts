@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useCallback } from 'react';
-import { trackDemandByTicketAction } from '@/feature/demande/actions/demande.action';
-import { IDemande } from '@/feature/demande/types/demande.type';
+import { trackDemandByTicketAction } from '@/features/demande/actions/demande.action';
+import { IDemande } from '@/features/demande/types/demande.type';
 
 interface UseRequestTrackingReturn {
   request: IDemande | null;

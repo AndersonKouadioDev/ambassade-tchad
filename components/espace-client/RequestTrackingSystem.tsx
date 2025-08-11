@@ -5,7 +5,7 @@ import RequestTracker from './RequestTracker';
 import RequestNotifications from './RequestNotifications';
 import DemandeDetailsSection from './DemandeDetailsSection';
 import { useRequestTracking } from '@/hooks/useRequestTracking';
-import { IDemande } from '@/feature/demande/types/demande.type';
+import { IDemande } from '@/features/demande/types/demande.type';
 import { Search, FileText, Bell, Download, Phone, RefreshCw } from 'lucide-react';
 
 interface RequestTrackingSystemProps {

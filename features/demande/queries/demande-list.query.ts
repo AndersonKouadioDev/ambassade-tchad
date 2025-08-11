@@ -42,39 +42,3 @@ export const prefetchDemandesFilteredListQuery = (
 ) => {
     return queryClient.prefetchQuery(demandesFilteredListQueryOption(params));
 };
-
-// ============================================================== 
-
-//1- Option de requête optimisée pour mes demandes
-export const myDemandesListQueryOption = (params: Omit<IDemandeRechercheParams, 'userId'>) => {
-    return {
-        queryKey: demandeKeyQuery("my-list", params),
-        queryFn: async () => {
-            return getMyRequestsAction(params);
-        },
-        keepPreviousData: true,
-        placeholderData: (previousData: any) => previousData,
-        staleTime: 30 * 1000,
-        refetchOnWindowFocus: false,
-        refetchOnMount: true,
-        onError: (error: Error) => {
-            toast.error("Erreur lors de la récupération de mes demandes:", {
-                description: error.message,
-            });
-        },
-    };
-};
-
-//2- Hook pour récupérer mes demandes
-export const useMyDemandesListQuery = (
-    params: Omit<IDemandeRechercheParams, 'userId'>
-) => {
-    return useQuery(myDemandesListQueryOption(params));
-};
-
-//3- Fonction pour précharger mes demandes
-export const prefetchMyDemandesListQuery = (
-    params: Omit<IDemandeRechercheParams, 'userId'>
-) => {
-    return queryClient.prefetchQuery(myDemandesListQueryOption(params));
-};

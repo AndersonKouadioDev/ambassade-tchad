@@ -12,7 +12,7 @@ import ProcurationForm from "@/components/espace-client/form_news_request/Procur
 import DeathActForm from "@/components/espace-client/form_news_request/DeathActForm";
 import MarriageCapacityActForm from "@/components/espace-client/form_news_request/MarriageCapacityActForm";
 import LaissezPasserForm from "@/components/espace-client/form_news_request/LaissezPasserForm";
-import VisaForm from "@/feature/demande/components/demande-visa/visa-form/VisaForm";
+import VisaForm from "@/features/demande/components/demande-visa/visa-form/VisaForm";
 
 const requestTypes = {
   visa: {

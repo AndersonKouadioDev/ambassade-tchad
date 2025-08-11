@@ -1,10 +1,10 @@
 "use server";
 
-
-import { ActionResponse } from "@/types";
+import { ActionResponse, PaginatedResponse } from "@/types";
 import { demandeAPI } from "../apis/demande.api";
-import { IDemande, IDemandeRechercheParams } from "../types/demande.type";
+import { IDemande, IDemandeRechercheParams, IDemandeStatsResponse } from "../types/demande.type";
 import { handleServerActionError } from "@/utils/handleServerActionError";
+import { IService } from "../types/service.type";
 
 export async function createDemandRequestAction(formData: FormData): Promise<ActionResponse<IDemande>> {
     try {
@@ -17,21 +17,15 @@ export async function createDemandRequestAction(formData: FormData): Promise<Act
     } catch (error) {
         return handleServerActionError(error, "Erreur lors de la création de la demande.");
     }
-    
+
 }
 
-export async function getAllFilteredDemandRequestsAction(params: IDemandeRechercheParams) {
+export async function getAllFilteredDemandRequestsAction(params: IDemandeRechercheParams): Promise<ActionResponse<PaginatedResponse<IDemande>>> {
     try {
         const demandes = await demandeAPI.getAllFilteredDemandRequests(params);
         return {
             success: true,
-            data: demandes.data,
-            meta: {
-                total: demandes.total,
-                page: demandes.page,
-                limit: demandes.limit,
-                totalPages: demandes.totalPages,
-            },
+            data: demandes,
             message: "Demandes récupérées avec succès.",
         };
     } catch (error) {
@@ -39,18 +33,12 @@ export async function getAllFilteredDemandRequestsAction(params: IDemandeRecherc
     }
 }
 
-export async function getMyRequestsAction(params: Omit<IDemandeRechercheParams, 'userId'>){
+export async function getMyRequestsAction(params: Omit<IDemandeRechercheParams, 'userId'>): Promise<ActionResponse<PaginatedResponse<IDemande>>> {
     try {
         const demandes = await demandeAPI.getMyRequests(params);
         return {
             success: true,
-            data: demandes.data,
-            meta: {
-                total: demandes.total,
-                page: demandes.page,
-                limit: demandes.limit,
-                totalPages: demandes.totalPages,
-            },
+            data: demandes,
             message: "Demandes récupérées avec succès.",
         };
     } catch (error) {
@@ -84,7 +72,7 @@ export async function getDemandByTicketAction(ticket: string): Promise<ActionRes
     }
 }
 
-export async function getServicesPricesAction(): Promise<ActionResponse<any>> {
+export async function getServicesPricesAction(): Promise<ActionResponse<IService[]>> {
     try {
         const servicesPrices = await demandeAPI.getServicesPrices();
         return {
@@ -97,20 +85,8 @@ export async function getServicesPricesAction(): Promise<ActionResponse<any>> {
     }
 }
 
-export  async function getGlobalStatsAction(): Promise<ActionResponse<any>> {
-    try {
-        const globalStats = await demandeAPI.getGlobalStats();
-        return {
-            success: true,
-            data: globalStats,
-            message: "Statistiques globales récupérées avec succès.",
-        };
-    } catch (error) {
-        return handleServerActionError(error, "Erreur lors de la récupération des statistiques globales.");
-    }
-}
 
-export async function getUserStatsAction(): Promise<ActionResponse<any>> {
+export async function getUserStatsAction(): Promise<ActionResponse<IDemandeStatsResponse>> {
     try {
         const userStats = await demandeAPI.getUserStats();
         return {
@@ -121,5 +97,5 @@ export async function getUserStatsAction(): Promise<ActionResponse<any>> {
     } catch (error) {
         return handleServerActionError(error, "Erreur lors de la récupération des statistiques utilisateur.");
     }
-} 
+}
 

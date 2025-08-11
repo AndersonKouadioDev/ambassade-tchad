@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
-import AuthForm from '@/feature/auth/components/auth-form';
+import AuthForm from '@/features/auth/components/auth-form';
 // import { useTranslations } from 'next-intl'; // Supprimé car inutilisé au niveau module
 
 export const metadata: Metadata = {

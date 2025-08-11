@@ -12,6 +12,9 @@ import rtlDetect from "rtl-detect-intl";
 import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
 import NextAuthSessionProvider from "@/providers/NextAuthSessionProvider";
 import { Providers } from "@/providers/providers";
+import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
+import QueryProvider from "@/providers/query-provider";
+import getQueryClient from "@/lib/get-query-client";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({
@@ -58,6 +61,8 @@ export default async function RootLayout({
   const messages = (await import(`@/messages/${locale}.json`)).default;
   const langDir = rtlDetect.getLangDir(locale);
 
+  const queryClient = getQueryClient();
+
   return (
     <html lang={locale} dir={langDir} suppressHydrationWarning>
       <body
@@ -65,15 +70,19 @@ export default async function RootLayout({
       >
         <div className="font-blinker w-full">
           <Providers>
-            <NextAuthSessionProvider>
-              <NextIntlClientProvider locale={locale} messages={messages}>
-                <ClientLayoutWrapper>
-                  <Head />
-                  {children}
-                  <Footer />
-                </ClientLayoutWrapper>
-              </NextIntlClientProvider>
-            </NextAuthSessionProvider>
+            <QueryProvider>
+              <HydrationBoundary state={dehydrate(queryClient)}>
+                <NextAuthSessionProvider>
+                  <NextIntlClientProvider locale={locale} messages={messages}>
+                    <ClientLayoutWrapper>
+                      <Head />
+                      {children}
+                      <Footer />
+                    </ClientLayoutWrapper>
+                  </NextIntlClientProvider>
+                </NextAuthSessionProvider>
+              </HydrationBoundary>
+            </QueryProvider>
           </Providers>
         </div>
       </body>
