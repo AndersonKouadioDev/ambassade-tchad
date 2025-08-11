@@ -1,3 +1,4 @@
+"use client"
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -11,12 +12,12 @@ import Image from 'next/image';
 const procurationSchema = z.object({
   principalFirstName: z.string().min(1, 'Le prénom du mandant est requis'),
   principalLastName: z.string().min(1, 'Le nom du mandant est requis'),
-  principalJustificationDocumentType: z.nativeEnum(JustificationDocumentType).optional(),
+  principalJustificationDocumentType: z.enum(JustificationDocumentType).optional(),
   principalIdDocumentNumber: z.string().optional(),
   principalAddress: z.string().optional(),
   agentFirstName: z.string().min(1, 'Le prénom du mandataire est requis'),
   agentLastName: z.string().min(1, 'Le nom du mandataire est requis'),
-  agentJustificationDocumentType: z.nativeEnum(JustificationDocumentType).optional(),
+  agentJustificationDocumentType: z.enum(JustificationDocumentType).optional(),
   agentIdDocumentNumber: z.string().optional(),
   agentAddress: z.string().optional(),
   powerOfType: z.string().optional(),

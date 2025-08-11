@@ -2,7 +2,7 @@ import { z } from 'zod';
 import { ServiceType } from '../types/service.type';
 
 export const MariageDetailsSchema = z.object({
-  serviceType: z.nativeEnum(ServiceType).default(ServiceType.MARRIAGE_CAPACITY_ACT).optional(),
+  serviceType: z.enum(ServiceType).default(ServiceType.MARRIAGE_CAPACITY_ACT).optional(),
   husbandFirstName: z.string({ message: "Le prénom de l'époux est obligatoire." })
     .min(1, { message: "Le prénom de l'époux est obligatoire." })
     .max(255, { message: "Le prénom de l'époux ne doit pas dépasser 255 caractères." }),

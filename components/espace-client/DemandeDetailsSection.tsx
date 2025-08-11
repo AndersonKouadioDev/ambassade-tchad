@@ -268,7 +268,7 @@ export default function DemandeDetailsSection({ demande }: DemandeDetailsSection
           <div className="font-bold text-lg md:text-2xl text-gray-900 print:text-black">Ambassade de la République du Tchad</div>
           <div className="text-sm md:text-base text-gray-700 print:text-black">Section Consulaire</div>
           <div className="text-xs md:text-sm text-gray-600 print:text-black mt-1">
-           Abidjan, cocody 2 Plateaux vallons, Côte d&apos;Ivoire<br/>
+           Abidjan, cocody 2 Plateaux vallons, Côte d'Ivoire<br/>
             Tél : +225 01245578485 &nbsp;|&nbsp; Email : contact@ambassade-tchad.com
           </div>
         </div>

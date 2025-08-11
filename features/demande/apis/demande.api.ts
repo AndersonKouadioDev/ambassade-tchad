@@ -10,7 +10,6 @@ import { PaginatedResponse } from "@/types";
 
 export interface IDemandRequestAPI {
     createDemandRequest(data: FormData): Promise<IDemande>;
-    getAllFilteredDemandRequests(params: IDemandeRechercheParams): Promise<PaginatedResponse<IDemande>>;
     getMyRequests(params: Omit<IDemandeRechercheParams, 'userId'>): Promise<PaginatedResponse<IDemande>>;
     getUserStats(): Promise<IDemandeStatsResponse>;
     trackDemandByTicket(ticket: string): Promise<IDemande>;
@@ -30,14 +29,6 @@ export const demandeAPI: IDemandRequestAPI = {
                     'Content-Type': 'multipart/form-data',
                 },
             }
-        });
-    },
-
-    getAllFilteredDemandRequests(params: IDemandeRechercheParams): Promise<PaginatedResponse<IDemande>> {
-        return api.request<PaginatedResponse<IDemande>>({
-            endpoint: `/demandes`,
-            method: "GET",
-            searchParams: params as SearchParams,
         });
     },
 

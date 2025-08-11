@@ -1,4 +1,5 @@
 "use client";
+
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -18,7 +19,7 @@ const nationalityCertificateSchema = z.object({
   applicantNationality: z.string().min(1, 'La nationalité est requise'),
   originCountryParentFirstName: z.string().min(1, 'Le prénom du parent est requis'),
   originCountryParentLastName: z.string().min(1, 'Le nom du parent est requis'),
-  originCountryParentRelationship: z.nativeEnum(OriginCountryParentRelationshipType)
+  originCountryParentRelationship: z.enum(OriginCountryParentRelationshipType)
     .refine(val => val === OriginCountryParentRelationshipType.FATHER || val === OriginCountryParentRelationshipType.MOTHER, {
       message: 'Le lien de parenté est requis',
     }),
@@ -177,7 +178,7 @@ export default function CertificatNationaliteForm() {
 
   const renderStep2 = () => (
     <div className="space-y-6">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">Informations sur le parent d&apos;origine et contact</h3>
+      <h3 className="text-lg font-semibold text-gray-900 mb-4">Informations sur le parent d'origine et contact</h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Prénom du parent *</label>

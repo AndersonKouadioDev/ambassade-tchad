@@ -1,31 +1,29 @@
-"use client";
-
-import { useState } from "react";
-import { useRouter, useParams } from "next/navigation";
-import { useSession } from "next-auth/react";
-import ConsulaireCardForm from "@/components/espace-client/form_news_request/ConsulaireCardForm";
 import ComingSoonForm from "@/components/espace-client/ComingSoonForm";
 import BirthActForm from "@/components/espace-client/form_news_request/BirthActForm";
-import CertificatNationaliteForm from "@/components/espace-client/form_news_request/CertificatNationaliteForm";
-import { ArrowLeft, FileText, AlertCircle } from "lucide-react";
-import ProcurationForm from "@/components/espace-client/form_news_request/ProcurationForm";
+// import CertificatNationaliteForm from "@/components/espace-client/form_news_request/CertificatNationaliteForm";
+import ConsulaireCardForm from "@/components/espace-client/form_news_request/ConsulaireCardForm";
 import DeathActForm from "@/components/espace-client/form_news_request/DeathActForm";
-import MarriageCapacityActForm from "@/components/espace-client/form_news_request/MarriageCapacityActForm";
 import LaissezPasserForm from "@/components/espace-client/form_news_request/LaissezPasserForm";
+import MarriageCapacityActForm from "@/components/espace-client/form_news_request/MarriageCapacityActForm";
+import ProcurationForm from "@/components/espace-client/form_news_request/ProcurationForm";
+import CertificatNationaliteForm from "@/features/demande/components/demande-certificat-nationnalite-form";
 import VisaForm from "@/features/demande/components/demande-visa/visa-form/VisaForm";
+import { auth } from "@/lib/auth";
+import { AlertCircle, ArrowLeft } from "lucide-react";
+import { redirect } from "next/navigation";
 
 const requestTypes = {
   visa: {
     title: "Demande de Visa",
     description:
-      "Remplissez ce formulaire pour soumettre votre demande de visa. Assurez-vous d&apos;avoir tous les documents nécessaires avant de commencer.",
+      "Remplissez ce formulaire pour soumettre votre demande de visa. Assurez-vous d'avoir tous les documents nécessaires avant de commencer.",
     component: VisaForm,
     documents: [
       "Passeport valide (minimum 6 mois de validité)",
-      "Photo d&apos;identité récente",
+      "Photo d'identité récente",
       "Justificatif de ressources financières",
-      "Réservation d&apos;hôtel ou invitation",
-      "Billet d&apos;avion aller-retour",
+      "Réservation d'hôtel ou invitation",
+      "Billet d'avion aller-retour",
       "Assurance voyage",
       "Justificatif de profession",
       "Casier judiciaire (si applicable)",
@@ -33,7 +31,7 @@ const requestTypes = {
     processingTime: "5-15 jours ouvrables",
   },
   "birth-act": {
-    title: "Demande d&apos;Acte de Naissance",
+    title: "Demande d'Acte de Naissance",
     description: "Remplissez ce formulaire pour demander un acte de naissance.",
     component: BirthActForm,
     documents: [],
@@ -62,9 +60,9 @@ const requestTypes = {
     processingTime: "5-10 jours",
   },
   "death-act": {
-    title: "Demande d&apos;Acte de Décès",
+    title: "Demande d'Acte de Décès",
     description:
-      "Demande d&apos;acte de décès - Formulaire en cours de développement.",
+      "Demande d'acte de décès - Formulaire en cours de développement.",
     component: DeathActForm,
     documents: [],
     processingTime: "3-7 jours",
@@ -81,36 +79,44 @@ const requestTypes = {
     description:
       "Demande de certificat de nationalité tchadienne - Formulaire en cours de développement.",
     component: CertificatNationaliteForm,
-    documents: [],
+    documents: [
+      "Passeport valide (minimum 6 mois de validité)",
+      "Photo d'identité récente",
+      "Justificatif de ressources financières",
+    ],
     processingTime: "7-15 jours",
   },
 };
 
-export default function NouvelleDemandeType() {
-  const { data: session, status } = useSession();
-  const router = useRouter();
-  const params = useParams();
-  const [showSuccess, setShowSuccess] = useState(false);
+export default async function NouvelleDemandeType({
+  params,
+}: {
+  params: Promise<{ type: string }>;
+}) {
+  const session = await auth();
+  // const router = useRouter();
+  // const params = useParams();
+  // const [showSuccess, setShowSuccess] = useState(false);
 
-  const requestType = params.type as string;
+  const requestType = (await params).type as string;
   const requestConfig = requestTypes[requestType as keyof typeof requestTypes];
 
-  if (status === "loading") {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600">Chargement...</p>
-        </div>
-      </div>
-    );
-  }
+  // if (status === "loading") {
+  //   return (
+  //     <div className="min-h-screen flex items-center justify-center">
+  //       <div className="text-center">
+  //         <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600 mx-auto"></div>
+  //         <p className="mt-4 text-gray-600">Chargement...</p>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
   if (!session) {
-    router.push(
+    redirect(
       `/auth?callbackUrl=/espace-client/nouvelle-demande/${requestType}`
     );
-    return null;
+    // return null;
   }
 
   if (!requestConfig) {
@@ -129,7 +135,7 @@ export default function NouvelleDemandeType() {
             </p>
             <button
               className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
-              onClick={() => router.push("/espace-client/nouvelle-demande")}
+              // onClick={() => router.push("/espace-client/nouvelle-demande")}
             >
               Retour à la sélection
             </button>
@@ -150,32 +156,32 @@ export default function NouvelleDemandeType() {
   //   console.error("Erreur lors de la création de la demande:", error);
   // };
 
-  if (showSuccess) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-8">
-          <div className="text-center">
-            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <FileText className="w-8 h-8 text-green-600" />
-            </div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">
-              Demande créée avec succès !
-            </h2>
-            <p className="text-gray-600 mb-6">
-              Votre demande a été soumise. Vous recevrez bientôt un email de
-              confirmation.
-            </p>
-            <button
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
-              onClick={() => router.push("/espace-client/mes-demandes")}
-            >
-              Voir mes demandes
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  // if (showSuccess) {
+  //   return (
+  //     <div className="min-h-screen flex items-center justify-center bg-gray-50">
+  //       <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-8">
+  //         <div className="text-center">
+  //           <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+  //             <FileText className="w-8 h-8 text-green-600" />
+  //           </div>
+  //           <h2 className="text-2xl font-bold text-gray-900 mb-2">
+  //             Demande créée avec succès !
+  //           </h2>
+  //           <p className="text-gray-600 mb-6">
+  //             Votre demande a été soumise. Vous recevrez bientôt un email de
+  //             confirmation.
+  //           </p>
+  //           <button
+  //             className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+  //             onClick={() => router.push("/espace-client/mes-demandes")}
+  //           >
+  //             Voir mes demandes
+  //           </button>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
@@ -183,7 +189,7 @@ export default function NouvelleDemandeType() {
         <div className="mb-8">
           <button
             className="flex items-center text-gray-600 hover:text-gray-900 mb-4"
-            onClick={() => router.back()}
+            // onClick={() => router.back()}
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Retour
@@ -229,10 +235,8 @@ export default function NouvelleDemandeType() {
           </div>
         )}
 
-        {requestType === "visa" ? (
-          <VisaForm />
-        ) : requestConfig.component ? (
-          <requestConfig.component />
+        {requestConfig.component ? (
+          <requestConfig.component documentsSize={requestConfig.documents.length} />
         ) : (
           <ComingSoonForm
             title={requestConfig.title}

@@ -1,50 +1,66 @@
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import React, { useState, useEffect, useRef } from 'react';
-import { JustificationDocumentType, Service } from '@/types/request.types';
-import { toast } from 'react-toastify';
-import { consularCardApi } from '@/lib/api-client';
-import { useRouter, useParams } from 'next/navigation';
+"use client";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import React, { useState, useEffect, useRef } from "react";
+import { JustificationDocumentType, Service } from "@/types/request.types";
+import { toast } from "react-toastify";
+import { consularCardApi } from "@/lib/api-client";
+import { useRouter, useParams } from "next/navigation";
 import Image from "next/image";
 
 const consularCardSchema = z.object({
-  personFirstName: z.string().min(1, 'Le prénom est requis'),
-  personLastName: z.string().min(1, 'Le nom est requis'),
-  personBirthDate: z.string().min(1, 'La date de naissance est requise').refine(val => !isNaN(new Date(val).getTime()), { message: 'Date invalide' }),
-  personBirthPlace: z.string().min(1, 'Le lieu de naissance est requis'),
+  personFirstName: z.string().min(1, "Le prénom est requis"),
+  personLastName: z.string().min(1, "Le nom est requis"),
+  personBirthDate: z
+    .string()
+    .min(1, "La date de naissance est requise")
+    .refine((val) => !isNaN(new Date(val).getTime()), {
+      message: "Date invalide",
+    }),
+  personBirthPlace: z.string().min(1, "Le lieu de naissance est requis"),
   personProfession: z.string().optional(),
-  personNationality: z.string().min(1, 'La nationalité est requise'),
+  personNationality: z.string().min(1, "La nationalité est requise"),
   personDomicile: z.string().optional(),
   personAddressInOriginCountry: z.string().optional(),
   fatherFullName: z.string().optional(),
   motherFullName: z.string().optional(),
-  justificationDocumentType: z.nativeEnum(JustificationDocumentType).optional(),
+  justificationDocumentType: z.enum(JustificationDocumentType).optional(),
   justificationDocumentNumber: z.string().optional(),
-  contactPhoneNumber: z.string().min(1, 'Le numéro de contact est requis').regex(/^\+?[0-9\s\-]+$/, 'Numéro de téléphone invalide'),
+  contactPhoneNumber: z
+    .string()
+    .min(1, "Le numéro de contact est requis")
+    .regex(/^\+?[0-9\s\-]+$/, "Numéro de téléphone invalide"),
   justificativeFile: z.any().optional(),
 });
 
 type ConsularCardFormInput = z.infer<typeof consularCardSchema>;
 
 export default function ConsulaireCardForm() {
-  const { register, handleSubmit, formState: { errors }, trigger, reset, setValue } = useForm<ConsularCardFormInput>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    trigger,
+    reset,
+    setValue,
+  } = useForm<ConsularCardFormInput>({
     resolver: zodResolver(consularCardSchema),
-    mode: 'onBlur',
+    mode: "onBlur",
     defaultValues: {
-      personFirstName: '',
-      personLastName: '',
-      personBirthDate: '',
-      personBirthPlace: '',
-      personProfession: '',
-      personNationality: '',
-      personDomicile: '',
-      personAddressInOriginCountry: '',
-      fatherFullName: '',
-      motherFullName: '',
+      personFirstName: "",
+      personLastName: "",
+      personBirthDate: "",
+      personBirthPlace: "",
+      personProfession: "",
+      personNationality: "",
+      personDomicile: "",
+      personAddressInOriginCountry: "",
+      fatherFullName: "",
+      motherFullName: "",
       justificationDocumentType: undefined,
-      justificationDocumentNumber: '',
-      contactPhoneNumber: '',
+      justificationDocumentNumber: "",
+      contactPhoneNumber: "",
       justificativeFile: undefined,
     },
   });
@@ -59,18 +75,27 @@ export default function ConsulaireCardForm() {
   const [successCountdown, setSuccessCountdown] = useState(5);
   const router = useRouter();
   const params = useParams();
-  const locale = Array.isArray(params?.locale) ? params.locale[0] : params?.locale || 'fr';
+  const locale = Array.isArray(params?.locale)
+    ? params.locale[0]
+    : params?.locale || "fr";
 
   useEffect(() => {
     async function fetchPrice() {
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_BACKEND_URL || 'http://localhost:8081/api/v1'}/demandes/services`);
+        const res = await fetch(
+          `${
+            process.env.NEXT_PUBLIC_API_BACKEND_URL ||
+            "http://localhost:8081/api/v1"
+          }/demandes/services`
+        );
         const data = await res.json();
         const service = Array.isArray(data)
-          ? (data as Service[]).find((s: Service) => s.type === 'CONSULAR_CARD')
+          ? (data as Service[]).find((s: Service) => s.type === "CONSULAR_CARD")
           : Array.isArray(data.data)
-            ? (data.data as Service[]).find((s: Service) => s.type === 'CONSULAR_CARD')
-            : null;
+          ? (data.data as Service[]).find(
+              (s: Service) => s.type === "CONSULAR_CARD"
+            )
+          : null;
         setPrixActe(service ? service.defaultPrice : null);
       } catch (error) {
         setPrixActe(null);
@@ -82,11 +107,25 @@ export default function ConsulaireCardForm() {
   function getFieldsForStep(step: number): (keyof ConsularCardFormInput)[] {
     switch (step) {
       case 1:
-        return ['personFirstName', 'personLastName', 'personBirthDate', 'personBirthPlace', 'personNationality', 'personProfession', 'personDomicile'];
+        return [
+          "personFirstName",
+          "personLastName",
+          "personBirthDate",
+          "personBirthPlace",
+          "personNationality",
+          "personProfession",
+          "personDomicile",
+        ];
       case 2:
-        return ['fatherFullName', 'motherFullName', 'justificationDocumentType', 'justificationDocumentNumber', 'personAddressInOriginCountry'];
+        return [
+          "fatherFullName",
+          "motherFullName",
+          "justificationDocumentType",
+          "justificationDocumentNumber",
+          "personAddressInOriginCountry",
+        ];
       case 3:
-        return ['contactPhoneNumber', 'justificativeFile'];
+        return ["contactPhoneNumber", "justificativeFile"];
       default:
         return [];
     }
@@ -98,7 +137,7 @@ export default function ConsulaireCardForm() {
     if (isValidStep && currentStep < totalSteps) {
       setCurrentStep(currentStep + 1);
     } else if (!isValidStep) {
-      toast.error('Veuillez corriger les erreurs avant de continuer');
+      toast.error("Veuillez corriger les erreurs avant de continuer");
     }
   };
 
@@ -134,7 +173,7 @@ export default function ConsulaireCardForm() {
         toast.error(response.error || "Erreur lors de l'envoi de la demande");
       }
     } catch (error) {
-      toast.error('Une erreur est survenue lors de la soumission');
+      toast.error("Une erreur est survenue lors de la soumission");
     } finally {
       setIsSubmitting(false);
     }
@@ -142,44 +181,125 @@ export default function ConsulaireCardForm() {
 
   const renderStep1 = () => (
     <div className="space-y-6">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">Informations personnelles</h3>
+      <h3 className="text-lg font-semibold text-gray-900 mb-4">
+        Informations personnelles
+      </h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Prénom *</label>
-          <input {...register('personFirstName')} placeholder="Ex: Mahamat" className={`w-full px-4 py-2 border rounded-md ${errors.personFirstName ? 'border-red-500' : 'border-gray-300'}`} />
-          {errors.personFirstName && <p className="text-red-500 text-xs mt-1">{errors.personFirstName.message}</p>}
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Prénom *
+          </label>
+          <input
+            {...register("personFirstName")}
+            placeholder="Ex: Mahamat"
+            className={`w-full px-4 py-2 border rounded-md ${
+              errors.personFirstName ? "border-red-500" : "border-gray-300"
+            }`}
+          />
+          {errors.personFirstName && (
+            <p className="text-red-500 text-xs mt-1">
+              {errors.personFirstName.message}
+            </p>
+          )}
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Nom *</label>
-          <input {...register('personLastName')} placeholder="Ex: Abakar" className={`w-full px-4 py-2 border rounded-md ${errors.personLastName ? 'border-red-500' : 'border-gray-300'}`} />
-          {errors.personLastName && <p className="text-red-500 text-xs mt-1">{errors.personLastName.message}</p>}
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Nom *
+          </label>
+          <input
+            {...register("personLastName")}
+            placeholder="Ex: Abakar"
+            className={`w-full px-4 py-2 border rounded-md ${
+              errors.personLastName ? "border-red-500" : "border-gray-300"
+            }`}
+          />
+          {errors.personLastName && (
+            <p className="text-red-500 text-xs mt-1">
+              {errors.personLastName.message}
+            </p>
+          )}
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Date de naissance *</label>
-          <input type="date" {...register('personBirthDate')} placeholder="JJ/MM/AAAA" className={`w-full px-4 py-2 border rounded-md ${errors.personBirthDate ? 'border-red-500' : 'border-gray-300'}`} />
-          {errors.personBirthDate && <p className="text-red-500 text-xs mt-1">{errors.personBirthDate.message}</p>}
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Date de naissance *
+          </label>
+          <input
+            type="date"
+            {...register("personBirthDate")}
+            placeholder="JJ/MM/AAAA"
+            className={`w-full px-4 py-2 border rounded-md ${
+              errors.personBirthDate ? "border-red-500" : "border-gray-300"
+            }`}
+          />
+          {errors.personBirthDate && (
+            <p className="text-red-500 text-xs mt-1">
+              {errors.personBirthDate.message}
+            </p>
+          )}
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Lieu de naissance *</label>
-          <input {...register('personBirthPlace')} placeholder="Ex: N'Djamena" className={`w-full px-4 py-2 border rounded-md ${errors.personBirthPlace ? 'border-red-500' : 'border-gray-300'}`} />
-          {errors.personBirthPlace && <p className="text-red-500 text-xs mt-1">{errors.personBirthPlace.message}</p>}
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Lieu de naissance *
+          </label>
+          <input
+            {...register("personBirthPlace")}
+            placeholder="Ex: N'Djamena"
+            className={`w-full px-4 py-2 border rounded-md ${
+              errors.personBirthPlace ? "border-red-500" : "border-gray-300"
+            }`}
+          />
+          {errors.personBirthPlace && (
+            <p className="text-red-500 text-xs mt-1">
+              {errors.personBirthPlace.message}
+            </p>
+          )}
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Nationalité *</label>
-          <input {...register('personNationality')} placeholder="Ex: Tchadienne" className={`w-full px-4 py-2 border rounded-md ${errors.personNationality ? 'border-red-500' : 'border-gray-300'}`} />
-          {errors.personNationality && <p className="text-red-500 text-xs mt-1">{errors.personNationality.message}</p>}
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Nationalité *
+          </label>
+          <input
+            {...register("personNationality")}
+            placeholder="Ex: Tchadienne"
+            className={`w-full px-4 py-2 border rounded-md ${
+              errors.personNationality ? "border-red-500" : "border-gray-300"
+            }`}
+          />
+          {errors.personNationality && (
+            <p className="text-red-500 text-xs mt-1">
+              {errors.personNationality.message}
+            </p>
+          )}
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Profession</label>
-          <input {...register('personProfession')} placeholder="Ex: Enseignant" className="w-full px-4 py-2 border border-gray-300 rounded-md" />
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Profession
+          </label>
+          <input
+            {...register("personProfession")}
+            placeholder="Ex: Enseignant"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md"
+          />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Domicile</label>
-          <input {...register('personDomicile')} placeholder="Ex: Cocody, Abidjan" className="w-full px-4 py-2 border border-gray-300 rounded-md" />
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Domicile
+          </label>
+          <input
+            {...register("personDomicile")}
+            placeholder="Ex: Cocody, Abidjan"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md"
+          />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Adresse au pays d&apos;origine</label>
-          <input {...register('personAddressInOriginCountry')} placeholder="Ex: Quartier Moursal, N'Djamena" className="w-full px-4 py-2 border border-gray-300 rounded-md" />
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Adresse au pays d'origine
+          </label>
+          <input
+            {...register("personAddressInOriginCountry")}
+            placeholder="Ex: Quartier Moursal, N'Djamena"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md"
+          />
         </div>
       </div>
     </div>
@@ -187,32 +307,66 @@ export default function ConsulaireCardForm() {
 
   const renderStep2 = () => (
     <div className="space-y-6">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">Filiation, justificatif et contact</h3>
+      <h3 className="text-lg font-semibold text-gray-900 mb-4">
+        Filiation, justificatif et contact
+      </h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Nom du père</label>
-          <input {...register('fatherFullName')} placeholder="Ex: Abakar Mahamat" className="w-full px-4 py-2 border border-gray-300 rounded-md" />
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Nom du père
+          </label>
+          <input
+            {...register("fatherFullName")}
+            placeholder="Ex: Abakar Mahamat"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md"
+          />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Nom de la mère</label>
-          <input {...register('motherFullName')} placeholder="Ex: Fatimé Oumar" className="w-full px-4 py-2 border border-gray-300 rounded-md" />
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Nom de la mère
+          </label>
+          <input
+            {...register("motherFullName")}
+            placeholder="Ex: Fatimé Oumar"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md"
+          />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Type de pièce justificative</label>
-          <select {...register('justificationDocumentType')} className="w-full px-4 py-2 border border-gray-300 rounded-md" defaultValue="">
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Type de pièce justificative
+          </label>
+          <select
+            {...register("justificationDocumentType")}
+            className="w-full px-4 py-2 border border-gray-300 rounded-md"
+            defaultValue=""
+          >
             <option value="">Sélectionnez</option>
-            {Object.values(JustificationDocumentType).map(type => (
-              <option key={type} value={type}>{type}</option>
+            {Object.values(JustificationDocumentType).map((type) => (
+              <option key={type} value={type}>
+                {type}
+              </option>
             ))}
           </select>
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Numéro de pièce justificative</label>
-          <input {...register('justificationDocumentNumber')} placeholder="Ex: CNI123456" className="w-full px-4 py-2 border border-gray-300 rounded-md" />
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Numéro de pièce justificative
+          </label>
+          <input
+            {...register("justificationDocumentNumber")}
+            placeholder="Ex: CNI123456"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md"
+          />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Adresse au pays d&apos;origine</label>
-          <input {...register('personAddressInOriginCountry')} placeholder="Ex: Quartier Moursal, N'Djamena" className="w-full px-4 py-2 border border-gray-300 rounded-md" />
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Adresse au pays d'origine
+          </label>
+          <input
+            {...register("personAddressInOriginCountry")}
+            placeholder="Ex: Quartier Moursal, N'Djamena"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md"
+          />
         </div>
       </div>
     </div>
@@ -220,26 +374,36 @@ export default function ConsulaireCardForm() {
 
   const renderStep3 = () => (
     <div className="space-y-6">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">Récapitulatif et pièce justificative</h3>
+      <h3 className="text-lg font-semibold text-gray-900 mb-4">
+        Récapitulatif et pièce justificative
+      </h3>
       <div className="mb-4">
         <span className="text-lg font-semibold text-green-700">
-          Prix à payer : {prixActe?.toLocaleString() ?? '10,000'} FCFA
+          Prix à payer : {prixActe?.toLocaleString() ?? "10,000"} FCFA
         </span>
       </div>
       <div className="mb-4">
-        <label className="block text-sm font-medium text-gray-700 mb-1">Pièces justificatives *</label>
+        <label className="block text-sm font-medium text-gray-700 mb-1">
+          Pièces justificatives *
+        </label>
         <div
           className={
             `w-full border-2 border-dashed rounded-md p-4 text-center cursor-pointer transition-colors ` +
             `hover:border-blue-400 bg-gray-50`
           }
           onClick={() => fileInputRef.current?.click()}
-          onDragOver={e => { e.preventDefault(); e.stopPropagation(); }}
-          onDrop={e => {
+          onDragOver={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+          }}
+          onDrop={(e) => {
             e.preventDefault();
             e.stopPropagation();
             if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-              setUploadedFiles(prev => [...prev, ...Array.from(e.dataTransfer.files)]);
+              setUploadedFiles((prev) => [
+                ...prev,
+                ...Array.from(e.dataTransfer.files),
+              ]);
             }
           }}
         >
@@ -249,28 +413,41 @@ export default function ConsulaireCardForm() {
             accept="application/pdf,image/*"
             multiple
             className="hidden"
-            onChange={e => {
+            onChange={(e) => {
               const files = e.target.files ? Array.from(e.target.files) : [];
               if (files.length > 0) {
-                setUploadedFiles(prev => {
+                setUploadedFiles((prev) => {
                   const newFiles = [...prev, ...files];
-                  setValue('justificativeFile', newFiles, { shouldValidate: true });
+                  setValue("justificativeFile", newFiles, {
+                    shouldValidate: true,
+                  });
                   return newFiles;
                 });
               }
             }}
           />
           <div className="flex flex-col items-center justify-center gap-2">
-            <span className="text-blue-700 font-semibold">Glissez-déposez vos fichiers ici ou cliquez pour sélectionner</span>
-            <span className="text-xs text-gray-500">Formats acceptés : PDF, images. Plusieurs fichiers possibles.</span>
-            <span className="text-xs text-gray-500">{uploadedFiles.length} fichier{uploadedFiles.length > 1 ? 's' : ''} sélectionné{uploadedFiles.length > 1 ? 's' : ''}</span>
+            <span className="text-blue-700 font-semibold">
+              Glissez-déposez vos fichiers ici ou cliquez pour sélectionner
+            </span>
+            <span className="text-xs text-gray-500">
+              Formats acceptés : PDF, images. Plusieurs fichiers possibles.
+            </span>
+            <span className="text-xs text-gray-500">
+              {uploadedFiles.length} fichier
+              {uploadedFiles.length > 1 ? "s" : ""} sélectionné
+              {uploadedFiles.length > 1 ? "s" : ""}
+            </span>
           </div>
         </div>
         {uploadedFiles.length > 0 && (
           <ul className="mt-4 flex flex-wrap gap-4">
             {uploadedFiles.map((file, idx) => (
-              <li key={idx} className="relative flex flex-col items-center w-24">
-                {file.type.startsWith('image/') ? (
+              <li
+                key={idx}
+                className="relative flex flex-col items-center w-24"
+              >
+                {file.type.startsWith("image/") ? (
                   <Image
                     src={URL.createObjectURL(file)}
                     alt={file.name}
@@ -278,25 +455,46 @@ export default function ConsulaireCardForm() {
                   />
                 ) : (
                   <div className="w-20 h-20 flex items-center justify-center bg-gray-200 rounded shadow border">
-                    <svg className="w-8 h-8 text-red-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
+                    <svg
+                      className="w-8 h-8 text-red-500"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M12 4v16m8-8H4"
+                      />
                     </svg>
                   </div>
                 )}
-                <span className="text-xs mt-1 truncate w-full text-center" title={file.name}>{file.name}</span>
+                <span
+                  className="text-xs mt-1 truncate w-full text-center"
+                  title={file.name}
+                >
+                  {file.name}
+                </span>
                 <button
                   type="button"
-                  onClick={e => {
+                  onClick={(e) => {
                     e.stopPropagation();
-                    setUploadedFiles(prev => {
+                    setUploadedFiles((prev) => {
                       const newFiles = prev.filter((_, i) => i !== idx);
-                      setValue('justificativeFile', newFiles.length > 0 ? newFiles : undefined, { shouldValidate: true });
+                      setValue(
+                        "justificativeFile",
+                        newFiles.length > 0 ? newFiles : undefined,
+                        { shouldValidate: true }
+                      );
                       return newFiles;
                     });
                   }}
                   className="absolute -top-2 -right-2 bg-white border border-gray-300 rounded-full w-6 h-6 flex items-center justify-center text-red-500 hover:bg-red-100"
                   title="Supprimer"
-                >✕</button>
+                >
+                  ✕
+                </button>
               </li>
             ))}
           </ul>
@@ -304,9 +502,21 @@ export default function ConsulaireCardForm() {
       </div>
       {/* Champ numéro de contact déplacé ici */}
       <div className="mb-4">
-        <label className="block text-sm font-medium text-gray-700 mb-1">Numéro de contact *</label>
-        <input {...register('contactPhoneNumber')} placeholder="Ex: +225 01 23 45 67 89" className={`w-full px-4 py-2 border rounded-md ${errors.contactPhoneNumber ? 'border-red-500' : 'border-gray-300'}`} />
-        {errors.contactPhoneNumber && <p className="text-red-500 text-xs mt-1">{errors.contactPhoneNumber.message}</p>}
+        <label className="block text-sm font-medium text-gray-700 mb-1">
+          Numéro de contact *
+        </label>
+        <input
+          {...register("contactPhoneNumber")}
+          placeholder="Ex: +225 01 23 45 67 89"
+          className={`w-full px-4 py-2 border rounded-md ${
+            errors.contactPhoneNumber ? "border-red-500" : "border-gray-300"
+          }`}
+        />
+        {errors.contactPhoneNumber && (
+          <p className="text-red-500 text-xs mt-1">
+            {errors.contactPhoneNumber.message}
+          </p>
+        )}
       </div>
     </div>
   );
@@ -314,13 +524,31 @@ export default function ConsulaireCardForm() {
   if (showSuccess) {
     return (
       <div className="max-w-2xl mx-auto p-8 bg-white rounded-lg shadow-xl flex flex-col items-center justify-center mt-16">
-        <svg className="w-16 h-16 text-green-500 mb-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+        <svg
+          className="w-16 h-16 text-green-500 mb-4"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M5 13l4 4L19 7"
+          />
         </svg>
-        <h2 className="text-2xl font-bold text-green-700 mb-2">Demande envoyée avec succès !</h2>
-        <p className="text-gray-700 mb-4">Vous allez être redirigé vers vos demandes dans {successCountdown} seconde{successCountdown > 1 ? 's' : ''}...</p>
+        <h2 className="text-2xl font-bold text-green-700 mb-2">
+          Demande envoyée avec succès !
+        </h2>
+        <p className="text-gray-700 mb-4">
+          Vous allez être redirigé vers vos demandes dans {successCountdown}{" "}
+          seconde{successCountdown > 1 ? "s" : ""}...
+        </p>
         <div className="w-full h-2 bg-green-100 rounded-full overflow-hidden mb-2">
-          <div className="h-2 bg-green-500 transition-all duration-1000" style={{ width: `${(successCountdown/5)*100}%` }}></div>
+          <div
+            className="h-2 bg-green-500 transition-all duration-1000"
+            style={{ width: `${(successCountdown / 5) * 100}%` }}
+          ></div>
         </div>
       </div>
     );
@@ -328,7 +556,9 @@ export default function ConsulaireCardForm() {
 
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-xl">
-      <h1 className="text-3xl font-bold text-center mb-6 text-gray-900">Formulaire de demande de Carte Consulaire</h1>
+      <h1 className="text-3xl font-bold text-center mb-6 text-gray-900">
+        Formulaire de demande de Carte Consulaire
+      </h1>
       <div className="mb-6">
         <div className="flex items-center">
           {[...Array(totalSteps)].map((_, i) => (
@@ -336,10 +566,10 @@ export default function ConsulaireCardForm() {
               <div
                 className={`flex items-center justify-center w-8 h-8 rounded-full ${
                   currentStep > i + 1
-                    ? 'bg-green-500 text-white'
+                    ? "bg-green-500 text-white"
                     : currentStep === i + 1
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-gray-200 text-gray-700'
+                    ? "bg-blue-600 text-white"
+                    : "bg-gray-200 text-gray-700"
                 }`}
               >
                 {i + 1}
@@ -347,7 +577,7 @@ export default function ConsulaireCardForm() {
               {i < totalSteps - 1 && (
                 <div
                   className={`flex-1 h-1 mx-2 ${
-                    currentStep > i + 1 ? 'bg-green-500' : 'bg-gray-200'
+                    currentStep > i + 1 ? "bg-green-500" : "bg-gray-200"
                   }`}
                 />
               )}
@@ -383,7 +613,7 @@ export default function ConsulaireCardForm() {
               disabled={isSubmitting}
               className="px-4 py-2 bg-orange-600 text-white rounded-md hover:bg-blue-600 disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              {isSubmitting ? 'Envoi en cours...' : 'Soumettre la demande'}
+              {isSubmitting ? "Envoi en cours..." : "Soumettre la demande"}
             </button>
           )}
         </div>

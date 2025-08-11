@@ -11,7 +11,7 @@ export const VisaRequestDetailsSchema = z.object({
     .min(1, { message: 'Le nom est obligatoire.' })
     .max(255, { message: 'Le nom ne doit pas dépasser 255 caractères.' })
     .transform(value => value.trim()),
-  personGender: z.nativeEnum(Genre, { message: 'Le genre est invalide.' }),
+  personGender: z.enum(Genre, { message: 'Le genre est invalide.' }),
   personNationality: z.string({ message: 'La nationalité est obligatoire.' })
     .min(1, { message: 'La nationalité est obligatoire.' })
     .max(255, { message: 'La nationalité ne doit pas dépasser 255 caractères.' })
@@ -23,8 +23,8 @@ export const VisaRequestDetailsSchema = z.object({
     .min(1, { message: 'Le lieu de naissance est obligatoire.' })
     .max(255, { message: 'Le lieu de naissance ne doit pas dépasser 255 caractères.' })
     .transform(value => value.trim()),
-  personMaritalStatus: z.nativeEnum(SituationMatrimoniale, { message: 'Le statut matrimonial est invalide.' }),
-  passportType: z.nativeEnum(PassportType, { message: 'Le type de passeport est invalide.' }),
+  personMaritalStatus: z.enum(SituationMatrimoniale, { message: 'Le statut matrimonial est invalide.' }),
+  passportType: z.enum(PassportType, { message: 'Le type de passeport est invalide.' }),
   passportNumber: z.string({ message: 'Le numéro du passeport est obligatoire.' })
     .min(1, { message: 'Le numéro du passeport est obligatoire.' })
     .max(255, { message: 'Le numéro du passeport ne doit pas dépasser 255 caractères.' })
@@ -55,7 +55,7 @@ export const VisaRequestDetailsSchema = z.object({
   destinationState: z.string({ message: 'La ville de destination ne doit pas dépasser 255 caractères.' })
     .max(255, { message: 'La ville de destination ne doit pas dépasser 255 caractères.' })
     .optional(),
-  visaType: z.nativeEnum(VisaType, { message: 'Le type de visa est invalide.' }).optional(),
+  visaType: z.enum(VisaType, { message: 'Le type de visa est invalide.' }).optional(),
 });
 
 export type VisaRequestDetailsDto = z.infer<typeof VisaRequestDetailsSchema>;

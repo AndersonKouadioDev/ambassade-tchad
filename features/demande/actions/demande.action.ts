@@ -20,19 +20,6 @@ export async function createDemandRequestAction(formData: FormData): Promise<Act
 
 }
 
-export async function getAllFilteredDemandRequestsAction(params: IDemandeRechercheParams): Promise<ActionResponse<PaginatedResponse<IDemande>>> {
-    try {
-        const demandes = await demandeAPI.getAllFilteredDemandRequests(params);
-        return {
-            success: true,
-            data: demandes,
-            message: "Demandes récupérées avec succès.",
-        };
-    } catch (error) {
-        return handleServerActionError(error, "Erreur lors de la récupération des demandes.");
-    }
-}
-
 export async function getMyRequestsAction(params: Omit<IDemandeRechercheParams, 'userId'>): Promise<ActionResponse<PaginatedResponse<IDemande>>> {
     try {
         const demandes = await demandeAPI.getMyRequests(params);

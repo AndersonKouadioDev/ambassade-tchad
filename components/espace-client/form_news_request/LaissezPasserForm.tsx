@@ -1,3 +1,4 @@
+"use client"
 import {useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -24,7 +25,7 @@ export const laissezPasserRequestDetailsSchema = z.object({
   destination: z.string().min(1, "La destination est requise"),
   travelReason: z.string().min(1, "Le motif du voyage est requis"),
   accompanied: z.boolean().default(false),
-  justificationDocumentType: z.nativeEnum(JustificationDocumentType).optional(),
+  justificationDocumentType: z.enum(JustificationDocumentType).optional(),
   justificationDocumentNumber: z.string().optional(),
   contactPhoneNumber: z.string().min(1, "Le numéro de contact est requis")
     .regex(/^\+?[0-9\s\-]+$/, "Numéro de téléphone invalide"),

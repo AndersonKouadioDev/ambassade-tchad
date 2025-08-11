@@ -4,7 +4,7 @@ import { Genre } from '../types/demande.type';
 import { ServiceType } from '../types/service.type';
 
 export const ActeNaissanceDetailsSchema = z.object({
-  serviceType: z.nativeEnum(ServiceType).default(ServiceType.BIRTH_ACT_APPLICATION).optional(),
+  serviceType: z.enum(ServiceType).default(ServiceType.BIRTH_ACT_APPLICATION).optional(),
   personFirstName: z.string({ message: "Le prénom est obligatoire." })
     .min(1, { message: "Le prénom est obligatoire." })
     .max(255, { message: "Le prénom ne doit pas dépasser 255 caractères." }),
@@ -29,8 +29,8 @@ export const ActeNaissanceDetailsSchema = z.object({
   motherFullName: z.string({ message: 'Le nom de la mère est obligatoire.' })
     .min(1, { message: 'Le nom de la mère est obligatoire.' })
     .max(255, { message: 'Le nom de la mère ne doit pas dépasser 255 caractères.' }),
-  requestType: z.nativeEnum(ActeNaissanceType, { message: 'Le type de demande est invalide.' }).optional(),
-  personGender: z.nativeEnum(Genre, { message: 'Le genre est invalide.' }).optional(),
+  requestType: z.enum(ActeNaissanceType, { message: 'Le type de demande est invalide.' }).optional(),
+  personGender: z.enum(Genre, { message: 'Le genre est invalide.' }).optional(),
 });
 
 export type ActeNaissanceDetailsDTO = z.infer<typeof ActeNaissanceDetailsSchema>;

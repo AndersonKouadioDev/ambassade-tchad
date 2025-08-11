@@ -3,7 +3,7 @@ import { PaysParentType } from '../types/certificat-nationalite.type';
 import { ServiceType } from '../types/service.type';
 
 export const CertificatNationaliteDetailsSchema = z.object({
-  serviceType: z.nativeEnum(ServiceType).default(ServiceType.NATIONALITY_CERTIFICATE).optional(),
+  // serviceType: z.enum(ServiceType, { message: 'Type de service invalide certificat nationalité.' }),
   applicantFirstName: z.string({ message: "Le prénom est obligatoire." })
     .min(1, { message: "Le prénom est obligatoire." })
     .max(255, { message: "Le prénom ne doit pas dépasser 255 caractères." }),
@@ -25,7 +25,19 @@ export const CertificatNationaliteDetailsSchema = z.object({
   originCountryParentLastName: z.string({ message: "Le nom du parent est obligatoire." })
     .min(1, { message: "Le nom du parent est obligatoire." })
     .max(255, { message: "Le nom du parent ne doit pas dépasser 255 caractères." }),
-  originCountryParentRelationship: z.nativeEnum(PaysParentType, { message: "le type de relation est invalide." })
+  originCountryParentRelationship: z.enum(PaysParentType, { message: "le type de relation est invalide." }),
+  contactPhoneNumber: z.string({ message: 'Le numéro de téléphone doit être une chaîne.' }).optional(),
+  documents: z
+    .array(
+      z
+        .instanceof(File)
+        .refine((file) => file.type.startsWith('image/'), {
+          message: "Seuls les fichiers image sont autorisés",
+        })
+        .refine((file) => file.size <= 10 * 1024 * 1024, {
+          message: "La taille de chaque image ne doit pas dépasser 10 Mo",
+        })
+    )
     .optional(),
 });
 

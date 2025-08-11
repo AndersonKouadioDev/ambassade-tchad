@@ -2,7 +2,7 @@ import { z } from 'zod';
 import { ServiceType } from '../types/service.type';
 
 export const DecesDetailsSchema = z.object({
-  serviceType: z.nativeEnum(ServiceType).default(ServiceType.DEATH_ACT_APPLICATION).optional(),
+  serviceType: z.enum(ServiceType).default(ServiceType.DEATH_ACT_APPLICATION).optional(),
   deceasedFirstName: z.string({ message: "Le prénom du défunt est obligatoire." })
     .min(1, { message: "Le prénom du défunt est obligatoire." })
     .max(255, { message: "Le prénom du défunt ne doit pas dépasser 255 caractères." }),

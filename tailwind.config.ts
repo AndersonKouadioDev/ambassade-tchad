@@ -1,6 +1,5 @@
 import { heroui } from "@heroui/theme";
 import type { Config } from "tailwindcss";
-import lineClamp from '@tailwindcss/line-clamp';
 import tailwindcssAnimate from "tailwindcss-animate";
 import aspectRatio from '@tailwindcss/aspect-ratio';
 
@@ -10,7 +9,7 @@ const config: Config = {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./feature/**/*.{js,ts,jsx,tsx,mdx}",
+    "./features/**/*.{js,ts,jsx,tsx,mdx}",
     "./node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {

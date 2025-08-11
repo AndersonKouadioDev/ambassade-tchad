@@ -9,8 +9,6 @@ export enum PassportType {
 export enum VisaType {
     SHORT_STAY = 'SHORT_STAY',
     LONG_STAY = 'LONG_STAY',
-    TRANSIT = 'TRANSIT',
-    OTHER = 'OTHER'
 }
 
 export interface IVisaDetails {

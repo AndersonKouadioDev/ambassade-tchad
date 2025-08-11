@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import { useVisaRequestCreateMutation } from "@/features/demande/queries/demande.mutation";
-import { ImageDragDrop, ImageFile } from "@/components/block/image-drap-drop";
 import { useRouter } from "@/i18n/navigation";
 import {
   DemandeCreateDTO,

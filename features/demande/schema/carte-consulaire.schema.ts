@@ -4,7 +4,7 @@ import { ServiceType } from '../types/service.type';
 
 
 export const CarteConsulaireDetailsSchema = z.object({
-  serviceType: z.nativeEnum(ServiceType).default(ServiceType.CONSULAR_CARD).optional(),
+  serviceType: z.enum(ServiceType).default(ServiceType.CONSULAR_CARD).optional(),
   personFirstName: z.string({ message: 'Le prénom est obligatoire.' })
     .min(1, { message: 'Le prénom est obligatoire.' })
     .max(255, { message: 'Le prénom ne doit pas dépasser 255 caractères.' }),
@@ -34,7 +34,7 @@ export const CarteConsulaireDetailsSchema = z.object({
   motherFullName: z.string({ message: 'Le nom de la mère ne doit pas dépasser 255 caractères.' })
     .max(255, { message: 'Le nom de la mère ne doit pas dépasser 255 caractères.' })
     .optional(),
-  justificationDocumentType: z.nativeEnum(DocumentJustificationType, {
+  justificationDocumentType: z.enum(DocumentJustificationType, {
     message: 'Le type de document justificatif est invalide.',
   }).optional(),
   justificationDocumentNumber: z.string({ message: 'Le numéro du document ne doit pas dépasser 255 caractères.' })

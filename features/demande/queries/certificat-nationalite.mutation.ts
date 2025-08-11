@@ -6,38 +6,37 @@ import {
 } from '../actions/demande.action';
 import { useInvalidateDemandeQuery } from './index.query';
 import { toast } from "sonner";
-import { DemandeCreateDTO, DemandeCreateSchema } from '../schema/demande.schema';
 import { processAndValidateFormData } from 'ak-zod-form-kit';
+import { CertificatNationaliteDetailsDTO } from '../schema/certificat-nationalite.schema';
+import { DemandeCreateSchema } from '../schema/demande.schema';
 import { ServiceType } from '../types/service.type';
 
-export const useVisaRequestCreateMutation = () => {
+export const useCertificatNationaliteCreateMutation = () => {
     const invalidateDemandeQuery = useInvalidateDemandeQuery();
 
     return useMutation({
-        mutationFn: async ({ data, uploadedFiles }: { data: DemandeCreateDTO, uploadedFiles: ImageFile[] }) => {
-            if (!uploadedFiles || uploadedFiles.length === 0) {
-                throw new Error("Au moins un fichier justificatif est obligatoire.");
-            }
-            const files = uploadedFiles
-                .filter((file) => file.file !== undefined)
-                .map((file) => file.file);
+        mutationFn: async ({ data }: { data: CertificatNationaliteDetailsDTO }) => {
 
-            const createData = {
-                ...data,
-                serviceType: ServiceType.VISA,
-                documents: files
-            }
-            console.log({ createData });
+            const { contactPhoneNumber, documents, ...nationalityCertificateDetails } = data;
 
-            const result = processAndValidateFormData(DemandeCreateSchema, createData, {
+            const dataForSubmit = {
+                nationalityCertificateDetails,
+                // serviceType: ServiceType.NATIONALITY_CERTIFICATE,
+                contactPhoneNumber,
+                documents,
+            };
+
+            const result = processAndValidateFormData(DemandeCreateSchema, dataForSubmit, {
                 outputFormat: "formData"
             });
-
-            console.log({ result });
 
             if (!result.success) {
                 throw new Error(result.errorsInString || "Une erreur est survenue lors de la validation des données.");
             }
+            // Ajouter le type de service
+            (result.data as FormData).append("serviceType", ServiceType.NATIONALITY_CERTIFICATE);
+
+            // Envoyer les données au serveur
             const response = await createDemandRequestAction(result.data as FormData);
 
             if (!response.success) {
@@ -45,7 +44,6 @@ export const useVisaRequestCreateMutation = () => {
             }
 
             return response.data!;
-           
 
         },
         onSuccess: async () => {
@@ -53,9 +51,7 @@ export const useVisaRequestCreateMutation = () => {
             toast.success("Demande créée avec succès");
         },
         onError: async (error) => {
-            toast.error("Erreur lors de la création de la demande:", {
-                description: error.message,
-            });
+            alert(error.message);
         },
     });
 };

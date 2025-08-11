@@ -128,7 +128,7 @@ export default function AuthFormWide() {
               <p className="text-center text-gray-500 text-sm">
                 En utilisant ce service, vous acceptez nos{" "}
                 <a href="#" className="text-blue-600 hover:underline">
-                  conditions d&apos;utilisation
+                  conditions d'utilisation
                 </a>{" "}
                 et notre{" "}
                 <a href="#" className="text-blue-600 hover:underline">
