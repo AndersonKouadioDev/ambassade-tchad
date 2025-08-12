@@ -19,7 +19,6 @@ export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-
   useEffect(() => {
     if (status === "authenticated") {
       router.push("/espace-client/dashboard");
@@ -45,9 +44,15 @@ export default function LoginForm() {
   }
 
   return (
-    <form onSubmit={handleLogin} className="space-y-6 w-full max-w-md ml-0 px-4">
+    <form
+      onSubmit={handleLogin}
+      className="space-y-6 w-full max-w-md ml-0 px-4"
+    >
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+        <label
+          htmlFor="email"
+          className="block text-sm font-medium text-gray-700 mb-1"
+        >
           Adresse Email
         </label>
         <input
@@ -62,7 +67,10 @@ export default function LoginForm() {
       </div>
 
       <div>
-        <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+        <label
+          htmlFor="password"
+          className="block text-sm font-medium text-gray-700 mb-1"
+        >
           Mot de passe
         </label>
         <div className="relative">

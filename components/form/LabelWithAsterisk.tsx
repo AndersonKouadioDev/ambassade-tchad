@@ -12,7 +12,10 @@ export default function LabelWithAsterisk({
   htmlFor,
 }: LabelWithAsteriskProps) {
   return (
-    <label htmlFor={htmlFor} className="block text-sm font-medium text-gray-700">
+    <label
+      htmlFor={htmlFor}
+      className="block text-sm font-medium text-gray-700"
+    >
       {label}
       {required && <span className="text-red-500"> *</span>}
     </label>

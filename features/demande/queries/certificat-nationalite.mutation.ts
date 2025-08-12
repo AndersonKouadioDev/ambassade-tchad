@@ -51,7 +51,7 @@ export const useCertificatNationaliteCreateMutation = () => {
             toast.success("Demande créée avec succès");
         },
         onError: async (error) => {
-            alert(error.message);
+            toast.error(error.message);
         },
     });
 };

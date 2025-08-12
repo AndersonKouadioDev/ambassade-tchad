@@ -64,14 +64,24 @@ export default function FileUploadView({
                 Fichiers ({files.length})
               </h3>
               <div className="flex gap-2">
-                <Button variant="outline" size="sm" onClick={openFileDialog}>
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  onClick={openFileDialog}
+                >
                   <UploadIcon
                     className="-ms-0.5 size-3.5 opacity-60"
                     aria-hidden="true"
                   />
                   Ajouter des fichiers
                 </Button>
-                <Button variant="outline" size="sm" onClick={clearFiles}>
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  onClick={clearFiles}
+                >
                   <Trash2Icon
                     className="-ms-0.5 size-3.5 opacity-60"
                     aria-hidden="true"
@@ -122,7 +132,12 @@ export default function FileUploadView({
             <p className="text-muted-foreground text-xs">
               Max {maxFiles} fichiers ∙ Max {maxSizeMB}MB
             </p>
-            <Button variant="outline" className="mt-4" onClick={openFileDialog}>
+            <Button
+              type="button"
+              variant="outline"
+              className="mt-4"
+              onClick={openFileDialog}
+            >
               <UploadIcon className="-ms-1 opacity-60" aria-hidden="true" />
               Selectionner les fichiers
             </Button>

@@ -15,7 +15,7 @@ import { Providers } from "@/providers/providers";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import QueryProvider from "@/providers/query-provider";
 import getQueryClient from "@/lib/get-query-client";
-import { Toaster } from "@/components/ui/sonner"
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({
@@ -63,7 +63,6 @@ export default async function RootLayout({
   const langDir = rtlDetect.getLangDir(locale);
 
   const queryClient = getQueryClient();
-
   return (
     <html lang={locale} dir={langDir} suppressHydrationWarning>
       <body
@@ -78,7 +77,6 @@ export default async function RootLayout({
                     <ClientLayoutWrapper>
                       <Head />
                       {children}
-                      <Toaster />
                       <Footer />
                     </ClientLayoutWrapper>
                   </NextIntlClientProvider>
@@ -87,6 +85,7 @@ export default async function RootLayout({
             </QueryProvider>
           </Providers>
         </div>
+        <Toaster position="top-right" />
       </body>
     </html>
   );
