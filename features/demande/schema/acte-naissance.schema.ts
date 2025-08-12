@@ -4,7 +4,7 @@ import { Genre } from '../types/demande.type';
 import { ServiceType } from '../types/service.type';
 
 export const ActeNaissanceDetailsSchema = z.object({
-  serviceType: z.enum(ServiceType).default(ServiceType.BIRTH_ACT_APPLICATION).optional(),
+  // serviceType: z.enum(ServiceType).default(ServiceType.BIRTH_ACT_APPLICATION).optional(),
   personFirstName: z.string({ message: "Le prénom est obligatoire." })
     .min(1, { message: "Le prénom est obligatoire." })
     .max(255, { message: "Le prénom ne doit pas dépasser 255 caractères." }),

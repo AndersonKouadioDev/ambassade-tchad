@@ -1,4 +1,4 @@
-interface InputFieldProps {
+export interface InputFieldProps {
   label: string;
   placeholder?: string;
   value: string | undefined;

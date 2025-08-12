@@ -11,6 +11,7 @@ import VisaForm from "@/features/demande/components/demande-visa/visa-form/VisaF
 import { auth } from "@/lib/auth";
 import { AlertCircle, ArrowLeft } from "lucide-react";
 import { redirect } from "next/navigation";
+import ActeNaissanceForm from "@/features/demande/components/demande-acte-naissance-form";
 
 const requestTypes = {
   visa: {
@@ -33,7 +34,7 @@ const requestTypes = {
   "birth-act": {
     title: "Demande d'Acte de Naissance",
     description: "Remplissez ce formulaire pour demander un acte de naissance.",
-    component: BirthActForm,
+    component: ActeNaissanceForm,
     documents: [],
     processingTime: "3-7 jours",
   },
