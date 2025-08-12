@@ -31,6 +31,7 @@ export const ActeNaissanceDetailsSchema = z.object({
     .max(255, { message: 'Le nom de la mère ne doit pas dépasser 255 caractères.' }),
   requestType: z.enum(ActeNaissanceType, { message: 'Le type de demande est invalide.' }).optional(),
   personGender: z.enum(Genre, { message: 'Le genre est invalide.' }).optional(),
+  contactPhoneNumber: z.string({ message: 'Le numéro de téléphone doit être une chaîne.' })
 });
 
 export type ActeNaissanceDetailsDTO = z.infer<typeof ActeNaissanceDetailsSchema>;
