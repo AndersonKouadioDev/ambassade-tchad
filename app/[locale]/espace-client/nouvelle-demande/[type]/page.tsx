@@ -6,6 +6,7 @@ import DeathActForm from "@/components/espace-client/form_news_request/DeathActF
 import LaissezPasserForm from "@/components/espace-client/form_news_request/LaissezPasserForm";
 import MarriageCapacityActForm from "@/components/espace-client/form_news_request/MarriageCapacityActForm";
 import ProcurationForm from "@/components/espace-client/form_news_request/ProcurationForm";
+import CertificatDecesForm from "@/features/demande/components/demande-certificat-deces-form";
 import CertificatNationaliteForm from "@/features/demande/components/demande-certificat-nationnalite-form";
 import VisaForm from "@/features/demande/components/demande-visa/visa-form/VisaForm";
 import { auth } from "@/lib/auth";
@@ -63,8 +64,8 @@ const requestTypes = {
     title: "Demande d'Acte de Décès",
     description:
       "Demande d'acte de décès - Formulaire en cours de développement.",
-    component: DeathActForm,
-    documents: [],
+    component: CertificatDecesForm,
+    documents: ["copie de l'original de l'acte de naissance", "Livret de famille du defunt"],
     processingTime: "3-7 jours",
   },
   "power-of-attorney": {

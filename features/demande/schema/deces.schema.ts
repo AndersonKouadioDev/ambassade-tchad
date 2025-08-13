@@ -2,7 +2,7 @@ import { z } from 'zod';
 import { ServiceType } from '../types/service.type';
 
 export const DecesDetailsSchema = z.object({
-  serviceType: z.enum(ServiceType).default(ServiceType.DEATH_ACT_APPLICATION).optional(),
+  // serviceType: z.enum(ServiceType).default(ServiceType.DEATH_ACT_APPLICATION).optional(),
   deceasedFirstName: z.string({ message: "Le prénom du défunt est obligatoire." })
     .min(1, { message: "Le prénom du défunt est obligatoire." })
     .max(255, { message: "Le prénom du défunt ne doit pas dépasser 255 caractères." }),
@@ -18,6 +18,20 @@ export const DecesDetailsSchema = z.object({
   deceasedNationality: z.string({ message: "La nationalité du défunt est obligatoire." })
     .min(1, { message: "La nationalité du défunt est obligatoire." })
     .max(255, { message: "La nationalité du défunt ne doit pas dépasser 255 caractères." }),
+  contactPhoneNumber: z.string({ message: 'Le numéro de téléphone doit être une chaîne.' }).optional(),
+  documents: z
+    .array(
+      z
+        .instanceof(File)
+        .refine(
+          (file) => file.type.startsWith('image/') || file.type === 'application/pdf',
+          { message: "Seuls les fichiers image ou PDF sont autorisés" }
+        )
+        .refine((file) => file.size <= 10 * 1024 * 1024, {
+          message: "La taille de chaque image ne doit pas dépasser 10 Mo",
+        })
+    )
+    .optional(),
 });
 
 export type DecesDetailsDTO = z.infer<typeof DecesDetailsSchema>;
