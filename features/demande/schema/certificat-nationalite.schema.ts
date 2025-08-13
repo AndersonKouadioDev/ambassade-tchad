@@ -31,9 +31,10 @@ export const CertificatNationaliteDetailsSchema = z.object({
     .array(
       z
         .instanceof(File)
-        .refine((file) => file.type.startsWith('image/'), {
-          message: "Seuls les fichiers image sont autorisés",
-        })
+        .refine(
+          (file) => file.type.startsWith('image/') || file.type === 'application/pdf',
+          { message: "Seuls les fichiers image ou PDF sont autorisés" }
+        )
         .refine((file) => file.size <= 10 * 1024 * 1024, {
           message: "La taille de chaque image ne doit pas dépasser 10 Mo",
         })

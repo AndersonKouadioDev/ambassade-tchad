@@ -3,7 +3,7 @@ import { DocumentJustificationType } from '../types/carte-consulaire.type';
 import { ServiceType } from '../types/service.type';
 
 export const ProcurationDetailsSchema = z.object({
-  serviceType: z.enum(ServiceType).default(ServiceType.POWER_OF_ATTORNEY).optional(),
+  // serviceType: z.enum(ServiceType).default(ServiceType.POWER_OF_ATTORNEY).optional(),
   agentFirstName: z.string({ message: "Le prénom de l'agent est obligatoire." })
     .min(1, { message: "Le prénom de l'agent est obligatoire." })
     .max(255, { message: "Le prénom de l'agent ne doit pas dépasser 255 caractères." }),
@@ -35,6 +35,20 @@ export const ProcurationDetailsSchema = z.object({
     .optional(),
   reason: z.string({ message: "La raison de la procuration ne doit pas dépasser 255 caractères." })
     .max(255, { message: "La raison de la procuration ne doit pas dépasser 255 caractères." })
+    .optional(),
+  contactPhoneNumber: z.string({ message: 'Le numéro de téléphone doit être une chaîne.' }).optional(),
+  documents: z
+    .array(
+      z
+        .instanceof(File)
+        .refine(
+          (file) => file.type.startsWith('image/') || file.type === 'application/pdf',
+          { message: "Seuls les fichiers image ou PDF sont autorisés" }
+        )
+        .refine((file) => file.size <= 10 * 1024 * 1024, {
+          message: "La taille de chaque fichier ne doit pas dépasser 10 Mo",
+        })
+    )
     .optional(),
 });
 

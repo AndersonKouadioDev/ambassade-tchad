@@ -4,12 +4,13 @@ export enum PassportType {
     ORDINARY = 'ORDINARY',
     SERVICE = 'SERVICE',
     DIPLOMATIC = 'DIPLOMATIC'
-}
-
-export enum VisaType {
+  }
+  
+  export enum VisaType {
     SHORT_STAY = 'SHORT_STAY',
     LONG_STAY = 'LONG_STAY',
-}
+  }
+  
 
 export interface IVisaDetails {
     id: string;

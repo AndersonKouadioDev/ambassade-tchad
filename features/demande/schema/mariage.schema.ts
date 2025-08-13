@@ -2,7 +2,7 @@ import { z } from 'zod';
 import { ServiceType } from '../types/service.type';
 
 export const MariageDetailsSchema = z.object({
-  serviceType: z.enum(ServiceType).default(ServiceType.MARRIAGE_CAPACITY_ACT).optional(),
+  // serviceType: z.enum(ServiceType).default(ServiceType.MARRIAGE_CAPACITY_ACT).optional(),
   husbandFirstName: z.string({ message: "Le prénom de l'époux est obligatoire." })
     .min(1, { message: "Le prénom de l'époux est obligatoire." })
     .max(255, { message: "Le prénom de l'époux ne doit pas dépasser 255 caractères." }),
@@ -38,6 +38,20 @@ export const MariageDetailsSchema = z.object({
     .max(255, { message: "La nationalité de l'épouse ne doit pas dépasser 255 caractères." }),
   wifeDomicile: z.string({ message: "Le domicile de l'épouse ne doit pas dépasser 255 caractères." })
     .max(255, { message: "Le domicile de l'épouse ne doit pas dépasser 255 caractères." })
+    .optional(),
+  contactPhoneNumber: z.string({ message: 'Le numéro de téléphone doit être une chaîne.' }).optional(),
+  documents: z
+    .array(
+      z
+        .instanceof(File)
+        .refine(
+          (file) => file.type.startsWith('image/') || file.type === 'application/pdf',
+          { message: "Seuls les fichiers image ou PDF sont autorisés" }
+        )
+        .refine((file) => file.size <= 10 * 1024 * 1024, {
+          message: "La taille de chaque fichier ne doit pas dépasser 10 Mo",
+        })
+    )
     .optional(),
 });
 

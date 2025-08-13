@@ -1,9 +1,11 @@
 import { z } from 'zod';
 import { Genre, SituationMatrimoniale } from '../types/demande.type';
 import { PassportType, VisaType } from '../types/visa.type';
+import { ServiceType } from '../types/service.type';
 
 
 export const VisaRequestDetailsSchema = z.object({
+  // serviceType: z.enum(ServiceType, { message: 'Type de service invalide certificat nationalité.' }),
   personFirstName: z.string({ message: 'Le prénom est obligatoire.' })
     .min(1, { message: 'Le prénom est obligatoire.' })
     .max(255, { message: 'Le prénom ne doit pas dépasser 255 caractères.' }),
@@ -56,6 +58,20 @@ export const VisaRequestDetailsSchema = z.object({
     .max(255, { message: 'La ville de destination ne doit pas dépasser 255 caractères.' })
     .optional(),
   visaType: z.enum(VisaType, { message: 'Le type de visa est invalide.' }).optional(),
+  contactPhoneNumber: z.string({ message: 'Le numéro de téléphone doit être une chaîne.' }).optional(),
+  documents: z
+    .array(
+      z
+        .instanceof(File)
+        .refine(
+          (file) => file.type.startsWith('image/') || file.type === 'application/pdf',
+          { message: "Seuls les fichiers image ou PDF sont autorisés" }
+        )
+        .refine((file) => file.size <= 10 * 1024 * 1024, {
+          message: "La taille de chaque fichier ne doit pas dépasser 10 Mo",
+        })
+    )
+    .optional(),
 });
 
-export type VisaRequestDetailsDto = z.infer<typeof VisaRequestDetailsSchema>;
+export type VisaRequestDetailsDTO = z.infer<typeof VisaRequestDetailsSchema>;

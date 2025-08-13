@@ -10,24 +10,6 @@ import { marriageCapacityApi } from '@/lib/api-client';
 import { Service } from '@/types/request.types';
 import Image from 'next/image';
 
-const marriageCapacitySchema = z.object({
-  husbandFirstName: z.string().min(1, 'Le prénom de l’époux est requis'),
-  husbandLastName: z.string().min(1, 'Le nom de l’époux est requis'),
-  husbandBirthDate: z.string().min(1, 'La date de naissance de l’époux est requise').refine(val => !isNaN(new Date(val).getTime()), { message: 'Date invalide' }),
-  husbandBirthPlace: z.string().min(1, 'Le lieu de naissance de l’époux est requis'),
-  husbandNationality: z.string().min(1, 'La nationalité de l’époux est requise'),
-  husbandDomicile: z.string().optional(),
-  wifeFirstName: z.string().min(1, 'Le prénom de l’épouse est requis'),
-  wifeLastName: z.string().min(1, 'Le nom de l’épouse est requis'),
-  wifeBirthDate: z.string().min(1, 'La date de naissance de l’épouse est requise').refine(val => !isNaN(new Date(val).getTime()), { message: 'Date invalide' }),
-  wifeBirthPlace: z.string().min(1, 'Le lieu de naissance de l’épouse est requis'),
-  wifeNationality: z.string().min(1, 'La nationalité de l’épouse est requise'),
-  wifeDomicile: z.string().optional(),
-  contactPhoneNumber: z.string().min(1, 'Le numéro de contact est requis').regex(/^\+?[0-9\s\-]+$/, 'Numéro de téléphone invalide'),
-  justificativeFile: z.any().optional(),
-});
-
-type MarriageCapacityFormInput = z.infer<typeof marriageCapacitySchema>;
 
 export default function MarriageCapacityActForm() {
   const { register, handleSubmit, formState: { errors }, trigger, reset, setValue } = useForm<MarriageCapacityFormInput>({

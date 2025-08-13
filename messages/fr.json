@@ -74,8 +74,8 @@
         "description": "Délivrance d'acte de décès"
       },
       "marriageCapacity": {
-        "title": "Certificat de capacité matrimoniale",
-        "description": "Délivrance de certificat de capacité matrimoniale"
+        "title": "Certificat de capacité mariage",
+        "description": "Délivrance de certificat de capacité mariage"
       },
       "nationality": {
         "title": "Certificat de nationalité",
@@ -200,8 +200,8 @@
         "description": "Délivrance d'acte de décès"
       },
       "marriageCapacity": {
-        "title": "Certificat de capacité matrimoniale",
-        "description": "Délivrance de certificat de capacité matrimoniale"
+        "title": "Certificat de capacité mariage",
+        "description": "Délivrance de certificat de capacité mariage"
       },
       "nationality": {
         "title": "Certificat de nationalité",
@@ -800,8 +800,8 @@
           "route": "/espace-client/nouvelle-demande/laissez-passer"
         },
         "marriage-capacity": {
-          "label": "Certificat de capacité matrimoniale",
-          "description": "Demander un certificat de capacité matrimoniale",
+          "label": "Certificat de capacité mariage",
+          "description": "Demander un certificat de capacité mariage",
           "route": "/espace-client/nouvelle-demande/marriage-capacity"
         },
         "death-act": {
@@ -855,7 +855,7 @@
       "certificatNationalite": "Certificat de Nationalité",
       "acteNaissance": "Acte de naissance",
       "acteDeces": "Acte de décès",
-      "capaciteMariage": "Certificat de capacité matrimoniale"
+      "capaciteMariage": "Certificat de capacité mariage"
     },
     "formFields": {
       "personFirstName": "Prénom",
@@ -1066,8 +1066,8 @@
           "color": "gray"
         },
         "marriageCapacity": {
-          "title": "Certificat de capacité matrimoniale",
-          "description": "Délivrance de certificat de capacité matrimoniale",
+          "title": "Certificat de capacité mariage",
+          "description": "Délivrance de certificat de capacité mariage",
           "icon": "💒",
           "color": "yellow"
         },

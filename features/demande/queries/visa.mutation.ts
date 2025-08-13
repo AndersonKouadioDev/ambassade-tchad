@@ -7,19 +7,20 @@ import {
 import { useInvalidateDemandeQuery } from './index.query';
 import { toast } from "sonner";
 import { processAndValidateFormData } from 'ak-zod-form-kit';
-import { CertificatNationaliteDetailsDTO } from '../schema/certificat-nationalite.schema';
 import { DemandeCreateSchema } from '../schema/demande.schema';
 import { ServiceType } from '../types/service.type';
+import { VisaRequestDetailsDTO } from '../schema/visa.schema';
 
-export const useCertificatNationaliteCreateMutation = () => {
+export const useVisaCreateMutation = () => {
     const invalidateDemandeQuery = useInvalidateDemandeQuery();
 
     return useMutation({
-        mutationFn: async ({ data }: { data: CertificatNationaliteDetailsDTO }) => {
+        mutationFn: async ({ data }: { data: VisaRequestDetailsDTO }) => {
 
-            const { contactPhoneNumber, documents, ...nationalityCertificateDetails } = data;
+            const { contactPhoneNumber, documents, ...visaDetails } = data;
+
             const dataForSubmit = {
-                nationalityCertificateDetails: JSON.stringify(nationalityCertificateDetails),
+                visaDetails: JSON.stringify(visaDetails),
                 // serviceType: ServiceType.NATIONALITY_CERTIFICATE,
                 contactPhoneNumber,
                 documents,
@@ -33,7 +34,7 @@ export const useCertificatNationaliteCreateMutation = () => {
                 throw new Error(result.errorsInString || "Une erreur est survenue lors de la validation des données.");
             }
             // Ajouter le type de service
-            (result.data as FormData).append("serviceType", ServiceType.NATIONALITY_CERTIFICATE);
+            (result.data as FormData).append("serviceType", ServiceType.VISA);
 
             // Envoyer les données au serveur
             const response = await createDemandRequestAction(result.data as FormData);

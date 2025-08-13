@@ -35,8 +35,8 @@ const serviceTypes = [
   },
   {
     id: 'marriage-capacity',
-    title: 'Certificat de capacité matrimoniale',
-    description: 'Demande de certificat de capacité matrimoniale',
+    title: 'Certificat de capacité mariage',
+    description: 'Demande de certificat de capacité mariage',
     href: '/espace-client/nouvelle-demande/marriage-capacity',
     features: ['Mariage civil', 'Mariage religieux', 'Justificatif de célibat']
   },

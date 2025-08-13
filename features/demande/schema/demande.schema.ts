@@ -13,14 +13,14 @@ import { ServiceType } from '../types/service.type';
 
 export const DemandeCreateSchema = z.object({
   // serviceType: z.enum(ServiceType, { message: 'Type de service invalide demande.' }),
-  visaDetails: VisaRequestDetailsSchema.optional(),
+  visaDetails: z.string().optional(),
   birthActDetails: ActeNaissanceDetailsSchema.optional(),
   consularCardDetails: CarteConsulaireDetailsSchema.optional(),
   laissezPasserDetails: LaissezPasserDetailsSchema.optional(),
-  marriageCapacityActDetails: MariageDetailsSchema.optional(),
+  marriageCapacityActDetails: z.string().optional(),
   deathActDetails: DecesDetailsSchema.optional(),
-  powerOfAttorneyDetails: ProcurationDetailsSchema.optional(),
-  nationalityCertificateDetails: CertificatNationaliteDetailsSchema.optional(),
+  powerOfAttorneyDetails: z.string().optional(),
+  nationalityCertificateDetails: z.string().optional(),
 
   contactPhoneNumber: z.string({ message: 'Le numéro de téléphone doit être une chaîne.' }).optional(),
 
@@ -28,11 +28,12 @@ export const DemandeCreateSchema = z.object({
     .array(
       z
         .instanceof(File)
-        .refine((file) => file.type.startsWith('image/'), {
-          message: "Seuls les fichiers image sont autorisés",
-        })
+        .refine(
+          (file) => file.type.startsWith('image/') || file.type === 'application/pdf',
+          { message: "Seuls les fichiers image ou PDF sont autorisés" }
+        )
         .refine((file) => file.size <= 10 * 1024 * 1024, {
-          message: "La taille de chaque image ne doit pas dépasser 10 Mo",
+          message: "La taille de chaque fichier ne doit pas dépasser 10 Mo",
         })
     )
     .optional(),
