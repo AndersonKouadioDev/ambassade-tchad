@@ -4,6 +4,7 @@ import CertificatNationaliteForm from "@/features/demande/components/certificat-
 import MarriageCapacityActForm from "@/features/demande/components/mariage/mariage-form";
 import ProcurationForm from "@/features/demande/components/procuration/procuration-form";
 import VisaForm from "@/features/demande/components/visa/visa-form";
+import CertificatDecesForm from "@/features/demande/components/demande-certificat-deces-form";
 
 export const tousTypeDemandes = {
     visa: {
@@ -47,14 +48,15 @@ export const tousTypeDemandes = {
         documents: ["Photo d'identité récente"],
         processingTime: "5-10 jours",
     },
-    // "death-act": {
-    //     title: "Demande d'Acte de Décès",
-    //     description:
-    //         "Demande d'acte de décès - Formulaire en cours de développement.",
-    //     component: DeathActForm,
-    //     documents: [],
-    //     processingTime: "3-7 jours",
-    // },
+    "death-act": {
+        title: "Demande d'Acte de Décès",
+        description:
+            "Demande d'acte de décès - Formulaire en cours de développement.",
+        component: CertificatDecesForm,
+        documents: ["Photo d'identité récente",
+            "Justificatif de ressources financières"],
+        processingTime: "3-7 jours",
+    },
     "power-of-attorney": {
         title: "Demande de Procuration",
         description: "Remplissez ce formulaire pour demander une procuration.",
