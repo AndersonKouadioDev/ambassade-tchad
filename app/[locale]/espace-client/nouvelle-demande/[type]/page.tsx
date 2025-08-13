@@ -1,13 +1,11 @@
 import ComingSoonForm from "@/components/espace-client/ComingSoonForm";
 import BirthActForm from "@/components/espace-client/form_news_request/BirthActForm";
-// import CertificatNationaliteForm from "@/components/espace-client/form_news_request/CertificatNationaliteForm";
 import ConsulaireCardForm from "@/components/espace-client/form_news_request/ConsulaireCardForm";
-import DeathActForm from "@/components/espace-client/form_news_request/DeathActForm";
-import LaissezPasserForm from "@/components/espace-client/form_news_request/LaissezPasserForm";
 import MarriageCapacityActForm from "@/components/espace-client/form_news_request/MarriageCapacityActForm";
-import ProcurationForm from "@/components/espace-client/form_news_request/ProcurationForm";
+import ProcurationForm from "@/components/procuration/procuration";
 import CertificatDecesForm from "@/features/demande/components/demande-certificat-deces-form";
 import CertificatNationaliteForm from "@/features/demande/components/demande-certificat-nationnalite-form";
+import LaisserPasserForm from "@/features/demande/components/demande-laisser-passer-form";
 import VisaForm from "@/features/demande/components/demande-visa/visa-form/VisaForm";
 import { auth } from "@/lib/auth";
 import { AlertCircle, ArrowLeft } from "lucide-react";
@@ -48,8 +46,14 @@ const requestTypes = {
   "laissez-passer": {
     title: "Demande de Laissez-passer",
     description: "Remplissez ce formulaire pour demander un laissez-passer.",
-    component: LaissezPasserForm,
-    documents: [],
+    component: LaisserPasserForm,
+    documents: [
+      "Passeport valide (minimum 6 mois de validité)",
+      "Photo d'identité récente",
+      "Justificatif de ressources financières",
+      "Réservation d'hôtel ou invitation",
+      "Billet d'avion aller-retour",
+    ],
     processingTime: "2-5 jours",
   },
   "marriage-capacity": {

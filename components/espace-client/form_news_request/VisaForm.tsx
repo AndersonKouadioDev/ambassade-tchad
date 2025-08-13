@@ -77,7 +77,7 @@ export default function VisaForm({
       try {
         const res = await fetch(
           `${
-            process.env.NEXT_PUBLIC_API_BACKEND_URL || "http://localhost:8081/api/v1"
+            process.env.NEXT_PUBLIC_API_URL || "http://localhost:8081/api/v1"
           }/demandes/services`
         );
         const data = await res.json();
@@ -88,6 +88,7 @@ export default function VisaForm({
           : null;
         setPrixBase(service ? service.defaultPrice : null);
       } catch (error) {
+        console.log(error);
         setPrixBase(null);
       }
     }
@@ -102,7 +103,7 @@ export default function VisaForm({
     trigger,
     watch,
   } = useForm<VisaRequestDetails>({
-    resolver: zodResolver(visaRequestDetailsSchema) as any,
+    resolver: zodResolver(visaRequestDetailsSchema),
     mode: "onBlur",
     defaultValues: {
       requestId: "", // Sera généré côté client
@@ -234,7 +235,7 @@ export default function VisaForm({
 
     try {
       // Récupérer le token de session NextAuth
-      const token = (session?.user as any)?.token;
+      const token = (session?.user)?.token;
 
       if (!token) {
         onError?.("Session non valide. Veuillez vous reconnecter.");

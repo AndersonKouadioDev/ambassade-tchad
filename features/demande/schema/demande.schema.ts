@@ -16,7 +16,7 @@ export const DemandeCreateSchema = z.object({
   visaDetails: VisaRequestDetailsSchema.optional(),
   birthActDetails: ActeNaissanceDetailsSchema.optional(),
   consularCardDetails: CarteConsulaireDetailsSchema.optional(),
-  laissezPasserDetails: LaissezPasserDetailsSchema.optional(),
+  laissezPasserDetails: z.string().optional(),
   marriageCapacityActDetails: MariageDetailsSchema.optional(),
   deathActDetails: DecesDetailsSchema.optional(),
   powerOfAttorneyDetails: ProcurationDetailsSchema.optional(),

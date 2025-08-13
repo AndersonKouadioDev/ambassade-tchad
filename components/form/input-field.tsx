@@ -1,11 +1,13 @@
 interface InputFieldProps {
   label: string;
-  placeholder?: string;
   value: string | undefined;
-  onChange: (value: string | undefined) => void;
-  onBlur: () => void;
+  onChange: (value: string) => void;
+  onBlur?: React.FocusEventHandler<HTMLInputElement>;
+  placeholder?: string;
+  type?: React.HTMLInputTypeAttribute;
   errors?: string;
-  type?: string;
+  required?: boolean;
+  className?: string;
 }
 
 export function InputField({
@@ -16,6 +18,7 @@ export function InputField({
   onBlur,
   errors = undefined,
   type = "text",
+  required = false,
 }: InputFieldProps) {
   return (
     <div>
@@ -27,10 +30,10 @@ export function InputField({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         onBlur={onBlur}
+        required={required}
         placeholder={placeholder}
-        className={`w-full px-4 py-2 border rounded-md ${
-          errors ? "border-red-500" : "border-gray-300"
-        }`}
+        className={`w-full px-4 py-2 border rounded-md ${errors ? "border-red-500" : "border-gray-300"
+          }`}
       />
       {errors && <p className="text-red-500 text-xs mt-1">{errors}</p>}
     </div>

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import {useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -25,7 +25,7 @@ export const laissezPasserRequestDetailsSchema = z.object({
   destination: z.string().min(1, "La destination est requise"),
   travelReason: z.string().min(1, "Le motif du voyage est requis"),
   accompanied: z.boolean().default(false),
-  justificationDocumentType: z.enum(JustificationDocumentType).optional(),
+  justificationDocumentType: z.nativeEnum(JustificationDocumentType).optional(),
   justificationDocumentNumber: z.string().optional(),
   contactPhoneNumber: z.string().min(1, "Le numéro de contact est requis")
     .regex(/^\+?[0-9\s\-]+$/, "Numéro de téléphone invalide"),
@@ -317,7 +317,7 @@ export default function LaissezPasserForm() {
   useEffect(() => {
     async function fetchPrice() {
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_BACKEND_URL || 'http://localhost:8081/api/v1'}/demandes/services`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8081/api/v1'}/demandes/services`);
         const data = await res.json();
         console.log('Réponse API services:', data);
         const service = Array.isArray(data) 
@@ -421,6 +421,7 @@ export default function LaissezPasserForm() {
         toast.error(response.error || "Erreur lors de l'envoi de la demande");
       }
     } catch (error) {
+      console.log(error);
       toast.error('Une erreur est survenue lors de la soumission');
     } finally {
       setIsSubmitting(false);
@@ -452,7 +453,7 @@ export default function LaissezPasserForm() {
     // Synchronise avec react-hook-form à chaque changement de fields
     useEffect(() => {
       setValue('accompaniers', fields);
-    }, [fields, setValue]);
+    }, [fields]);
 
     const handleChange = (idx: number, key: keyof typeof emptyAcc, value: string) => {
       const updated = fields.map((item, i) => i === idx ? { ...item, [key]: value } : item);
@@ -639,7 +640,7 @@ export default function LaissezPasserForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit as any)}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       {renderProgressBar()}
       {currentStep === 1 && renderStep1()}
       {currentStep === 2 && renderStep2()}

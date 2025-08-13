@@ -1,5 +1,4 @@
-
-"use client"
+"use client";
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -66,7 +65,7 @@ export default function MarriageCapacityActForm() {
   useEffect(() => {
     async function fetchPrice() {
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_BACKEND_URL || 'http://localhost:8081/api/v1'}/demandes/services`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8081/api/v1'}/demandes/services`);
         const data = await res.json();
         const service = Array.isArray(data)
           ? (data as Service[]).find((s: Service) => s.type === 'MARRIAGE_CAPACITY_ACT')
@@ -75,6 +74,7 @@ export default function MarriageCapacityActForm() {
             : null;
         setPrixActe(service ? service.defaultPrice : null);
       } catch (error) {
+        console.log(error);
         setPrixActe(null);
       }
     }
@@ -96,7 +96,7 @@ export default function MarriageCapacityActForm() {
 
   const nextStep = async () => {
     const fieldsToValidate = getFieldsForStep(currentStep);
-    const isValidStep = await trigger(fieldsToValidate as any);
+    const isValidStep = await trigger(fieldsToValidate);
     if (isValidStep && currentStep < totalSteps) {
       setCurrentStep(currentStep + 1);
     } else if (!isValidStep) {
@@ -137,6 +137,7 @@ export default function MarriageCapacityActForm() {
         toast.error(response.error || "Erreur lors de l'envoi de la demande");
       }
     } catch (error) {
+      console.log(error);
       toast.error('Une erreur est survenue lors de la soumission');
     } finally {
       setIsSubmitting(false);

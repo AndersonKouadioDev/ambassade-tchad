@@ -29,7 +29,7 @@ export default function BirthActForm() {
   useEffect(() => {
     async function fetchPrice() {
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_BACKEND_URL || 'http://localhost:8081/api/v1'}/demandes/services`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8081/api/v1'}/demandes/services`);
         const data = await res.json();
         console.log('Réponse API services:', data);
         const services = Array.isArray(data) ? data : Array.isArray(data.data) ? data.data : [];
@@ -358,7 +358,7 @@ export default function BirthActForm() {
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white rounded-xl shadow-md">
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-gray-800 mb-2">Demande d'Acte de Naissance</h1>
+        <h1 className="text-2xl font-bold text-gray-800 mb-2">Demande d&apos;Acte de Naissance</h1>
         <div className="w-full bg-gray-200 rounded-full h-2.5">
           <div 
             className="bg-blue-600 h-2.5 rounded-full" 

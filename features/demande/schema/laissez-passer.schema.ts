@@ -15,7 +15,7 @@ export type AccompagnateurDTO = z.infer<typeof AccompagnateurSchema>;
 
 
 export const LaissezPasserDetailsSchema = z.object({
-  serviceType: z.enum(ServiceType).default(ServiceType.LAISSEZ_PASSER).optional(),
+  // serviceType: z.enum(ServiceType).default(ServiceType.LAISSEZ_PASSER).optional(),
   personFirstName: z.string({ message: "Le prénom du demandeur est obligatoire." })
     .min(1, "Le prénom du demandeur est obligatoire.")
     .max(255, "Le prénom du demandeur ne doit pas dépasser 255 caractères."),
@@ -55,6 +55,20 @@ export const LaissezPasserDetailsSchema = z.object({
   justificationDocumentNumber: z.string({ message: "Le numéro du document justificatif est obligatoire." })
     .min(1, "Le numéro du document justificatif est obligatoire.")
     .max(255, "Le numéro du document justificatif ne doit pas dépasser 255 caractères."),
+  contactPhoneNumber: z.string({ message: 'Le numéro de téléphone doit être une chaîne.' }).optional(),
+  documents: z
+  .array(
+    z
+      .instanceof(File)
+      .refine(
+        (file) => file.type.startsWith('image/') || file.type === 'application/pdf',
+        { message: "Seuls les fichiers image ou PDF sont autorisés" }
+      )
+      .refine((file) => file.size <= 10 * 1024 * 1024, {
+        message: "La taille de chaque image ne doit pas dépasser 10 Mo",
+      })
+  )
+  .optional(),
 });
 
 export type LaissezPasserDetailsDTO = z.infer<typeof LaissezPasserDetailsSchema>;

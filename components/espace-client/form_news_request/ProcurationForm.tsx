@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -12,12 +12,12 @@ import Image from 'next/image';
 const procurationSchema = z.object({
   principalFirstName: z.string().min(1, 'Le prénom du mandant est requis'),
   principalLastName: z.string().min(1, 'Le nom du mandant est requis'),
-  principalJustificationDocumentType: z.enum(JustificationDocumentType).optional(),
+  principalJustificationDocumentType: z.nativeEnum(JustificationDocumentType).optional(),
   principalIdDocumentNumber: z.string().optional(),
   principalAddress: z.string().optional(),
   agentFirstName: z.string().min(1, 'Le prénom du mandataire est requis'),
   agentLastName: z.string().min(1, 'Le nom du mandataire est requis'),
-  agentJustificationDocumentType: z.enum(JustificationDocumentType).optional(),
+  agentJustificationDocumentType: z.nativeEnum(JustificationDocumentType).optional(),
   agentIdDocumentNumber: z.string().optional(),
   agentAddress: z.string().optional(),
   powerOfType: z.string().optional(),
@@ -65,7 +65,7 @@ export default function ProcurationForm() {
   useEffect(() => {
     async function fetchPrice() {
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_BACKEND_URL || 'http://localhost:8081/api/v1'}/demandes/services`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8081/api/v1'}/demandes/services`);
         const data = await res.json();
         const service = Array.isArray(data)
           ? (data as Service[]).find((s: Service) => s.type === 'POWER_OF_ATTORNEY')
@@ -74,6 +74,7 @@ export default function ProcurationForm() {
             : null;
         setPrixActe(service ? service.defaultPrice : null);
       } catch (error) {
+        console.log(error);
         setPrixActe(null);
       }
     }
@@ -95,7 +96,7 @@ export default function ProcurationForm() {
 
   const nextStep = async () => {
     const fieldsToValidate = getFieldsForStep(currentStep);
-    const isValidStep = await trigger(fieldsToValidate as any);
+    const isValidStep = await trigger(fieldsToValidate);
     if (isValidStep && currentStep < totalSteps) {
       setCurrentStep(currentStep + 1);
     } else if (!isValidStep) {
@@ -130,8 +131,9 @@ export default function ProcurationForm() {
         setCurrentStep(1);
       } else {
         toast.error(response.error || "Erreur lors de l'envoi de la demande");
-      }
+      } 
     } catch (error) {
+      console.log(error);
       toast.error('Une erreur est survenue lors de la soumission');
     } finally {
       setIsSubmitting(false);

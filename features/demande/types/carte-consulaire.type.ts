@@ -28,3 +28,10 @@ export interface ICarteConsulaireDetails {
 
     request?: IDemande;
 }
+
+export const DocumentJustificationTypeLabels: Record<DocumentJustificationType, string> = {
+    [DocumentJustificationType.PASSPORT]: "Passeport",
+    [DocumentJustificationType.NATIONAL_ID_CARD]: "Carte d'identité",
+    [DocumentJustificationType.BIRTH_CERTIFICATE]: "Acte de naissance",
+    [DocumentJustificationType.OTHER]: "Autre",
+};

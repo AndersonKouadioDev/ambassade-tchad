@@ -10,6 +10,7 @@ import HistoriqueTraitement from '@/components/espace-client/HistoriqueTraitemen
 import StatusTimeline from '@/components/espace-client/StatusTimeline';
 import { apiClient } from '@/lib/api-client';
 import { BirthActRequestDetails, ConsularCardRequestDetails, DeathActRequestDetails, LaissezPasserFormInput, MarriageCapacityActRequestDetails, NationalityCertificateRequestDetails, PowerOfAttorneyRequestDetails, VisaRequestDetails } from "@/lib/validation/details-request.validation";
+import { getDemandByTicketAction } from "@/features/demande/actions/demande.action";
 
 interface Document {
   id: string;
@@ -51,37 +52,21 @@ export default function DemandeDetail() {
   const demandeId = params.demandeId as string;
   
   const [demande, setDemande] = useState<DemandeDetail | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    const fetchDemandeDetail = async () => {
-      setLoading(true);
-      setError(null);
+  // useEffect(() => {
+  //   const fetchDemandeDetail = async () => {
+  //     setLoading(true);
+  //     setError(null);
 
-      try {
-        // Appel API réel avec token et ticket
-        const token = session?.user?.token;
-        console.log('TOKEN UTILISÉ POUR API:', token);
-        const res = await apiClient.getRequestByTicket(demandeId, token);
-        if (!res.success || !res.data) throw new Error(res.error || 'Erreur lors du chargement de la demande');
-        setDemande(res.data);
-      } catch (e) {
-      if (e instanceof Error) {
-        setError(e.message);
-      } else {
-        setError('Erreur inconnue');
-      }
-    } finally {
-      setLoading(false);
-    }
-    };
+  //     use
+  //   }
+  //   };
 
-    if (demandeId) {
-      fetchDemandeDetail();
-    }
-  }, [demandeId, session?.user?.token]);
-
+  //   if (demandeId) {
+  //     fetchDemandeDetail();
+  //   }
+  // }, [demandeId, session?.user?.token]);
+  const {data: demandeDetail, isLoading: loading, error: error} =getDemandByTicketAction ();
   // Fonction pour traduire les types de service
   const translateServiceType = (serviceType: string) => {
     const translations: Record<string, string> = {
@@ -101,10 +86,16 @@ export default function DemandeDetail() {
   const translateStatus = (status: string) => {
     const translations: Record<string, string> = {
       'NEW': 'Nouveau',
-      'IN_PROGRESS': 'En cours',
-      'PENDING': 'En attente',
-      'COMPLETED': 'Terminé',
-      'READY_TO_PICKUP': 'Prêt à retirer',
+      'IN_REVIEW_DOCS': 'En cours de vérification de documents',
+      'PENDING_ADDITIONAL_INFO': 'En attente de renseignements supplémentaires',
+      'APPROVED_BY_AGENT': 'Approuvé par l\'agent',
+      'APPROVED_BY_CHEF': 'Approuvé par le chef',
+      'APPROVED_BY_CONSUL': 'Approuvé par le consul',
+      'READY_FOR_PICKUP': 'Prêt à retirer',
+      'DELIVERED': 'Retiré',
+      'ARCHIVED': 'Archivé',
+      'EXPIRED': 'Expiré',
+      'RENEWAL_REQUESTED': 'Renouvellement demandé',
       'REJECTED': 'Rejeté',
     };
     return translations[status] || status;
@@ -125,17 +116,31 @@ export default function DemandeDetail() {
     const allSteps = [
       { label: "Nouveau", done: false },
       { label: "En cours", done: false },
-      { label: "En attente", done: false },
-      { label: "Prêt à retirer", done: false },
-      { label: "Terminé", done: false },
+      {label: "En attente", done: false},
+      {label: "Approuvé par l'agent", done: false},
+      {label: "Approuvé par le chef", done: false},
+      {label: "Approuvé par le consul", done: false},
+      {label: "Prêt à retirer", done: false},
+      {label: "Retiré", done: false},
+      {label: "Archivé", done: false},
+      {label: "Expiré", done: false},
+      {label: "Renouvellement demandé", done: false},
+      {label: "Rejeté", done: false},
     ];
 
     const statusIndex = {
       'NEW': 0,
-      'IN_PROGRESS': 1,
-      'PENDING': 2,
-      'READY_TO_PICKUP': 3,
-      'COMPLETED': 4,
+      'IN_REVIEW_DOCS': 1,
+      'PENDING_ADDITIONAL_INFO': 2,
+      'APPROVED_BY_AGENT': 3,
+      'APPROVED_BY_CHEF': 4,
+      'APPROVED_BY_CONSUL': 5,
+      'READY_FOR_PICKUP': 6,
+      'DELIVERED': 7,
+      'ARCHIVED': 8,
+      'EXPIRED': 9,
+      'RENEWAL_REQUESTED': 10,
+      'REJECTED': 11,
     };
 
     const currentIndex = statusIndex[status as keyof typeof statusIndex] || 0;
