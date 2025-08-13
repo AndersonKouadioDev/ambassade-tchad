@@ -31,7 +31,20 @@ export const ActeNaissanceDetailsSchema = z.object({
     .max(255, { message: 'Le nom de la mère ne doit pas dépasser 255 caractères.' }),
   requestType: z.enum(ActeNaissanceType, { message: 'Le type de demande est invalide.' }).optional(),
   personGender: z.enum(Genre, { message: 'Le genre est invalide.' }).optional(),
-  contactPhoneNumber: z.string({ message: 'Le numéro de téléphone doit être une chaîne.' })
+  contactPhoneNumber: z.string({ message: 'Le numéro de téléphone doit être une chaîne.' }).optional(),
+  documents: z
+      .array(
+          z
+              .instanceof(File)
+              .refine(
+                  (file) => file.type.startsWith('image/') || file.type === 'application/pdf',
+                  { message: "Seuls les fichiers image ou PDF sont autorisés" }
+              )
+              .refine((file) => file.size <= 10 * 1024 * 1024, {
+                message: "La taille de chaque image ne doit pas dépasser 10 Mo",
+              })
+      )
+      .optional(),
 });
 
 export type ActeNaissanceDetailsDTO = z.infer<typeof ActeNaissanceDetailsSchema>;

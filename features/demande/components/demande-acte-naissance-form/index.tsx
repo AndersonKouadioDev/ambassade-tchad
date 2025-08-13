@@ -154,7 +154,7 @@ function ActeNaissanceForm() {
     };
 
     type FieldStep = {
-        name: keyof ActeNaissanceDetailsDTO;
+        name: keyof Omit<ActeNaissanceDetailsDTO, 'documents'>;
         label: string;
         type: string;
         placeholder?: string;

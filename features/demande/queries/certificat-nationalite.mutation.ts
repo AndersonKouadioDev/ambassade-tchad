@@ -21,7 +21,6 @@ export const useCertificatNationaliteCreateMutation = () => {
 
             const dataForSubmit = {
                 nationalityCertificateDetails,
-                // serviceType: ServiceType.NATIONALITY_CERTIFICATE,
                 contactPhoneNumber,
                 documents,
             };

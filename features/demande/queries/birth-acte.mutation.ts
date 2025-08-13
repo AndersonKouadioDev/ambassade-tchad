@@ -12,10 +12,10 @@ export const useActeNaissanceCreateMutation = () => {
 
     return useMutation({
         mutationFn: async ({ data }: { data: ActeNaissanceDetailsDTO }) => {
-            const { contactPhoneNumber, documents, ...birthActeDetails } = data;
+            const { contactPhoneNumber, documents, ...birthActDetails } = data;
 
             const dataForSubmit = {
-                birthActeDetails,
+                birthActDetails,
                 contactPhoneNumber,
                 documents,
             }
@@ -33,6 +33,8 @@ export const useActeNaissanceCreateMutation = () => {
 
             // Envoyer les données au serveur
             const response = await createDemandRequestAction(result.data as FormData);
+
+            console.log(response);
 
             if (!response.success) {
                 throw new Error(response.error!);

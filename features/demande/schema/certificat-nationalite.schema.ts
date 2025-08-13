@@ -26,14 +26,15 @@ export const CertificatNationaliteDetailsSchema = z.object({
     .min(1, { message: "Le nom du parent est obligatoire." })
     .max(255, { message: "Le nom du parent ne doit pas dépasser 255 caractères." }),
   originCountryParentRelationship: z.enum(PaysParentType, { message: "le type de relation est invalide." }),
-  contactPhoneNumber: z.string({ message: 'Le numéro de téléphone doit être une chaîne.' }).optional(),
+  contactPhoneNumber: z.string({ message: 'Le numéro de téléphone doit être une chaîne.' }).optional(), //TODO: Cette ligne la est dupliquée dans DemandeCreateSchema, il faut la supprimer de là
   documents: z
     .array(
       z
         .instanceof(File)
-        .refine((file) => file.type.startsWith('image/'), {
-          message: "Seuls les fichiers image sont autorisés",
-        })
+        .refine(
+          (file) => file.type.startsWith('image/') || file.type === 'application/pdf',
+          { message: "Seuls les fichiers image ou PDF sont autorisés" }
+        )
         .refine((file) => file.size <= 10 * 1024 * 1024, {
           message: "La taille de chaque image ne doit pas dépasser 10 Mo",
         })
