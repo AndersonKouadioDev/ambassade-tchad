@@ -1,11 +1,11 @@
-import {useInvalidateDemandeQuery} from "@/features/demande/queries/index.query";
-import {useMutation} from "@tanstack/react-query";
-import {processAndValidateFormData} from "ak-zod-form-kit";
-import {DemandeCreateSchema} from "@/features/demande/schema/demande.schema";
-import {ServiceType} from "@/features/demande/types/service.type";
-import {createDemandRequestAction} from "@/features/demande/actions/demande.action";
-import {toast} from "sonner";
-import {CarteConsulaireDetailsDTO} from "@/features/demande/schema/carte-consulaire.schema";
+import { useInvalidateDemandeQuery } from "@/features/demande/queries/index.query";
+import { useMutation } from "@tanstack/react-query";
+import { processAndValidateFormData } from "ak-zod-form-kit";
+import { DemandeCreateSchema } from "@/features/demande/schema/demande.schema";
+import { ServiceType } from "@/features/demande/types/service.type";
+import { createDemandRequestAction } from "@/features/demande/actions/demande.action";
+import { toast } from "sonner";
+import { CarteConsulaireDetailsDTO } from "@/features/demande/schema/carte-consulaire.schema";
 
 export const useCarteConsulaireCreateMutation = () => {
     const invalidateDemandeQuery = useInvalidateDemandeQuery();
@@ -15,12 +15,10 @@ export const useCarteConsulaireCreateMutation = () => {
             const { contactPhoneNumber, documents, ...consularCardDetails } = data;
 
             const dataForSubmit = {
-                consularCardDetails,
+                consularCardDetails: JSON.stringify(consularCardDetails),
                 contactPhoneNumber,
                 documents,
             }
-
-            console.log("data", dataForSubmit);
 
             const result = processAndValidateFormData(DemandeCreateSchema, dataForSubmit, {
                 outputFormat: "formData"
@@ -36,7 +34,6 @@ export const useCarteConsulaireCreateMutation = () => {
             // Envoyer les données au serveur
             const response = await createDemandRequestAction(result.data as FormData);
 
-            console.log(response);
 
             if (!response.success) {
                 throw new Error(response.error!);

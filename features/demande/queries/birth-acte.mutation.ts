@@ -1,11 +1,11 @@
-import {useInvalidateDemandeQuery} from "@/features/demande/queries/index.query";
-import {useMutation} from "@tanstack/react-query";
-import {ActeNaissanceDetailsDTO} from "@/features/demande/schema/acte-naissance.schema";
-import {processAndValidateFormData} from "ak-zod-form-kit";
-import {DemandeCreateSchema} from "@/features/demande/schema/demande.schema";
-import {ServiceType} from "@/features/demande/types/service.type";
-import {createDemandRequestAction} from "@/features/demande/actions/demande.action";
-import {toast} from "sonner";
+import { useInvalidateDemandeQuery } from "@/features/demande/queries/index.query";
+import { useMutation } from "@tanstack/react-query";
+import { ActeNaissanceDetailsDTO } from "@/features/demande/schema/acte-naissance.schema";
+import { processAndValidateFormData } from "ak-zod-form-kit";
+import { DemandeCreateSchema } from "@/features/demande/schema/demande.schema";
+import { ServiceType } from "@/features/demande/types/service.type";
+import { createDemandRequestAction } from "@/features/demande/actions/demande.action";
+import { toast } from "sonner";
 
 export const useActeNaissanceCreateMutation = () => {
     const invalidateDemandeQuery = useInvalidateDemandeQuery();
@@ -15,7 +15,7 @@ export const useActeNaissanceCreateMutation = () => {
             const { contactPhoneNumber, documents, ...birthActDetails } = data;
 
             const dataForSubmit = {
-                birthActDetails,
+                birthActDetails: JSON.stringify(birthActDetails),
                 contactPhoneNumber,
                 documents,
             }
@@ -33,8 +33,6 @@ export const useActeNaissanceCreateMutation = () => {
 
             // Envoyer les données au serveur
             const response = await createDemandRequestAction(result.data as FormData);
-
-            console.log(response);
 
             if (!response.success) {
                 throw new Error(response.error!);

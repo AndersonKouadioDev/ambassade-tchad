@@ -1,4 +1,4 @@
-import {toast} from "sonner";
+import { toast } from "sonner";
 
 interface FormSubmitOptions<TData> {
     data: TData;
@@ -10,13 +10,13 @@ interface FormSubmitOptions<TData> {
 }
 
 export async function handleFormSubmit<TData>({
-                                                  data,
-                                                  files,
-                                                  requiredDocumentsCount,
-                                                  createMutation,
-                                                  onSuccess,
-                                                  errorMessage = "Une erreur est survenue lors de la création de la demande."
-                                              }: FormSubmitOptions<TData>): Promise<void> {
+    data,
+    files,
+    requiredDocumentsCount,
+    createMutation,
+    onSuccess,
+    errorMessage = "Une erreur est survenue lors de la création de la demande."
+}: FormSubmitOptions<TData>): Promise<void> {
     // Validation des documents
     if (files.length < requiredDocumentsCount) {
         toast.error(`Veuillez télécharger tous ${requiredDocumentsCount} documents requis`);
@@ -29,10 +29,9 @@ export async function handleFormSubmit<TData>({
             documents: files,
         } as TData & { documents: File[] };
 
-        await createMutation({data: dataWithDocuments});
+        await createMutation({ data: dataWithDocuments });
         onSuccess();
     } catch (error) {
-        console.error("Erreur lors de la création de la demande :", error);
-        toast.error(errorMessage);
+
     }
 }
