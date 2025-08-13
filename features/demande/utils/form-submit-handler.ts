@@ -15,7 +15,6 @@ export async function handleFormSubmit<TData>({
     requiredDocumentsCount,
     createMutation,
     onSuccess,
-    errorMessage = "Une erreur est survenue lors de la création de la demande."
 }: FormSubmitOptions<TData>): Promise<void> {
     // Validation des documents
     if (files.length < requiredDocumentsCount) {

@@ -17,8 +17,8 @@ import { handleFormSubmit } from "@/features/demande/utils/form-submit-handler";
 import { useFileUpload } from "@/hooks/use-file-upload";
 import { useMultistepForm } from "@/hooks/use-multistep-form";
 import { validateStepFields } from "@/lib/utils/multi-step-form/validate-step";
-import { BirthActRequestType } from "@/types/request.types";
 import { revalidateLogic, useForm } from "@tanstack/react-form";
+import { ActeNaissanceType } from "../../types/acte-naissance.type";
 
 function ActeNaissanceForm({ documentsSize }: { documentsSize: number }) {
   const { Field, handleSubmit, validateField, getAllErrors } = useForm({
@@ -32,6 +32,7 @@ function ActeNaissanceForm({ documentsSize }: { documentsSize: number }) {
       fatherFullName: "Pierre Dupont",
       motherFullName: "Marie Dupont",
       contactPhoneNumber: "+225 01 23 456 789",
+      requestType: ActeNaissanceType.NEWBORN,
       personGender: Genre.FEMALE,
     } as ActeNaissanceDetailsDTO,
     validationLogic: revalidateLogic({
@@ -55,7 +56,7 @@ function ActeNaissanceForm({ documentsSize }: { documentsSize: number }) {
     nextStep,
     prevStep,
   } = useMultistepForm({
-    totalSteps: 4,
+    totalSteps: 3,
     redirectPath: "/espace-client/mes-demandes?success=true",
     successCountdownDuration: 5,
   });
@@ -201,23 +202,20 @@ function ActeNaissanceForm({ documentsSize }: { documentsSize: number }) {
 
   const fieldsStep3: FieldStep[] = [
     {
-      name: "requestType",
-      label: "Type de demande",
-      type: "select",
-      placeholder: "Ex: Acte de naissance",
-      options: Object.entries(BirthActRequestType).map(([value, label]) => ({
-        value,
-        label: label,
-      })),
-    },
-  ];
-
-  const fieldsStep4: FieldStep[] = [
-    {
       name: "contactPhoneNumber",
       label: "Numéro de téléphone de contact",
       type: "tel",
       placeholder: "Ex: +225 07 12 345 678",
+    },
+    {
+      name: "requestType",
+      label: "Type de demande",
+      type: "select",
+      placeholder: "Ex: Acte de naissance",
+      options: Object.values(ActeNaissanceType).map((value) => ({
+        value: value,
+        label: value,
+      })),
     },
   ];
 
@@ -265,37 +263,36 @@ function ActeNaissanceForm({ documentsSize }: { documentsSize: number }) {
     </StepContainer>
   );
 
-  const renderStep3 = () => {
-    return (
-      <StepContainer title="Type de demande">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {fieldsStep3.map((item) => (
-            <Field key={item.name} name={item.name}>
-              {({ state, handleChange, handleBlur }) => (
+  const renderStep3 = () => (
+    <StepContainer title="Informations sur le mandataire">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {fieldsStep3.map((item) => (
+          <Field key={item.name} name={item.name}>
+            {({ state, handleChange, handleBlur }) =>
+              item.type === "select" ? (
                 <SelectInputField
-                  options={item.options || []}
+                  label={item.label}
+                  value={state.value}
+                  onChange={(value) => handleChange(value as string)}
+                  onBlur={handleBlur}
+                  errors={state.meta.errors![0]?.message}
+                  options={item.options ?? []}
+                  placeholder={item.placeholder}
+                />
+              ) : (
+                <InputField
                   label={item.label}
                   placeholder={item.placeholder}
+                  type={item.type}
                   value={state.value}
                   onChange={(value) => handleChange(value as string)}
                   onBlur={handleBlur}
                   errors={state.meta.errors![0]?.message}
                 />
-              )}
-            </Field>
-          ))}
-        </div>
-        {/* Affichage dynamique du prix */}
-        <div className="flex items-center justify-end mt-4">
-          <PriceViewer price={prixActe} />
-        </div>
-      </StepContainer>
-    );
-  };
-
-  const renderStep4 = () => (
-    <StepContainer title="Documents et récapitulatif">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              )
+            }
+          </Field>
+        ))}
         {documentsSize > 0 && (
           <div className="mb-4 col-span-full">
             <FileUploadView
@@ -315,21 +312,6 @@ function ActeNaissanceForm({ documentsSize }: { documentsSize: number }) {
             />
           </div>
         )}
-        {fieldsStep4.map((item) => (
-          <Field key={item.name} name={item.name}>
-            {({ state, handleChange, handleBlur }) => (
-              <InputField
-                label={item.label}
-                placeholder={item.placeholder}
-                type={item.type}
-                value={state.value}
-                onChange={(value) => handleChange(value as string)}
-                onBlur={handleBlur}
-                errors={state.meta.errors![0]?.message}
-              />
-            )}
-          </Field>
-        ))}
       </div>
     </StepContainer>
   );
@@ -351,7 +333,6 @@ function ActeNaissanceForm({ documentsSize }: { documentsSize: number }) {
       {currentStep === 1 && renderStep1()}
       {currentStep === 2 && renderStep2()}
       {currentStep === 3 && renderStep3()}
-      {currentStep === 4 && renderStep4()}
     </FormContainer>
   );
 }

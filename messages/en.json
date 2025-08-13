@@ -840,5 +840,11 @@
     "facebookLink": "Embassy of Chad in Ivory Coast",
     "emailLabel": "Email",
     "emailValue": "ambassade.tchadabj@ambatchad.ci"
+  },
+  "enums": {
+    "paysParentType": {
+      "FATHER": "Father",
+      "MOTHER": "Mother"
+    }
   }
 }

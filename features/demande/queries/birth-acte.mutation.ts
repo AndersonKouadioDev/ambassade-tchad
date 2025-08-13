@@ -14,6 +14,8 @@ export const useActeNaissanceCreateMutation = () => {
         mutationFn: async ({ data }: { data: ActeNaissanceDetailsDTO }) => {
             const { contactPhoneNumber, documents, ...birthActDetails } = data;
 
+            console.log(data);
+
             const dataForSubmit = {
                 birthActDetails: JSON.stringify(birthActDetails),
                 contactPhoneNumber,

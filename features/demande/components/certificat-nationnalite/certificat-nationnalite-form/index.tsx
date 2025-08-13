@@ -1,32 +1,33 @@
 "use client";
 
-import { revalidateLogic, useForm } from "@tanstack/react-form";
-import React from "react";
-import { toast } from "sonner";
-import { PaysParentType } from "../../../types/certificat-nationalite.type";
-import { useServicesPricesQuery } from "../../../queries/demande-services.query";
-import { formatCurrency } from "@/utils/format-currency";
-import {
-  CertificatNationaliteDetailsDTO,
-  CertificatNationaliteDetailsSchema,
-} from "../../../schema/certificat-nationalite.schema";
-import { useFileUpload } from "@/hooks/use-file-upload";
 import FileUploadView from "@/components/block/file-upload-view";
-import { useCertificatNationaliteCreateMutation } from "../../../queries/certificat-nationalite.mutation";
-import { useMultistepForm } from "@/hooks/use-multistep-form";
 import { InputField } from "@/components/form/input-field";
 import FormContainer from "@/components/form/multi-step/form-container";
-import { validateStepFields } from "@/lib/utils/multi-step-form/validate-step";
 import StepContainer from "@/components/form/multi-step/step-container";
 import SelectInputField from "@/components/form/select-input-field";
 import PriceViewer from "@/features/demande/components/price-viewer";
 import { handleFormSubmit } from "@/features/demande/utils/form-submit-handler";
+import { useFileUpload } from "@/hooks/use-file-upload";
+import { useMultistepForm } from "@/hooks/use-multistep-form";
+import { validateStepFields } from "@/lib/utils/multi-step-form/validate-step";
+import { revalidateLogic, useForm } from "@tanstack/react-form";
+import { useCertificatNationaliteCreateMutation } from "../../../queries/certificat-nationalite.mutation";
+import { useServicesPricesQuery } from "../../../queries/demande-services.query";
+import {
+  CertificatNationaliteDetailsDTO,
+  CertificatNationaliteDetailsSchema,
+} from "../../../schema/certificat-nationalite.schema";
+import { PaysParentType } from "../../../types/certificat-nationalite.type";
+import { getEnumOptions } from "@/features/demande/utils/get-enum-options";
+import { useTranslations } from "next-intl";
 
 interface Props {
   documentsSize: number;
 }
 
 export default function CertificatNationaliteForm({ documentsSize }: Props) {
+  const t = useTranslations("enums");
+
   // Validation du formulaire
   const { Field, handleSubmit, validateField, getAllErrors } = useForm({
     defaultValues: {
@@ -225,10 +226,11 @@ export default function CertificatNationaliteForm({ documentsSize }: Props) {
               onChange={(value) => handleChange(value as PaysParentType)}
               onBlur={handleBlur}
               errors={state.meta.errors![0]?.message}
-              options={[
-                { value: PaysParentType.FATHER, label: "Père" },
-                { value: PaysParentType.MOTHER, label: "Mère" },
-              ]}
+              options={getEnumOptions({
+                enumData: PaysParentType,
+                t,
+                namespace: "paysParentType",
+              })}
             />
           )}
         </Field>

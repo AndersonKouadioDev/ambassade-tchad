@@ -1,6 +1,4 @@
 import { z } from 'zod';
-import { ActeNaissanceDetailsSchema } from './acte-naissance.schema';
-import { CarteConsulaireDetailsSchema } from './carte-consulaire.schema';
 import { DecesDetailsSchema } from './deces.schema';
 import { LaissezPasserDetailsSchema } from './laissez-passer.schema';
 import { DemandeStatus } from '../types/demande.type';
@@ -9,8 +7,8 @@ import { DemandeStatus } from '../types/demande.type';
 export const DemandeCreateSchema = z.object({
   // serviceType: z.enum(ServiceType, { message: 'Type de service invalide demande.' }),
   visaDetails: z.string().optional(),
-  birthActDetails: ActeNaissanceDetailsSchema.optional(),
-  consularCardDetails: CarteConsulaireDetailsSchema.optional(),
+  birthActDetails: z.string().optional(),
+  consularCardDetails: z.string().optional(),
   laissezPasserDetails: LaissezPasserDetailsSchema.optional(),
   marriageCapacityActDetails: z.string().optional(),
   deathActDetails: DecesDetailsSchema.optional(),

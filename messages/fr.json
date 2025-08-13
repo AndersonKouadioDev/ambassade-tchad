@@ -298,53 +298,53 @@
       "imageAlt": "Image du président",
       "projectTitle": "Grands projets nationaux",
       "chantiers": [
-        { 
-          "title": "Chantier 1", 
-          "description": "RENFORCER LA PAIX, LA RÉCONCILIATION NATIONALE ET LA SÉCURITÉ POUR TOUS LES TCHADIENS" 
+        {
+          "title": "Chantier 1",
+          "description": "RENFORCER LA PAIX, LA RÉCONCILIATION NATIONALE ET LA SÉCURITÉ POUR TOUS LES TCHADIENS"
         },
-        { 
-          "title": "Chantier 2", 
-          "description": "RÉFORMER L'ÉTAT, BÂTIR UNE RÉPUBLIQUE FORTE ET JUSTE" 
+        {
+          "title": "Chantier 2",
+          "description": "RÉFORMER L'ÉTAT, BÂTIR UNE RÉPUBLIQUE FORTE ET JUSTE"
         },
-        { 
-          "title": "Chantier 3", 
-          "description": "PROMOUVOIR UN ÉTAT SOLIDAIRE POUR TOUS" 
+        {
+          "title": "Chantier 3",
+          "description": "PROMOUVOIR UN ÉTAT SOLIDAIRE POUR TOUS"
         },
-        { 
-          "title": "Chantier 4", 
-          "description": "REFONDER LE SYSTÈME ÉDUCATIF ET BÂTIR UN PLAN AMBITIEUX POUR LA JEUNESSE ET LES SPORTS" 
+        {
+          "title": "Chantier 4",
+          "description": "REFONDER LE SYSTÈME ÉDUCATIF ET BÂTIR UN PLAN AMBITIEUX POUR LA JEUNESSE ET LES SPORTS"
         },
-        { 
-          "title": "Chantier 5", 
-          "description": "PROMOUVOIR LES DROITS DE LA FEMME ET SON RÔLE DANS LA SOCIÉTÉ" 
+        {
+          "title": "Chantier 5",
+          "description": "PROMOUVOIR LES DROITS DE LA FEMME ET SON RÔLE DANS LA SOCIÉTÉ"
         },
-        { 
-          "title": "Chantier 6", 
-          "description": "DÉVELOPPER UNE ÉCONOMIE RÉSILIENTE ET DIVERSIFIÉE" 
+        {
+          "title": "Chantier 6",
+          "description": "DÉVELOPPER UNE ÉCONOMIE RÉSILIENTE ET DIVERSIFIÉE"
         },
-        { 
-          "title": "Chantier 7", 
-          "description": "RENDRE L'EAU ET L'ÉNERGIE ACCESSIBLES À TOUS" 
+        {
+          "title": "Chantier 7",
+          "description": "RENDRE L'EAU ET L'ÉNERGIE ACCESSIBLES À TOUS"
         },
-        { 
-          "title": "Chantier 8", 
-          "description": "CONSTRUIRE LES INFRASTRUCTURES DU DÉSENCLAVEMENT" 
+        {
+          "title": "Chantier 8",
+          "description": "CONSTRUIRE LES INFRASTRUCTURES DU DÉSENCLAVEMENT"
         },
-        { 
-          "title": "Chantier 9", 
-          "description": "INDUSTRIALISER NOTRE AGRICULTURE ET NOTRE ÉLEVAGE" 
+        {
+          "title": "Chantier 9",
+          "description": "INDUSTRIALISER NOTRE AGRICULTURE ET NOTRE ÉLEVAGE"
         },
-        { 
-          "title": "Chantier 10", 
-          "description": "POURSUIVRE LA MODERNISATION DE NOTRE SYSTÈME DE SANTÉ" 
+        {
+          "title": "Chantier 10",
+          "description": "POURSUIVRE LA MODERNISATION DE NOTRE SYSTÈME DE SANTÉ"
         },
-        { 
-          "title": "Chantier 11", 
-          "description": "RENFORCER LE RAYONNEMENT DU TCHAD À L'ÉTRANGER ET FAIRE DE LA DIASPORA UN VÉRITABLE LEVIER DE DÉVELOPPEMENT" 
+        {
+          "title": "Chantier 11",
+          "description": "RENFORCER LE RAYONNEMENT DU TCHAD À L'ÉTRANGER ET FAIRE DE LA DIASPORA UN VÉRITABLE LEVIER DE DÉVELOPPEMENT"
         },
-        { 
-          "title": "Chantier 12", 
-          "description": "PROMOUVOIR LES MERVEILLES CULTURELLES ET TOURISTIQUES DU TCHAD" 
+        {
+          "title": "Chantier 12",
+          "description": "PROMOUVOIR LES MERVEILLES CULTURELLES ET TOURISTIQUES DU TCHAD"
         }
       ]
     },
@@ -395,7 +395,6 @@
       "title": "Tourisme au Tchad",
       "description": "Découvrez les merveilles du Tchad"
     }
-    
   },
   "events": {
     "title": "Événements",
@@ -448,7 +447,6 @@
     "backToList": "Retour à la liste des actualités"
   },
   "gallery": {
-    
     "title": "Galerie",
     "description": "Découvrez nos photos et vidéos",
     "photos": "Photos",
@@ -475,8 +473,7 @@
       "previous": "Page précédente",
       "next": "Page suivante",
       "noPhotos": "Aucune photo pour le moment.",
-      "backToList": "Retour à la liste des photos"  
-    
+      "backToList": "Retour à la liste des photos"
     },
     "video": {
       "hero": {
@@ -1423,7 +1420,7 @@
     },
     "socials": {
       "tchad_diplomatie": "Tchad Diplomatie",
-      "sgg":"Secrétariat Général du Gouvernement",
+      "sgg": "Secrétariat Général du Gouvernement",
       "ambassade_ci": "Ambassade du Tchad en Côte d'Ivoire"
     }
   },
@@ -1433,5 +1430,11 @@
     "facebookLink": "Ambassade du Tchad en Côte d'Ivoire",
     "emailLabel": "Email",
     "emailValue": "ambassade.tchadabj@ambatchad.ci"
+  },
+  "enums": {
+    "paysParentType": {
+      "FATHER": "Père",
+      "MOTHER": "Mère"
+    }
   }
 }
