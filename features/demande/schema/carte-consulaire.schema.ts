@@ -4,7 +4,7 @@ import { ServiceType } from '../types/service.type';
 
 
 export const CarteConsulaireDetailsSchema = z.object({
-  serviceType: z.enum(ServiceType).default(ServiceType.CONSULAR_CARD).optional(),
+  // serviceType: z.enum(ServiceType).default(ServiceType.CONSULAR_CARD).optional(),
   personFirstName: z.string({ message: 'Le prénom est obligatoire.' })
     .min(1, { message: 'Le prénom est obligatoire.' })
     .max(255, { message: 'Le prénom ne doit pas dépasser 255 caractères.' }),
@@ -40,6 +40,20 @@ export const CarteConsulaireDetailsSchema = z.object({
   justificationDocumentNumber: z.string({ message: 'Le numéro du document ne doit pas dépasser 255 caractères.' })
     .max(255, { message: 'Le numéro du document ne doit pas dépasser 255 caractères.' })
     .optional(),
+  contactPhoneNumber: z.string({ message: 'Le numéro de téléphone est obligatoire.' }).optional(),
+  documents: z
+      .array(
+          z
+              .instanceof(File)
+              .refine(
+                  (file) => file.type.startsWith('image/') || file.type === 'application/pdf',
+                  { message: "Seuls les fichiers image ou PDF sont autorisés" }
+              )
+              .refine((file) => file.size <= 10 * 1024 * 1024, {
+                message: "La taille de chaque image ne doit pas dépasser 10 Mo",
+              })
+      )
+      .optional(),
 });
 
 export type CarteConsulaireDetailsDTO = z.infer<typeof CarteConsulaireDetailsSchema>;

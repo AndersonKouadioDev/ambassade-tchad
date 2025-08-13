@@ -2,29 +2,29 @@
 
 import React from 'react';
 import {revalidateLogic, useForm} from "@tanstack/react-form";
-import {ActeNaissanceDetailsDTO, ActeNaissanceDetailsSchema} from "@/features/demande/schema/acte-naissance.schema";
-import {Genre} from "@/features/demande/types/demande.type";
+import {
+    CarteConsulaireDetailsDTO,
+    CarteConsulaireDetailsSchema
+} from "@/features/demande/schema/carte-consulaire.schema";
+import {useMultistepForm} from "@/hooks/use-multistep-form";
+import {DocumentJustificationType} from "@/features/demande/types/carte-consulaire.type";
 import {useServicesPricesQuery} from "@/features/demande/queries/demande-services.query";
 import {validateStepFields} from "@/lib/utils/multi-step-form/validate-step";
-import {useMultistepForm} from "@/hooks/use-multistep-form";
-import FormContainer from "@/components/form/multi-step/form-container";
-import {InputField} from "@/components/form/input-field";
-import StepContainer from "@/components/form/multi-step/step-container";
-import SelectInputField from "@/components/form/select-input-field";
-import {BirthActRequestType} from "@/types/request.types";
+import {handleFormSubmit} from "@/features/demande/utils/form-submit-handler";
 import {useFileUpload} from "@/hooks/use-file-upload";
+import {useCarteConsulaireCreateMutation} from "@/features/demande/queries/carte-consulaire.mutation";
+import StepContainer from "@/components/form/multi-step/step-container";
+import {InputField} from "@/components/form/input-field";
+import FormContainer from "@/components/form/multi-step/form-container";
 import PriceViewer from "@/features/demande/components/price-viewer";
 import FileUploadView from "@/components/block/file-upload-view";
-import {CertificatNationaliteDetailsDTO} from "@/features/demande/schema/certificat-nationalite.schema";
-import {toast} from "sonner";
-import {handleFormSubmit} from "@/features/demande/utils/form-submit-handler";
-import {useActeNaissanceCreateMutation} from "@/features/demande/queries/birth-acte.mutation";
+import SelectInputField from "@/components/form/select-input-field";
 
-function ActeNaissanceForm() {
+function CarteConsulaireForm() {
     const {
         Field,
         handleSubmit,
-        reset,
+        // reset,
         // setFieldValue,
         validateField,
         getAllErrors,
@@ -32,20 +32,23 @@ function ActeNaissanceForm() {
         defaultValues: {
             personFirstName: "Jean",
             personLastName: "Dupont",
-            personBirthDate: "1990-01-01",
-            personBirthPlace: "Paris, France",
-            personNationality: "Française",
-            personDomicile: "12 rue de la Paix, Paris",
+            personBirthDate: "1990-05-15",
+            personBirthPlace: "Abidjan",
+            personProfession: "Ingénieur",
+            personNationality: "Ivoirienne",
+            personDomicile: "Paris, France",
+            personAddressInOriginCountry: "Cocody, Abidjan",
             fatherFullName: "Pierre Dupont",
             motherFullName: "Marie Dupont",
-            contactPhoneNumber: "+225 01 23 456 789",
-            personGender: Genre.FEMALE,
-        } as ActeNaissanceDetailsDTO,
+            justificationDocumentType: DocumentJustificationType.NATIONAL_ID_CARD,
+            justificationDocumentNumber: "A123456789",
+            contactPhoneNumber: "+2250701020304",
+        } as CarteConsulaireDetailsDTO,
         validationLogic: revalidateLogic({
             mode: "change",
         }),
         validators: {
-            onChange: ActeNaissanceDetailsSchema,
+            onChange: CarteConsulaireDetailsSchema,
         },
         onSubmit: async ({value}) => {
             await onSubmit(value);
@@ -62,11 +65,12 @@ function ActeNaissanceForm() {
         nextStep,
         prevStep,
     } = useMultistepForm({
-        totalSteps: 4,
+        totalSteps: 3,
         redirectPath: "/espace-client/mes-demandes?success=true",
         successCountdownDuration: 5,
     });
 
+    // File upload configuration
     const maxFiles = 10;
     const maxSizeMB = 20;
     const [
@@ -94,13 +98,13 @@ function ActeNaissanceForm() {
     const isLoading = isLoadingServicesPrices;
 
     const currentServicePrice = servicesPrices?.find(
-        (service) => service.type === "BIRTH_ACT_APPLICATION"
+        (service) => service.type === "CONSULAR_CARD"
     );
 
     const prixActe = currentServicePrice?.defaultPrice;
 
     const validateStep = async (step: number): Promise<boolean> => {
-        let fieldsToValidate: (keyof ActeNaissanceDetailsDTO)[] = [];
+        let fieldsToValidate: (keyof CarteConsulaireDetailsDTO)[] = [];
 
         switch (step) {
             case 1:
@@ -110,18 +114,22 @@ function ActeNaissanceForm() {
                     "personBirthDate",
                     "personBirthPlace",
                     "personNationality",
-                    "personDomicile"
+                    "personProfession",
+                    "personDomicile",
+                    "personAddressInOriginCountry"
                 ];
                 break;
             case 2:
-                fieldsToValidate = ["fatherFullName", "motherFullName"];
+                fieldsToValidate = [
+                    "fatherFullName",
+                    "motherFullName",
+                    "justificationDocumentType",
+                    "justificationDocumentNumber"
+                ];
                 break;
             case 3:
-                fieldsToValidate = ["requestType"];
-                break;
-            case 4:
                 fieldsToValidate = ["contactPhoneNumber"];
-                break
+                break;
             default:
                 return true; // Pas de validation pour les étapes suivantes
         }
@@ -134,16 +142,16 @@ function ActeNaissanceForm() {
     }
 
     const documentsSize = 2;
-    const {mutateAsync: createActeNaissance} = useActeNaissanceCreateMutation();
+    const {mutateAsync: createCarteConsulaire} = useCarteConsulaireCreateMutation();
 
-    const onSubmit = async (data: ActeNaissanceDetailsDTO) => {
+    const onSubmit = async (data: CarteConsulaireDetailsDTO) => {
         const uploadedFiles = files.map((file) => file.file as File);
 
         await handleFormSubmit({
             data,
             files: uploadedFiles,
             requiredDocumentsCount: documentsSize,
-            createMutation: createActeNaissance,
+            createMutation: createCarteConsulaire,
             onSuccess: showSuccessAndRedirect
         });
     };
@@ -152,45 +160,61 @@ function ActeNaissanceForm() {
         nextStep(validateStep);
     };
 
+    // TODO: Repetition of the same code in acte-naissance
     type FieldStep = {
-        name: keyof Omit<ActeNaissanceDetailsDTO, 'documents'>;
+        name: keyof Omit<CarteConsulaireDetailsDTO, 'documents'>;
         label: string;
         type: string;
         placeholder?: string;
+        options?: { value: string; label: string }[];
     }
 
-    // Definition des champs pour chaque étape
-    const fieldsStep1: FieldStep[] = [
-        {name: "personFirstName", label: "Prénom *", type: "text", placeholder: "Entrez le prénom"},
-        {name: "personLastName", label: "Nom *", type: "text", placeholder: "Entrez le nom"},
-        {name: "personBirthDate", label: "Date de naissance *", type: "date"},
-        {name: "personBirthPlace", label: "Lieu de naissance *", type: "text", placeholder: "Ville, pays de naissance"},
-        {name: "personNationality", label: "Nationalité *", type: "text", placeholder: "Ex: Tchadienne"},
-        {name: "personDomicile", label: "Domicile (optionnel)", type: "text", placeholder: "Adresse de domicile"},
-    ];
-
-    const fieldsStep2: FieldStep[] = [
-        {name: "fatherFullName", label: "Nom complet du père", type: "text", placeholder: "Nom complet du père"},
-        {name: "motherFullName", label: "Nom complet de la mère", type: "text", placeholder: "Nom complet de la mère"},
-    ];
-
-    const fieldsStep3: FieldStep[] = [
-        {name: "requestType", label: "Type de demande", type: "select", placeholder: "Ex: Acte de naissance"},
-    ];
-
-    const fieldsStep4: FieldStep[] = [
-        {
-            name: "contactPhoneNumber",
-            label: "Numéro de téléphone de contact",
-            type: "tel",
-            placeholder: "Ex: +225 07 12 345 678"
-        },
+    const fields: FieldStep[][] = [
+        [
+            {name: "personFirstName", label: "Prénom", type: "text"},
+            {name: "personLastName", label: "Nom", type: "text"},
+            {name: "personBirthDate", label: "Date de naissance", type: "date"},
+            {name: "personBirthPlace", label: "Lieu de naissance", type: "text"},
+            {name: "personProfession", label: "Profession", type: "text"},
+            {name: "personNationality", label: "Nationalité", type: "text"},
+            {name: "personDomicile", label: "Domicile actuel", type: "text"},
+            {name: "personAddressInOriginCountry", label: "Adresse dans le pays d'origine", type: "text"}
+        ],
+        [
+            {name: "fatherFullName", label: "Nom complet du père", type: "text"},
+            {name: "motherFullName", label: "Nom complet de la mère", type: "text"},
+            {
+                name: "justificationDocumentType",
+                label: "Type de document justificatif",
+                type: "select",
+                placeholder: "",
+                options: [
+                    {value: DocumentJustificationType.NATIONAL_ID_CARD, label: "Carte d'identité nationale"},
+                    {value: DocumentJustificationType.PASSPORT, label: "Passeport"},
+                    {value: DocumentJustificationType.BIRTH_CERTIFICATE, label: "Acte de naissance"},
+                    {value: DocumentJustificationType.OTHER, label: "Autre"}
+                ]
+            },
+            {
+                name: "justificationDocumentNumber",
+                label: "Numéro du document justificatif",
+                type: "text"
+            }
+        ],
+        [
+            {
+                name: 'contactPhoneNumber',
+                label: 'Numéro de téléphone de contact',
+                type: 'tel',
+                placeholder: '+2250701020304'
+            }
+        ]
     ];
 
     const renderStep1 = () => (
         <StepContainer title="Informations personnelles">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {fieldsStep1.map((item) => (
+                {fields[0].map((item) => (
                     <Field key={item.name} name={item.name}>
                         {({state, handleChange, handleBlur}) => (
                             <InputField
@@ -210,20 +234,32 @@ function ActeNaissanceForm() {
     );
 
     const renderStep2 = () => (
-        <StepContainer title="Informations parentales">
+        <StepContainer title="Filiation, justificatif et contact">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {fieldsStep2.map((item) => (
+                {fields[1].map((item) => (
                     <Field key={item.name} name={item.name}>
                         {({state, handleChange, handleBlur}) => (
-                            <InputField
-                                label={item.label}
-                                placeholder="Ex: Mahamat"
-                                type={item.type}
-                                value={state.value}
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                errors={state.meta.errors![0]?.message}
-                            />
+                            item.type === 'select' ? (
+                                <SelectInputField
+                                    label={item.label}
+                                    value={state.value}
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    errors={state.meta.errors![0]?.message}
+                                    options={item.options ?? []}
+                                    placeholder={item.placeholder}
+                                />
+                            ) : (
+                                <InputField
+                                    label={item.label}
+                                    placeholder={item.placeholder}
+                                    type={item.type}
+                                    value={state.value}
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    errors={state.meta.errors![0]?.message}
+                                />
+                            )
                         )}
                     </Field>
                 ))}
@@ -231,45 +267,12 @@ function ActeNaissanceForm() {
         </StepContainer>
     );
 
-    const renderStep3 = () => {
-        const requestTypeLabels: Record<string, string> = {
-            NEWBORN: 'Nouveau-né',
-            RENEWAL: 'Renouvellement',
-        };
-
-        const options = Object.entries(BirthActRequestType).map(([value, label]) => ({
-            value,
-            label: requestTypeLabels[label] || label,
-        }))
-
-        return (
-            <StepContainer title="Type de demande">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <Field name={"requestType"}>
-                        {({state, handleChange, handleBlur}) => (
-                            <SelectInputField
-                                options={options}
-                                label="Type de demande *"
-                                placeholder="Sélectionnez le type de demande"
-                                value={state.value}
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                errors={state.meta.errors![0]?.message}
-                            />
-                        )}
-                    </Field>
-                </div>
-                {/* Affichage dynamique du prix */}
-                <div className="flex items-center justify-end mt-4">
+    const renderStep3 = () => (
+        <StepContainer title="Récapitulatif et pièce justificative">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="mb-4">
                     <PriceViewer price={prixActe}/>
                 </div>
-            </StepContainer>
-        );
-    }
-
-    const renderStep4 = () => (
-        <StepContainer title="Documents et récapitulatif">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="mb-4 col-span-full">
                     <FileUploadView
                         maxFiles={maxFiles}
@@ -287,12 +290,12 @@ function ActeNaissanceForm() {
                         getInputProps={getInputProps}
                     />
                 </div>
-                {fieldsStep4.map((item) => (
+                {fields[2].map((item) => (
                     <Field key={item.name} name={item.name}>
                         {({state, handleChange, handleBlur}) => (
                             <InputField
                                 label={item.label}
-                                placeholder="Ex: +221 77 123 45 67"
+                                placeholder={item.placeholder}
                                 type={item.type}
                                 value={state.value}
                                 onChange={handleChange}
@@ -312,7 +315,7 @@ function ActeNaissanceForm() {
 
     return (
         <FormContainer
-            title="Demande d'Acte de Naissance"
+            title="Formulaire de demande de Carte Consulaire"
             currentStep={currentStep}
             totalSteps={totalSteps}
             handleSubmit={handleSubmit}
@@ -323,9 +326,8 @@ function ActeNaissanceForm() {
             {currentStep === 1 && renderStep1()}
             {currentStep === 2 && renderStep2()}
             {currentStep === 3 && renderStep3()}
-            {currentStep === 4 && renderStep4()}
         </FormContainer>
     );
 }
 
-export default ActeNaissanceForm;
+export default CarteConsulaireForm;
