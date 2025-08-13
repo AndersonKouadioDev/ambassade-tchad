@@ -1,7 +1,5 @@
 import BirthActForm from "@/features/demande/components/demande-acte-naissance-form";
 import CarteConsulaireForm from "@/features/demande/components/demande-carte-consulaire/";
-import DeathActForm from "@/components/espace-client/form_news_request/DeathActForm";
-import LaissezPasserForm from "@/components/espace-client/form_news_request/LaissezPasserForm";
 import CertificatNationaliteForm from "@/features/demande/components/certificat-nationnalite/certificat-nationnalite-form";
 import MarriageCapacityActForm from "@/features/demande/components/mariage/mariage-form";
 import ProcurationForm from "@/features/demande/components/procuration/procuration-form";
@@ -34,13 +32,13 @@ export const tousTypeDemandes = {
         documents: [],
         processingTime: "10-20 jours",
     },
-    "laissez-passer": {
-        title: "Demande de Laissez-passer",
-        description: "Remplissez ce formulaire pour demander un laissez-passer.",
-        component: LaissezPasserForm,
-        documents: [],
-        processingTime: "2-5 jours",
-    },
+    // "laissez-passer": {
+    //     title: "Demande de Laissez-passer",
+    //     description: "Remplissez ce formulaire pour demander un laissez-passer.",
+    //     component: LaissezPasserForm,
+    //     documents: [],
+    //     processingTime: "2-5 jours",
+    // },
     "marriage-capacity": {
         title: "Certificat de Capacité Mariage",
         description:
@@ -49,14 +47,14 @@ export const tousTypeDemandes = {
         documents: ["Photo d'identité récente"],
         processingTime: "5-10 jours",
     },
-    "death-act": {
-        title: "Demande d'Acte de Décès",
-        description:
-            "Demande d'acte de décès - Formulaire en cours de développement.",
-        component: DeathActForm,
-        documents: [],
-        processingTime: "3-7 jours",
-    },
+    // "death-act": {
+    //     title: "Demande d'Acte de Décès",
+    //     description:
+    //         "Demande d'acte de décès - Formulaire en cours de développement.",
+    //     component: DeathActForm,
+    //     documents: [],
+    //     processingTime: "3-7 jours",
+    // },
     "power-of-attorney": {
         title: "Demande de Procuration",
         description: "Remplissez ce formulaire pour demander une procuration.",

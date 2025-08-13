@@ -1,14 +1,9 @@
 import { z } from 'zod';
-import { VisaRequestDetailsSchema } from './visa.schema';
 import { ActeNaissanceDetailsSchema } from './acte-naissance.schema';
 import { CarteConsulaireDetailsSchema } from './carte-consulaire.schema';
-import { MariageDetailsSchema } from './mariage.schema';
 import { DecesDetailsSchema } from './deces.schema';
-import { ProcurationDetailsSchema } from './procuration.schema';
-import { CertificatNationaliteDetailsSchema } from './certificat-nationalite.schema';
 import { LaissezPasserDetailsSchema } from './laissez-passer.schema';
 import { DemandeStatus } from '../types/demande.type';
-import { ServiceType } from '../types/service.type';
 
 
 export const DemandeCreateSchema = z.object({
