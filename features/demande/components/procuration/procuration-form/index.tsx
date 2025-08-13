@@ -1,22 +1,23 @@
 "use client";
 
 import { revalidateLogic, useForm } from "@tanstack/react-form";
-import React from "react";
 import { toast } from "sonner";
-import { formatCurrency } from "@/utils/format-currency";
 
-import { useFileUpload } from "@/hooks/use-file-upload";
 import FileUploadView from "@/components/block/file-upload-view";
-import { useMultistepForm } from "@/hooks/use-multistep-form";
-import { InputField, InputFieldTypeProps } from "@/components/form/input-field";
+import { InputField } from "@/components/form/input-field";
 import FormContainer from "@/components/form/multi-step/form-container";
-import { DocumentJustificationType } from "@/features/demande/types/carte-consulaire.type";
+import StepContainer from "@/components/form/multi-step/step-container";
+import SelectInputField from "@/components/form/select-input-field";
+import { useServicesPricesQuery } from "@/features/demande/queries/demande-services.query";
+import { useProcurationCreateMutation } from "@/features/demande/queries/procuration.mutation";
 import {
   ProcurationDetailsDTO,
   ProcurationDetailsSchema,
 } from "@/features/demande/schema/procuration.schema";
-import { useServicesPricesQuery } from "@/features/demande/queries/demande-services.query";
-import { useProcurationCreateMutation } from "@/features/demande/queries/procuration.mutation";
+import { DocumentJustificationType } from "@/features/demande/types/carte-consulaire.type";
+import { useFileUpload } from "@/hooks/use-file-upload";
+import { useMultistepForm } from "@/hooks/use-multistep-form";
+import PriceViewer from "../../price-viewer";
 
 interface Props {
   documentsSize: number;
@@ -89,11 +90,9 @@ export default function ProcurationForm({ documentsSize }: Props) {
     initialFiles: [],
   });
 
-  // Récupération du prix dynamique
   const { data: servicesPrices, isLoading: servicesPricesLoading } =
     useServicesPricesQuery();
 
-  // Création de la demande
   const {
     mutateAsync: createProcuration,
     isPending: createProcurationLoading,
@@ -106,7 +105,6 @@ export default function ProcurationForm({ documentsSize }: Props) {
   );
   const prixActe = currentServicePrice?.defaultPrice;
 
-  // Fonction pour valider les champs d'une étape spécifique
   const validateStep = async (step: number): Promise<boolean> => {
     let fieldsToValidate: (keyof ProcurationDetailsDTO)[] = [];
 
@@ -167,7 +165,6 @@ export default function ProcurationForm({ documentsSize }: Props) {
       ...data,
       documents: uploadedFiles,
     };
-    // Validation finale avant soumission
     if (uploadedFiles.length < documentsSize) {
       toast.error(
         `Veuillez télécharger les ${documentsSize} documents requis.`
@@ -184,9 +181,9 @@ export default function ProcurationForm({ documentsSize }: Props) {
   const fieldsStep1: {
     name: keyof Omit<ProcurationDetailsDTO, "documents">;
     label: string;
-    type?: InputFieldTypeProps;
-    options?: any;
-    placeholder: string;
+    type?: string;
+    options?: { value: string; label: string }[];
+    placeholder?: string;
   }[] = [
     {
       name: "principalFirstName",
@@ -204,7 +201,10 @@ export default function ProcurationForm({ documentsSize }: Props) {
       name: "principalJustificationDocumentType",
       label: "Type de pièce justificative *",
       type: "select",
-      options: Object.values(DocumentJustificationType),
+      options: Object.values(DocumentJustificationType).map((value) => ({
+        value,
+        label: value,
+      })),
       placeholder: "",
     },
     {
@@ -222,37 +222,45 @@ export default function ProcurationForm({ documentsSize }: Props) {
   ];
 
   const renderStep1 = () => (
-    <div className="space-y-6">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">
-        Informations sur le mandant
-      </h3>
+    <StepContainer title="Informations sur le mandant">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {fieldsStep1.map((item) => (
-          <Field key={item.name} name={item.name as any}>
-            {({ state, handleChange, handleBlur }) => (
-              <InputField
-                label={item.label}
-                placeholder={item.placeholder}
-                type={item.type}
-                value={state.value}
-                onChange={(value) => handleChange(value as any)}
-                onBlur={handleBlur}
-                errors={state.meta.errors![0]?.message}
-                options={item.options}
-              />
-            )}
+          <Field key={item.name} name={item.name}>
+            {({ state, handleChange, handleBlur }) =>
+              item.type === "select" ? (
+                <SelectInputField
+                  label={item.label}
+                  value={state.value}
+                  onChange={(value) => handleChange(value as string)}
+                  onBlur={handleBlur}
+                  errors={state.meta.errors![0]?.message}
+                  options={item.options ?? []}
+                  placeholder={item.placeholder}
+                />
+              ) : (
+                <InputField
+                  label={item.label}
+                  placeholder={item.placeholder}
+                  type={item.type}
+                  value={state.value}
+                  onChange={(value) => handleChange(value as string)}
+                  onBlur={handleBlur}
+                  errors={state.meta.errors![0]?.message}
+                />
+              )
+            }
           </Field>
         ))}
       </div>
-    </div>
+    </StepContainer>
   );
 
   const fieldsStep2: {
     name: keyof Omit<ProcurationDetailsDTO, "documents">;
     label: string;
-    type?: InputFieldTypeProps;
+    type?: string;
     options?: { value: string; label: string }[];
-    placeholder: string;
+    placeholder?: string;
   }[] = [
     {
       name: "agentFirstName",
@@ -291,36 +299,43 @@ export default function ProcurationForm({ documentsSize }: Props) {
   ];
 
   const renderStep2 = () => (
-    <div className="space-y-6">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">
-        Informations sur le mandataire
-      </h3>
+    <StepContainer title="Informations sur le mandataire">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {fieldsStep2.map((item) => (
-          <Field key={item.name} name={item.name as any}>
-            {({ state, handleChange, handleBlur }) => (
-              <InputField
-                label={item.label}
-                placeholder={item.placeholder}
-                type={item.type}
-                value={state.value}
-                onChange={(value) => handleChange(value as any)}
-                onBlur={handleBlur}
-                errors={state.meta.errors![0]?.message}
-                options={item.options}
-              />
-            )}
+          <Field key={item.name} name={item.name}>
+            {({ state, handleChange, handleBlur }) =>
+              item.type === "select" ? (
+                <SelectInputField
+                  label={item.label}
+                  value={state.value}
+                  onChange={(value) => handleChange(value as string)}
+                  onBlur={handleBlur}
+                  errors={state.meta.errors![0]?.message}
+                  options={item.options ?? []}
+                  placeholder={item.placeholder}
+                />
+              ) : (
+                <InputField
+                  label={item.label}
+                  placeholder={item.placeholder}
+                  type={item.type}
+                  value={state.value}
+                  onChange={(value) => handleChange(value as string)}
+                  onBlur={handleBlur}
+                  errors={state.meta.errors![0]?.message}
+                />
+              )
+            }
           </Field>
         ))}
       </div>
-    </div>
+    </StepContainer>
   );
 
   const fieldsStep3: {
     name: keyof Omit<ProcurationDetailsDTO, "documents">;
     label: string;
-    type?: InputFieldTypeProps;
-    options?: any;
+    type?: string;
     placeholder: string;
   }[] = [
     {
@@ -342,52 +357,50 @@ export default function ProcurationForm({ documentsSize }: Props) {
       placeholder: "Ex: +225 01 23 45 67 89",
     },
   ];
+
   const renderStep3 = () => (
-    <div className="space-y-6">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">
-        Détails de la procuration et contact
-      </h3>
+    <StepContainer title="Détails de la procuration et contact">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {fieldsStep3.map((item) => (
-          <Field key={item.name} name={item.name as any}>
+          <Field key={item.name} name={item.name}>
             {({ state, handleChange, handleBlur }) => (
               <InputField
                 label={item.label}
                 placeholder={item.placeholder}
                 type={item.type}
                 value={state.value}
-                onChange={(value) => handleChange(value as any)}
+                onChange={(value) => handleChange(value as string)}
                 onBlur={handleBlur}
                 errors={state.meta.errors![0]?.message}
-                options={item.options}
               />
             )}
           </Field>
         ))}
       </div>
-      <div className="mb-4 mt-6">
-        <span className="text-lg font-semibold text-green-700">
-          Prix à payer : {formatCurrency(prixActe ?? 10000)}
-        </span>
+      <hr className="my-6" />
+      <div className="mb-4">
+        <PriceViewer price={prixActe ?? 10000} />
       </div>
-      <div className="md:col-span-2">
-        <FileUploadView
-          maxFiles={maxFiles}
-          maxSizeMB={maxSizeMB}
-          openFileDialog={openFileDialog}
-          handleDragEnter={handleDragEnter}
-          handleDragLeave={handleDragLeave}
-          handleDragOver={handleDragOver}
-          handleDrop={handleDrop}
-          files={files}
-          isDragging={isDragging}
-          errors={fileErrors}
-          removeFile={removeFile}
-          clearFiles={clearFiles}
-          getInputProps={getInputProps}
-        />
-      </div>
-    </div>
+      {documentsSize > 0 && (
+        <div className="mb-4 md:col-span-2">
+          <FileUploadView
+            maxFiles={maxFiles}
+            maxSizeMB={maxSizeMB}
+            openFileDialog={openFileDialog}
+            handleDragEnter={handleDragEnter}
+            handleDragLeave={handleDragLeave}
+            handleDragOver={handleDragOver}
+            handleDrop={handleDrop}
+            files={files}
+            isDragging={isDragging}
+            errors={fileErrors}
+            removeFile={removeFile}
+            clearFiles={clearFiles}
+            getInputProps={getInputProps}
+          />
+        </div>
+      )}
+    </StepContainer>
   );
 
   if (showSuccess) {

@@ -3,11 +3,11 @@
 import { revalidateLogic, useForm } from "@tanstack/react-form";
 import React from "react";
 import { toast } from "sonner";
-import { formatCurrency } from "@/utils/format-currency";
+
 import { useFileUpload } from "@/hooks/use-file-upload";
 import FileUploadView from "@/components/block/file-upload-view";
 import { useMultistepForm } from "@/hooks/use-multistep-form";
-import { InputField, InputFieldTypeProps } from "@/components/form/input-field";
+import { InputField } from "@/components/form/input-field";
 import FormContainer from "@/components/form/multi-step/form-container";
 import {
   MariageDetailsDTO,
@@ -15,6 +15,8 @@ import {
 } from "@/features/demande/schema/mariage.schema";
 import { useServicesPricesQuery } from "@/features/demande/queries/demande-services.query";
 import { useMariageCreateMutation } from "@/features/demande/queries/mariage.mutation";
+import StepContainer from "@/components/form/multi-step/step-container";
+import PriceViewer from "../../price-viewer";
 
 interface Props {
   documentsSize: number;
@@ -86,13 +88,11 @@ export default function MarriageCapacityActForm({ documentsSize }: Props) {
     initialFiles: [],
   });
 
-  // Récupération du prix dynamique
   const { data: servicesPrices, isLoading: servicesPricesLoading } =
     useServicesPricesQuery();
 
-  // Création de la demande
   const { mutateAsync: createMariage, isPending: createMariageLoading } =
-    useMariageCreateMutation(); // Assurez-vous d'avoir cette mutation
+    useMariageCreateMutation();
 
   const isLoading = servicesPricesLoading || createMariageLoading;
 
@@ -101,7 +101,6 @@ export default function MarriageCapacityActForm({ documentsSize }: Props) {
   );
   const prixActe = currentServicePrice?.defaultPrice;
 
-  // Fonction pour valider les champs d'une étape spécifique
   const validateStep = async (step: number): Promise<boolean> => {
     let fieldsToValidate: (keyof MariageDetailsDTO)[] = [];
 
@@ -164,7 +163,7 @@ export default function MarriageCapacityActForm({ documentsSize }: Props) {
       ...data,
       documents: uploadedFiles,
     };
-    // Validation finale avant soumission
+
     if (uploadedFiles.length < documentsSize) {
       toast.error(
         `Veuillez télécharger les ${documentsSize} documents requis.`
@@ -176,7 +175,6 @@ export default function MarriageCapacityActForm({ documentsSize }: Props) {
       await createMariage({ data: dataForSubmit });
       showSuccessAndRedirect();
     } catch (error) {
-      // Gérer l'erreur ici
       toast.error("Une erreur est survenue lors de l'envoi du formulaire.");
     }
   };
@@ -184,7 +182,7 @@ export default function MarriageCapacityActForm({ documentsSize }: Props) {
   const fieldsStep1: {
     name: keyof Omit<MariageDetailsDTO, "documents">;
     label: string;
-    type?: InputFieldTypeProps;
+    type?: string;
     placeholder: string;
   }[] = [
     {
@@ -226,20 +224,17 @@ export default function MarriageCapacityActForm({ documentsSize }: Props) {
   ];
 
   const renderStep1 = () => (
-    <div className="space-y-6">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">
-        Informations sur l'époux
-      </h3>
+    <StepContainer title="Informations sur l'époux">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {fieldsStep1.map((item) => (
-          <Field key={item.name} name={item.name as any}>
+          <Field key={item.name} name={item.name}>
             {({ state, handleChange, handleBlur }) => (
               <InputField
                 label={item.label}
                 placeholder={item.placeholder}
                 type={item.type}
                 value={state.value}
-                onChange={(value) => handleChange(value as any)}
+                onChange={(value) => handleChange(value as string)}
                 onBlur={handleBlur}
                 errors={state.meta.errors![0]?.message}
               />
@@ -247,13 +242,13 @@ export default function MarriageCapacityActForm({ documentsSize }: Props) {
           </Field>
         ))}
       </div>
-    </div>
+    </StepContainer>
   );
 
   const fieldsStep2: {
     name: keyof Omit<MariageDetailsDTO, "documents">;
     label: string;
-    type?: InputFieldTypeProps;
+    type?: string;
     placeholder: string;
   }[] = [
     {
@@ -295,20 +290,17 @@ export default function MarriageCapacityActForm({ documentsSize }: Props) {
   ];
 
   const renderStep2 = () => (
-    <div className="space-y-6">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">
-        Informations sur l'épouse
-      </h3>
+    <StepContainer title="Informations sur l'épouse">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {fieldsStep2.map((item) => (
-          <Field key={item.name} name={item.name as any}>
+          <Field key={item.name} name={item.name}>
             {({ state, handleChange, handleBlur }) => (
               <InputField
                 label={item.label}
                 placeholder={item.placeholder}
                 type={item.type}
                 value={state.value}
-                onChange={(value) => handleChange(value as any)}
+                onChange={(value) => handleChange(value as string)}
                 onBlur={handleBlur}
                 errors={state.meta.errors![0]?.message}
               />
@@ -316,18 +308,13 @@ export default function MarriageCapacityActForm({ documentsSize }: Props) {
           </Field>
         ))}
       </div>
-    </div>
+    </StepContainer>
   );
 
   const renderStep3 = () => (
-    <div className="space-y-6">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">
-        Contact, pièces justificatives et prix
-      </h3>
+    <StepContainer title="Contact, pièces justificatives et prix">
       <div className="mb-4">
-        <span className="text-lg font-semibold text-green-700">
-          Prix à payer : {formatCurrency(prixActe ?? 10000)}
-        </span>
+        <PriceViewer price={prixActe ?? 10000} />
       </div>
       <div className="mb-4">
         <Field name="contactPhoneNumber">
@@ -337,31 +324,33 @@ export default function MarriageCapacityActForm({ documentsSize }: Props) {
               placeholder="Ex: +225 01 23 45 67 89"
               type="tel"
               value={state.value}
-              onChange={(value) => handleChange(value as any)}
+              onChange={(value) => handleChange(value as string)}
               onBlur={handleBlur}
               errors={state.meta.errors![0]?.message}
             />
           )}
         </Field>
       </div>
-      <div className="mb-4">
-        <FileUploadView
-          maxFiles={maxFiles}
-          maxSizeMB={maxSizeMB}
-          openFileDialog={openFileDialog}
-          handleDragEnter={handleDragEnter}
-          handleDragLeave={handleDragLeave}
-          handleDragOver={handleDragOver}
-          handleDrop={handleDrop}
-          files={files}
-          isDragging={isDragging}
-          errors={fileErrors}
-          removeFile={removeFile}
-          clearFiles={clearFiles}
-          getInputProps={getInputProps}
-        />
-      </div>
-    </div>
+      {documentsSize > 0 && (
+        <div className="mb-4">
+          <FileUploadView
+            maxFiles={maxFiles}
+            maxSizeMB={maxSizeMB}
+            openFileDialog={openFileDialog}
+            handleDragEnter={handleDragEnter}
+            handleDragLeave={handleDragLeave}
+            handleDragOver={handleDragOver}
+            handleDrop={handleDrop}
+            files={files}
+            isDragging={isDragging}
+            errors={fileErrors}
+            removeFile={removeFile}
+            clearFiles={clearFiles}
+            getInputProps={getInputProps}
+          />
+        </div>
+      )}
+    </StepContainer>
   );
 
   if (showSuccess) {

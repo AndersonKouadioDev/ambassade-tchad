@@ -1,8 +1,10 @@
 import {toast} from "sonner";
 
-export async function validateStepFields<T>(
-    fields: (keyof T)[],
-    validateField: (field: keyof T, mode: string) => Promise<void>,
+type ValidationCause = "change" | "blur" | "submit";
+
+export async function validateStepFields<TFieldName extends string>(
+    fields: TFieldName[],
+    validateField: (field: TFieldName, cause: ValidationCause) => Promise<unknown[]> | unknown[],
     getAllErrors: () => { fields: Record<string, unknown> }
 ): Promise<boolean> {
     let isValid = true;
@@ -10,14 +12,17 @@ export async function validateStepFields<T>(
     for (const field of fields) {
         try {
             await validateField(field, "change");
-        } catch (error: any) {
+        } catch (error: unknown) {
             isValid = false;
-            toast.error(error?.message || "Erreur de validation pour \${String(field)}");
+            const errorMessage = error instanceof Error ? error.message : `Erreur de validation pour ${field}`;
+            toast.error(errorMessage);
         }
     }
+
     const errors = getAllErrors();
     if (Object.keys(errors.fields).length > 0) {
         isValid = false;
     }
+
     return isValid;
 }

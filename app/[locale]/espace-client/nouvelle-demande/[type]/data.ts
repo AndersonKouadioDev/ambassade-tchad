@@ -1,5 +1,5 @@
-import BirthActForm from "@/components/espace-client/form_news_request/BirthActForm";
-import ConsulaireCardForm from "@/components/espace-client/form_news_request/ConsulaireCardForm";
+import BirthActForm from "@/features/demande/components/demande-acte-naissance-form";
+import CarteConsulaireForm from "@/features/demande/components/demande-carte-consulaire/";
 import DeathActForm from "@/components/espace-client/form_news_request/DeathActForm";
 import LaissezPasserForm from "@/components/espace-client/form_news_request/LaissezPasserForm";
 import CertificatNationaliteForm from "@/features/demande/components/certificat-nationnalite/certificat-nationnalite-form";
@@ -17,11 +17,6 @@ export const tousTypeDemandes = {
             "Passeport valide (minimum 6 mois de validité)",
             "Photo d'identité récente",
             "Justificatif de ressources financières",
-            "Réservation d'hôtel ou invitation",
-            "Billet d'avion aller-retour",
-            "Assurance voyage",
-            "Justificatif de profession",
-            "Casier judiciaire (si applicable)",
         ],
         processingTime: "5-15 jours ouvrables",
     },
@@ -35,7 +30,7 @@ export const tousTypeDemandes = {
     "consular-card": {
         title: "Demande de Carte Consulaire",
         description: "Remplissez ce formulaire pour demander une carte consulaire.",
-        component: ConsulaireCardForm,
+        component: CarteConsulaireForm,
         documents: [],
         processingTime: "10-20 jours",
     },
@@ -51,7 +46,7 @@ export const tousTypeDemandes = {
         description:
             "Demande de certificat de capacité mariage - Formulaire en cours de développement.",
         component: MarriageCapacityActForm,
-        documents: [],
+        documents: ["Photo d'identité récente"],
         processingTime: "5-10 jours",
     },
     "death-act": {

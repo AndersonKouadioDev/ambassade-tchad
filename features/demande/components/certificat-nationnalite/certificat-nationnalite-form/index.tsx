@@ -14,8 +14,13 @@ import { useFileUpload } from "@/hooks/use-file-upload";
 import FileUploadView from "@/components/block/file-upload-view";
 import { useCertificatNationaliteCreateMutation } from "../../../queries/certificat-nationalite.mutation";
 import { useMultistepForm } from "@/hooks/use-multistep-form";
-import { InputField, InputFieldTypeProps } from "@/components/form/input-field";
+import { InputField } from "@/components/form/input-field";
 import FormContainer from "@/components/form/multi-step/form-container";
+import { validateStepFields } from "@/lib/utils/multi-step-form/validate-step";
+import StepContainer from "@/components/form/multi-step/step-container";
+import SelectInputField from "@/components/form/select-input-field";
+import PriceViewer from "@/features/demande/components/price-viewer";
+import { handleFormSubmit } from "@/features/demande/utils/form-submit-handler";
 
 interface Props {
   documentsSize: number;
@@ -130,24 +135,7 @@ export default function CertificatNationaliteForm({ documentsSize }: Props) {
     }
 
     // Valider chaque champ de l'étape
-    let isValid = true;
-    for (const fieldName of fieldsToValidate) {
-      try {
-        await validateField(fieldName, "change");
-      } catch (validationError: any) {
-        isValid = false;
-        const errorMessage =
-          validationError?.message || `Erreur de validation pour ${fieldName}`;
-        toast.error(errorMessage);
-      }
-    }
-
-    const errors = getAllErrors();
-    if (Object.keys(errors.fields).length > 0) {
-      isValid = false;
-    }
-
-    return isValid;
+    return validateStepFields(fieldsToValidate, validateField, getAllErrors);
   };
 
   const handleNext = () => {
@@ -157,28 +145,19 @@ export default function CertificatNationaliteForm({ documentsSize }: Props) {
   const onSubmit = async (data: CertificatNationaliteDetailsDTO) => {
     const uploadedFiles = files.map((file) => file.file as File);
 
-    const dataForSubmit: CertificatNationaliteDetailsDTO = {
-      ...data,
-      documents: uploadedFiles,
-    };
-    // Validation finale avant soumission
-    if (uploadedFiles.length < documentsSize) {
-      toast.error(
-        `Veuillez télécharger tous ${documentsSize} documents requis`
-      );
-      return;
-    }
-
-    try {
-      await createCertificatNationalite({ data: dataForSubmit });
-      showSuccessAndRedirect();
-    } catch (error) {}
+    await handleFormSubmit({
+      data,
+      files: uploadedFiles,
+      requiredDocumentsCount: documentsSize,
+      createMutation: createCertificatNationalite,
+      onSuccess: showSuccessAndRedirect,
+    });
   };
 
   const fieldsStep1: {
     name: keyof Omit<CertificatNationaliteDetailsDTO, "documents">;
     label: string;
-    type?: InputFieldTypeProps;
+    type?: string;
   }[] = [
     { name: "applicantFirstName", label: "Prénom *", type: "text" },
     { name: "applicantLastName", label: "Nom *", type: "text" },
@@ -188,10 +167,7 @@ export default function CertificatNationaliteForm({ documentsSize }: Props) {
   ];
 
   const renderStep1 = () => (
-    <div className="space-y-6">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">
-        Informations personnelles
-      </h3>
+    <StepContainer title="Informations personnelles">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {fieldsStep1.map((item) => (
           <Field key={item.name} name={item.name}>
@@ -201,7 +177,7 @@ export default function CertificatNationaliteForm({ documentsSize }: Props) {
                 placeholder="Ex: Mahamat"
                 type={item.type}
                 value={state.value}
-                onChange={(value) => handleChange(value as any)}
+                onChange={(value) => handleChange(value as string)}
                 onBlur={handleBlur}
                 errors={state.meta.errors![0]?.message}
               />
@@ -209,33 +185,20 @@ export default function CertificatNationaliteForm({ documentsSize }: Props) {
           </Field>
         ))}
       </div>
-    </div>
+    </StepContainer>
   );
 
   const fieldsStep2: {
     name: keyof Omit<CertificatNationaliteDetailsDTO, "documents">;
     label: string;
-    type?: InputFieldTypeProps;
-    options?: { value: string; label: string }[];
+    type?: string;
   }[] = [
     { name: "originCountryParentFirstName", label: "Prénom *", type: "text" },
     { name: "originCountryParentLastName", label: "Nom *", type: "text" },
-    {
-      name: "originCountryParentRelationship",
-      label: "Lien de parenté *",
-      type: "select",
-      options: Object.values(PaysParentType).map((value) => ({
-        value,
-        label: value,
-      })),
-    },
   ];
 
   const renderStep2 = () => (
-    <div className="space-y-6">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">
-        Informations sur le parent d'origine et contact
-      </h3>
+    <StepContainer title="Informations sur le parent d'origine et contact">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {fieldsStep2.map((item) => (
           <Field key={item.name} name={item.name}>
@@ -245,43 +208,40 @@ export default function CertificatNationaliteForm({ documentsSize }: Props) {
                 placeholder="Ex: Mahamat"
                 type={item.type}
                 value={state.value}
-                onChange={(value) => handleChange(value as any)}
+                onChange={(value) => handleChange(value as string)}
                 onBlur={handleBlur}
                 errors={state.meta.errors![0]?.message}
               />
             )}
           </Field>
         ))}
-      </div>
-    </div>
-  );
 
-  const renderStep3 = () => (
-    <div className="space-y-6">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">
-        Récapitulatif et pièce justificative
-      </h3>
-      <div className="mb-4">
-        <span className="text-lg font-semibold text-green-700">
-          Prix à payer : {formatCurrency(prixActe ?? 5000)}
-        </span>
-      </div>
-      <div className="mb-4">
-        <Field name="contactPhoneNumber">
+        <Field name="originCountryParentRelationship">
           {({ state, handleChange, handleBlur }) => (
-            <InputField
-              label="Numéro de contact *"
-              placeholder="Ex: +225 01 23 45 67 89"
-              type="text"
+            <SelectInputField
+              label="Lien de parenté *"
+              placeholder="Sélectionnez le lien de parenté"
               value={state.value}
-              onChange={(value) => handleChange(value as any)}
+              onChange={(value) => handleChange(value as PaysParentType)}
               onBlur={handleBlur}
               errors={state.meta.errors![0]?.message}
+              options={[
+                { value: PaysParentType.FATHER, label: "Père" },
+                { value: PaysParentType.MOTHER, label: "Mère" },
+              ]}
             />
           )}
         </Field>
       </div>
-      <div>
+    </StepContainer>
+  );
+
+  const renderStep3 = () => (
+    <StepContainer title="Récapitulatif et pièce justificative">
+      <div className="mb-4">
+        <PriceViewer price={prixActe} />
+      </div>
+      <div className="mb-4">
         <FileUploadView
           maxFiles={maxFiles}
           maxSizeMB={maxSizeMB}
@@ -298,7 +258,22 @@ export default function CertificatNationaliteForm({ documentsSize }: Props) {
           getInputProps={getInputProps}
         />
       </div>
-    </div>
+      <div className="mb-4">
+        <Field name="contactPhoneNumber">
+          {({ state, handleChange, handleBlur }) => (
+            <InputField
+              label="Numéro de contact *"
+              placeholder="Ex: +225 01 23 45 67 89"
+              type="text"
+              value={state.value}
+              onChange={(value) => handleChange(value as string)}
+              onBlur={handleBlur}
+              errors={state.meta.errors![0]?.message}
+            />
+          )}
+        </Field>
+      </div>
+    </StepContainer>
   );
 
   if (showSuccess) {

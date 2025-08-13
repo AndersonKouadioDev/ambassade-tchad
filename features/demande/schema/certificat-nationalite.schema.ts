@@ -26,7 +26,7 @@ export const CertificatNationaliteDetailsSchema = z.object({
     .min(1, { message: "Le nom du parent est obligatoire." })
     .max(255, { message: "Le nom du parent ne doit pas dépasser 255 caractères." }),
   originCountryParentRelationship: z.enum(PaysParentType, { message: "le type de relation est invalide." }),
-  contactPhoneNumber: z.string({ message: 'Le numéro de téléphone doit être une chaîne.' }).optional(),
+  contactPhoneNumber: z.string({ message: 'Le numéro de téléphone doit être une chaîne.' }).optional(), //TODO: Cette ligne la est dupliquée dans DemandeCreateSchema, il faut la supprimer de là
   documents: z
     .array(
       z

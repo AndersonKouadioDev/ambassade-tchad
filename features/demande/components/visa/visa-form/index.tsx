@@ -3,12 +3,11 @@
 import { revalidateLogic, useForm } from "@tanstack/react-form";
 import React, { useEffect } from "react";
 import { toast } from "sonner";
-import { formatCurrency } from "@/utils/format-currency";
 
 import { useFileUpload } from "@/hooks/use-file-upload";
 import FileUploadView from "@/components/block/file-upload-view";
 import { useMultistepForm } from "@/hooks/use-multistep-form";
-import { InputField, InputFieldTypeProps } from "@/components/form/input-field";
+import { InputField } from "@/components/form/input-field";
 import FormContainer from "@/components/form/multi-step/form-container";
 import {
   Genre,
@@ -21,6 +20,9 @@ import {
 } from "@/features/demande/schema/visa.schema";
 import { useServicesPricesQuery } from "@/features/demande/queries/demande-services.query";
 import { useVisaCreateMutation } from "@/features/demande/queries/visa.mutation";
+import StepContainer from "@/components/form/multi-step/step-container";
+import SelectInputField from "@/components/form/select-input-field";
+import PriceViewer from "../../price-viewer";
 
 interface Props {
   documentsSize: number;
@@ -212,15 +214,14 @@ export default function VisaForm({ documentsSize }: Props) {
     try {
       await createVisa({ data: dataForSubmit });
       showSuccessAndRedirect();
-    } catch (error) {
-    }
+    } catch (error) {}
   };
 
   const fieldsStep1: {
     name: keyof Omit<VisaRequestDetailsDTO, "documents">;
     label: string;
-    type?: InputFieldTypeProps;
-    options?: any;
+    type?: string;
+    options?: { value: string; label: string }[];
     placeholder: string;
   }[] = [
     {
@@ -239,7 +240,10 @@ export default function VisaForm({ documentsSize }: Props) {
       name: "personGender",
       label: "Genre *",
       type: "select",
-      options: Object.values(Genre),
+      options: Object.values(Genre).map((genre) => ({
+        value: genre,
+        label: genre,
+      })),
       placeholder: "",
     },
     {
@@ -264,49 +268,63 @@ export default function VisaForm({ documentsSize }: Props) {
       name: "personMaritalStatus",
       label: "Situation Matrimoniale *",
       type: "select",
-      options: Object.values(SituationMatrimoniale),
+      options: Object.values(SituationMatrimoniale).map((status) => ({
+        value: status,
+        label: status,
+      })),
       placeholder: "",
     },
   ];
 
   const renderStep1 = () => (
-    <div className="space-y-6">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">
-        Informations personnelles
-      </h3>
+    <StepContainer title="Informations personnelles">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {fieldsStep1.map((item) => (
-          <Field key={item.name} name={item.name as any}>
-            {({ state, handleChange, handleBlur }) => (
-              <InputField
-                label={item.label}
-                placeholder={item.placeholder}
-                type={item.type}
-                value={state.value}
-                onChange={(value) => handleChange(value as any)}
-                onBlur={handleBlur}
-                errors={state.meta.errors![0]?.message}
-                options={item.options}
-              />
-            )}
+          <Field key={item.name} name={item.name}>
+            {({ state, handleChange, handleBlur }) =>
+              item.type === "select" ? (
+                <SelectInputField
+                  label={item.label}
+                  value={state.value}
+                  onChange={(value) => handleChange(value as string)}
+                  onBlur={handleBlur}
+                  errors={state.meta.errors![0]?.message}
+                  options={item.options ?? []}
+                  placeholder={item.placeholder}
+                />
+              ) : (
+                <InputField
+                  label={item.label}
+                  placeholder={item.placeholder}
+                  type={item.type}
+                  value={state.value}
+                  onChange={(value) => handleChange(value as string)}
+                  onBlur={handleBlur}
+                  errors={state.meta.errors![0]?.message}
+                />
+              )
+            }
           </Field>
         ))}
       </div>
-    </div>
+    </StepContainer>
   );
 
   const fieldsStep2: {
     name: keyof Omit<VisaRequestDetailsDTO, "documents">;
     label: string;
-    type?: InputFieldTypeProps;
-    options?: any;
+    type?: string;
+    options?: { value: string; label: string }[];
     placeholder: string;
   }[] = [
     {
       name: "passportType",
       label: "Type de passeport *",
       type: "select",
-      options: Object.values(PassportType),
+      options: Object.values(PassportType).map((type) => ({
+        value: type,
+        label: type,
+      })),
       placeholder: "",
     },
     {
@@ -336,35 +354,43 @@ export default function VisaForm({ documentsSize }: Props) {
   ];
 
   const renderStep2 = () => (
-    <div className="space-y-6">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">
-        Informations du passeport
-      </h3>
+    <StepContainer title="Informations du passeport">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {fieldsStep2.map((item) => (
-          <Field key={item.name} name={item.name as any}>
-            {({ state, handleChange, handleBlur }) => (
-              <InputField
-                label={item.label}
-                placeholder={item.placeholder}
-                type={item.type}
-                value={state.value}
-                onChange={(value) => handleChange(value as any)}
-                onBlur={handleBlur}
-                errors={state.meta.errors![0]?.message}
-                options={item.options}
-              />
-            )}
+          <Field key={item.name} name={item.name}>
+            {({ state, handleChange, handleBlur }) =>
+              item.type === "select" ? (
+                <SelectInputField
+                  label={item.label}
+                  value={state.value}
+                  onChange={(value) => handleChange(value as string)}
+                  onBlur={handleBlur}
+                  errors={state.meta.errors![0]?.message}
+                  options={item.options ?? []}
+                  placeholder={item.placeholder}
+                />
+              ) : (
+                <InputField
+                  label={item.label}
+                  placeholder={item.placeholder}
+                  type={item.type}
+                  value={state.value}
+                  onChange={(value) => handleChange(value as string)}
+                  onBlur={handleBlur}
+                  errors={state.meta.errors![0]?.message}
+                />
+              )
+            }
           </Field>
         ))}
       </div>
-    </div>
+    </StepContainer>
   );
 
   const fieldsStep3: {
     name: keyof Omit<VisaRequestDetailsDTO, "documents">;
     label: string;
-    type?: InputFieldTypeProps;
+    type?: string;
     placeholder: string;
   }[] = [
     {
@@ -400,20 +426,17 @@ export default function VisaForm({ documentsSize }: Props) {
   ];
 
   const renderStep3 = () => (
-    <div className="space-y-6">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">
-        Informations professionnelles et visa
-      </h3>
+    <StepContainer title="Informations professionnelles et visa">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {fieldsStep3.map((item) => (
-          <Field key={item.name} name={item.name as any}>
+          <Field key={item.name} name={item.name}>
             {({ state, handleChange, handleBlur }) => (
               <InputField
                 label={item.label}
                 placeholder={item.placeholder}
                 type={item.type}
                 value={state.value}
-                onChange={(value) => handleChange(value as any)}
+                onChange={(value) => handleChange(value as string)}
                 onBlur={handleBlur}
                 errors={state.meta.errors![0]?.message}
               />
@@ -421,36 +444,33 @@ export default function VisaForm({ documentsSize }: Props) {
           </Field>
         ))}
       </div>
-    </div>
+    </StepContainer>
   );
 
   const renderStep4 = () => (
-    <div className="space-y-6">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">
-        Récapitulatif et pièces justificatives
-      </h3>
+    <StepContainer title="Récapitulatif et pièces justificatives">
       <div className="mb-4">
-        <span className="text-lg font-semibold text-green-700">
-          Prix à payer : {formatCurrency(prixActe ?? 5000)}
-        </span>
+        <PriceViewer price={prixActe ?? 5000} />
       </div>
-      <div className="mb-4">
-        <FileUploadView
-          maxFiles={maxFiles}
-          maxSizeMB={maxSizeMB}
-          openFileDialog={openFileDialog}
-          handleDragEnter={handleDragEnter}
-          handleDragLeave={handleDragLeave}
-          handleDragOver={handleDragOver}
-          handleDrop={handleDrop}
-          files={files}
-          isDragging={isDragging}
-          errors={fileErrors}
-          removeFile={removeFile}
-          clearFiles={clearFiles}
-          getInputProps={getInputProps}
-        />
-      </div>
+      {documentsSize > 0 && (
+        <div className="mb-4">
+          <FileUploadView
+            maxFiles={maxFiles}
+            maxSizeMB={maxSizeMB}
+            openFileDialog={openFileDialog}
+            handleDragEnter={handleDragEnter}
+            handleDragLeave={handleDragLeave}
+            handleDragOver={handleDragOver}
+            handleDrop={handleDrop}
+            files={files}
+            isDragging={isDragging}
+            errors={fileErrors}
+            removeFile={removeFile}
+            clearFiles={clearFiles}
+            getInputProps={getInputProps}
+          />
+        </div>
+      )}
       <div className="mb-4">
         <Field name="contactPhoneNumber">
           {({ state, handleChange, handleBlur }) => (
@@ -466,7 +486,7 @@ export default function VisaForm({ documentsSize }: Props) {
           )}
         </Field>
       </div>
-    </div>
+    </StepContainer>
   );
 
   if (showSuccess) {
