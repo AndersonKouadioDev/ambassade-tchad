@@ -68,6 +68,10 @@ export interface IDemande {
     // payment?: IPaiement;
 }
 
+export interface ITrackDemandeResponse {
+    status: DemandeStatus;
+}
+
 export interface IHistoriqueStatutDemande {
     id: string;
     requestId: string;

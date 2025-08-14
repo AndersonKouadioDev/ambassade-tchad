@@ -55,7 +55,7 @@ export function useMultistepForm({
       setSuccessCountdown((prev) => {
         if (prev <= 1) {
           clearInterval(timer);
-          router.push(redirectPath); //TODO activer la redirection
+          router.push(redirectPath);
           return 0;
         }
         return prev - 1;

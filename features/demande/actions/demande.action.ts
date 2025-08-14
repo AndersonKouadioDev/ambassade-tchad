@@ -2,7 +2,7 @@
 
 import { ActionResponse, PaginatedResponse } from "@/types";
 import { demandeAPI } from "../apis/demande.api";
-import { IDemande, IDemandeRechercheParams, IDemandeStatsResponse } from "../types/demande.type";
+import {IDemande, IDemandeRechercheParams, IDemandeStatsResponse, ITrackDemandeResponse} from "../types/demande.type";
 import { handleServerActionError } from "@/utils/handleServerActionError";
 import { IService } from "../types/service.type";
 
@@ -33,7 +33,7 @@ export async function getMyRequestsAction(params: Omit<IDemandeRechercheParams, 
     }
 }
 
-export async function trackDemandByTicketAction(ticket: string): Promise<ActionResponse<IDemande>> {
+export async function trackDemandByTicketAction(ticket: string): Promise<ActionResponse<ITrackDemandeResponse>> {
     try {
         const demande = await demandeAPI.trackDemandByTicket(ticket);
         return {
