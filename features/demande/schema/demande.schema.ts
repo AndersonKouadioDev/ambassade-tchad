@@ -1,5 +1,4 @@
 import { z } from 'zod';
-import { LaissezPasserDetailsSchema } from './laissez-passer.schema';
 import { DemandeStatus } from '../types/demande.type';
 
 
@@ -8,7 +7,7 @@ export const DemandeCreateSchema = z.object({
   visaDetails: z.string().optional(),
   birthActDetails: z.string().optional(),
   consularCardDetails: z.string().optional(),
-  laissezPasserDetails: LaissezPasserDetailsSchema.optional(),
+  laissezPasserDetails: z.string().optional(),
   marriageCapacityActDetails: z.string().optional(),
   deathActDetails: z.string().optional(),
   powerOfAttorneyDetails: z.string().optional(),

@@ -1,6 +1,6 @@
 import React from "react";
 import ProgressBar from "@/components/form/progress-bar";
-import { Button } from "@/components/ui/button";
+import { Button } from "@heroui/react";
 
 type FormContainerProps = {
   title: string;
@@ -39,17 +39,17 @@ function FormContainer({
         {children}
         <div className="flex justify-between items-center mt-6">
           {currentStep > 1 && (
-            <Button type="button" onClick={prevStep} variant="outline">
+            <Button type="button" onClick={prevStep} color="warning">
               Précédent
             </Button>
           )}
           {currentStep < totalSteps ? (
-            <Button type="button" onClick={handleNext}>
+            <Button color="primary" type="button" onClick={handleNext}>
               Suivant
             </Button>
           ) : (
             <Button
-              variant="secondary"
+              color="success"
               type="button"
               disabled={isLoading}
               onClick={handleSubmit}

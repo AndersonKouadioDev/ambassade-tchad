@@ -4,8 +4,10 @@ export interface InputFieldProps {
   value: string | number | undefined;
   onChange: (value: string | number | undefined) => void;
   onBlur: () => void;
+  type?: React.HTMLInputTypeAttribute;
   errors?: string;
-  type?: string;
+  required?: boolean;
+  className?: string;
 }
 
 export function InputField({
@@ -16,6 +18,7 @@ export function InputField({
   onBlur,
   errors = undefined,
   type = "text",
+  required = false,
 }: InputFieldProps) {
   return (
     <div>
