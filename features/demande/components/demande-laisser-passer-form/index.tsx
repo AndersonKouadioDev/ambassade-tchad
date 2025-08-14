@@ -216,7 +216,7 @@ export default function LaisserPasserForm({ documentsSize }: Props) {
                                 placeholder={item.placeholder}
                                 type={item.type}
                                 value={state.value as string ?? ''}
-                                onChange={handleChange}
+                                onChange={(value) => handleChange(value as string)}
                                 onBlur={handleBlur}
                                 errors={(state.meta.errors?.[0] as { message?: string })?.message}
                                 required={item.label.includes("*")}
@@ -241,7 +241,7 @@ export default function LaisserPasserForm({ documentsSize }: Props) {
                             placeholder="Ex: Pierre Dupont"
                             type="text"
                             value={state.value}
-                            onChange={handleChange}
+                            onChange={(value) => handleChange(value as string)}
                             onBlur={handleBlur}
                             errors={state.meta.errors?.[0]?.message}
                             required
@@ -256,7 +256,7 @@ export default function LaisserPasserForm({ documentsSize }: Props) {
                             placeholder="Ex: Marie Dupont"
                             type="text"
                             value={state.value}
-                            onChange={handleChange}
+                            onChange={(value) => handleChange(value as string)}
                             onBlur={handleBlur}
                             errors={state.meta.errors?.[0]?.message}
                             required
@@ -299,7 +299,7 @@ export default function LaisserPasserForm({ documentsSize }: Props) {
                             placeholder="Ex: 123456789"
                             type="text"
                             value={state.value}
-                            onChange={handleChange}
+                            onChange={(value) => handleChange(value as string)}
                             onBlur={handleBlur}
                             errors={state.meta.errors?.[0]?.message}
                             required
@@ -314,7 +314,7 @@ export default function LaisserPasserForm({ documentsSize }: Props) {
                             placeholder="Ex: France"
                             type="text"
                             value={state.value}
-                            onChange={handleChange}
+                            onChange={(value) => handleChange(value as string)}
                             onBlur={handleBlur}
                             errors={state.meta.errors?.[0]?.message}
                         />
@@ -328,7 +328,7 @@ export default function LaisserPasserForm({ documentsSize }: Props) {
                             placeholder="Ex: Voyage d'affaires"
                             type="text"
                             value={state.value}
-                            onChange={handleChange}
+                            onChange={(value) => handleChange(value as string)}
                             onBlur={handleBlur}
                             errors={state.meta.errors?.[0]?.message}
                         />
@@ -456,7 +456,7 @@ export default function LaisserPasserForm({ documentsSize }: Props) {
                         placeholder="Ex: +225 01 23 45 67 89"
                         type="tel"
                         value={state.value}
-                        onChange={handleChange}
+                        onChange={(value) => handleChange(value as string)}
                         onBlur={handleBlur}
                         errors={state.meta.errors?.[0]?.message}
                         className="mb-6"

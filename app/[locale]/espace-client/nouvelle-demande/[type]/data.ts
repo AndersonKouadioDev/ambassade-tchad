@@ -5,6 +5,7 @@ import MarriageCapacityActForm from "@/features/demande/components/mariage/maria
 import ProcurationForm from "@/features/demande/components/procuration/procuration-form";
 import VisaForm from "@/features/demande/components/visa/visa-form";
 import CertificatDecesForm from "@/features/demande/components/demande-certificat-deces-form";
+import LaisserPasserForm from "@/features/demande/components/demande-laisser-passer-form";
 
 export const tousTypeDemandes = {
     visa: {
@@ -33,13 +34,13 @@ export const tousTypeDemandes = {
         documents: [],
         processingTime: "10-20 jours",
     },
-    // "laissez-passer": {
-    //     title: "Demande de Laissez-passer",
-    //     description: "Remplissez ce formulaire pour demander un laissez-passer.",
-    //     component: LaissezPasserForm,
-    //     documents: [],
-    //     processingTime: "2-5 jours",
-    // },
+    "laissez-passer": {
+        title: "Demande de Laissez-passer",
+        description: "Remplissez ce formulaire pour demander un laissez-passer.",
+        component: LaisserPasserForm,
+        documents: [],
+        processingTime: "2-5 jours",
+    },
     "marriage-capacity": {
         title: "Certificat de Capacité Mariage",
         description:
