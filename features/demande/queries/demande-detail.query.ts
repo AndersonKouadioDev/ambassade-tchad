@@ -1,10 +1,11 @@
 import {
     useQuery,
 } from '@tanstack/react-query';
-import { getDemandByTicketAction, trackDemandByTicketAction } from '../actions/demande.action';
-import { demandeKeyQuery } from './index.query';
-import { toast } from 'sonner';
+import {getDemandByTicketAction, trackDemandByTicketAction} from '../actions/demande.action';
+import {demandeKeyQuery} from './index.query';
+import {toast} from 'sonner';
 import getQueryClient from '@/lib/get-query-client';
+import React from "react";
 
 const queryClient = getQueryClient();
 
@@ -14,20 +15,30 @@ export const trackDemandeByTicketQueryOption = (ticket: string) => {
         queryKey: demandeKeyQuery("track", ticket),
         queryFn: async () => {
             if (!ticket) throw new Error("Le numéro de ticket est requis");
-            return trackDemandByTicketAction(ticket);
+
+            const result = await trackDemandByTicketAction(ticket);
+
+            if (!result.success) {
+                throw new Error(result.error)
+            }
+
+            return result.data!;
         },
         enabled: !!ticket,
-        onError: (error: Error) => {
-            toast.error("Erreur lors du suivi de la demande:", {
-                description: error.message,
-            });
-        },
     };
 };
 
 //2- Hook pour suivre une demande par ticket
 export const useTrackDemandeByTicketQuery = (ticket: string) => {
-    return useQuery(trackDemandeByTicketQueryOption(ticket));
+    const query = useQuery(trackDemandeByTicketQueryOption(ticket));
+    React.useEffect(() => {
+        if (query.error || query.isError) {
+            toast.error("Erreur lors de la récupération de la demande:", {
+                description: query.error.message,
+            });
+        }
+    }, [query]);
+    return query;
 };
 
 //3- Fonction pour précharger une demande par ticket
@@ -46,20 +57,30 @@ export const getDemandeByTicketQueryOption = (ticket: string) => {
         queryKey: demandeKeyQuery("detail", ticket),
         queryFn: async () => {
             if (!ticket) throw new Error("Le numéro de ticket est requis");
-            return getDemandByTicketAction(ticket);
+            const result = await getDemandByTicketAction(ticket);
+
+
+            if (!result.success) {
+                throw new Error(result.error)
+            }
+
+            return result.data!;
         },
-        enabled: !!ticket,
-        onError: (error: Error) => {
-            toast.error("Erreur lors de la récupération de la demande:", {
-                description: error.message,
-            });
-        },
+        enabled: !!ticket
     };
 };
 
 //2- Hook pour obtenir une demande par ticket
 export const useGetDemandeByTicketQuery = (ticket: string) => {
-    return useQuery(getDemandeByTicketQueryOption(ticket));
+    const query = useQuery(getDemandeByTicketQueryOption(ticket));
+    React.useEffect(() => {
+        if (query.error || query.isError) {
+            toast.error("Erreur lors de la récupération de la demande:", {
+                description: query.error.message,
+            });
+        }
+    }, [query]);
+    return query;
 };
 
 //3- Fonction pour précharger une demande par ticket

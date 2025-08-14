@@ -3,7 +3,7 @@ import { SearchParams } from "ak-api-http";
 import {
     IDemande,
     IDemandeStatsResponse,
-    IDemandeRechercheParams,
+    IDemandeRechercheParams, ITrackDemandeResponse,
 } from "../types/demande.type";
 import { IService } from "../types/service.type";
 import { PaginatedResponse } from "@/types";
@@ -12,7 +12,7 @@ export interface IDemandRequestAPI {
     createDemandRequest(data: FormData): Promise<IDemande>;
     getMyRequests(params: Omit<IDemandeRechercheParams, 'userId'>): Promise<PaginatedResponse<IDemande>>;
     getUserStats(): Promise<IDemandeStatsResponse>;
-    trackDemandByTicket(ticket: string): Promise<IDemande>;
+    trackDemandByTicket(ticket: string): Promise<ITrackDemandeResponse>;
     getDemandByTicket(ticket: string): Promise<IDemande>;
     getServicesPrices(): Promise<IService[]>;
 }
@@ -47,8 +47,8 @@ export const demandeAPI: IDemandRequestAPI = {
         });
     },
 
-    trackDemandByTicket(ticket: string): Promise<IDemande> {
-        return api.request<IDemande>({
+    trackDemandByTicket(ticket: string): Promise<ITrackDemandeResponse> {
+        return api.request<ITrackDemandeResponse>({
             endpoint: `/demandes/track/${ticket}`,
             method: "GET",
         });
@@ -56,7 +56,7 @@ export const demandeAPI: IDemandRequestAPI = {
 
     getDemandByTicket(ticket: string): Promise<IDemande> {
         return api.request<IDemande>({
-            endpoint: `/demandes/demande/${ticket}`,
+            endpoint: `/demandes/demandeur/${ticket}`,
             method: "GET",
         });
     },

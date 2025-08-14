@@ -21,11 +21,7 @@ export const servicesPricesQueryOption = () => {
             return result.data!;
         },
         staleTime: Infinity,
-        onError: (error: Error) => {
-            toast.error("Erreur lors de la récupération des prix des services:", {
-                description: error.message,
-            });
-        },
+
     };
 };
 
