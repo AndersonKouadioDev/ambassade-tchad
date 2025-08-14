@@ -21,7 +21,6 @@ export const servicesPricesQueryOption = () => {
             return result.data!;
         },
         staleTime: Infinity,
-
     };
 };
 

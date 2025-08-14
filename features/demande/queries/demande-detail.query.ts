@@ -1,6 +1,4 @@
-import {
-    useQuery,
-} from '@tanstack/react-query';
+import {useQuery} from '@tanstack/react-query';
 import {getDemandByTicketAction, trackDemandByTicketAction} from '../actions/demande.action';
 import {demandeKeyQuery} from './index.query';
 import {toast} from 'sonner';

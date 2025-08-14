@@ -1,10 +1,10 @@
 "use server";
 
-import { ActionResponse, PaginatedResponse } from "@/types";
-import { demandeAPI } from "../apis/demande.api";
+import {ActionResponse, PaginatedResponse} from "@/types";
+import {demandeAPI} from "../apis/demande.api";
 import {IDemande, IDemandeRechercheParams, IDemandeStatsResponse, ITrackDemandeResponse} from "../types/demande.type";
-import { handleServerActionError } from "@/utils/handleServerActionError";
-import { IService } from "../types/service.type";
+import {handleServerActionError} from "@/utils/handleServerActionError";
+import {IService} from "../types/service.type";
 
 export async function createDemandRequestAction(formData: FormData): Promise<ActionResponse<IDemande>> {
     try {

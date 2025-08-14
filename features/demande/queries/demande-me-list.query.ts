@@ -1,10 +1,8 @@
-import {
-    useQuery,
-} from '@tanstack/react-query';
-import { getMyRequestsAction } from '../actions/demande.action'; // Import relevant actions
-import { IDemandeRechercheParams } from '../types/demande.type';
-import { demandeKeyQuery } from './index.query';
-import { toast } from 'sonner';
+import {useQuery} from '@tanstack/react-query';
+import {getMyRequestsAction} from '../actions/demande.action'; // Import relevant actions
+import {IDemandeRechercheParams} from '../types/demande.type';
+import {demandeKeyQuery} from './index.query';
+import {toast} from 'sonner';
 import getQueryClient from '@/lib/get-query-client';
 import React from 'react';
 
@@ -37,7 +35,7 @@ export const useMyDemandesListQuery = (
     const query = useQuery(myDemandesListQueryOption(params));
 
     React.useEffect(() => {
-        if (query.error, query.isError) {
+        if (query.error || query.isError) {
             toast.error("Erreur lors de la récupération de mes demandes:", {
                 description: query.error.message,
             });

@@ -1,32 +1,16 @@
-import { notFound } from 'next/navigation';
-import { getEventBySlug } from '@/lib/events-data';
-import EventDetailHero from '@/components/events/evenement/event-detail-hero';
-import EventDetailContent from '@/components/events/evenement/event-detail-content';
+import EventDetailContent from '@/features/evenement/components/evenement-details/event-detail-content';
+import {prefetchEvenementQuery} from '@/features/evenement/queries/evenement-details.query';
+import EventDetailHero from "@/features/evenement/components/evenement-details/event-detail-hero";
 
-interface EventDetailPageProps {
-  params: {
-    locale: string;
-    slug: string;
-  };
-}
+export default async function EventDetailPage({params}: { params: Promise<{ slug: string }> }) {
+    const id = (await params).slug
 
-export default function EventDetailPage({ params }: EventDetailPageProps) {
-  const event = getEventBySlug(params.slug);
+    prefetchEvenementQuery(id);
 
-  if (!event) {
-    notFound();
-  }
-
-  return (
-    <main>
-      <EventDetailHero event={event} />
-      <EventDetailContent event={event} />
-    </main>
-  );
-}
-
-export async function generateStaticParams() {
-  // Cette fonction pourrait être utilisée pour la génération statique
-  // Retournons un tableau vide pour l'instant
-  return [];
+    return (
+        <main>
+            <EventDetailHero/>
+            <EventDetailContent/>
+        </main>
+    );
 }
