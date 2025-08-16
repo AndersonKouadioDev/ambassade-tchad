@@ -19,14 +19,38 @@ const SERVICES = [
 const STATUS = [
   "NEW",
   "IN_PROGRESS",
-  "PENDING",
-  "COMPLETED",
-  "READY_TO_PICKUP",
+  "PENDING_ADDITIONAL_INFO",
+  "APPROVED_BY_AGENT",
+  "APPROVED_BY_CHEF",
+  "APPROVED_BY_CONSUL",
+  "READY_FOR_PICKUP",
+  "DELIVERED",
+  "ARCHIVED",
+  "EXPIRED",
+  "RENEWAL_REQUESTED",
   "REJECTED",
 ];
 
 export default function MesDemandesClient() {
   const t = useTranslations("espaceClient.mesDemandesClient");
+  const translateStatus = (status: string) => {
+    const translations: Record<string, string> = {
+      'NEW': 'Nouveau',
+      'IN_REVIEW_DOCS': 'En cours de vérification de documents',
+      'PENDING_ADDITIONAL_INFO': 'En attente de renseignements supplémentaires',
+      'APPROVED_BY_AGENT': 'Approuvé par l\'agent',
+      'APPROVED_BY_CHEF': 'Approuvé par le chef',
+      'APPROVED_BY_CONSUL': 'Approuvé par le consul',
+      'READY_FOR_PICKUP': 'Prêt à retirer',
+      'DELIVERED': 'Retiré',
+      'ARCHIVED': 'Archivé',
+      'EXPIRED': 'Expiré',
+      'RENEWAL_REQUESTED': 'Renouvellement demandé',
+      'REJECTED': 'Rejeté',
+    };
+    return translations[status] || status;
+  };
+
 
   const translateServiceType = (serviceType: string) => {
     const translations: Record<string, string> = {

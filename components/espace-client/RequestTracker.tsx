@@ -1,7 +1,6 @@
 "use client";
 
 import React from 'react';
-import { RequestStatus, RequestWithRelations } from '@/types/request.types';
 import { 
   CheckCircle, 
   Clock, 
@@ -14,14 +13,17 @@ import {
   Crown,
   Archive
 } from 'lucide-react';
+import { DemandeStatus } from '@/features/demande/types/demande.type';
+import { IDemande } from '@/features/demande/types/demande.type';
 
 interface RequestTrackerProps {
-  request: RequestWithRelations;
+  request: DemandeStatus;
+  demande: IDemande;
 }
 
 // Configuration des statuts avec traductions et styles
 const STATUS_CONFIG = {
-  [RequestStatus.NEW]: {
+  [DemandeStatus.NEW]: {
     label: 'Nouvelle demande',
     description: 'Votre demande a été soumise avec succès',
     icon: FileText,
@@ -31,7 +33,7 @@ const STATUS_CONFIG = {
     borderColor: 'border-blue-200',
     step: 1
   },
-  [RequestStatus.IN_REVIEW_DOCS]: {
+  [DemandeStatus.IN_REVIEW_DOCS]: {
     label: 'Examen des documents',
     description: 'Nos agents examinent vos documents',
     icon: User,
@@ -41,7 +43,7 @@ const STATUS_CONFIG = {
     borderColor: 'border-yellow-200',
     step: 2
   },
-  [RequestStatus.PENDING_ADDITIONAL_INFO]: {
+  [DemandeStatus.PENDING_ADDITIONAL_INFO]: {
     label: 'Informations supplémentaires requises',
     description: 'Des informations complémentaires sont nécessaires',
     icon: AlertCircle,
@@ -51,7 +53,7 @@ const STATUS_CONFIG = {
     borderColor: 'border-orange-200',
     step: 2.5
   },
-  [RequestStatus.APPROVED_BY_AGENT]: {
+  [DemandeStatus.APPROVED_BY_AGENT]: {
     label: 'Approuvé par l\'agent',
     description: 'Votre demande a été approuvée par notre agent',
     icon: UserCheck,
@@ -61,7 +63,7 @@ const STATUS_CONFIG = {
     borderColor: 'border-green-200',
     step: 3
   },
-  [RequestStatus.APPROVED_BY_CHEF]: {
+  [DemandeStatus.APPROVED_BY_CHEF]: {
     label: 'Approuvé par le chef de service',
     description: 'Validation par le chef de service effectuée',
     icon: UserCheck,
@@ -71,7 +73,7 @@ const STATUS_CONFIG = {
     borderColor: 'border-green-200',
     step: 4
   },
-  [RequestStatus.APPROVED_BY_CONSUL]: {
+  [DemandeStatus.APPROVED_BY_CONSUL]: {
     label: 'Approuvé par le consul',
     description: 'Validation finale par le consul effectuée',
     icon: Crown,
@@ -81,7 +83,7 @@ const STATUS_CONFIG = {
     borderColor: 'border-purple-200',
     step: 5
   },
-  [RequestStatus.READY_FOR_PICKUP]: {
+  [DemandeStatus.READY_FOR_PICKUP]: {
     label: 'Prêt pour retrait',
     description: 'Votre document est prêt à être retiré',
     icon: Package,
@@ -91,7 +93,7 @@ const STATUS_CONFIG = {
     borderColor: 'border-blue-200',
     step: 6
   },
-  [RequestStatus.DELIVERED]: {
+  [DemandeStatus.DELIVERED]: {
     label: 'Remis',
     description: 'Document remis avec succès',
     icon: CheckCircle,
@@ -101,7 +103,7 @@ const STATUS_CONFIG = {
     borderColor: 'border-green-200',
     step: 7
   },
-  [RequestStatus.REJECTED]: {
+  [DemandeStatus.REJECTED]: {
     label: 'Rejetée',
     description: 'Votre demande a été rejetée',
     icon: XCircle,
@@ -111,7 +113,7 @@ const STATUS_CONFIG = {
     borderColor: 'border-red-200',
     step: -1
   },
-  [RequestStatus.ARCHIVED]: {
+  [DemandeStatus.ARCHIVED]: {
     label: 'Archivée',
     description: 'Demande archivée',
     icon: Archive,
@@ -121,7 +123,7 @@ const STATUS_CONFIG = {
     borderColor: 'border-gray-200',
     step: 8
   },
-  [RequestStatus.EXPIRED]: {
+  [DemandeStatus.EXPIRED]: {
     label: 'Expirée',
     description: 'La demande a expiré',
     icon: Clock,
@@ -131,7 +133,7 @@ const STATUS_CONFIG = {
     borderColor: 'border-red-200',
     step: -2
   },
-  [RequestStatus.RENEWAL_REQUESTED]: {
+  [DemandeStatus.RENEWAL_REQUESTED]: {
     label: 'Renouvellement demandé',
     description: 'Une demande de renouvellement a été initiée',
     icon: FileText,
@@ -145,17 +147,17 @@ const STATUS_CONFIG = {
 
 // Étapes du workflow normal
 const WORKFLOW_STEPS = [
-  RequestStatus.NEW,
-  RequestStatus.IN_REVIEW_DOCS,
-  RequestStatus.APPROVED_BY_AGENT,
-  RequestStatus.APPROVED_BY_CHEF,
-  RequestStatus.APPROVED_BY_CONSUL,
-  RequestStatus.READY_FOR_PICKUP,
-  RequestStatus.DELIVERED
+  DemandeStatus.NEW,
+  DemandeStatus.IN_REVIEW_DOCS,
+  DemandeStatus.APPROVED_BY_AGENT,
+  DemandeStatus.APPROVED_BY_CHEF,
+  DemandeStatus.APPROVED_BY_CONSUL,
+  DemandeStatus.READY_FOR_PICKUP,
+    DemandeStatus.DELIVERED
 ];
 
-export default function RequestTracker({ request }: RequestTrackerProps) {
-  const currentStatus = request.status as RequestStatus;
+export default function RequestTracker({ demande }: RequestTrackerProps) {
+  const currentStatus = demande.status as DemandeStatus;
   const currentConfig = STATUS_CONFIG[currentStatus];
   const currentStep = currentConfig.step;
 
@@ -191,7 +193,7 @@ export default function RequestTracker({ request }: RequestTrackerProps) {
               {currentConfig.label}
             </div>
             <p className="text-xs text-gray-500 mt-1">
-              Mis à jour le {new Date(request.updatedAt).toLocaleDateString('fr-FR')}
+              Mis à jour le {new Date(demande.createdAt).toLocaleDateString('fr-FR')}
             </p>
           </div>
         </div>
@@ -217,7 +219,7 @@ export default function RequestTracker({ request }: RequestTrackerProps) {
       <div className="px-6 py-4">
         <h4 className="font-semibold text-gray-800 mb-4">Suivi détaillé</h4>
         <div className="space-y-4">
-          {WORKFLOW_STEPS.map((status, index) => {
+          {WORKFLOW_STEPS.map((status) => {
             const config = STATUS_CONFIG[status];
             const isCompleted = config.step <= currentStep && currentStep > 0;
             const isCurrent = status === currentStatus;
@@ -260,13 +262,13 @@ export default function RequestTracker({ request }: RequestTrackerProps) {
       </div>
 
       {/* Historique des changements de statut */}
-      {request.statusHistory && request.statusHistory.length > 0 && (
+      {demande.statusHistory && demande.statusHistory.length > 0 && (
         <div className="px-6 py-4 border-t border-gray-100 bg-gray-50">
           <h4 className="font-semibold text-gray-800 mb-3">Historique des modifications</h4>
           <div className="space-y-2 max-h-40 overflow-y-auto">
-            {request.statusHistory
+            {demande.statusHistory
               .sort((a, b) => new Date(b.changedAt).getTime() - new Date(a.changedAt).getTime())
-              .map((history, index) => (
+              .map((history) => (
                 <div key={history.id} className="flex items-center justify-between text-sm">
                   <div className="flex items-center space-x-2">
                     <div className={`w-2 h-2 rounded-full ${STATUS_CONFIG[history.newStatus]?.color || 'bg-gray-400'}`} />
@@ -290,21 +292,21 @@ export default function RequestTracker({ request }: RequestTrackerProps) {
       <div className="px-6 py-4 border-t border-gray-100">
         <div className="flex items-center justify-between">
           <div className="text-sm text-gray-600">
-            Demande N° <span className="font-mono font-medium">{request.ticketNumber}</span>
+            Demande N° <span className="font-mono font-medium">{demande.ticketNumber}</span>
           </div>
           <div className="flex space-x-2">
-            {currentStatus === RequestStatus.PENDING_ADDITIONAL_INFO && (
+            {currentStatus === DemandeStatus.PENDING_ADDITIONAL_INFO && (
               <button className="px-4 py-2 bg-orange-500 text-white rounded-lg text-sm font-medium hover:bg-orange-600 transition-colors">
                 Fournir des informations
               </button>
             )}
-            {currentStatus === RequestStatus.READY_FOR_PICKUP && (
+            {currentStatus === DemandeStatus.READY_FOR_PICKUP && (
               <button className="px-4 py-2 bg-blue-500 text-white rounded-lg text-sm font-medium hover:bg-blue-600 transition-colors">
                 Planifier le retrait
               </button>
             )}
             <button className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-50 transition-colors">
-              Contacter l'ambassade
+              Contacter l&apos;ambassade
             </button>
           </div>
         </div>

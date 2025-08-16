@@ -100,11 +100,6 @@
         "2": { "title": "Tourisme", "alt": "Image du tourisme au Tchad" }
       }
     },
-    "news": {
-      "title": "Actualités",
-      "description": "Restez informé des dernières nouvelles de l'Ambassade",
-      "viewAll": "Voir toutes les actualités"
-    },
     "passportForm": {
       "open": "Ouvrir le formulaire de passeport",
       "title": "Formulaire de passeport",
@@ -119,10 +114,6 @@
       "widowed": "Veuf/Veuve",
       "close": "Fermer",
       "submit": "Soumettre"
-    },
-    "news": {
-      "title": "Actualités",
-      "description": "Dernières nouvelles"
     },
     "hero": {
       "title": "Bienvenue sur le Site officiel de l'ambassade",
@@ -443,8 +434,11 @@
     "draft": "Brouillon",
     "author": "Auteur",
     "category": "Catégorie",
-    "noNews": "Aucune actualité pour le moment.",
-    "backToList": "Retour à la liste des actualités"
+    "backToList": "Retour à la liste des actualités",
+    "loading": "Chargement...",
+    "error": "Une erreur est survenue",
+    "noNews": "Aucune actualité pour le moment.", 
+    "noNewsFound": "Aucune actualité trouvée"
   },
   "gallery": {
     "title": "Galerie",
@@ -658,7 +652,10 @@
       },
       "newsCarousel": {
         "title": "Actualités",
-        "readMore": "Lire la suite"
+        "readMore": "Lire la suite",
+        "previous": "Précédent",
+        "next": "Suivant"
+
       },
       "messages": {
         "title": "Messages",
@@ -694,27 +691,61 @@
       "titre": "Chronologie du Statut",
       "enCours": "En cours",
       "etapes": {
-        "soumission": {
-          "titre": "Demande soumise",
-          "description": "Votre demande a été reçue et enregistrée dans notre système"
+        
+        "new": {
+          "titre": "Nouveau",
+          "description": "Votre dossier est en cours de traitement"
         },
-        "verification": {
-          "titre": "Vérification",
-          "description": "Vérification de la complétude et de la validité des documents"
+        "pending_additional_info": {
+          "titre": "En attente d'informations complémentaires",
+          "description": "Votre dossier est en attente d'informations complémentaires"
         },
-        "traitement": {
-          "titre": "En traitement",
-          "description": "Votre demande est en cours de traitement par nos services"
+        "approved_by_agent": {
+          "titre": "Approuvé par l'agent",
+          "description": "Votre dossier est approuvé par l'agent"
         },
-        "pret": {
+        "approved_by_chef": {
+          "titre": "Approuvé par le chef",
+          "description": "Votre dossier est approuvé par le chef"
+        },
+        "approved_by_consul": {
+          "titre": "Approuvé par le consul",
+          "description": "Votre dossier est approuvé par le consul"
+        },
+        "ready_for_pickup": {
           "titre": "Prêt à retirer",
-          "description": "Votre document est prêt et peut être retiré"
+          "description": "Votre dossier est prêt à être retiré"
         },
-        "termine": {
-          "titre": "Terminé",
-          "description": "Votre demande a été complètement traitée"
+        "delivered": {
+          "titre": "Livré",
+          "description": "Votre dossier est livré"
+        },
+        "expired": {
+          "titre": "Expiré",
+          "description": "Votre dossier est expiré"
+        },
+        "renewal_requested": {
+          "titre": "Renouvellement demandé",
+          "description": "Votre dossier est renouvelé"
+        },
+        "in_review_docs": {
+          "titre": "En revue",
+          "description": "Votre dossier est en revue"
+        },
+        "archived": {
+          "titre": "Archivé",
+          "description": "Votre dossier est archivé"
+        },
+        "rejected": {
+          "titre": "Rejeté",
+          "description": "Votre dossier est rejeté"
+        },
+        "cancelled": {
+          "titre": "Annulé",
+          "description": "Votre dossier est annulé"
         }
       }
+     
     },
     "header": {
       "title": "Espace Client",
@@ -1134,10 +1165,19 @@
       "statuts": {
         "NEW": "Nouveau",
         "IN_PROGRESS": "En cours",
-        "PENDING": "En attente",
         "COMPLETED": "Terminé",
         "READY_TO_PICKUP": "Prêt à retirer",
-        "REJECTED": "Rejeté"
+        "REJECTED": "Rejeté",
+        "IN_REVIEW_DOCS": "En cours de vérification de documents",
+        "PENDING_ADDITIONAL_INFO": "En attente de renseignements supplémentaires",
+        "APPROVED_BY_AGENT": "Approuvé par l'agent",
+        "APPROVED_BY_CHEF": "Approuvé par le chef",
+        "APPROVED_BY_CONSUL": "Approuvé par le consul",
+        "READY_FOR_PICKUP": "Prêt à retirer",
+        "DELIVERED": "Retiré",
+        "ARCHIVED": "Archivé",
+        "EXPIRED": "Expiré",
+        "RENEWAL_REQUESTED": "Renouvellement demandé"
       },
       "documents": {
         "title": "Documents fournis",

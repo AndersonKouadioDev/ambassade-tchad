@@ -1,8 +1,9 @@
-import Notifications from '@/components/espace-client/Notifications'; 
+// import Notifications from '@/components/espace-client/Notifications'; 
 import QuickActions from '@/components/espace-client/QuickActions';
 import DashboardHeader from '@/components/espace-client/DashboardHeader';
 import RequestsTablePro from '@/components/espace-client/RequestsTablePro';
 import NewsCarouselPro from '@/components/espace-client/NewsCarouselPro';
+import Notifications from '@/components/espace-client/Notifications';
 
 // const notifications = [
 //   { text: 'Votre Demande De Visa Ticket N°T001 Est Passée Au Statut', status: 'En Cours' },
@@ -30,11 +31,11 @@ export default function Dashboard() {
       </div>
       
       {/* Section notifications et actions rapides */}
-      <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 lg:gap-6">
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 lg:gap-6 ">
         {/* Notifications - plus large sur desktop */}
-        <div className="xl:col-span-2 order-1">
-          <Notifications notifications={[]} />
-        </div>
+          <div className="xl:col-span-2 order-1">
+            <Notifications notifications={[]} />
+          </div>
         
         {/* Actions rapides - sidebar sur desktop */}
         <div className="xl:col-span-1 order-2">

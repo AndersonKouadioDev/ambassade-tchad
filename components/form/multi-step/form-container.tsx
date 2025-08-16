@@ -14,7 +14,6 @@ type FormContainerProps = {
 };
 
 function FormContainer({
-  title,
   currentStep,
   totalSteps,
   handleSubmit,

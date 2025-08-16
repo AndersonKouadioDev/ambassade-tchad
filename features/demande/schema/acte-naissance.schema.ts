@@ -28,7 +28,6 @@ export const ActeNaissanceDetailsSchema = z.object({
     .min(1, { message: 'Le nom de la mère est obligatoire.' })
     .max(255, { message: 'Le nom de la mère ne doit pas dépasser 255 caractères.' }),
   requestType: z.enum(ActeNaissanceType, { message: 'Le type de demande est invalide.' }).optional(),
-  personGender: z.enum(Genre, { message: 'Le genre est invalide.' }).optional(),
   contactPhoneNumber: z.string({ message: 'Le numéro de téléphone doit être une chaîne.' }).optional(),
   documents: z
     .array(

@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl';
 // import { link } from 'fs';
 
 const DOCUMENTS = [
-  { key: 'visa', label: 'Visa', link: '/app/espace-client/nouvelle-demande/visa/page.tsx' },
+  { key: 'visa', label: 'Visa', link: '/espace-client/nouvelle-demande/visa' },
   { key: 'birth-act', label: 'Acte de naissance', link: '/espace-client/nouvelle-demande/birth-act' },
   { key: 'consular-card', label: 'Carte consulaire', link: '/espace-client/nouvelle-demande/consular-card' },
   { key: 'laissez-passer', label: 'Laissez-passer', link: '/espace-client/nouvelle-demande/laissez-passer' },
@@ -20,7 +20,7 @@ export default function QuickActions() {
   const t = useTranslations('espaceClient.quickActions');
   const [modalOpen, setModalOpen] = useState(false);
 
-  function handleCardClick(doc: typeof DOCUMENTS[0]) {
+  function handleCardClick() {
     setModalOpen(false);
     // La navigation sera gérée par NavigationButton
   }
@@ -59,7 +59,7 @@ export default function QuickActions() {
                     key={doc.key}
                     href={doc.link}
                     className="group flex flex-col items-center justify-center p-6 rounded-2xl border border-[#EDF1F7] dark:border-gray-700 bg-gray-50/80 dark:bg-gray-800/80 font-semibold text-lg shadow-md hover:shadow-2xl hover:bg-[#F6F8FA] dark:hover:bg-gray-700 transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#F44C27] scale-100 hover:scale-105 hover:-rotate-1 relative"
-                    onClick={() => handleCardClick(doc)}
+                    onClick={() => handleCardClick()}
                   >
                     <span className="relative flex items-center justify-center mb-2">
                       <span className="absolute -inset-3 rounded-full bg-[#F44C27]/10 opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-200 blur-sm" />

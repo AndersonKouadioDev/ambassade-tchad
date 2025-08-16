@@ -1,56 +1,68 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React from "react";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { Calendar, ChevronLeft, ChevronRight, Search } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { News } from "@/lib/types";
-import { newsData } from "@/lib/news-store";
-import {
-  formatNewsDate,
-  searchNews,
-  filterNewsByDate,
-  getNewsExcerpt,
-} from "@/lib/news-utils";
+import { useActualitesList } from "@/features/actualites/queries/actualite-list.query";
+import { IActualiteRechercheParams } from "@/features/actualites/types/actualites.type";
+import { getNewsExcerpt } from "@/lib/news-utils";
+import { formatImageUrl } from "@/features/actualites/utils/image-utils";
+import { formatNewsDate } from "@/lib/news-utils";
+import { useQueryStates } from 'nuqs';
+import { actualiteFiltersClient } from "@/features/actualites/filters/actualite.filters";
 
-export default function NewsComponent() {
+interface Props {
+  searchParams: IActualiteRechercheParams;
+}
+
+export default function NewsComponent({ searchParams }: Props) {
   const t = useTranslations("news");
 
-  console.log("Traductions filters:", t); // <== ici
+  // Gestion des filtres avec nuqs
+  const [filters, setFilters] = useQueryStates(
+    actualiteFiltersClient.filter, 
+    actualiteFiltersClient.option
+  );
 
-  const [search, setSearch] = useState("");
-  const [searchDate, setSearchDate] = useState("");
-  const [publishedFilter, setPublishedFilter] = useState<
-    "all" | "published" | "draft"
-  >("published");
+  // Construction des paramètres de recherche
+  const currentSearchParams: IActualiteRechercheParams = {
+    page: filters.page,
+    limit: filters.limit,
+    title: filters.title,
+    createdAt: filters.createdAt,
+    content: filters.content,
+  };
 
-  // Récupération des actualités depuis le store
-  const allNews = useMemo(() => newsData, []);
+  // Récupération des actualités via React Query
+  const { data, isLoading, isError } = useActualitesList(currentSearchParams);
 
-  // Filtrage des actualités
-  const filteredNews = useMemo(() => {
-    let news = allNews;
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFilters({
+      ...filters,
+      title: e.target.value,
+      page: 1 // Reset à la première page lors d'une nouvelle recherche
+    });
+  };
 
-    // Filtrage par statut de publication
-    if (publishedFilter === "published") {
-      news = news.filter((item) => item.published);
-    } else if (publishedFilter === "draft") {
-      news = news.filter((item) => !item.published);
-    }
+  const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFilters({
+      ...filters,
+      createdAt: e.target.value,
+      page: 1 // Reset à la première page lors d'un nouveau filtre date
+    });
+  };
 
-    // Filtrage par recherche textuelle
-    if (search.trim()) {
-      news = searchNews(news, search);
-    }
+  if (isLoading) {
+    return <p className="text-center py-12">{t("loading")}</p>;
+  }
 
-    // Filtrage par date
-    if (searchDate) {
-      news = filterNewsByDate(news, searchDate);
-    }
+  if (isError) {
+    return <p className="text-center text-red-500">{t("error")}</p>;
+  }
 
-    return news;
-  }, [allNews, search, searchDate, publishedFilter]);
+  const newsList = data?.data ?? [];
 
   return (
     <section className="w-full max-w-7xl mx-auto px-4 py-12">
@@ -61,8 +73,8 @@ export default function NewsComponent() {
           <input
             type="text"
             placeholder={t("searchPlaceholder")}
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            value={filters.title}
+            onChange={handleSearchChange}
             className="w-full py-3 pl-12 pr-4 text-sm rounded-full bg-gray-100 focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white shadow-sm"
           />
           <Search className="absolute top-1/2 left-4 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
@@ -72,75 +84,36 @@ export default function NewsComponent() {
         <div className="relative w-full max-w-md">
           <input
             type="date"
-            value={searchDate}
-            onChange={(e) => setSearchDate(e.target.value)}
+            value={filters.createdAt}
+            onChange={handleDateChange}
             className="w-full py-3 pl-12 pr-4 text-sm rounded-full bg-gray-100 focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white shadow-sm appearance-none"
             aria-label={t("searchByDate")}
             title={t("searchByDate")}
           />
           <Calendar className="absolute top-1/2 left-4 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
         </div>
-
-        {/* Filtre par statut de publication */}
-        <div className="relative w-full max-w-md">
-          <select
-            value={publishedFilter}
-            onChange={(e) =>
-              setPublishedFilter(
-                e.target.value as "all" | "published" | "draft"
-              )
-            }
-            className="w-full py-3 pl-12 pr-4 text-sm rounded-full bg-gray-100 focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white shadow-sm appearance-none"
-            aria-label={t("filterByStatus")}
-            title={t("filterByStatus")}
-          >
-            <option value="all">{t("allStatus")}</option>
-            <option value="published">{t("published")}</option>
-            <option value="draft">{t("draft")}</option>
-          </select>
-          <Calendar className="absolute top-1/2 left-4 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
-        </div>
       </div>
 
-      {/* Titre + Navigation */}
+      {/* Titre */}
       <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
-        <h2 className="text-3xl font-bold text-secondary text-center md:text-left">
+        <h2 className="text-3xl font-bold text-secondary">
           {t("title")}
         </h2>
-        <div className="hidden md:flex gap-2 mt-10">
-          <button
-            type="button"
-            className="p-2 bg-gray-200 hover:bg-gray-300 rounded"
-            aria-label={t("previousPage")}
-            title={t("previousPage")}
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </button>
-          <button
-            type="button"
-            className="p-2 bg-secondary hover:bg-red-600 text-white rounded"
-            aria-label={t("nextPage")}
-            title={t("nextPage")}
-          >
-            <ChevronRight className="w-5 h-5" />
-          </button>
-        </div>
       </div>
 
       {/* Grille des actualités */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {filteredNews.length > 0 ? (
-          filteredNews.map((item) => (
+        {newsList.length > 0 ? (
+          newsList.map((item) => (
             <Link key={item.id} href={`/news/${item.id}`}>
               <article className="flex flex-col group cursor-pointer hover:transform hover:scale-105 transition-all duration-300">
                 <div className="relative h-64 mb-4 rounded-xl overflow-hidden">
-                  {item.imageUrl ? (
+                  {item.imageUrls?.[0] ? (
                     <Image
-                      src={item.imageUrl}
+                      src={formatImageUrl(item.imageUrls[0])}
                       alt={item.title}
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-300"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                   ) : (
                     <div className="w-full h-full bg-gray-200 flex items-center justify-center">
@@ -148,22 +121,10 @@ export default function NewsComponent() {
                     </div>
                   )}
                   <div className="absolute bottom-0 left-0 bg-secondary text-white px-4 py-2 text-sm font-semibold">
-                    {formatNewsDate(item.createdAt)}
+                    {formatNewsDate(item.createdAt as string)}
                   </div>
-
-                  {/* Badge pour les actualités non publiées */}
-                  {!item.published && (
-                    <div className="absolute top-4 right-4">
-                      <span className="bg-amber-100 text-amber-800 text-xs font-medium px-2.5 py-1 rounded-full">
-                        {t("draft")}
-                      </span>
-                    </div>
-                  )}
-
-                  {/* Overlay hover */}
-                  <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
-                <h3 className="text-lg font-semibold leading-tight group-hover:text-secondary transition-colors cursor-pointer">
+                <h3 className="text-lg font-semibold leading-tight group-hover:text-secondary transition-colors">
                   {item.title}
                 </h3>
                 <p className="text-sm text-gray-600 mt-2 line-clamp-2">
@@ -178,6 +139,31 @@ export default function NewsComponent() {
           </p>
         )}
       </div>
+
+      {/* Pagination */}
+      {data?.meta && data.meta.totalPages > 1 && (
+        <div className="flex justify-center items-center mt-12 gap-4">
+          <button
+            onClick={() => setFilters({ ...filters, page: filters.page - 1 })}
+            disabled={filters.page <= 1}
+            className="p-2 rounded-full bg-gray-100 disabled:opacity-50 hover:bg-gray-200"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          
+          <span className="text-sm">
+            Page {filters.page} sur {data.meta.totalPages}
+          </span>
+          
+          <button
+            onClick={() => setFilters({ ...filters, page: filters.page + 1 })}
+            disabled={filters.page >= data.meta.totalPages}
+            className="p-2 rounded-full bg-gray-100 disabled:opacity-50 hover:bg-gray-200"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        </div>
+      )}
     </section>
   );
 }

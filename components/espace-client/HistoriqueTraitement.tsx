@@ -15,12 +15,12 @@ interface HistoriqueTraitementProps {
   estimatedCompletionDate?: string;
 }
 
-export default function HistoriqueTraitement({  
-  progression, 
-  serviceType, 
-  status, 
+export default function HistoriqueTraitement({
+  progression,
+  serviceType,
+  status,
   submissionDate,
-  estimatedCompletionDate 
+  estimatedCompletionDate
 }: HistoriqueTraitementProps) {
   const t = useTranslations('espaceClient');
 
@@ -43,10 +43,16 @@ export default function HistoriqueTraitement({
   const translateStatus = (status: string) => {
     const translations: Record<string, string> = {
       'NEW': 'Nouveau',
-      'IN_PROGRESS': 'En cours',
-      'PENDING': 'En attente',
-      'COMPLETED': 'Terminé',
-      'READY_TO_PICKUP': 'Prêt à retirer',
+      'IN_REVIEW_DOCS': 'En cours de vérification de documents',
+      'PENDING_ADDITIONAL_INFO': 'En attente de renseignements supplémentaires',
+      'APPROVED_BY_AGENT': 'Approuvé par l\'agent',
+      'APPROVED_BY_CHEF': 'Approuvé par le chef',
+      'APPROVED_BY_CONSUL': 'Approuvé par le consul',
+      'READY_FOR_PICKUP': 'Prêt à retirer',
+      'DELIVERED': 'Retiré',
+      'ARCHIVED': 'Archivé',
+      'EXPIRED': 'Expiré',
+      'RENEWAL_REQUESTED': 'Renouvellement demandé',
       'REJECTED': 'Rejeté',
     };
     return translations[status] || status;
@@ -91,7 +97,7 @@ export default function HistoriqueTraitement({
           {t('historiqueTraitement.soumission')}: {new Date(submissionDate).toLocaleDateString('fr-FR')}
         </div>
       </div>
-      
+
       <div className="flex flex-col items-center">
         <div className="text-lg font-bold text-gray-900 dark:text-white mb-1">
           {t('historiqueTraitement.progression')}
@@ -99,14 +105,14 @@ export default function HistoriqueTraitement({
         <div className="flex items-center gap-2">
           <span className="text-2xl font-bold text-orange-500">{progression}%</span>
           <div className="w-20 md:w-32 h-2 bg-gray-200 dark:bg-gray-600 rounded-full overflow-hidden">
-            <div 
-              className="h-2 bg-orange-500 transition-all duration-500" 
+            <div
+              className="h-2 bg-orange-500 transition-all duration-500"
               style={{ width: `${progression}%` }}
             ></div>
           </div>
         </div>
       </div>
-      
+
       <div className="flex flex-col items-center">
         <div className="text-lg font-bold text-gray-900 dark:text-white mb-1">
           {t('historiqueTraitement.achevementPrevu')}

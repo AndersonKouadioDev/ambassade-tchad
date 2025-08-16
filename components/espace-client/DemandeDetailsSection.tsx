@@ -7,6 +7,8 @@ import HistoriqueTraitement from "@/components/espace-client/HistoriqueTraitemen
 import ProgressSteps from "@/components/espace-client/ProgressSteps";
 import StatusTimeline from "@/components/espace-client/StatusTimeline";
 import React from "react";
+import { AccompagnateurDTO } from '@/features/demande/schema/laissez-passer.schema';
+import { DocumentJustificationType, DocumentJustificationTypeLabels } from '@/features/demande/types/carte-consulaire.type';
 
 export default function DemandeDetailsSection({ticket}: { ticket: string }) {
     const {data: demande} = useGetDemandeByTicketQuery(ticket)
@@ -43,6 +45,10 @@ export default function DemandeDetailsSection({ticket}: { ticket: string }) {
             OriginCountryParentRelationshipType: {FATHER: 'Père', MOTHER: 'Mère'},
         };
         return maps[type]?.[value] || value;
+    };  
+
+    const translateJustificationDocumentType = (value: string) => {
+        return DocumentJustificationTypeLabels[value as DocumentJustificationType] || value;
     };
 
     // Fonction pour traduire les statuts
@@ -51,7 +57,7 @@ export default function DemandeDetailsSection({ticket}: { ticket: string }) {
             'NEW': 'Nouveau',
             'IN_REVIEW_DOCS': 'En cours de vérification de documents',
             'PENDING_ADDITIONAL_INFO': 'En attente de renseignements supplémentaires',
-            'APPROVED_BY_AGENT': 'Approuvé par l\'agent',
+            'APPROVED_BY_AGENT': 'Approuvé par l\'demandeur',
             'APPROVED_BY_CHEF': 'Approuvé par le chef',
             'APPROVED_BY_CONSUL': 'Approuvé par le consul',
             'READY_FOR_PICKUP': 'Prêt à retirer',
@@ -121,7 +127,7 @@ export default function DemandeDetailsSection({ticket}: { ticket: string }) {
                     // Affichage des accompagnateurs si accompagné
                     if (demande.laissezPasserDetails.accompanied && demande.laissezPasserDetails.accompaniers?.length) {
                         fields.push(['Accompagnateurs',
-                            demande.laissezPasserDetails.accompaniers.map((acc: any) =>
+                            demande.laissezPasserDetails.accompaniers.map((acc: AccompagnateurDTO) =>
                                 `${acc.firstName} ${acc.lastName} (${new Date(acc.birthDate).toLocaleDateString('fr-FR')}, ${acc.nationality})`
                             ).join(' ; ')
                         ]);
@@ -143,7 +149,7 @@ export default function DemandeDetailsSection({ticket}: { ticket: string }) {
                         ['Adresse au pays d\'origine', demande.consularCardDetails.personAddressInOriginCountry],
                         ['Nom du père', demande.consularCardDetails.fatherFullName],
                         ['Nom de la mère', demande.consularCardDetails.motherFullName],
-                        ['Type de pièce justificative', demande.consularCardDetails.justificationDocumentType],
+                        ['Type de pièce justificative', translateJustificationDocumentType(demande.consularCardDetails.justificationDocumentType || '')],
                         ['Numéro de pièce', demande.consularCardDetails.justificationDocumentNumber],
                         ['Date d\'expiration de la carte', demande.consularCardDetails.cardExpirationDate ? new Date(demande.consularCardDetails.cardExpirationDate).toLocaleDateString('fr-FR') : ''],
                     ];
@@ -153,11 +159,11 @@ export default function DemandeDetailsSection({ticket}: { ticket: string }) {
                 if (demande.powerOfAttorneyDetails) {
                     return [
                         ...baseFields,
-                        ['Prénom de l\'agent', demande.powerOfAttorneyDetails.agentFirstName],
-                        ['Nom de l\'agent', demande.powerOfAttorneyDetails.agentLastName],
-                        ['Type de pièce agent', demande.powerOfAttorneyDetails.agentJustificationDocumentType],
-                        ['Numéro pièce agent', demande.powerOfAttorneyDetails.agentIdDocumentNumber],
-                        ['Adresse de l\'agent', demande.powerOfAttorneyDetails.agentAddress],
+                        ['Prénom du demandeur', demande.powerOfAttorneyDetails.agentFirstName],
+                        ['Nom du demandeur', demande.powerOfAttorneyDetails.agentLastName],
+                        ['Type de pièce du demandeur', demande.powerOfAttorneyDetails.agentJustificationDocumentType],
+                        ['Numéro pièce du demandeur', demande.powerOfAttorneyDetails.agentIdDocumentNumber],
+                        ['Adresse du demandeur', demande.powerOfAttorneyDetails.agentAddress],
                         ['Prénom du principal', demande.powerOfAttorneyDetails.principalFirstName],
                         ['Nom du principal', demande.powerOfAttorneyDetails.principalLastName],
                         ['Type de pièce principal', demande.powerOfAttorneyDetails.principalJustificationDocumentType],
@@ -254,7 +260,7 @@ export default function DemandeDetailsSection({ticket}: { ticket: string }) {
             {label: "Nouveau", done: false},
             {label: "En cours", done: false},
             {label: "En attente", done: false},
-            {label: "Approuvé par l'agent", done: false},
+            {label: "Approuvé par l'demandeur", done: false},
             {label: "Approuvé par le chef", done: false},
             {label: "Approuvé par le consul", done: false},
             {label: "Prêt à retirer", done: false},
@@ -331,7 +337,7 @@ export default function DemandeDetailsSection({ticket}: { ticket: string }) {
                     </div>
                 </div>
 
-                {/* Timeline détaillée du statut */}
+                {/*Timeline détaillée du statut*/}
                 <StatusTimeline
                     currentStatus={demande.status}
                     submissionDate={demande.submissionDate}
@@ -360,7 +366,7 @@ export default function DemandeDetailsSection({ticket}: { ticket: string }) {
                             <div className="text-sm md:text-base text-gray-700 print:text-black">Section Consulaire
                             </div>
                             <div className="text-xs md:text-sm text-gray-600 print:text-black mt-1">
-                                Abidjan, cocody 2 Plateaux vallons, Côte d'Ivoire<br/>
+                                Abidjan, cocody 2 Plateaux vallons, Côte d&apos;Ivoire<br/>
                                 Tél : +225 01245578485 &nbsp;|&nbsp; Email : contact@ambassade-tchad.com
                             </div>
                         </div>
@@ -377,7 +383,7 @@ export default function DemandeDetailsSection({ticket}: { ticket: string }) {
                                 </p>
                             </div>
                             <div className="bg-white/20 rounded-full px-4 py-1 text-sm font-medium text-white">
-                                {demande.status}
+                                {translateStatus(demande.status)}
                             </div>
                         </div>
                     </div>

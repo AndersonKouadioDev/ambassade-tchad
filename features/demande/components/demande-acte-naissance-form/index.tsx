@@ -33,7 +33,6 @@ function ActeNaissanceForm({ documentsSize }: { documentsSize: number }) {
       motherFullName: "Marie Dupont",
       contactPhoneNumber: "+225 01 23 456 789",
       requestType: ActeNaissanceType.NEWBORN,
-      personGender: Genre.FEMALE,
     } as ActeNaissanceDetailsDTO,
     validationLogic: revalidateLogic({
       mode: "change",

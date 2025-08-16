@@ -1,20 +1,20 @@
 "use client";
 
 import React from 'react';
-import { RequestStatus, RequestWithRelations } from '@/types/request.types';
 import { Bell, Info, CheckCircle, AlertTriangle, Clock } from 'lucide-react';
+import { DemandeStatus } from '@/features/demande/types/demande.type';
 
 interface RequestNotificationsProps {
-  request: RequestWithRelations;
+  request: DemandeStatus;
 }
 
 export default function RequestNotifications({ request }: RequestNotificationsProps) {
-  const currentStatus = request.status as RequestStatus;
+  const currentStatus = request;
 
   // Configuration des notifications selon le statut
   const getNotificationConfig = () => {
     switch (currentStatus) {
-      case RequestStatus.NEW:
+      case DemandeStatus.NEW:
         return {
           type: 'info' as const,
           icon: Info,
@@ -23,7 +23,7 @@ export default function RequestNotifications({ request }: RequestNotificationsPr
           actions: []
         };
 
-      case RequestStatus.IN_REVIEW_DOCS:
+      case DemandeStatus.IN_REVIEW_DOCS:
         return {
           type: 'info' as const,
           icon: Clock,
@@ -32,7 +32,7 @@ export default function RequestNotifications({ request }: RequestNotificationsPr
           actions: []
         };
 
-      case RequestStatus.PENDING_ADDITIONAL_INFO:
+      case DemandeStatus.PENDING_ADDITIONAL_INFO:
         return {
           type: 'warning' as const,
           icon: AlertTriangle,
@@ -43,9 +43,9 @@ export default function RequestNotifications({ request }: RequestNotificationsPr
           ]
         };
 
-      case RequestStatus.APPROVED_BY_AGENT:
-      case RequestStatus.APPROVED_BY_CHEF:
-      case RequestStatus.APPROVED_BY_CONSUL:
+      case DemandeStatus.APPROVED_BY_AGENT:
+      case DemandeStatus.APPROVED_BY_CHEF:
+      case DemandeStatus.APPROVED_BY_CONSUL:
         return {
           type: 'success' as const,
           icon: CheckCircle,
@@ -54,7 +54,7 @@ export default function RequestNotifications({ request }: RequestNotificationsPr
           actions: []
         };
 
-      case RequestStatus.READY_FOR_PICKUP:
+      case DemandeStatus.READY_FOR_PICKUP:
         return {
           type: 'success' as const,
           icon: Bell,
@@ -66,7 +66,7 @@ export default function RequestNotifications({ request }: RequestNotificationsPr
           ]
         };
 
-      case RequestStatus.DELIVERED:
+      case DemandeStatus.DELIVERED:
         return {
           type: 'success' as const,
           icon: CheckCircle,
@@ -77,7 +77,7 @@ export default function RequestNotifications({ request }: RequestNotificationsPr
           ]
         };
 
-      case RequestStatus.REJECTED:
+      case DemandeStatus.REJECTED:
         return {
           type: 'error' as const,
           icon: AlertTriangle,
@@ -145,12 +145,12 @@ export default function RequestNotifications({ request }: RequestNotificationsPr
           </p>
           
           {/* Observations spécifiques */}
-          {request.observations && (currentStatus === RequestStatus.REJECTED || currentStatus === RequestStatus.PENDING_ADDITIONAL_INFO) && (
+          {/* {demande.observations && (currentStatus === DemandeStatus.REJECTED || currentStatus === DemandeStatus.PENDING_ADDITIONAL_INFO) && (
             <div className="bg-white/60 rounded p-3 mb-3">
               <p className="text-sm font-medium text-gray-700 mb-1">Détails :</p>
-              <p className="text-sm text-gray-600 italic">{request.observations}</p>
+              <p className="text-sm text-gray-600 italic">{demande.observations}</p>
             </div>
-          )}
+          )} */}
 
           {/* Actions */}
           {config.actions.length > 0 && (
