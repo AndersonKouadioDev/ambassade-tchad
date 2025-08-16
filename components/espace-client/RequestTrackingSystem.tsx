@@ -1,19 +1,18 @@
 "use client";
 
 import React, { useState } from 'react';
-import RequestTracker from './RequestTracker';
-import RequestNotifications from './RequestNotifications';
+// import RequestNotifications from './RequestNotifications';
 import DemandeDetailsSection from './DemandeDetailsSection';
 import { useRequestTracking } from '@/hooks/useRequestTracking';
 import { IDemande } from '@/features/demande/types/demande.type';
-import { Search, FileText, Bell, Download, Phone, RefreshCw } from 'lucide-react';
+import { Search, FileText, Bell, Download, Phone } from 'lucide-react';
 
 interface RequestTrackingSystemProps {
   initialRequest?: IDemande;
 }
 
 export default function RequestTrackingSystem({ initialRequest }: RequestTrackingSystemProps) {
-  const { request, isLoading, error, trackRequest, clearRequest, refreshRequest } = useRequestTracking(initialRequest);
+  const { request, isLoading, error, trackRequest, clearRequest } = useRequestTracking(initialRequest);
   const [ticketNumber, setTicketNumber] = useState('');
 
   // Fonction pour rechercher une demande par numéro de ticket
@@ -56,7 +55,7 @@ export default function RequestTrackingSystem({ initialRequest }: RequestTrackin
                   Suivi de demande
                 </h1>
                 <p className="text-gray-600 mt-1">
-                  Suivez l'état de votre demande consulaire en temps réel
+                  Suivez l&apos;état de votre demande consulaire en temps réel
                 </p>
               </div>
               <div className="flex space-x-3">
@@ -92,7 +91,7 @@ export default function RequestTrackingSystem({ initialRequest }: RequestTrackin
                 Rechercher votre demande
               </h2>
               <p className="text-gray-600">
-                Saisissez votre numéro de ticket pour suivre l'état de votre demande
+                Saisissez votre numéro de ticket pour suivre l&apos;état de votre demande
               </p>
             </div>
             
@@ -167,13 +166,10 @@ export default function RequestTrackingSystem({ initialRequest }: RequestTrackin
             </div>
 
             {/* Notifications */}
-            <RequestNotifications request={request} />
-            
-            {/* Tracker de progression */}
-            <RequestTracker request={request} />
+            {/* <RequestNotifications demande={request} /> */}
             
             {/* Détails complets */}
-            <DemandeDetailsSection demande={request} />
+            <DemandeDetailsSection ticket={ticketNumber} />
           </div>
         )}
 
@@ -184,7 +180,7 @@ export default function RequestTrackingSystem({ initialRequest }: RequestTrackin
           </h3>
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <h4 className="font-medium text-blue-800 mb-2">Horaires d'ouverture</h4>
+              <h4 className="font-medium text-blue-800 mb-2">Horaires d&apos;ouverture</h4>
               <ul className="text-blue-700 text-sm space-y-1">
                 <li>Lundi - Vendredi : 8h00 - 16h00</li>
                 <li>Samedi : 8h00 - 12h00</li>

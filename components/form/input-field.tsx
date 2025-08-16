@@ -18,7 +18,7 @@ export function InputField({
   onBlur,
   errors = undefined,
   type = "text",
-  required = false,
+  // required = false,
 }: InputFieldProps) {
   return (
     <div>

@@ -11,7 +11,7 @@ export default async function DemandeDetail({params} : {params:Promise<{ticket: 
                 <div className="mx-auto">
                     <div className="text-center py-8 text-red-500">
                         <div className="text-lg mb-2">⚠️</div>
-                        Ce ticket n'existe pas ou a été supprimé.
+                        Ce ticket n&apos;existe pas ou a été supprimé.
                         <button
                             onClick={() => window.location.reload()}
                             className="mt-4 bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition"

@@ -56,7 +56,7 @@ export default function PhoneInput({
 
   // Formater le numéro de téléphone
   const formatPhoneNumber = (number: string, countryCode: string) => {
-    let cleaned = number.replace(/\D/g, '');
+    const cleaned = number.replace(/\D/g, '');
     
     // Formatage spécifique par pays
     switch (countryCode) {

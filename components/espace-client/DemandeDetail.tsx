@@ -179,7 +179,7 @@ export default function DemandeDetail() {
 
   const getFileIcon = (mimeType: string) => {
     if (mimeType.startsWith("image/")) {
-      return <Image className="w-5 h-5 text-blue-500" />;
+      return <Image height={20} width={20} className="w-5 h-5 text-blue-500" />;
     } else if (mimeType.includes("pdf")) {
       return <FileText className="w-5 h-5 text-red-500" />;
     } else {
@@ -189,13 +189,13 @@ export default function DemandeDetail() {
 
   const handleDownload = async (document: Document) => {
     try {
-      const response = await fetch(document.url, {
+      await fetch(document.url, {
         headers: {
           Authorization: `Bearer ${session?.user?.token}`,
         },
       });
 
-   
+      
     } catch (error) {
       console.error("Erreur lors du téléchargement:", error);
     }

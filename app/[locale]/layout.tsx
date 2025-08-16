@@ -16,6 +16,7 @@ import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import QueryProvider from "@/providers/query-provider";
 import getQueryClient from "@/lib/get-query-client";
 import { Toaster } from "@/components/ui/sonner";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({
@@ -72,6 +73,7 @@ export default async function RootLayout({
           <Providers>
             <QueryProvider>
               <HydrationBoundary state={dehydrate(queryClient)}>
+              <NuqsAdapter>
                 <NextAuthSessionProvider>
                   <NextIntlClientProvider locale={locale} messages={messages}>
                     <ClientLayoutWrapper>
@@ -81,9 +83,10 @@ export default async function RootLayout({
                     </ClientLayoutWrapper>
                   </NextIntlClientProvider>
                 </NextAuthSessionProvider>
+              </NuqsAdapter>
               </HydrationBoundary>
             </QueryProvider>
-          </Providers>
+          </Providers>  
         </div>
         <Toaster position="top-right" />
       </body>

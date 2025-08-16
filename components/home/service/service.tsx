@@ -49,7 +49,7 @@ export default function Service() {
             try {
               return t("description");
             } catch (error) {
-              return "Nos services";
+              return (error as Error).message;
             }
           })()}
         </h2>
@@ -58,7 +58,7 @@ export default function Service() {
             try {
               return t("seeMore");
             } catch (error) {
-              return "Voir plus";
+              return (error as Error).message;
             }
           })()}
         </Button>
@@ -79,7 +79,7 @@ export default function Service() {
                   try {
                     return t(`items.${index}.title`);
                   } catch (error) {
-                    return `Service ${index + 1}`;
+                    return (error as Error).message;
                   }
                 })()}
                 fill
@@ -98,7 +98,7 @@ export default function Service() {
                     try {
                       return t(`items.${index}.title`);
                     } catch (error) {
-                      return `Service ${index + 1}`;
+                      return (error as Error).message;
                     }
                   })()}
                 </Button>

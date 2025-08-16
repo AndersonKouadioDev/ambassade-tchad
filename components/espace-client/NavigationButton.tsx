@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useLocale } from "next-intl";
 import React from "react";
-import { useRouter } from "next/navigation";
 
 interface NavigationButtonProps {
   href: string;
@@ -30,7 +29,6 @@ export default function NavigationButton({
   size = 'md',
 }: NavigationButtonProps) {
   const currentLocale = useLocale();
-  const router = useRouter();
 
   // Styles par défaut selon la variante
   const getVariantStyles = () => {

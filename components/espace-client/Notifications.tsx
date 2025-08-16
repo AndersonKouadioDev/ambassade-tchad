@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import NotificationsModal from './NotificationsModal';
+import { Button } from '@heroui/react';
 
 interface Notification {
   id: string;
@@ -128,7 +129,7 @@ export default function Notifications({ notifications }: NotificationsProps) {
         ))}
       </div>
       <div className="text-left md:text-right mt-2">
-        <button 
+        <Button 
           onClick={() => setIsModalOpen(true)}
           className="text-orange-500 text-xs md:text-sm font-semibold hover:underline transition"
         >
@@ -139,7 +140,7 @@ export default function Notifications({ notifications }: NotificationsProps) {
               return 'Voir toutes';
             }
           })()}
-        </button>
+        </Button>
       </div>
       <NotificationsModal 
         isOpen={isModalOpen}
