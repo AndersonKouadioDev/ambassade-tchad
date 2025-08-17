@@ -82,12 +82,24 @@
         "description": "Délivrance de certificat de nationalité"
       },
       "items": {
-        "0": { "title": "Passeport" },
-        "1": { "title": "Laissez-passer" },
-        "2": { "title": "Carte consulaire" },
-        "3": { "title": "Service administratif" },
-        "4": { "title": "Peuples et cultures" },
-        "5": { "title": "Découvrir le Tchad" }
+        "0": {
+          "title": "Passeport"
+        },
+        "1": {
+          "title": "Laissez-passer"
+        },
+        "2": {
+          "title": "Carte consulaire"
+        },
+        "3": {
+          "title": "Service administratif"
+        },
+        "4": {
+          "title": "Peuples et cultures"
+        },
+        "5": {
+          "title": "Découvrir le Tchad"
+        }
       }
     },
     "events": {
@@ -95,9 +107,18 @@
       "description": "Retrouvez les derniers événements ",
       "viewAll": "Voir tous les événements",
       "items": {
-        "0": { "title": "Ambassade", "alt": "Image de l'Ambassade" },
-        "1": { "title": "Consulaire", "alt": "Image du service consulaire" },
-        "2": { "title": "Tourisme", "alt": "Image du tourisme au Tchad" }
+        "0": {
+          "title": "Ambassade",
+          "alt": "Image de l'Ambassade"
+        },
+        "1": {
+          "title": "Consulaire",
+          "alt": "Image du service consulaire"
+        },
+        "2": {
+          "title": "Tourisme",
+          "alt": "Image du tourisme au Tchad"
+        }
       }
     },
     "passportForm": {
@@ -212,8 +233,35 @@
     "title": "Tourisme au Tchad",
     "description": "Découvrez les merveilles du Tchad",
     "geography": {
+      "tabs": {
+        "key_figures": "Chiffres clés",
+        "history": "Histoire",
+        "geography": "Géographie"
+      },
       "title": "Géographie",
-      "description": "Le Tchad est un pays d'Afrique centrale sans accès à la mer, bordé par la Libye au nord, le Soudan à l'est, la République centrafricaine au sud, le Cameroun et le Nigeria au sud-ouest, et le Niger à l'ouest."
+      "description": "Le Tchad est un pays d'Afrique centrale sans accès à la mer, bordé par la Libye au nord, le Soudan à l'est, la République centrafricaine au sud, le Cameroun et le Nigeria au sud-ouest, et le Niger à l'ouest.",
+      "sections": {
+        "general": [
+          "Pont entre le Maghreb et l'Afrique subsaharienne, carrefour des caravanes transsahariennes et berceau des civilisations nomades, le Tchad incarne les contrastes entre le désert du nord et la savane du sud, entre les traditions musulmanes ascétiques et les rituels animistes ou chrétiens élaborés, entre les populations nomades vivant de leurs chameaux et pâturages, et les agriculteurs sédentaires façonnant la terre et lui donnant un visage humain.",
+          "Le Tchad est un pays d'Afrique centrale couvrant 1 284 000 km², dont 560 000 km² sont agricoles. Classé 20e au monde par sa superficie, le Tchad est le cinquième plus grand pays d'Afrique après le Soudan, l'Algérie, la République Démocratique du Congo et la Libye.",
+          "C'est un vaste pays (deux fois la taille de la France), mais enclavé et éloigné de la mer. Il se trouve à 1 700 km de Douala (Cameroun) et à 2 400 km de Port-Soudan sur la mer Rouge."
+        ],
+        "relief": {
+          "title": "Relief",
+          "items": [
+            "Le relief du Tchad est en forme de cuvette bordée par deux chaînes de montagnes et de plateaux : au nord par le massif du Tibesti (3 415 m au volcan Emi Koussi) et à l'est par le plateau gréseux de l’Ouaddaï (1 360 m) s’inclinant vers le sud-ouest. Le point le plus bas est le lac Tchad, bassin alimenté par les plaines inondables du Chari et du Logone.",
+            "Ces deux rivières forment le seul réseau hydrographique permanent : le Chari coule sur 1 200 km depuis la République centrafricaine et le Logone, son principal affluent, prend sa source au Cameroun sur plus de 1 000 km. Elles se rejoignent près de la capitale. Elles sont partiellement navigables quatre mois par an. Il existe cinq principaux lacs : Tchad, Fitri, Iro, Léré et Tekem."
+          ]
+        },
+        "climate": {
+          "title": "Climat et Végétation",
+          "items": [
+            "Le sud bénéficie d'un climat tropical humide (zone soudanienne, la plus arrosée et la plus peuplée), avec des savanes boisées et des forêts clairsemées près des villages en raison d’une coupe excessive de bois. La zone centrale a un climat sahélien avec une steppe épineuse et une saison sèche plus longue que la saison des pluies. La région nord, sous climat désertique saharien, couvre la moitié du pays avec des paysages saisissants.",
+            "L'harmattan, vent continental sec et chaud, souffle de l'est et du nord-ouest. La mousson, équatoriale, humide et fraîche, vient du sud-ouest et marque la transition entre la saison sèche et la saison des pluies.",
+            "Le Tchad compte 600 000 hectares de forêts classées et 400 000 hectares de parcs nationaux. Les deux parcs les plus importants sont le parc national de Zakouma au Salamat et le parc de Manda dans la région de Sarh, connus pour leur biodiversité."
+          ]
+        }
+      }
     },
     "history": {
       "title": "Histoire",
@@ -233,7 +281,6 @@
       "title": "Peuples et cultures",
       "description": "Le Tchad possède une riche diversité culturelle avec plus de 200 groupes ethniques."
     },
-
     "monuments": {
       "title": "Monuments et sites",
       "description": "Découvrez les monuments et sites historiques du Tchad",
@@ -437,7 +484,7 @@
     "backToList": "Retour à la liste des actualités",
     "loading": "Chargement...",
     "error": "Une erreur est survenue",
-    "noNews": "Aucune actualité pour le moment.", 
+    "noNews": "Aucune actualité pour le moment.",
     "noNewsFound": "Aucune actualité trouvée"
   },
   "gallery": {
@@ -543,12 +590,24 @@
     "register": {
       "title": "Inscription",
       "description": "Créez votre compte espace client",
-      "firstName": { "placeholder": "Prénom" },
-      "lastName": { "placeholder": "Nom" },
-      "email": { "placeholder": "Email" },
-      "phoneNumber": { "placeholder": "Téléphone" },
-      "password": { "placeholder": "Mot de passe" },
-      "confirmPassword": { "placeholder": "Confirmer le mot de passe" },
+      "firstName": {
+        "placeholder": "Prénom"
+      },
+      "lastName": {
+        "placeholder": "Nom"
+      },
+      "email": {
+        "placeholder": "Email"
+      },
+      "phoneNumber": {
+        "placeholder": "Téléphone"
+      },
+      "password": {
+        "placeholder": "Mot de passe"
+      },
+      "confirmPassword": {
+        "placeholder": "Confirmer le mot de passe"
+      },
       "showPassword": "Afficher le mot de passe",
       "loading": "Inscription en cours...",
       "submit": "S'inscrire",
@@ -559,7 +618,9 @@
     "forgotPassword": {
       "title": "Mot de passe oublié",
       "description": "Entrez votre email pour réinitialiser votre mot de passe",
-      "email": { "placeholder": "Email" },
+      "email": {
+        "placeholder": "Email"
+      },
       "loading": "Envoi en cours...",
       "submit": "Envoyer",
       "backToLogin": "Retour à la connexion",
@@ -655,7 +716,6 @@
         "readMore": "Lire la suite",
         "previous": "Précédent",
         "next": "Suivant"
-
       },
       "messages": {
         "title": "Messages",
@@ -691,7 +751,6 @@
       "titre": "Chronologie du Statut",
       "enCours": "En cours",
       "etapes": {
-        
         "new": {
           "titre": "Nouveau",
           "description": "Votre dossier est en cours de traitement"
@@ -745,7 +804,6 @@
           "description": "Votre dossier est annulé"
         }
       }
-     
     },
     "header": {
       "title": "Espace Client",
@@ -1211,6 +1269,7 @@
       "confirmerMotDePasse": "Confirmer le nouveau mot de passe"
     }
   },
+
   "messages": {
     "title": "Messages",
     "modal": {
@@ -1399,7 +1458,8 @@
       "status": "Statut",
       "allStatus": "Tous les statuts",
       "published": "Publiés",
-      "draft": "Brouillons"
+      "draft": "Brouillons",
+      "date": "Date"
     },
     "draft": "Brouillon",
     "readMore": "Lire la suite"

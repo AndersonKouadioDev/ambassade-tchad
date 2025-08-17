@@ -19,7 +19,7 @@
     "passport": "Passport",
     "procuration": "Power of Attorney",
     "appointment": "Request an Appointment",
-    "clientSpace": "Client Area",
+    "clientSpace": "Client Space",
     "login": "Login",
     "register": "Register",
     "logout": "Logout",
@@ -31,8 +31,8 @@
   "home": {
     "hero": {
       "title": "Embassy of Chad in Côte d'Ivoire",
-      "subtitle": "Diplomatic and consular representation",
-      "description": "The Embassy of Chad in Côte d'Ivoire provides diplomatic and consular representation of the Republic of Chad to the French Republic and international organizations based in Paris.",
+      "subtitle": "Diplomatic and Consular Representation",
+      "description": "The Embassy of Chad in Côte d'Ivoire ensures the diplomatic and consular representation of the Republic of Chad to the French Republic and international organizations based in Paris.",
       "cta": "Our services",
       "learnMore": "Learn more"
     },
@@ -54,32 +54,32 @@
         "description": "Passport renewal and issuance"
       },
       "consular": {
-        "title": "Consular card",
-        "description": "Issuance of consular card"
+        "title": "Consular Card",
+        "description": "Issuance of consular cards"
       },
       "laissezPasser": {
         "title": "Laissez-passer",
         "description": "Issuance of laissez-passer"
       },
       "procuration": {
-        "title": "Power of attorney",
+        "title": "Power of Attorney",
         "description": "Authentication of power of attorney"
       },
       "birthAct": {
-        "title": "Birth certificate",
-        "description": "Issuance of birth certificate"
+        "title": "Birth Certificate",
+        "description": "Issuance of birth certificates"
       },
       "deathAct": {
-        "title": "Death certificate",
-        "description": "Issuance of death certificate"
+        "title": "Death Certificate",
+        "description": "Issuance of death certificates"
       },
       "marriageCapacity": {
-        "title": "Certificate of matrimonial capacity",
-        "description": "Issuance of certificate of matrimonial capacity"
+        "title": "Certificate of Marital Capacity",
+        "description": "Issuance of certificates of marital capacity"
       },
       "nationality": {
-        "title": "Nationality certificate",
-        "description": "Issuance of nationality certificate"
+        "title": "Certificate of Nationality",
+        "description": "Issuance of certificates of nationality"
       },
       "items": {
         "0": {
@@ -89,13 +89,13 @@
           "title": "Laissez-passer"
         },
         "2": {
-          "title": "Consular card"
+          "title": "Consular Card"
         },
         "3": {
-          "title": "Administrative service"
+          "title": "Administrative Service"
         },
         "4": {
-          "title": "Peoples and cultures"
+          "title": "Peoples and Cultures"
         },
         "5": {
           "title": "Discover Chad"
@@ -103,37 +103,32 @@
       }
     },
     "events": {
-      "title": "Recent events",
+      "title": "Recent Events",
       "description": "Find the latest events",
       "viewAll": "View all events",
       "items": {
         "0": {
           "title": "Embassy",
-          "alt": "Embassy image"
+          "alt": "Image of the Embassy"
         },
         "1": {
           "title": "Consular",
-          "alt": "Consular service image"
+          "alt": "Image of the consular service"
         },
         "2": {
           "title": "Tourism",
-          "alt": "Tourism image in Chad"
+          "alt": "Image of tourism in Chad"
         }
       }
     },
-    "news": {
-      "title": "News",
-      "description": "Stay informed of the latest news from the Embassy",
-      "viewAll": "View all news"
-    },
     "passportForm": {
       "open": "Open passport form",
-      "title": "Passport form",
+      "title": "Passport Form",
       "ambassy": "Embassy of Chad in Côte d'Ivoire",
       "gender": "Gender",
       "male": "Male",
       "female": "Female",
-      "familyStatus": "Marital status",
+      "familyStatus": "Family Status",
       "single": "Single",
       "married": "Married",
       "divorced": "Divorced",
@@ -145,9 +140,298 @@
       "title": "Welcome to the official website of the Embassy",
       "description_tchad": "of the Republic of Chad in Côte d'Ivoire",
       "description_cote_d_ivoire": ".",
-      "bouton_contact": "Make an appointment",
-      "demande_carte_consulaire": "Apply for consular card and visa",
+      "bouton_contact": "Make an Appointment",
+      "demande_carte_consulaire": "Request a consular card and visa",
       "bouton_ouvir": "Open now"
+    }
+  },
+  "ambassade": {
+    "title": "Embassy of Chad in Côte d'Ivoire",
+    "description": "The Embassy of Chad in Côte d'Ivoire provides diplomatic and consular representation for the Republic of Chad to the French Republic.",
+    "ambassadeur": {
+      "title": "The Ambassador",
+      "name": "H.E. Gonfouli SOUARIBA",
+      "description": "Ambassador Extraordinary and Plenipotentiary of the Republic of Chad in Côte d'Ivoire"
+    },
+    "jurisdiction": {
+      "title": "Jurisdiction",
+      "description": "The Embassy of Chad in Côte d'Ivoire has jurisdiction over metropolitan and overseas French territories.",
+      "countries": "Countries of Jurisdiction",
+      "Côte d'Ivoire": "Metropolitan Côte d'Ivoire",
+      "overseas": "French Overseas Territories"
+    },
+    "team": {
+      "title": "Our Team",
+      "description": "Discover the members of the Embassy team"
+    },
+    "experience": {
+      "title": "Our Experience",
+      "description": "Over 60 years of diplomatic excellence"
+    },
+    "hero": {
+      "title": "Embassy of Chad",
+      "description": "Welcome to the Embassy of Chad page."
+    },
+    "breadcrumbs": {
+      "home": "Home",
+      "ambassade": "Embassy"
+    }
+  },
+  "consulaire": {
+    "title": "Consular Services",
+    "description": "The Embassy of Chad in Côte d'Ivoire offers a complete range of consular services.",
+    "services": {
+      "title": "Our Consular Services",
+      "description": "The Embassy of Chad in Côte d'Ivoire offers a complete range of consular services to meet the needs of the Chadian community.",
+      "passport": {
+        "title": "Passport",
+        "description": "Renewal and issuance of Chadian passports"
+      },
+      "laissezPasser": {
+        "title": "Laissez-passer",
+        "description": "Issuance of laissez-passer for emergency travel"
+      },
+      "consularCard": {
+        "title": "Consular Card",
+        "description": "Issuance of consular cards for nationals"
+      },
+      "visa": {
+        "title": "Visa",
+        "description": "Visa application to enter Chad"
+      },
+      "procuration": {
+        "title": "Power of Attorney",
+        "description": "Authentication of power of attorney"
+      },
+      "birthAct": {
+        "title": "Birth Certificate",
+        "description": "Issuance of birth certificates"
+      },
+      "deathAct": {
+        "title": "Death Certificate",
+        "description": "Issuance of death certificates"
+      },
+      "marriageCapacity": {
+        "title": "Certificate of Marital Capacity",
+        "description": "Issuance of certificates of marital capacity"
+      },
+      "nationality": {
+        "title": "Certificate of Nationality",
+        "description": "Issuance of certificates of nationality"
+      }
+    }
+  },
+  "tourisme": {
+    "hero": {
+      "title": "Tourism in Chad"
+    },
+    "breadcrumbs": {
+      "home": "Home",
+      "tourism": "Tourism",
+      "site": "Site"
+    },
+    "title": "Tourism in Chad",
+    "description": "Discover the wonders of Chad",
+    "geography": {
+      "tabs": {
+        "key_figures": "Key Figures",
+        "history": "History",
+        "geography": "Geography"
+      },
+      "title": "Geography",
+      "description": "Chad is a landlocked country in Central Africa, bordered by Libya to the north, Sudan to the east, the Central African Republic to the south, Cameroon and Nigeria to the southwest, and Niger to the west.",
+      "sections": {
+        "general": [
+          "A bridge between the Maghreb and sub-Saharan Africa, a crossroads for trans-Saharan caravans and the cradle of nomadic civilizations, Chad embodies the contrasts between the northern desert and the southern savannah, between ascetic Muslim traditions and elaborate animist or Christian rituals, between nomadic populations living from their camels and pastures, and sedentary farmers shaping the land and giving it a human face.",
+          "Chad is a country in Central Africa covering 1,284,000 km², of which 560,000 km² are agricultural. Ranked 20th in the world by area, Chad is the fifth-largest country in Africa after Sudan, Algeria, the Democratic Republic of Congo, and Libya.",
+          "It is a vast country (twice the size of France), but landlocked and far from the sea. It is 1,700 km from Douala (Cameroon) and 2,400 km from Port Sudan on the Red Sea."
+        ],
+        "relief": {
+          "title": "Relief",
+          "items": [
+            "The relief of Chad is basin-shaped, bordered by two mountain ranges and plateaus: to the north by the Tibesti massif (3,415 m at the Emi Koussi volcano) and to the east by the sandstone plateau of Ouaddaï (1,360 m) sloping towards the southwest. The lowest point is Lake Chad, a basin fed by the floodplains of the Chari and Logone rivers.",
+            "These two rivers form the only permanent hydrographic network: the Chari flows for 1,200 km from the Central African Republic, and the Logone, its main tributary, originates in Cameroon and flows for over 1,000 km. They meet near the capital. They are partially navigable four months a year. There are five main lakes: Chad, Fitri, Iro, Léré, and Tekem."
+          ]
+        },
+        "climate": {
+          "title": "Climate and Vegetation",
+          "items": [
+            "The south benefits from a humid tropical climate (Sudanian zone, the wettest and most populated), with wooded savannahs and sparse forests near villages due to excessive woodcutting. The central zone has a Sahelian climate with a thorny steppe and a longer dry season than the rainy season. The northern region, under a Saharan desert climate, covers half of the country with striking landscapes.",
+            "The harmattan, a dry and hot continental wind, blows from the east and northwest. The monsoon, equatorial, humid, and cool, comes from the southwest and marks the transition between the dry and rainy seasons.",
+            "Chad has 600,000 hectares of classified forests and 400,000 hectares of national parks. The two most important parks are Zakouma National Park in Salamat and Manda Park in the Sarh region, known for their biodiversity."
+          ]
+        }
+      }
+    },
+    "history": {
+      "title": "History",
+      "description": "The history of Chad dates back to antiquity with the Sahelian and Sudanese kingdoms."
+    },
+    "peuples-et-cultures": {
+      "hero": {
+        "title": "Peoples and Cultures"
+      },
+      "breadcrumbs": {
+        "home": "Home",
+        "tourism": "Tourism",
+        "site": "Site",
+        "peuples-et-cultures": "Peoples and Cultures",
+        "peoples": "Peoples"
+      },
+      "title": "Peoples and Cultures",
+      "description": "Chad has a rich cultural diversity with over 200 ethnic groups."
+    },
+    "monuments": {
+      "title": "Monuments and Sites",
+      "description": "Discover the monuments and historical sites of Chad",
+      "voirGalerie": "View gallery",
+      "items": [
+        {
+          "title": "National Museum of Chad",
+          "description": "The national museum houses important archaeological and ethnographic collections"
+        },
+        {
+          "title": "Notre-Dame de la Paix Cathedral",
+          "description": "A major religious building in N'Djamena, a symbol of peace and reconciliation"
+        },
+        {
+          "title": "Great Mosque of N'Djamena",
+          "description": "The largest mosque in the country, a spiritual and architectural center of the capital"
+        },
+        {
+          "title": "Presidential Palace",
+          "description": "Seat of executive power, modern and symbolic architecture"
+        },
+        {
+          "title": "Central Market of N'Djamena",
+          "description": "The commercial heart of the capital, a place for meetings and cultural exchanges"
+        },
+        {
+          "title": "Independence Square",
+          "description": "Historic square commemorating Chad's independence in 1960"
+        },
+        {
+          "title": "Avenue Charles de Gaulle",
+          "description": "The main artery of N'Djamena, lined with administrative and commercial buildings"
+        }
+      ]
+    },
+    "statistics": {
+      "title": "Statistics",
+      "description": "Some key figures about Chad"
+    },
+    "cultural": {
+      "cultural-text": {
+        "item1": "The first population census took place in 1993. It estimated the total population of Chad at 6,280,000 individuals, of whom 5.7% were nomads (in the strict sense), the rest being sedentary, semi-sedentary, or transhumant. The second census in Chad's history, the most recent one, was carried out more than fifteen years later, in 2009. Here are some key data from this count: the total population amounts to 11.03 million inhabitants (it is estimated at 12.8 million in 2016), of whom 50.6% are under 15 years old and 50.7% are women. The urban population is 22%, making Chad a predominantly rural country. This census highlights the very uneven geographical distribution of the population, with more than half concentrated in the southernmost 10% of the country. Thus, in Chad, there are enormous disparities in density, ranging from 52.4 inhab/km² in Western Logone to 0.1 inhab/km² in the Borkou, Ennedi, and Tibesti regions, where the population barely exceeds 300,000 individuals in the three regions combined; to note the extreme disparity between N'Djamena, with nearly 1 million inhabitants, and the Tibesti region, with 25,000 inhabitants!",
+        "item2": "The most densely populated regions are Eastern Logone and Western Logone, Mayo Kebbi East and West, and Tandjilé, all located in the southwest, and Ouaddaï (721,000 inhabitants) in the east of the country. The Chadian population is young (half are under 15), poorly educated (illiteracy rate of 65%, school enrollment rate of 75% in the South, compared to less than 8% in the North). They subsist thanks to agriculture (83% of the active population depends on the primary sector). Living conditions are precarious: 88.6% of homes are still built with traditional materials, 76.4% of inhabitants consume questionable water (puddle or undeveloped well); 79% of Chadians do not use latrines, 1% of households have access to electricity, and 99.5% only use wood or charcoal as a source of energy for cooking food.",
+        "item3": "Moreover, Chad, due to its geographical location, is a true crossroads between the Arab world and the sub-Saharan world. The ancestral relations of trans-Saharan trade, the successive waves of migration of populations from the north and east, the rivalries that followed with the indigenous peoples, and the traditional slave raids have led these two worlds to rub shoulders and interbreed, in a mixture of colors and features, customs, and religions. Chad is therefore a true ethnic kaleidoscope. When in 1968 the project for a linguistic map of the Chad Atlas was presented to the Minister of National Education, he examined it for a long time before sighing: 'And to think that we have to make it a nation!'"
+      }
+    },
+    "monument": {
+      "lirePlus": "Read more",
+      "lireMoins": "Read less"
+    },
+    "president": {
+      "title": "The projects of the President of the Republic",
+      "imageAlt": "Image of the president",
+      "projectTitle": "Major National Projects",
+      "chantiers": [
+        {
+          "title": "Project 1",
+          "description": "STRENGTHEN PEACE, NATIONAL RECONCILIATION AND SECURITY FOR ALL CHADIANS"
+        },
+        {
+          "title": "Project 2",
+          "description": "REFORM THE STATE, BUILD A STRONG AND JUST REPUBLIC"
+        },
+        {
+          "title": "Project 3",
+          "description": "PROMOTE A SOLIDARITY-BASED STATE FOR ALL"
+        },
+        {
+          "title": "Project 4",
+          "description": "REFOUND THE EDUCATIONAL SYSTEM AND BUILD AN AMBITIOUS PLAN FOR YOUTH AND SPORTS"
+        },
+        {
+          "title": "Project 5",
+          "description": "PROMOTE WOMEN'S RIGHTS AND THEIR ROLE IN SOCIETY"
+        },
+        {
+          "title": "Project 6",
+          "description": "DEVELOP A RESILIENT AND DIVERSIFIED ECONOMY"
+        },
+        {
+          "title": "Project 7",
+          "description": "MAKE WATER AND ENERGY ACCESSIBLE TO ALL"
+        },
+        {
+          "title": "Project 8",
+          "description": "BUILD INFRASTRUCTURE FOR DE-ENCLAVEMENT"
+        },
+        {
+          "title": "Project 9",
+          "description": "INDUSTRIALIZE OUR AGRICULTURE AND LIVESTOCK"
+        },
+        {
+          "title": "Project 10",
+          "description": "CONTINUE THE MODERNIZATION OF OUR HEALTH SYSTEM"
+        },
+        {
+          "title": "Project 11",
+          "description": "STRENGTHEN CHAD'S INFLUENCE ABROAD AND MAKE THE DIASPORA A TRUE LEVER FOR DEVELOPMENT"
+        },
+        {
+          "title": "Project 12",
+          "description": "PROMOTE THE CULTURAL AND TOURIST WONDERS OF CHAD"
+        }
+      ]
+    },
+    "statistic": {
+      "tabs": {
+        "key_figures": "Key Figures",
+        "history": "History",
+        "geography": "Geography"
+      },
+      "list": {
+        "capital": "N'Djamena (capital)",
+        "area": "Area: 1,284,000 km²",
+        "population": "Population: 16 million inhabitants",
+        "density": "Density: 12 inhab/km²",
+        "religions": "Main religions: Islam, Christianity, Animism",
+        "languages": "Official languages: French, Arabic",
+        "currency": "Currency: CFA Franc",
+        "gdp": "GDP: 11 billion USD",
+        "gdp_per_capita": "GDP/capita: 700 USD",
+        "main_cities": "Main cities: N'Djamena, Moundou, Sarh, Abéché"
+      }
+    },
+    "history": {
+      "tabs": {
+        "key_figures": "Key Figures",
+        "history": "History",
+        "geography": "Geography"
+      },
+      "content": [
+        "Chad has a millennial history, marked by great Sahelian kingdoms.",
+        "French colonization profoundly transformed the country.",
+        "Independence was gained in 1960, followed by many political challenges."
+      ]
+    },
+    "hero": {
+      "title": "Tourism in Chad"
+    },
+    "tchad": {
+      "hero": {
+        "title": "Chad - Land of Welcome and Diversity"
+      },
+      "breadcrumbs": {
+        "home": "Home",
+        "tourism": "Tourism",
+        "site": "Site",
+        "tchad": "Chad"
+      },
+      "title": "Tourism in Chad",
+      "description": "Discover the wonders of Chad"
     }
   },
   "events": {
@@ -171,11 +455,11 @@
       "news": "News"
     },
     "title": "News",
-    "description": "Stay informed of the latest news from the Embassy",
+    "description": "Stay informed about the latest news from the Embassy",
     "latest": "Latest news",
     "viewAll": "View all news",
     "readMore": "Read more",
-    "searchPlaceholder": "Search news",
+    "searchPlaceholder": "Search for news",
     "publishedOn": "Published on",
     "allStatus": "All statuses",
     "searchByDate": "Search by date",
@@ -197,15 +481,18 @@
     "draft": "Draft",
     "author": "Author",
     "category": "Category",
+    "backToList": "Back to news list",
+    "loading": "Loading...",
+    "error": "An error occurred",
     "noNews": "No news at the moment.",
-    "backToList": "Back to news list"
+    "noNewsFound": "No news found"
   },
   "gallery": {
     "title": "Gallery",
     "description": "Discover our photos and videos",
     "photos": "Photos",
     "videos": "Videos",
-    "viewAll": "View entire gallery",
+    "viewAll": "View all gallery",
     "photo": {
       "hero": {
         "title": "Photos"
@@ -217,7 +504,7 @@
       "title": "Photos",
       "description": "Discover our photos",
       "viewAll": "View all photos",
-      "searchPlaceholder": "Search photo",
+      "searchPlaceholder": "Search for a photo",
       "searchByDate": "Search by date",
       "searchByTitle": "Search by title",
       "searchByContent": "Search by content",
@@ -227,7 +514,7 @@
       "previous": "Previous page",
       "next": "Next page",
       "noPhotos": "No photos at the moment.",
-      "backToList": "Back to photo list"
+      "backToList": "Back to photos list"
     },
     "video": {
       "hero": {
@@ -240,7 +527,7 @@
       "title": "Videos",
       "description": "Discover our videos",
       "viewAll": "View all videos",
-      "searchPlaceholder": "Search video",
+      "searchPlaceholder": "Search for a video",
       "searchByDate": "Search by date",
       "searchByTitle": "Search by title",
       "searchByContent": "Search by content",
@@ -250,7 +537,7 @@
       "previous": "Previous page",
       "next": "Next page",
       "noVideos": "No videos at the moment.",
-      "backToList": "Back to video list"
+      "backToList": "Back to videos list"
     }
   },
   "contact": {
@@ -271,20 +558,20 @@
       "address": "contact@ambassade-tchad.fr"
     },
     "hours": {
-      "title": "Opening hours",
+      "title": "Opening Hours",
       "weekdays": "Monday - Friday: 9:00 AM - 5:00 PM",
       "weekend": "Saturday - Sunday: Closed"
     },
     "form": {
-      "title": "Contact form",
-      "name": "Full name",
+      "title": "Contact Form",
+      "name": "Full Name",
       "email": "Email",
       "subject": "Subject",
       "message": "Message",
       "send": "Send",
       "sending": "Sending...",
       "success": "Message sent successfully!",
-      "error": "Error sending the message"
+      "error": "Error sending message"
     }
   },
   "auth": {
@@ -295,13 +582,13 @@
       "password": "Password",
       "rememberMe": "Remember me",
       "forgotPassword": "Forgot password?",
-      "login": "Log in",
+      "login": "Login",
       "noAccount": "Don't have an account?",
       "register": "Register",
       "error": "Incorrect email or password"
     },
     "register": {
-      "title": "Registration",
+      "title": "Register",
       "description": "Create your client space account",
       "firstName": {
         "placeholder": "First Name"
@@ -313,7 +600,7 @@
         "placeholder": "Email"
       },
       "phoneNumber": {
-        "placeholder": "Phone"
+        "placeholder": "Phone Number"
       },
       "password": {
         "placeholder": "Password"
@@ -322,14 +609,14 @@
         "placeholder": "Confirm Password"
       },
       "showPassword": "Show password",
-      "loading": "Registration in progress...",
+      "loading": "Registering...",
       "submit": "Register",
       "hasAccount": "Already have an account?",
-      "login": "Log in",
+      "login": "Login",
       "error": "Error during registration"
     },
     "forgotPassword": {
-      "title": "Forgot password",
+      "title": "Forgot Password",
       "description": "Enter your email to reset your password",
       "email": {
         "placeholder": "Email"
@@ -337,45 +624,45 @@
       "loading": "Sending...",
       "submit": "Send",
       "backToLogin": "Back to login",
-      "success": "Password reset email sent!",
-      "error": "Error sending the email"
+      "success": "Reset email sent!",
+      "error": "Error sending email"
     }
   },
   "espaceClient": {
     "title": "Client Area",
     "description": "Manage your consular requests online",
     "sidebar": {
-      "embassyName": "Chad Embassy",
+      "embassyName": "Embassy of Chad",
       "dashboard": "Dashboard",
-      "nouvelleDemandeLabel": "New request",
-      "mesDemandes": "My requests",
-      "monProfil": "My profile",
-      "deconnexion": "Log out"
+      "nouvelleDemandeLabel": "New Request",
+      "mesDemandes": "My Requests",
+      "monProfil": "My Profile",
+      "deconnexion": "Log Out"
     },
     "dashboard": {
       "title": "Dashboard",
       "welcome": "Welcome to your client area",
-      "description": "Here you can find the history and status of all your requests to the Chad Embassy.",
+      "description": "Find the history and status of all your requests to the Embassy of Chad here.",
       "quickActions": {
         "title": "Quick Actions",
-        "description": "Quick access to main features",
-        "newRequest": "New request",
-        "viewRequests": "View my requests",
-        "updateProfile": "Update profile",
-        "downloadDocuments": "Download documents",
-        "contactSupport": "Contact support",
-        "viewNotifications": "View notifications",
-        "checkStatus": "Check status",
-        "scheduleAppointment": "Schedule an appointment",
-        "viewHistory": "View history",
-        "exportData": "Export data",
+        "description": "Quickly access key features",
+        "newRequest": "New Request",
+        "viewRequests": "View My Requests",
+        "updateProfile": "Update Profile",
+        "downloadDocuments": "Download Documents",
+        "contactSupport": "Contact Support",
+        "viewNotifications": "View Notifications",
+        "checkStatus": "Check Status",
+        "scheduleAppointment": "Schedule Appointment",
+        "viewHistory": "View History",
+        "exportData": "Export Data",
         "settings": "Settings",
         "help": "Help",
-        "feedback": "Give feedback",
-        "emergencyContact": "Emergency contact"
+        "feedback": "Give Feedback",
+        "emergencyContact": "Emergency Contact"
       },
       "recentRequests": {
-        "title": "Recent requests",
+        "title": "Recent Requests",
         "noRequests": "No recent requests",
         "viewAll": "View all requests"
       },
@@ -385,9 +672,9 @@
         "viewAll": "View all notifications"
       },
       "progressSteps": {
-        "processus": "Process",
-        "deTraitement": "Processing",
-        "etape1": "File submission",
+        "processus": "Processing",
+        "deTraitement": "Steps",
+        "etape1": "Submission",
         "etape2": "Verification",
         "etape3": "Processing",
         "etape4": "Validation",
@@ -395,8 +682,8 @@
         "etape6": "Collection"
       },
       "requestsTable": {
-        "title": "My ongoing requests",
-        "ticketNumber": "TICKET No.",
+        "title": "My Current Requests",
+        "ticketNumber": "TICKET NO.",
         "serviceConcerne": "SERVICE CONCERNED",
         "dateSubmission": "SUBMISSION DATE",
         "currentStatus": "CURRENT STATUS",
@@ -412,8 +699,8 @@
           "PROCESSING": "In Progress",
           "enAttente": "Pending",
           "PENDING": "Pending",
-          "pretARetirer": "Ready to Pick Up",
-          "COMPLETED": "Ready to Pick Up",
+          "pretARetirer": "Ready for Pickup",
+          "COMPLETED": "Ready for Pickup",
           "rejete": "Rejected",
           "REJECTED": "Rejected",
           "annule": "Cancelled",
@@ -426,7 +713,10 @@
       },
       "newsCarousel": {
         "title": "News",
-        "readMore": "Read more"
+        "readMore": "Read more",
+        "previous": "Previous",
+        "next": "Next",
+        "noNews": "No news available"
       },
       "messages": {
         "title": "Messages",
@@ -438,49 +728,81 @@
       "nomUtilisateur": "User",
       "etape": "Step",
       "service": "Service",
-      "typeService": "Type of service",
+      "typeService": "Service Type",
       "demande": "Request",
-      "typeDemande": "Request type",
+      "typeDemande": "Request Type",
       "bienvenue": "Welcome to your client area",
       "progression": "Progress",
       "periodeDate": "Period",
-      "achevementPrevu": "Expected completion",
-      "dateAchevement": "Completion date",
+      "achevementPrevu": "Estimated Completion",
+      "dateAchevement": "Completion Date",
       "dureeJours": "14 Days"
     },
     "historiqueTraitement": {
       "titre": "Processing History",
       "service": "Service",
       "statut": "Status",
-      "soumission": "Submission date",
+      "soumission": "Submission Date",
       "progression": "Progress",
-      "achevementPrevu": "Expected completion",
+      "achevementPrevu": "Estimated Completion",
       "jours": "days",
-      "enRetard": "Delayed"
+      "enRetard": "Overdue"
     },
     "statusTimeline": {
       "titre": "Status Timeline",
       "enCours": "In Progress",
       "etapes": {
-        "soumission": {
-          "titre": "Request submitted",
-          "description": "Your request has been received and registered in our system"
+        "new": {
+          "titre": "New",
+          "description": "Your file is being processed"
         },
-        "verification": {
-          "titre": "Verification",
-          "description": "Verification of the completeness and validity of the documents"
+        "pending_additional_info": {
+          "titre": "Pending additional information",
+          "description": "Your file is awaiting additional information"
         },
-        "traitement": {
-          "titre": "In processing",
-          "description": "Your request is being processed by our services"
+        "approved_by_agent": {
+          "titre": "Approved by agent",
+          "description": "Your file has been approved by the agent"
         },
-        "pret": {
-          "titre": "Ready to pick up",
-          "description": "Your document is ready and can be picked up"
+        "approved_by_chef": {
+          "titre": "Approved by supervisor",
+          "description": "Your file has been approved by the supervisor"
         },
-        "termine": {
-          "titre": "Completed",
-          "description": "Your request has been fully processed"
+        "approved_by_consul": {
+          "titre": "Approved by consul",
+          "description": "Your file has been approved by the consul"
+        },
+        "ready_for_pickup": {
+          "titre": "Ready for pickup",
+          "description": "Your file is ready to be picked up"
+        },
+        "delivered": {
+          "titre": "Delivered",
+          "description": "Your file has been delivered"
+        },
+        "expired": {
+          "titre": "Expired",
+          "description": "Your file has expired"
+        },
+        "renewal_requested": {
+          "titre": "Renewal requested",
+          "description": "Your file has been renewed"
+        },
+        "in_review_docs": {
+          "titre": "Under review",
+          "description": "Your file is under review"
+        },
+        "archived": {
+          "titre": "Archived",
+          "description": "Your file has been archived"
+        },
+        "rejected": {
+          "titre": "Rejected",
+          "description": "Your file has been rejected"
+        },
+        "cancelled": {
+          "titre": "Cancelled",
+          "description": "Your file has been cancelled"
         }
       }
     },
@@ -503,8 +825,8 @@
         "PROCESSING": "In Progress",
         "requis": "Required",
         "REQUIRED": "Required",
-        "pretARetirer": "Ready to Pick Up",
-        "COMPLETED": "Ready to Pick Up",
+        "pretARetirer": "Ready for Pickup",
+        "COMPLETED": "Ready for Pickup",
         "nouveau": "New",
         "NEW": "New",
         "enAttente": "Pending",
@@ -517,7 +839,7 @@
         "FINISHED": "Finished",
         "Requis": "Required",
         "En Cours": "In Progress",
-        "Prêt À Retirer": "Ready to Pick Up"
+        "Prêt À Retirer": "Ready for Pickup"
       },
       "noNotifications": "No notifications",
       "markAllAsRead": "Mark all as read",
@@ -526,8 +848,8 @@
     },
     "quickActions": {
       "title": "Quick Actions",
-      "description": "Quick access to main features",
-      "modalTitle": "Available quick actions",
+      "description": "Quickly access key features",
+      "modalTitle": "Available Quick Actions",
       "nouvelleDemandeButton": "Make a new request",
       "newRequest": "New request",
       "viewRequests": "View my requests",
@@ -536,7 +858,7 @@
       "contactSupport": "Contact support",
       "viewNotifications": "View notifications",
       "checkStatus": "Check status",
-      "scheduleAppointment": "Schedule an appointment",
+      "scheduleAppointment": "Schedule appointment",
       "viewHistory": "View history",
       "exportData": "Export data",
       "settings": "Settings",
@@ -547,68 +869,412 @@
         "visa": {
           "label": "Visa",
           "description": "Request a travel visa",
-          "route": "/client-area/new-request/visa"
+          "route": "/espace-client/nouvelle-demande/visa"
         },
         "birth-act": {
-          "label": "Birth certificate",
+          "label": "Birth Certificate",
           "description": "Request a birth certificate",
-          "route": "/client-area/new-request/birth-act"
+          "route": "/espace-client/nouvelle-demande/birth-act"
         },
         "consular-card": {
-          "label": "Consular card",
+          "label": "Consular Card",
           "description": "Register with the embassy",
-          "route": "/client-area/new-request/consular-card"
+          "route": "/espace-client/nouvelle-demande/consular-card"
         },
         "laissez-passer": {
           "label": "Laissez-passer",
           "description": "Obtain a laissez-passer to return to Chad",
-          "route": "/client-area/new-request/laissez-passer"
+          "route": "/espace-client/nouvelle-demande/laissez-passer"
         },
         "marriage-capacity": {
-          "label": "Certificate of marital capacity",
-          "description": "Request a certificate of marital capacity",
-          "route": "/client-area/new-request/marriage-capacity"
+          "label": "Certificate of Marriage Capacity",
+          "description": "Request a certificate of marriage capacity",
+          "route": "/espace-client/nouvelle-demande/marriage-capacity"
         },
         "death-act": {
-          "label": "Death certificate",
+          "label": "Death Certificate",
           "description": "Request a death certificate",
-          "route": "/client-area/new-request/death-act"
+          "route": "/espace-client/nouvelle-demande/death-act"
         },
         "power-of-attorney": {
-          "label": "Power of attorney",
+          "label": "Power of Attorney",
           "description": "Authorize someone for your procedures",
-          "route": "/client-area/new-request/power-of-attorney"
+          "route": "/espace-client/nouvelle-demande/power-of-attorney"
         },
         "nationality-certificate": {
-          "label": "Nationality certificate",
+          "label": "Certificate of Nationality",
           "description": "Prove your Chadian nationality",
-          "route": "/client-area/new-request/nationality-certificate"
+          "route": "/espace-client/nouvelle-demande/nationality-certificate"
         }
       },
       "modal": {
-        "title": "Available quick actions",
-        "subtitle": "Select an action to proceed",
+        "title": "Available Quick Actions",
+        "subtitle": "Select an action to continue",
         "close": "Close",
+        "cancel": "Cancel",
+        "confirm": "Confirm",
+        "loading": "Loading...",
+        "noActions": "No actions available",
+        "selectAction": "Select an action",
+        "actionDescription": "Action description",
+        "proceed": "Proceed",
+        "back": "Back",
+        "search": "Search for an action",
+        "filter": "Filter actions",
+        "allActions": "All actions",
+        "recentActions": "Recent actions",
+        "favoriteActions": "Favorite actions",
+        "categories": {
+          "requests": "Requests",
+          "documents": "Documents",
+          "support": "Support",
+          "settings": "Settings",
+          "help": "Help"
+        }
+      }
+    },
+    "services": {
+      "visa": "Visa Application",
+      "carteConsulaire": "Consular Card",
+      "passeport": "Passport",
+      "laissezPasser": "Laissez-passer",
+      "procuration": "Power of Attorney",
+      "certificatNationalite": "Certificate of Nationality",
+      "acteNaissance": "Birth Certificate",
+      "acteDeces": "Death Certificate",
+      "capaciteMariage": "Certificate of Marriage Capacity"
+    },
+    "formFields": {
+      "personFirstName": "First Name",
+      "personLastName": "Last Name",
+      "personGender": "Gender",
+      "personNationality": "Nationality",
+      "personBirthDate": "Date of Birth",
+      "personBirthPlace": "Place of Birth",
+      "personMaritalStatus": "Marital Status",
+      "personProfession": "Profession",
+      "personDomicile": "Domicile",
+      "personAddressInOriginCountry": "Address in Home Country",
+      "fatherFullName": "Father's Full Name",
+      "motherFullName": "Mother's Full Name",
+      "passportType": "Passport Type",
+      "passportNumber": "Passport Number",
+      "passportIssuedBy": "Issued By",
+      "passportIssueDate": "Passport Issue Date",
+      "passportExpirationDate": "Passport Expiration Date",
+      "employerAddress": "Employer's Address",
+      "employerPhoneNumber": "Employer's Phone Number",
+      "visaType": "Visa Type",
+      "durationMonths": "Duration (months)",
+      "destinationState": "Destination",
+      "visaExpirationDate": "Visa Expiration Date",
+      "requestType": "Request Type",
+      "justificationDocumentType": "Justification Document Type",
+      "justificationDocumentNumber": "Justification Document Number",
+      "contactPhoneNumber": "Phone Number"
+    },
+    "requestTypes": {
+      "NEWBORN": "Newborn",
+      "RENEWAL": "Renewal"
+    },
+    "session": {
+      "expiresIn": "Session expires in:",
+      "sessionTime": "Session:",
+      "expired": "Session expired",
+      "warningMessage": "Your session will expire in 5 minutes. Please save your work.",
+      "expiredMessage": "Your session has expired. You will be automatically logged out.",
+      "logout": "Log Out"
+    },
+    "navigation": {
+      "dashboard": "Dashboard",
+      "newRequest": "New Request",
+      "myRequests": "My Requests",
+      "profile": "Profile",
+      "logout": "Log Out"
+    },
+    "common": {
+      "back": "Back",
+      "next": "Next",
+      "previous": "Previous",
+      "submit": "Submit",
+      "cancel": "Cancel",
+      "save": "Save",
+      "edit": "Edit",
+      "delete": "Delete",
+      "view": "View",
+      "download": "Download",
+      "upload": "Upload",
+      "search": "Search",
+      "filter": "Filter",
+      "all": "All",
+      "none": "None",
+      "yes": "Yes",
+      "no": "No",
+      "loading": "Loading...",
+      "error": "Error",
+      "success": "Success",
+      "warning": "Warning",
+      "info": "Information"
+    },
+    "formulaire": {
+      "title": "Request for {type}",
+      "description": "Fill out the form below for your {type} request",
+      "documentsRequired": "Required Documents",
+      "documentsToProvide": "Documents to provide",
+      "importantInfo": "Important Information",
+      "importantInfoText": "All documents must be valid and comply with consular requirements.",
+      "filesToProvide": "Documents to provide",
+      "fileUploadInfo": "Import up to 10 compatible files. 100 MB max. per file.",
+      "addFile": "Add a file",
+      "uploading": "Uploading...",
+      "fileSelected": "file(s) selected",
+      "uploadSuccess": "File uploaded successfully!",
+      "multipleFilesSuccess": "Files uploaded successfully!",
+      "fields": {
+        "photo": "Photo",
+        "lastName": "Last Name",
+        "firstName": "First Name",
+        "birthDate": "Date of Birth",
+        "birthPlace": "Place of Birth",
+        "nationality": "Nationality",
+        "gender": "Gender",
+        "male": "Male",
+        "female": "Female",
+        "maritalStatus": "Marital Status",
+        "single": "Single",
+        "married": "Married",
+        "divorced": "Divorced",
+        "widowed": "Widowed",
+        "passportType": "Passport Type",
+        "passportNumber": "Passport Number",
+        "passportIssueDate": "Date of Issue",
+        "passportExpiryDate": "Date of Expiry",
+        "passportIssuingCountry": "Issuing Country",
+        "profession": "Profession",
+        "employerName": "Employer's Name",
+        "employerAddress": "Employer's Address",
+        "employerPhone": "Employer's Phone",
+        "visaType": "Visa Type",
+        "durationOfStay": "Duration of Stay",
+        "destinationCity": "Destination City",
+        "contactPhone": "Contact Phone",
+        "contactEmail": "Contact Email"
+      },
+      "steps": {
+        "personalInfo": "Personal Information",
+        "passportInfo": "Passport Information",
+        "professionalInfo": "Professional Information",
+        "visaInfo": "Visa Information",
+        "documents": "Documents",
+        "review": "Review"
+      },
+      "validation": {
+        "required": "This field is required",
+        "invalidEmail": "Invalid email",
+        "invalidPhone": "Invalid phone number",
+        "invalidDate": "Invalid date",
+        "fileTooLarge": "File too large",
+        "invalidFileType": "Invalid file type"
+      }
+    },
+    "mesDemandes": {
+      "title": "My Requests",
+      "description": "Check the status of your requests",
+      "filters": {
+        "all": "All",
+        "pending": "Pending",
+        "processing": "Processing",
+        "completed": "Completed",
+        "rejected": "Rejected"
+      },
+      "table": {
+        "ticketNumber": "Ticket No.",
+        "serviceType": "Service Type",
+        "submissionDate": "Submission Date",
+        "status": "Status",
+        "actions": "Actions"
+      },
+      "status": {
+        "pending": "Pending",
+        "processing": "Processing",
+        "completed": "Completed",
+        "rejected": "Rejected"
+      },
+      "actions": {
+        "view": "View",
+        "download": "Download",
         "cancel": "Cancel"
       }
     },
-    "footer": {
-      "contactUs": "Contact us",
-      "termsOfUse": "Terms of use",
-      "privacyPolicy": "Privacy policy",
-      "aboutUs": "About us",
-      "followUs": "Follow us",
-      "faq": "Frequently asked questions",
-      "support": "Support",
-      "help": "Help",
-      "email": "Email",
-      "phone": "Phone"
+    "nouvelleDemande": {
+      "title": "New Request",
+      "description": "Choose the type of service for your request",
+      "services": {
+        "visa": {
+          "title": "Visa",
+          "description": "Visa application for Chad",
+          "icon": "🛂",
+          "color": "blue"
+        },
+        "passport": {
+          "title": "Passport",
+          "description": "Passport renewal and issuance",
+          "icon": "📄",
+          "color": "green"
+        },
+        "consularCard": {
+          "title": "Consular Card",
+          "description": "Issuance of consular card",
+          "icon": "🆔",
+          "color": "purple"
+        },
+        "laissezPasser": {
+          "title": "Laissez-passer",
+          "description": "Issuance of laissez-passer",
+          "icon": "📋",
+          "color": "orange"
+        },
+        "procuration": {
+          "title": "Power of Attorney",
+          "description": "Authentication of power of attorney",
+          "icon": "✍️",
+          "color": "red"
+        },
+        "birthAct": {
+          "title": "Birth Certificate",
+          "description": "Issuance of birth certificate",
+          "icon": "👶",
+          "color": "pink"
+        },
+        "deathAct": {
+          "title": "Death Certificate",
+          "description": "Issuance of death certificate",
+          "icon": "⚰️",
+          "color": "gray"
+        },
+        "marriageCapacity": {
+          "title": "Certificate of Marriage Capacity",
+          "description": "Issuance of certificate of marriage capacity",
+          "icon": "💒",
+          "color": "yellow"
+        },
+        "nationality": {
+          "title": "Certificate of Nationality",
+          "description": "Issuance of certificate of nationality",
+          "icon": "🏛️",
+          "color": "indigo"
+        }
+      }
+    },
+    "dureeJours": "14 Days",
+    "progressSteps": {
+      "processus": "Processing",
+      "deTraitement": "Steps"
+    },
+    "newsCarousel": {
+      "title": "News"
+    },
+    "messages": {
+      "title": "Messages",
+      "modal": {
+        "title": "All Messages",
+        "markAsRead": "Mark as read",
+        "markAsUnread": "Mark as unread",
+        "close": "Close",
+        "empty": "No messages",
+        "read": "Read",
+        "unread": "Unread",
+        "reply": "Reply"
+      }
+    },
+    "mesDemandesClient": {
+      "title": "My Requests",
+      "description": "Find the history and status of all your requests to the Embassy of Chad here.",
+      "filtrer": "FILTER BY",
+      "noTicket": "TICKET NO.",
+      "placeholderTicket": "Ex: T001",
+      "typeService": "SERVICE TYPE",
+      "statut": "STATUS",
+      "tous": "All",
+      "appliquer": "Apply",
+      "listeDemandes": "List of requests",
+      "demandesEnAttente": "Pending requests",
+      "toutesVosDemandes": "All your requests",
+      "aucuneDemandeTrouvee": "No requests found",
+      "aucuneDemandeMessage": "You don't have any requests at the moment.",
+      "reessayer": "Retry",
+      "sessionNonTrouvee": "Session not found. Please log in again.",
+      "erreurChargement": "Error loading requests",
+      "erreurInconnue": "Unknown error",
+      "pagePrecedente": "Previous page",
+      "pageSuivante": "Next page",
+      "demandes": "requests",
+      "page": "Page",
+      "sur": "of",
+      "services": {
+        "carteConsulaire": "Consular Card",
+        "visa": "Visa",
+        "laissezPasser": "Laissez-passer",
+        "procuration": "Power of Attorney",
+        "acteCapaciteMariage": "Certificate of Marriage Capacity",
+        "acteDeces": "Death Certificate",
+        "certificatNationalite": "Certificate of Nationality",
+        "acteNaissance": "Birth Certificate"
+      },
+      "statuts": {
+        "NEW": "New",
+        "PENDING": "Pending",
+        "IN_PROGRESS": "In Progress",
+        "COMPLETED": "Completed",
+        "READY_TO_PICKUP": "Ready for Pickup",
+        "REJECTED": "Rejected",
+        "IN_REVIEW_DOCS": "Under document review",
+        "PENDING_ADDITIONAL_INFO": "Pending additional information",
+        "APPROVED_BY_AGENT": "Approved by agent",
+        "APPROVED_BY_CHEF": "Approved by supervisor",
+        "APPROVED_BY_CONSUL": "Approved by consul",
+        "READY_FOR_PICKUP": "Ready for pickup",
+        "DELIVERED": "Delivered",
+        "ARCHIVED": "Archived",
+        "EXPIRED": "Expired",
+        "RENEWAL_REQUESTED": "Renewal requested"
+      },
+      "documents": {
+        "title": "Documents provided",
+        "aucunDocument": "No documents provided for this request",
+        "telecharger": "Download",
+        "uploadedOn": "Uploaded on",
+        "nonSpecifie": "Not specified"
+      }
+    },
+    "profil": {
+      "title": "My Profile",
+      "description": "Manage your profile",
+      "modifierCompte": "Edit Account",
+      "modifierMotDePasse": "Change My Password",
+      "supprimerCompte": "Delete My Account",
+      "champsObligatoires": "Fields annotated with an * are mandatory.",
+      "monIdentite": "My Identity",
+      "nom": "Last Name",
+      "prenom": "First Name(s)",
+      "langueLabel": "Language in which you want to fill out your visa application",
+      "francais": "French",
+      "anglais": "English",
+      "arabe": "Arabic",
+      "enregistrer": "Save",
+      "mesDemandes": "My Requests",
+      "voirProfil": "View Profile",
+      "modifierProfil": "Edit Profile",
+      "annuler": "Cancel",
+      "motDePasseActuel": "Current password",
+      "nouveauMotDePasse": "New password",
+      "confirmerMotDePasse": "Confirm new password"
     }
   },
   "messages": {
     "title": "Messages",
     "modal": {
-      "title": "All messages",
+      "title": "All Messages",
       "markAsRead": "Mark as read",
       "markAsUnread": "Mark as unread",
       "close": "Close",
@@ -623,23 +1289,23 @@
     "listeAlertes": "List of the latest alerts and important updates",
     "statut": "Status",
     "notification": "Notification",
-    "voirToutes": "See All Notifications",
+    "voirToutes": "View All Notifications",
     "status": {
       "enCours": "In Progress",
       "En Cours": "In Progress",
       "requis": "Required",
       "Requis": "Required",
-      "pretARetirer": "Ready to Withdraw",
-      "Prêt À Retirer": "Ready to Withdraw",
+      "pretARetirer": "Ready for Pickup",
+      "Prêt À Retirer": "Ready for Pickup",
       "nouveau": "New",
       "NEW": "New",
       "PROCESSING": "In Progress",
       "PENDING": "Pending",
-      "COMPLETED": "Ready to Withdraw",
+      "COMPLETED": "Ready for Pickup",
       "rejete": "Rejected",
       "REJECTED": "Rejected",
-      "annule": "Cancelled",
-      "CANCELLED": "Cancelled",
+      "annule": "Canceled",
+      "CANCELLED": "Canceled",
       "REQUIRED": "Required",
       "termine": "Finished",
       "FINISHED": "Finished",
@@ -658,7 +1324,7 @@
       "SUCCESS": "Success"
     },
     "modal": {
-      "title": "All notifications",
+      "title": "All Notifications",
       "markAsRead": "Mark as read",
       "markAsUnread": "Mark as unread",
       "close": "Close",
@@ -668,16 +1334,39 @@
       "all": "All"
     }
   },
+  "profil": {
+    "title": "My Profile",
+    "description": "Find the history and status of all your requests to the Embassy of Chad here.",
+    "modifierCompte": "Edit account",
+    "modifierMotDePasse": "Change my password",
+    "supprimerCompte": "Delete my account",
+    "champsObligatoires": "Fields annotated with an * are mandatory.",
+    "monIdentite": "My identity",
+    "nom": "Last Name",
+    "prenom": "First Name (s)",
+    "langueLabel": "Language in which you want to fill out your visa application",
+    "francais": "French",
+    "anglais": "English",
+    "arabe": "Arabic",
+    "enregistrer": "Save",
+    "mesDemandes": "My requests",
+    "voirProfil": "View profile",
+    "modifierProfil": "Edit profile",
+    "annuler": "Cancel",
+    "motDePasseActuel": "Current password",
+    "nouveauMotDePasse": "New password",
+    "confirmerMotDePasse": "Confirm new password"
+  },
   "visaForm": {
     "title": "Visa Application",
-    "personalInfo": "Personal Information",
-    "passportInfo": "Passport Information",
-    "professionalInfo": "Professional Information and Visa",
-    "contactAndDocuments": "Contact and Documents",
+    "personalInfo": "Personal information",
+    "passportInfo": "Passport information",
+    "professionalInfo": "Professional and visa information",
+    "contactAndDocuments": "Contact and documents",
     "requiredDocuments": "Documents required for a visa application",
-    "processingTime": "Processing Time",
-    "beforeStarting": "Before you start",
-    "successMessage": "Application successfully created!",
+    "processingTime": "Processing time",
+    "beforeStarting": "Before starting",
+    "successMessage": "Request created successfully!",
     "successDescription": "Your visa application has been submitted. You will soon receive a confirmation email.",
     "viewMyRequests": "View my requests",
     "fields": {
@@ -685,21 +1374,21 @@
       "personLastName": "Last Name",
       "personGender": "Gender",
       "personNationality": "Nationality",
-      "personBirthDate": "Date of Birth",
-      "personBirthPlace": "Place of Birth",
-      "personMaritalStatus": "Marital Status",
-      "passportType": "Passport Type",
-      "passportNumber": "Passport Number",
-      "passportIssuedBy": "Country of Issue",
-      "passportIssueDate": "Issue Date",
-      "passportExpirationDate": "Expiration Date",
+      "personBirthDate": "Date of birth",
+      "personBirthPlace": "Place of birth",
+      "personMaritalStatus": "Marital status",
+      "passportType": "Passport type",
+      "passportNumber": "Passport number",
+      "passportIssuedBy": "Country of issuance",
+      "passportIssueDate": "Date of issuance",
+      "passportExpirationDate": "Expiration date",
       "profession": "Profession",
-      "employerAddress": "Employer's Address",
-      "employerPhoneNumber": "Employer's Phone Number",
-      "durationMonths": "Duration of Stay (months)",
-      "destinationState": "Destination City",
-      "visaType": "Visa Type",
-      "contactPhoneNumber": "Contact Phone Number"
+      "employerAddress": "Employer's address",
+      "employerPhoneNumber": "Employer's phone number",
+      "durationMonths": "Duration of stay (months)",
+      "destinationState": "Destination city",
+      "visaType": "Visa type",
+      "contactPhoneNumber": "Contact phone number"
     },
     "options": {
       "gender": {
@@ -718,8 +1407,8 @@
         "SERVICE": "Service"
       },
       "visaType": {
-        "SHORT_STAY": "Short Stay",
-        "LONG_STAY": "Long Stay",
+        "SHORT_STAY": "Short stay",
+        "LONG_STAY": "Long stay",
         "TRANSIT": "Transit",
         "BUSINESS": "Business",
         "STUDENT": "Student",
@@ -738,11 +1427,11 @@
     "videos": "Videos",
     "investir": "Invest",
     "tourisme": "Tourism",
-    "site": "Tourist Sites",
+    "site": "Tourist sites",
     "tchad": "Chad",
     "peuples": "Peoples",
     "connexion": "Login",
-    "titre": "Embassy of Chad in Ivory Coast",
+    "titre": "Embassy of Chad in Côte d'Ivoire",
     "recherche": "Search...",
     "tel": "+225 27 22 39 49 13",
     "email": "ambassade.tchadabj@ambatchad.ci"
@@ -761,16 +1450,17 @@
       "home": "Home",
       "event": "Event"
     },
-    "description": "Discover all the events organized by the Embassy of Chad in Ivory Coast.",
+    "description": "Discover all the events organized by the Embassy of Chad in Côte d'Ivoire.",
     "searchPlaceholder": "Search for an event...",
     "filters": {
       "all": "All",
       "upcoming": "Upcoming",
       "past": "Past",
       "status": "Status",
-      "allStatus": "All Statuses",
+      "allStatus": "All statuses",
       "published": "Published",
-      "draft": "Draft"
+      "draft": "Draft",
+      "date": "Date"
     },
     "draft": "Draft",
     "readMore": "Read more"
@@ -780,35 +1470,36 @@
   },
   "ambassadeur": {
     "title": "The Ambassador",
-    "nom": "Mr. Gonfouli SOUARIBA",
-    "poste": "Ambassador of Chad in Ivory Coast",
-    "bienvenue": "Welcome to the Embassy of Chad in Ivory Coast",
-    "texte": "The Republic of Chad, the land of Toumaï, strategically positioned at the heart of the African continent, holds a prime position. After a successful three-year political transition under the leadership of the Marshal of Chad, Mahamat Idriss DEBY ITNO, President of the Republic, Head of State, the country is making giant strides toward its economic growth. The President's political program is structured around twelve key areas, each with various actions, including peace, national security, and the promotion of a solidarity-based state. The development program entitled 'Vision 2030, the Chad We Want', which aligns with the African Union's 2063 Agenda and the United Nations' 2030 Agenda, is being implemented. This pragmatic execution-focused program aims to make Chad an emerging country by 2030. The Embassy of Chad in the Republic of Ivory Coast also has jurisdiction over four other countries: Ghana, Guinea, Sierra Leone, and Liberia. The primary objectives of the mission are to maintain and strengthen diplomatic relations between Chad and these five countries. This comprehensive diplomacy spans areas as varied as the economy, culture, and all facets of modern cooperation between peace-loving countries with shared interests. The mission of the High Representation of Chad in Ivory Coast also involves protecting the interests of its community in these five countries, in accordance with diplomatic practices. The platform offered here serves as a unique and effective reference for obtaining general information about Chad, to effectively promote trade, investment, tourism, and culture. The entire team at the Embassy will always be at your disposal to offer you a warm welcome, not only to Chadians but also to all those from other countries seeking essential information about the services we offer, such as visa issuance and other administrative documents (consular card, birth certificate, marriage certificate, and death certificate). While we look forward to welcoming you in person, in the meantime, feel free to visit the 'Virtual Chad.'",
-    "vision": "« Vision 2030, the Chad We Want »",
+    "nom": "H.E. Gonfouli SOUARIBA",
+    "poste": "Ambassador of Chad to Côte d'Ivoire",
+    "bienvenue": "Welcome to the Embassy of Chad in Côte d'Ivoire",
+    "texte": "The Republic of Chad, land of Toumaï, due to its strategic geographical position, occupies a prominent place in the heart of the African continent. The country, after a successful political transition of three years under the leadership of the Marshal of Chad, Mahamat Idriss DEBY ITNO, President of the Republic, Head of State, is taking giant steps for its economic takeoff. The political program of the Head of State is structured around twelve projects, each including several actions, notably peace, national security, and the promotion of a solidarity-based state. The development program entitled \"Vision 2030, the Chad we want,\" based on the African Union's 2063 agenda and the United Nations' 2030 agenda, promulgated by the Heads of State of the African Union member states, is being implemented. This program, based on a pragmatic execution, aims to make Chad an emerging country by 2030. The Embassy of Chad in the Republic of Côte d'Ivoire has jurisdiction over four other countries, namely Ghana, Guinea, Sierra Leone, and Liberia. The main objectives of the mission are to maintain and strengthen diplomatic relations between Chad and these five countries. This all-out diplomacy embraces areas as varied as the economy, culture, and all that modern cooperation entails between peace-loving countries that share common interests. The mission of the High Representation of Chad in Côte d'Ivoire also consists of protecting the interests of its community in the five countries of its jurisdiction, in accordance with diplomatic practices. The platform offered to you is a unique and effective reference for obtaining general information about Chad, in order to effectively promote trade, investments, tourism, and culture. The entire Embassy team will always be at your disposal to offer you a warm welcome, not only to Chadians but to all those from other countries who wish to have essential information on the services we offer, including the issuance of visas and other administrative documents (consular card, birth certificate, marriage and death certificate). While waiting for a physical visit that we hope will be soon, welcome to \"Virtual Chad.\"",
+    "vision": "“Vision 2030, the Chad we want”",
     "salutation": "Sincerely and warmly,",
-    "signature": "His Excellency Mr. Gonfouli SOUARIBA, Ambassador of the Republic of Chad to the Republic of Ivory Coast."
+    "signature": "His Excellency Mr. Gonfouli SOUARIBA, Ambassador of the Republic of Chad to the Republic of Côte d'Ivoire."
   },
   "teams": {
     "title": "Our Team",
-    "description": "Meet the members of the Embassy team.",
+    "description": "Discover the members of the Embassy team.",
     "jobs": {
       "ambassadeur": "Ambassador",
       "premier_conseiller": "First Counselor",
-      "conseillere_economique": "Economic Counselor",
+      "conseillere_economique": "Economic Advisor",
       "attache": "Attaché",
       "charge_communication": "Communications Officer"
     }
   },
   "agents": {
-    "souariba": "Mr. SOUARIBA Gonfouli",
+    "souariba": "H.E. SOUARIBA Gonfouli",
     "acheikh": "Mr. ACHEIKH MAKAYE NIMIR",
     "remadji": "Mrs. REMADJI Christelle",
-    "kaina": "Mr. KAINA Nadjo"
+    "kaina": "Mr. KAINA Nadjo",
+    "alladoum": "Mr. ALLADOUM Félix"
   },
   "footer": {
-    "embassy": "Embassy of Chad in Ivory Coast",
+    "embassy": "Embassy of Chad in Côte d'Ivoire",
     "navTitle": "Navigation",
-    "quickLinksTitle": "Quick Links",
+    "quickLinksTitle": "Quick links",
     "mainLinks": {
       "ambassade": "Embassy",
       "consulaire": "Consular",
@@ -819,25 +1510,25 @@
     "quickLinks": {
       "tchad": "Chad",
       "events": "Events",
-      "sites": "Tourist Sites"
+      "sites": "Tourist sites"
     },
     "legal": {
       "a_propos": "About",
       "criteres": "Criteria",
       "confidentialite": "Privacy",
-      "conditions": "Terms of Use",
+      "conditions": "Terms of use",
       "clause": "Disclaimer"
     },
     "socials": {
       "tchad_diplomatie": "Chad Diplomacy",
       "sgg": "General Secretariat of the Government",
-      "ambassade_ci": "Embassy of Chad in Ivory Coast"
+      "ambassade_ci": "Embassy of Chad in Côte d'Ivoire"
     }
   },
   "about": {
     "phoneLabel": "Phone",
     "facebookLabel": "Official Facebook",
-    "facebookLink": "Embassy of Chad in Ivory Coast",
+    "facebookLink": "Embassy of Chad in Côte d'Ivoire",
     "emailLabel": "Email",
     "emailValue": "ambassade.tchadabj@ambatchad.ci"
   },
