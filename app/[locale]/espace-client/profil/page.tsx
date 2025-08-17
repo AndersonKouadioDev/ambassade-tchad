@@ -1,5 +1,5 @@
-import ProfilSection from '@/components/espace-client/ProfilSection';
+import ProfilSection from "@/features/utilisateur/components/ProfilSection";
 
-export default function ProfilPage() {
-  return <ProfilSection />;
+export default async function ProfilPage() {
+    return <ProfilSection/>;
 } 

@@ -1,0 +1,85 @@
+import {SetActiveTabType, TanstackField, TFunction} from "@/features/utilisateur/types";
+
+export const ProfilEdit = ({t, handleSubmit, Field, setActiveTab}: {
+    t: TFunction,
+    handleSubmit: () => void,
+    Field: TanstackField,
+    setActiveTab: SetActiveTabType
+}) => (
+    <div>
+        <div className="text-base text-gray-900 dark:text-white mb-2">{t('champsObligatoires')}</div>
+        <div className="border-t border-gray-200 dark:border-gray-700 my-6"/>
+        <div className="text-xl font-bold text-gray-900 dark:text-white mb-4">{t('monIdentite')}</div>
+        <form className="flex flex-col gap-6" onSubmit={(e) => {
+            e.preventDefault();
+            handleSubmit();
+        }}>
+            <div className="flex flex-row gap-x-6">
+                <div className="w-80">
+                    <label className="block text-gray-900 dark:text-white font-semibold mb-2">{t('nom')} *</label>
+                    <Field name="lastName">
+                        {(field) => (
+                            <input
+                                type="text"
+                                value={field.state.value}
+                                onChange={(e) => field.handleChange(e.target.value)}
+                                className="w-80 rounded-full border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 px-6 py-2 text-gray-900 dark:text-white text-base focus:outline-none focus:border-orange-500"
+                            />
+                        )}
+                    </Field>
+                </div>
+                <div className="w-80">
+                    <label className="block text-gray-900 dark:text-white font-semibold mb-2">{t('prenom')} *</label>
+                    <Field name="firstName">
+                        {(field) => (
+                            <input
+                                type="text"
+                                value={field.state.value}
+                                onChange={(e) => field.handleChange(e.target.value)}
+                                className="w-80 rounded-full border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 px-6 py-2 text-gray-900 dark:text-white text-base focus:outline-none focus:border-orange-500"
+                            />
+                        )}
+                    </Field>
+                </div>
+            </div>
+            <div className="flex flex-row gap-x-6">
+                <div className="w-80">
+                    <label className="block text-gray-900 dark:text-white font-semibold mb-2">Email *</label>
+                    <Field name="email">
+                        {(field) => (
+                            <input
+                                type="email"
+                                value={field.state.value}
+                                onChange={(e) => field.handleChange(e.target.value)}
+                                className="w-80 rounded-full border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 px-6 py-2 text-gray-900 dark:text-white text-base focus:outline-none focus:border-orange-500"
+                            />
+                        )}
+                    </Field>
+                </div>
+                <div className="w-80">
+                    <label className="block text-gray-900 dark:text-white font-semibold mb-2">Téléphone *</label>
+                    <Field name="phoneNumber">
+                        {(field) => (
+                            <input
+                                type="text"
+                                value={field.state.value}
+                                onChange={(e) => field.handleChange(e.target.value)}
+                                className="w-80 rounded-full border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 px-6 py-2 text-gray-900 dark:text-white text-base focus:outline-none focus:border-orange-500"
+                            />
+                        )}
+                    </Field>
+                </div>
+            </div>
+            <div className="flex justify-end gap-4 mt-8">
+                <button type="submit"
+                        className="bg-orange-500 text-white rounded-lg px-12 py-2 font-semibold text-base shadow-md hover:bg-orange-600 transition">
+                    {t('enregistrer')}
+                </button>
+                <button type="button" onClick={() => setActiveTab('view')}
+                        className="bg-gray-300 dark:bg-gray-700 text-gray-700 dark:text-white rounded-lg px-12 py-2 font-semibold text-base shadow-md hover:bg-gray-400 dark:hover:bg-gray-600 transition">
+                    {t('annuler')}
+                </button>
+            </div>
+        </form>
+    </div>
+);
