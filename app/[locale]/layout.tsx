@@ -86,7 +86,7 @@ export default async function RootLayout({
               </NuqsAdapter>
               </HydrationBoundary>
             </QueryProvider>
-          </Providers>
+          </Providers>  
         </div>
         <Toaster position="top-right" />
       </body>
