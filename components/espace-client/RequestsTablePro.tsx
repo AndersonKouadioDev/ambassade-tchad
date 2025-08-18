@@ -6,17 +6,19 @@ import { useTranslations } from 'next-intl';
 import { useLocale } from 'next-intl';
 
 const statusColors: Record<string, string> = {
-  'NEW': 'bg-blue-100 text-blue-700',
-  'IN_PROGRESS': 'bg-yellow-100 text-yellow-700',
-  'PENDING': 'bg-orange-100 text-orange-700',
-  'COMPLETED': 'bg-green-100 text-green-700',
-  'READY_TO_PICKUP': 'bg-green-100 text-green-700',
-  'REJECTED': 'bg-red-100 text-red-700',
-  // Anciens statuts pour compatibilité
-  'nouveau': 'bg-green-100 text-green-700',
-  'enCours': 'bg-yellow-100 text-yellow-700',
-  'enAttente': 'bg-yellow-100 text-yellow-700',
-  'pretARetirer': 'bg-yellow-100 text-yellow-700',
+  NEW: "bg-blue-100 text-blue-700",
+  PENDING: "bg-gray-100 text-gray-700",
+  IN_REVIEW_DOCS: "bg-yellow-100 text-yellow-700",
+  PENDING_ADDITIONAL_INFO: "bg-amber-100 text-amber-700",
+  APPROVED_BY_AGENT: "bg-indigo-100 text-indigo-700",
+  APPROVED_BY_CHEF: "bg-purple-100 text-purple-700",
+  APPROVED_BY_CONSUL: "bg-violet-100 text-violet-700",
+  REJECTED: "bg-red-100 text-red-700",
+  READY_FOR_PICKUP: "bg-green-100 text-green-700",
+  DELIVERED: "bg-emerald-100 text-emerald-700",
+  ARCHIVED: "bg-gray-200 text-gray-600",
+  EXPIRED: "bg-orange-100 text-orange-700",
+  RENEWAL_REQUESTED: "bg-teal-100 text-teal-700",
 };
 
 interface Filters {
@@ -30,6 +32,7 @@ export interface RequestItem {
   service: string;
   date: string;
   status: string;
+  translatedStatus?: string; // Pour les statuts traduits
 }
 
 interface RequestsTableProProps {
@@ -103,7 +106,7 @@ export default function RequestsTablePro({ filters, requests = [] }: RequestsTab
               </td>
               <td className="py-2 md:py-3 px-2 md:px-6">
                 <span className={`px-2 md:px-3 py-1 rounded-full text-xs font-semibold ${statusColors[req.status] || 'bg-gray-100 text-gray-700'}`}>
-                  {getStatusTranslation(req.status)}
+                  {getStatusTranslation(req.translatedStatus || req.status)}
                 </span>
               </td>
               <td className="py-2 md:py-3 px-2 md:px-6">
