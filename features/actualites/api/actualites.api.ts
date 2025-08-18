@@ -1,7 +1,6 @@
 import { PaginatedResponse } from "@/types";
 import { api } from "@/lib/api";
 import { IActualiteRechercheParams, IActualite } from "../types/actualites.type";
-import { SearchParams } from "ak-api-http";
 
 export interface IActualiteAPI {
     getAll: (params: IActualiteRechercheParams) => Promise<PaginatedResponse<IActualite>>;
@@ -13,7 +12,8 @@ export const actualiteAPI: IActualiteAPI = {
         return api.request<PaginatedResponse<IActualite>>({
             endpoint: `/news`,
             method: "GET",
-            searchParams: params as SearchParams,
+            searchParams: params,
+            service: "public"
         });
     },
 
@@ -21,6 +21,7 @@ export const actualiteAPI: IActualiteAPI = {
         return api.request<IActualite>({
             endpoint: `/news/${id}`,
             method: "GET",
+            service: "public"
         });
     },
 };

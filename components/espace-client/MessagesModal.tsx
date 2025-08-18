@@ -168,7 +168,11 @@ export default function MessagesModal({
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
-                            message.read ? onMarkAsUnread(message.id) : onMarkAsRead(message.id);
+                            if(message.read) {
+                              onMarkAsUnread(message.id);
+                            } else {
+                              onMarkAsRead(message.id);
+                            }
                           }}
                           className="flex items-center gap-1 px-2 py-1 text-xs text-orange-600 hover:text-orange-700 dark:text-orange-400 dark:hover:text-orange-300"
                         >

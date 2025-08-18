@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 
 export interface NotificationProps {
+  id: string;
   type: 'success' | 'error' | 'warning' | 'info';
   message: string;
   title?: string;

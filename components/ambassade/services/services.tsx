@@ -4,7 +4,6 @@ import React from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { 
-  Passport, 
   FileText, 
   CreditCard, 
   UserCheck, 
@@ -18,7 +17,7 @@ import {
 const services = [
   {
     id: "passport",
-    icon: <Passport className="w-8 h-8" />,
+    icon: <FileText className="w-8 h-8" />,
     title: "services.passport.title",
     description: "services.passport.description",
     link: "/passport",

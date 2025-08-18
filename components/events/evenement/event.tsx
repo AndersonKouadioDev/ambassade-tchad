@@ -7,7 +7,7 @@ import {EvenementFilters} from "@/features/evenement/components/evenement-list/e
 import EventCard from "@/features/evenement/components/evenement-list/evenement-card";
 
 export default function Event() {
-  const { data: allEvents, isLoading, filters, handleCreatedAtFilterChange, handleTextFilterChange } = useEvenementList();
+  const { data: allEvents, filters, handleCreatedAtFilterChange, handleTextFilterChange } = useEvenementList();
 
   const t = useTranslations("event");
   // const [search, setSearch] = useState("");

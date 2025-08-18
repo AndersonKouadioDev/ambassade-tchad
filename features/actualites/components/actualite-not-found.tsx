@@ -1,5 +1,5 @@
 "use client";
-import { ButtonGoLink } from "@/components/blocks/button-goLink";
+import { ButtonGoLink } from "@/components/block/button-goLink";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, BookOpen } from "lucide-react";
 import { useRouter } from "next/navigation";

@@ -48,7 +48,7 @@ const AccompagnateurForm = ({
                                 label={field.label}
                                 type={field.type}
                                 value={state.value as string}
-                                onChange={handleChange}
+                                onChange={(value) => handleChange(value as string)}
                                 onBlur={handleBlur}
                                 errors={state.meta.errors?.[0]?.message}
                                 required={field.label.includes('*')}

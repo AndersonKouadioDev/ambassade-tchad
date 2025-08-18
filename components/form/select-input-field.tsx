@@ -20,7 +20,6 @@ function SelectInputField({
         {label}
       </label>
       <select
-        aria-placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value || undefined)}
         onBlur={onBlur}

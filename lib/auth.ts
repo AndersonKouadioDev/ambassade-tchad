@@ -36,6 +36,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             refreshToken: response.refreshToken,
           };
         } catch (error) {
+          console.error("Erreur lors de l'authentification :", error);
           return null;
         }
       },

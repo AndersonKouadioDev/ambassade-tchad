@@ -2,15 +2,14 @@
 
 import { Search } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { extractYoutubeId } from "@/lib/video-store";
 import { useQueryStates } from 'nuqs';
 import { videoFiltersClient } from '@/features/videos/filters/video.filters';
 import { useVideosList } from "@/features/videos/queries/video-list.query";
 import { DotLoader } from "react-spinners";
 import { DatePicker, Input } from "@heroui/react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import { CalendarDate } from "@internationalized/date";
 import { IVideo, IVideoRechercheParams } from "@/features/videos/types/video.type";
+import { getFullUrlFile } from "@/utils/getFullUrlFile";
 
 interface Props {
    searchParams: IVideoRechercheParams
@@ -50,24 +49,6 @@ export default function VideoGallery({ searchParams }: Props) {
   }
 
   const videos = data || [];
-  // const pagination = data|| {
-  //   page: 1,
-  //   limit: 12,
-  //   totalItems: 0,
-  //   totalPages: 1
-  // };
-
-  // const handleNextPage = () => {
-  //   if (pagination.page < pagination.totalPages) {
-  //     setFilters({ ...filters, page: pagination.page + 1 });
-  //   }
-  // };
-
-  // const handlePrevPage = () => {
-  //   if (pagination.page > 1) {
-  //     setFilters({ ...filters, page: pagination.page - 1 });
-  //   }
-  // };
 
   const handleDateChange = (value: CalendarDate | null) => {
     const dateString = value ? value.toString() : '';
@@ -113,7 +94,7 @@ export default function VideoGallery({ searchParams }: Props) {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {videos.length > 0 ? (
           videos.map((video: IVideo) => {
-            const youtubeId = extractYoutubeId(video.youtubeUrl || '');
+            const youtubeId = getFullUrlFile(video.youtubeUrl || '');
             return (
               <div key={video.id} className="rounded-xl overflow-hidden shadow-lg">
                 <div className="aspect-w-16 aspect-h-9 w-full">
@@ -147,33 +128,6 @@ export default function VideoGallery({ searchParams }: Props) {
           </div>
         )}
       </div>
-
-      {/* {pagination.totalPages > 1 && (
-        <div className="flex justify-center items-center gap-4 mt-8">
-          <button
-            onClick={handlePrevPage}
-            disabled={pagination.page <= 1}
-            className="p-2 bg-gray-100 hover:bg-gray-200 rounded-full shadow disabled:opacity-50"
-          >
-            <ChevronLeft className="w-6 h-6 text-gray-700" />
-          </button>
-          
-          <span className="text-sm">
-            {t("pagination", {
-              current: pagination.page,
-              total: pagination.totalPages
-            })}
-          </span>
-          
-          <button
-            onClick={handleNextPage}
-            disabled={pagination.page >= pagination.totalPages}
-            className="p-2 bg-secondary hover:bg-red-600 text-white rounded-full shadow disabled:opacity-70"
-          >
-            <ChevronRight className="w-6 h-6" />
-          </button>
-        </div>
-      )} */}
     </section>
   );
 }

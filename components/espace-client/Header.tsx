@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import { Mail, Bell, Search, Sun, Moon, ChevronDown, Check } from 'lucide-react';
-import { useState, useRef, useEffect, useTransition } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useTheme } from '@/components/ThemeProvider';
 import { useLocale, useTranslations } from 'next-intl';
 import { useRouter, usePathname } from 'next/navigation';
@@ -31,7 +31,6 @@ export default function Header({ setSidebarOpen }: HeaderProps) {
   const t = useTranslations('espaceClient.header');
   const router = useRouter();
   const pathname = usePathname();
-  const [ startTransition] = useTransition();
   const [notificationsOpen, setNotificationsOpen] = useState(false);
   const [messagesOpen, setMessagesOpen] = useState(false);
   const [notificationsModalOpen, setNotificationsModalOpen] = useState(false);
@@ -127,9 +126,7 @@ export default function Header({ setSidebarOpen }: HeaderProps) {
       segments[1] = lang.code;
       const newPathname = segments.join('/');
       
-      startTransition(() => {
-        router.push(newPathname);
-      });
+      router.push(newPathname);
     }
   }
 

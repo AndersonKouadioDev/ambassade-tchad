@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback } from 'react';
-import { trackDemandByTicketAction } from '@/features/demande/actions/demande.action';
+import { getDemandByTicketAction } from '@/features/demande/actions/demande.action';
 import { IDemande } from '@/features/demande/types/demande.type';
 
 interface UseRequestTrackingReturn {
@@ -30,7 +30,7 @@ export function useRequestTracking(initialRequest?: IDemande): UseRequestTrackin
     setLastTicketNumber(ticketNumber);
 
     try {
-      const response = await trackDemandByTicketAction(ticketNumber);
+      const response = await getDemandByTicketAction(ticketNumber);
       
       if (response.success && response.data) {
         setRequest(response.data);

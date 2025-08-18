@@ -4,6 +4,7 @@ import { useState } from "react";
 import RequestsTablePro from "@/components/espace-client/RequestsTablePro";
 import { useTranslations } from "next-intl";
 import { useMyDemandesListQuery } from "@/features/demande/queries/demande-me-list.query";
+import { DemandeStatus, IDemande } from "@/features/demande/types/demande.type";
 
 const SERVICES = [
   "Carte Consulaire",
@@ -33,24 +34,23 @@ const STATUS = [
 
 export default function MesDemandesClient() {
   const t = useTranslations("espaceClient.mesDemandesClient");
-  const translateStatus = (status: string) => {
-    const translations: Record<string, string> = {
-      'NEW': 'Nouveau',
-      'IN_REVIEW_DOCS': 'En cours de vérification de documents',
-      'PENDING_ADDITIONAL_INFO': 'En attente de renseignements supplémentaires',
-      'APPROVED_BY_AGENT': 'Approuvé par l\'agent',
-      'APPROVED_BY_CHEF': 'Approuvé par le chef',
-      'APPROVED_BY_CONSUL': 'Approuvé par le consul',
-      'READY_FOR_PICKUP': 'Prêt à retirer',
-      'DELIVERED': 'Retiré',
-      'ARCHIVED': 'Archivé',
-      'EXPIRED': 'Expiré',
-      'RENEWAL_REQUESTED': 'Renouvellement demandé',
-      'REJECTED': 'Rejeté',
-    };
-    return translations[status] || status;
-  };
-
+  // const translateStatus = (status: string) => {
+  //   const translations: Record<string, string> = {
+  //     'NEW': 'Nouveau',
+  //     'IN_REVIEW_DOCS': 'En cours de vérification de documents',
+  //     'PENDING_ADDITIONAL_INFO': 'En attente de renseignements supplémentaires',
+  //     'APPROVED_BY_AGENT': 'Approuvé par l\'agent',
+  //     'APPROVED_BY_CHEF': 'Approuvé par le chef',
+  //     'APPROVED_BY_CONSUL': 'Approuvé par le consul',
+  //     'READY_FOR_PICKUP': 'Prêt à retirer',
+  //     'DELIVERED': 'Retiré',
+  //     'ARCHIVED': 'Archivé',
+  //     'EXPIRED': 'Expiré',
+  //     'RENEWAL_REQUESTED': 'Renouvellement demandé',
+  //     'REJECTED': 'Rejeté',
+  //   };
+  //   return translations[status] || status;
+  // };
 
   const translateServiceType = (serviceType: string) => {
     const translations: Record<string, string> = {
@@ -88,13 +88,13 @@ export default function MesDemandesClient() {
   const totalPages = data?.meta?.totalPages || 1;
   const total = data?.meta?.total || 0;
 
-  const requests = demandes.map((d: any) => ({
-    ticket: d.ticketNumber || d.ticket || d.id || "",
-    service: translateServiceType(d.serviceType || d.service || d.type || ""),
+  const requests = demandes.map((d: IDemande) => ({
+    ticket: d.ticketNumber || d.id || "",
+    service: translateServiceType(d.serviceType || ""),
     date: d.submissionDate
       ? new Date(d.submissionDate).toLocaleDateString("fr-FR")
       : "",
-    status: d.status || d.statut || "",
+    status: d.status || "",
   }));
 
   // Fonction pour générer les boutons
@@ -390,7 +390,10 @@ export default function MesDemandesClient() {
               {/* Demandes en attente */}
               {(() => {
                 const pendingRequests = requests.filter(
-                  (req) => req.status === "PENDING"
+                  (req) =>
+                    req.status === DemandeStatus.NEW ||
+                    req.status === DemandeStatus.IN_REVIEW_DOCS ||
+                    req.status === DemandeStatus.PENDING_ADDITIONAL_INFO
                 );
                 return pendingRequests.length > 0 ? (
                   <div className="mb-8">

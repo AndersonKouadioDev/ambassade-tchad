@@ -1,6 +1,5 @@
 import { PaginatedResponse } from "@/types";
 import { api } from "@/lib/api";
-import { SearchParams } from "ak-api-http";
 import { IVideo, IVideoRechercheParams } from "../types/video.type";
 export interface IVideoAPI {
     getAll: (params: IVideoRechercheParams) => Promise<PaginatedResponse<IVideo>>;
@@ -13,9 +12,8 @@ export const videoAPI: IVideoAPI = {
         return api.request<PaginatedResponse<IVideo>>({
             endpoint: `/videos`,
             method: "GET",
-            searchParams: {
-                ...params as SearchParams,
-            },
+            searchParams: params,
+            service: "public"
         });
     },
 
@@ -23,12 +21,7 @@ export const videoAPI: IVideoAPI = {
         return api.request<IVideo>({
             endpoint: `/videos/${id}`,
             method: "GET",
-            config: {
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            },  
-            
+            service: "public"
         });
     },
 

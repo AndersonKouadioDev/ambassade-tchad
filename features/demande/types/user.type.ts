@@ -24,5 +24,4 @@ export interface IUser {
     role?: Role;
     type: UserType;
     status: UserStatus;
-    
 }

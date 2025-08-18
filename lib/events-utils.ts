@@ -1,10 +1,5 @@
-import { Event } from './types';
+import { Event } from "./events-data";
 
-// Utilitaires pour les événements
-
-/**
- * Formate la date d'un événement en format local
- */
 export function formatEventDate(date: Date | string): string {
   const eventDate = new Date(date);
   return eventDate.toLocaleDateString('fr-FR', {
@@ -37,7 +32,7 @@ export function searchEvents(events: Event[], query: string): Event[] {
   const lowerQuery = query.toLowerCase();
   return events.filter(event =>
     event.title.toLowerCase().includes(lowerQuery) ||
-    event.description.toLowerCase().includes(lowerQuery) ||
+    event.excerpt.toLowerCase().includes(lowerQuery) ||
     (event.location && event.location.toLowerCase().includes(lowerQuery))
   );
 }
@@ -50,7 +45,7 @@ export function filterEventsByDate(events: Event[], date: string): Event[] {
   
   const filterDate = new Date(date);
   return events.filter(event => {
-    const eventDate = new Date(event.eventDate);
+    const eventDate = new Date(event.date);
     return (
       eventDate.getFullYear() === filterDate.getFullYear() &&
       eventDate.getMonth() === filterDate.getMonth() &&
@@ -65,8 +60,8 @@ export function filterEventsByDate(events: Event[], date: string): Event[] {
 export function filterEventsByStatus(events: Event[], status: 'all' | 'upcoming' | 'past'): Event[] {
   if (status === 'all') return events;
   return status === 'upcoming' 
-    ? events.filter(event => isEventUpcoming(event.eventDate))
-    : events.filter(event => isEventPast(event.eventDate));
+    ? events.filter(event => isEventUpcoming(event.date))
+    : events.filter(event => isEventPast(event.date));
 }
 
 /**
@@ -74,8 +69,8 @@ export function filterEventsByStatus(events: Event[], status: 'all' | 'upcoming'
  */
 export function sortEventsByDate(events: Event[], order: 'asc' | 'desc' = 'asc'): Event[] {
   return [...events].sort((a, b) => {
-    const dateA = new Date(a.eventDate).getTime();
-    const dateB = new Date(b.eventDate).getTime();
+    const dateA = new Date(a.date).getTime();
+    const dateB = new Date(b.date).getTime();
     return order === 'asc' ? dateA - dateB : dateB - dateA;
   });
 }

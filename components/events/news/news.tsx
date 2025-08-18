@@ -13,11 +13,7 @@ import { formatNewsDate } from "@/lib/news-utils";
 import { useQueryStates } from 'nuqs';
 import { actualiteFiltersClient } from "@/features/actualites/filters/actualite.filters";
 
-interface Props {
-  searchParams: IActualiteRechercheParams;
-}
-
-export default function NewsComponent({ searchParams }: Props) {
+export default function NewsComponent() {
   const t = useTranslations("news");
 
   // Gestion des filtres avec nuqs

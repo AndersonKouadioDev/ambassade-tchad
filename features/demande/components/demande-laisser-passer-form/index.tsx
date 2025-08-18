@@ -11,7 +11,7 @@ import { useLaissezPasserCreateMutation } from "../../queries/laisser-passer.mut
 import { useMultistepForm } from "@/hooks/use-multistep-form";
 import { InputField } from "@/components/form/input-field";
 import FormContainer from "@/components/form/multi-step/form-container";
-import { LaissezPasserDetailsDTO, LaissezPasserDetailsSchema, AccompagnateurDTO, AccompagnateurSchema } from "../../schema/laissez-passer.schema";
+import { LaissezPasserDetailsDTO, LaissezPasserDetailsSchema, AccompagnateurDTO } from "../../schema/laissez-passer.schema";
 import { DocumentJustificationType } from "../../types/carte-consulaire.type";
 import { Button } from "@heroui/react";
 import AccompagnateurForm from "./accompagnateur-form";

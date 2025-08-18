@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { Search, Filter, X } from "lucide-react";
-import { Input } from "@/components/ui/input";
+import { Input } from "@/components/ui/Input";
 import { Badge } from "@/components/ui/badge";
 import {
   Select,
@@ -25,7 +25,6 @@ export const PhotoSearch: React.FC<PhotoSearchProps> = ({
 }) => {
   const [searchParams, setSearchParams] = useState<IPhotoRechercheParams>({
     title: "",
-    description: "",
     page: 1,
     limit: 10,
   });
@@ -39,7 +38,6 @@ export const PhotoSearch: React.FC<PhotoSearchProps> = ({
   const handleReset = () => {
     const resetParams: IPhotoRechercheParams = {
       title: "",
-      description: "",
       page: 1,
       limit: 10,
     };
@@ -58,7 +56,7 @@ export const PhotoSearch: React.FC<PhotoSearchProps> = ({
   };
 
   const hasActiveFilters = () => {
-    return searchParams.title || searchParams.description || searchParams.title;
+    return searchParams.title || searchParams.title;
   };
 
   return (
@@ -117,33 +115,6 @@ export const PhotoSearch: React.FC<PhotoSearchProps> = ({
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {/* Statut de publication */}
-            <div className="space-y-2">
-              <label className="text-sm font-medium">
-                Rechercher par description
-              </label>
-              <Select
-                value={
-                  searchParams.description !== undefined
-                    ? searchParams.description.toString()
-                    : "all"
-                }
-                onValueChange={(value) =>
-                  handleInputChange(
-                    "description",
-                    value === "all" ? undefined : value
-                  )
-                }
-              >
-                <SelectTrigger>
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">Tous</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
             {/* Contenu */}
             <div className="space-y-2">
               <label className="text-sm font-medium">
@@ -151,11 +122,11 @@ export const PhotoSearch: React.FC<PhotoSearchProps> = ({
               </label>
               <Input
                 placeholder="Rechercher par titre..."
-                value={searchParams.description || ""}
+                value={searchParams.title || ""}
                 onChange={(e) =>
-                  handleInputChange("description", e.target.value)
+                  handleInputChange("title", e.target.value)
                 }
-              />
+              />  
             </div>
 
             {/* Limite par page */}
@@ -216,27 +187,27 @@ export const PhotoSearch: React.FC<PhotoSearchProps> = ({
               </Button>
             </Badge>
           )}
-          {searchParams.description && (
+          {searchParams.title && (
             <Badge className="flex items-center gap-1 bg-blue-100 text-blue-800">
-              Contenu: {searchParams.description}
+              Contenu: {searchParams.title}
               <Button
                 variant="ghost"
                 size="sm"
                 className="h-auto p-0 ml-1"
-                onClick={() => handleInputChange("description", "")}
+                onClick={() => handleInputChange("title", "")}
               >
                 <X className="w-3 h-3" />
               </Button>
             </Badge>
           )}
-          {searchParams.description !== undefined && (
+          {searchParams.title && (
             <Badge className="flex items-center gap-1 bg-blue-100 text-blue-800">
-              Description: {searchParams.description}
+              Titre: {searchParams.title}
               <Button
                 variant="ghost"
                 size="sm"
                 className="h-auto p-0 ml-1"
-                onClick={() => handleInputChange("description", undefined)}
+                onClick={() => handleInputChange("title", undefined)}
               >
                 <X className="w-3 h-3" />
               </Button>

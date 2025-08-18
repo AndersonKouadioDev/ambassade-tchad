@@ -6,6 +6,9 @@
 // export enum UserStatus {
 //   ACTIVE = 'ACTIVE',
 //   INACTIVE = 'INACTIVE'
+
+import { Role, UserStatus, UserType } from "@/features/demande/types/user.type";
+
 // }
 export interface ILoginResponse {
     user: IUser;
@@ -32,12 +35,12 @@ export interface IUser {
     firstName?: string;
     lastName?: string;
     phoneNumber?: string;
-    // role?: Role;
-    // type: UserType;
-    // status: UserStatus;
+    role?: Role;
+    type: UserType;
+    status: UserStatus;
 }
 
 export interface IUtilisateurAddUpdateResponse extends Pick<IUser,
-    'id' | 'email' | 'firstName' | 'lastName' | 'phoneNumber'> {
+    'email' | 'firstName' | 'lastName' | 'phoneNumber'> {
     password: string
 }

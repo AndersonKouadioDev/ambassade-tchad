@@ -3,7 +3,7 @@
 import {ActionResponse} from "@/types";
 import {utilisateurAPI} from "../apis/utilisateur.api";
 import {UtilisateurUpdateDTO, UtilisateurUpdateMotDePasseDTO} from "../schema/utilisateur.schema";
-import {IUser} from "@/features/auth/types/auth.type";
+import {IUser, IUtilisateurAddUpdateResponse} from "@/features/auth/types/auth.type";
 import {handleServerActionError} from "@/utils/handleServerActionError";
 
 export const obtenirUnUtilisateurAction = async (id: string): Promise<ActionResponse<IUser>> => {
@@ -19,7 +19,7 @@ export const obtenirUnUtilisateurAction = async (id: string): Promise<ActionResp
     }
 }
 
-export const modifierProfilAction = async (formdata: UtilisateurUpdateDTO,id:string): Promise<ActionResponse<IUser>> => {
+export const modifierProfilAction = async (formdata: UtilisateurUpdateDTO,id:string): Promise<ActionResponse<IUtilisateurAddUpdateResponse>> => {
     try {
         const data = await utilisateurAPI.modifierProfil(formdata,id);
         return {
@@ -32,7 +32,7 @@ export const modifierProfilAction = async (formdata: UtilisateurUpdateDTO,id:str
     }
 }
 
-export const modifierMotDePasseAction = async (formdata: UtilisateurUpdateMotDePasseDTO, id: string): Promise<ActionResponse<IUser>> => {
+export const modifierMotDePasseAction = async (formdata: UtilisateurUpdateMotDePasseDTO, id: string): Promise<ActionResponse<IUtilisateurAddUpdateResponse>> => {
     try {
         const data = await utilisateurAPI.modifierMotdePasse(formdata, id);
         return {

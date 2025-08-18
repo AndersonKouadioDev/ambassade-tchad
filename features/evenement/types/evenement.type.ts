@@ -1,4 +1,4 @@
-import { IUtilisateur } from "@/features/utilisateur/types/utilisateur.type";
+import { IUser } from "@/features/demande/types/user.type";
 
 
 export interface IEvenement {
@@ -13,7 +13,7 @@ export interface IEvenement {
     createdAt?: Date;
     updatedAt?: Date;
 
-    author?: IUtilisateur;
+    author?: IUser;
 }
 
 export interface IEvenementRechercheParams {

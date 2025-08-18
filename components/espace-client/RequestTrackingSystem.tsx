@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from 'react';
-// import RequestNotifications from './RequestNotifications';
 import DemandeDetailsSection from './DemandeDetailsSection';
 import { useRequestTracking } from '@/hooks/useRequestTracking';
 import { IDemande } from '@/features/demande/types/demande.type';
