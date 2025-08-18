@@ -66,8 +66,10 @@ const Footer = () => {
             />
             <div className="text-2xl font-semibold font-blinker">
               {t("embassy")}
+              <p className="uppercase text-[16px] text-left">Ghana - Sierra Leone - Guinée Conakry - Liberia</p>
             </div>
           </div>
+
           <Image
             src="/assets/images/logo.png"
             alt="Embassy of Chad Logo"
@@ -165,6 +167,7 @@ const Footer = () => {
             ))}
           </ul>
         </div>
+        <div className="text-center text-xs text-gray-300 mt-4">COPYRIGHT © 2025 Ambassade du Tchad</div>
       </div>
     </footer>
   );

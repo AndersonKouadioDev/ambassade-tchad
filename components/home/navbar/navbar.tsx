@@ -2,10 +2,11 @@
 
 import { Link } from "@/i18n/navigation";
 import Image from "next/image";
-import { Mail, Phone, Search, Menu, X } from "lucide-react";
+import { Mail, Phone, Search, Menu, X, User, LogOut, Settings } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { useLocale, useTranslations } from "next-intl";
+import { useSession, signOut } from "next-auth/react";
 
 import {
   NavigationMenu,
@@ -20,6 +21,7 @@ export default function Head() {
   const router = useRouter();
   const locale = useLocale();
   const t = useTranslations("header");
+  const { data: session, status } = useSession();
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [, startTransition] = useTransition();
@@ -32,6 +34,11 @@ export default function Head() {
     startTransition(() => {
       router.push(newPathname);
     });
+  };
+
+  const handleLogout = async () => {
+    await signOut({ redirect: false });
+    router.push("/");
   };
 
   const menuItems = [
@@ -56,14 +63,55 @@ export default function Head() {
       children: [
         { name: t("site"), link: "/tourisme" },
         { name: t("tchad"), link: "/tourisme/tchad-s" },
-        { name: t("peuples"), link: "/tourisme/peuples-et-cultures" },
+        // { name: t("peuples"), link: "/tourisme/peuples-et-cultures" },
       ],
     },
   ];
 
+  // Composant pour les boutons d'authentification
+  const AuthButtons = () => {
+    if (status === "loading") {
+      return (
+        <div className="flex items-center gap-2 bg-secondary text-white px-4 py-2 rounded-full opacity-50">
+          <User size={16} />
+          <span className="text-sm font-medium">Chargement...</span>
+        </div>
+      );
+    }
+
+    if (session) {
+      return (
+        <div className="flex items-center gap-2">
+          <Link href="/espace-client/dashboard">
+            <button className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-full transition-colors">
+              <Settings size={16} />
+              <span className="text-sm font-medium">Mon Espace</span>
+            </button>
+          </Link>
+          <button 
+            onClick={handleLogout}
+            className="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full transition-colors"
+          >
+            <LogOut size={16} />
+            <span className="text-sm font-medium">Déconnexion</span>
+          </button>
+        </div>
+      );
+    }
+
+    return (
+      <Link href="/auth">
+        <button className="flex items-center gap-2 bg-secondary hover:bg-red-600 text-white px-4 py-2 rounded-full transition-colors">
+          <User size={16} />
+          <span className="text-sm font-medium">{t("connexion")}</span>
+        </button>
+      </Link>
+    );
+  };
+
   return (
     <div className="w-full bg-primary p-4">
-      <div className="flex justify-between md:justify-center gap-0 md:gap-6 items-center max-w-6xl mx-auto">
+      <div className="flex justify-between md:justify-center gap-0 md:gap-6 items-center max-w-screen-2xl mx-auto px-4w">
         <Link href="/">
           <Image
             src="/assets/images/logo.png"
@@ -79,7 +127,8 @@ export default function Head() {
         <div className="hidden lg:flex flex-col text-white w-full">
           <div className="flex justify-between items-center w-full">
             <div className="flex flex-col">
-              <span className="text-xl font-bold">{t("titre")}</span>
+              <span className="text-xl font-bold uppercase">{t("titre")}</span>
+              <span className="text-base text-white/80 uppercase">Ghana - Sierra Leone - Guinée Conakry - Liberia</span>
             </div>
             <div className="flex gap-4 items-center">
               <div className="flex gap-2">
@@ -124,6 +173,7 @@ export default function Head() {
                   className="bg-transparent text-white placeholder-white/70 focus:outline-none ml-2 w-52 text-sm"
                 />
               </div>
+              <AuthButtons />
             </div>
           </div>
 
@@ -272,7 +322,7 @@ export default function Head() {
             )
           )}
 
-          <div className="flex gap-4 items-center py-3">
+          <div className="flex flex-col gap-4 items-center py-3">
             <div className="flex gap-2">
               <button
                 onClick={() => switchLocale("fr")}
@@ -307,6 +357,46 @@ export default function Head() {
                 AR
               </button>
             </div>
+            
+            {/* Boutons d'authentification pour mobile */}
+            {status === "loading" ? (
+              <div className="flex items-center gap-2 bg-secondary text-white px-4 py-2 rounded-full opacity-50">
+                <User size={16} />
+                <span className="text-sm font-medium">Chargement...</span>
+              </div>
+                         ) : session ? (
+               <div className="flex flex-col gap-2 w-full">
+                 <Link href="/espace-client/dashboard" className="w-full">
+                   <button 
+                     className="flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-full transition-colors w-full"
+                     onClick={() => setMenuOpen(false)}
+                   >
+                     <Settings size={16} />
+                     <span className="text-sm font-medium">Mon Espace</span>
+                   </button>
+                 </Link>
+                <button 
+                  onClick={() => {
+                    handleLogout();
+                    setMenuOpen(false);
+                  }}
+                  className="flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full transition-colors w-full"
+                >
+                  <LogOut size={16} />
+                  <span className="text-sm font-medium">Déconnexion</span>
+                </button>
+              </div>
+            ) : (
+              <Link href="/auth" className="w-full">
+                <button 
+                  className="flex items-center justify-center gap-2 bg-secondary hover:bg-red-600 text-white px-4 py-2 rounded-full transition-colors w-full"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  <User size={16} />
+                  <span className="text-sm font-medium">{t("connexion")}</span>
+                </button>
+              </Link>
+            )}
           </div>
 
           <div className="flex items-center bg-[#123682] rounded-full px-6 py-1">

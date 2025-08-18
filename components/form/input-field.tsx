@@ -1,0 +1,53 @@
+export interface InputFieldProps {
+  label: string;
+  placeholder?: string;
+  value: string | number | undefined;
+  onChange: (value: string | number | undefined) => void;
+  onBlur: () => void;
+  type?: React.HTMLInputTypeAttribute;
+  errors?: string;
+  required?: boolean;
+  className?: string;
+}
+
+export function InputField({
+  label,
+  placeholder,
+  value,
+  onChange,
+  onBlur,
+  errors = undefined,
+  type = "text",
+  // required = false,
+}: InputFieldProps) {
+  return (
+    <div>
+      <label className="block text-sm font-medium text-gray-700 mb-1">
+        {label}
+      </label>
+      {type === "textarea" ? (
+        <textarea
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          onBlur={onBlur}
+          placeholder={placeholder}
+          className={`w-full px-4 py-2 border rounded-md ${
+            errors ? "border-red-500" : "border-gray-300"
+          }`}
+        />
+      ) : (
+        <input
+          type={type}
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          onBlur={onBlur}
+          placeholder={placeholder}
+          className={`w-full px-4 py-2 border rounded-md ${
+            errors ? "border-red-500" : "border-gray-300"
+          }`}
+        />
+      )}
+      {errors && <p className="text-red-500 text-xs mt-1">{errors}</p>}
+    </div>
+  );
+}

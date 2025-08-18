@@ -1,48 +1,53 @@
 "use client";
 
-import { useState } from "react";
-import { useTranslations } from "next-intl";
-import { Search, Calendar } from "lucide-react";
+import {useTranslations} from "next-intl";
+import {Calendar} from "lucide-react";
+import {useEvenementList} from "@/features/evenement/hooks/useEvenementList";
+import {EvenementFilters} from "@/features/evenement/components/evenement-list/evenement-filters";
+import EventCard from "@/features/evenement/components/evenement-list/evenement-card";
 
 export default function Event() {
-  const t = useTranslations("event");
+  const { data: allEvents, filters, handleCreatedAtFilterChange, handleTextFilterChange } = useEvenementList();
 
-  const [search, setSearch] = useState("");
-  const [searchDate, setSearchDate] = useState("");
+  const t = useTranslations("event");
+  // const [search, setSearch] = useState("");
+  // const [searchDate, setSearchDate] = useState("");
+  // const [filter, setFilter] = useState<'all' | 'upcoming' | 'past'>('all');
+  // const [publishedFilter, setPublishedFilter] = useState<'all' | 'published' | 'draft'>('published');
+  // const [categoryFilter, setCategoryFilter] = useState('all');
 
   return (
     <div className="px-6 py-10 mb-6 bg-white">
-      <h2 className="text-3xl font-bold text-center text-secondary mb-8 font-mulish">
-        {t("description")}
-      </h2>
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-3xl font-bold text-center text-secondary mb-8 font-mulish">
+          {t("description")}
+        </h2>
 
-      {/* Barres de recherche : Titre + Date */}
-      <div className="flex flex-col md:flex-row gap-6 justify-center items-center mb-20">
-        {/* Recherche par titre */}
-        <div className="relative w-full max-w-md">
-          <input
-            type="text"
-            placeholder={t("searchPlaceholder")}
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="w-full py-3 pl-12 pr-4 text-sm rounded-full bg-gray-100 focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white shadow-sm"
-          />
-          <Search className="absolute top-1/2 left-4 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
-        </div>
+        <EvenementFilters
+          filters={filters}
+          onTextFilterChange={handleTextFilterChange}
+          onCreatedAtFilterChange={handleCreatedAtFilterChange}
+          translator={t}
+          total={allEvents.length}
+        />
 
-        {/* Recherche par date */}
-        <div className="relative w-full max-w-md">
-          <input
-            type="date"
-            value={searchDate}
-            onChange={(e) => setSearchDate(e.target.value)}
-            className="w-full py-3 pl-12 pr-4 text-sm rounded-full bg-gray-100 focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white shadow-sm appearance-none"
-          />
-          <Calendar className="absolute top-1/2 left-4 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
-        </div>
+        {/* Liste des événements */}
+        {allEvents.length === 0 ? (
+          <div className="text-center py-12">
+            <div className="w-24 h-24 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center">
+              <Calendar className="w-12 h-12 text-gray-400" />
+            </div>
+            <h3 className="text-xl font-semibold text-gray-700 mb-2">Aucun événement trouvé</h3>
+            <p className="text-gray-500">Essayez de modifier vos critères de recherche.</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {allEvents.map((event) => (
+              <EventCard key={event.id} event={event} />
+            ))}
+          </div>
+        )}
       </div>
-
-      {/* Tu peux filtrer ensuite selon le titre et la date ici */}
     </div>
   );
 }

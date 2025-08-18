@@ -44,7 +44,7 @@ export default function Juridictions(){
                             <li>11. {t("congo")}</li>
                             <li>12. {t("egypte")}</li>
                             <li>13. {t("etats_unis")}</li>
-                            <li>14. {t("france")}</li>
+                            <li>14. {t("Côte d'Ivoire")}</li>
                             <li>15. {t("ethiopie")}</li>
                             <li>16. {t("federation_de_russie")}</li>
                             <li>17. {t("gabon")}</li>

@@ -45,8 +45,8 @@ function TruncatedText({ text }: { text: string }) {
 }
 
 export default function Monument() {
-  const t = useTranslations("tourisme.monument");
-  const items = t.raw("items") as Array<{ title: string; subtitle: string }>;
+  const t = useTranslations("tourisme.monuments");
+  const items = t.raw("items") as Array<{ title: string; description: string }>;
 
   const [gallery, setGallery] = useState<{
     images: string[];
@@ -103,7 +103,7 @@ export default function Monument() {
                 <h2 className="text-secondary text-lg font-semibold">
                   {item.title}
                 </h2>
-                <TruncatedText text={item.subtitle} />
+                <TruncatedText text={item.description} />
               </div>
             </div>
           );

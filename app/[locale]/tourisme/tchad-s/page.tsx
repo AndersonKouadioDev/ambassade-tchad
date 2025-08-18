@@ -1,15 +1,13 @@
 import Hero from "@/components/tchad/hero/hero";
-import President from "@/components/tourisme/president/president";
+import Cultural from "@/components/tourisme/cultural/cultural";
 import Statistic from "@/components/tourisme/statistic/statistic";
 
-
-
-export default function Tchad(){
-    return(
-        <div>
-            <Hero/>
-            <President/>
-            <Statistic/>
-        </div>
-    );
+export default function Tchad() {
+  return (
+    <div>
+      <Hero />
+      <Cultural />
+       <Statistic />
+    </div>
+  );
 }

@@ -7,7 +7,7 @@ export default function President() {
   const t = useTranslations("tourisme.president");
 
   return (
-    <div className="p-8 mb-10">
+    <div className="p-8 mb-10 max-w-screen-2xl mx-auto">
       <div className="flex flex-col justify-center gap-10">
         <div className="text-secondary ml-0 md:ml-4 text-3xl font-semibold text-center md:text-start">
           {t("title")}
@@ -41,6 +41,19 @@ export default function President() {
               ))}
             </ul>
           </div>
+        </div>
+
+        {/* Lien de téléchargement PDF */}
+        <div className="text-center mt-8">
+          <a
+            href="/assets/document/projet_presidentiel.pdf"
+            download
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-primary text-white font-semibold px-6 py-3 rounded-lg shadow hover:bg-orange-500 transition-colors"
+          >
+            📄 Télécharger le plan présidentiel (PDF)
+          </a>
         </div>
       </div>
     </div>

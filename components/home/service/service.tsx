@@ -45,10 +45,22 @@ export default function Service() {
       {/* Titre + bouton */}
       <div className="flex flex-col md:flex-row justify-between items-center mb-10 gap-4">
         <h2 className="text-2xl lg:text-4xl font-bold text-secondary text-center md:text-left">
-          {t("description")}
+          {(() => {
+            try {
+              return t("description");
+            } catch (error) {
+              return (error as Error).message;
+            }
+          })()}
         </h2>
         <Button color="default" className="text-secondary">
-          {t("seeMore")}
+          {(() => {
+            try {
+              return t("seeMore");
+            } catch (error) {
+              return (error as Error).message;
+            }
+          })()}
         </Button>
       </div>
 
@@ -63,7 +75,13 @@ export default function Service() {
             <div className="relative w-full h-60 overflow-hidden">
               <Image
                 src={item.picture}
-                alt={t(`items.${index}.title`)}
+                alt={(() => {
+                  try {
+                    return t(`items.${index}.title`);
+                  } catch (error) {
+                    return (error as Error).message;
+                  }
+                })()}
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
               />
@@ -76,7 +94,13 @@ export default function Service() {
                   color="secondary"
                   className="text-white padding-4 px-6 rounded-full shadow-lg hover:bg-[#003d99] transition duration-500"
                 >
-                  {t(`items.${index}.title`)}
+                  {(() => {
+                    try {
+                      return t(`items.${index}.title`);
+                    } catch (error) {
+                      return (error as Error).message;
+                    }
+                  })()}
                 </Button>
               </Link>
             </div>

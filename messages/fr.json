@@ -1,181 +1,131 @@
 {
-  "ambassadeur": {
-    "title": "L'AMBASSADEUR",
-    "bienvenue": "Bienvenue sur le site de l'Ambassade.",
-    "nom": "Gonfouli SOUARIBA",
-    "poste": "Ambassadeur du Tchad en Côte d'Ivoire",
-    "texte": "La République du Tchad, pays de Toumaï, de par sa position géographique stratégique, occupe une place de choix au cœur du continent africain. Le pays, après une transition politique réussie en trois années, sous le leadership du Maréchal du Tchad, Mahamat Idriss DEBY ITNO, Président de la République, Chef de l'État, amorce des pas de géant pour son décollage économique. Le programme politique du Chef de l'État est structuré autour de douze chantiers, comprenant chacun plusieurs actions notamment la paix, la sécurité nationale, la promotion d'un État solidaire.\nLe programme de développement intitulé \"Vision 2030, le Tchad que nous voulons\", axé sur l'agenda 2063 de l'Union Africaine et de l'agenda 2030 des Nations Unies promulgués par les Chefs des États membres de l'Union Africaine est en cours d'exécution. Ce programme basé sur une exécution pragmatique a pour objectif de faire du Tchad un pays émergent à l'horizon 2030.\nL'Ambassade du Tchad en République de Côte d'Ivoire a juridiction dans quatre autres pays notamment : le Ghana, la Guinée, la Sierra Leone et le Liberia. Les objectifs principaux de la mission sont le maintien et le renforcement des relations diplomatiques entre le Tchad et ces cinq pays. Cette diplomatie tous azimuts embrasse les domaines aussi variés que l'économie, la culture et tout ce que comporte la coopération moderne entre les pays épris de paix et ayant en partage des intérêts communs.\nLa mission de la Haute Représentation du Tchad en Côte d'Ivoire consiste également à protéger les intérêts de sa communauté dans les cinq pays de sa juridiction, conformément aux usages diplomatiques.\nLa plateforme qui vous est proposée constitue une référence unique et efficace pour obtenir des informations générales sur le Tchad, afin de promouvoir efficacement le commerce, les investissements, le tourisme et la culture.\nToute l'équipe de l'Ambassade sera toujours à votre disposition pour vous réserver un accueil chaleureux, pas seulement aux Tchadiens, mais à tous ceux d'autres pays qui souhaitent avoir des informations essentielles sur les services que nous offrons, notamment la délivrance des visas et autres documents administratifs (carte consulaire, acte de naissance, acte de mariage et de décès).\nEn attendant une visite physique que nous espérons proche, soyez les bienvenus au \"Tchad virtuel\".",
-    "vision": "« Vision 2030, le Tchad que nous voulons »",
-    "salutation": "Sincères et chaleureuses salutations",
-    "signature": "Son Excellence Monsieur Gonfouli SOUARIBA, Ambassadeur de la République du Tchad auprès de la République de Côte d'Ivoire."
-  },
-  "teams": {
-    "title": "L'ÉQUIPE",
-    "description": "Découvrez les membres qui font vivre l'Ambassade",
-    "jobs": {
-      "ambassadeur": "Ambassadeur du Tchad en CI",
-      "premier_conseiller": "Premier Conseiller",
-      "conseillere_economique": "Conseillère Économique",
-      "attache": "Attaché",
-      "charge_communication": "Chargé de la communication et des rélations publiques."
-    }
-  },
-  "photo": {
-    "description": "Galerie Photo",
-    "searchPlaceholder": "Rechercher une photo...",
-    "pictures": [
-      "Rencontre avec la communauté",
-      "Rencontre avec la communauté",
-      "Rencontre avec SEM le Président de la République Alasane Ouattara",
-      "Rencontre avec le gouvernement ivoirien"
-    ],
-    "hero": {
-      "title": "Galerie Photo"
-    },
-    "breadcrumbs": {
-      "home": "Accueil",
-      "photo": "Galerie Photo"
-    }
-  },
-  "video":{
-    "description": "Nos vidéos officielles",
-    "searchPlaceholder": "Rechercher une vidéo...",
-    "videos": [
-      "Conférence Ambassade",
-      "Visite Officielle",
-      "Message du Président"
-    ],
-    "hero": {
-      "title": "Galerie Vidéo"
-    },
-    "breadcrumbs": {
-      "home": "Accueil",
-      "video": "Galerie Vidéo"
-    }
-  },
-  "ambassade": {
-    "hero": {
-      "title": "L'ambassade"
-    },
-    "breadcrumbs": {
-      "home": "Accueil",
-      "ambassade": "L'ambassade"
-    },
-    "juridiction": {
-      "tiltle": "Ambassades et représentations permanentes",
-      "post": "Postes consulaires",
-      "description": "La République du Tchad compte plusieurs représentations diplomatiques et consulaires à l'étranger (Décret N°0089/PR/MAEIACID/2020 du 19 février 2020).",
-      "algerie": "Algérie",
-      "afrique_du_sud": "Afrique du Sud",
-      "cote_d_ivoire": "Côte d'Ivoire",
-      "emirats_arabe_unis": "Émirats Arabes Unis",
-      "belgique": "Belgique",
-      "bresil": "Brésil",
-      "burkina_faso": "Burkina Faso",
-      "cameroun": "Cameroun",
-      "canada": "Canada",
-      "suisse": "Suisse",
-      "congo": "Congo",
-      "egypte": "Égypte",
-      "etats_unis": "États-Unis d'Amérique",
-      "france": "France",
-      "ethiopie": "Éthiopie",
-      "federation_de_russie": "Fédération de Russie",
-      "gabon": "Gabon",
-      "guinee_equatoriale": "Guinée Équatoriale",
-      "inde": "Inde",
-      "japon": "Japon",
-      "koweit": "Koweït",
-      "libye": "Libye",
-      "mali": "Mali",
-      "niger": "Niger",
-      "nigeria": "Nigéria",
-      "qatar": "Qatar",
-      "new_york": "New York (Représentation Permanente)",
-      "republique_centrafricaine": "République Centrafricaine",
-      "republique_democratique_du_congo": "République Démocratique du Congo",
-      "republique_populaire_de_chine": "République Populaire de Chine",
-      "royaume_maroc": "Royaume du Maroc",
-      "norvege": "Norvège",
-      "soudan": "Soudan",
-      "turquie": "Turquie"
-    }
-  },
-  "footer": {
-    "embassy": "Ambassade du Tchad en Côte d'Ivoire",
-    "navTitle": "Navigation",
-    "quickLinksTitle": "Liens rapides",
-    "mainLinks": {
-      "ambassade": "L'Ambassade",
-      "consulaire": "Services consulaires",
-      "investir": "Investir Au Tchad",
-      "tourisme": "Tourisme",
-      "menus": "Menus"
-    },
-    "quickLinks": {
-      "tchad": "Le Tchad",
-      "events": "Évènements",
-      "sites": "Sites touristiques"
-    },
-    "legal": {
-      "a_propos": "À propos",
-      "criteres": "Critères",
-      "confidentialite": "Confidentialité",
-      "conditions": "Conditions",
-      "clause": "Clause de non-responsabilité"
-    },
-    "socials": {
-      "tchad_diplomatie": "TCHAD DIPLOMATIE",
-      "sgg": "Secrétariat général du gouvernement",
-      "ambassade_ci": "Ambassade du Tchad en Côte d'Ivoire"
-    }
-  },
-  "header": {
-    "accueil": "Accueil",
-    "ambassade": "L'Ambassade",
-    "consulaire": "Services consulaires",
-    "investir": "Investir au Tchad",
-    "photos": "Galérie Photos",
-    "videos": "Galérie Vidéos",
-    "actualité": "Actualité",
-    "event": "Évènements",
-    "tourisme": "Tourisme",
-    "site": "Site touristique",
-    "tchad": "Le Tchad",
-    "peuples": "Les peuples et cultures",
-    "email": "Email: ambassade.tchadabj@ambatchad.ci",
-    "tel": "Tel: +225 27 22 39 49 13",
-    "recherche": "Rechercher...",
-    "titre": "AMBASSADE DU TCHAD CÔTE D'IVOIRE",
-    "media":"Centre de Media"
-  },
-  "about": {
-    "phoneLabel": "Numéro de téléphone",
-    "facebookLabel": "Facebook",
-    "facebookLink": "Ambassade du Tchad en Côte d'Ivoire",
-    "emailLabel": "Adresse Email",
-    "emailValue": "ambassade.tchadabj@ambatchad.ci"
+  "navigation": {
+    "home": "Accueil",
+    "about": "À propos",
+    "services": "Services",
+    "contact": "Contact",
+    "news": "Actualités",
+    "events": "Événements",
+    "gallery": "Galerie",
+    "tourism": "Tourisme",
+    "consular": "Consulaire",
+    "embassy": "Ambassade",
+    "jurisdiction": "Juridiction",
+    "ambassador": "Ambassadeur",
+    "team": "Équipe",
+    "experience": "Expérience",
+    "photo": "Photo",
+    "laissezPasser": "Laissez-passer",
+    "passport": "Passeport",
+    "procuration": "Procuration",
+    "appointment": "Demander un RDV",
+    "clientSpace": "Espace Client",
+    "login": "Connexion",
+    "register": "Inscription",
+    "logout": "Déconnexion",
+    "profile": "Profil",
+    "dashboard": "Tableau de bord",
+    "myRequests": "Mes demandes",
+    "newRequest": "Nouvelle demande"
   },
   "home": {
     "hero": {
-      "title": "Bienvenue sur le Site officiel de l'ambassade",
-      "description_tchad": " de la republique de Tchad ",
-      "description_cote_d_ivoire": " en Côte d'Ivoire",
-      "bouton_contact": "Prendre un rendez-vous",
-      "demande_carte_consulaire": "Demande de carte consulaire et visa",
-      "bouton_ouvir": "Ouvrir maintenant"
+      "title": "Ambassade du Tchad en Côte d'Ivoire",
+      "subtitle": "Représentation diplomatique et consulaire",
+      "description": "L'Ambassade du Tchad en Côte d'Ivoire assure la représentation diplomatique et consulaire de la République du Tchad auprès de la République française et des organisations internationales basées à Paris.",
+      "cta": "Nos services",
+      "learnMore": "En savoir plus"
     },
-   
+    "about": {
+      "title": "À propos de l'Ambassade",
+      "description": "L'Ambassade du Tchad en Côte d'Ivoire est la représentation diplomatique de la République du Tchad auprès de la République française. Elle assure également la représentation consulaire pour les ressortissants tchadiens résidant en Côte d'Ivoire.",
+      "readMore": "Lire la suite"
+    },
+    "services": {
+      "title": "Nos services",
+      "description": "Accédez à nos services consulaires et culturels.",
+      "seeMore": "Voir plus",
+      "visa": {
+        "title": "Visa",
+        "description": "Demande de visa pour le Tchad"
+      },
+      "passport": {
+        "title": "Passeport",
+        "description": "Renouvellement et délivrance de passeport"
+      },
+      "consular": {
+        "title": "Carte consulaire",
+        "description": "Délivrance de carte consulaire"
+      },
+      "laissezPasser": {
+        "title": "Laissez-passer",
+        "description": "Délivrance de laissez-passer"
+      },
+      "procuration": {
+        "title": "Procuration",
+        "description": "Authentification de procuration"
+      },
+      "birthAct": {
+        "title": "Acte de naissance",
+        "description": "Délivrance d'acte de naissance"
+      },
+      "deathAct": {
+        "title": "Acte de décès",
+        "description": "Délivrance d'acte de décès"
+      },
+      "marriageCapacity": {
+        "title": "Certificat de capacité mariage",
+        "description": "Délivrance de certificat de capacité mariage"
+      },
+      "nationality": {
+        "title": "Certificat de nationalité",
+        "description": "Délivrance de certificat de nationalité"
+      },
+      "items": {
+        "0": {
+          "title": "Passeport"
+        },
+        "1": {
+          "title": "Laissez-passer"
+        },
+        "2": {
+          "title": "Carte consulaire"
+        },
+        "3": {
+          "title": "Service administratif"
+        },
+        "4": {
+          "title": "Peuples et cultures"
+        },
+        "5": {
+          "title": "Découvrir le Tchad"
+        }
+      }
+    },
+    "events": {
+      "title": "Événements récents",
+      "description": "Retrouvez les derniers événements ",
+      "viewAll": "Voir tous les événements",
+      "items": {
+        "0": {
+          "title": "Ambassade",
+          "alt": "Image de l'Ambassade"
+        },
+        "1": {
+          "title": "Consulaire",
+          "alt": "Image du service consulaire"
+        },
+        "2": {
+          "title": "Tourisme",
+          "alt": "Image du tourisme au Tchad"
+        }
+      }
+    },
     "passportForm": {
-      "ambassy": "AMBASSADE DU TCHAD",
-      "open": "Ouvrir maintenant",
-      "title": "Formulaire de demande de passeport",
-      "name": "Nom",
-      "surname": "Prénom",
-      "birthDate": "Date de naissance",
-      "birthPlace": "Lieu de naissance",
-      "nationality": "Nationalité",
-      "gender": "Sexe",
+      "open": "Ouvrir le formulaire de passeport",
+      "title": "Formulaire de passeport",
+      "ambassy": "Ambassade du Tchad en Côte d'Ivoire",
+      "gender": "Genre",
       "male": "Masculin",
       "female": "Féminin",
       "familyStatus": "Situation familiale",
@@ -183,198 +133,118 @@
       "married": "Marié(e)",
       "divorced": "Divorcé(e)",
       "widowed": "Veuf/Veuve",
-      "seeConditions": "Voir les conditions",
-      "submit": "Envoyer",
       "close": "Fermer",
-      "logoAlt": "Logo de l'ambassade du Tchad",
-      "backgroundAlt": "image de fond d'ecran",
-      "uploadPhoto": "Télécharger une photo"
+      "submit": "Soumettre"
     },
-    "news": {
-      "title": "ACTUALITÉS",
-      "searchPlaceholder": "Rechercher une actualité...",
-      "items": [
-        {
-          "date": "10 Oct",
-          "alt": "Monument tchadien",
-          "title": "Participation de S.E. Mariam Ali Moussa, Ambassadeur et Représentante Permanente du Tchad auprès de la FAO à la 50ème édition du Comité de la Sécurité Alimentaire mondiale de la FAO à Rome du 10 au 14 octobre 2022"
-        },
-        {
-          "date": "10 Oct",
-          "alt": "Conférence FAO",
-          "title": "Participation de S.E. Mariam Ali Moussa, Ambassadeur et Représentante Permanente du Tchad auprès de la FAO à la 50ème édition du Comité de la Sécurité Alimentaire mondiale de la FAO à Rome du 10 au 14 octobre 2022"
-        },
-        {
-          "date": "10 Oct",
-          "alt": "Événement diplomatique",
-          "title": "Participation de S.E. Mariam Ali Moussa, Ambassadeur et Représentante Permanente du Tchad auprès de la FAO à la 50ème édition du Comité de la Sécurité Alimentaire mondiale de la FAO à Rome du 10 au 14 octobre 2022"
-        }
-      ],
-      "hero": {
-        "title": "ACTUALITÉS"
-      },
-      "breadcrumbs": {
-        "home": "Accueil",
-        "news": "Actualités"
-      }
-    },
-    "services": {
-      "description": "Accédez à nos services consulaires et culturels",
-      "seeMore": "Voir plus",
-      "items": [
-        {
-          "title": "VISA"
-        },
-        {
-          "title": "LAISSEZ-PASSER"
-        },
-        {
-          "title": "CARTE CONSULAIRE"
-        },
-        {
-          "title": "SERVICE ÉCONOMIQUE"
-        },
-        {
-          "title": "SERVICE CULTUREL"
-        },
-        {
-          "title": "AUTRES DOCUMENTS"
-        }
-      ]
-    },
-    "events": {
-      "items": [
-        {
-          "title": "L'Ambassade",
-          "alt": "Façade de l'Ambassade du Tchad"
-        },
-        {
-          "title": "Services consulaires",
-          "alt": "Passeports sur une carte"
-        },
-        {
-          "title": "Le Tchad",
-          "alt": "Monument au Tchad"
-        }
-      ]
+    "hero": {
+      "title": "Bienvenue sur le Site officiel de l'ambassade",
+      "description_tchad": "de la republique de Tchad en Côte d'Ivoire",
+      "description_cote_d_ivoire": ".",
+      "bouton_contact": "Prendre rendez-vous",
+      "demande_carte_consulaire": "Demander une carte consulaire et visa",
+      "bouton_ouvir": "Ouvrir maintenant"
     }
   },
-  "event":{
-    "description": " Espace Évènements de l'Ambassade",
-    "searchPlaceholder": "Rechercher un évènement...",
+  "ambassade": {
+    "title": "Ambassade du Tchad en Côte d'Ivoire",
+    "description": "L'Ambassade du Tchad en Côte d'Ivoire assure la représentation diplomatique et consulaire de la République du Tchad auprès de la République française.",
+    "ambassadeur": {
+      "title": "L'Ambassadeur",
+      "name": "SEM. Gonfouli SOUARIBA",
+      "description": "Ambassadeur Extraordinaire et Plénipotentiaire de la République du Tchad en Côte d'Ivoire"
+    },
+    "jurisdiction": {
+      "title": "Juridiction",
+      "description": "L'Ambassade du Tchad en Côte d'Ivoire a compétence sur le territoire français métropolitain et d'outre-mer.",
+      "countries": "Pays de compétence",
+      "Côte d'Ivoire": "Côte d'Ivoire métropolitaine",
+      "overseas": "Territoires d'outre-mer français"
+    },
+    "team": {
+      "title": "Notre équipe",
+      "description": "Découvrez les membres de l'équipe de l'Ambassade"
+    },
+    "experience": {
+      "title": "Notre expérience",
+      "description": "Plus de 60 ans d'excellence diplomatique"
+    },
     "hero": {
-      "title": "Évènements"
+      "title": "Ambassade du Tchad",
+      "description": "Bienvenue sur la page de l'Ambassade du Tchad."
     },
     "breadcrumbs": {
       "home": "Accueil",
-      "event": "Évènements"
+      "ambassade": "Ambassade"
+    }
+  },
+  "consulaire": {
+    "title": "Services consulaires",
+    "description": "L'Ambassade du Tchad en Côte d'Ivoire propose une gamme complète de services consulaires.",
+    "services": {
+      "title": "Nos Services Consulaires",
+      "description": "L'Ambassade du Tchad en Côte d'Ivoire propose une gamme complète de services consulaires pour répondre aux besoins de la communauté tchadienne.",
+      "passport": {
+        "title": "Passeport",
+        "description": "Renouvellement et délivrance de passeport tchadien"
+      },
+      "laissezPasser": {
+        "title": "Laissez-passer",
+        "description": "Délivrance de laissez-passer pour les voyages d'urgence"
+      },
+      "consularCard": {
+        "title": "Carte consulaire",
+        "description": "Délivrance de carte consulaire pour les ressortissants"
+      },
+      "visa": {
+        "title": "Visa",
+        "description": "Demande de visa pour entrer au Tchad"
+      },
+      "procuration": {
+        "title": "Procuration",
+        "description": "Authentification de procuration"
+      },
+      "birthAct": {
+        "title": "Acte de naissance",
+        "description": "Délivrance d'acte de naissance"
+      },
+      "deathAct": {
+        "title": "Acte de décès",
+        "description": "Délivrance d'acte de décès"
+      },
+      "marriageCapacity": {
+        "title": "Certificat de capacité mariage",
+        "description": "Délivrance de certificat de capacité mariage"
+      },
+      "nationality": {
+        "title": "Certificat de nationalité",
+        "description": "Délivrance de certificat de nationalité"
+      }
     }
   },
   "tourisme": {
-    "tchad": {
-      "hero": {
-        "title": "Tourisme"
-      },
-      "breadcrumbs": {
-        "home": "Accueil",
-        "tourism": "Tourisme",
-        "tchad": "Le Tchad"
-      }
-    },
     "hero": {
-      "title": "Tourisme"
+      "title": "Tourisme au Tchad"
     },
     "breadcrumbs": {
       "home": "Accueil",
       "tourism": "Tourisme",
-      "site": "Sites touristiques"
+      "site": "Site"
     },
-    "president": {
-      "title": "UN PAYS QUI ÉMERGE",
-      "imageAlt": "Profil du président",
-      "projectTitle": "MON PROJET POUR LE TCHAD",
-      "chantiers": [
-        {
-          "title": "CHANTIER 1",
-          "description": "RENFORCER LA PAIX, LA RÉCONCILIATION NATIONALE ET LA SÉCURITÉ POUR TOUS LES TCHADIENS"
-        },
-        {
-          "title": "CHANTIER 2",
-          "description": "RÉFORMER L'ÉTAT, BÂTIR UNE RÉPUBLIQUE FORTE ET JUSTE"
-        },
-        {
-          "title": "CHANTIER 3",
-          "description": "PROMOUVOIR UN ÉTAT SOLIDAIRE POUR TOUS"
-        },
-        {
-          "title": "CHANTIER 4",
-          "description": "REFONDER LE SYSTÈME ÉDUCATIF ET BÂTIR UN PLAN AMBITIEUX POUR LA JEUNESSE ET LES SPORTS"
-        },
-        {
-          "title": "CHANTIER 5",
-          "description": "PROMOUVOIR LES DROITS DE LA FEMME ET SON RÔLE DANS LA SOCIÉTÉ"
-        },
-        {
-          "title": "CHANTIER 6",
-          "description": "DÉVELOPPER UNE ÉCONOMIE RÉSILIENTE ET DIVERSIFIÉE"
-        },
-        {
-          "title": "CHANTIER 7",
-          "description": "RENDRE L'EAU ET L'ÉNERGIE ACCESSIBLES À TOUS"
-        },
-        {
-          "title": "CHANTIER 8",
-          "description": "CONSTRUIRE LES INFRASTRUCTURES DU DÉSENCLAVEMENT"
-        },
-        {
-          "title": "CHANTIER 9",
-          "description": "INDUSTRIALISER NOTRE AGRICULTURE ET NOTRE ÉLEVAGE"
-        },
-        {
-          "title": "CHANTIER 10",
-          "description": "POURSUIVRE LA MODERNISATION DE NOTRE SYSTÈME DE SANTÉ"
-        },
-        {
-          "title": "CHANTIER 11",
-          "description": "RENFORCER LE RAYONNEMENT DU TCHAD À L'ÉTRANGER ET FAIRE DE LA DIASPORA UN VÉRITABLE LEVIER DE DÉVELOPPEMENT"
-        },
-        {
-          "title": "CHANTIER 12",
-          "description": "PROMOUVOIR LES MERVEILLES CULTURELLES ET TOURISTIQUES DU TCHAD"
-        }
-      ]
-    },
-    "statistic": {
-      "tabs": {
-        "key_figures": "Chiffres clés",
-        "history": "Histoire",
-        "geography": "Géographie"
-      },
-      "list": {
-        "capital": "Capitale : N'Djamena",
-        "area": "Superficie : 1 284 000 km²",
-        "population": "Population : 16 877 357 habitants (2020)",
-        "density": "Densité : 13 habitants/km²",
-        "religions": "Religions : Islam (~60 %) - Christianisme (~30 %) - Autres (10 %)",
-        "languages": "Langues officielles : arabe et français",
-        "currency": "Monnaie : Franc CFA",
-        "gdp": "PIB (en milliards de CFA) : 3 232",
-        "gdp_per_capita": "PIB par habitant : 1 000 US$",
-        "main_cities": "Principales villes : Sarh, Moundou, Abéché"
-      }
-    },
+    "title": "Tourisme au Tchad",
+    "description": "Découvrez les merveilles du Tchad",
     "geography": {
       "tabs": {
         "key_figures": "Chiffres clés",
         "history": "Histoire",
         "geography": "Géographie"
       },
+      "title": "Géographie",
+      "description": "Le Tchad est un pays d'Afrique centrale sans accès à la mer, bordé par la Libye au nord, le Soudan à l'est, la République centrafricaine au sud, le Cameroun et le Nigeria au sud-ouest, et le Niger à l'ouest.",
       "sections": {
         "general": [
           "Pont entre le Maghreb et l'Afrique subsaharienne, carrefour des caravanes transsahariennes et berceau des civilisations nomades, le Tchad incarne les contrastes entre le désert du nord et la savane du sud, entre les traditions musulmanes ascétiques et les rituels animistes ou chrétiens élaborés, entre les populations nomades vivant de leurs chameaux et pâturages, et les agriculteurs sédentaires façonnant la terre et lui donnant un visage humain.",
           "Le Tchad est un pays d'Afrique centrale couvrant 1 284 000 km², dont 560 000 km² sont agricoles. Classé 20e au monde par sa superficie, le Tchad est le cinquième plus grand pays d'Afrique après le Soudan, l'Algérie, la République Démocratique du Congo et la Libye.",
-          "C'est un vaste pays (deux fois la taille de la France), mais enclavé et éloigné de la mer. Il se trouve à 1 700 km de Douala (Cameroun) et à 2 400 km de Port-Soudan sur la mer Rouge.",
-          "Il partage des frontières avec le Soudan à l'est, la République centrafricaine et le Cameroun au sud, le Nigeria à l'ouest, le Niger au nord-ouest et la Libye au nord."
+          "C'est un vaste pays (deux fois la taille de la France), mais enclavé et éloigné de la mer. Il se trouve à 1 700 km de Douala (Cameroun) et à 2 400 km de Port-Soudan sur la mer Rouge."
         ],
         "relief": {
           "title": "Relief",
@@ -394,208 +264,1277 @@
       }
     },
     "history": {
+      "title": "Histoire",
+      "description": "L'histoire du Tchad remonte à l'Antiquité avec les royaumes sahéliens et soudanais."
+    },
+    "peuples-et-cultures": {
+      "hero": {
+        "title": "Peuples et cultures"
+      },
+      "breadcrumbs": {
+        "home": "Accueil",
+        "tourism": "Tourisme",
+        "site": "Site",
+        "peuples-et-cultures": "Peuples et cultures",
+        "peoples": "Peuples"
+      },
+      "title": "Peuples et cultures",
+      "description": "Le Tchad possède une riche diversité culturelle avec plus de 200 groupes ethniques."
+    },
+    "monuments": {
+      "title": "Monuments et sites",
+      "description": "Découvrez les monuments et sites historiques du Tchad",
+      "voirGalerie": "Voir la galerie",
+      "items": [
+        {
+          "title": "Musée National du Tchad",
+          "description": "Le musée national abrite des collections archéologiques et ethnographiques importantes"
+        },
+        {
+          "title": "Cathédrale Notre-Dame de la Paix",
+          "description": "Édifice religieux majeur de N'Djamena, symbole de paix et de réconciliation"
+        },
+        {
+          "title": "Grande Mosquée de N'Djamena",
+          "description": "Plus grande mosquée du pays, centre spirituel et architectural de la capitale"
+        },
+        {
+          "title": "Palais Présidentiel",
+          "description": "Siège du pouvoir exécutif, architecture moderne et symbolique"
+        },
+        {
+          "title": "Marché Central de N'Djamena",
+          "description": "Cœur commercial de la capitale, lieu de rencontre et d'échanges culturels"
+        },
+        {
+          "title": "Place de l'Indépendance",
+          "description": "Place historique commémorant l'indépendance du Tchad en 1960"
+        },
+        {
+          "title": "Avenue Charles de Gaulle",
+          "description": "Artère principale de N'Djamena, bordée de bâtiments administratifs et commerciaux"
+        }
+      ]
+    },
+    "statistics": {
+      "title": "Statistiques",
+      "description": "Quelques chiffres clés sur le Tchad"
+    },
+    "cultural": {
+      "cultural-text": {
+        "item1": "Le premier recensement de la population a eu lieu en 1993. Il évaluait la population totale du Tchad à 6 280 000 individus, dont 5,7 % de nomades (au sens strict), le reste étant constitué de sédentaires, semi-sédentaires ou transhumants. Le deuxième recensement de l'histoire du Tchad, le dernier en date, a été effectué plus de quinze ans plus tard, en 2009. Voici quelques données clefs de ce dénombrement : la population totale s'élève à 11,03 millions dhabitants (elle est estimée à 12,8 millions en 2016), dont 50,6 % de moins de 15 ans et 50,7 % de femmes. La population urbaine s'élève à 22 %, faisant du Tchad un pays majoritairement rural. Ce recensement met en évidence la très inégale répartition géographique de la population, plus de la moitié étant concentrée dans les 10 % du pays les plus au sud. Ainsi, on trouve au Tchad des disparités de densité énormes, allant de 52,4 hab/km² dans le Logone occidental à 0,1 hab/km² dans les régions du Borkou, de l’Ennedi et du Tibesti, où la population ne dépasse guère 300 000 individus dans les trois régions confondues ; à noter l'extrême disparité entre N'Djamena, près de 1 million d'habitants et la région du Tibesti, 25 000 habitants !",
+        "item2": "Les régions les plus densément peuplées sont le Logone oriental et le Logone occidental, le Mayo Kebbi Est et Ouest et le Tandjilé, toutes situées au sud-ouest, et le Ouaddaï (721 000 habitants) à l’est du pays.La population tchadienne est jeune (la moitié a moins de 15 ans), peu instruite (taux d’analphabétisme de 65 %, taux de scolarisation de 75 % dans le Sud, contre moins de 8 % dans le Nord). Elle subsiste grâce à l’agriculture (83 % de la population active dépend du secteur primaire). Les conditions de vie sont précaires : 88,6 % des habitations sont encore construites en matériaux traditionnels, 76,4 % des habitants consomment une eau douteuse (mare ou puits non aménagé) ; 79 % des Tchadiens n’utilisent pas de latrines, 1 % des ménages ont accès à l’électricité, et 99,5 % n’ont recours qu’au bois ou au charbon de bois comme source d’énergie pour la cuisson des aliments.",
+        "item3": "Par ailleurs, le Tchad, de par sa situation géographique, constitue un véritable carrefour entre le monde arabe et le monde subsaharien. Les relations ancestrales de commerce transsaharien, les vagues successives de migration de populations venues du nord et de l’est, les rivalités qui s’en sont suivies avec les peuples autochtones et les traditionnelles razzias d’esclaves ont conduit ces deux mondes à se côtoyer et à se métisser, dans un brassage de couleurs et de traits, de coutumes et de religions. Le Tchad est donc un véritable kaléidoscope ethnique. Lorsqu’en 1968 le projet d’une carte linguistique de l’Atlas du Tchad a été présenté au ministre de l’Education nationale, celui-ci l’a examiné longuement avant de soupirer : ” Et dire qu’il faut que nous en fassions une nation ! “."
+      }
+    },
+    "monument": {
+      "lirePlus": "Lire plus",
+      "lireMoins": "Lire moins"
+    },
+    "president": {
+      "title": "Les projets du Président de la République",
+      "imageAlt": "Image du président",
+      "projectTitle": "Grands projets nationaux",
+      "chantiers": [
+        {
+          "title": "Chantier 1",
+          "description": "RENFORCER LA PAIX, LA RÉCONCILIATION NATIONALE ET LA SÉCURITÉ POUR TOUS LES TCHADIENS"
+        },
+        {
+          "title": "Chantier 2",
+          "description": "RÉFORMER L'ÉTAT, BÂTIR UNE RÉPUBLIQUE FORTE ET JUSTE"
+        },
+        {
+          "title": "Chantier 3",
+          "description": "PROMOUVOIR UN ÉTAT SOLIDAIRE POUR TOUS"
+        },
+        {
+          "title": "Chantier 4",
+          "description": "REFONDER LE SYSTÈME ÉDUCATIF ET BÂTIR UN PLAN AMBITIEUX POUR LA JEUNESSE ET LES SPORTS"
+        },
+        {
+          "title": "Chantier 5",
+          "description": "PROMOUVOIR LES DROITS DE LA FEMME ET SON RÔLE DANS LA SOCIÉTÉ"
+        },
+        {
+          "title": "Chantier 6",
+          "description": "DÉVELOPPER UNE ÉCONOMIE RÉSILIENTE ET DIVERSIFIÉE"
+        },
+        {
+          "title": "Chantier 7",
+          "description": "RENDRE L'EAU ET L'ÉNERGIE ACCESSIBLES À TOUS"
+        },
+        {
+          "title": "Chantier 8",
+          "description": "CONSTRUIRE LES INFRASTRUCTURES DU DÉSENCLAVEMENT"
+        },
+        {
+          "title": "Chantier 9",
+          "description": "INDUSTRIALISER NOTRE AGRICULTURE ET NOTRE ÉLEVAGE"
+        },
+        {
+          "title": "Chantier 10",
+          "description": "POURSUIVRE LA MODERNISATION DE NOTRE SYSTÈME DE SANTÉ"
+        },
+        {
+          "title": "Chantier 11",
+          "description": "RENFORCER LE RAYONNEMENT DU TCHAD À L'ÉTRANGER ET FAIRE DE LA DIASPORA UN VÉRITABLE LEVIER DE DÉVELOPPEMENT"
+        },
+        {
+          "title": "Chantier 12",
+          "description": "PROMOUVOIR LES MERVEILLES CULTURELLES ET TOURISTIQUES DU TCHAD"
+        }
+      ]
+    },
+    "statistic": {
+      "tabs": {
+        "key_figures": "Chiffres clés",
+        "history": "Histoire",
+        "geography": "Géographie"
+      },
+      "list": {
+        "capital": "N'Djamena (capitale)",
+        "area": "Superficie : 1 284 000 km²",
+        "population": "Population : 16 millions d'habitants",
+        "density": "Densité : 12 hab/km²",
+        "religions": "Religions principales : Islam, Christianisme, Animisme",
+        "languages": "Langues officielles : Français, Arabe",
+        "currency": "Monnaie : Franc CFA",
+        "gdp": "PIB : 11 milliards USD",
+        "gdp_per_capita": "PIB/hab : 700 USD",
+        "main_cities": "Principales villes : N'Djamena, Moundou, Sarh, Abéché"
+      }
+    },
+    "history": {
       "tabs": {
         "key_figures": "Chiffres clés",
         "history": "Histoire",
         "geography": "Géographie"
       },
       "content": [
-        "L'histoire du Tchad remonte au Xe siècle, lorsque les Sao s'installèrent au sud du lac Tchad. Ces Sao, aujourd'hui disparus, sont les ancêtres de plusieurs populations de la région tchadienne, dont les Kotokos, un important groupe de chasseurs et de pêcheurs. De nombreux objets en terre cuite et en bronze fabriqués par les Sao représentant des humains et des animaux ont été retrouvés au sud du lac Tchad.",
-        "Dans la seconde moitié du XIXe siècle, l'Europe découvre l'existence du Tchad à travers les récits des voyageurs Cheik El Toussi, Barth (1857) et Nachtigal (1879).",
-        "Plusieurs États puissants se sont constitués, affrontés et dominés tour à tour : le royaume du Kanem-Bornou, le sultanat du Baguirmi et le puissant empire du Ouaddaï ont successivement étendu leur domination sur la majeure partie du pays actuel entre le IXe et la fin du XVIIIe siècle.",
-        "La fondation de N'Djamena (anciennement Fort-Lamy), future capitale du Tchad, et le retour de la paix dans le royaume du Baguirmi et le royaume voisin du Ouaddaï mirent fin aux luttes. Le Tchad ne fut pleinement constitué qu'en 1913.",
-        "En 1940, Félix Eboué, gouverneur du Tchad, décide de rallier le pays à la France libre. C'est du Tchad que le général Leclerc put partir, et les soldats tchadiens étaient à Paris pour la Libération.",
-        "Proclamé république le 28 novembre 1958, le Tchad accède à la souveraineté internationale le 11 août 1960. Depuis, le pays connaît une évolution institutionnelle et politique.",
-        "Des années de dictature et de parti unique ont freiné l'émergence de toute culture démocratique et de pluralisme politique.",
-        "Les régimes successifs ont favorisé le régionalisme, le tribalisme, le népotisme, les inégalités sociales, les violations des droits de l'homme et des libertés fondamentales, entraînant la guerre, la violence politique, la haine, l'intolérance et la méfiance entre les différentes communautés composant la nation tchadienne. Cependant, cette crise institutionnelle et politique, qui a duré plus de trois décennies, n'a pas entamé la détermination du peuple tchadien à bâtir une nation digne, libre et prospère.",
-        "Le Tchad vit aujourd'hui dans une démocratie pluraliste avec un président et un parlement élus."
+        "Le Tchad possède une histoire millénaire, marquée par de grands royaumes sahéliens.",
+        "La colonisation française a profondément transformé le pays.",
+        "Lindépendance a été acquise en 1960, suivie de nombreux défis politiques."
       ]
     },
-    "peuples-et-cultures": {
+    "hero": {
+      "title": "Tourisme au Tchad"
+    },
+    "tchad": {
       "hero": {
-        "title": "Tourisme"
+        "title": "Tchad - Terre d'accueil et de diversité"
       },
       "breadcrumbs": {
         "home": "Accueil",
         "tourism": "Tourisme",
-        "peoples": "Peuples et cultures"
-      }
+        "site": "Site",
+        "tchad": "Tchad"
+      },
+      "title": "Tourisme au Tchad",
+      "description": "Découvrez les merveilles du Tchad"
+    }
+  },
+  "events": {
+    "title": "Événements",
+    "description": "Découvrez les événements organisés par l'Ambassade",
+    "upcoming": "Événements à venir",
+    "past": "Événements passés",
+    "viewAll": "Voir tous les événements",
+    "readMore": "Lire la suite",
+    "date": "Date",
+    "time": "Heure",
+    "location": "Lieu",
+    "organizer": "Organisateur"
+  },
+  "news": {
+    "hero": {
+      "title": "Actualités"
     },
-    "cultural": {
-      "cultural-text": {
-        "item1": "Le premier recensement de la population a eu lieu en 1993. Il évaluait la population totale du Tchad à 6 280 000 individus, dont 5,7 % de nomades (au sens strict), le reste étant constitué de sédentaires, semi-sédentaires ou transhumants. Le deuxième recensement de l’histoire du Tchad, le dernier en date, a été effectué plus de quinze ans plus tard, en 2009. Voici quelques données clefs de ce dénombrement : la population totale s’élève à 11,03 millions d’habitants (elle est estimée à 12,8 millions en 2016), dont 50,6 % de moins de 15 ans et 50,7 % de femmes. La population urbaine s’élève à 22 %, faisant du Tchad un pays majoritairement rural. Ce recensement met en évidence la très inégale répartition géographique de la population, plus de la moitié étant concentrée dans les 10 % du pays les plus au sud. Ainsi, on trouve au Tchad des disparités de densité énormes, allant de 52,4 hab/km² dans le Logone occidental à 0,1 hab/km² dans les régions du Borkou, de l’Ennedi et du Tibesti, où la population ne dépasse guère 300 000 individus dans les trois régions confondues ; à noter l’extrême disparité entre N’Djamena, près de 1 million d’habitants et la région du Tibesti, 25 000 habitants !",
-        "item2": "Les régions les plus densément peuplées sont le Logone oriental et le Logone occidental, le Mayo Kebbi Est et Ouest et le Tandjilé, toutes situées au sud-ouest, et le Ouaddaï (721 000 habitants) à l’est du pays.La population tchadienne est jeune (la moitié a moins de 15 ans), peu instruite (taux d’analphabétisme de 65 %, taux de scolarisation de 75 % dans le Sud, contre moins de 8 % dans le Nord). Elle subsiste grâce à l’agriculture (83 % de la population active dépend du secteur primaire). Les conditions de vie sont précaires : 88,6 % des habitations sont encore construites en matériaux traditionnels, 76,4 % des habitants consomment une eau douteuse (mare ou puits non aménagé) ; 79 % des Tchadiens n’utilisent pas de latrines, 1 % des ménages ont accès à l’électricité, et 99,5 % n’ont recours qu’au bois ou au charbon de bois comme source d’énergie pour la cuisson des aliments.",
-        "item3": "Par ailleurs, le Tchad, de par sa situation géographique, constitue un véritable carrefour entre le monde arabe et le monde subsaharien. Les relations ancestrales de commerce transsaharien, les vagues successives de migration de populations venues du nord et de l’est, les rivalités qui s’en sont suivies avec les peuples autochtones et les traditionnelles razzias d’esclaves ont conduit ces deux mondes à se côtoyer et à se métisser, dans un brassage de couleurs et de traits, de coutumes et de religions. Le Tchad est donc un véritable kaléidoscope ethnique. Lorsqu’en 1968 le projet d’une carte linguistique de l’Atlas du Tchad a été présenté au ministre de l’Education nationale, celui-ci l’a examiné longuement avant de soupirer : ” Et dire qu’il faut que nous en fassions une nation ! “."
-      }
+    "breadcrumbs": {
+      "home": "Accueil",
+      "news": "Actualités"
     },
-    "monument": {
-      "items": [
-        {
-          "title": "Lac Katam",
-          "subtitle": "Situé dans la région de l'Ennedi, le lac Katam fait partie du système des lacs Ounianga Kébir. Il se distingue par ses deux parties séparées par une étroite bande de sable, offrant des eaux bleues et vertes dues à la présence d'algues spécifiques."
-        },
-        {
-          "title": "Lac Fianga",
-          "subtitle": "Le lac Fianga, situé à la frontière entre le Tchad et le Cameroun, est alimenté par les eaux du Logone et du Mayo Kébbi. Son niveau varie selon les saisons, offrant des paysages changeants et une riche biodiversité."
-        },
-        {
-          "title": "Lac Tchad",
-          "subtitle": "Le lac Tchad est l'un des plus grands lacs d'Afrique, bien que sa superficie ait diminué au fil des décennies. Il reste une ressource vitale pour des millions de personnes et abrite une biodiversité unique."
-        },
-        {
-          "title": "Lac Yoa",
-          "subtitle": "Le lac Yoa est le plus grand des lacs Ounianga Kébir, avec une profondeur atteignant 20 mètres. Situé au cœur du désert du Sahara, il est alimenté par des aquifères fossiles, témoins d'une époque où le climat de la région était plus humide."
-        },
-        {
-          "title": "Parc National de Goz Beïda",
-          "subtitle": "Le Parc National de Goz Beïda se trouve dans la région du Sila, au sud-est du Tchad. Entouré d'une beauté naturelle impressionnante, ce parc couvre une vaste superficie d'environ 3 625 kilomètres carrés. Situé à la frontière avec le Soudan, le parc se trouve dans une région de transition entre le Sahel et la savane, ce qui lui confère une grande diversité de paysages et de faune."
-        },
-        {
-          "title": "Parc National de Sena Oura (PNSO)",
-          "subtitle": "Le parc national de Sena Oura (PNSO) est un parc national du Tchad créé le 10 juin 2008 par le décret N°14/PR/2008[1]. Il est situé dans le département de Mayo-Dallah, région du Mayo-Kebbi Ouest et dispose d'une surface de 735,2 km2. En 2022, lors de la 34e session du Conseil de l'Unesco, tenue du 13 au 17 juin 2022 au siège de l'organisation à Paris en France, le parc national de Sena Oura est place patrimoine mondiale de l'Unesco [archive]. Le 27 février 2023 un accord a été signé entre le gouvernement tchadien et l'ONG internationale Wildlife conservation city pour la gestion du Parc."
-        },
-        {
-          "title": "Parc National de Zah Soo",
-          "subtitle": "Le Parc National de Zah Soo est un parc national crée le 15 mars 2022[1],[2]. Il est situé au Sud-Ouest du Tchad à proximité du Cameroun et se trouve dans une zone de transition entre milieux soudaniens et sahéliens. Avec la Réserve de Faune de Binder-léré, il fait partie du Complexe d'Aires Protégées de BinderLéré (CAPBL). Il comprend une variété unique de zones humides ainsi que les plus grandes cascades du pays, les « Chutes Zah Soo », d'une dénivellation abrupte de 45 mètres avec une superficie de 81.500 hectares."
+    "title": "Actualités",
+    "description": "Restez informé des dernières nouvelles de l'Ambassade",
+    "latest": "Dernières actualités",
+    "viewAll": "Voir toutes les actualités",
+    "readMore": "Lire la suite",
+    "searchPlaceholder": "Rechercher une actualité",
+    "publishedOn": "Publié le",
+    "allStatus": "Tous les statuts",
+    "searchByDate": "Rechercher par date",
+    "searchByAuthor": "Rechercher par auteur",
+    "searchByTitle": "Rechercher par titre",
+    "searchByContent": "Rechercher par contenu",
+    "searchByStatus": "Rechercher par statut",
+    "searchByCategory": "Rechercher par catégorie",
+    "filterByStatus": "Filtrer par statut",
+    "filterByCategory": "Filtrer par catégorie",
+    "filterByAuthor": "Filtrer par auteur",
+    "filterByTitle": "Filtrer par titre",
+    "filterByContent": "Filtrer par contenu",
+    "filterByDate": "Filtrer par date",
+    "filterByTime": "Filtrer par heure",
+    "published": "Publié",
+    "previousPage": "Page précédente",
+    "nextPage": "Page suivante",
+    "draft": "Brouillon",
+    "author": "Auteur",
+    "category": "Catégorie",
+    "backToList": "Retour à la liste des actualités",
+    "loading": "Chargement...",
+    "error": "Une erreur est survenue",
+    "noNews": "Aucune actualité pour le moment.",
+    "noNewsFound": "Aucune actualité trouvée"
+  },
+  "gallery": {
+    "title": "Galerie",
+    "description": "Découvrez nos photos et vidéos",
+    "photos": "Photos",
+    "videos": "Vidéos",
+    "viewAll": "Voir toute la galerie",
+    "photo": {
+      "hero": {
+        "title": "Photos"
+      },
+      "breadcrumbs": {
+        "home": "Accueil",
+        "photo": "Photos"
+      },
+      "title": "Photos",
+      "description": "Découvrez nos photos",
+      "viewAll": "Voir toutes les photos",
+      "searchPlaceholder": "Rechercher une photo",
+      "searchByDate": "Rechercher par date",
+      "searchByTitle": "Rechercher par titre",
+      "searchByContent": "Rechercher par contenu",
+      "searchByStatus": "Rechercher par statut",
+      "searchByCategory": "Rechercher par catégorie",
+      "filterByStatus": "Filtrer par statut",
+      "previous": "Page précédente",
+      "next": "Page suivante",
+      "noPhotos": "Aucune photo pour le moment.",
+      "backToList": "Retour à la liste des photos"
+    },
+    "video": {
+      "hero": {
+        "title": "Vidéos"
+      },
+      "breadcrumbs": {
+        "home": "Accueil",
+        "video": "Vidéos"
+      },
+      "title": "Vidéos",
+      "description": "Découvrez nos vidéos",
+      "viewAll": "Voir toutes les vidéos",
+      "searchPlaceholder": "Rechercher une vidéo",
+      "searchByDate": "Rechercher par date",
+      "searchByTitle": "Rechercher par titre",
+      "searchByContent": "Rechercher par contenu",
+      "searchByStatus": "Rechercher par statut",
+      "searchByCategory": "Rechercher par catégorie",
+      "filterByStatus": "Filtrer par statut",
+      "previous": "Page précédente",
+      "next": "Page suivante",
+      "noVideos": "Aucune vidéo pour le moment.",
+      "backToList": "Retour à la liste des vidéos"
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "description": "Contactez l'Ambassade du Tchad en Côte d'Ivoire",
+    "address": {
+      "title": "Adresse",
+      "street": "65, rue des Belles Feuilles",
+      "city": "75116 Paris",
+      "country": "Côte d'Ivoire"
+    },
+    "phone": {
+      "title": "Téléphone",
+      "number": "+225 27 40 40 40"
+    },
+    "email": {
+      "title": "Email",
+      "address": "contact@ambassade-tchad.fr"
+    },
+    "hours": {
+      "title": "Heures d'ouverture",
+      "weekdays": "Lundi - Vendredi : 9h00 - 17h00",
+      "weekend": "Samedi - Dimanche : Fermé"
+    },
+    "form": {
+      "title": "Formulaire de contact",
+      "name": "Nom complet",
+      "email": "Email",
+      "subject": "Sujet",
+      "message": "Message",
+      "send": "Envoyer",
+      "sending": "Envoi en cours...",
+      "success": "Message envoyé avec succès !",
+      "error": "Erreur lors de l'envoi du message"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Connexion",
+      "description": "Connectez-vous à votre espace client",
+      "email": "Email",
+      "password": "Mot de passe",
+      "rememberMe": "Se souvenir de moi",
+      "forgotPassword": "Mot de passe oublié ?",
+      "login": "Se connecter",
+      "noAccount": "Vous n'avez pas de compte ?",
+      "register": "S'inscrire",
+      "error": "Email ou mot de passe incorrect"
+    },
+    "register": {
+      "title": "Inscription",
+      "description": "Créez votre compte espace client",
+      "firstName": {
+        "placeholder": "Prénom"
+      },
+      "lastName": {
+        "placeholder": "Nom"
+      },
+      "email": {
+        "placeholder": "Email"
+      },
+      "phoneNumber": {
+        "placeholder": "Téléphone"
+      },
+      "password": {
+        "placeholder": "Mot de passe"
+      },
+      "confirmPassword": {
+        "placeholder": "Confirmer le mot de passe"
+      },
+      "showPassword": "Afficher le mot de passe",
+      "loading": "Inscription en cours...",
+      "submit": "S'inscrire",
+      "hasAccount": "Vous avez déjà un compte ?",
+      "login": "Se connecter",
+      "error": "Erreur lors de l'inscription"
+    },
+    "forgotPassword": {
+      "title": "Mot de passe oublié",
+      "description": "Entrez votre email pour réinitialiser votre mot de passe",
+      "email": {
+        "placeholder": "Email"
+      },
+      "loading": "Envoi en cours...",
+      "submit": "Envoyer",
+      "backToLogin": "Retour à la connexion",
+      "success": "Email de réinitialisation envoyé !",
+      "error": "Erreur lors de l'envoi de l'email"
+    }
+  },
+  "espaceClient": {
+    "title": "Espace Client",
+    "description": "Gérez vos demandes consulaires en ligne",
+    "sidebar": {
+      "embassyName": "Ambassade du Tchad",
+      "dashboard": "Tableau de bord",
+      "nouvelleDemandeLabel": "Nouvelle demande",
+      "mesDemandes": "Mes demandes",
+      "monProfil": "Mon profil",
+      "deconnexion": "Déconnexion"
+    },
+    "dashboard": {
+      "title": "Tableau de bord",
+      "welcome": "Bienvenue dans votre espace client",
+      "description": "Retrouvez ici l'historique et le statut de toutes vos demandes auprès de l'Ambassade du Tchad.",
+      "quickActions": {
+        "title": "Actions rapides",
+        "description": "Accédez rapidement aux fonctionnalités principales",
+        "newRequest": "Nouvelle demande",
+        "viewRequests": "Voir mes demandes",
+        "updateProfile": "Mettre à jour le profil",
+        "downloadDocuments": "Télécharger documents",
+        "contactSupport": "Contacter le support",
+        "viewNotifications": "Voir notifications",
+        "checkStatus": "Vérifier statut",
+        "scheduleAppointment": "Prendre rendez-vous",
+        "viewHistory": "Voir historique",
+        "exportData": "Exporter données",
+        "settings": "Paramètres",
+        "help": "Aide",
+        "feedback": "Donner un avis",
+        "emergencyContact": "Contact d'urgence"
+      },
+      "recentRequests": {
+        "title": "Demandes récentes",
+        "noRequests": "Aucune demande récente",
+        "viewAll": "Voir toutes les demandes"
+      },
+      "notifications": {
+        "title": "Notifications",
+        "noNotifications": "Aucune notification",
+        "viewAll": "Voir toutes les notifications"
+      },
+      "progressSteps": {
+        "processus": "Processus",
+        "deTraitement": "de traitement",
+        "etape1": "Dépôt du dossier",
+        "etape2": "Vérification",
+        "etape3": "Traitement",
+        "etape4": "Validation",
+        "etape5": "Finalisation",
+        "etape6": "Retrait"
+      },
+      "requestsTable": {
+        "title": "Mes demandes en cours",
+        "ticketNumber": "N° TICKET",
+        "serviceConcerne": "SERVICE CONCERNÉ",
+        "dateSubmission": "DATE DE SOUMISSION",
+        "currentStatus": "STATUT ACTUEL",
+        "action": "ACTION",
+        "voir": "Voir",
+        "ticket": "Ticket",
+        "date": "Date",
+        "voirToutesDemandes": "Voir Toutes Les Demandes",
+        "status": {
+          "nouveau": "Nouveau",
+          "NEW": "Nouveau",
+          "enCours": "En Cours",
+          "PROCESSING": "En Cours",
+          "enAttente": "En Attente",
+          "PENDING": "En Attente",
+          "pretARetirer": "Prêt À Retirer",
+          "COMPLETED": "Prêt À Retirer",
+          "rejete": "Rejeté",
+          "REJECTED": "Rejeté",
+          "annule": "Annulé",
+          "CANCELLED": "Annulé",
+          "requis": "Requis",
+          "REQUIRED": "Requis",
+          "termine": "Terminé",
+          "FINISHED": "Terminé"
         }
-      ],
-      "voirGalerie": "Voir la galerie",
-      "lirePlus": "Lire plus",
-      "lireMoins": "Lire moins",
-      "precedent": "Précédent",
-      "suivant": "Suivant"
-    }
-  },
-  "demandez-rdv": {
-    "title": "Demandez un rendez-vous",
-    "section": {
-      "personalInfo": "Informations personnelles",
-      "booking": "Réservation"
+      },
+      "newsCarousel": {
+        "title": "Actualités",
+        "readMore": "Lire la suite",
+        "previous": "Précédent",
+        "next": "Suivant"
+      },
+      "messages": {
+        "title": "Messages",
+        "noMessages": "Aucun message",
+        "markAsRead": "Marquer comme lu",
+        "markAsUnread": "Marquer comme non lu"
+      },
+      "bonjour": "Bonjour",
+      "nomUtilisateur": "Utilisateur",
+      "etape": "Étape",
+      "service": "Service",
+      "typeService": "Type de service",
+      "demande": "Demande",
+      "typeDemande": "Type de demande",
+      "bienvenue": "Bienvenue dans votre espace client",
+      "progression": "Progression",
+      "periodeDate": "Période",
+      "achevementPrevu": "Achèvement prévu",
+      "dateAchevement": "Date d'achèvement",
+      "dureeJours": "14 Jours"
     },
-    "fields": {
-      "fullName": "Nom et Prénom",
-      "email": "Adresse mail",
-      "phone": "Numéro de téléphone"
+    "historiqueTraitement": {
+      "titre": "Historique du Traitement",
+      "service": "Service",
+      "statut": "Statut",
+      "soumission": "Date de soumission",
+      "progression": "Progression",
+      "achevementPrevu": "Achèvement prévu",
+      "jours": "jours",
+      "enRetard": "En retard"
     },
-    "buttons": {
+    "statusTimeline": {
+      "titre": "Chronologie du Statut",
+      "enCours": "En cours",
+      "etapes": {
+        "new": {
+          "titre": "Nouveau",
+          "description": "Votre dossier est en cours de traitement"
+        },
+        "pending_additional_info": {
+          "titre": "En attente d'informations complémentaires",
+          "description": "Votre dossier est en attente d'informations complémentaires"
+        },
+        "approved_by_agent": {
+          "titre": "Approuvé par l'agent",
+          "description": "Votre dossier est approuvé par l'agent"
+        },
+        "approved_by_chef": {
+          "titre": "Approuvé par le chef",
+          "description": "Votre dossier est approuvé par le chef"
+        },
+        "approved_by_consul": {
+          "titre": "Approuvé par le consul",
+          "description": "Votre dossier est approuvé par le consul"
+        },
+        "ready_for_pickup": {
+          "titre": "Prêt à retirer",
+          "description": "Votre dossier est prêt à être retiré"
+        },
+        "delivered": {
+          "titre": "Livré",
+          "description": "Votre dossier est livré"
+        },
+        "expired": {
+          "titre": "Expiré",
+          "description": "Votre dossier est expiré"
+        },
+        "renewal_requested": {
+          "titre": "Renouvellement demandé",
+          "description": "Votre dossier est renouvelé"
+        },
+        "in_review_docs": {
+          "titre": "En revue",
+          "description": "Votre dossier est en revue"
+        },
+        "archived": {
+          "titre": "Archivé",
+          "description": "Votre dossier est archivé"
+        },
+        "rejected": {
+          "titre": "Rejeté",
+          "description": "Votre dossier est rejeté"
+        },
+        "cancelled": {
+          "titre": "Annulé",
+          "description": "Votre dossier est annulé"
+        }
+      }
+    },
+    "header": {
+      "title": "Espace Client",
+      "notifications": "Notifications",
+      "messages": "Messages",
+      "viewAllNotifications": "Voir toutes les notifications",
+      "viewAllMessages": "Voir tous les messages",
+      "searchPlaceholder": "Rechercher..."
+    },
+    "notifications": {
+      "title": "Notifications",
+      "listeAlertes": "Liste des dernières alertes et mises à jour importantes",
+      "statut": "Statut",
+      "notification": "Notification",
+      "voirToutes": "Voir Toutes Les Notifications",
+      "status": {
+        "enCours": "En Cours",
+        "PROCESSING": "En Cours",
+        "requis": "Requis",
+        "REQUIRED": "Requis",
+        "pretARetirer": "Prêt À Retirer",
+        "COMPLETED": "Prêt À Retirer",
+        "nouveau": "Nouveau",
+        "NEW": "Nouveau",
+        "enAttente": "En Attente",
+        "PENDING": "En Attente",
+        "rejete": "Rejeté",
+        "REJECTED": "Rejeté",
+        "annule": "Annulé",
+        "CANCELLED": "Annulé",
+        "termine": "Terminé",
+        "FINISHED": "Terminé",
+        "Requis": "Requis",
+        "En Cours": "En Cours",
+        "Prêt À Retirer": "Prêt À Retirer"
+      },
+      "noNotifications": "Aucune notification",
+      "markAllAsRead": "Tout marquer comme lu",
+      "markAsRead": "Marquer comme lu",
+      "markAsUnread": "Marquer comme non lu"
+    },
+    "quickActions": {
+      "title": "Actions rapides",
+      "description": "Accédez rapidement aux fonctionnalités principales",
+      "modalTitle": "Actions rapides disponibles",
+      "nouvelleDemandeButton": "Faire une nouvelle demande",
+      "newRequest": "Nouvelle demande",
+      "viewRequests": "Voir mes demandes",
+      "updateProfile": "Mettre à jour le profil",
+      "downloadDocuments": "Télécharger documents",
+      "contactSupport": "Contacter le support",
+      "viewNotifications": "Voir notifications",
+      "checkStatus": "Vérifier statut",
+      "scheduleAppointment": "Prendre rendez-vous",
+      "viewHistory": "Voir historique",
+      "exportData": "Exporter données",
+      "settings": "Paramètres",
+      "help": "Aide",
+      "feedback": "Donner un avis",
+      "emergencyContact": "Contact d'urgence",
+      "documents": {
+        "visa": {
+          "label": "Visa",
+          "description": "Demander un visa de voyage",
+          "route": "/espace-client/nouvelle-demande/visa"
+        },
+        "birth-act": {
+          "label": "Acte de naissance",
+          "description": "Demander un acte de naissance",
+          "route": "/espace-client/nouvelle-demande/birth-act"
+        },
+        "consular-card": {
+          "label": "Carte consulaire",
+          "description": "S'inscrire auprès de l'ambassade",
+          "route": "/espace-client/nouvelle-demande/consular-card"
+        },
+        "laissez-passer": {
+          "label": "Laissez-passer",
+          "description": "Obtenir un laissez-passer pour retourner au Tchad",
+          "route": "/espace-client/nouvelle-demande/laissez-passer"
+        },
+        "marriage-capacity": {
+          "label": "Certificat de capacité mariage",
+          "description": "Demander un certificat de capacité mariage",
+          "route": "/espace-client/nouvelle-demande/marriage-capacity"
+        },
+        "death-act": {
+          "label": "Acte de décès",
+          "description": "Demander un acte de décès",
+          "route": "/espace-client/nouvelle-demande/death-act"
+        },
+        "power-of-attorney": {
+          "label": "Procuration",
+          "description": "Autoriser quelqu'un pour vos démarches",
+          "route": "/espace-client/nouvelle-demande/power-of-attorney"
+        },
+        "nationality-certificate": {
+          "label": "Certificat de nationalité",
+          "description": "Prouver votre nationalité tchadienne",
+          "route": "/espace-client/nouvelle-demande/nationality-certificate"
+        }
+      },
+      "modal": {
+        "title": "Actions rapides disponibles",
+        "subtitle": "Sélectionnez une action pour continuer",
+        "close": "Fermer",
+        "cancel": "Annuler",
+        "confirm": "Confirmer",
+        "loading": "Chargement...",
+        "noActions": "Aucune action disponible",
+        "selectAction": "Sélectionner une action",
+        "actionDescription": "Description de l'action",
+        "proceed": "Continuer",
+        "back": "Retour",
+        "search": "Rechercher une action",
+        "filter": "Filtrer les actions",
+        "allActions": "Toutes les actions",
+        "recentActions": "Actions récentes",
+        "favoriteActions": "Actions favorites",
+        "categories": {
+          "requests": "Demandes",
+          "documents": "Documents",
+          "support": "Support",
+          "settings": "Paramètres",
+          "help": "Aide"
+        }
+      }
+    },
+    "services": {
+      "visa": "Demande de Visa",
+      "carteConsulaire": "Carte Consulaire",
+      "passeport": "Passeport",
+      "laissezPasser": "Laissez-passer",
+      "procuration": "Procuration",
+      "certificatNationalite": "Certificat de Nationalité",
+      "acteNaissance": "Acte de naissance",
+      "acteDeces": "Acte de décès",
+      "capaciteMariage": "Certificat de capacité mariage"
+    },
+    "formFields": {
+      "personFirstName": "Prénom",
+      "personLastName": "Nom",
+      "personGender": "Genre",
+      "personNationality": "Nationalité",
+      "personBirthDate": "Date de naissance",
+      "personBirthPlace": "Lieu de naissance",
+      "personMaritalStatus": "État civil",
+      "personProfession": "Profession",
+      "personDomicile": "Domicile",
+      "personAddressInOriginCountry": "Adresse au pays d'origine",
+      "fatherFullName": "Nom complet du père",
+      "motherFullName": "Nom complet de la mère",
+      "passportType": "Type de passeport",
+      "passportNumber": "Numéro de passeport",
+      "passportIssuedBy": "Délivré par",
+      "passportIssueDate": "Date de délivrance du passeport",
+      "passportExpirationDate": "Expiration du passeport",
+      "employerAddress": "Adresse de l'employeur",
+      "employerPhoneNumber": "Téléphone de l'employeur",
+      "visaType": "Type de visa",
+      "durationMonths": "Durée (mois)",
+      "destinationState": "Destination",
+      "visaExpirationDate": "Expiration du visa",
+      "requestType": "Type de demande",
+      "justificationDocumentType": "Type de justificatif",
+      "justificationDocumentNumber": "Numéro du justificatif",
+      "contactPhoneNumber": "Numéro de téléphone"
+    },
+    "requestTypes": {
+      "NEWBORN": "Nouveau-né",
+      "RENEWAL": "Renouvellement"
+    },
+    "session": {
+      "expiresIn": "Session expire dans :",
+      "sessionTime": "Session :",
+      "expired": "Session expirée",
+      "warningMessage": "Votre session expire dans 5 minutes. Veuillez sauvegarder votre travail.",
+      "expiredMessage": "Votre session a expiré. Vous allez être déconnecté automatiquement.",
+      "logout": "Déconnexion"
+    },
+    "navigation": {
+      "dashboard": "Tableau de bord",
+      "newRequest": "Nouvelle demande",
+      "myRequests": "Mes demandes",
+      "profile": "Profil",
+      "logout": "Déconnexion"
+    },
+    "common": {
+      "back": "Retour",
+      "next": "Suivant",
+      "previous": "Précédent",
+      "submit": "Envoyer",
       "cancel": "Annuler",
-      "submit": "Enregistrer"
+      "save": "Enregistrer",
+      "edit": "Modifier",
+      "delete": "Supprimer",
+      "view": "Voir",
+      "download": "Télécharger",
+      "upload": "Téléverser",
+      "search": "Rechercher",
+      "filter": "Filtrer",
+      "all": "Tous",
+      "none": "Aucun",
+      "yes": "Oui",
+      "no": "Non",
+      "loading": "Chargement...",
+      "error": "Erreur",
+      "success": "Succès",
+      "warning": "Avertissement",
+      "info": "Information"
+    },
+    "formulaire": {
+      "title": "Demande de {type}",
+      "description": "Remplissez le formulaire ci-dessous pour votre demande de {type}",
+      "documentsRequired": "Documents requis",
+      "documentsToProvide": "Documents à fournir",
+      "importantInfo": "Information importante",
+      "importantInfoText": "Tous les documents doivent être en cours de validité et conformes aux exigences consulaires.",
+      "filesToProvide": "Pièces à fournir",
+      "fileUploadInfo": "Importez jusqu'à 10 fichiers compatibles. 100 MB max. par fichier.",
+      "addFile": "Ajouter un fichier",
+      "uploading": "Upload en cours...",
+      "fileSelected": "fichier(s) sélectionné(s)",
+      "uploadSuccess": "Fichier uploadé avec succès !",
+      "multipleFilesSuccess": "Fichiers uploadés avec succès !",
+      "fields": {
+        "photo": "Photo",
+        "lastName": "Nom",
+        "firstName": "Prénom",
+        "birthDate": "Date de naissance",
+        "birthPlace": "Lieu de naissance",
+        "nationality": "Nationalité",
+        "gender": "Sexe",
+        "male": "Masculin",
+        "female": "Féminin",
+        "maritalStatus": "Situation familiale",
+        "single": "Célibataire",
+        "married": "Marié(e)",
+        "divorced": "Divorcé(e)",
+        "widowed": "Veuf/Veuve",
+        "passportType": "Type de passeport",
+        "passportNumber": "Numéro de passeport",
+        "passportIssueDate": "Date de délivrance",
+        "passportExpiryDate": "Date d'expiration",
+        "passportIssuingCountry": "Pays de délivrance",
+        "profession": "Profession",
+        "employerName": "Nom de l'employeur",
+        "employerAddress": "Adresse de l'employeur",
+        "employerPhone": "Téléphone de l'employeur",
+        "visaType": "Type de visa",
+        "durationOfStay": "Durée du séjour",
+        "destinationCity": "Ville de destination",
+        "contactPhone": "Téléphone de contact",
+        "contactEmail": "Email de contact"
+      },
+      "steps": {
+        "personalInfo": "Informations personnelles",
+        "passportInfo": "Informations du passeport",
+        "professionalInfo": "Informations professionnelles",
+        "visaInfo": "Informations du visa",
+        "documents": "Documents",
+        "review": "Vérification"
+      },
+      "validation": {
+        "required": "Ce champ est obligatoire",
+        "invalidEmail": "Email invalide",
+        "invalidPhone": "Numéro de téléphone invalide",
+        "invalidDate": "Date invalide",
+        "fileTooLarge": "Fichier trop volumineux",
+        "invalidFileType": "Type de fichier non autorisé"
+      }
+    },
+    "mesDemandes": {
+      "title": "Mes demandes",
+      "description": "Consultez l'état de vos demandes",
+      "filters": {
+        "all": "Toutes",
+        "pending": "En attente",
+        "processing": "En cours",
+        "completed": "Terminées",
+        "rejected": "Rejetées"
+      },
+      "table": {
+        "ticketNumber": "N° Ticket",
+        "serviceType": "Type de service",
+        "submissionDate": "Date de soumission",
+        "status": "Statut",
+        "actions": "Actions"
+      },
+      "status": {
+        "pending": "En attente",
+        "processing": "En cours",
+        "completed": "Terminée",
+        "rejected": "Rejetée"
+      },
+      "actions": {
+        "view": "Voir",
+        "download": "Télécharger",
+        "cancel": "Annuler"
+      }
+    },
+    "nouvelleDemande": {
+      "title": "Nouvelle demande",
+      "description": "Choisissez le type de service pour votre demande",
+      "services": {
+        "visa": {
+          "title": "Visa",
+          "description": "Demande de visa pour le Tchad",
+          "icon": "🛂",
+          "color": "blue"
+        },
+        "passport": {
+          "title": "Passeport",
+          "description": "Renouvellement et délivrance de passeport",
+          "icon": "📄",
+          "color": "green"
+        },
+        "consularCard": {
+          "title": "Carte consulaire",
+          "description": "Délivrance de carte consulaire",
+          "icon": "🆔",
+          "color": "purple"
+        },
+        "laissezPasser": {
+          "title": "Laissez-passer",
+          "description": "Délivrance de laissez-passer",
+          "icon": "📋",
+          "color": "orange"
+        },
+        "procuration": {
+          "title": "Procuration",
+          "description": "Authentification de procuration",
+          "icon": "✍️",
+          "color": "red"
+        },
+        "birthAct": {
+          "title": "Acte de naissance",
+          "description": "Délivrance d'acte de naissance",
+          "icon": "👶",
+          "color": "pink"
+        },
+        "deathAct": {
+          "title": "Acte de décès",
+          "description": "Délivrance d'acte de décès",
+          "icon": "⚰️",
+          "color": "gray"
+        },
+        "marriageCapacity": {
+          "title": "Certificat de capacité mariage",
+          "description": "Délivrance de certificat de capacité mariage",
+          "icon": "💒",
+          "color": "yellow"
+        },
+        "nationality": {
+          "title": "Certificat de nationalité",
+          "description": "Délivrance de certificat de nationalité",
+          "icon": "🏛️",
+          "color": "indigo"
+        }
+      }
+    },
+    "dureeJours": "14 Jours",
+    "progressSteps": {
+      "processus": "Processus",
+      "deTraitement": "de traitement"
+    },
+    "newsCarousel": {
+      "title": "Actualités"
+    },
+    "messages": {
+      "title": "Messages",
+      "modal": {
+        "title": "Tous les messages",
+        "markAsRead": "Marquer comme lu",
+        "markAsUnread": "Marquer comme non lu",
+        "close": "Fermer",
+        "empty": "Aucun message",
+        "read": "Lu",
+        "unread": "Non lu",
+        "reply": "Répondre"
+      }
+    },
+    "mesDemandesClient": {
+      "title": "Mes demandes",
+      "description": "Retrouvez ici l'historique et le statut de toutes vos demandes auprès de l'Ambassade du Tchad.",
+      "filtrer": "FILTRER PAR",
+      "noTicket": "N° TICKET",
+      "placeholderTicket": "Ex: T001",
+      "typeService": "TYPE DE SERVICE",
+      "statut": "STATUT",
+      "tous": "Tous",
+      "appliquer": "Appliquer",
+      "listeDemandes": "Liste des demandes",
+      "demandesEnAttente": "Demandes en attente",
+      "toutesVosDemandes": "Toutes vos demandes",
+      "aucuneDemandeTrouvee": "Aucune demande trouvée",
+      "aucuneDemandeMessage": "Vous n'avez aucune demande pour le moment.",
+      "reessayer": "Réessayer",
+      "sessionNonTrouvee": "Session non trouvée. Veuillez vous reconnecter.",
+      "erreurChargement": "Erreur lors du chargement des demandes",
+      "erreurInconnue": "Erreur inconnue",
+      "pagePrecedente": "Page précédente",
+      "pageSuivante": "Page suivante",
+      "demandes": "demandes",
+      "page": "Page",
+      "sur": "sur",
+      "services": {
+        "carteConsulaire": "Carte Consulaire",
+        "visa": "Visa",
+        "laissezPasser": "Laissez-passer",
+        "procuration": "Procuration",
+        "acteCapaciteMariage": "Acte de Capacité de Mariage",
+        "acteDeces": "Acte de Décès",
+        "certificatNationalite": "Certificat de Nationalité",
+        "acteNaissance": "Acte de Naissance"
+      },
+      "statuts": {
+        "NEW": "Nouveau",
+        "IN_PROGRESS": "En cours",
+        "COMPLETED": "Terminé",
+        "READY_TO_PICKUP": "Prêt à retirer",
+        "REJECTED": "Rejeté",
+        "IN_REVIEW_DOCS": "En cours de vérification de documents",
+        "PENDING_ADDITIONAL_INFO": "En attente de renseignements supplémentaires",
+        "APPROVED_BY_AGENT": "Approuvé par l'agent",
+        "APPROVED_BY_CHEF": "Approuvé par le chef",
+        "APPROVED_BY_CONSUL": "Approuvé par le consul",
+        "READY_FOR_PICKUP": "Prêt à retirer",
+        "DELIVERED": "Retiré",
+        "ARCHIVED": "Archivé",
+        "EXPIRED": "Expiré",
+        "RENEWAL_REQUESTED": "Renouvellement demandé"
+      },
+      "documents": {
+        "title": "Documents fournis",
+        "aucunDocument": "Aucun document fourni pour cette demande",
+        "telecharger": "Télécharger",
+        "uploadedOn": "Uploadé le",
+        "nonSpecifie": "Non spécifié"
+      }
+    },
+    "profil": {
+      "title": "Mon Profil",
+      "description": "Gérez votre profil",
+      "modifierCompte": "Modifier le compte",
+      "modifierMotDePasse": "Modifier mon mot de passe",
+      "supprimerCompte": "Supprimer mon compte",
+      "champsObligatoires": "Les champs annotés d'un * sont obligatoires.",
+      "monIdentite": "Mon identité",
+      "nom": "Nom",
+      "prenom": "Prénom (s)",
+      "langueLabel": "Langue dans laquelle vous souhaitez renseigner votre demande de visa",
+      "francais": "Français",
+      "anglais": "Anglais",
+      "arabe": "Arabe",
+      "enregistrer": "Enregistrer",
+      "mesDemandes": "Mes demandes",
+      "voirProfil": "Voir le profil",
+      "modifierProfil": "Modifier le profil",
+      "annuler": "Annuler",
+      "motDePasseActuel": "Mot de passe actuel",
+      "nouveauMotDePasse": "Nouveau mot de passe",
+      "confirmerMotDePasse": "Confirmer le nouveau mot de passe"
     }
   },
-  "consulaire": {
-    "form": {
-      "backgroundAlt": "Image d'arrière-plan",
-      "close": "Fermer le formulaire",
-      "title": "Formulaire de carte consulaire",
-      "logoAlt": "Logo de l'ambassade du Tchad",
-      "uploadPhoto": "Télécharger une photo",
-      "lastName": "Nom",
-      "firstName": "Prénom",
-      "birthDate": "Date de naissance",
-      "birthPlace": "Lieu de naissance",
-      "nationality": "Nationalité",
-      "gender": "Sexe",
-      "male": "Masculin",
-      "female": "Féminin",
-      "maritalStatus": "Situation familiale",
-      "single": "Célibataire",
-      "married": "Marié(e)",
-      "divorced": "Divorcé(e)",
-      "widowed": "Veuf/Veuve",
-      "seeConditions": "Voir les conditions",
-      "send": "Envoyer"
-    }
-  },
-  "laissez-passer": {
-    "form": {
-      "backgroundAlt": "Image d'arrière-plan",
+
+  "messages": {
+    "title": "Messages",
+    "modal": {
+      "title": "Tous les messages",
+      "markAsRead": "Marquer comme lu",
+      "markAsUnread": "Marquer comme non lu",
       "close": "Fermer",
-      "title": "Formulaire de demande de Laissez-passer",
-      "logoAlt": "Logo de l'ambassade du Tchad",
-      "uploadPhoto": "Téléverser une photo",
-      "lastName": "Nom",
-      "firstName": "Prénom",
-      "birthDate": "Date de naissance",
-      "birthPlace": "Lieu de naissance",
-      "nationality": "Nationalité",
-      "gender": "Sexe",
-      "male": "Masculin",
-      "female": "Féminin",
-      "maritalStatus": "Situation familiale",
-      "single": "Célibataire",
-      "married": "Marié(e)",
-      "divorced": "Divorcé(e)",
-      "widowed": "Veuf/Veuve",
-      "seeConditions": "Voir les conditions",
-      "send": "Envoyer"
+      "empty": "Aucun message",
+      "read": "Lu",
+      "unread": "Non lu",
+      "reply": "Répondre"
     }
   },
-  "procuration": {
-    "title": "Formulaire de demande de procuration",
-    "nom": "Nom",
-    "prenom": "Prénom",
-    "date_naissance": "Date de naissance",
-    "lieu_naissance": "Lieu de naissance",
-    "nationalite": "Nationalité",
-    "sexe": "Sexe",
-    "sexe_m": "Masculin",
-    "sexe_f": "Féminin",
-    "situation_familiale": "Situation familiale",
-    "celibataire": "Célibataire",
-    "marie": "Marié(e)",
-    "divorce": "Divorcé(e)",
-    "veuf": "Veuf/Veuve",
-    "voir_conditions": "Voir les conditions",
-    "envoyer": "Envoyer"
+  "notifications": {
+    "title": "Notifications",
+    "listeAlertes": "Liste des dernières alertes et mises à jour importantes",
+    "statut": "Statut",
+    "notification": "Notification",
+    "voirToutes": "Voir Toutes Les Notifications",
+    "status": {
+      "enCours": "En Cours",
+      "En Cours": "En Cours",
+      "requis": "Requis",
+      "Requis": "Requis",
+      "pretARetirer": "Prêt À Retirer",
+      "Prêt À Retirer": "Prêt À Retirer",
+      "nouveau": "Nouveau",
+      "NEW": "Nouveau",
+      "PROCESSING": "En Cours",
+      "PENDING": "En Attente",
+      "COMPLETED": "Prêt À Retirer",
+      "rejete": "Rejeté",
+      "REJECTED": "Rejeté",
+      "annule": "Annulé",
+      "CANCELLED": "Annulé",
+      "REQUIRED": "Requis",
+      "termine": "Terminé",
+      "FINISHED": "Terminé",
+      "enAttente": "En Attente",
+      "urgent": "Urgent",
+      "URGENT": "Urgent",
+      "important": "Important",
+      "IMPORTANT": "Important",
+      "info": "Information",
+      "INFO": "Information",
+      "warning": "Avertissement",
+      "WARNING": "Avertissement",
+      "error": "Erreur",
+      "ERROR": "Erreur",
+      "success": "Succès",
+      "SUCCESS": "Succès"
+    },
+    "modal": {
+      "title": "Toutes les notifications",
+      "markAsRead": "Marquer comme lu",
+      "markAsUnread": "Marquer comme non lu",
+      "close": "Fermer",
+      "empty": "Aucune notification",
+      "read": "Lu",
+      "unread": "Non lu",
+      "all": "Toutes"
+    }
   },
-  "condition": {
-    "passport_diplomatique": {
-      "title": "Formulaire de demande de passeport",
-      "documents": "Documents à fournir",
-      "common_passport": "Passport Ordinaire",
-      "vip_passport": "Passport diplomatique",
-      "list": {
-        "first_condition": "Note verbale",
-        "second_condition": "Formulaire de demande de visa dûment rempli",
-        "third_condition": "copie de passeport",
-        "fourth_condition": "Passeport en cours de validité (6 mois minimum)",
-        "fifth_condition": "2 photos d'identité"
-      },
-      "see_form": "Voir le formulaire"
+  "profil": {
+    "title": "Mon Profil",
+    "description": "Retrouvez ici l'historique et le statut de toutes vos demandes auprès de l'Ambassade du Tchad.",
+    "modifierCompte": "Modifier le compte",
+    "modifierMotDePasse": "Modifier mon mot de passe",
+    "supprimerCompte": "Supprimer mon compte",
+    "champsObligatoires": "Les champs annotés d'un * sont obligatoires.",
+    "monIdentite": "Mon identité",
+    "nom": "Nom",
+    "prenom": "Prénom (s)",
+    "langueLabel": "Langue dans laquelle vous souhaitez renseigner votre demande de visa",
+    "francais": "Français",
+    "anglais": "Anglais",
+    "arabe": "Arabe",
+    "enregistrer": "Enregistrer",
+    "mesDemandes": "Mes demandes",
+    "voirProfil": "Voir le profil",
+    "modifierProfil": "Modifier le profil",
+    "annuler": "Annuler",
+    "motDePasseActuel": "Mot de passe actuel",
+    "nouveauMotDePasse": "Nouveau mot de passe",
+    "confirmerMotDePasse": "Confirmer le nouveau mot de passe"
+  },
+  "visaForm": {
+    "title": "Demande de Visa",
+    "personalInfo": "Informations personnelles",
+    "passportInfo": "Informations du passeport",
+    "professionalInfo": "Informations professionnelles et visa",
+    "contactAndDocuments": "Contact et documents",
+    "requiredDocuments": "Documents requis pour une demande de visa",
+    "processingTime": "Durée de traitement",
+    "beforeStarting": "Avant de commencer",
+    "successMessage": "Demande créée avec succès !",
+    "successDescription": "Votre demande de visa a été soumise. Vous recevrez bientôt un email de confirmation.",
+    "viewMyRequests": "Voir mes demandes",
+    "fields": {
+      "personFirstName": "Prénom",
+      "personLastName": "Nom",
+      "personGender": "Genre",
+      "personNationality": "Nationalité",
+      "personBirthDate": "Date de naissance",
+      "personBirthPlace": "Lieu de naissance",
+      "personMaritalStatus": "Statut matrimonial",
+      "passportType": "Type de passeport",
+      "passportNumber": "Numéro de passeport",
+      "passportIssuedBy": "Pays de délivrance",
+      "passportIssueDate": "Date de délivrance",
+      "passportExpirationDate": "Date d'expiration",
+      "profession": "Profession",
+      "employerAddress": "Adresse de l'employeur",
+      "employerPhoneNumber": "Téléphone de l'employeur",
+      "durationMonths": "Durée du séjour (mois)",
+      "destinationState": "Ville de destination",
+      "visaType": "Type de visa",
+      "contactPhoneNumber": "Numéro de téléphone de contact"
     },
-    "passport_ordinaire": {
-      "title": "Formulaire de demande de passeport",
-      "documents": "Documents à fournir",
-      "common_passport": "Passport Ordinaire",
-      "vip_passport": "Passport diplomatique",
-      "list": {
-        "first_condition": "Formulaire de demande de visa dûment rempli",
-        "second_condition": "Lettre d'invitation ou certificat d'hébergement ou réservation d'hôtel",
-        "third_condition": "copie de passeport",
-        "fourth_condition": "Passeport en cours de validité (6 mois minimum)",
-        "fifth_condition": "2 photos d'identité"
+    "options": {
+      "gender": {
+        "MALE": "Masculin",
+        "FEMALE": "Féminin"
       },
-      "see_form": "Voir le formulaire"
+      "maritalStatus": {
+        "SINGLE": "Célibataire",
+        "MARRIED": "Marié(e)",
+        "DIVORCED": "Divorcé(e)",
+        "WIDOWED": "Veuf/Veuve"
+      },
+      "passportType": {
+        "ORDINARY": "Ordinaire",
+        "DIPLOMATIC": "Diplomatique",
+        "SERVICE": "Service"
+      },
+      "visaType": {
+        "SHORT_STAY": "Court séjour",
+        "LONG_STAY": "Long séjour",
+        "TRANSIT": "Transit",
+        "BUSINESS": "Affaires",
+        "STUDENT": "Étudiant",
+        "WORK": "Travail"
+      }
+    }
+  },
+  "header": {
+    "accueil": "Accueil",
+    "ambassade": "Ambassade",
+    "consulaire": "Consulaire",
+    "media": "Médias",
+    "event": "Événement",
+    "actualité": "Actualité",
+    "photos": "Photos",
+    "videos": "Vidéos",
+    "investir": "Investir",
+    "tourisme": "Tourisme",
+    "site": "Sites touristiques",
+    "tchad": "Tchad",
+    "peuples": "Peuples",
+    "connexion": "Connexion",
+    "titre": "Ambassade du Tchad en Côte d'Ivoire",
+    "recherche": "Rechercher...",
+    "tel": "+225 27 22 39 49 13",
+    "email": "ambassade.tchadabj@ambatchad.ci"
+  },
+  "photo": {
+    "breadcrumbs": {
+      "home": "Accueil",
+      "photo": "Photos"
+    }
+  },
+  "event": {
+    "hero": {
+      "title": "Événement à la une"
     },
-    "consulaire": {
-      "title": "Formulaire de carte consulaire",
-      "documents": "Documents à fournir",
-      "list": {
-        "first_condition": "Acte de Naissance",
-        "second_condition": "copie de passeport",
-        "third_condition": "2 photos d'identité"
-      },
-      "see_form": "Voir le formulaire"
+    "breadcrumbs": {
+      "home": "Accueil",
+      "event": "Événement"
     },
-    "laissez-passer": {
-      "title": "Formulaire de demande de Laissez-passer",
-      "documents": "Documents à fournir",
-      "list": {
-        "first_condition": "Ancien passeport/ Carte Consulaire",
-        "second_condition": "Acte de naissance",
-        "third_condition": "2 photos d'identité"
-      },
-      "see_form": "Voir le formulaire"
+    "description": "Découvrez tous les événements organisés par l'Ambassade du Tchad en Côte d'Ivoire.",
+    "searchPlaceholder": "Rechercher un événement...",
+    "filters": {
+      "all": "Tous",
+      "upcoming": "À venir",
+      "past": "Passés",
+      "status": "Statut",
+      "allStatus": "Tous les statuts",
+      "published": "Publiés",
+      "draft": "Brouillons",
+      "date": "Date"
+    },
+    "draft": "Brouillon",
+    "readMore": "Lire la suite"
+  },
+  "video": {
+    "title": "Vidéos"
+  },
+  "ambassadeur": {
+    "title": "L'Ambassadeur",
+    "nom": "SEM. Gonfouli SOUARIBA",
+    "poste": "Ambassadeur du Tchad en Côte d'Ivoire",
+    "bienvenue": "Bienvenue à l'Ambassade du Tchad en Côte d'Ivoire",
+    "texte": "La République du Tchad, pays de Toumaï, de par sa position géographique stratégique, occupe une place de choix au cœur du continent africain. Le pays, après une transition politique réussie en trois années sous le leadership du Maréchal du Tchad, Mahamat Idriss DEBY ITNO, Président de la République, Chef de l'État, amorce des pas de géant pour son décollage économique. Le programme politique du Chef de l'État est structuré autour de douze chantiers, comprenant chacun plusieurs actions, notamment la paix, la sécurité nationale, la promotion d'un État solidaire. Le programme de développement intitulé \"Vision 2030, le Tchad que nous voulons\", axé sur l'agenda 2063 de l'Union Africaine et l'agenda 2030 des Nations Unies, promulgués par les Chefs des États membres de l'Union Africaine, est en cours d'exécution. Ce programme, basé sur une exécution pragmatique, a pour objectif de faire du Tchad un pays émergent à l'horizon 2030. L'Ambassade du Tchad en République de Côte d'Ivoire a juridiction dans quatre autres pays, notamment le Ghana, la Guinée, la Sierra Leone et le Liberia. Les objectifs principaux de la mission sont le maintien et le renforcement des relations diplomatiques entre le Tchad et ces cinq pays. Cette diplomatie tous azimuts embrasse des domaines aussi variés que l'économie, la culture et tout ce que comporte la coopération moderne entre les pays épris de paix et ayant en partage des intérêts communs. La mission de la Haute Représentation du Tchad en Côte d'Ivoire consiste également à protéger les intérêts de sa communauté dans les cinq pays de sa juridiction, conformément aux usages diplomatiques. La plateforme qui vous est proposée constitue une référence unique et efficace pour obtenir des informations générales sur le Tchad, afin de promouvoir efficacement le commerce, les investissements, le tourisme et la culture. Toute l'équipe de l'Ambassade sera toujours à votre disposition pour vous réserver un accueil chaleureux, pas seulement aux Tchadiens, mais à tous ceux d'autres pays qui souhaitent avoir des informations essentielles sur les services que nous offrons, notamment la délivrance des visas et autres documents administratifs (carte consulaire, acte de naissance, acte de mariage et de décès). En attendant une visite physique que nous espérons proche, soyez les bienvenus au \"Tchad virtuel.\"",
+    "vision": "« Vision 2030, le Tchad que nous voulons »",
+    "salutation": "CordialemenSincères et chaleureuses salutations,",
+    "signature": "Son Excellence Monsieur Gonfouli SOUARIBA, Ambassadeur de la République du Tchad auprès de la République de Côte d'Ivoire."
+  },
+  "teams": {
+    "title": "Notre équipe",
+    "description": "Découvrez les membres de l'équipe de l'Ambassade.",
+    "jobs": {
+      "ambassadeur": "Ambassadeur",
+      "premier_conseiller": "Premier Conseiller",
+      "conseillere_economique": "Conseillère Économique",
+      "attache": "Attaché",
+      "charge_communication": "Chargé de Communication"
+    }
+  },
+  "agents": {
+    "souariba": "SEM. SOUARIBA Gonfouli",
+    "acheikh": "M. ACHEIKH MAKAYE NIMIR",
+    "remadji": "Mme REMADJI Christelle",
+    "kaina": "Mr KAINA Nadjo",
+    "alladoum": "Mr ALLADOUM Félix"
+  },
+  "footer": {
+    "embassy": "Ambassade du Tchad en Côte d'Ivoire",
+    "navTitle": "Navigation",
+    "quickLinksTitle": "Liens rapides",
+    "mainLinks": {
+      "ambassade": "Ambassade",
+      "consulaire": "Consulaire",
+      "investir": "Investir au Tchad",
+      "tourisme": "Tourisme",
+      "menus": "Menus"
+    },
+    "quickLinks": {
+      "tchad": "Le Tchad",
+      "events": "Événements",
+      "sites": "Sites touristiques"
+    },
+    "legal": {
+      "a_propos": "À propos",
+      "criteres": "Critères",
+      "confidentialite": "Confidentialité",
+      "conditions": "Conditions d'utilisation",
+      "clause": "Clause de non-responsabilité"
+    },
+    "socials": {
+      "tchad_diplomatie": "Tchad Diplomatie",
+      "sgg": "Secrétariat Général du Gouvernement",
+      "ambassade_ci": "Ambassade du Tchad en Côte d'Ivoire"
+    }
+  },
+  "about": {
+    "phoneLabel": "Téléphone",
+    "facebookLabel": "Facebook officiel",
+    "facebookLink": "Ambassade du Tchad en Côte d'Ivoire",
+    "emailLabel": "Email",
+    "emailValue": "ambassade.tchadabj@ambatchad.ci"
+  },
+  "enums": {
+    "paysParentType": {
+      "FATHER": "Père",
+      "MOTHER": "Mère"
     }
   }
 }
