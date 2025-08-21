@@ -2,7 +2,7 @@
 
 import { auth, signIn, signOut } from "@/lib/auth";
 import { redirect } from "next/navigation";
-import { LoginDTO, loginSchema } from "../schemas/auth.schema";
+import { LoginDTO, loginSchema, RegisterDTO, registerSchema } from "../schemas/auth.schema";
 import { processAndValidateFormData } from "ak-zod-form-kit";
 import { authAPI } from "../apis/auth.api";
 
@@ -52,6 +52,32 @@ export async function login(
         message: apiError.message || "Erreur d'authentification.",
       };
     }
+  }
+}
+
+export async function register(formdata: RegisterDTO): Promise<{ success: boolean; message: string }> {
+  const result = processAndValidateFormData(registerSchema, formdata, {
+    outputFormat: "object",
+  });
+
+  if (!result.success) {
+    return {
+      success: false,
+      message: result.errorsInString,
+    };
+  }
+
+  try {
+    await authAPI.register(result.data as RegisterDTO);
+    return {
+      success: true,
+      message: "Inscription réussie.",
+    };
+  } catch (error: any) {
+    return {
+      success: false,
+      message: error.message || "Erreur d'inscription.",
+    };
   }
 }
 

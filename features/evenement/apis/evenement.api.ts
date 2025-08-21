@@ -1,6 +1,7 @@
 import { api } from "@/lib/api";
 import { PaginatedResponse } from "@/types";
 import { IEvenement, IEvenementRechercheParams } from "../types/evenement.type";
+import { SearchParams } from "ak-api-http";
 export interface IEvenementAPI {
     getAll: (params: IEvenementRechercheParams) => Promise<PaginatedResponse<IEvenement>>;
     getById: (id: string) => Promise<IEvenement>;
@@ -11,7 +12,7 @@ export const evenementAPI: IEvenementAPI = {
         return api.request<PaginatedResponse<IEvenement>>({
             endpoint: `/events`,
             method: "GET",
-            searchParams: params,
+            searchParams: params as SearchParams,
             service: "public"
         });
     },

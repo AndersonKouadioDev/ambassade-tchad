@@ -27,11 +27,11 @@ export default function Hero() {
             {t("description_tchad")} <br />
             {t("description_cote_d_ivoire")}
           </div>
-          <Link href="/demandez-rdv" className="w-full">
+          {/* <Link href="/demandez-rdv" className="w-full">
             <Button color="secondary" className="text-white w-full">
               {t("bouton_contact")}
             </Button>
-          </Link>
+          </Link> */}
         </div>
 
         {/* Bloc bas : Demande de carte consulaire */}
@@ -40,7 +40,7 @@ export default function Hero() {
             <FileText size={32} className="text-white" />
             {t("demande_carte_consulaire")}
           </div>
-          <Link href="/passport">
+          <Link href="/consulaire">
             <Button color="secondary" className="text-white">
               {t("bouton_ouvir")}
             </Button>
