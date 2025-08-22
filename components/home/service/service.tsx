@@ -13,27 +13,27 @@ type Service = {
 const services: Service[] = [
   {
     picture: "/assets/images/illustrations/page-accueil/card-items-1.png",
-    link: "/passport",
+    link: "/espace-client/nouvelle-demande",
   },
   {
     picture: "/assets/images/illustrations/page-accueil/card-items-2.png",
-    link: "/laissez-passer",
+    link: "/espace-client/nouvelle-demande",
   },
   {
     picture: "/assets/images/illustrations/page-accueil/consulaire.png",
-    link: "/consulaire",
+    link: "/espace-client/nouvelle-demande",
   },
   {
     picture: "/assets/images/illustrations/page-accueil/card-items-4.png",
-    link: "#",
+    link: "/consulaire",
   },
   {
     picture: "/assets/images/illustrations/page-accueil/card-items-5.png",
-    link: "/tourisme/peuples-et-cultures",
+    link: "/tourisme/tchad-s",
   },
   {
     picture: "/assets/images/illustrations/page-accueil/card-items-6.png",
-    link: "/tourisme/tchad-s",
+    link: "/tourisme/peuples-et-cultures",
   },
 ];
 
@@ -53,6 +53,7 @@ export default function Service() {
             }
           })()}
         </h2>
+        <Link href="/consulaire">
         <Button color="default" className="text-secondary">
           {(() => {
             try {
@@ -62,6 +63,7 @@ export default function Service() {
             }
           })()}
         </Button>
+        </Link>
       </div>
 
       {/* Grille responsive */}

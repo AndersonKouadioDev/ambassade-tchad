@@ -4,6 +4,7 @@ import { api } from "@/lib/api";
 
 export interface IAuthAPI {
   login: (data: LoginDTO) => Promise<ILoginResponse>;
+  register: (data: LoginDTO) => Promise<ILoginResponse>;
   refreshToken: (token: string) => Promise<IRefreshTokenResponse>;
 }
 
@@ -15,7 +16,13 @@ export const authAPI: IAuthAPI = {
       data,
     });
   },
-
+  register(data: LoginDTO): Promise<ILoginResponse> {
+    return api.request<ILoginResponse>({
+      endpoint: `/auth/register-client`,
+      method: "POST",
+      data,
+    });
+  },
   refreshToken(token: string): Promise<IRefreshTokenResponse> {
     return api.request<IRefreshTokenResponse>({
       endpoint: `/auth/refresh`,

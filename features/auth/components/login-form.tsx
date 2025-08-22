@@ -1,24 +1,20 @@
 "use client";
 
-import { useState } from "react";
-// import { useTranslations } from "next-intl";
-// import { useLocale } from "next-intl";
+import { useState, useEffect } from "react";
 import { signIn, useSession } from "next-auth/react";
-import { useEffect } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { login } from "../actions/auth.action";
 import { useRouter } from "@/i18n/navigation";
 
 export default function LoginForm() {
-  // const t = useTranslations("auth.login");
   const router = useRouter();
-  // const locale = useLocale();
   const { status } = useSession();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  
   useEffect(() => {
     if (status === "authenticated") {
       router.push("/espace-client/dashboard");
@@ -39,19 +35,18 @@ export default function LoginForm() {
       setError("Identifiants incorrects");
       return;
     }
-    // router.push("/espace-client/dashboard");
     window.location.reload();
   }
 
   return (
     <form
       onSubmit={handleLogin}
-      className="space-y-6 w-full max-w-md ml-0 px-4"
+      className="space-y-6 w-full max-w-md mx-auto px-4 sm:px-6"
     >
       <div>
         <label
           htmlFor="email"
-          className="block text-sm font-medium text-gray-700 mb-1"
+          className="block text-sm font-medium text-gray-700 mb-2"
         >
           Adresse Email
         </label>
@@ -62,14 +57,14 @@ export default function LoginForm() {
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-[400px] px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all"
+          className="md:w-[400px] px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all"
         />
       </div>
 
       <div>
         <label
           htmlFor="password"
-          className="block text-sm font-medium text-gray-700 mb-1"
+          className="block text-sm font-medium text-gray-700 mb-2"
         >
           Mot de passe
         </label>
@@ -81,7 +76,7 @@ export default function LoginForm() {
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-[400px] px-4 py-3 pr-12 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all"
+            className="md:w-[400px] w-full px-4 py-3 pr-12 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all"
           />
           <button
             type="button"
@@ -121,12 +116,12 @@ export default function LoginForm() {
         <button
           disabled={loading}
           type="submit"
-          className="w-full py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white text-lg font-semibold rounded-lg hover:from-orange-600 hover:to-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 disabled:opacity-70 disabled:cursor-not-allowed transition-all shadow-md hover:shadow-lg"
+          className="w-full py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white text-base sm:text-lg font-semibold rounded-lg hover:from-orange-600 hover:to-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 disabled:opacity-70 disabled:cursor-not-allowed transition-all shadow-md hover:shadow-lg"
         >
           {loading ? (
             <span className="flex items-center justify-center">
               <svg
-                className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                className="animate-spin -ml-1 mr-2 h-4 w-4 sm:h-5 sm:w-5 text-white"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -150,6 +145,17 @@ export default function LoginForm() {
           ) : (
             "Se connecter"
           )}
+        </button>
+      </div>
+      
+      {/* Lien mot de passe oublié pour mobile */}
+      <div className="text-center pt-2 sm:hidden">
+        <button
+          type="button"
+          onClick={() => router.push('/auth/forgot-password')}
+          className="text-sm text-blue-600 hover:text-blue-800 focus:outline-none"
+        >
+          Mot de passe oublié ?
         </button>
       </div>
     </form>

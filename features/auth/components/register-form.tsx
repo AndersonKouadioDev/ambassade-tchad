@@ -4,13 +4,17 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
+import { Eye, EyeOff } from "lucide-react";
+import { register } from "../actions/auth.action";
+import { RegisterDTO } from "../schemas/auth.schema";
 import PhoneInput from "@/components/ui/PhoneInput";
 
 export default function RegisterForm() {
   const t = useTranslations("auth.register");
   const router = useRouter();
   const locale = useLocale();
-  const [formData, setFormData] = useState({
+  
+  const [formData, setFormData] = useState<RegisterDTO>({
     firstName: "",
     lastName: "",
     email: "",
@@ -18,6 +22,7 @@ export default function RegisterForm() {
     confirmPassword: "",
     phoneNumber: "",
   });
+  
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -37,76 +42,24 @@ export default function RegisterForm() {
     }));
   };
 
-  const validateForm = () => {
-    if (!formData.firstName || !formData.lastName || !formData.email || !formData.password || !formData.confirmPassword) {
-      setError("Tous les champs sont obligatoires");
-      return false;
-    }
-
-    if (formData.password !== formData.confirmPassword) {
-      setError("Les mots de passe ne correspondent pas");
-      return false;
-    }
-
-    if (formData.password.length < 6) {
-      setError("Le mot de passe doit contenir au moins 6 caractères");
-      return false;
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
-      setError("Format d'email invalide");
-      return false;
-    }
-
-    if (formData.phoneNumber) {
-      // Le composant PhoneInput gère déjà la validation et le formatage
-      // Vérification basique : doit commencer par + et avoir au moins 10 chiffres pour la Côte d'Ivoire
-      const digitsOnly = formData.phoneNumber.replace(/\D/g, '');
-      if (digitsOnly.length < 10) {
-        setError("Le numéro de téléphone doit contenir au moins 10 chiffres");
-        return false;
-      }
-    }
-
-    return true;
-  };
-
   async function handleRegister(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setError("");
-    
-    if (!validateForm()) return;
-
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:8081/api/v1/auth/register-client", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          email: formData.email,
-          phoneNumber: formData.phoneNumber,
-          password: formData.password,
-        }),
-      });
-
-      const data = await response.json();
-      setLoading(false);
-
-      if (!response.ok) {
-        setError(data.message || "Erreur lors de l'inscription");
-        return;
-      }
-
-      router.push(`/${locale}/auth?message=inscription_success`);
+      const result = await register(formData);
       
+      if (result.success) {
+        router.push(`/${locale}/auth?message=inscription_success`);
+      } else {
+        setError(result.message);
+      }
     } catch (err) {
+      console.error("Registration error:", err);
+      setError("Une erreur est survenue lors de l'inscription");
+    } finally {
       setLoading(false);
-      setError("Erreur réseau ou serveur");
-      console.error("Erreur dans handleRegister", err);
     }
   }
 
