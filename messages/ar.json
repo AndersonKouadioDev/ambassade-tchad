@@ -434,7 +434,6 @@
       "description": "اكتشف عجائب تشاد"
     }
   },
-
   "events": {
     "title": "الفعاليات",
     "description": "اكتشف الفعاليات التي تنظمها السفارة",
@@ -640,10 +639,84 @@
       "monProfil": "ملفي الشخصي",
       "deconnexion": "تسجيل الخروج"
     },
+    "mesDemandesClient": {
+      "title": "طلباتي",
+      "description": "ابحث هنا عن تاريخ وحالة جميع طلباتك إلى سفارة تشاد.",
+      "filtrer": "تصفية حسب",
+      "noTicket": "رقم التذكرة",
+      "placeholderTicket": "مثال: T001",
+      "typeService": "نوع الخدمة",
+      "statut": "الحالة",
+      "tous": "الكل",
+      "appliquer": "تطبيق",
+      "listeDemandes": "قائمة الطلبات",
+      "demandesEnAttente": "الطلبات المعلقة",
+      "toutesVosDemandes": "جميع طلباتك",
+      "aucuneDemandeTrouvee": "لم يتم العثور على أي طلب",
+      "aucuneDemandeMessage": "ليس لديك أي طلبات حالياً.",
+      "reessayer": "إعادة المحاولة",
+      "sessionNonTrouvee": "لم يتم العثور على الجلسة. يرجى تسجيل الدخول مرة أخرى.",
+      "erreurChargement": "خطأ في تحميل الطلبات",
+      "erreurInconnue": "خطأ غير معروف",
+      "pagePrecedente": "الصفحة السابقة",
+      "pageSuivante": "الصفحة التالية",
+      "demandes": "طلبات",
+      "page": "صفحة",
+      "sur": "من",
+      "services": {
+        "carteConsulaire": "البطاقة القنصلية",
+        "visa": "تأشيرة",
+        "laissezPasser": "رخصة المرور",
+        "procuration": "التوكيل",
+        "acteCapaciteMariage": "شهادة الأهلية للزواج",
+        "acteDeces": "شهادة وفاة",
+        "certificatNationalite": "شهادة الجنسية",
+        "acteNaissance": "شهادة ميلاد"
+      },
+      "statuts": {
+        "NEW": "جديد",
+        "PENDING": "قيد الانتظار",
+        "IN_PROGRESS": "قيد المعالجة",
+        "COMPLETED": "مكتمل",
+        "READY_TO_PICKUP": "جاهز للاستلام",
+        "REJECTED": "مرفوض",
+        "IN_REVIEW_DOCS": "قيد مراجعة الوثائق",
+        "PENDING_ADDITIONAL_INFO": "بانتظار معلومات إضافية",
+        "APPROVED_BY_AGENT": "تمت الموافقة من الموظف",
+        "APPROVED_BY_CHEF": "تمت الموافقة من المشرف",
+        "APPROVED_BY_CONSUL": "تمت الموافقة من القنصل",
+        "READY_FOR_PICKUP": "جاهز للاستلام",
+        "DELIVERED": "تم التسليم",
+        "ARCHIVED": "مؤرشف",
+        "EXPIRED": "منتهي الصلاحية",
+        "RENEWAL_REQUESTED": "تم طلب التجديد"
+      },
+      "documents": {
+        "title": "الوثائق المقدمة",
+        "aucunDocument": "لا توجد وثائق مقدمة لهذا الطلب",
+        "telecharger": "تحميل",
+        "uploadedOn": "تم الرفع في",
+        "nonSpecifie": "غير محدد"
+      }
+    },
     "dashboard": {
       "title": "لوحة القيادة",
       "welcome": "مرحبًا بك في فضاء العميل الخاص بك",
       "description": "ابحث عن تاريخ وحالة جميع طلباتك إلى سفارة تشاد هنا.",
+      "etapesTitre": "الخطوات اللازمة لتقديم الطلب",
+      "etape1Titre": "الخطوة 1",
+      "etape1Description": "انقر على زر 'طلب جديد' للبدء.",
+      "etape2Titre": "الخطوة 2",
+      "etape2Description": "اختر نوع الخدمة لطلبك.",
+      "etape3Titre": "الخطوة 3",
+      "etape3Description": "قم بملء استمارة الطلب.",
+      "etape4Titre": "الخطوة 4",
+      "etape4Description": "أرسل استمارة الطلب.",
+      "infoComplementaires": "معلومات إضافية",
+      "info1": "يرجى قراءة عنوان الاستمارة جيدًا قبل البدء.",
+      "info2": "قدّم المستندات المطلوبة.",
+      "info3": "اطبع المعلومات بالنقر على 'عرض' ثم على زر 'طباعة'.",
+      "info4": "اتصل بالسفارة إذا كانت لديك أي أسئلة.",
       "quickActions": {
         "title": "الإجراءات السريعة",
         "description": "الوصول السريع إلى الميزات الرئيسية",
@@ -673,14 +746,57 @@
         "viewAll": "عرض جميع الإشعارات"
       },
       "progressSteps": {
-        "processus": "عملية",
-        "deTraitement": "المعالجة",
-        "etape1": "تقديم الملف",
+        "processus": "العملية",
+        "deTraitement": "للمعالجة",
+        "etape1": "إيداع الملف",
         "etape2": "التحقق",
         "etape3": "المعالجة",
-        "etape4": "التحقق",
-        "etape5": "الإنهاء",
-        "etape6": "الاستلام"
+        "etape4": "المصادقة من الموظف",
+        "etape5": "المصادقة من المدير",
+        "etape6": "المصادقة من القنصل",
+        "etape7": "جاهز للاستلام",
+        "step1": "إيداع الملف",
+        "step2": "التحقق",
+        "step3": "المعالجة",
+        "step4": "المصادقة من الموظف",
+        "step5": "المصادقة من المدير",
+        "step6": "المصادقة من القنصل",
+        "step7": "جاهز للاستلام",
+        "description1": "وصف الخطوة 1",
+        "description2": "وصف الخطوة 2",
+        "description3": "وصف الخطوة 3",
+        "description4": "وصف الخطوة 4",
+        "description5": "وصف الخطوة 5",
+        "description6": "وصف الخطوة 6",
+        "complete": "مكتمل",
+        "pending": "قيد الانتظار",
+        "processing": "قيد المعالجة",
+        "completed": "مكتمل",
+        "rejected": "مرفوض",
+        "cancelled": "ملغى",
+        "required": "مطلوب",
+        "finished": "منجز",
+        "estimatedCompletion": "الانتهاء المتوقع",
+        "date": "التاريخ",
+        "days": "أيام",
+        "depot": "إيداع الملف",
+        "verification": "التحقق من الملف",
+        "traitement": "معالجة الملف",
+        "validation": "المصادقة من القنصل",
+        "finalisation": "إتمام الملف",
+        "pret": "جاهز للاستلام",
+        "retrait": "استلام الملف",
+        "stepsLimited": "حدود الخطوات",
+        "step": "خطوة",
+        "description": "الوصف",
+        "step${i + 1}": "خطوة ${i + 1}",
+        "description${i + 1}": "وصف الخطوة ${i + 1}",
+        "verifCourt": "تحقق مختصر",
+        "traitCourt": "معالجة مختصرة",
+        "validCourt": "مصادقة مختصرة",
+        "finalCourt": "إتمام مختصر",
+        "pretCourt": "جاهز مختصر",
+        "retraitCourt": "استلام مختصر"
       },
       "requestsTable": {
         "title": "طلباتي الحالية",
@@ -853,6 +969,17 @@
       "nouvelleDemandeButton": "تقديم طلب جديد",
       "newRequest": "طلب جديد",
       "viewRequests": "عرض طلباتي"
+    },
+    "services":{
+      "visa":"الهوية",
+      "passeport":"الجواز",
+      "carteConsulaire":"القنصلي",
+      "laissezPasser":"الجواز",
+      "procuration":"القنصلي",
+      "birthAct":"الهوية",
+      "deathAct":"الجواز",
+      "marriageCapacity":"القنصلي",
+      "certificatNationalite":"الجواز"
     }
   },
   "messages": {
@@ -868,7 +995,6 @@
       "reply": "الرد"
     }
   },
-
   "notifications": {
     "title": "الإشعارات",
     "listeAlertes": "قائمة بآخر التنبيهات والتحديثات الهامة",
@@ -923,7 +1049,7 @@
     "title": "ملفي الشخصي",
     "description": "ابحث عن تاريخ وحالة جميع طلباتك إلى سفارة تشاد هنا.",
     "modifierCompte": "تعديل الحساب",
-    "modifierMotDePasse": "تغيير كلمة المرور الخاصة بي",
+    "modifierMotDePasse": "تعديل",
     "supprimerCompte": "حذف حسابي",
     "champsObligatoires": "الحقول التي عليها علامة * إجبارية.",
     "monIdentite": "هويتي",
@@ -943,62 +1069,64 @@
     "confirmerMotDePasse": "تأكيد كلمة المرور الجديدة"
   },
   "visaForm": {
-    "title": "طلب تأشيرة",
-    "personalInfo": "المعلومات الشخصية",
-    "passportInfo": "معلومات جواز السفر",
-    "professionalInfo": "المعلومات المهنية والتأشيرة",
-    "contactAndDocuments": "جهة الاتصال والمستندات",
-    "requiredDocuments": "المستندات المطلوبة لطلب التأشيرة",
-    "processingTime": "وقت المعالجة",
-    "beforeStarting": "قبل البدء",
-    "successMessage": "تم إنشاء الطلب بنجاح!",
-    "successDescription": "تم تقديم طلب التأشيرة الخاص بك. ستتلقى قريبًا رسالة تأكيد عبر البريد الإلكتروني.",
-    "viewMyRequests": "عرض طلباتي",
-    "fields": {
-      "personFirstName": "الاسم الأول",
-      "personLastName": "الاسم الأخير",
-      "personGender": "الجنس",
-      "personNationality": "الجنسية",
-      "personBirthDate": "تاريخ الميلاد",
-      "personBirthPlace": "مكان الميلاد",
-      "personMaritalStatus": "الحالة الاجتماعية",
-      "passportType": "نوع جواز السفر",
-      "passportNumber": "رقم جواز السفر",
-      "passportIssuedBy": "بلد الإصدار",
-      "passportIssueDate": "تاريخ الإصدار",
-      "passportExpirationDate": "تاريخ انتهاء الصلاحية",
-      "profession": "المهنة",
-      "employerAddress": "عنوان صاحب العمل",
-      "employerPhoneNumber": "رقم هاتف صاحب العمل",
-      "durationMonths": "مدة الإقامة (أشهر)",
-      "destinationState": "مدينة الوجهة",
-      "visaType": "نوع التأشيرة",
-      "contactPhoneNumber": "رقم هاتف الاتصال"
+    "title": "استمارة طلب التأشيرة",
+    "validationError": "خطأ في التحقق من الحقل {field}",
+    "documentsRequired": "يرجى تحميل {count} من المستندات المطلوبة.",
+    "submitError": "حدث خطأ أثناء إرسال طلبك",
+    "steps": {
+      "personalInfo": "المعلومات الشخصية",
+      "passportInfo": "معلومات جواز السفر",
+      "professionalInfo": "المعلومات المهنية والتأشيرة",
+      "documents": "الملخص والمستندات الداعمة"
     },
-    "options": {
-      "gender": {
-        "MALE": "ذكر",
-        "FEMALE": "أنثى"
-      },
-      "maritalStatus": {
-        "SINGLE": "أعزب/عزباء",
-        "MARRIED": "متزوج/متزوجة",
-        "DIVORCED": "مطلق/مطلقة",
-        "WIDOWED": "أرمل/أرملة"
-      },
-      "passportType": {
-        "ORDINARY": "عادي",
-        "DIPLOMATIC": "دبلوماسي",
-        "SERVICE": "خدمة"
-      },
-      "visaType": {
-        "SHORT_STAY": "إقامة قصيرة",
-        "LONG_STAY": "إقامة طويلة",
-        "TRANSIT": "عبور",
-        "BUSINESS": "عمل",
-        "STUDENT": "طالب",
-        "WORK": "عمل"
-      }
+    "fields": {
+      "firstName": "الاسم الأول *",
+      "lastName": "الاسم العائلي *",
+      "gender": "الجنس *",
+      "nationality": "الجنسية *",
+      "birthDate": "تاريخ الميلاد *",
+      "birthPlace": "مكان الميلاد *",
+      "maritalStatus": "الحالة الاجتماعية *",
+      "passportType": "نوع جواز السفر *",
+      "passportNumber": "رقم جواز السفر *",
+      "passportIssuedBy": "بلد الإصدار *",
+      "passportIssueDate": "تاريخ الإصدار *",
+      "passportExpirationDate": "تاريخ الانتهاء *",
+      "profession": "المهنة *",
+      "employerAddress": "عنوان جهة العمل *",
+      "employerPhoneNumber": "هاتف جهة العمل *",
+      "durationMonths": "مدة الإقامة (بالأشهر) *",
+      "destinationState": "مدينة الوجهة *",
+      "contactPhoneNumber": "رقم الاتصال *"
+    },
+    "placeholders": {
+      "firstName": "مثال: محمد",
+      "lastName": "مثال: أبكر",
+      "nationality": "مثال: تشادية",
+      "birthPlace": "مثال: نجامينا",
+      "passportNumber": "مثال: AB123456",
+      "passportIssuedBy": "مثال: جمهورية تشاد",
+      "profession": "مثال: مهندس",
+      "employerAddress": "مثال: شارع السلام 123، أبيدجان",
+      "employerPhoneNumber": "مثال: ‎+225 01 23 45 67 89",
+      "durationMonths": "مثال: 3",
+      "destinationState": "مثال: نجامينا",
+      "contactPhoneNumber": "مثال: ‎+225 01 23 45 67 89"
+    },
+    "gender": {
+      "male": "ذكر",
+      "female": "أنثى"
+    },
+    "maritalStatus": {
+      "single": "أعزب",
+      "married": "متزوج",
+      "divorced": "مطلّق",
+      "widowed": "أرمل/أرملة"
+    },
+    "passportType": {
+      "ordinary": "عادي",
+      "diplomatic": "دبلوماسي",
+      "service": "خدمة"
     }
   },
   "header": {

@@ -260,7 +260,7 @@ export default function DemandeDetailsSection({ticket}: { ticket: string }) {
             {label: "Nouveau", done: false},
             {label: "En cours", done: false},
             {label: "En attente", done: false},
-            {label: "Approuvé par l'demandeur", done: false},
+            {label: "Approuvé par l'agent", done: false},
             {label: "Approuvé par le chef", done: false},
             {label: "Approuvé par le consul", done: false},
             {label: "Prêt à retirer", done: false},

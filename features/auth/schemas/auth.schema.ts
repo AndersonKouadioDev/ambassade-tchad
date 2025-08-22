@@ -15,12 +15,12 @@ export const registerSchema = z.object({
   password: z.string({ message: "Le mot de passe est requis" })
     .min(8, "Le mot de passe doit contenir au moins 8 caractères")
     .max(100, "Le mot de passe ne doit pas dépasser 100 caractères")
-    .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/, "Le mot de passe doit contenir au moins une majuscule, une minuscule, un chiffre et un caractère spécial"),
+    .regex(/^ (?=.* [a - z])(?=.* [A - Z])(?=.*\d)(?=.* [@$! %*?&.])[A - Za - z\d@$!%*?&.]{ 8,} $ /, "Le mot de passe doit contenir au moins une majuscule, une minuscule, un chiffre et un caractère spécial"),
 
   confirmPassword: z.string({ message: "La confirmation du mot de passe est requise" })
     .min(8, "La confirmation du mot de passe doit contenir au moins 8 caractères")
     .max(100, "La confirmation du mot de passe ne doit pas dépasser 100 caractères")
-    .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/, "Le mot de passe doit contenir au moins une majuscule, une minuscule, un chiffre et un caractère spécial"),
+    .regex(/^ (?=.* [a - z])(?=.* [A - Z])(?=.*\d)(?=.* [@$! %*?&.])[A - Za - z\d@$!%*?&.]{ 8,} $ /, "Le mot de passe doit contenir au moins une majuscule, une minuscule, un chiffre et un caractère spécial"),
 
 }).refine((data) => data.password === data.confirmPassword, {
   message: "Les mots de passe ne correspondent pas",

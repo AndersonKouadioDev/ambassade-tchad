@@ -33,7 +33,7 @@ const services: Service[] = [
   },
   {
     picture: "/assets/images/illustrations/page-accueil/card-items-6.png",
-    link: "/tourisme/peuples-et-cultures",
+    link: "/tourisme/tchad-s",
   },
 ];
 

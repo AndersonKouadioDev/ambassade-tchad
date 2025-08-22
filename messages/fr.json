@@ -643,6 +643,20 @@
       "title": "Tableau de bord",
       "welcome": "Bienvenue dans votre espace client",
       "description": "Retrouvez ici l'historique et le statut de toutes vos demandes auprès de l'Ambassade du Tchad.",
+      "etapesTitre": "Étapes à suivre pour effectuer une demande",
+      "etape1Titre": "Étape 1",
+      "etape1Description": "Cliquer sur le bouton 'Nouvelle demande' pour commencer.",
+      "etape2Titre": "Étape 2",
+      "etape2Description": "Choisir le type de service pour votre demande.",
+      "etape3Titre": "Étape 3",
+      "etape3Description": "Remplir le formulaire de demande.",
+      "etape4Titre": "Étape 4",
+      "etape4Description": "Envoyer le formulaire de demande.",
+      "infoComplementaires": "Informations supplémentaires",
+      "info1": "Veuillez bien lire l'entête du formulaire avant de commencer.",
+      "info2": "Renseigner les documents requis.",
+      "info3": "Imprimer les informations en cliquant sur voir et ensuite sur le bouton imprimé.",
+      "info4": "Contacter l'ambassade si vous avez des questions.",
       "quickActions": {
         "title": "Actions rapides",
         "description": "Accédez rapidement aux fonctionnalités principales",
@@ -677,9 +691,53 @@
         "etape1": "Dépôt du dossier",
         "etape2": "Vérification",
         "etape3": "Traitement",
-        "etape4": "Validation",
-        "etape5": "Finalisation",
-        "etape6": "Retrait"
+        "etape4": "Validation par agent",
+        "etape5": "Validation par chef",
+        "etape6": "Validation par consul",
+        "etape7": "Prêt à retirer",
+        "step1": "Dépôt du dossier",
+        "step2": "Vérification",
+        "step3": "Traitement",
+        "step4": "Validation par agent",
+        "step5": "Validation par chef",
+        "step6": "validation par consul",
+        "step7": "prêt à retirer",
+        "description1": "Description de l'étape 1",
+        "description2": "Description de l'étape 2",
+        "description3": "Description de l'étape 3",
+        "description4": "Description de l'étape 4",
+        "description5": "Description de l'étape 5",
+        "description6": "Description de l'étape 6",
+        "complete":"Terminé",
+        "pending":"En attente",
+        "processing":"En cours",
+        "completed":"Terminé",
+        "rejected":"Rejeté",
+        "cancelled":"Annulé",
+        "required":"Requis",
+        "finished":"Terminé",
+        "estimatedCompletion":"Achèvement prévu",
+        "date":"Date",
+        "days":"Jours",
+        "depot":"Dépôt du dossier",
+        "verification":"Vérification du dossier",
+        "traitement":"Traitement du dossier",
+        "validation":"Validation du par consul",
+        "finalisation":"Finalisation du dossier",
+        "pret":"Prêt à être retiré",
+        "retrait":"Retrait du dossier",
+        "stepsLimited":"Limite d'étapes",
+        "step":"Étape",
+        "description":"Description",
+        "step${i + 1}": "Étape ${i + 1}",
+        "description${i + 1}": "Description de l'étape ${i + 1}",
+        "verifCourt":"Vérification court",
+       "traitCourt":"Traitement court",
+       "validCourt":"Validation court",
+       "finalCourt":"Finalisation court",
+       "pretCourt":"Prêt court",
+       "retraitCourt":"Retrait court"
+      
       },
       "requestsTable": {
         "title": "Mes demandes en cours",
@@ -1209,6 +1267,8 @@
       "pageSuivante": "Page suivante",
       "demandes": "demandes",
       "page": "Page",
+      "effacer": "Effacer",
+      "effacerFiltres": "Effacer les filtres",
       "sur": "sur",
       "services": {
         "carteConsulaire": "Carte Consulaire",
@@ -1250,7 +1310,7 @@
       "title": "Mon Profil",
       "description": "Gérez votre profil",
       "modifierCompte": "Modifier le compte",
-      "modifierMotDePasse": "Modifier mon mot de passe",
+      "modifierMotDePasse": "Modifier",
       "supprimerCompte": "Supprimer mon compte",
       "champsObligatoires": "Les champs annotés d'un * sont obligatoires.",
       "monIdentite": "Mon identité",
@@ -1357,63 +1417,72 @@
     "nouveauMotDePasse": "Nouveau mot de passe",
     "confirmerMotDePasse": "Confirmer le nouveau mot de passe"
   },
+ 
   "visaForm": {
-    "title": "Demande de Visa",
-    "personalInfo": "Informations personnelles",
-    "passportInfo": "Informations du passeport",
-    "professionalInfo": "Informations professionnelles et visa",
-    "contactAndDocuments": "Contact et documents",
-    "requiredDocuments": "Documents requis pour une demande de visa",
-    "processingTime": "Durée de traitement",
-    "beforeStarting": "Avant de commencer",
-    "successMessage": "Demande créée avec succès !",
-    "successDescription": "Votre demande de visa a été soumise. Vous recevrez bientôt un email de confirmation.",
-    "viewMyRequests": "Voir mes demandes",
-    "fields": {
-      "personFirstName": "Prénom",
-      "personLastName": "Nom",
-      "personGender": "Genre",
-      "personNationality": "Nationalité",
-      "personBirthDate": "Date de naissance",
-      "personBirthPlace": "Lieu de naissance",
-      "personMaritalStatus": "Statut matrimonial",
-      "passportType": "Type de passeport",
-      "passportNumber": "Numéro de passeport",
-      "passportIssuedBy": "Pays de délivrance",
-      "passportIssueDate": "Date de délivrance",
-      "passportExpirationDate": "Date d'expiration",
-      "profession": "Profession",
-      "employerAddress": "Adresse de l'employeur",
-      "employerPhoneNumber": "Téléphone de l'employeur",
-      "durationMonths": "Durée du séjour (mois)",
-      "destinationState": "Ville de destination",
-      "visaType": "Type de visa",
-      "contactPhoneNumber": "Numéro de téléphone de contact"
+    "title": "Formulaire de demande de Visa",
+    "validationError": "Erreur de validation pour {field}",
+    "documentsRequired": "Veuillez télécharger les {count} documents requis.",
+    "submitError": "Une erreur est survenue lors de la soumission de votre demande",
+    
+    "steps": {
+      "personalInfo": "Informations personnelles",
+      "passportInfo": "Informations du passeport",
+      "professionalInfo": "Informations professionnelles et visa",
+      "documents": "Récapitulatif et pièces justificatives"
     },
-    "options": {
-      "gender": {
-        "MALE": "Masculin",
-        "FEMALE": "Féminin"
-      },
-      "maritalStatus": {
-        "SINGLE": "Célibataire",
-        "MARRIED": "Marié(e)",
-        "DIVORCED": "Divorcé(e)",
-        "WIDOWED": "Veuf/Veuve"
-      },
-      "passportType": {
-        "ORDINARY": "Ordinaire",
-        "DIPLOMATIC": "Diplomatique",
-        "SERVICE": "Service"
-      },
-      "visaType": {
-        "SHORT_STAY": "Court séjour",
-        "LONG_STAY": "Long séjour",
-        "TRANSIT": "Transit",
-        "BUSINESS": "Affaires",
-        "STUDENT": "Étudiant",
-        "WORK": "Travail"
-      }
+    
+    "fields": {
+      "firstName": "Prénom *",
+      "lastName": "Nom *",
+      "gender": "Genre *",
+      "nationality": "Nationalité *",
+      "birthDate": "Date de naissance *",
+      "birthPlace": "Lieu de naissance *",
+      "maritalStatus": "Situation Matrimoniale *",
+      "passportType": "Type de passeport *",
+      "passportNumber": "Numéro de passeport *",
+      "passportIssuedBy": "Pays de délivrance *",
+      "passportIssueDate": "Date de délivrance *",
+      "passportExpirationDate": "Date d'expiration *",
+      "profession": "Profession *",
+      "employerAddress": "Adresse de l'employeur *",
+      "employerPhoneNumber": "Téléphone de l'employeur *",
+      "durationMonths": "Durée du séjour (en mois) *",
+      "destinationState": "Ville de destination *",
+      "contactPhoneNumber": "Numéro de contact *"
+    },
+    
+    "placeholders": {
+      "firstName": "Ex: Mahamat",
+      "lastName": "Ex: Abakar",
+      "nationality": "Ex: Tchadienne",
+      "birthPlace": "Ex: N'Djamena",
+      "passportNumber": "Ex: AB123456",
+      "passportIssuedBy": "Ex: République du Tchad",
+      "profession": "Ex: Ingénieur",
+      "employerAddress": "Ex: 123 Rue de la Paix, Abidjan",
+      "employerPhoneNumber": "Ex: +225 01 23 45 67 89",
+      "durationMonths": "Ex: 3",
+      "destinationState": "Ex: N'Djamena",
+      "contactPhoneNumber": "Ex: +225 01 23 45 67 89"
+    },
+    
+    "gender": {
+      "male": "Masculin",
+      "female": "Féminin"
+    },
+    
+    "maritalStatus": {
+      "single": "Célibataire",
+      "married": "Marié(e)",
+      "divorced": "Divorcé(e)",
+      "widowed": "Veuf/Veuve"
+    },
+    
+    "passportType": {
+      "ordinary": "Ordinaire",
+      "diplomatic": "Diplomatique",
+      "service": "De service"
     }
   },
   "header": {
@@ -1538,4 +1607,5 @@
       "MOTHER": "Mère"
     }
   }
+  
 }

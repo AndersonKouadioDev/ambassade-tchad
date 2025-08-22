@@ -17,7 +17,7 @@ const Footer = () => {
       href: "https://anie.td/accueil/qui-sommes-nous/",
     },
     { name: t("mainLinks.tourisme"), href: "/tourisme" },
-    { name: t("mainLinks.menus"), href: "/menus" },
+    // { name: t("mainLinks.menus"), href: "/menus" },
   ];
 
   const quickLinks = [
