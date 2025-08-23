@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { revalidateLogic, useForm } from "@tanstack/react-form";
 import { toast } from "sonner";
@@ -18,12 +18,17 @@ import { DocumentJustificationType } from "@/features/demande/types/carte-consul
 import { useFileUpload } from "@/hooks/use-file-upload";
 import { useMultistepForm } from "@/hooks/use-multistep-form";
 import PriceViewer from "../../price-viewer";
+import { useTranslations } from "next-intl";
 
 interface Props {
   documentsSize: number;
 }
 
 export default function ProcurationForm({ documentsSize }: Props) {
+  const t = useTranslations("ProcurationForm");
+  const tEnums = useTranslations("enums");
+  const tErrors = useTranslations("errors");
+
   const { Field, handleSubmit, validateField, getAllErrors } = useForm({
     defaultValues: {
       agentFirstName: "John",
@@ -38,8 +43,8 @@ export default function ProcurationForm({ documentsSize }: Props) {
         DocumentJustificationType.NATIONAL_ID_CARD,
       principalIdDocumentNumber: "123456789",
       principalAddress: "123 Main St, N'Djamena",
-      powerOfType: "Procuration de pouvoir",
-      reason: "pour effectuer des démarches administratives ",
+      powerOfType: "General Power of Attorney",
+      reason: "for administrative procedures",
       contactPhoneNumber: "123-456-7890",
       documents: [],
     } as ProcurationDetailsDTO,
@@ -141,7 +146,7 @@ export default function ProcurationForm({ documentsSize }: Props) {
       } catch (validationError: any) {
         isValid = false;
         toast.error(
-          validationError?.message || `Erreur de validation pour ${fieldName}`
+          validationError?.message || `${tErrors('validationError')} ${fieldName}`
         );
       }
     }
@@ -167,7 +172,7 @@ export default function ProcurationForm({ documentsSize }: Props) {
     };
     if (uploadedFiles.length < documentsSize) {
       toast.error(
-        `Veuillez télécharger les ${documentsSize} documents requis.`
+        `${tErrors('documentsRequired')} (${documentsSize})`
       );
       return;
     }
@@ -175,7 +180,9 @@ export default function ProcurationForm({ documentsSize }: Props) {
     try {
       await createProcuration({ data: dataForSubmit });
       showSuccessAndRedirect();
-    } catch (error) {}
+    } catch (error) {
+      toast.error(tErrors('submitError'));
+    }
   };
 
   const fieldsStep1: {
@@ -187,42 +194,42 @@ export default function ProcurationForm({ documentsSize }: Props) {
   }[] = [
     {
       name: "principalFirstName",
-      label: "Prénom *",
+      label: t("fields.principalFirstName"),
       type: "text",
-      placeholder: "Ex: Mahamat",
+      placeholder: t("placeholders.firstName"),
     },
     {
       name: "principalLastName",
-      label: "Nom *",
+      label: t("fields.principalLastName"),
       type: "text",
-      placeholder: "Ex: Idriss",
+      placeholder: t("placeholders.lastName"),
     },
     {
       name: "principalJustificationDocumentType",
-      label: "Type de pièce justificative *",
+      label: t("fields.principalJustificationDocumentType"),
       type: "select",
       options: Object.values(DocumentJustificationType).map((value) => ({
         value,
-        label: value,
+        label: tEnums(`documentJustificationType.${value}`),
       })),
       placeholder: "",
     },
     {
       name: "principalIdDocumentNumber",
-      label: "Numéro de pièce justificative *",
+      label: t("fields.principalIdDocumentNumber"),
       type: "text",
-      placeholder: "Ex: CNI123456",
+      placeholder: t("placeholders.documentNumber"),
     },
     {
       name: "principalAddress",
-      label: "Adresse *",
+      label: t("fields.principalAddress"),
       type: "text",
-      placeholder: "Ex: 12 rue de N'Djamena",
+      placeholder: t("placeholders.address"),
     },
   ];
 
   const renderStep1 = () => (
-    <StepContainer title="Informations sur le mandant">
+    <StepContainer title={t("steps.principalInfo.title")}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {fieldsStep1.map((item) => (
           <Field key={item.name} name={item.name}>
@@ -264,42 +271,42 @@ export default function ProcurationForm({ documentsSize }: Props) {
   }[] = [
     {
       name: "agentFirstName",
-      label: "Prénom *",
+      label: t("fields.agentFirstName"),
       type: "text",
-      placeholder: "Ex: Fatimé",
+      placeholder: t("placeholders.firstName"),
     },
     {
       name: "agentLastName",
-      label: "Nom *",
+      label: t("fields.agentLastName"),
       type: "text",
-      placeholder: "Ex: Abakar",
+      placeholder: t("placeholders.lastName"),
     },
     {
       name: "agentJustificationDocumentType",
-      label: "Type de pièce justificative *",
+      label: t("fields.agentJustificationDocumentType"),
       type: "select",
       options: Object.values(DocumentJustificationType).map((value) => ({
         value,
-        label: value,
+        label: tEnums(`documentJustificationType.${value}`),
       })),
       placeholder: "",
     },
     {
       name: "agentIdDocumentNumber",
-      label: "Numéro de pièce justificative *",
+      label: t("fields.agentIdDocumentNumber"),
       type: "text",
-      placeholder: "Ex: CNI654321",
+      placeholder: t("placeholders.documentNumber"),
     },
     {
       name: "agentAddress",
-      label: "Adresse *",
+      label: t("fields.agentAddress"),
       type: "text",
-      placeholder: "Ex: 34 avenue du Tchad",
+      placeholder: t("placeholders.address"),
     },
   ];
 
   const renderStep2 = () => (
-    <StepContainer title="Informations sur le mandataire">
+    <StepContainer title={t("steps.agentInfo.title")}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {fieldsStep2.map((item) => (
           <Field key={item.name} name={item.name}>
@@ -340,26 +347,26 @@ export default function ProcurationForm({ documentsSize }: Props) {
   }[] = [
     {
       name: "powerOfType",
-      label: "Type de procuration",
+      label: t("fields.powerOfType"),
       type: "text",
-      placeholder: "Ex: Générale, Spéciale...",
+      placeholder: t("placeholders.powerOfType"),
     },
     {
       name: "reason",
-      label: "Motif",
+      label: t("fields.reason"),
       type: "textarea",
-      placeholder: "Ex: Délégation de signature",
+      placeholder: t("placeholders.reason"),
     },
     {
       name: "contactPhoneNumber",
-      label: "Numéro de contact *",
+      label: t("fields.contactPhone"),
       type: "tel",
-      placeholder: "Ex: +225 01 23 45 67 89",
+      placeholder: t("placeholders.contactPhone"),
     },
   ];
 
   const renderStep3 = () => (
-    <StepContainer title="Détails de la procuration et contact">
+    <StepContainer title={t("steps.details.title")}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {fieldsStep3.map((item) => (
           <Field key={item.name} name={item.name}>
@@ -409,7 +416,7 @@ export default function ProcurationForm({ documentsSize }: Props) {
 
   return (
     <FormContainer
-      title="Formulaire de demande de Procuration"
+      title={t("title")}
       currentStep={currentStep}
       totalSteps={totalSteps}
       handleSubmit={handleSubmit}

@@ -344,7 +344,7 @@ export default function Header({ setSidebarOpen }: HeaderProps) {
             )}
           </div>
           {/* Thème */}
-          <button 
+          {/* <button 
             className="w-8 h-8 rounded-full bg-white flex items-center justify-center hover:bg-gray-50 transition-colors"
             onClick={toggleTheme}
             aria-label={theme === 'light' ? 'Passer au mode sombre' : 'Passer au mode clair'}
@@ -354,7 +354,7 @@ export default function Header({ setSidebarOpen }: HeaderProps) {
             ) : (
               <Sun className="text-blue-800 w-5 h-5" />
             )}
-          </button>
+          </button> */}
           {/* Messages */}
           <div className="relative" ref={messagesRef}>
             <button

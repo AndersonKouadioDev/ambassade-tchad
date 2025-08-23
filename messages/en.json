@@ -673,7 +673,18 @@
         "settings": "Settings",
         "help": "Help",
         "feedback": "Give Feedback",
-        "emergencyContact": "Emergency Contact"
+        "emergencyContact": "Emergency Contact",
+        "documents":{
+          "visa":"Visa",
+          "passport":"Passport",
+          "consular":"Consular",
+          "laissezPasser":"Laissez Passer",
+          "procuration":"Procuration",
+          "birthAct":"Birth Act",
+          "deathAct":"Death Act",
+          "marriageCapacity":"Marriage Capacity",
+          "nationality":"Nationality"
+        }
       },
       "recentRequests": {
         "title": "Recent Requests",
@@ -1268,6 +1279,8 @@
       "demandes": "requests",
       "page": "Page",
       "sur": "of",
+      "effacer": "Clear",
+      "effacerFiltres": "Clear filters",
       "services": {
         "carteConsulaire": "Consular Card",
         "visa": "Visa",
@@ -1591,10 +1604,519 @@
     "emailLabel": "Email",
     "emailValue": "ambassade.tchadabj@ambatchad.ci"
   },
+  "NewRequestPage": {
+    "title": "New request",
+    "description": "Select the type of service you want to request.",
+    "loading": "Loading...",
+    "services": {
+      "visa": {
+        "title": "Visa",
+        "description": "Visa application for stay in Chad",
+        "features": [
+          "Short stay",
+          "Long stay"
+        ]
+      },
+      "birthAct": {
+        "title": "Birth Certificate",
+        "description": "Birth certificate application",
+        "features": [
+          "Full copy",
+          "Extract with filiation",
+          "Extract without filiation"
+        ]
+      },
+      "consularCard": {
+        "title": "Consular Card",
+        "description": "Consular card application",
+        "features": [
+          "National identity card",
+          "Proof of residence"
+        ]
+      },
+      "laissezPasser": {
+        "title": "Laissez-passer",
+        "description": "Laissez-passer application",
+        "features": [
+          "Emergency",
+          "Temporary travel",
+          "Return to home country"
+        ]
+      },
+      "marriageCapacity": {
+        "title": "Marriage Capacity Certificate",
+        "description": "Marriage capacity certificate application",
+        "features": [
+          "Civil marriage",
+          "Religious marriage",
+          "Proof of single status"
+        ]
+      },
+      "deathAct": {
+        "title": "Death Certificate",
+        "description": "Death certificate application",
+        "features": [
+          "Full copy",
+          "Extract",
+          "Death certificate"
+        ]
+      },
+      "powerOfAttorney": {
+        "title": "Power of Attorney",
+        "description": "Power of attorney application",
+        "features": [
+          "General power of attorney",
+          "Special power of attorney",
+          "Mandate"
+        ]
+      },
+      "nationalityCertificate": {
+        "title": "Nationality Certificate",
+        "description": "Chadian nationality certificate application",
+        "features": [
+          "Nationality certificate",
+          "Proof of citizenship"
+        ]
+      }
+    },
+    "startButton": "Start"
+  },
+  "DemandTypes": {
+    "visa": {
+      "title": "Visa Application",
+      "description": "Fill out this form to submit your visa application. Make sure you have all required documents before starting.",
+      "processingTime": "5-15 business days"
+    },
+    "birthAct": {
+      "title": "Birth Certificate Application",
+      "description": "Fill out this form to request a birth certificate.",
+      "processingTime": "3-7 days"
+    },
+    "consularCard": {
+      "title": "Consular Card Application",
+      "description": "Fill out this form to request a consular card.",
+      "processingTime": "10-20 days"
+    },
+    "laissezPasser": {
+      "title": "Laissez-passer Application",
+      "description": "Fill out this form to request a laissez-passer.",
+      "processingTime": "2-5 days"
+    },
+    "marriageCapacity": {
+      "title": "Marriage Capacity Certificate",
+      "description": "Marriage capacity certificate application - Form under development.",
+      "processingTime": "5-10 days"
+    },
+    "deathAct": {
+      "title": "Death Certificate Application",
+      "description": "Death certificate application - Form under development.",
+      "processingTime": "3-7 days"
+    },
+    "powerOfAttorney": {
+      "title": "Power of Attorney Application",
+      "description": "Fill out this form to request a power of attorney.",
+      "processingTime": "3-5 days"
+    },
+    "nationalityCertificate": {
+      "title": "Nationality Certificate",
+      "description": "Chadian nationality certificate application - Form under development.",
+      "processingTime": "7-15 days"
+    },
+    "documents": {
+      "recentIdPhoto": "Recent ID photo",
+      "financialResourcesProof": "Proof of financial resources"
+    }
+  },
+  "CertificatNationaliteForm": {
+    "title": "Nationality Certificate Application Form",
+    "steps": {
+      "personalInfo": {
+        "title": "Personal Information"
+      },
+      "parentInfo": {
+        "title": "Parent Information and Contact"
+      },
+      "summary": {
+        "title": "Summary and Supporting Documents"
+      }
+    },
+    "fields": {
+      "firstName": "First Name *",
+      "lastName": "Last Name *",
+      "birthDate": "Date of Birth *",
+      "birthPlace": "Place of Birth *",
+      "nationality": "Nationality *",
+      "parentFirstName": "Parent First Name *",
+      "parentLastName": "Parent Last Name *",
+      "relationship": "Relationship *",
+      "contactPhone": "Contact Phone Number *"
+    },
+    "placeholders": {
+      "firstName": "Ex: John",
+      "lastName": "Ex: Doe",
+      "birthPlace": "Ex: New York",
+      "nationality": "Ex: United States",
+      "relationship": "Select relationship",
+      "contactPhone": "Ex: +1 123 456 7890"
+    }
+  },
+  "ActeNaissanceForm": {
+    "title": "Birth Certificate Application",
+    "steps": {
+      "personalInfo": {
+        "title": "Personal Information"
+      },
+      "parentalInfo": {
+        "title": "Parental Information"
+      },
+      "agentInfo": {
+        "title": "Agent Information"
+      }
+    },
+    "fields": {
+      "firstName": "First Name *",
+      "lastName": "Last Name *",
+      "birthDate": "Date of Birth *",
+      "birthPlace": "Place of Birth *",
+      "nationality": "Nationality *",
+      "domicile": "Domicile (optional)",
+      "fatherFullName": "Father's Full Name",
+      "motherFullName": "Mother's Full Name",
+      "contactPhone": "Contact Phone Number",
+      "requestType": "Request Type"
+    },
+    "placeholders": {
+      "firstName": "Enter first name",
+      "lastName": "Enter last name",
+      "birthPlace": "City, country of birth",
+      "nationality": "Ex: Chadian",
+      "domicile": "Home address",
+      "fatherFullName": "Father's full name",
+      "motherFullName": "Mother's full name",
+      "contactPhone": "Ex: +1 123 456 7890",
+      "requestType": "Ex: Birth certificate"
+    }
+  },
+  "CarteConsulaireForm": {
+    "title": "Consular Card Application Form",
+    "steps": {
+      "personalInfo": {
+        "title": "Personal Information"
+      },
+      "filiationInfo": {
+        "title": "Lineage, Documentation and Contact"
+      },
+      "summary": {
+        "title": "Summary and Supporting Documents"
+      }
+    },
+    "fields": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "birthDate": "Date of Birth",
+      "birthPlace": "Place of Birth",
+      "profession": "Profession",
+      "nationality": "Nationality",
+      "domicile": "Current Domicile",
+      "originCountryAddress": "Address in Country of Origin",
+      "fatherFullName": "Father's Full Name",
+      "motherFullName": "Mother's Full Name",
+      "justificationDocumentType": "Type of Supporting Document",
+      "justificationDocumentNumber": "Document Number",
+      "contactPhone": "Contact Phone Number"
+    },
+    "placeholders": {
+      "selectDocumentType": "Select document type",
+      "documentNumber": "Enter document number",
+      "contactPhone": "+2250701020304"
+    }
+  },
+  "CertificatDecesForm": {
+    "title": "Death Certificate Application Form",
+    "steps": {
+      "personalInfo": {
+        "title": "Personal Information"
+      },
+      "summary": {
+        "title": "Summary and Supporting Documents"
+      }
+    },
+    "fields": {
+      "deceasedFirstName": "First Name *",
+      "deceasedLastName": "Last Name *",
+      "deceasedBirthDate": "Date of Birth *",
+      "deceasedDeathDate": "Date of Death *",
+      "deceasedNationality": "Nationality *",
+      "contactPhone": "Contact Phone Number *"
+    },
+    "placeholders": {
+      "firstName": "Ex: John",
+      "lastName": "Ex: Doe",
+      "nationality": "Ex: Chadian",
+      "contactPhone": "Ex: +1 123 456 7890"
+    }
+  },
+  "MarriageCapacityActForm": {
+    "title": "Marriage Capacity Certificate Application Form",
+    "steps": {
+      "husbandInfo": {
+        "title": "Husband's Information"
+      },
+      "wifeInfo": {
+        "title": "Wife's Information"
+      },
+      "summary": {
+        "title": "Contact, Supporting Documents and Price"
+      }
+    },
+    "fields": {
+      "husbandFirstName": "First Name *",
+      "husbandLastName": "Last Name *",
+      "husbandBirthDate": "Date of Birth *",
+      "husbandBirthPlace": "Place of Birth *",
+      "husbandNationality": "Nationality *",
+      "husbandDomicile": "Domicile",
+      "wifeFirstName": "First Name *",
+      "wifeLastName": "Last Name *",
+      "wifeBirthDate": "Date of Birth *",
+      "wifeBirthPlace": "Place of Birth *",
+      "wifeNationality": "Nationality *",
+      "wifeDomicile": "Domicile",
+      "contactPhone": "Contact Phone Number *"
+    },
+    "placeholders": {
+      "firstName": "Ex: John",
+      "lastName": "Ex: Doe",
+      "birthPlace": "Ex: N'Djamena",
+      "nationality": "Ex: Chadian",
+      "domicile": "Ex: 123 Main St",
+      "contactPhone": "Ex: +1 123 456 7890"
+    }
+  },
+  "ProcurationForm": {
+    "title": "Power of Attorney Application Form",
+    "steps": {
+      "principalInfo": {
+        "title": "Principal Information"
+      },
+      "agentInfo": {
+        "title": "Agent Information"
+      },
+      "details": {
+        "title": "Power of Attorney Details and Contact"
+      }
+    },
+    "fields": {
+      "principalFirstName": "First Name *",
+      "principalLastName": "Last Name *",
+      "principalJustificationDocumentType": "ID Document Type *",
+      "principalIdDocumentNumber": "ID Document Number *",
+      "principalAddress": "Address *",
+      "agentFirstName": "First Name *",
+      "agentLastName": "Last Name *",
+      "agentJustificationDocumentType": "ID Document Type *",
+      "agentIdDocumentNumber": "ID Document Number *",
+      "agentAddress": "Address *",
+      "powerOfType": "Power of Attorney Type",
+      "reason": "Purpose",
+      "contactPhone": "Contact Phone Number *"
+    },
+    "placeholders": {
+      "firstName": "Ex: John",
+      "lastName": "Ex: Doe",
+      "documentNumber": "Ex: ID123456",
+      "address": "Ex: 123 Main St",
+      "powerOfType": "Ex: General, Special...",
+      "reason": "Ex: Signature delegation",
+      "contactPhone": "Ex: +1 123 456 7890"
+    }
+  },
+  "AccompagnateurForm": {
+    "new": "New",
+    "title": "New escort",
+    "editTitle": "Edit escort",
+    "firstName": "First name *",
+    "firstNamePlaceholder": "ex: Mahamat",
+    "lastName": "Last name *",
+    "lastNamePlaceholder": "ex: Doe",
+    "birthDate": "Date of birth *",
+    "birthPlace": "Place of birth *",
+    "birthPlacePlaceholder": "ex: Douala",
+    "nationality": "Nationality *",
+    "nationalityPlaceholder": "ex: Cameroonian",
+    "domicile": "Domicile",
+    "domicilePlaceholder": "ex: Douala",
+    "birthDatePlaceholder": "ex: 2000-01-01",
+    "cancel": "Cancel",
+    "save": "Save"
+  },
+  "LaissezPasserForm": {
+    "title": "Laissez-passer Application Form",
+    "formTitle": "Laissez-passer Application Form",
+    "personalInfo": "Personal Information",
+    "familyInfo": "Family Information and Documents",
+    "summary": "Summary and Supporting Documents",
+    "firstName": "First name *",
+    "firstNamePlaceholder": "ex: Mahamat",
+    "lastName": "Last name *",
+    "lastNamePlaceholder": "ex: Doe",
+    "birthDate": "Date of birth *",
+    "birthDatePlaceholder": "ex: 2000-01-01",
+    "birthPlace": "Place of birth *",
+    "birthPlacePlaceholder": "ex: Douala",
+    "nationality": "Nationality *",
+    "nationalityPlaceholder": "ex: Cameroonian",
+    "domicile": "Domicile *",
+    "domicilePlaceholder": "ex: Douala",
+    "profession": "Profession",
+    "professionPlaceholder": "ex: Engineer",
+    "fatherName": "Father's full name *",
+    "fatherNamePlaceholder": "Ex: Pierre Dupont",
+    "motherName": "Mother's full name *",
+    "motherNamePlaceholder": "Ex: Marie Dupont",
+    "documentType": "Justification document type *",
+    "documentNumber": "Justification document number *",
+    "documentNumberPlaceholder": "Ex: 123456789",
+    "destination": "Destination",
+    "destinationPlaceholder": "Ex: France",
+    "travelReason": "Travel reason",
+    "travelReasonPlaceholder": "Ex: Business trip",
+    "accompanied": "Accompanied travel",
+    "accompaniers": "Accompaniers",
+    "addAccompanier": "+ Add",
+    "edit": "Edit",
+    "delete": "Delete",
+    "noAccompaniers": "No accompaniers added",
+    "contactPhone": "Contact phone number",
+    "contactPhonePlaceholder": "Ex: +225 01 23 45 67 89",
+    "priceToPay": "Price to pay",
+    "dropFiles": "Drop files here",
+    "dragDrop": "or drag and drop",
+    "maxFiles": "Max {count} files",
+    "maxSize": "Max size: {size}MB",
+    "browseFiles": "Browse",
+    "remove": "Remove",
+    "clearAll": "Clear all",
+    "next": "Next",
+    "previous": "Previous",
+    "submit": "Submit",
+    "accompanierRequired": "Please add at least one accompanier",
+    "validationError": "Validation error for {field}",
+    "documentsRequired": "Please upload all {count} required documents",
+    "submitError": "An error occurred while submitting the form",
+    "placeholders": {
+      "personFirstName": "Ex: Mahamat",
+      "personLastName": "Ex: Doe",
+      "personBirthDate": "Ex: 2000-01-01",
+      "personBirthPlace": "Ex: Douala",
+      "personNationality": "Ex: Chadian",
+      "personDomicile": "Ex: Douala",
+      "personProfession": "Ex: Engineer",
+      "fatherFullName": "Ex: Pierre Dupont",
+      "motherFullName": "Ex: Marie Dupont",
+      "justificationDocumentType": "Ex: Passeport",
+      "justificationDocumentNumber": "Ex: 123456789",
+      "destination": "Ex: Chad",
+      "travelReason": "Ex: Business trip",
+      "contactPhone": "Ex: +225 01 23 45 67 89"
+    }
+  },
+  "errors": {
+    "validationError": "Validation error for",
+    "documentsRequired": "Please upload the required documents",
+    "submitError": "An error occurred while submitting the form"
+  },
   "enums": {
     "paysParentType": {
       "FATHER": "Father",
       "MOTHER": "Mother"
+    },
+    "acteNaissanceType": {
+      "NEWBORN": "Newborn",
+      "ADULT": "Adult",
+      "COPY": "Copy",
+      "EXTRACT": "Extract",
+      "RENEWAL": "Renewal"
+    },
+    "documentJustificationType": {
+      "NATIONAL_ID_CARD": "National ID Card",
+      "PASSPORT": "Passport",
+      "BIRTH_CERTIFICATE": "Birth Certificate",
+      "RESIDENCE_PERMIT": "Residence permit",
+      "OTHER": "Other"
     }
+  },
+  "FormContainer": {
+    "title": "Form title",
+    "description": "Form description",
+    "next": "Next",
+    "previous": "Previous",
+    "submit": "Submit"
+  },
+  "DemandeHeader": {
+    "back": "Back",
+    "requiredDocuments": "Required documents",
+    "processingTime": "Processing time"
+  },
+  "locale": "en",
+  "Errors": {
+    "demandeNotFound": {
+      "title": "Request type not found",
+      "description": "The request type \"{type}\" does not exist.",
+      "backToDemandes": "Back to requests"
+    }
+  },
+  "DemandeTypes": {
+    "visa": {
+      "title": "Visa Application",
+      "description": "Fill out this form to submit your visa application. Make sure you have all the required documents before starting."
+    },
+    "birthAct": {
+      "title": "Birth Certificate Application",
+      "description": "Fill out this form to request a birth certificate."
+    },
+    "consularCard": {
+      "title": "Consular Card Application",
+      "description": "Fill out this form to request a consular card."
+    },
+    "laissezPasser": {
+      "title": "Laissez-passer Application",
+      "description": "Fill out this form to request a laissez-passer."
+    },
+    "marriageCapacity": {
+      "title": "Marriage Capacity Certificate",
+      "description": "Marriage capacity certificate application - Form under development."
+    },
+    "deathAct": {
+      "title": "Death Certificate Application",
+      "description": "Death certificate application - Form under development."
+    },
+    "powerOfAttorney": {
+      "title": "Power of Attorney Application",
+      "description": "Fill out this form to request a power of attorney."
+    },
+    "nationalityCertificate": {
+      "title": "Nationality Certificate",
+      "description": "Chadian nationality certificate application - Form under development."
+    },
+    "processingTime": {
+      "2-5": "Processing time: 2-5 days",
+      "3-5": "Processing time: 3-5 days",
+      "3-7": "Processing time: 3-7 days",
+      "5-10": "Processing time: 5-10 days",
+      "5-15": "Processing time: 5-15 business days",
+      "7-15": "Processing time: 7-15 days",
+      "10-20": "Processing time: 10-20 days"
+    }
+  },
+  "notificationsModal": {
+    "title": "My notifications",
+    "all": "All",
+    "read": "Read",
+    "unread": "Unread",
+    "empty": "You have no notifications",
+    "close": "Close",
+    "markAsRead": "Mark as read",
+    "markAsUnread": "Mark as unread"
   }
 }

@@ -73,8 +73,8 @@ const Footer = () => {
           <Image
             src="/assets/images/logo.png"
             alt="Embassy of Chad Logo"
-            width={60}
-            height={60}
+            width={123}
+            height={96}
             priority
             className="cursor-pointer"
           />

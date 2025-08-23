@@ -663,6 +663,8 @@
       "demandes": "طلبات",
       "page": "صفحة",
       "sur": "من",
+      "effacer": "مسح",
+      "effacerFiltres": "مسح الفلاتر",
       "services": {
         "carteConsulaire": "البطاقة القنصلية",
         "visa": "تأشيرة",
@@ -699,6 +701,29 @@
         "nonSpecifie": "غير محدد"
       }
     },
+    "profil": {
+      "title": "ملفي الشخصي",
+      "description": "إدارة ملفك الشخصي",
+      "modifierCompte": "تعديل الحساب",
+      "modifierMotDePasse": "تغيير كلمة المرور",
+      "supprimerCompte": "حذف حسابي",
+      "champsObligatoires": "الحقول المشار إليها بـ * إلزامية.",
+      "monIdentite": "هويتي",
+      "nom": "الاسم",
+      "prenom": "الاسم الأول",
+      "langueLabel": "اللغة التي ترغب في استخدامها لملء طلب التأشيرة",
+      "francais": "الفرنسية",
+      "anglais": "الإنجليزية",
+      "arabe": "العربية",
+      "enregistrer": "حفظ",
+      "mesDemandes": "طلباتي",
+      "voirProfil": "عرض الملف الشخصي",
+      "modifierProfil": "تعديل الملف الشخصي",
+      "annuler": "إلغاء",
+      "motDePasseActuel": "كلمة المرور الحالية",
+      "nouveauMotDePasse": "كلمة المرور الجديدة",
+      "confirmerMotDePasse": "تأكيد كلمة المرور الجديدة"
+    },
     "dashboard": {
       "title": "لوحة القيادة",
       "welcome": "مرحبًا بك في فضاء العميل الخاص بك",
@@ -717,24 +742,6 @@
       "info2": "قدّم المستندات المطلوبة.",
       "info3": "اطبع المعلومات بالنقر على 'عرض' ثم على زر 'طباعة'.",
       "info4": "اتصل بالسفارة إذا كانت لديك أي أسئلة.",
-      "quickActions": {
-        "title": "الإجراءات السريعة",
-        "description": "الوصول السريع إلى الميزات الرئيسية",
-        "newRequest": "طلب جديد",
-        "viewRequests": "عرض طلباتي",
-        "updateProfile": "تحديث الملف الشخصي",
-        "downloadDocuments": "تنزيل المستندات",
-        "contactSupport": "الاتصال بالدعم",
-        "viewNotifications": "عرض الإشعارات",
-        "checkStatus": "التحقق من الحالة",
-        "scheduleAppointment": "تحديد موعد",
-        "viewHistory": "عرض السجل",
-        "exportData": "تصدير البيانات",
-        "settings": "الإعدادات",
-        "help": "المساعدة",
-        "feedback": "تقديم ملاحظات",
-        "emergencyContact": "الاتصال في حالات الطوارئ"
-      },
       "recentRequests": {
         "title": "الطلبات الأخيرة",
         "noRequests": "لا توجد طلبات حديثة",
@@ -964,22 +971,101 @@
     },
     "quickActions": {
       "title": "الإجراءات السريعة",
-      "description": "الوصول السريع إلى الميزات الرئيسية",
+      "description": "الوصول بسرعة إلى الميزات الأساسية",
       "modalTitle": "الإجراءات السريعة المتاحة",
       "nouvelleDemandeButton": "تقديم طلب جديد",
       "newRequest": "طلب جديد",
-      "viewRequests": "عرض طلباتي"
+      "viewRequests": "عرض طلباتي",
+      "updateProfile": "تحديث الملف الشخصي",
+      "downloadDocuments": "تحميل المستندات",
+      "contactSupport": "الاتصال بالدعم",
+      "viewNotifications": "عرض الإشعارات",
+      "checkStatus": "التحقق من الحالة",
+      "scheduleAppointment": "حجز موعد",
+      "viewHistory": "عرض السجل",
+      "exportData": "تصدير البيانات",
+      "settings": "الإعدادات",
+      "help": "مساعدة",
+      "feedback": "إرسال ملاحظات",
+      "emergencyContact": "جهة اتصال للطوارئ",
+      "documents": {
+        "visa": {
+          "label": "تأشيرة",
+          "description": "طلب تأشيرة سفر",
+          "route": "/espace-client/nouvelle-demande/visa"
+        },
+        "birth-act": {
+          "label": "شهادة ميلاد",
+          "description": "طلب شهادة ميلاد",
+          "route": "/espace-client/nouvelle-demande/birth-act"
+        },
+        "consular-card": {
+          "label": "بطاقة قنصلية",
+          "description": "التسجيل لدى السفارة",
+          "route": "/espace-client/nouvelle-demande/consular-card"
+        },
+        "laissez-passer": {
+          "label": "رخصة المرور",
+          "description": "الحصول على رخصة مرور للعودة إلى تشاد",
+          "route": "/espace-client/nouvelle-demande/laissez-passer"
+        },
+        "marriage-capacity": {
+          "label": "شهادة القدرة على الزواج",
+          "description": "طلب شهادة القدرة على الزواج",
+          "route": "/espace-client/nouvelle-demande/marriage-capacity"
+        },
+        "death-act": {
+          "label": "شهادة وفاة",
+          "description": "طلب شهادة وفاة",
+          "route": "/espace-client/nouvelle-demande/death-act"
+        },
+        "power-of-attorney": {
+          "label": "توكيل",
+          "description": "تفويض شخص آخر لإنجاز إجراءاتك",
+          "route": "/espace-client/nouvelle-demande/power-of-attorney"
+        },
+        "nationality-certificate": {
+          "label": "شهادة الجنسية",
+          "description": "إثبات الجنسية التشادية",
+          "route": "/espace-client/nouvelle-demande/nationality-certificate"
+        }
+      },
+      "modal": {
+        "title": "الإجراءات السريعة المتاحة",
+        "subtitle": "اختر إجراءً للمتابعة",
+        "close": "إغلاق",
+        "cancel": "إلغاء",
+        "confirm": "تأكيد",
+        "loading": "جارٍ التحميل...",
+        "noActions": "لا توجد إجراءات متاحة",
+        "selectAction": "اختر إجراءً",
+        "actionDescription": "وصف الإجراء",
+        "proceed": "متابعة",
+        "back": "رجوع",
+        "search": "ابحث عن إجراء",
+        "filter": "تصفية الإجراءات",
+        "allActions": "كل الإجراءات",
+        "recentActions": "الإجراءات الأخيرة",
+        "favoriteActions": "الإجراءات المفضلة",
+        "categories": {
+          "requests": "الطلبات",
+          "documents": "المستندات",
+          "support": "الدعم",
+          "settings": "الإعدادات",
+          "help": "مساعدة"
+        }
+      }
     },
-    "services":{
-      "visa":"الهوية",
-      "passeport":"الجواز",
-      "carteConsulaire":"القنصلي",
-      "laissezPasser":"الجواز",
-      "procuration":"القنصلي",
-      "birthAct":"الهوية",
-      "deathAct":"الجواز",
-      "marriageCapacity":"القنصلي",
-      "certificatNationalite":"الجواز"
+    "services": {
+      "visa": "الهوية",
+      "passeport": "الجواز",
+      "carteConsulaire": "القنصلي",
+      "laissezPasser": "الجواز",
+      "procuration": "القنصلي",
+      "birthAct": "الهوية",
+      "deathAct": "الجواز",
+      "marriageCapacity": "القنصلي",
+      "certificatNationalite": "الجواز"
     }
   },
   "messages": {
@@ -1245,10 +1331,521 @@
     "emailLabel": "البريد الإلكتروني",
     "emailValue": "ambassade.tchadabj@ambatchad.ci"
   },
+  "NewRequestPage": {
+    "title": "طلب جديد",
+    "description": "اختر نوع الخدمة التي تريد طلبها.",
+    "loading": "جارٍ التحميل...",
+    "services": {
+      "visa": {
+        "title": "تأشيرة",
+        "description": "طلب تأشيرة للإقامة في تشاد",
+        "features": [
+          "إقامة قصيرة",
+          "إقامة طويلة"
+        ]
+      },
+      "birthAct": {
+        "title": "شهادة ميلاد",
+        "description": "طلب شهادة ميلاد",
+        "features": [
+          "نسخة كاملة",
+          "مستخرج مع النسب",
+          "مستخرج بدون النسب"
+        ]
+      },
+      "consularCard": {
+        "title": "البطاقة القنصلية",
+        "description": "طلب بطاقة قنصلية",
+        "features": [
+          "بطاقة الهوية الوطنية",
+          "إثبات السكن"
+        ]
+      },
+      "laissezPasser": {
+        "title": "رخصة مرور",
+        "description": "طلب رخصة مرور",
+        "features": [
+          "حالة طارئة",
+          "سفر مؤقت",
+          "العودة إلى الوطن"
+        ]
+      },
+      "marriageCapacity": {
+        "title": "شهادة القدرة على الزواج",
+        "description": "طلب شهادة القدرة على الزواج",
+        "features": [
+          "زواج مدني",
+          "زواج ديني",
+          "إثبات العزوبية"
+        ]
+      },
+      "deathAct": {
+        "title": "شهادة وفاة",
+        "description": "طلب شهادة وفاة",
+        "features": [
+          "نسخة كاملة",
+          "مستخرج",
+          "شهادة وفاة"
+        ]
+      },
+      "powerOfAttorney": {
+        "title": "توكيل",
+        "description": "طلب توكيل",
+        "features": [
+          "توكيل عام",
+          "توكيل خاص",
+          "تفويض"
+        ]
+      },
+      "nationalityCertificate": {
+        "title": "شهادة الجنسية",
+        "description": "طلب شهادة الجنسية التشادية",
+        "features": [
+          "شهادة الجنسية",
+          "إثبات المواطنة"
+        ]
+      }
+    },
+    "startButton": "ابدأ"
+  },
+  "DemandTypes": {
+    "visa": {
+      "title": "طلب تأشيرة",
+      "description": "املأ هذا النموذج لتقديم طلب التأشيرة. تأكد من أن لديك جميع المستندات المطلوبة قبل البدء.",
+      "processingTime": "5 إلى 15 يوم عمل"
+    },
+    "birthAct": {
+      "title": "طلب شهادة ميلاد",
+      "description": "املأ هذا النموذج لطلب شهادة ميلاد.",
+      "processingTime": "3 إلى 7 أيام"
+    },
+    "consularCard": {
+      "title": "طلب بطاقة قنصلية",
+      "description": "املأ هذا النموذج لطلب بطاقة قنصلية.",
+      "processingTime": "10 إلى 20 يومًا"
+    },
+    "laissezPasser": {
+      "title": "طلب رخصة مرور (لاسيه-باسيه)",
+      "description": "املأ هذا النموذج لطلب رخصة مرور.",
+      "processingTime": "2 إلى 5 أيام"
+    },
+    "marriageCapacity": {
+      "title": "شهادة قدرة على الزواج",
+      "description": "طلب شهادة قدرة على الزواج - النموذج قيد التطوير.",
+      "processingTime": "5 إلى 10 أيام"
+    },
+    "deathAct": {
+      "title": "طلب شهادة وفاة",
+      "description": "طلب شهادة وفاة - النموذج قيد التطوير.",
+      "processingTime": "3 إلى 7 أيام"
+    },
+    "powerOfAttorney": {
+      "title": "طلب توكيل",
+      "description": "املأ هذا النموذج لطلب توكيل.",
+      "processingTime": "3 إلى 5 أيام"
+    },
+    "nationalityCertificate": {
+      "title": "شهادة الجنسية",
+      "description": "طلب شهادة الجنسية التشادية - النموذج قيد التطوير.",
+      "processingTime": "7 إلى 15 يومًا"
+    },
+    "documents": {
+      "recentIdPhoto": "صورة هوية حديثة",
+      "financialResourcesProof": "إثبات الموارد المالية"
+    }
+  },
+  "CertificatNationaliteForm": {
+    "title": "استمارة طلب شهادة الجنسية",
+    "steps": {
+      "personalInfo": {
+        "title": "المعلومات الشخصية"
+      },
+      "parentInfo": {
+        "title": "معلومات الوالدين ووسائل الاتصال"
+      },
+      "summary": {
+        "title": "الملخص والمستندات الداعمة"
+      }
+    },
+    "fields": {
+      "firstName": "الاسم الأول *",
+      "lastName": "اسم العائلة *",
+      "birthDate": "تاريخ الميلاد *",
+      "birthPlace": "مكان الميلاد *",
+      "nationality": "الجنسية *",
+      "parentFirstName": "الاسم الأول للوالد *",
+      "parentLastName": "اسم العائلة للوالد *",
+      "relationship": "صلة القرابة *",
+      "contactPhone": "رقم الهاتف *"
+    },
+    "placeholders": {
+      "firstName": "مثال: أحمد",
+      "lastName": "مثال: علي",
+      "birthPlace": "مثال: القاهرة",
+      "nationality": "مثال: مصر",
+      "relationship": "اختر صلة القرابة",
+      "contactPhone": "مثال: +20 123 456 7890"
+    }
+  },
+  "ActeNaissanceForm": {
+    "title": "طلب شهادة ميلاد",
+    "steps": {
+      "personalInfo": {
+        "title": "المعلومات الشخصية"
+      },
+      "parentalInfo": {
+        "title": "معلومات الوالدين"
+      },
+      "agentInfo": {
+        "title": "معلومات الموظف"
+      }
+    },
+    "fields": {
+      "firstName": "الاسم الأول *",
+      "lastName": "اسم العائلة *",
+      "birthDate": "تاريخ الميلاد *",
+      "birthPlace": "مكان الميلاد *",
+      "nationality": "الجنسية *",
+      "domicile": "محل الإقامة (اختياري)",
+      "fatherFullName": "الاسم الكامل للأب",
+      "motherFullName": "الاسم الكامل للأم",
+      "contactPhone": "رقم الهاتف",
+      "requestType": "نوع الطلب"
+    },
+    "placeholders": {
+      "firstName": "أدخل الاسم الأول",
+      "lastName": "أدخل اسم العائلة",
+      "birthPlace": "المدينة، الدولة التي وُلدت فيها",
+      "nationality": "مثال: تشادي",
+      "domicile": "عنوان السكن",
+      "fatherFullName": "الاسم الكامل للأب",
+      "motherFullName": "الاسم الكامل للأم",
+      "contactPhone": "مثال: +225 07 12 34 56",
+      "requestType": "مثال: شهادة ميلاد"
+    }
+  },
+  "CarteConsulaireForm": {
+    "title": "نموذج طلب البطاقة القنصلية",
+    "steps": {
+      "personalInfo": {
+        "title": "المعلومات الشخصية"
+      },
+      "filiationInfo": {
+        "title": "النسب والوثائق والاتصال"
+      },
+      "summary": {
+        "title": "الملخص والمستندات الداعمة"
+      }
+    },
+    "fields": {
+      "firstName": "الاسم الأول",
+      "lastName": "اسم العائلة",
+      "birthDate": "تاريخ الميلاد",
+      "birthPlace": "مكان الميلاد",
+      "profession": "المهنة",
+      "nationality": "الجنسية",
+      "domicile": "مكان الإقامة الحالي",
+      "originCountryAddress": "العنوان في بلد المنشأ",
+      "fatherFullName": "الاسم الكامل للأب",
+      "motherFullName": "الاسم الكامل للأم",
+      "justificationDocumentType": "نوع الوثيقة الداعمة",
+      "justificationDocumentNumber": "رقم الوثيقة",
+      "contactPhone": "رقم الهاتف للاتصال"
+    },
+    "placeholders": {
+      "selectDocumentType": "اختر نوع الوثيقة",
+      "documentNumber": "أدخل رقم الوثيقة",
+      "contactPhone": "+23512345678"
+    }
+  },
+  "CertificatDecesForm": {
+    "title": "نموذج طلب شهادة الوفاة",
+    "steps": {
+      "personalInfo": {
+        "title": "المعلومات الشخصية"
+      },
+      "summary": {
+        "title": "الملخص والمستندات الداعمة"
+      }
+    },
+    "fields": {
+      "deceasedFirstName": "الاسم الأول *",
+      "deceasedLastName": "اسم العائلة *",
+      "deceasedBirthDate": "تاريخ الميلاد *",
+      "deceasedDeathDate": "تاريخ الوفاة *",
+      "deceasedNationality": "الجنسية *",
+      "contactPhone": "رقم الهاتف للاتصال *"
+    },
+    "placeholders": {
+      "firstName": "مثال: محمد",
+      "lastName": "مثال: أحمد",
+      "nationality": "مثال: تشادي",
+      "contactPhone": "مثال: +235 12 34 56 78"
+    }
+  },
+  "MarriageCapacityActForm": {
+    "title": "نموذج طلب شهادة أهلية الزواج",
+    "steps": {
+      "husbandInfo": {
+        "title": "معلومات الزوج"
+      },
+      "wifeInfo": {
+        "title": "معلومات الزوجة"
+      },
+      "summary": {
+        "title": "الاتصال والمستندات الداعمة والسعر"
+      }
+    },
+    "fields": {
+      "husbandFirstName": "الاسم الأول *",
+      "husbandLastName": "اسم العائلة *",
+      "husbandBirthDate": "تاريخ الميلاد *",
+      "husbandBirthPlace": "مكان الميلاد *",
+      "husbandNationality": "الجنسية *",
+      "husbandDomicile": "مكان الإقامة",
+      "wifeFirstName": "الاسم الأول *",
+      "wifeLastName": "اسم العائلة *",
+      "wifeBirthDate": "تاريخ الميلاد *",
+      "wifeBirthPlace": "مكان الميلاد *",
+      "wifeNationality": "الجنسية *",
+      "wifeDomicile": "مكان الإقامة",
+      "contactPhone": "رقم الهاتف للاتصال *"
+    },
+    "placeholders": {
+      "firstName": "مثال: محمد",
+      "lastName": "مثال: أحمد",
+      "birthPlace": "مثال: أنجمينا",
+      "nationality": "مثال: تشادي",
+      "domicile": "مثال: 123 الشارع الرئيسي",
+      "contactPhone": "مثال: +235 12 34 56 78"
+    }
+  },
+  "ProcurationForm": {
+    "title": "نموذج طلب التوكيل",
+    "steps": {
+      "principalInfo": {
+        "title": "معلومات الموكل"
+      },
+      "agentInfo": {
+        "title": "معلومات الوكيل"
+      },
+      "details": {
+        "title": "تفاصيل التوكيل والاتصال"
+      }
+    },
+    "fields": {
+      "principalFirstName": "الاسم الأول *",
+      "principalLastName": "اسم العائلة *",
+      "principalJustificationDocumentType": "نوع وثيقة الهوية *",
+      "principalIdDocumentNumber": "رقم وثيقة الهوية *",
+      "principalAddress": "العنوان *",
+      "agentFirstName": "الاسم الأول *",
+      "agentLastName": "اسم العائلة *",
+      "agentJustificationDocumentType": "نوع وثيقة الهوية *",
+      "agentIdDocumentNumber": "رقم وثيقة الهوية *",
+      "agentAddress": "العنوان *",
+      "powerOfType": "نوع التوكيل",
+      "reason": "الغرض",
+      "contactPhone": "رقم الهاتف للاتصال *"
+    },
+    "placeholders": {
+      "firstName": "مثال: محمد",
+      "lastName": "مثال: أحمد",
+      "documentNumber": "مثال: هوية123456",
+      "address": "مثال: 123 الشارع الرئيسي",
+      "powerOfType": "مثال: عام، خاص...",
+      "reason": "مثال: تفويض التوقيع",
+      "contactPhone": "مثال: +235 12 34 56 78"
+    }
+  },
+  "AccompagnateurForm": {
+    "new": "جديد",
+    "title": "مرافق جديد",
+    "editTitle": "تعديل المرافق",
+    "firstName": "الاسم الأول *",
+    "firstNamePlaceholder": "مثال: محمد",
+    "lastName": "اسم العائلة *",
+    "lastNamePlaceholder": "مثال: دو",
+    "birthDate": "تاريخ الميلاد *",
+    "birthPlace": "مكان الميلاد *",
+    "birthPlacePlaceholder": "مثال: دوالا",
+    "nationality": "الجنسية *",
+    "nationalityPlaceholder": "مثال: كاميروني",
+    "domicile": "مكان الإقامة",
+    "domicilePlaceholder": "مثال: دوالا",
+    "birthDatePlaceholder": "مثال: 2000-01-01",
+    "cancel": "إلغاء",
+    "save": "حفظ"
+  },
+  "LaissezPasserForm": {
+    "title": "نموذج طلب تصريح المرور",
+    "formTitle": "نموذج طلب تصريح المرور",
+    "personalInfo": "المعلومات الشخصية",
+    "familyInfo": "المعلومات العائلية والمستندات",
+    "summary": "الملخص والمستندات الداعمة",
+    "firstName": "الاسم الأول *",
+    "firstNamePlaceholder": "مثال: محمد",
+    "lastName": "اسم العائلة *",
+    "lastNamePlaceholder": "مثال: دو",
+    "birthDate": "تاريخ الميلاد *",
+    "birthDatePlaceholder": "مثال: 2000-01-01",
+    "birthPlace": "مكان الميلاد *",
+    "birthPlacePlaceholder": "مثال: دوالا",
+    "nationality": "الجنسية *",
+    "nationalityPlaceholder": "مثال: كاميروني",
+    "domicile": "مكان الإقامة *",
+    "domicilePlaceholder": "مثال: دوالا",
+    "profession": "المهنة",
+    "professionPlaceholder": "مثال: مهندس",
+    "fatherName": "الاسم الكامل للأب *",
+    "fatherNamePlaceholder": "مثال: بيير دوبون",
+    "motherName": "الاسم الكامل للأم *",
+    "motherNamePlaceholder": "مثال: ماري دوبون",
+    "documentType": "نوع المستند المبرر *",
+    "documentNumber": "رقم المستند المبرر *",
+    "documentNumberPlaceholder": "مثال: 123456789",
+    "destination": "الوجهة",
+    "destinationPlaceholder": "مثال: فرنسا",
+    "travelReason": "سبب السفر",
+    "travelReasonPlaceholder": "مثال: رحلة عمل",
+    "accompanied": "سفر مصحوب",
+    "accompaniers": "المرافقون",
+    "addAccompanier": "+ إضافة",
+    "edit": "تعديل",
+    "delete": "حذف",
+    "noAccompaniers": "لم يتم إضافة أي مرافقين",
+    "contactPhone": "رقم الهاتف للاتصال",
+    "contactPhonePlaceholder": "مثال: +225 01 23 45 67 89",
+    "priceToPay": "السعر المطلوب دفعه",
+    "dropFiles": "إسقاط الملفات هنا",
+    "dragDrop": "أو السحب والإفلات",
+    "maxFiles": "الحد الأقصى {count} ملفات",
+    "maxSize": "الحجم الأقصى: {size} ميجابايت",
+    "browseFiles": "تصفح",
+    "remove": "إزالة",
+    "clearAll": "مسح الكل",
+    "next": "التالي",
+    "previous": "السابق",
+    "submit": "إرسال",
+    "accompanierRequired": "يرجى إضافة مرافق واحد على الأقل",
+    "validationError": "خطأ في التحقق من صحة {field}",
+    "documentsRequired": "يرجى تحميل جميع المستندات {count} المطلوبة",
+    "submitError": "حدث خطأ أثناء إرسال النموذج",
+    "placeholders": {
+      "personFirstName": "مثال: محمد",
+      "personLastName": "مثال: أحمد",
+      "personBirthDate": "مثال: 2000-01-01",
+      "personBirthPlace": "مثال: دوالا",
+      "personNationality": "مثال: تشادي",
+      "personDomicile": "مثال: دوالا",
+      "personProfession": "مثال: مهندس",
+      "fatherFullName": "مثال: بيير دوبون",
+      "motherFullName": "مثال: ماري دوبون",
+      "justificationDocumentType": "مثال: جواز سفر",
+      "justificationDocumentNumber": "مثال: 123456789",
+      "destination": "مثال: فرنسا",
+      "travelReason": "مثال: رحلة عمل",
+      "contactPhone": "Ex: +225 01 23 45 67 89"
+    }
+  },
+  "errors": {
+    "validationError": "خطأ في التحقق من",
+    "documentsRequired": "يرجى رفع المستندات المطلوبة",
+    "submitError": "حدث خطأ أثناء إرسال النموذج"
+  },
   "enums": {
     "paysParentType": {
       "FATHER": "الأب",
-      "MOTHER": "الأم"
+      "MOTHER": "الأم",
+      "GRANDFATHER": "الجد",
+      "GRANDMOTHER": "الجدة"
+    },
+    "acteNaissanceType": {
+      "NEWBORN": "مولود جديد",
+      "ADULT": "بالغ",
+      "COPY": "نسخة",
+      "EXTRACT": "مستخرج",
+      "RENEWAL": "تجديد"
+    },
+    "documentJustificationType": {
+      "NATIONAL_ID_CARD": "بطاقة الهوية الوطنية",
+      "PASSPORT": "جواز السفر",
+      "BIRTH_CERTIFICATE": "شهادة الميلاد",
+      "RESIDENCE_PERMIT": "تصريح إقامة",
+      "OTHER": "أخرى"
     }
+  },
+  "FormContainer": {
+    "title": "عنوان النموذج",
+    "description": "وصف النموذج",
+    "next": "التالي",
+    "previous": "السابق",
+    "submit": "إرسال"
+  },
+  "DemandeHeader": {
+    "back": "العودة",
+    "requiredDocuments": "الوثائق المطلوبة",
+    "processingTime": "وقت المعالجة"
+  },
+  "locale": "ar",
+  "Errors": {
+    "demandeNotFound": {
+      "title": "نوع الطلب غير موجود",
+      "description": "نوع الطلب \"{type}\" غير موجود.",
+      "backToDemandes": "العودة إلى الطلبات"
+    }
+  },
+  "DemandeTypes": {
+    "visa": {
+      "title": "طلب تأشيرة",
+      "description": "املأ هذا النموذج لتقديم طلب التأشيرة الخاص بك. تأكد من وجود جميع المستندات المطلوبة قبل البدء."
+    },
+    "birthAct": {
+      "title": "طلب شهادة ميلاد",
+      "description": "املأ هذا النموذج لطلب شهادة ميلاد."
+    },
+    "consularCard": {
+      "title": "طلب بطاقة قنصلية",
+      "description": "املأ هذا النموذج لطلب بطاقة قنصلية."
+    },
+    "laissezPasser": {
+      "title": "طلب تصريح مرور",
+      "description": "املأ هذا النموذج لطلب تصريح مرور."
+    },
+    "marriageCapacity": {
+      "title": "شهادة أهلية الزواج",
+      "description": "طلب شهادة أهلية الزواج - النموذج قيد التطوير."
+    },
+    "deathAct": {
+      "title": "طلب شهادة وفاة",
+      "description": "طلب شهادة وفاة - النموذج قيد التطوير."
+    },
+    "powerOfAttorney": {
+      "title": "طلب توكيل",
+      "description": "املأ هذا النموذج لطلب توكيل."
+    },
+    "nationalityCertificate": {
+      "title": "شهادة الجنسية",
+      "description": "طلب شهادة الجنسية التشادية - النموذج قيد التطوير."
+    },
+    "processingTime": {
+      "2-5": "مدة المعالجة: 2-5 أيام",
+      "3-5": "مدة المعالجة: 3-5 أيام",
+      "3-7": "مدة المعالجة: 3-7 أيام",
+      "5-10": "مدة المعالجة: 5-10 أيام",
+      "5-15": "مدة المعالجة: 5-15 يوم عمل",
+      "7-15": "مدة المعالجة: 7-15 أيام",
+      "10-20": "مدة المعالجة: 10-20 أيام"
+    }
+  },
+  "notificationsModal": {
+    "title": "الإشعارات",
+    "all": "الكل",
+    "read": "مقروء",
+    "unread": "غير مقروء",
+    "empty": "ليس لديك أي إشعار",
+    "close": "إغلاق",
+    "markAsRead": "وضع كـمقروء",
+    "markAsUnread": "وضع كـغير مقروء"
   }
 }

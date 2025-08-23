@@ -2,28 +2,33 @@
 
 import { ArrowLeft } from "lucide-react";
 import { useRouter } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 
-export function DemandeHeader({
-  requestConfig,
-}: {
+interface DemandeHeaderProps {
   requestConfig: {
     title: string;
     description: string;
     documents: string[];
     processingTime: string;
   };
-}) {
+}
+
+export function DemandeHeader({ requestConfig }: DemandeHeaderProps) {
   const router = useRouter();
+  const t = useTranslations('DemandeHeader');
+  const locale = useTranslations()('locale'); // Supposons que vous avez une clé 'locale' dans vos traductions
+
+  const isRTL = locale === 'ar';
 
   return (
-    <div>
+    <div dir={isRTL ? "rtl" : "ltr"}>
       <div className="mb-8">
         <button
-          className="flex items-center text-gray-600 hover:text-gray-900 mb-4"
+          className={`flex items-center text-gray-600 hover:text-gray-900 mb-4 ${isRTL ? 'flex-row-reverse' : ''}`}
           onClick={() => router.back()}
         >
-          <ArrowLeft className="w-4 h-4 mr-2" />
-          Retour
+          <ArrowLeft className={`w-4 h-4 ${isRTL ? 'ml-2' : 'mr-2'}`} />
+          {t('back')}
         </button>
 
         <div className="text-center">
@@ -38,7 +43,7 @@ export function DemandeHeader({
       {requestConfig.documents.length > 0 && (
         <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">
-            Documents requis
+            {t('requiredDocuments')}
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-600">
             <ul className="space-y-2">
@@ -58,7 +63,7 @@ export function DemandeHeader({
           </div>
           <div className="mt-4 p-3 bg-blue-50 rounded-lg">
             <p className="text-sm text-blue-800">
-              <strong>Durée de traitement :</strong>{" "}
+              <strong>{t('processingTime')}:</strong>{" "}
               {requestConfig.processingTime}
             </p>
           </div>

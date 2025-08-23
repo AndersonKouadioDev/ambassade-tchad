@@ -33,7 +33,7 @@ export default function NotificationsModal({
   onMarkAsRead, 
   onMarkAsUnread 
 }: NotificationsModalProps) {
-  const t = useTranslations('espaceClient.notifications');
+  const t = useTranslations('notificationsModal');
   const [filter, setFilter] = useState<'all' | 'read' | 'unread'>('all');
 
   if (!isOpen) return null;
@@ -53,7 +53,7 @@ export default function NotificationsModal({
         <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
           <div className="flex items-center gap-3">
             <Bell className="w-6 h-6 text-orange-500" />
-            <h2 className="text-xl font-bold text-gray-900 dark:text-white">{t('modal.title')}</h2>
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white">{t('title')}</h2>
           </div>
           <button 
             onClick={onClose}
@@ -74,7 +74,7 @@ export default function NotificationsModal({
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600'
               }`}
             >
-              {t('modal.all')}
+              {t('all')}
             </button>
             <button
               onClick={() => setFilter('unread')}
@@ -84,7 +84,7 @@ export default function NotificationsModal({
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600'
               }`}
             >
-              {t('modal.unread')}
+              {t('unread')}
             </button>
             <button
               onClick={() => setFilter('read')}
@@ -94,7 +94,7 @@ export default function NotificationsModal({
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600'
               }`}
             >
-              {t('modal.read')}
+              {t('read')}
             </button>
           </div>
         </div>
@@ -103,7 +103,7 @@ export default function NotificationsModal({
         <div className="flex-1 overflow-y-auto p-4">
           {filteredNotifications.length === 0 ? (
             <div className="text-center py-8 text-gray-500 dark:text-gray-400">
-              {t('modal.empty')}
+              {t('empty')}
             </div>
           ) : (
             <div className="space-y-3">
@@ -136,7 +136,7 @@ export default function NotificationsModal({
                       className="flex items-center gap-1 px-2 py-1 text-xs text-orange-600 hover:text-orange-700 dark:text-orange-400 dark:hover:text-orange-300"
                     >
                       <CheckCircle className="w-3 h-3" />
-                      {notif.read ? t('modal.markAsUnread') : t('modal.markAsRead')}
+                      {notif.read ? t('markAsUnread') : t('markAsRead')}
                     </button>
                   </div>
                 </div>
@@ -151,7 +151,7 @@ export default function NotificationsModal({
             onClick={onClose}
             className="w-full bg-orange-500 text-white py-2 px-4 rounded-lg hover:bg-orange-600 transition font-medium"
           >
-            {t('modal.close')}
+            {t('close')}
           </button>
         </div>
       </div>

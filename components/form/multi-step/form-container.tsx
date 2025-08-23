@@ -1,6 +1,7 @@
 import React from "react";
 import ProgressBar from "@/components/form/progress-bar";
 import { Button } from "@heroui/react";
+import { useTranslations } from "next-intl";
 
 type FormContainerProps = {
   title: string;
@@ -22,6 +23,7 @@ function FormContainer({
   prevStep,
   isLoading,
 }: FormContainerProps) {
+  const t = useTranslations("FormContainer");
   return (
     <div className="mx-auto p-6 bg-white rounded-lg shadow-xl">
       {/*<h1 className="text-3xl font-bold text-center mb-6 text-gray-900">*/}
@@ -39,12 +41,12 @@ function FormContainer({
         <div className="flex justify-between items-center mt-6">
           {currentStep > 1 && (
             <Button type="button" onClick={prevStep} color="warning">
-              Précédent
+              {t("previous")}
             </Button>
           )}
           {currentStep < totalSteps ? (
             <Button color="primary" type="button" onClick={handleNext}>
-              Suivant
+              {t("next")}
             </Button>
           ) : (
             <Button
@@ -53,7 +55,7 @@ function FormContainer({
               disabled={isLoading}
               onClick={handleSubmit}
             >
-              {isLoading ? "Envoi en cours..." : "Soumettre la demande"}
+              {isLoading ? t("loading") : t("submit")}
             </Button>
           )}
         </div>

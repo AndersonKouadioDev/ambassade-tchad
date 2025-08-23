@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import FileUploadView from "@/components/block/file-upload-view";
 import { InputField } from "@/components/form/input-field";
@@ -27,20 +27,20 @@ interface Props {
 
 export default function CertificatNationaliteForm({ documentsSize }: Props) {
   const t = useTranslations("enums");
+  const tForm = useTranslations("CertificatNationaliteForm");
 
   // Validation du formulaire
   const { Field, handleSubmit, validateField, getAllErrors } = useForm({
     defaultValues: {
-      //   serviceType: ServiceType.NATIONALITY_CERTIFICATE,
-      applicantFirstName: "John",
-      applicantLastName: "Doe",
-      applicantBirthDate: "1990-01-01",
-      applicantBirthPlace: "New York",
-      applicantNationality: "United States",
-      originCountryParentFirstName: "John",
-      originCountryParentLastName: "Doe",
+      applicantFirstName: "",
+      applicantLastName: "",
+      applicantBirthDate: "",
+      applicantBirthPlace: "",
+      applicantNationality: "",
+      originCountryParentFirstName: "",
+      originCountryParentLastName: "",
       originCountryParentRelationship: PaysParentType.FATHER,
-      contactPhoneNumber: "+11234567890",
+      contactPhoneNumber: "",
       documents: [],
     } as CertificatNationaliteDetailsDTO,
     validationLogic: revalidateLogic({
@@ -90,7 +90,7 @@ export default function CertificatNationaliteForm({ documentsSize }: Props) {
     initialFiles: [],
   });
 
-  //   Récupération du prix dynamique
+  // Récupération du prix dynamique
   const { data: servicesPrices, isLoading: servicesPricesLoading } =
     useServicesPricesQuery();
 
@@ -159,23 +159,48 @@ export default function CertificatNationaliteForm({ documentsSize }: Props) {
     name: keyof Omit<CertificatNationaliteDetailsDTO, "documents">;
     label: string;
     type?: string;
+    placeholder?: string;
   }[] = [
-    { name: "applicantFirstName", label: "Prénom *", type: "text" },
-    { name: "applicantLastName", label: "Nom *", type: "text" },
-    { name: "applicantBirthDate", label: "Date de naissance *", type: "date" },
-    { name: "applicantBirthPlace", label: "Lieu de naissance *", type: "text" },
-    { name: "applicantNationality", label: "Nationalité *", type: "text" },
+    { 
+      name: "applicantFirstName", 
+      label: tForm("fields.firstName"), 
+      type: "text",
+      placeholder: tForm("placeholders.firstName")
+    },
+    { 
+      name: "applicantLastName", 
+      label: tForm("fields.lastName"), 
+      type: "text",
+      placeholder: tForm("placeholders.lastName")
+    },
+    { 
+      name: "applicantBirthDate", 
+      label: tForm("fields.birthDate"), 
+      type: "date"
+    },
+    { 
+      name: "applicantBirthPlace", 
+      label: tForm("fields.birthPlace"), 
+      type: "text",
+      placeholder: tForm("placeholders.birthPlace")
+    },
+    { 
+      name: "applicantNationality", 
+      label: tForm("fields.nationality"), 
+      type: "text",
+      placeholder: tForm("placeholders.nationality")
+    },
   ];
 
   const renderStep1 = () => (
-    <StepContainer title="Informations personnelles">
+    <StepContainer title={tForm("steps.personalInfo.title")}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {fieldsStep1.map((item) => (
           <Field key={item.name} name={item.name}>
             {({ state, handleChange, handleBlur }) => (
               <InputField
                 label={item.label}
-                placeholder="Ex: Mahamat"
+                placeholder={item.placeholder}
                 type={item.type}
                 value={state.value}
                 onChange={(value) => handleChange(value as string)}
@@ -193,20 +218,31 @@ export default function CertificatNationaliteForm({ documentsSize }: Props) {
     name: keyof Omit<CertificatNationaliteDetailsDTO, "documents">;
     label: string;
     type?: string;
+    placeholder?: string;
   }[] = [
-    { name: "originCountryParentFirstName", label: "Prénom *", type: "text" },
-    { name: "originCountryParentLastName", label: "Nom *", type: "text" },
+    { 
+      name: "originCountryParentFirstName", 
+      label: tForm("fields.parentFirstName"), 
+      type: "text",
+      placeholder: tForm("placeholders.firstName")
+    },
+    { 
+      name: "originCountryParentLastName", 
+      label: tForm("fields.parentLastName"), 
+      type: "text",
+      placeholder: tForm("placeholders.lastName")
+    },
   ];
 
   const renderStep2 = () => (
-    <StepContainer title="Informations sur le parent d'origine et contact">
+    <StepContainer title={tForm("steps.parentInfo.title")}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {fieldsStep2.map((item) => (
           <Field key={item.name} name={item.name}>
             {({ state, handleChange, handleBlur }) => (
               <InputField
                 label={item.label}
-                placeholder="Ex: Mahamat"
+                placeholder={item.placeholder}
                 type={item.type}
                 value={state.value}
                 onChange={(value) => handleChange(value as string)}
@@ -220,8 +256,8 @@ export default function CertificatNationaliteForm({ documentsSize }: Props) {
         <Field name="originCountryParentRelationship">
           {({ state, handleChange, handleBlur }) => (
             <SelectInputField
-              label="Lien de parenté *"
-              placeholder="Sélectionnez le lien de parenté"
+              label={tForm("fields.relationship")}
+              placeholder={tForm("placeholders.relationship")}
               value={state.value}
               onChange={(value) => handleChange(value as PaysParentType)}
               onBlur={handleBlur}
@@ -239,7 +275,7 @@ export default function CertificatNationaliteForm({ documentsSize }: Props) {
   );
 
   const renderStep3 = () => (
-    <StepContainer title="Récapitulatif et pièce justificative">
+    <StepContainer title={tForm("steps.summary.title")}>
       <div className="mb-4">
         <PriceViewer price={prixActe} />
       </div>
@@ -264,8 +300,8 @@ export default function CertificatNationaliteForm({ documentsSize }: Props) {
         <Field name="contactPhoneNumber">
           {({ state, handleChange, handleBlur }) => (
             <InputField
-              label="Numéro de contact *"
-              placeholder="Ex: +225 01 23 45 67 89"
+              label={tForm("fields.contactPhone")}
+              placeholder={tForm("placeholders.contactPhone")}
               type="text"
               value={state.value}
               onChange={(value) => handleChange(value as string)}
@@ -284,7 +320,7 @@ export default function CertificatNationaliteForm({ documentsSize }: Props) {
 
   return (
     <FormContainer
-      title="Formulaire de demande de Certificat de Nationalité"
+      title={tForm("title")}
       currentStep={currentStep}
       totalSteps={totalSteps}
       handleSubmit={handleSubmit}

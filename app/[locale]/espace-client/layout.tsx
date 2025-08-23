@@ -3,10 +3,10 @@ import AuthProtection from '@/features/auth/components/AuthProtection';
 
 export default function EspaceClientLayout({ children }: { children: React.ReactNode }) {
   return (
-    <AuthProtection>
+    // <AuthProtection>
       <ClientLayout>
         {children}
       </ClientLayout>
-    </AuthProtection>
+    // </AuthProtection>
   );
 } 
