@@ -42,7 +42,8 @@ export default function AuthForm() {
     } else {
       newParams.set("tab", tabId);
     }
-    router.replace(`?${newParams.toString()}`);
+    // Bug fix: Add { scroll: false } to prevent the page from scrolling to the top
+    router.replace(`?${newParams.toString()}`, { scroll: false });
   };
 
   const tabs = [
