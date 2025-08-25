@@ -32,11 +32,7 @@ export default function AuthPage() {
       </div>
 
       {/* Formulaire centré */}
-      <div className="bg-[#F6F8FA] -mt-20 md:-mt-32 relative z-10 flex justify-center w-full px-4">
-        <div className="w-full max-w-md p-8 md:p-10 bg-white rounded-2xl shadow-xl">
-          <AuthForm />
-        </div>
-      </div>
+      <AuthForm />
     </div>
   );
 }
