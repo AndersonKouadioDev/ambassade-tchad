@@ -167,7 +167,9 @@ const Footer = () => {
             ))}
           </ul>
         </div>
-        <div className="text-center text-xs text-gray-300 mt-4">COPYRIGHT © 2025 Ambassade du Tchad</div>
+        <div className="text-center text-xs text-gray-300 mt-4">
+          COPYRIGHT © 2025 Ambassade du Tchad
+        </div>
       </div>
     </footer>
   );

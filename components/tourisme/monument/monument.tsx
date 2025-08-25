@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { ChevronUp, ChevronDown, X } from "lucide-react";
 
 const imagesByMonument = [
   ["/assets/images/illustrations/tourisme/card1.png"],
@@ -37,7 +37,7 @@ function TruncatedText({ text }: { text: string }) {
       </p>
       <button
         onClick={() => setExpanded(!expanded)}
-        className="text-primary text-sm mt-1 underline"
+        className="text-primary text-sm mt-1 underline hover:text-secondary transition-colors"
       >
         {expanded ? t("lireMoins") : t("lirePlus")}
       </button>
@@ -124,42 +124,69 @@ export default function Monument() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <div className="relative w-full max-w-4xl mx-auto">
-              {/* Bouton de fermeture */}
-              <button
-                className="absolute -top-12 right-0 text-white hover:text-red-500 z-50"
-                onClick={() => setGallery(null)}
-                aria-label="Close gallery"
-              >
-                <X className="w-8 h-8" />
-              </button>
+            <button
+              className="absolute top-5 right-5 text-white hover:text-red-500 z-50 transition-colors"
+              onClick={() => setGallery(null)}
+              aria-label="Close gallery"
+            >
+              <X className="w-8 h-8" />
+            </button>
 
-              {/* Conteneur principal de l'image */}
-              <div className="relative aspect-video w-full rounded-lg overflow-hidden">
+            <div className="max-w-5xl w-full bg-white rounded-lg shadow-lg p-4 flex flex-col md:flex-row gap-4">
+              {/* Image principale */}
+              <motion.div
+                key={gallery.images[gallery.currentIndex]}
+                className="relative flex-1 h-[70vh] md:h-auto rounded-md overflow-hidden"
+              >
                 <Image
                   src={gallery.images[gallery.currentIndex]}
                   alt={`Image ${gallery.currentIndex + 1}`}
-                  fill
-                  className="object-contain"
+                  width={800}
+                  height={600}
+                  className="object-contain w-full h-auto max-h-[70vh] mx-auto"
                   priority
                 />
-              </div>
+              </motion.div>
 
-              {/* Contrôles de navigation */}
-              <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-4">
+              {/* Sidebar avec miniatures et navigation */}
+              <div className="flex flex-col items-center md:items-start gap-4 w-24 md:w-32 overflow-y-auto max-h-[100vh]">
                 <button
                   onClick={prev}
-                  className="p-3 bg-white/50 rounded-full text-gray-800 hover:bg-white transition-colors"
+                  className="text-gray-700 hover:text-primary text-2xl mb-2 select-none w-10 h-10 flex items-center justify-center rounded-full border border-gray-400 hover:border-primary transition-colors"
                   aria-label="Previous image"
                 >
-                  <ChevronLeft className="w-6 h-6" />
+                  <ChevronUp className="w-5 h-5" />
                 </button>
+
+                {gallery.images.map((src, i) => (
+                  <div
+                    key={i}
+                    onClick={() =>
+                      setGallery({ images: gallery.images, currentIndex: i })
+                    }
+                    className={`relative w-20 h-20 rounded-md overflow-hidden cursor-pointer border-4 transition-all ${
+                      i === gallery.currentIndex
+                        ? "border-primary shadow-lg"
+                        : "border-transparent hover:border-gray-300"
+                    }`}
+                  >
+                    <Image
+                      src={src}
+                      alt={`Thumbnail ${i + 1}`}
+                      fill
+                      className="object-cover"
+                      sizes="80px"
+                      priority={i === gallery.currentIndex}
+                    />
+                  </div>
+                ))}
+
                 <button
                   onClick={next}
-                  className="p-3 bg-white/50 rounded-full text-gray-800 hover:bg-white transition-colors"
+                  className="text-gray-700 hover:text-primary text-2xl mt-2 select-none w-10 h-10 flex justify-center border rounded-full border-gray-400 items-center hover:border-primary transition-colors"
                   aria-label="Next image"
                 >
-                  <ChevronRight className="w-6 h-6" />
+                  <ChevronDown className="w-5 h-5" />
                 </button>
               </div>
             </div>
