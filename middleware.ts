@@ -14,7 +14,7 @@ export const publicRoutes = [
   "/galerie/galerie-photos", 
   "/galerie/galerie-videos", 
   "/tourisme", 
-  "/tchad-s",
+  "/tchad",
 ];
 
 // Middleware d'internationalisation

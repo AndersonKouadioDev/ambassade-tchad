@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import {Link} from '@/i18n/navigation';
+import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 
 export default function Event() {
@@ -10,13 +10,15 @@ export default function Event() {
 
   const navigationCards = [0, 1, 2].map((index) => ({
     title: t(`items.${index}.title`),
-    image: `/assets/images/illustrations/page-accueil/${["bg-ambassade-1.png", "card-2.png", "card-3.png"][index]}`,
-    link: ["/ambassade", "/consulaire", "/tourisme/tchad-s"][index],
+    image: `/assets/images/illustrations/page-accueil/${
+      ["bg-ambassade-1.png", "card-2.png", "card-3.png"][index]
+    }`,
+    link: ["/ambassade", "/consulaire", "/tourisme/tchad"][index],
     alt: t(`items.${index}.alt`),
   }));
 
   return (
-    <div className="w-full relative min-h-[400px] sm:min-h-[450px] md:min-h-[500px] flex items-center justify-center py-8 md:py-12 mt-2">
+    <div className="w-full relative min-h-[400px] sm:min-h-[450px] md:min-h-[500px] flex items-center justify-center py-8 md:py-12">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -41,24 +43,23 @@ export default function Event() {
                 key={index}
                 className="block transform hover:scale-105 transition-transform duration-300"
               >
-                <div className="relative h-full rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 bg-white flex flex-col">
+                <div className="relative h-full rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
                   {/* Image container */}
-                  <div className="relative w-full aspect-[4/5]">
+                  <div className="relative w-full aspect-[4/3] md:aspect-[5/4] lg:aspect-[4/3] xl:aspect-[5/4]">
                     <Image
                       src={card.image}
                       alt={card.alt}
                       fill
                       className="object-cover"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       priority
                     />
                   </div>
 
-                  {/* Title */}
-                  <div className="mt-auto absolute bottom-0 left-0 right-0 bg-[#002B7F] text-white px-3 py-2 text-center font-medium text-sm">
-                    {card.title}
+                  {/* Titre superposé */}
+                  <div className="absolute bottom-0 left-0 right-0 p-4 bg-primary text-white text-center font-semibold text-lg md:text-2xl drop-shadow-lg">
+                    <h3 className="uppercase tracking-wider">{card.title}</h3>
                   </div>
-
                   {/* Overlay */}
                   <div className="absolute inset-0 bg-black/20 opacity-0 hover:opacity-100 transition-opacity duration-300" />
                 </div>

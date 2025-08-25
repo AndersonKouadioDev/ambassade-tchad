@@ -3,14 +3,15 @@
 import React from "react";
 import Image from "next/image";
 import { Mail, Phone, Facebook } from "lucide-react";
-import {Link} from '@/i18n/navigation';
+import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
+import { Button } from "@heroui/react";
 
 export default function About() {
-  const t = useTranslations("about");
+  const t = useTranslations("home.about");
 
   return (
-    <div className="w-full relative h-[400px]">
+    <div className="w-full relative min-h-[400px]">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -22,41 +23,80 @@ export default function About() {
         />
       </div>
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-[#003d99]/40 z-10" />
+      {/* Overlay avec effet de lueur */}
+      <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#003d99]/60 to-[#002B7F]/60" />
 
-      {/* Content */}
-      <div className="relative z-20 w-full h-full">
-        <div className="container mx-auto px-4 py-20 h-full">
-          <div className="flex flex-col absolute top-0 left-0 bg-primary text-white w-[360px] p-6 gap-6 shadow-xl rounded-br-3xl">
-            <div className="flex items-start gap-3">
-              <Phone size={24} className="text-secondary" />
-              <div>
-                <div className="text-sm font-semibold">{t("phoneLabel")}</div>
-                <div className="text-sm">+225 27 22 39 49 13</div>
+      {/* Contenu centré avec largeur max */}
+      <div className="relative z-20 mx-auto max-w-screen-2xl h-full flex items-center justify-center">
+        <div className="w-full flex flex-col lg:flex-row items-center justify-between p-4 md:p-8">
+          {/* Bloc de texte à gauche */}
+          <div className="w-full max-w-xl text-white text-center lg:text-left mb-12 lg:mb-0 lg:ml-20">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
+              {t("title")}
+            </h1>
+            <p className="mt-4 text-lg font-light max-w-md mx-auto lg:mx-0">
+              {t("description")}
+            </p>
+            <Button
+              as={Link}
+              href="/ambassade"
+              className="mt-8 text-white"
+              color="secondary"
+              radius="full"
+              size="lg"
+            >
+              {t("ctaButton")}
+            </Button>
+          </div>
+
+          {/* Bloc de contact à droite */}
+          <div className="w-full max-w-lg bg-white/10 backdrop-blur-md border border-white/20 text-white p-8 md:p-10 shadow-xl rounded-xl">
+            <h2 className="text-2xl md:text-3xl font-bold mb-6 text-white text-center">
+              {t("contactTitle")}
+            </h2>
+
+            <div className="flex flex-col gap-6">
+              <div className="flex items-center gap-4">
+                <div className="flex-shrink-0 p-3 rounded-full bg-blue-200/20 text-blue-200">
+                  <Phone size={20} />
+                </div>
+                <div>
+                  <div className="text-sm font-light uppercase tracking-wide opacity-80">
+                    {t("phoneLabel")}
+                  </div>
+                  <div className="text-lg font-semibold">+225 27 22 39 49 13</div>
+                </div>
               </div>
-            </div>
 
-            <div className="flex items-start gap-3">
-              <Facebook size={24} className="text-secondary" />
-              <div>
-                <div className="text-sm font-semibold">{t("facebookLabel")}</div>
-                <Link
-                  href="https://www.facebook.com/share/1Dx5XFzv8D/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm hover:text-secondary underline"
-                >
-                  {t("facebookLink")}
-                </Link>
+              <div className="flex items-center gap-4">
+                <div className="flex-shrink-0 p-3 rounded-full bg-blue-200/20 text-blue-200">
+                  <Facebook size={20} />
+                </div>
+                <div>
+                  <div className="text-sm font-light uppercase tracking-wide opacity-80">
+                    {t("facebookLabel")}
+                  </div>
+                  <Link
+                    href="https://www.facebook.com/share/1Dx5XFzv8D/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-lg font-semibold hover:text-blue-200"
+                  >
+                    {t("facebookLink")}
+                  </Link>
+                </div>
               </div>
-            </div>
 
-            <div className="flex items-start gap-3">
-              <Mail size={24} className="text-secondary" />
-              <div>
-                <div className="text-sm font-semibold">{t("emailLabel")}</div>
-                <div className="text-sm">{t("emailValue")}</div>
+              <div className="flex items-center gap-4">
+                <div className="flex-shrink-0 p-3 rounded-full bg-blue-200/20 text-blue-200">
+                  <Mail size={20} />
+                </div>
+                <div>
+                  <div className="text-sm font-light uppercase tracking-wide opacity-80">
+                    {t("emailLabel")}
+                  </div>
+                  <div className="text-lg font-semibold">{t("emailValue")}</div>
+                </div>
               </div>
             </div>
           </div>

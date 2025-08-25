@@ -32,26 +32,25 @@ const agents = [
   }
 ];
 
+const socialIcons = [
+  { icon: <Facebook className="w-5 h-5" />, label: "Facebook" },
+  { icon: <Twitter className="w-5 h-5" />, label: "Twitter" },
+  { icon: <Instagram className="w-5 h-5" />, label: "Instagram" },
+  { icon: <Globe className="w-5 h-5" />, label: "Website" },
+];
 
 const TeamMember = () => {
   const t = useTranslations("teams");
-  const tAgents  = useTranslations("agents");
-
-  const socialIcons = [
-    { icon: <Facebook className="w-5 h-5" />, label: "Facebook" },
-    { icon: <Twitter className="w-5 h-5" />, label: "Twitter" },
-    { icon: <Instagram className="w-5 h-5" />, label: "Instagram" },
-    { icon: <Globe className="w-5 h-5" />, label: "Website" },
-  ];
+  const tAgents = useTranslations("agents");
 
   return (
     <div className="py-16">
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center pb-10">
-          <h2 className="text-secondary text-3xl md:text-5xl font-semibold">
+          <h2 className="text-primary text-3xl md:text-5xl font-semibold">
             {t("title")}
           </h2>
-          <p className="text-secondary text-lg md:text-xl mt-2">
+          <p className="text-gray-600 text-lg md:text-xl mt-2">
             {t("description")}
           </p>
         </div>
@@ -61,16 +60,13 @@ const TeamMember = () => {
           {(() => {
             const amb = agents[0];
             return (
-              <div
-                className="relative group w-72 h-97 bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300"
-              >
-                <div className="relative w-full h-80">
+              <div className="relative group w-full sm:w-80 h-[400px] md:h-[450px] bg-white shadow-lg rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300">
+                <div className="relative w-full h-[300px] md:h-[350px]">
                   <Image
                     src={amb.picture}
                     alt={amb.name}
-                    layout="fill"
-                    objectFit="cover"
-                    className="transition-all duration-300 group-hover:scale-105"
+                    fill
+                    className="object-cover transition-all duration-300 group-hover:scale-105"
                   />
                 </div>
                 <div className="p-5 text-center">
@@ -101,15 +97,14 @@ const TeamMember = () => {
           {agents.slice(1).map((agent, index) => (
             <div
               key={index}
-              className="relative group w-72 h-97 bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300"
+              className="relative group w-full sm:w-72 h-[350px] bg-white shadow-lg rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300"
             >
-              <div className="relative w-full h-80">
+              <div className="relative w-full h-[250px]">
                 <Image
                   src={agent.picture}
                   alt={agent.name}
-                  layout="fill"
-                  objectFit="cover"
-                  className="transition-all duration-300 group-hover:scale-105"
+                  fill
+                  className="object-cover transition-all duration-300 group-hover:scale-105"
                 />
               </div>
               <div className="p-5 text-center">

@@ -1,23 +1,23 @@
 "use client";
 
-import { Search } from "lucide-react";
+import { Search, Calendar } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useQueryStates } from 'nuqs';
-import { videoFiltersClient } from '@/features/videos/filters/video.filters';
+import { useQueryStates } from "nuqs";
+import { videoFiltersClient } from "@/features/videos/filters/video.filters";
 import { useVideosList } from "@/features/videos/queries/video-list.query";
 import { DotLoader } from "react-spinners";
-import { DatePicker, Input } from "@heroui/react";
-import { CalendarDate } from "@internationalized/date";
-import { IVideo, IVideoRechercheParams } from "@/features/videos/types/video.type";
-import { getFullUrlFile } from "@/utils/getFullUrlFile";
+import {
+  IVideo,
+  IVideoRechercheParams,
+} from "@/features/videos/types/video.type";
 
 interface Props {
-   searchParams: IVideoRechercheParams
+  searchParams: IVideoRechercheParams;
 }
 
 export default function VideoGallery({ searchParams }: Props) {
   const t = useTranslations("gallery.video");
-  
+
   const [filters, setFilters] = useQueryStates(
     videoFiltersClient.filter,
     videoFiltersClient.option
@@ -30,76 +30,62 @@ export default function VideoGallery({ searchParams }: Props) {
     createdAt: filters.createdAt,
   };
 
-  const { data, isLoading, isError } = useVideosList({});
+  const { data, isLoading, isError } = useVideosList(currentSearchParams);
 
-  if (isLoading) {
-    return (
-      <div className="text-center py-12 flex items-center justify-center h-[80vh]">
-        <DotLoader color="#1D4ED8" />
-      </div>
-    );
-  }
-
-  if (isError) {
-    return (
-      <div className="text-center text-red-500 py-12 flex items-center justify-center h-[80vh] w-full">
-        {t("error")}
-      </div>
-    );
-  }
-
-  const videos = data || [];
-
-  const handleDateChange = (value: CalendarDate | null) => {
-    const dateString = value ? value.toString() : '';
-    setFilters({ ...filters, createdAt: dateString, page: 1 });
+  const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFilters({ ...filters, title: e.target.value, page: 1 });
   };
 
-  // Convertir la string de date en CalendarDate pour le DatePicker
-  const selectedDate = filters.createdAt 
-    ? new CalendarDate(
-        new Date(filters.createdAt).getFullYear(),
-        new Date(filters.createdAt).getMonth() + 1,
-        new Date(filters.createdAt).getDate()
-      )
-    : null;
+  const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFilters({ ...filters, createdAt: e.target.value, page: 1 });
+  };
+
+
+  const videos = data ?? [];
 
   return (
-    <section className="px-6 py-12 bg-white">
-      <h2 className="text-3xl font-bold text-center text-secondary mb-10 font-mulish">
-        {t("description")}
-      </h2>
+    <section className="bg-white py-16 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-screen-xl mx-auto">
+        <h2 className="text-4xl md:text-5xl font-extrabold text-center text-primary mb-12">
+          {t("description")}
+        </h2>
 
-      <div className="flex flex-col md:flex-row gap-6 justify-center items-center mb-20">
-        <div className="relative w-full max-w-md">
-          <Input
-            placeholder={t("searchPlaceholder")}
-            value={filters.title || ''}
-            onChange={(e) => setFilters({ ...filters, title: e.target.value, page: 1 })}
-            className="w-full py-3 pl-12 pr-4 text-sm rounded-full bg-gray-100 focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white shadow-sm"
-          />
-          <Search className="absolute top-1/2 left-4 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
+        {/* Filtres de recherche */}
+        <div className="flex flex-col md:flex-row gap-6 justify-center items-center mb-12">
+          <div className="relative w-full max-w-md">
+            <input
+              type="text"
+              placeholder={t("searchPlaceholder")}
+              value={filters.title || ""}
+              onChange={handleTitleChange}
+              className="w-full py-3 pl-12 pr-4 text-sm rounded-full bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary focus:bg-white shadow-sm"
+            />
+            <Search className="absolute top-1/2 left-4 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
+          </div>
+          <div className="relative w-full max-w-md">
+            <input
+              type="date"
+              value={filters.createdAt || ""}
+              onChange={handleDateChange}
+              className="w-full py-3 pl-12 pr-4 text-sm rounded-full bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary focus:bg-white shadow-sm appearance-none"
+              aria-label={t("searchByDate")}
+              title={t("searchByDate")}
+            />
+            <Calendar className="absolute top-1/2 left-4 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
+          </div>
         </div>
 
-        <div className="relative w-full max-w-md">
-          <DatePicker 
-            className="w-full py-2 pl-12 pr-4 text-sm rounded-full bg-gray-100 focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white shadow-sm"
-            label={t("searchByDate")}
-            value={selectedDate}
-            onChange={handleDateChange}
-          />
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Grille des vidéos */}
         {videos.length > 0 ? (
-          videos.map((video: IVideo) => {
-            const youtubeId = getFullUrlFile(video.youtubeUrl || '');
-            return (
-              <div key={video.id} className="rounded-xl overflow-hidden shadow-lg">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mt-8">
+            {videos.map((video: IVideo) => (
+              <div
+                key={video.id}
+                className="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow group h-full"
+              >
                 <div className="aspect-w-16 aspect-h-9 w-full">
                   <iframe
-                    src={`https://www.youtube.com/embed/${youtubeId}?rel=0`}
+                    src={`https://www.youtube.com/embed/${video.youtubeUrl}?rel=0`}
                     title={video.title || t("untitled")}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
@@ -107,24 +93,28 @@ export default function VideoGallery({ searchParams }: Props) {
                     loading="lazy"
                   />
                 </div>
-                <div className="bg-card p-4">
-                  <h3 className="text-center text-sm font-semibold text-gray-800 mb-2">
+                <div className="p-6 flex flex-col justify-between flex-grow">
+                  <h3 className="text-xl font-bold text-primary mb-2 line-clamp-1 group-hover:text-secondary transition-colors">
                     {video.title || t("untitled")}
                   </h3>
                   {video.description && (
-                    <p className="text-xs text-gray-600 text-center line-clamp-2">
+                    <p className="text-sm text-gray-600 line-clamp-2">
                       {video.description}
                     </p>
                   )}
                 </div>
               </div>
-            );
-          })
+            ))}
+          </div>
         ) : (
-          <div className="col-span-full py-12 text-center">
-            <p className="text-lg text-gray-600">
+          <div className="text-center py-20 col-span-full">
+            <div className="w-24 h-24 mx-auto mb-6 bg-gray-100 rounded-full flex items-center justify-center">
+              <Calendar className="w-12 h-12 text-gray-400" />
+            </div>
+            <h3 className="text-2xl font-bold text-gray-700 mb-2">
               {t("noVideos")}
-            </p>
+            </h3>
+            <p className="text-gray-500">{t("noVideosDescription")}</p>
           </div>
         )}
       </div>
