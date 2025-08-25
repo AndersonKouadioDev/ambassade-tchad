@@ -8,7 +8,7 @@ import { RegisterDTO } from "../schemas/auth.schema";
 import PhoneInput from "@/components/ui/PhoneInput";
 import { Input } from "@/components/ui/Input";
 import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
+import { Button } from "@heroui/react";
 
 export default function RegisterForm() {
   const t = useTranslations("auth.register");
@@ -190,7 +190,12 @@ export default function RegisterForm() {
       )}
 
       {/* Submit Button */}
-      <Button type="submit" className="w-full" disabled={loading}>
+      <Button
+        type="submit"
+        color="primary"
+        className="w-full"
+        disabled={loading}
+      >
         {loading ? (
           <span className="flex items-center justify-center">
             <svg
