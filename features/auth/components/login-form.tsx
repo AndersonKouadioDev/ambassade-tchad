@@ -5,9 +5,9 @@ import { useSession } from "next-auth/react";
 import { Eye, EyeOff } from "lucide-react";
 import { useRouter } from "@/i18n/navigation";
 import { login } from "../actions/auth.action";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/Input";
 import { Label } from "@/components/ui/label";
+import { Button } from "@heroui/react";
 
 export default function LoginForm() {
   const router = useRouter();
@@ -38,8 +38,7 @@ export default function LoginForm() {
       setError("Identifiants incorrects");
       return;
     }
-    // Une redirection gérée par le routeur est plus propre que window.location.reload()
-    router.push("/espace-client/dashboard");
+    window.location.reload();
   }
 
   return (
@@ -100,7 +99,12 @@ export default function LoginForm() {
       )}
 
       <div className="pt-2">
-        <Button type="submit" className="w-full" disabled={loading}>
+        <Button
+          type="submit"
+          color="primary"
+          className="w-full"
+          disabled={loading}
+        >
           {loading ? (
             <span className="flex items-center justify-center">
               <svg
