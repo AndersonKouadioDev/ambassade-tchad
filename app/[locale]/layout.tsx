@@ -1,4 +1,3 @@
-// app/[locale]/layout.tsx
 import type { Metadata } from "next";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
@@ -6,7 +5,6 @@ import { routing } from "@/i18n/routing";
 import { Blinker, Geist, Geist_Mono, Mulish, Poppins } from "next/font/google";
 import "@/app/globals.css";
 import localFont from "next/font/local";
-import Head from "@/components/home/navbar/navbar";
 import Footer from "@/components/home/footer/footer";
 import rtlDetect from "rtl-detect-intl";
 import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
@@ -17,6 +15,7 @@ import QueryProvider from "@/providers/query-provider";
 import getQueryClient from "@/lib/get-query-client";
 import { Toaster } from "@/components/ui/sonner";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
+import Header from "@/components/home/navbar/Header";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({
@@ -73,20 +72,20 @@ export default async function RootLayout({
           <Providers>
             <QueryProvider>
               <HydrationBoundary state={dehydrate(queryClient)}>
-              <NuqsAdapter>
-                <NextAuthSessionProvider>
-                  <NextIntlClientProvider locale={locale} messages={messages}>
-                    <ClientLayoutWrapper>
-                      <Head />
-                      <NuqsAdapter>{children}</NuqsAdapter>
-                      <Footer />
-                    </ClientLayoutWrapper>
-                  </NextIntlClientProvider>
-                </NextAuthSessionProvider>
-              </NuqsAdapter>
+                <NuqsAdapter>
+                  <NextAuthSessionProvider>
+                    <NextIntlClientProvider locale={locale} messages={messages}>
+                      <ClientLayoutWrapper>
+                        <Header />
+                        <NuqsAdapter>{children}</NuqsAdapter>
+                        <Footer />
+                      </ClientLayoutWrapper>
+                    </NextIntlClientProvider>
+                  </NextAuthSessionProvider>
+                </NuqsAdapter>
               </HydrationBoundary>
             </QueryProvider>
-          </Providers>  
+          </Providers>
         </div>
         <Toaster position="top-right" />
       </body>
