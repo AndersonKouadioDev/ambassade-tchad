@@ -20,7 +20,7 @@ const AuthButtons = () => {
     return (
       <div className="flex items-center gap-2 bg-secondary text-white px-4 py-2 rounded-full opacity-50">
         <User size={16} />
-        <span className="text-sm font-medium">Chargement...</span>
+        <span className="text-sm font-medium">{t("loading")}</span>
       </div>
     );
   }
@@ -31,7 +31,7 @@ const AuthButtons = () => {
         <Link href="/espace-client/dashboard">
           <button className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-full transition-colors">
             <Settings size={16} />
-            <span className="text-sm font-medium">Mon Espace</span>
+            <span className="text-sm font-medium">{t("myAccount")}</span>
           </button>
         </Link>
         <button
@@ -39,7 +39,7 @@ const AuthButtons = () => {
           className="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full transition-colors"
         >
           <LogOut size={16} />
-          <span className="text-sm font-medium">Déconnexion</span>
+          <span className="text-sm font-medium">{t("disconnect")}</span>
         </button>
       </div>
     );
