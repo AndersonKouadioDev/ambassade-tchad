@@ -1583,6 +1583,7 @@
     "liberia": "Liberia",
     "navTitle": "Navigation",
     "quickLinksTitle": "Liens rapides",
+    "copyright": "COPYRIGHT © 2025 Ambassade du Tchad, Développé par",
     "mainLinks": {
       "ambassade": "Ambassade",
       "consulaire": "Consulaire",
@@ -1593,7 +1594,10 @@
     "quickLinks": {
       "tchad": "Le Tchad",
       "events": "Événements",
-      "sites": "Sites touristiques"
+      "sites": "Sites touristiques",
+      "actuality": "Actualités",
+      "gallery": "Galerie",
+      "videos": "Vidéos"
     },
     "legal": {
       "a_propos": "À propos",

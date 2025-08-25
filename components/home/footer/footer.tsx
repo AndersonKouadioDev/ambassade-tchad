@@ -6,10 +6,15 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 
+interface LinkProps {
+  name: string;
+  href: string;
+  icon?: React.ReactNode;
+}
 const Footer = () => {
   const t = useTranslations("footer");
 
-  const mainLinks = [
+  const mainLinks: LinkProps[] = [
     { name: t("mainLinks.ambassade"), href: "/ambassade" },
     { name: t("mainLinks.consulaire"), href: "/consulaire" },
     {
@@ -20,21 +25,22 @@ const Footer = () => {
     // { name: t("mainLinks.menus"), href: "/menus" },
   ];
 
-  const quickLinks = [
-    { name: t("quickLinks.tchad"), href: "/tourisme/tchad" },
+  const quickLinks: LinkProps[] = [
     { name: t("quickLinks.events"), href: "/event" },
-    { name: t("quickLinks.sites"), href: "/tourisme/" },
+    { name: t("quickLinks.actuality"), href: "/news" },
+    { name: t("quickLinks.gallery"), href: "/gallery" },
+    { name: t("quickLinks.videos"), href: "/videos" },
   ];
 
-  const legalLinks = [
-    { name: t("legal.a_propos"), href: "/a-propos" },
-    { name: t("legal.criteres"), href: "/criteres" },
-    { name: t("legal.confidentialite"), href: "/confidentialite" },
-    { name: t("legal.conditions"), href: "/conditions" },
-    { name: t("legal.clause"), href: "/clause" },
+  const legalLinks: LinkProps[] = [
+    // { name: t("legal.a_propos"), href: "/a-propos" },
+    // { name: t("legal.criteres"), href: "/criteres" },
+    // { name: t("legal.confidentialite"), href: "/confidentialite" },
+    // { name: t("legal.conditions"), href: "/conditions" },
+    // { name: t("legal.clause"), href: "/clause" },
   ];
 
-  const socialLinks = [
+  const socialLinks: LinkProps[] = [
     {
       href: "https://www.facebook.com/share/1Dx5XFzv8D/",
       icon: <Facebook className="w-6 h-6 text-[#002B7F]" />,
@@ -66,20 +72,21 @@ const Footer = () => {
             />
             <div className="text-[16px] font-semibold font-blinker md:text-2xl !sm:text-[12px] !sm:text-center">
               {t("embassy")}
-              <p className="uppercase text-[12px] text-left md:text-[12px] !sm:text-[12px] !sm:text-center">{t("ghana")} - {t("sierra_leone")} - {t("guinea")} - {t("liberia")}</p>
+              <p className="uppercase text-[16px] text-left">
+                {t("ghana")} - {t("sierra_leone")} - {t("guinea")} -{" "}
+                {t("liberia")}
+              </p>
             </div>
           </div>
 
-          <div className="flex justify-end items-center">
-            <Image
-              src="/assets/images/logo.png"
-              alt="Embassy of Chad Logo"
-              width={123}
-              height={96}
-              priority
-              className="cursor-pointer md:w-[123px] md:h-[96px] w-[100px] h-[70px] sm:w-[80px] sm:h-[60px] !sm:mt-4"
-            />
-          </div>
+          <Image
+            src="/assets/images/logo.png"
+            alt="Embassy of Chad Logo"
+            width={100}
+            height={78}
+            priority
+            className="cursor-pointer"
+          />
         </div>
 
         {/* Grid principal */}
@@ -170,7 +177,10 @@ const Footer = () => {
           </ul>
         </div>
         <div className="text-center text-xs text-gray-300 mt-4">
-          COPYRIGHT © 2025 Ambassade du Tchad
+          {t("copyright")} {" "}
+          <Link href="https://lunion-lab.com" className="text-white">
+            Lunion-LAB
+          </Link>
         </div>
       </div>
     </footer>
