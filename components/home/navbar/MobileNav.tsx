@@ -76,7 +76,7 @@ const MobileNav = ({
                 }`}
               >
                 <div className="bg-white/10 backdrop-blur-sm">
-                  {item.children.map((child, i) =>
+                  {item.children.map((child) =>
                     child.link?.startsWith("http") ? (
                       <a
                         key={child.name}
