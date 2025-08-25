@@ -82,48 +82,97 @@ export default function HistoriqueTraitement({
   const daysRemaining = getDaysRemaining();
 
   return (
-    <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 gap-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-      <div>
-        <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-          {t('historiqueTraitement.titre')}
-        </h2>
-        <div className="text-gray-700 dark:text-gray-200 text-sm mb-1">
-          {t('historiqueTraitement.service')}: {translateServiceType(serviceType)}
+    <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 md:p-6 mb-6">
+      <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+        {t('historiqueTraitement.titre')}
+      </h2>
+      
+      {/* Layout principal - empilement vertical sur mobile, horizontal sur desktop */}
+      <div className="flex flex-col lg:flex-row gap-6">
+        {/* Informations du service */}
+        <div className="flex-1">
+          <div className="space-y-2">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+              <span className="text-sm font-medium text-gray-700 dark:text-gray-200 min-w-[120px]">
+                {t('historiqueTraitement.service')}:
+              </span>
+              <span className="text-gray-900 dark:text-white font-semibold">
+                {translateServiceType(serviceType)}
+              </span>
+            </div>
+            
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+              <span className="text-sm font-medium text-gray-700 dark:text-gray-200 min-w-[120px]">
+                {t('historiqueTraitement.statut')}:
+              </span>
+              <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                status === 'REJECTED' ? 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200' :
+                status === 'DELIVERED' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' :
+                'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200'
+              }`}>
+                {translateStatus(status)}
+              </span>
+            </div>
+            
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+              <span className="text-sm font-medium text-gray-700 dark:text-gray-200 min-w-[120px]">
+                {t('historiqueTraitement.soumission')}:
+              </span>
+              <span className="text-gray-600 dark:text-gray-300 text-sm">
+                {new Date(submissionDate).toLocaleDateString('fr-FR', {
+                  day: '2-digit',
+                  month: '2-digit',
+                  year: 'numeric'
+                })}
+              </span>
+            </div>
+          </div>
         </div>
-        <div className="text-gray-700 dark:text-gray-200 text-sm mb-1">
-          {t('historiqueTraitement.statut')}: {translateStatus(status)}
-        </div>
-        <div className="text-gray-500 dark:text-gray-400 text-xs">
-          {t('historiqueTraitement.soumission')}: {new Date(submissionDate).toLocaleDateString('fr-FR')}
-        </div>
-      </div>
 
-      <div className="flex flex-col items-center">
-        <div className="text-lg font-bold text-gray-900 dark:text-white mb-1">
-          {t('historiqueTraitement.progression')}
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="text-2xl font-bold text-orange-500">{progression}%</span>
-          <div className="w-20 md:w-32 h-2 bg-gray-200 dark:bg-gray-600 rounded-full overflow-hidden">
+        {/* Barre de progression - centrée sur mobile */}
+        <div className="flex flex-col items-center justify-center">
+          <div className="text-center mb-2">
+            <div className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">
+              {t('historiqueTraitement.progression')}
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-xl font-bold text-orange-500">{progression}%</span>
+            </div>
+          </div>
+          <div className="w-32 h-2 bg-gray-200 dark:bg-gray-600 rounded-full overflow-hidden">
             <div
               className="h-2 bg-orange-500 transition-all duration-500"
               style={{ width: `${progression}%` }}
             ></div>
           </div>
         </div>
-      </div>
 
-      <div className="flex flex-col items-center">
-        <div className="text-lg font-bold text-gray-900 dark:text-white mb-1">
-          {t('historiqueTraitement.achevementPrevu')}
-        </div>
-        <div className="text-gray-700 dark:text-gray-200 text-sm">
-          {estimatedDate.toLocaleDateString('fr-FR')}
-        </div>
-        <div className={`text-sm font-medium ${daysRemaining <= 3 ? 'text-red-500' : daysRemaining <= 7 ? 'text-orange-500' : 'text-green-500'}`}>
-          {daysRemaining > 0 ? `${daysRemaining} ${t('historiqueTraitement.jours')}` : t('historiqueTraitement.enRetard')}
+        {/* Date d'achèvement - centrée sur mobile */}
+        <div className="flex flex-col items-center justify-center">
+          <div className="text-center">
+            <div className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">
+              {t('historiqueTraitement.achevementPrevu')}
+            </div>
+            <div className="text-gray-900 dark:text-white font-semibold text-sm mb-1">
+              {estimatedDate.toLocaleDateString('fr-FR', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric'
+              })}
+            </div>
+            <div className={`text-xs font-medium px-2 py-1 rounded-full ${
+              daysRemaining <= 3 ? 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200' :
+              daysRemaining <= 7 ? 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200' :
+              'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
+            }`}>
+              {daysRemaining > 0 
+                ? `${daysRemaining} ${t('historiqueTraitement.jours')}`
+                : t('historiqueTraitement.enRetard')
+              }
+            </div>
+          </div>
         </div>
       </div>
     </div>
   );
-} 
+}

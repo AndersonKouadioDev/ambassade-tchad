@@ -8,73 +8,54 @@ import CertificatDecesForm from "@/features/demande/components/demande-certifica
 import LaisserPasserForm from "@/features/demande/components/demande-laisser-passer-form";
 
 export const tousTypeDemandes = {
-    visa: {
-        title: "Demande de Visa",
-        description:
-            "Remplissez ce formulaire pour soumettre votre demande de visa. Assurez-vous d'avoir tous les documents nécessaires avant de commencer.",
+    "visa": {
+        key: "visa",
         component: VisaForm,
-        documents: [
-            "Passeport valide (minimum 6 mois de validité)",
-            "Photo d'identité récente",
-            "Justificatif de ressources financières",
-        ],
-        processingTime: "5-15 jours ouvrables",
+        documents: [],
+        processingTimeKey: "processingTime.5-15",
     },
     "birth-act": {
-        title: "Demande d'Acte de Naissance",
-        description: "Remplissez ce formulaire pour demander un acte de naissance.",
+        key: "birthAct",
         component: BirthActForm,
         documents: [],
-        processingTime: "3-7 jours",
+        processingTimeKey: "processingTime.3-7",
     },
     "consular-card": {
-        title: "Demande de Carte Consulaire",
-        description: "Remplissez ce formulaire pour demander une carte consulaire.",
+        key: "consularCard",
         component: CarteConsulaireForm,
         documents: [],
-        processingTime: "10-20 jours",
+        processingTimeKey: "processingTime.10-20",
     },
     "laissez-passer": {
-        title: "Demande de Laissez-passer",
-        description: "Remplissez ce formulaire pour demander un laissez-passer.",
+        key: "laissezPasser",
         component: LaisserPasserForm,
         documents: [],
-        processingTime: "2-5 jours",
+        processingTimeKey: "processingTime.2-5",
     },
     "marriage-capacity": {
-        title: "Certificat de Capacité Mariage",
-        description:
-            "Demande de certificat de capacité mariage - Formulaire en cours de développement.",
+        key: "marriageCapacity",
         component: MarriageCapacityActForm,
-        documents: ["Photo d'identité récente"],
-        processingTime: "5-10 jours",
+        documents: [],
+        processingTimeKey: "processingTime.5-10",
     },
     "death-act": {
-        title: "Demande d'Acte de Décès",
-        description:
-            "Demande d'acte de décès - Formulaire en cours de développement.",
+        key: "deathAct",
         component: CertificatDecesForm,
-        documents: ["Photo d'identité récente",
-            "Justificatif de ressources financières"],
-        processingTime: "3-7 jours",
+        documents: [],
+        processingTimeKey: "processingTime.3-7",
     },
     "power-of-attorney": {
-        title: "Demande de Procuration",
-        description: "Remplissez ce formulaire pour demander une procuration.",
+        key: "powerOfAttorney",
         component: ProcurationForm,
         documents: [],
-        processingTime: "3-5 jours",
+        processingTimeKey: "processingTime.3-5",
     },
     "nationality-certificate": {
-        title: "Certificat de Nationalité",
-        description:
-            "Demande de certificat de nationalité tchadienne - Formulaire en cours de développement.",
+        key: "nationalityCertificate",
         component: CertificatNationaliteForm,
-        documents: [
-            "Passeport valide (minimum 6 mois de validité)",
-            "Photo d'identité récente",
-            "Justificatif de ressources financières",
-        ],
-        processingTime: "7-15 jours",
+        documents: [],
+        processingTimeKey: "processingTime.7-15",
     },
 };
+
+export type DemandType = keyof typeof tousTypeDemandes;

@@ -10,12 +10,11 @@ export const publicRoutes = [
   "/consulaire", 
   "/ambassade", 
   "/event", 
-  "news", 
+  "/news",
   "/galerie/galerie-photos", 
   "/galerie/galerie-videos", 
   "/tourisme", 
   "/tchad-s",
-  
 ];
 
 // Middleware d'internationalisation

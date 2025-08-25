@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import FileUploadView from "@/components/block/file-upload-view";
 import { InputField } from "@/components/form/input-field";
@@ -19,19 +19,23 @@ import { useMultistepForm } from "@/hooks/use-multistep-form";
 import { validateStepFields } from "@/lib/utils/multi-step-form/validate-step";
 import { revalidateLogic, useForm } from "@tanstack/react-form";
 import { ActeNaissanceType } from "../../types/acte-naissance.type";
+import { useTranslations } from "next-intl";
 
 function ActeNaissanceForm({ documentsSize }: { documentsSize: number }) {
+  const t = useTranslations("ActeNaissanceForm");
+  const tEnums = useTranslations("enums");
+
   const { Field, handleSubmit, validateField, getAllErrors } = useForm({
     defaultValues: {
-      personFirstName: "Jean",
-      personLastName: "Dupont",
+      personFirstName: "John",
+      personLastName: "Doe",
       personBirthDate: "1990-01-01",
       personBirthPlace: "Paris, France",
-      personNationality: "Française",
-      personDomicile: "12 rue de la Paix, Paris",
-      fatherFullName: "Pierre Dupont",
-      motherFullName: "Marie Dupont",
-      contactPhoneNumber: "+225 01 23 456 789",
+      personNationality: "French",
+      personDomicile: "12 Peace Street, Paris",
+      fatherFullName: "Pierre Doe",
+      motherFullName: "Marie Doe",
+      contactPhoneNumber: "+1 123 456 7890",
       requestType: ActeNaissanceType.NEWBORN,
     } as ActeNaissanceDetailsDTO,
     validationLogic: revalidateLogic({
@@ -81,7 +85,7 @@ function ActeNaissanceForm({ documentsSize }: { documentsSize: number }) {
     initialFiles: [],
   });
 
-  // Recuperation du prix dynamique
+  // Get dynamic price
   const { data: servicesPrices, isLoading: isLoadingServicesPrices } =
     useServicesPricesQuery();
 
@@ -117,7 +121,7 @@ function ActeNaissanceForm({ documentsSize }: { documentsSize: number }) {
         fieldsToValidate = ["contactPhoneNumber"];
         break;
       default:
-        return true; // Pas de validation pour les étapes suivantes
+        return true; // No validation for subsequent steps
     }
 
     return validateStepFields(fieldsToValidate, validateField, getAllErrors);
@@ -149,77 +153,81 @@ function ActeNaissanceForm({ documentsSize }: { documentsSize: number }) {
     placeholder?: string;
   };
 
-  // Definition des champs pour chaque étape
+  // Field definitions for each step
   const fieldsStep1: FieldStep[] = [
     {
       name: "personFirstName",
-      label: "Prénom *",
+      label: t("fields.firstName"),
       type: "text",
-      placeholder: "Entrez le prénom",
+      placeholder: t("placeholders.firstName"),
     },
     {
       name: "personLastName",
-      label: "Nom *",
+      label: t("fields.lastName"),
       type: "text",
-      placeholder: "Entrez le nom",
+      placeholder: t("placeholders.lastName"),
     },
-    { name: "personBirthDate", label: "Date de naissance *", type: "date" },
+    { 
+      name: "personBirthDate", 
+      label: t("fields.birthDate"), 
+      type: "date" 
+    },
     {
       name: "personBirthPlace",
-      label: "Lieu de naissance *",
+      label: t("fields.birthPlace"),
       type: "text",
-      placeholder: "Ville, pays de naissance",
+      placeholder: t("placeholders.birthPlace"),
     },
     {
       name: "personNationality",
-      label: "Nationalité *",
+      label: t("fields.nationality"),
       type: "text",
-      placeholder: "Ex: Tchadienne",
+      placeholder: t("placeholders.nationality"),
     },
     {
       name: "personDomicile",
-      label: "Domicile (optionnel)",
+      label: t("fields.domicile"),
       type: "text",
-      placeholder: "Adresse de domicile",
+      placeholder: t("placeholders.domicile"),
     },
   ];
 
   const fieldsStep2: FieldStep[] = [
     {
       name: "fatherFullName",
-      label: "Nom complet du père",
+      label: t("fields.fatherFullName"),
       type: "text",
-      placeholder: "Nom complet du père",
+      placeholder: t("placeholders.fatherFullName"),
     },
     {
       name: "motherFullName",
-      label: "Nom complet de la mère",
+      label: t("fields.motherFullName"),
       type: "text",
-      placeholder: "Nom complet de la mère",
+      placeholder: t("placeholders.motherFullName"),
     },
   ];
 
   const fieldsStep3: FieldStep[] = [
     {
       name: "contactPhoneNumber",
-      label: "Numéro de téléphone de contact",
+      label: t("fields.contactPhone"),
       type: "tel",
-      placeholder: "Ex: +225 07 12 345 678",
+      placeholder: t("placeholders.contactPhone"),
     },
     {
       name: "requestType",
-      label: "Type de demande",
+      label: t("fields.requestType"),
       type: "select",
-      placeholder: "Ex: Acte de naissance",
+      placeholder: t("placeholders.requestType"),
       options: Object.values(ActeNaissanceType).map((value) => ({
         value: value,
-        label: value,
+        label: tEnums(`acteNaissanceType.${value}`),
       })),
     },
   ];
 
   const renderStep1 = () => (
-    <StepContainer title="Informations personnelles">
+    <StepContainer title={t("steps.personalInfo.title")}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {fieldsStep1.map((item) => (
           <Field key={item.name} name={item.name}>
@@ -241,14 +249,14 @@ function ActeNaissanceForm({ documentsSize }: { documentsSize: number }) {
   );
 
   const renderStep2 = () => (
-    <StepContainer title="Informations parentales">
+    <StepContainer title={t("steps.parentalInfo.title")}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {fieldsStep2.map((item) => (
           <Field key={item.name} name={item.name}>
             {({ state, handleChange, handleBlur }) => (
               <InputField
                 label={item.label}
-                placeholder="Ex: Mahamat"
+                placeholder={item.placeholder}
                 type={item.type}
                 value={state.value}
                 onChange={(value) => handleChange(value as string)}
@@ -263,7 +271,7 @@ function ActeNaissanceForm({ documentsSize }: { documentsSize: number }) {
   );
 
   const renderStep3 = () => (
-    <StepContainer title="Informations sur le mandataire">
+    <StepContainer title={t("steps.agentInfo.title")}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {fieldsStep3.map((item) => (
           <Field key={item.name} name={item.name}>
@@ -321,7 +329,7 @@ function ActeNaissanceForm({ documentsSize }: { documentsSize: number }) {
 
   return (
     <FormContainer
-      title="Demande d'Acte de Naissance"
+      title={t("title")}
       currentStep={currentStep}
       totalSteps={totalSteps}
       handleSubmit={handleSubmit}

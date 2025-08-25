@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { revalidateLogic, useForm } from "@tanstack/react-form";
 import { toast } from "sonner";
@@ -15,21 +15,25 @@ import { DecesDetailsDTO, DecesDetailsSchema } from "../../schema/deces.schema";
 import { ServiceType } from "../../types/service.type";
 import PriceViewer from "../price-viewer";
 import { handleFormSubmit } from "../../utils/form-submit-handler";
+import { useTranslations } from "next-intl";
 
 interface Props {
   documentsSize: number;
 }
 
 export default function CertificatDecesForm({ documentsSize }: Props) {
-  // Validation du formulaire
+  const t = useTranslations("CertificatDecesForm");
+  const tErrors = useTranslations("errors");
+
+  // Form validation
   const { Field, handleSubmit, validateField, getAllErrors } = useForm({
     defaultValues: {
-      deceasedFirstName: "John",
-      deceasedLastName: "Doe",
-      deceasedBirthDate: "2000-01-01",
-      deceasedDeathDate: "2022-01-01",
-      deceasedNationality: "Tchadienne",
-      contactPhoneNumber: "+11234567890",
+      deceasedFirstName: "",
+      deceasedLastName: "",
+      deceasedBirthDate: "",
+      deceasedDeathDate: "",
+      deceasedNationality: "",
+      contactPhoneNumber: "",
       documents: [],
     } as DecesDetailsDTO,
     validationLogic: revalidateLogic({
@@ -121,7 +125,7 @@ export default function CertificatDecesForm({ documentsSize }: Props) {
       } catch (validationError: any) {
         isValid = false;
         const errorMessage =
-          validationError?.message || `Erreur de validation pour ${fieldName}`;
+          validationError?.message || `${tErrors('validationError')} ${fieldName}`;
         toast.error(errorMessage);
       }
     }
@@ -158,38 +162,38 @@ export default function CertificatDecesForm({ documentsSize }: Props) {
   }[] = [
     {
       name: "deceasedFirstName",
-      label: "Prénom *",
+      label: t("fields.deceasedFirstName"),
       type: "text",
-      placeholder: "Ex: Mahamat",
+      placeholder: t("placeholders.firstName"),
     },
     {
       name: "deceasedLastName",
-      label: "Nom *",
+      label: t("fields.deceasedLastName"),
       type: "text",
-      placeholder: "Ex: Idriss",
+      placeholder: t("placeholders.lastName"),
     },
     {
       name: "deceasedBirthDate",
-      label: "Date de naissance *",
+      label: t("fields.deceasedBirthDate"),
       type: "date",
       placeholder: "",
     },
     {
       name: "deceasedDeathDate",
-      label: "Date de décès *",
+      label: t("fields.deceasedDeathDate"),
       type: "date",
       placeholder: "",
     },
     {
       name: "deceasedNationality",
-      label: "Nationalité *",
+      label: t("fields.deceasedNationality"),
       type: "text",
-      placeholder: "Ex: Tchadienne",
+      placeholder: t("placeholders.nationality"),
     },
   ];
 
   const renderStep1 = () => (
-    <StepContainer title="Informations personnelles">
+    <StepContainer title={t("steps.personalInfo.title")}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {fieldsStep1.map((item) => (
           <Field key={item.name} name={item.name}>
@@ -211,7 +215,7 @@ export default function CertificatDecesForm({ documentsSize }: Props) {
   );
 
   const renderStep2 = () => (
-    <StepContainer title="Récapitulatif et pièces justificatives">
+    <StepContainer title={t("steps.summary.title")}>
       <div className="mb-4">
         <PriceViewer price={prixActe ?? 5000} />
       </div>
@@ -219,8 +223,8 @@ export default function CertificatDecesForm({ documentsSize }: Props) {
         <Field name="contactPhoneNumber">
           {({ state, handleChange, handleBlur }) => (
             <InputField
-              label="Numéro de contact *"
-              placeholder="Ex: +225 01 23 45 67 89"
+              label={t("fields.contactPhone")}
+              placeholder={t("placeholders.contactPhone")}
               type="tel"
               value={state.value}
               onChange={(value) => handleChange(value as string)}
@@ -256,7 +260,7 @@ export default function CertificatDecesForm({ documentsSize }: Props) {
 
   return (
     <FormContainer
-      title="Formulaire de demande de Certificat de Décès"
+      title={t("title")}
       currentStep={currentStep}
       totalSteps={totalSteps}
       handleSubmit={handleSubmit}

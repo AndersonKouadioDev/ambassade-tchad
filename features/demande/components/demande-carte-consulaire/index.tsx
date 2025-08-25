@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React from "react";
 import { revalidateLogic, useForm } from "@tanstack/react-form";
@@ -19,30 +19,32 @@ import FormContainer from "@/components/form/multi-step/form-container";
 import PriceViewer from "@/features/demande/components/price-viewer";
 import FileUploadView from "@/components/block/file-upload-view";
 import SelectInputField from "@/components/form/select-input-field";
+import { useTranslations } from "next-intl";
 
 function CarteConsulaireForm({ documentsSize }: { documentsSize: number }) {
+  const t = useTranslations("CarteConsulaireForm");
+  const tEnums = useTranslations("enums");
+
   const {
     Field,
     handleSubmit,
-    // reset,
-    // setFieldValue,
     validateField,
     getAllErrors,
   } = useForm({
     defaultValues: {
-      personFirstName: "Jean",
-      personLastName: "Dupont",
-      personBirthDate: "1990-05-15",
-      personBirthPlace: "Abidjan",
-      personProfession: "Ingénieur",
-      personNationality: "Ivoirienne",
-      personDomicile: "Paris, France",
-      personAddressInOriginCountry: "Cocody, Abidjan",
-      fatherFullName: "Pierre Dupont",
-      motherFullName: "Marie Dupont",
+      personFirstName: "",
+      personLastName: "",
+      personBirthDate: "",
+      personBirthPlace: "",
+      personProfession: "",
+      personNationality: "",
+      personDomicile: "",
+      personAddressInOriginCountry: "",
+      fatherFullName: "",
+      motherFullName: "",
       justificationDocumentType: DocumentJustificationType.NATIONAL_ID_CARD,
-      justificationDocumentNumber: "A123456789",
-      contactPhoneNumber: "+2250701020304",
+      justificationDocumentNumber: "",
+      contactPhoneNumber: "",
     } as CarteConsulaireDetailsDTO,
     validationLogic: revalidateLogic({
       mode: "change",
@@ -92,7 +94,7 @@ function CarteConsulaireForm({ documentsSize }: { documentsSize: number }) {
     initialFiles: [],
   });
 
-  // Recuperation du prix dynamique
+  // Get dynamic price
   const { data: servicesPrices, isLoading: isLoadingServicesPrices } =
     useServicesPricesQuery();
 
@@ -132,7 +134,7 @@ function CarteConsulaireForm({ documentsSize }: { documentsSize: number }) {
         fieldsToValidate = ["contactPhoneNumber"];
         break;
       default:
-        return true; // Pas de validation pour les étapes suivantes
+        return true; // No validation for subsequent steps
     }
 
     return validateStepFields(fieldsToValidate, validateField, getAllErrors);
@@ -157,7 +159,6 @@ function CarteConsulaireForm({ documentsSize }: { documentsSize: number }) {
     nextStep(validateStep);
   };
 
-  // TODO: Repetition of the same code in acte-naissance
   type FieldStep = {
     name: keyof Omit<CarteConsulaireDetailsDTO, "documents">;
     label: string;
@@ -168,58 +169,65 @@ function CarteConsulaireForm({ documentsSize }: { documentsSize: number }) {
 
   const fields: FieldStep[][] = [
     [
-      { name: "personFirstName", label: "Prénom", type: "text" },
-      { name: "personLastName", label: "Nom", type: "text" },
-      { name: "personBirthDate", label: "Date de naissance", type: "date" },
-      { name: "personBirthPlace", label: "Lieu de naissance", type: "text" },
-      { name: "personProfession", label: "Profession", type: "text" },
-      { name: "personNationality", label: "Nationalité", type: "text" },
-      { name: "personDomicile", label: "Domicile actuel", type: "text" },
+      { name: "personFirstName", label: t("fields.firstName"), type: "text" },
+      { name: "personLastName", label: t("fields.lastName"), type: "text" },
+      { name: "personBirthDate", label: t("fields.birthDate"), type: "date" },
+      { name: "personBirthPlace", label: t("fields.birthPlace"), type: "text" },
+      { name: "personProfession", label: t("fields.profession"), type: "text" },
+      { name: "personNationality", label: t("fields.nationality"), type: "text" },
+      { name: "personDomicile", label: t("fields.domicile"), type: "text" },
       {
         name: "personAddressInOriginCountry",
-        label: "Adresse dans le pays d'origine",
+        label: t("fields.originCountryAddress"),
         type: "text",
       },
     ],
     [
-      { name: "fatherFullName", label: "Nom complet du père", type: "text" },
-      { name: "motherFullName", label: "Nom complet de la mère", type: "text" },
+      { name: "fatherFullName", label: t("fields.fatherFullName"), type: "text" },
+      { name: "motherFullName", label: t("fields.motherFullName"), type: "text" },
       {
         name: "justificationDocumentType",
-        label: "Type de document justificatif",
+        label: t("fields.justificationDocumentType"),
         type: "select",
-        placeholder: "",
+        placeholder: t("placeholders.selectDocumentType"),
         options: [
           {
             value: DocumentJustificationType.NATIONAL_ID_CARD,
-            label: "Carte d'identité nationale",
+            label: tEnums("documentJustificationType.NATIONAL_ID_CARD"),
           },
-          { value: DocumentJustificationType.PASSPORT, label: "Passeport" },
+          { 
+            value: DocumentJustificationType.PASSPORT, 
+            label: tEnums("documentJustificationType.PASSPORT") 
+          },
           {
             value: DocumentJustificationType.BIRTH_CERTIFICATE,
-            label: "Acte de naissance",
+            label: tEnums("documentJustificationType.BIRTH_CERTIFICATE"),
           },
-          { value: DocumentJustificationType.OTHER, label: "Autre" },
+          { 
+            value: DocumentJustificationType.OTHER, 
+            label: tEnums("documentJustificationType.OTHER") 
+          },
         ],
       },
       {
         name: "justificationDocumentNumber",
-        label: "Numéro du document justificatif",
+        label: t("fields.justificationDocumentNumber"),
         type: "text",
+        placeholder: t("placeholders.documentNumber"),
       },
     ],
     [
       {
         name: "contactPhoneNumber",
-        label: "Numéro de téléphone de contact",
+        label: t("fields.contactPhone"),
         type: "tel",
-        placeholder: "+2250701020304",
+        placeholder: t("placeholders.contactPhone"),
       },
     ],
   ];
 
   const renderStep1 = () => (
-    <StepContainer title="Informations personnelles">
+    <StepContainer title={t("steps.personalInfo.title")}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {fields[0].map((item) => (
           <Field key={item.name} name={item.name}>
@@ -241,7 +249,7 @@ function CarteConsulaireForm({ documentsSize }: { documentsSize: number }) {
   );
 
   const renderStep2 = () => (
-    <StepContainer title="Filiation, justificatif et contact">
+    <StepContainer title={t("steps.filiationInfo.title")}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {fields[1].map((item) => (
           <Field key={item.name} name={item.name}>
@@ -275,7 +283,7 @@ function CarteConsulaireForm({ documentsSize }: { documentsSize: number }) {
   );
 
   const renderStep3 = () => (
-    <StepContainer title="Récapitulatif et pièce justificative">
+    <StepContainer title={t("steps.summary.title")}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="mb-4">
           <PriceViewer price={prixActe} />
@@ -324,7 +332,7 @@ function CarteConsulaireForm({ documentsSize }: { documentsSize: number }) {
 
   return (
     <FormContainer
-      title="Formulaire de demande de Carte Consulaire"
+      title={t("title")}
       currentStep={currentStep}
       totalSteps={totalSteps}
       handleSubmit={handleSubmit}

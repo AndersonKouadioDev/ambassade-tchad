@@ -643,6 +643,20 @@
       "title": "Tableau de bord",
       "welcome": "Bienvenue dans votre espace client",
       "description": "Retrouvez ici l'historique et le statut de toutes vos demandes auprès de l'Ambassade du Tchad.",
+      "etapesTitre": "Étapes à suivre pour effectuer une demande",
+      "etape1Titre": "Étape 1",
+      "etape1Description": "Cliquer sur le bouton 'Nouvelle demande' pour commencer.",
+      "etape2Titre": "Étape 2",
+      "etape2Description": "Choisir le type de service pour votre demande.",
+      "etape3Titre": "Étape 3",
+      "etape3Description": "Remplir le formulaire de demande.",
+      "etape4Titre": "Étape 4",
+      "etape4Description": "Envoyer le formulaire de demande.",
+      "infoComplementaires": "Informations supplémentaires",
+      "info1": "Veuillez bien lire l'entête du formulaire avant de commencer.",
+      "info2": "Renseigner les documents requis.",
+      "info3": "Imprimer les informations en cliquant sur voir et ensuite sur le bouton imprimé.",
+      "info4": "Contacter l'ambassade si vous avez des questions.",
       "quickActions": {
         "title": "Actions rapides",
         "description": "Accédez rapidement aux fonctionnalités principales",
@@ -677,9 +691,52 @@
         "etape1": "Dépôt du dossier",
         "etape2": "Vérification",
         "etape3": "Traitement",
-        "etape4": "Validation",
-        "etape5": "Finalisation",
-        "etape6": "Retrait"
+        "etape4": "Validation par agent",
+        "etape5": "Validation par chef",
+        "etape6": "Validation par consul",
+        "etape7": "Prêt à retirer",
+        "step1": "Dépôt du dossier",
+        "step2": "Vérification",
+        "step3": "Traitement",
+        "step4": "Validation par agent",
+        "step5": "Validation par chef",
+        "step6": "validation par consul",
+        "step7": "prêt à retirer",
+        "description1": "Description de l'étape 1",
+        "description2": "Description de l'étape 2",
+        "description3": "Description de l'étape 3",
+        "description4": "Description de l'étape 4",
+        "description5": "Description de l'étape 5",
+        "description6": "Description de l'étape 6",
+        "complete": "Terminé",
+        "pending": "En attente",
+        "processing": "En cours",
+        "completed": "Terminé",
+        "rejected": "Rejeté",
+        "cancelled": "Annulé",
+        "required": "Requis",
+        "finished": "Terminé",
+        "estimatedCompletion": "Achèvement prévu",
+        "date": "Date",
+        "days": "Jours",
+        "depot": "Dépôt du dossier",
+        "verification": "Vérification du dossier",
+        "traitement": "Traitement du dossier",
+        "validation": "Validation du par consul",
+        "finalisation": "Finalisation du dossier",
+        "pret": "Prêt à être retiré",
+        "retrait": "Retrait du dossier",
+        "stepsLimited": "Limite d'étapes",
+        "step": "Étape",
+        "description": "Description",
+        "step${i + 1}": "Étape ${i + 1}",
+        "description${i + 1}": "Description de l'étape ${i + 1}",
+        "verifCourt": "Vérification court",
+        "traitCourt": "Traitement court",
+        "validCourt": "Validation court",
+        "finalCourt": "Finalisation court",
+        "pretCourt": "Prêt court",
+        "retraitCourt": "Retrait court"
       },
       "requestsTable": {
         "title": "Mes demandes en cours",
@@ -838,7 +895,17 @@
         "FINISHED": "Terminé",
         "Requis": "Requis",
         "En Cours": "En Cours",
-        "Prêt À Retirer": "Prêt À Retirer"
+        "Prêt À Retirer": "Prêt À Retirer",
+        "modal": {
+          "title": "Toutes les notifications",
+          "markAsRead": "Marquer comme lu",
+          "markAsUnread": "Marquer comme non lu",
+          "close": "Fermer",
+          "empty": "Aucune notification",
+          "read": "Lu",
+          "unread": "Non lu",
+          "all": "Toutes"
+        }
       },
       "noNotifications": "Aucune notification",
       "markAllAsRead": "Tout marquer comme lu",
@@ -1209,6 +1276,8 @@
       "pageSuivante": "Page suivante",
       "demandes": "demandes",
       "page": "Page",
+      "effacer": "Effacer",
+      "effacerFiltres": "Effacer les filtres",
       "sur": "sur",
       "services": {
         "carteConsulaire": "Carte Consulaire",
@@ -1250,7 +1319,7 @@
       "title": "Mon Profil",
       "description": "Gérez votre profil",
       "modifierCompte": "Modifier le compte",
-      "modifierMotDePasse": "Modifier mon mot de passe",
+      "modifierMotDePasse": "Modifier",
       "supprimerCompte": "Supprimer mon compte",
       "champsObligatoires": "Les champs annotés d'un * sont obligatoires.",
       "monIdentite": "Mon identité",
@@ -1270,7 +1339,6 @@
       "confirmerMotDePasse": "Confirmer le nouveau mot de passe"
     }
   },
-
   "messages": {
     "title": "Messages",
     "modal": {
@@ -1322,16 +1390,6 @@
       "ERROR": "Erreur",
       "success": "Succès",
       "SUCCESS": "Succès"
-    },
-    "modal": {
-      "title": "Toutes les notifications",
-      "markAsRead": "Marquer comme lu",
-      "markAsUnread": "Marquer comme non lu",
-      "close": "Fermer",
-      "empty": "Aucune notification",
-      "read": "Lu",
-      "unread": "Non lu",
-      "all": "Toutes"
     }
   },
   "profil": {
@@ -1358,62 +1416,64 @@
     "confirmerMotDePasse": "Confirmer le nouveau mot de passe"
   },
   "visaForm": {
-    "title": "Demande de Visa",
-    "personalInfo": "Informations personnelles",
-    "passportInfo": "Informations du passeport",
-    "professionalInfo": "Informations professionnelles et visa",
-    "contactAndDocuments": "Contact et documents",
-    "requiredDocuments": "Documents requis pour une demande de visa",
-    "processingTime": "Durée de traitement",
-    "beforeStarting": "Avant de commencer",
-    "successMessage": "Demande créée avec succès !",
-    "successDescription": "Votre demande de visa a été soumise. Vous recevrez bientôt un email de confirmation.",
-    "viewMyRequests": "Voir mes demandes",
-    "fields": {
-      "personFirstName": "Prénom",
-      "personLastName": "Nom",
-      "personGender": "Genre",
-      "personNationality": "Nationalité",
-      "personBirthDate": "Date de naissance",
-      "personBirthPlace": "Lieu de naissance",
-      "personMaritalStatus": "Statut matrimonial",
-      "passportType": "Type de passeport",
-      "passportNumber": "Numéro de passeport",
-      "passportIssuedBy": "Pays de délivrance",
-      "passportIssueDate": "Date de délivrance",
-      "passportExpirationDate": "Date d'expiration",
-      "profession": "Profession",
-      "employerAddress": "Adresse de l'employeur",
-      "employerPhoneNumber": "Téléphone de l'employeur",
-      "durationMonths": "Durée du séjour (mois)",
-      "destinationState": "Ville de destination",
-      "visaType": "Type de visa",
-      "contactPhoneNumber": "Numéro de téléphone de contact"
+    "title": "Formulaire de demande de Visa",
+    "validationError": "Erreur de validation pour {field}",
+    "documentsRequired": "Veuillez télécharger les {count} documents requis.",
+    "submitError": "Une erreur est survenue lors de la soumission de votre demande",
+    "steps": {
+      "personalInfo": "Informations personnelles",
+      "passportInfo": "Informations du passeport",
+      "professionalInfo": "Informations professionnelles et visa",
+      "documents": "Récapitulatif et pièces justificatives"
     },
-    "options": {
-      "gender": {
-        "MALE": "Masculin",
-        "FEMALE": "Féminin"
-      },
-      "maritalStatus": {
-        "SINGLE": "Célibataire",
-        "MARRIED": "Marié(e)",
-        "DIVORCED": "Divorcé(e)",
-        "WIDOWED": "Veuf/Veuve"
-      },
-      "passportType": {
-        "ORDINARY": "Ordinaire",
-        "DIPLOMATIC": "Diplomatique",
-        "SERVICE": "Service"
-      },
-      "visaType": {
-        "SHORT_STAY": "Court séjour",
-        "LONG_STAY": "Long séjour",
-        "TRANSIT": "Transit",
-        "BUSINESS": "Affaires",
-        "STUDENT": "Étudiant",
-        "WORK": "Travail"
-      }
+    "fields": {
+      "firstName": "Prénom *",
+      "lastName": "Nom *",
+      "gender": "Genre *",
+      "nationality": "Nationalité *",
+      "birthDate": "Date de naissance *",
+      "birthPlace": "Lieu de naissance *",
+      "maritalStatus": "Situation Matrimoniale *",
+      "passportType": "Type de passeport *",
+      "passportNumber": "Numéro de passeport *",
+      "passportIssuedBy": "Pays de délivrance *",
+      "passportIssueDate": "Date de délivrance *",
+      "passportExpirationDate": "Date d'expiration *",
+      "profession": "Profession *",
+      "employerAddress": "Adresse de l'employeur *",
+      "employerPhoneNumber": "Téléphone de l'employeur *",
+      "durationMonths": "Durée du séjour (en mois) *",
+      "destinationState": "Ville de destination *",
+      "contactPhoneNumber": "Numéro de contact *"
+    },
+    "placeholders": {
+      "firstName": "Ex: Mahamat",
+      "lastName": "Ex: Abakar",
+      "nationality": "Ex: Tchadienne",
+      "birthPlace": "Ex: N'Djamena",
+      "passportNumber": "Ex: AB123456",
+      "passportIssuedBy": "Ex: République du Tchad",
+      "profession": "Ex: Ingénieur",
+      "employerAddress": "Ex: 123 Rue de la Paix, Abidjan",
+      "employerPhoneNumber": "Ex: +225 01 23 45 67 89",
+      "durationMonths": "Ex: 3",
+      "destinationState": "Ex: N'Djamena",
+      "contactPhoneNumber": "Ex: +225 01 23 45 67 89"
+    },
+    "gender": {
+      "male": "Masculin",
+      "female": "Féminin"
+    },
+    "maritalStatus": {
+      "single": "Célibataire",
+      "married": "Marié(e)",
+      "divorced": "Divorcé(e)",
+      "widowed": "Veuf/Veuve"
+    },
+    "passportType": {
+      "ordinary": "Ordinaire",
+      "diplomatic": "Diplomatique",
+      "service": "De service"
     }
   },
   "header": {
@@ -1532,10 +1592,521 @@
     "emailLabel": "Email",
     "emailValue": "ambassade.tchadabj@ambatchad.ci"
   },
+  "NewRequestPage": {
+    "title": "Nouvelle demande",
+    "description": "Sélectionnez le type de service que vous souhaitez demander.",
+    "loading": "Chargement...",
+    "services": {
+      "visa": {
+        "title": "Visa",
+        "description": "Demande de visa pour séjour au Tchad",
+        "features": [
+          "Court séjour",
+          "Long séjour"
+        ]
+      },
+      "birthAct": {
+        "title": "Acte de naissance",
+        "description": "Demande d’acte de naissance",
+        "features": [
+          "Copie intégrale",
+          "Extrait avec filiation",
+          "Extrait sans filiation"
+        ]
+      },
+      "consularCard": {
+        "title": "Carte consulaire",
+        "description": "Demande de carte consulaire",
+        "features": [
+          "Carte d’identité nationale",
+          "Justificatif de résidence"
+        ]
+      },
+      "laissezPasser": {
+        "title": "Laissez-passer",
+        "description": "Demande de laissez-passer",
+        "features": [
+          "Urgence",
+          "Voyage temporaire",
+          "Retour au pays d’origine"
+        ]
+      },
+      "marriageCapacity": {
+        "title": "Certificat de capacité de mariage",
+        "description": "Demande de certificat de capacité de mariage",
+        "features": [
+          "Mariage civil",
+          "Mariage religieux",
+          "Certificat de célibat"
+        ]
+      },
+      "deathAct": {
+        "title": "Acte de décès",
+        "description": "Demande d’acte de décès",
+        "features": [
+          "Copie intégrale",
+          "Extrait",
+          "Certificat de décès"
+        ]
+      },
+      "powerOfAttorney": {
+        "title": "Procuration",
+        "description": "Demande de procuration",
+        "features": [
+          "Procuration générale",
+          "Procuration spéciale",
+          "Mandat"
+        ]
+      },
+      "nationalityCertificate": {
+        "title": "Certificat de nationalité",
+        "description": "Demande de certificat de nationalité tchadienne",
+        "features": [
+          "Certificat de nationalité",
+          "Preuve de citoyenneté"
+        ]
+      }
+    },
+    "startButton": "Commencer"
+  },
+  "DemandTypes": {
+    "visa": {
+      "title": "Demande de Visa",
+      "description": "Remplissez ce formulaire pour soumettre votre demande de visa. Assurez-vous d’avoir tous les documents requis avant de commencer.",
+      "processingTime": "5 à 15 jours ouvrables"
+    },
+    "birthAct": {
+      "title": "Demande d’Acte de Naissance",
+      "description": "Remplissez ce formulaire pour demander un acte de naissance.",
+      "processingTime": "3 à 7 jours"
+    },
+    "consularCard": {
+      "title": "Demande de Carte Consulaire",
+      "description": "Remplissez ce formulaire pour demander une carte consulaire.",
+      "processingTime": "10 à 20 jours"
+    },
+    "laissezPasser": {
+      "title": "Demande de Laissez-passer",
+      "description": "Remplissez ce formulaire pour demander un laissez-passer.",
+      "processingTime": "2 à 5 jours"
+    },
+    "marriageCapacity": {
+      "title": "Certificat de Capacité de Mariage",
+      "description": "Demande de certificat de capacité de mariage - Formulaire en cours de développement.",
+      "processingTime": "5 à 10 jours"
+    },
+    "deathAct": {
+      "title": "Demande d’Acte de Décès",
+      "description": "Demande d’acte de décès - Formulaire en cours de développement.",
+      "processingTime": "3 à 7 jours"
+    },
+    "powerOfAttorney": {
+      "title": "Demande de Procuration",
+      "description": "Remplissez ce formulaire pour demander une procuration.",
+      "processingTime": "3 à 5 jours"
+    },
+    "nationalityCertificate": {
+      "title": "Certificat de Nationalité",
+      "description": "Demande de certificat de nationalité tchadienne - Formulaire en cours de développement.",
+      "processingTime": "7 à 15 jours"
+    },
+    "documents": {
+      "recentIdPhoto": "Photo d’identité récente",
+      "financialResourcesProof": "Preuve de ressources financières"
+    }
+  },
+  "CertificatNationaliteForm": {
+    "title": "Formulaire de Demande de Certificat de Nationalité",
+    "steps": {
+      "personalInfo": {
+        "title": "Informations Personnelles"
+      },
+      "parentInfo": {
+        "title": "Informations Parentales et Contact"
+      },
+      "summary": {
+        "title": "Résumé et Documents Justificatifs"
+      }
+    },
+    "fields": {
+      "firstName": "Prénom *",
+      "lastName": "Nom *",
+      "birthDate": "Date de Naissance *",
+      "birthPlace": "Lieu de Naissance *",
+      "nationality": "Nationalité *",
+      "parentFirstName": "Prénom du Parent *",
+      "parentLastName": "Nom du Parent *",
+      "relationship": "Lien de Parenté *",
+      "contactPhone": "Numéro de Téléphone *"
+    },
+    "placeholders": {
+      "firstName": "Ex: Jean",
+      "lastName": "Ex: Dupont",
+      "birthPlace": "Ex: Paris",
+      "nationality": "Ex: France",
+      "relationship": "Sélectionner le lien",
+      "contactPhone": "Ex: +33 6 12 34 56 78"
+    }
+  },
+  "ActeNaissanceForm": {
+    "title": "Demande d'Acte de Naissance",
+    "steps": {
+      "personalInfo": {
+        "title": "Informations Personnelles"
+      },
+      "parentalInfo": {
+        "title": "Informations Parentales"
+      },
+      "agentInfo": {
+        "title": "Informations de l’Agent"
+      }
+    },
+    "fields": {
+      "firstName": "Prénom *",
+      "lastName": "Nom *",
+      "birthDate": "Date de Naissance *",
+      "birthPlace": "Lieu de Naissance *",
+      "nationality": "Nationalité *",
+      "domicile": "Domicile (optionnel)",
+      "fatherFullName": "Nom Complet du Père",
+      "motherFullName": "Nom Complet de la Mère",
+      "contactPhone": "Numéro de Téléphone",
+      "requestType": "Type de Demande"
+    },
+    "placeholders": {
+      "firstName": "Entrez le prénom",
+      "lastName": "Entrez le nom",
+      "birthPlace": "Ville, pays de naissance",
+      "nationality": "Ex : Tchadien",
+      "domicile": "Adresse du domicile",
+      "fatherFullName": "Nom complet du père",
+      "motherFullName": "Nom complet de la mère",
+      "contactPhone": "Ex : +225 07 12 34 56",
+      "requestType": "Ex : Acte de naissance"
+    }
+  },
+  "CarteConsulaireForm": {
+    "title": "Formulaire de demande de Carte Consulaire",
+    "steps": {
+      "personalInfo": {
+        "title": "Informations personnelles"
+      },
+      "filiationInfo": {
+        "title": "Filiation, justificatif et contact"
+      },
+      "summary": {
+        "title": "Récapitulatif et pièce justificative"
+      }
+    },
+    "fields": {
+      "firstName": "Prénom",
+      "lastName": "Nom",
+      "birthDate": "Date de naissance",
+      "birthPlace": "Lieu de naissance",
+      "profession": "Profession",
+      "nationality": "Nationalité",
+      "domicile": "Domicile actuel",
+      "originCountryAddress": "Adresse dans le pays d'origine",
+      "fatherFullName": "Nom complet du père",
+      "motherFullName": "Nom complet de la mère",
+      "justificationDocumentType": "Type de document justificatif",
+      "justificationDocumentNumber": "Numéro du document justificatif",
+      "contactPhone": "Numéro de téléphone de contact"
+    },
+    "placeholders": {
+      "selectDocumentType": "Sélectionnez le type de document",
+      "documentNumber": "Entrez le numéro du document",
+      "contactPhone": "+2250701020304"
+    }
+  },
+  "CertificatDecesForm": {
+    "title": "Formulaire de demande de Certificat de Décès",
+    "steps": {
+      "personalInfo": {
+        "title": "Informations personnelles"
+      },
+      "summary": {
+        "title": "Récapitulatif et pièces justificatives"
+      }
+    },
+    "fields": {
+      "deceasedFirstName": "Prénom *",
+      "deceasedLastName": "Nom *",
+      "deceasedBirthDate": "Date de naissance *",
+      "deceasedDeathDate": "Date de décès *",
+      "deceasedNationality": "Nationalité *",
+      "contactPhone": "Numéro de contact *"
+    },
+    "placeholders": {
+      "firstName": "Ex: Mahamat",
+      "lastName": "Ex: Idriss",
+      "nationality": "Ex: Tchadienne",
+      "contactPhone": "Ex: +225 01 23 45 67 89"
+    }
+  },
+  "MarriageCapacityActForm": {
+    "title": "Formulaire de demande d'Acte de Capacité de Mariage",
+    "steps": {
+      "husbandInfo": {
+        "title": "Informations sur l'époux"
+      },
+      "wifeInfo": {
+        "title": "Informations sur l'épouse"
+      },
+      "summary": {
+        "title": "Contact, pièces justificatives et prix"
+      }
+    },
+    "fields": {
+      "husbandFirstName": "Prénom *",
+      "husbandLastName": "Nom *",
+      "husbandBirthDate": "Date de naissance *",
+      "husbandBirthPlace": "Lieu de naissance *",
+      "husbandNationality": "Nationalité *",
+      "husbandDomicile": "Domicile",
+      "wifeFirstName": "Prénom *",
+      "wifeLastName": "Nom *",
+      "wifeBirthDate": "Date de naissance *",
+      "wifeBirthPlace": "Lieu de naissance *",
+      "wifeNationality": "Nationalité *",
+      "wifeDomicile": "Domicile",
+      "contactPhone": "Numéro de contact *"
+    },
+    "placeholders": {
+      "firstName": "Ex: Mahamat",
+      "lastName": "Ex: Idriss",
+      "birthPlace": "Ex: N'Djamena",
+      "nationality": "Ex: Tchadienne",
+      "domicile": "Ex: 12 rue de N'Djamena",
+      "contactPhone": "Ex: +225 01 23 45 67 89"
+    }
+  },
+  "ProcurationForm": {
+    "title": "Formulaire de demande de Procuration",
+    "steps": {
+      "principalInfo": {
+        "title": "Informations sur le mandant"
+      },
+      "agentInfo": {
+        "title": "Informations sur le mandataire"
+      },
+      "details": {
+        "title": "Détails de la procuration et contact"
+      }
+    },
+    "fields": {
+      "principalFirstName": "Prénom *",
+      "principalLastName": "Nom *",
+      "principalJustificationDocumentType": "Type de pièce justificative *",
+      "principalIdDocumentNumber": "Numéro de pièce justificative *",
+      "principalAddress": "Adresse *",
+      "agentFirstName": "Prénom *",
+      "agentLastName": "Nom *",
+      "agentJustificationDocumentType": "Type de pièce justificative *",
+      "agentIdDocumentNumber": "Numéro de pièce justificative *",
+      "agentAddress": "Adresse *",
+      "powerOfType": "Type de procuration",
+      "reason": "Motif",
+      "contactPhone": "Numéro de contact *"
+    },
+    "placeholders": {
+      "firstName": "Ex: Mahamat",
+      "lastName": "Ex: Idriss",
+      "documentNumber": "Ex: CNI123456",
+      "address": "Ex: 12 rue de N'Djamena",
+      "powerOfType": "Ex: Générale, Spéciale...",
+      "reason": "Ex: Délégation de signature",
+      "contactPhone": "Ex: +225 01 23 45 67 89"
+    }
+  },
+  "AccompagnateurForm": {
+    "new": "Nouveau",
+    "title": "Nouvel accompagnateur",
+    "editTitle": "Modifier accompagnateur",
+    "firstName": "Prénom *",
+    "firstNamePlaceholder": "ex: Mahamat",
+    "lastName": "Nom *",
+    "lastNamePlaceholder": "ex: Doe",
+    "birthDate": "Date de naissance *",
+    "birthPlace": "Lieu de naissance *",
+    "birthPlacePlaceholder": "ex: Douala",
+    "nationality": "Nationalité *",
+    "nationalityPlaceholder": "ex: Camerounais",
+    "domicile": "Domicile",
+    "domicilePlaceholder": "ex: Douala",
+    "birthDatePlaceholder": "ex: 2000-01-01",
+    "cancel": "Annuler",
+    "save": "Enregistrer"
+  },
+  "LaissezPasserForm": {
+    "title": "Formulaire de demande de Laissez-passer",
+    "formTitle": "Formulaire de demande de Laissez-passer",
+    "personalInfo": "Informations personnelles",
+    "familyInfo": "Informations familiales et documents",
+    "summary": "Récapitulatif et pièces justificatives",
+    "firstName": "Prénom *",
+    "firstNamePlaceholder": "ex: Mahamat",
+    "lastName": "Nom *",
+    "lastNamePlaceholder": "ex: Doe",
+    "birthDate": "Date de naissance *",
+    "birthDatePlaceholder": "ex: 2000-01-01",
+    "birthPlace": "Lieu de naissance *",
+    "birthPlacePlaceholder": "ex: Douala",
+    "nationality": "Nationalité *",
+    "nationalityPlaceholder": "ex: Camerounais",
+    "domicile": "Domicile *",
+    "domicilePlaceholder": "ex: Douala",
+    "profession": "Profession",
+    "professionPlaceholder": "ex: Ingénieur",
+    "fatherName": "Nom complet du père *",
+    "fatherNamePlaceholder": "Ex: Pierre Dupont",
+    "motherName": "Nom complet de la mère *",
+    "motherNamePlaceholder": "Ex: Marie Dupont",
+    "documentType": "Type de document justificatif *",
+    "documentNumber": "Numéro du document justificatif *",
+    "documentNumberPlaceholder": "Ex: 123456789",
+    "destination": "Destination",
+    "destinationPlaceholder": "Ex: France",
+    "travelReason": "Motif du voyage",
+    "travelReasonPlaceholder": "Ex: Voyage d'affaires",
+    "accompanied": "Voyage accompagné",
+    "accompaniers": "Accompagnateurs",
+    "addAccompanier": "+ Ajouter",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "noAccompaniers": "Aucun accompagnateur ajouté",
+    "contactPhone": "Numéro de téléphone d'urgence",
+    "contactPhonePlaceholder": "Ex: +225 01 23 45 67 89",
+    "priceToPay": "Prix à payer",
+    "dropFiles": "Déposer les fichiers ici",
+    "dragDrop": "ou glisser-déposer",
+    "maxFiles": "Maximum {count} fichiers",
+    "maxSize": "Taille max: {size}MB",
+    "browseFiles": "Parcourir",
+    "remove": "Supprimer",
+    "clearAll": "Tout effacer",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "submit": "Soumettre",
+    "accompanierRequired": "Veuillez ajouter au moins un accompagnateur",
+    "validationError": "Erreur de validation pour {field}",
+    "documentsRequired": "Veuillez télécharger tous {count} documents requis",
+    "submitError": "Une erreur est survenue lors de la soumission du formulaire",
+    "placeholders": {
+      "personFirstName": "Ex: Mahamat",
+      "personLastName": "Ex: Doe",
+      "personBirthDate": "Ex: 2000-01-01",
+      "personBirthPlace": "Ex: Douala",
+      "personNationality": "Ex: Camerounais",
+      "personDomicile": "Ex: Douala",
+      "personProfession": "Ex: Ingénieur",
+      "fatherFullName": "Ex: Pierre Dupont",
+      "motherFullName": "Ex: Marie Dupont",
+      "justificationDocumentType": "Ex: Passeport",
+      "justificationDocumentNumber": "Ex: 123456789",
+      "destination": "Ex: France",
+      "travelReason": "Ex: Voyage d'affaires",
+      "contactPhone": "Ex: +225 01 23 45 67 89"
+    }
+  },
+  "errors": {
+    "validationError": "Erreur de validation pour",
+    "documentsRequired": "Veuillez télécharger les documents requis",
+    "submitError": "Une erreur est survenue lors de l'envoi du formulaire"
+  },
   "enums": {
     "paysParentType": {
       "FATHER": "Père",
-      "MOTHER": "Mère"
+      "MOTHER": "Mère",
+      "GRANDFATHER": "Grand-père",
+      "GRANDMOTHER": "Grand-mère"
+    },
+    "acteNaissanceType": {
+      "NEWBORN": "Nouveau-né",
+      "ADULT": "Adulte",
+      "COPY": "Copie",
+      "EXTRACT": "Extrait",
+      "RENEWAL": "Renouvellement"
+    },
+    "documentJustificationType": {
+      "NATIONAL_ID_CARD": "Carte d'identité nationale",
+      "PASSPORT": "Passeport",
+      "BIRTH_CERTIFICATE": "Acte de naissance",
+      "RESIDENCE_PERMIT": "Permis de séjour",
+      "OTHER": "Autre"
     }
+  },
+  "FormContainer": {
+    "title": "Formulaire de demande",
+    "description": "Remplissez le formulaire ci-dessous pour soumettre votre demande.",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "submit": "Soumettre"
+  },
+  "DemandeHeader": {
+    "back": "Retour",
+    "requiredDocuments": "Documents requis",
+    "processingTime": "Durée de traitement"
+  },
+  "locale": "fr",
+  "Errors": {
+    "demandeNotFound": {
+      "title": "Type de demande non trouvé",
+      "description": "Le type de demande \"{type}\" n'existe pas.",
+      "backToDemandes": "Retour aux demandes"
+    }
+  },
+  "DemandeTypes": {
+    "visa": {
+      "title": "Demande de Visa",
+      "description": "Remplissez ce formulaire pour soumettre votre demande de visa. Assurez-vous d'avoir tous les documents nécessaires avant de commencer."
+    },
+    "birthAct": {
+      "title": "Demande d'Acte de Naissance",
+      "description": "Remplissez ce formulaire pour demander un acte de naissance."
+    },
+    "consularCard": {
+      "title": "Demande de Carte Consulaire",
+      "description": "Remplissez ce formulaire pour demander une carte consulaire."
+    },
+    "laissezPasser": {
+      "title": "Demande de Laissez-passer",
+      "description": "Remplissez ce formulaire pour demander un laissez-passer."
+    },
+    "marriageCapacity": {
+      "title": "Certificat de Capacité Mariage",
+      "description": "Demande de certificat de capacité mariage - Formulaire en cours de développement."
+    },
+    "deathAct": {
+      "title": "Demande d'Acte de Décès",
+      "description": "Demande d'acte de décès - Formulaire en cours de développement."
+    },
+    "powerOfAttorney": {
+      "title": "Demande de Procuration",
+      "description": "Remplissez ce formulaire pour demander une procuration."
+    },
+    "nationalityCertificate": {
+      "title": "Certificat de Nationalité",
+      "description": "Demande de certificat de nationalité tchadienne - Formulaire en cours de développement."
+    },
+    "processingTime": {
+      "2-5": "Délai de traitement: 2-5 jours",
+      "3-5": "Délai de traitement: 3-5 jours",
+      "3-7": "Délai de traitement: 3-7 jours",
+      "5-10": "Délai de traitement: 5-10 jours",
+      "5-15": "Délai de traitement: 5-15 jours ouvrables",
+      "7-15": "Délai de traitement: 7-15 jours",
+      "10-20": "Délai de traitement: 10-20 jours"
+    }
+  },
+  "notificationsModal": {
+    "title": "Mes notifications",
+    "all": "Tous",
+    "read": "Lu",
+    "unread": "Non lu",
+    "empty": "Vous n'avez aucune notification",
+    "close": "Fermer",
+    "markAsRead": "Marquer comme lu",
+    "markAsUnread": "Marquer comme non lu"
   }
 }

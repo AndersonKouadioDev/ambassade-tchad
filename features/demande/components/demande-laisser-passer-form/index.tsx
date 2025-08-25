@@ -15,16 +15,20 @@ import { LaissezPasserDetailsDTO, LaissezPasserDetailsSchema, AccompagnateurDTO 
 import { DocumentJustificationType } from "../../types/carte-consulaire.type";
 import { Button } from "@heroui/react";
 import AccompagnateurForm from "./accompagnateur-form";
+import { useTranslations } from "next-intl";
 
 interface Props {
     documentsSize: number;
 }
 
 export default function LaisserPasserForm({ documentsSize }: Props) {
+    const t = useTranslations("LaissezPasserForm");
+    const tEnums = useTranslations("enums");
     const [showAccompagnateurForm, setShowAccompagnateurForm] = useState(false);
     const [currentAccompagnateurIndex, setCurrentAccompagnateurIndex] = useState<number | null>(null);
     const [accompanied, setAccompanied] = useState(false);
     const [accompaniers, setAccompaniers] = useState<AccompagnateurDTO[]>([]);
+    
 
     const { Field, handleSubmit, validateField, getAllErrors } = useForm({
         defaultValues: {
@@ -193,19 +197,19 @@ export default function LaisserPasserForm({ documentsSize }: Props) {
         type?: string;
         placeholder?: string;
     }[] = [
-            { name: "personFirstName", label: "Prénom *", type: "text", placeholder: "ex: Mahamat" },
-            { name: "personLastName", label: "Nom *", type: "text", placeholder: "ex: Doe" },
-            { name: "personBirthDate", label: "Date de naissance *", type: "date", placeholder: "ex: 2000-01-01" },
-            { name: "personBirthPlace", label: "Lieu de naissance *", type: "text", placeholder: "ex: Douala" },
-            { name: "personNationality", label: "Nationalité *", type: "text", placeholder: "ex: Camerounais" },
-            { name: "personDomicile", label: "Domicile *", type: "text", placeholder: "ex: Douala" },
-            { name: "personProfession", label: "Profession", type: "text" },
+            { name: "personFirstName", label: t("firstName"), type: "text", placeholder: t("placeholders.personFirstName")},
+            { name: "personLastName", label: t("lastName"), type: "text", placeholder: t("placeholders.personLastName")},
+            { name: "personBirthDate", label: t("birthDate"), type: "date", placeholder: t("placeholders.personBirthDate")},
+            { name: "personBirthPlace", label: t("birthPlace"), type: "text", placeholder: t("placeholders.personBirthPlace")},
+            { name: "personNationality", label: t("nationality"), type: "text", placeholder: t("placeholders.personNationality")},
+            { name: "personDomicile", label: t("domicile"), type: "text", placeholder: t("placeholders.personDomicile")},
+            { name: "personProfession", label: t("profession"), type: "text", placeholder: t("placeholders.personProfession") },
         ];
 
     const renderStep1 = () => (
         <div className="space-y-6">
             <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                Informations personnelles
+                {t("personalInfo")}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {fieldsStep1.map((item) => (
@@ -231,14 +235,14 @@ export default function LaisserPasserForm({ documentsSize }: Props) {
     const renderStep2 = () => (
         <div className="space-y-6">
             <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                Informations familiales et documents
+                {t("familyInfo")}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <Field name="fatherFullName">
                     {({ state, handleChange, handleBlur }) => (
                         <InputField
-                            label="Nom complet du père *"
-                            placeholder="Ex: Pierre Dupont"
+                            label={t("fatherName")}
+                            placeholder={t("placeholders.fatherFullName")}
                             type="text"
                             value={state.value}
                             onChange={(value) => handleChange(value as string)}
@@ -252,8 +256,8 @@ export default function LaisserPasserForm({ documentsSize }: Props) {
                 <Field name="motherFullName">
                     {({ state, handleChange, handleBlur }) => (
                         <InputField
-                            label="Nom complet de la mère *"
-                            placeholder="Ex: Marie Dupont"
+                            label={t("motherName")}
+                            placeholder={t("placeholders.motherFullName")}
                             type="text"
                             value={state.value}
                             onChange={(value) => handleChange(value as string)}
@@ -268,7 +272,7 @@ export default function LaisserPasserForm({ documentsSize }: Props) {
                     {({ state, handleChange, handleBlur }) => (
                         <div className="col-span-full">
                             <label className="block text-sm font-medium text-gray-700 mb-1">
-                                Type de document justificatif *
+                                {t("documentType")}
                             </label>
                             <select
                                 value={state.value}
@@ -279,7 +283,7 @@ export default function LaisserPasserForm({ documentsSize }: Props) {
                             >
                                 {Object.values(DocumentJustificationType).map((type) => (
                                     <option key={type} value={type}>
-                                        {type}
+                                        {tEnums("documentJustificationType." + type)}
                                     </option>
                                 ))}
                             </select>
@@ -295,8 +299,8 @@ export default function LaisserPasserForm({ documentsSize }: Props) {
                 <Field name="justificationDocumentNumber">
                     {({ state, handleChange, handleBlur }) => (
                         <InputField
-                            label="Numéro du document justificatif *"
-                            placeholder="Ex: 123456789"
+                            label={t("documentNumber")}
+                            placeholder={t("placeholders.justificationDocumentNumber")}
                             type="text"
                             value={state.value}
                             onChange={(value) => handleChange(value as string)}
@@ -310,8 +314,8 @@ export default function LaisserPasserForm({ documentsSize }: Props) {
                 <Field name="destination">
                     {({ state, handleChange, handleBlur }) => (
                         <InputField
-                            label="Destination"
-                            placeholder="Ex: France"
+                            label={t("destination")}
+                            placeholder={t("placeholders.destination")}
                             type="text"
                             value={state.value}
                             onChange={(value) => handleChange(value as string)}
@@ -324,8 +328,8 @@ export default function LaisserPasserForm({ documentsSize }: Props) {
                 <Field name="travelReason">
                     {({ state, handleChange, handleBlur }) => (
                         <InputField
-                            label="Motif du voyage"
-                            placeholder="Ex: Voyage d'affaires"
+                            label={t("travelReason")}
+                            placeholder={t("placeholders.travelReason")}
                             type="text"
                             value={state.value}
                             onChange={(value) => handleChange(value as string)}
@@ -349,7 +353,7 @@ export default function LaisserPasserForm({ documentsSize }: Props) {
                                 className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                             />
                             <label htmlFor="accompanied" className="ml-2 block text-sm text-gray-900">
-                                Voyage accompagné
+                                {t("accompanied")}
                             </label>
                         </div>
                     )}
@@ -358,7 +362,7 @@ export default function LaisserPasserForm({ documentsSize }: Props) {
                 {accompanied && (
                     <div className="col-span-full mt-4">
                         <div className="flex justify-between items-center mb-2">
-                            <h4 className="font-medium">Accompagnateurs</h4>
+                            <h4 className="font-medium">{t("accompaniers")}</h4>
                             <Button
                                 onPress={() => {
                                     setCurrentAccompagnateurIndex(null);
@@ -366,7 +370,7 @@ export default function LaisserPasserForm({ documentsSize }: Props) {
                                 }}
                                 color="warning"
                             >
-                                + Ajouter
+                                {t("addAccompanier")}
                             </Button>
                         </div>
 
@@ -412,7 +416,7 @@ export default function LaisserPasserForm({ documentsSize }: Props) {
                                                 }}
                                                 color="success"
                                             >
-                                                Modifier
+                                                {t("edit")}
                                             </Button>
                                             <Button
                                                 onPress={() => {
@@ -420,7 +424,7 @@ export default function LaisserPasserForm({ documentsSize }: Props) {
                                                 }}
                                                 color="danger"
                                             >
-                                                Supprimer
+                                                {t("delete")}
                                             </Button>
                                         </div>
                                     </div>
@@ -428,7 +432,7 @@ export default function LaisserPasserForm({ documentsSize }: Props) {
                             </div>
                         ) : (
                             <p className="text-sm text-gray-500 mt-2">
-                                Aucun accompagnateur ajouté
+                                {t("noAccompaniers")}
                             </p>
                         )}
                     </div>
@@ -440,20 +444,20 @@ export default function LaisserPasserForm({ documentsSize }: Props) {
     const renderStep3 = () => (
         <div className="space-y-6">
             <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                Récapitulatif et pièces justificatives
+                {t("summary")}
             </h3>
 
             <div className="mb-4">
                 <span className="text-lg font-semibold text-green-700">
-                    Prix à payer : {formatCurrency(prixActe ?? 5000)}
+                    {t("priceToPay")} : {formatCurrency(prixActe ?? 5000)}
                 </span>
             </div>
 
             <Field name="contactPhoneNumber">
                 {({ state, handleChange, handleBlur }) => (
                     <InputField
-                        label="Numéro de contact"
-                        placeholder="Ex: +225 01 23 45 67 89"
+                        label={t("contactPhone")}
+                        placeholder={t("placeholders.contactPhone")}
                         type="tel"
                         value={state.value}
                         onChange={(value) => handleChange(value as string)}
@@ -490,7 +494,7 @@ export default function LaisserPasserForm({ documentsSize }: Props) {
 
     return (
         <FormContainer
-            title="Formulaire de demande de Laissez-passer"
+            title={t("title")}
             currentStep={currentStep}
             totalSteps={totalSteps}
             handleSubmit={handleSubmit}

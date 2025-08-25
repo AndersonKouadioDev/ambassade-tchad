@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { revalidateLogic, useForm } from "@tanstack/react-form";
 import React from "react";
@@ -17,28 +17,32 @@ import { useServicesPricesQuery } from "@/features/demande/queries/demande-servi
 import { useMariageCreateMutation } from "@/features/demande/queries/mariage.mutation";
 import StepContainer from "@/components/form/multi-step/step-container";
 import PriceViewer from "../../price-viewer";
+import { useTranslations } from "next-intl";
 
 interface Props {
   documentsSize: number;
 }
 
 export default function MarriageCapacityActForm({ documentsSize }: Props) {
-  // Validation du formulaire
+  const t = useTranslations("MarriageCapacityActForm");
+  const tErrors = useTranslations("errors");
+
+  // Form validation
   const { Field, handleSubmit, validateField, getAllErrors } = useForm({
     defaultValues: {
-      husbandFirstName: "John",
-      husbandLastName: "Doe",
-      husbandBirthDate: "2000-01-01",
-      husbandBirthPlace: "N'Djamena",
-      husbandNationality: "Tchadienne",
-      husbandDomicile: "123 Main St, N'Djamena",
-      wifeFirstName: "Fatimé",
-      wifeLastName: "Abakar",
-      wifeBirthDate: "2000-01-01",
-      wifeBirthPlace: "N'Djamena",
-      wifeNationality: "Tchadienne",
-      wifeDomicile: "123 Main St, N'Djamena",
-      contactPhoneNumber: "123-456-7890",
+      husbandFirstName: "",
+      husbandLastName: "",
+      husbandBirthDate: "",
+      husbandBirthPlace: "",
+      husbandNationality: "",
+      husbandDomicile: "",
+      wifeFirstName: "",
+      wifeLastName: "",
+      wifeBirthDate: "",
+      wifeBirthPlace: "",
+      wifeNationality: "",
+      wifeDomicile: "",
+      contactPhoneNumber: "",
       documents: [],
     } as MariageDetailsDTO,
     validationLogic: revalidateLogic({
@@ -139,7 +143,7 @@ export default function MarriageCapacityActForm({ documentsSize }: Props) {
       } catch (validationError: any) {
         isValid = false;
         toast.error(
-          validationError?.message || `Erreur de validation pour ${fieldName}`
+          validationError?.message || `${tErrors('validationError')} ${fieldName}`
         );
       }
     }
@@ -166,7 +170,7 @@ export default function MarriageCapacityActForm({ documentsSize }: Props) {
 
     if (uploadedFiles.length < documentsSize) {
       toast.error(
-        `Veuillez télécharger les ${documentsSize} documents requis.`
+        `${tErrors('documentsRequired')} (${documentsSize})`
       );
       return;
     }
@@ -175,7 +179,7 @@ export default function MarriageCapacityActForm({ documentsSize }: Props) {
       await createMariage({ data: dataForSubmit });
       showSuccessAndRedirect();
     } catch (error) {
-      toast.error("Une erreur est survenue lors de l'envoi du formulaire.");
+      toast.error(tErrors('submitError'));
     }
   };
 
@@ -187,44 +191,44 @@ export default function MarriageCapacityActForm({ documentsSize }: Props) {
   }[] = [
     {
       name: "husbandFirstName",
-      label: "Prénom *",
+      label: t("fields.husbandFirstName"),
       type: "text",
-      placeholder: "Ex: Mahamat",
+      placeholder: t("placeholders.firstName"),
     },
     {
       name: "husbandLastName",
-      label: "Nom *",
+      label: t("fields.husbandLastName"),
       type: "text",
-      placeholder: "Ex: Idriss",
+      placeholder: t("placeholders.lastName"),
     },
     {
       name: "husbandBirthDate",
-      label: "Date de naissance *",
+      label: t("fields.husbandBirthDate"),
       type: "date",
       placeholder: "",
     },
     {
       name: "husbandBirthPlace",
-      label: "Lieu de naissance *",
+      label: t("fields.husbandBirthPlace"),
       type: "text",
-      placeholder: "Ex: N'Djamena",
+      placeholder: t("placeholders.birthPlace"),
     },
     {
       name: "husbandNationality",
-      label: "Nationalité *",
+      label: t("fields.husbandNationality"),
       type: "text",
-      placeholder: "Ex: Tchadienne",
+      placeholder: t("placeholders.nationality"),
     },
     {
       name: "husbandDomicile",
-      label: "Domicile",
+      label: t("fields.husbandDomicile"),
       type: "text",
-      placeholder: "Ex: 12 rue de N'Djamena",
+      placeholder: t("placeholders.domicile"),
     },
   ];
 
   const renderStep1 = () => (
-    <StepContainer title="Informations sur l'époux">
+    <StepContainer title={t("steps.husbandInfo.title")}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {fieldsStep1.map((item) => (
           <Field key={item.name} name={item.name}>
@@ -253,44 +257,44 @@ export default function MarriageCapacityActForm({ documentsSize }: Props) {
   }[] = [
     {
       name: "wifeFirstName",
-      label: "Prénom *",
+      label: t("fields.wifeFirstName"),
       type: "text",
-      placeholder: "Ex: Fatimé",
+      placeholder: t("placeholders.firstName"),
     },
     {
       name: "wifeLastName",
-      label: "Nom *",
+      label: t("fields.wifeLastName"),
       type: "text",
-      placeholder: "Ex: Abakar",
+      placeholder: t("placeholders.lastName"),
     },
     {
       name: "wifeBirthDate",
-      label: "Date de naissance *",
+      label: t("fields.wifeBirthDate"),
       type: "date",
       placeholder: "",
     },
     {
       name: "wifeBirthPlace",
-      label: "Lieu de naissance *",
+      label: t("fields.wifeBirthPlace"),
       type: "text",
-      placeholder: "Ex: Sarh",
+      placeholder: t("placeholders.birthPlace"),
     },
     {
       name: "wifeNationality",
-      label: "Nationalité *",
+      label: t("fields.wifeNationality"),
       type: "text",
-      placeholder: "Ex: Tchadienne",
+      placeholder: t("placeholders.nationality"),
     },
     {
       name: "wifeDomicile",
-      label: "Domicile",
+      label: t("fields.wifeDomicile"),
       type: "text",
-      placeholder: "Ex: 34 avenue du Tchad",
+      placeholder: t("placeholders.domicile"),
     },
   ];
 
   const renderStep2 = () => (
-    <StepContainer title="Informations sur l'épouse">
+    <StepContainer title={t("steps.wifeInfo.title")}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {fieldsStep2.map((item) => (
           <Field key={item.name} name={item.name}>
@@ -312,7 +316,7 @@ export default function MarriageCapacityActForm({ documentsSize }: Props) {
   );
 
   const renderStep3 = () => (
-    <StepContainer title="Contact, pièces justificatives et prix">
+    <StepContainer title={t("steps.summary.title")}>
       <div className="mb-4">
         <PriceViewer price={prixActe ?? 10000} />
       </div>
@@ -320,8 +324,8 @@ export default function MarriageCapacityActForm({ documentsSize }: Props) {
         <Field name="contactPhoneNumber">
           {({ state, handleChange, handleBlur }) => (
             <InputField
-              label="Numéro de contact *"
-              placeholder="Ex: +225 01 23 45 67 89"
+              label={t("fields.contactPhone")}
+              placeholder={t("placeholders.contactPhone")}
               type="tel"
               value={state.value}
               onChange={(value) => handleChange(value as string)}
@@ -359,7 +363,7 @@ export default function MarriageCapacityActForm({ documentsSize }: Props) {
 
   return (
     <FormContainer
-      title="Formulaire de demande d'Acte de Capacité de Mariage"
+      title={t("title")}
       currentStep={currentStep}
       totalSteps={totalSteps}
       handleSubmit={handleSubmit}

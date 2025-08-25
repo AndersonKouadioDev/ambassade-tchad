@@ -3,6 +3,7 @@
 import { revalidateLogic, useForm } from "@tanstack/react-form";
 import React, { useEffect } from "react";
 import { toast } from "sonner";
+import { useTranslations } from "next-intl";
 
 import { useFileUpload } from "@/hooks/use-file-upload";
 import FileUploadView from "@/components/block/file-upload-view";
@@ -29,6 +30,8 @@ interface Props {
 }
 
 export default function VisaForm({ documentsSize }: Props) {
+  const t = useTranslations("visaForm");
+  
   // Validation du formulaire
   const {
     Field,
@@ -39,25 +42,25 @@ export default function VisaForm({ documentsSize }: Props) {
     setFieldValue,
   } = useForm({
     defaultValues: {
-      personFirstName: "John",
-      personLastName: "Doe",
+      personFirstName: "",
+      personLastName: "",
       personGender: Genre.MALE,
-      personNationality: "Tchadienne",
-      personBirthDate: "2000-01-01",
-      personBirthPlace: "N'Djamena",
+      personNationality: "",
+      personBirthDate: "",
+      personBirthPlace: "",
       personMaritalStatus: SituationMatrimoniale.SINGLE,
       passportType: PassportType.ORDINARY,
-      passportNumber: "123456789",
-      passportIssuedBy: "Ministère de l'Intérieur",
-      passportIssueDate: "2020-01-01",
-      passportExpirationDate: "2025-01-01",
-      profession: "Employé",
-      employerAddress: "123 Main St, N'Djamena",
-      employerPhoneNumber: "123-456-7890",
+      passportNumber: "",
+      passportIssuedBy: "",
+      passportIssueDate: "",
+      passportExpirationDate: "",
+      profession: "",
+      employerAddress: "",
+      employerPhoneNumber: "",
       durationMonths: 1,
-      destinationState: "N'Djamena",
+      destinationState: "",
       visaType: VisaType.SHORT_STAY,
-      contactPhoneNumber: "123-456-7890",
+      contactPhoneNumber: "",
       documents: [],
     } as VisaRequestDetailsDTO,
     validationLogic: revalidateLogic({
@@ -89,12 +92,14 @@ export default function VisaForm({ documentsSize }: Props) {
   const durationMonths = getFieldValue("durationMonths");
 
   useEffect(() => {
-    if (durationMonths <= 3) {
-      setFieldValue("visaType", VisaType.SHORT_STAY);
-    } else {
-      setFieldValue("visaType", VisaType.LONG_STAY);
+    if (typeof durationMonths === 'number') {
+      if (durationMonths <= 3) {
+        setFieldValue("visaType", VisaType.SHORT_STAY);
+      } else {
+        setFieldValue("visaType", VisaType.LONG_STAY);
+      }
     }
-  }, [durationMonths]);
+  }, [durationMonths, setFieldValue]);
 
   const maxFiles = 10;
   const maxSizeMB = 20;
@@ -176,7 +181,7 @@ export default function VisaForm({ documentsSize }: Props) {
       } catch (validationError: any) {
         isValid = false;
         toast.error(
-          validationError?.message || `Erreur de validation pour ${fieldName}`
+          validationError?.message || t("validationError", { field: fieldName })
         );
       }
     }
@@ -207,14 +212,44 @@ export default function VisaForm({ documentsSize }: Props) {
 
     if (uploadedFiles.length < documentsSize) {
       toast.error(
-        `Veuillez télécharger les ${documentsSize} documents requis.`
+        t("documentsRequired", { count: documentsSize })
       );
       return;
     }
     try {
       await createVisa({ data: dataForSubmit });
       showSuccessAndRedirect();
-    } catch (error) {}
+    } catch (error) {
+      toast.error(t("submitError"));
+    }
+  };
+
+  // Fonctions de traduction pour les options des sélecteurs
+  const translateGenre = (genre: Genre) => {
+    const translations: Record<Genre, string> = {
+      [Genre.MALE]: t("gender.male"),
+      [Genre.FEMALE]: t("gender.female")
+    };
+    return translations[genre] || genre;
+  };
+
+  const translateMaritalStatus = (status: SituationMatrimoniale) => {
+    const translations: Record<SituationMatrimoniale, string> = {
+      [SituationMatrimoniale.SINGLE]: t("maritalStatus.single"),
+      [SituationMatrimoniale.MARRIED]: t("maritalStatus.married"),
+      [SituationMatrimoniale.DIVORCED]: t("maritalStatus.divorced"),
+      [SituationMatrimoniale.WIDOWED]: t("maritalStatus.widowed")
+    };
+    return translations[status] || status;
+  };
+
+  const translatePassportType = (type: PassportType) => {
+    const translations: Record<PassportType, string> = {
+      [PassportType.ORDINARY]: t("passportType.ordinary"),
+      [PassportType.DIPLOMATIC]: t("passportType.diplomatic"),
+      [PassportType.SERVICE]: t("passportType.service")
+    };
+    return translations[type] || type;
   };
 
   const fieldsStep1: {
@@ -226,58 +261,58 @@ export default function VisaForm({ documentsSize }: Props) {
   }[] = [
     {
       name: "personFirstName",
-      label: "Prénom *",
+      label: t("fields.firstName"),
       type: "text",
-      placeholder: "Ex: Mahamat",
+      placeholder: t("placeholders.firstName"),
     },
     {
       name: "personLastName",
-      label: "Nom *",
+      label: t("fields.lastName"),
       type: "text",
-      placeholder: "Ex: Abakar",
+      placeholder: t("placeholders.lastName"),
     },
     {
       name: "personGender",
-      label: "Genre *",
+      label: t("fields.gender"),
       type: "select",
       options: Object.values(Genre).map((genre) => ({
         value: genre,
-        label: genre,
+        label: translateGenre(genre),
       })),
       placeholder: "",
     },
     {
       name: "personNationality",
-      label: "Nationalité *",
+      label: t("fields.nationality"),
       type: "text",
-      placeholder: "Ex: Tchadienne",
+      placeholder: t("placeholders.nationality"),
     },
     {
       name: "personBirthDate",
-      label: "Date de naissance *",
+      label: t("fields.birthDate"),
       type: "date",
       placeholder: "",
     },
     {
       name: "personBirthPlace",
-      label: "Lieu de naissance *",
+      label: t("fields.birthPlace"),
       type: "text",
-      placeholder: "Ex: N'Djamena",
+      placeholder: t("placeholders.birthPlace"),
     },
     {
       name: "personMaritalStatus",
-      label: "Situation Matrimoniale *",
+      label: t("fields.maritalStatus"),
       type: "select",
       options: Object.values(SituationMatrimoniale).map((status) => ({
         value: status,
-        label: status,
+        label: translateMaritalStatus(status),
       })),
       placeholder: "",
     },
   ];
 
   const renderStep1 = () => (
-    <StepContainer title="Informations personnelles">
+    <StepContainer title={t("steps.personalInfo")}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {fieldsStep1.map((item) => (
           <Field key={item.name} name={item.name}>
@@ -319,42 +354,42 @@ export default function VisaForm({ documentsSize }: Props) {
   }[] = [
     {
       name: "passportType",
-      label: "Type de passeport *",
+      label: t("fields.passportType"),
       type: "select",
       options: Object.values(PassportType).map((type) => ({
         value: type,
-        label: type,
+        label: translatePassportType(type),
       })),
       placeholder: "",
     },
     {
       name: "passportNumber",
-      label: "Numéro de passeport *",
+      label: t("fields.passportNumber"),
       type: "text",
-      placeholder: "Ex: AB123456",
+      placeholder: t("placeholders.passportNumber"),
     },
     {
       name: "passportIssuedBy",
-      label: "Pays de délivrance *",
+      label: t("fields.passportIssuedBy"),
       type: "text",
-      placeholder: "Ex: République du Tchad",
+      placeholder: t("placeholders.passportIssuedBy"),
     },
     {
       name: "passportIssueDate",
-      label: "Date de délivrance *",
+      label: t("fields.passportIssueDate"),
       type: "date",
       placeholder: "",
     },
     {
       name: "passportExpirationDate",
-      label: "Date d'expiration *",
+      label: t("fields.passportExpirationDate"),
       type: "date",
       placeholder: "",
     },
   ];
 
   const renderStep2 = () => (
-    <StepContainer title="Informations du passeport">
+    <StepContainer title={t("steps.passportInfo")}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {fieldsStep2.map((item) => (
           <Field key={item.name} name={item.name}>
@@ -391,42 +426,48 @@ export default function VisaForm({ documentsSize }: Props) {
     name: keyof Omit<VisaRequestDetailsDTO, "documents">;
     label: string;
     type?: string;
+    dataType?: "string" | "number";
     placeholder: string;
   }[] = [
     {
       name: "profession",
-      label: "Profession *",
+      label: t("fields.profession"),
       type: "text",
-      placeholder: "Ex: Ingénieur",
+      dataType: "string",
+      placeholder: t("placeholders.profession"),
     },
     {
       name: "employerAddress",
-      label: "Adresse de l'employeur *",
+      label: t("fields.employerAddress"),
       type: "text",
-      placeholder: "Ex: 123 Rue de la Paix, Abidjan",
+      dataType: "string",
+      placeholder: t("placeholders.employerAddress"),
     },
     {
       name: "employerPhoneNumber",
-      label: "Téléphone de l'employeur *",
+      label: t("fields.employerPhoneNumber"),
       type: "text",
-      placeholder: "Ex: +225 01 23 45 67 89",
+      dataType: "string",
+      placeholder: t("placeholders.employerPhoneNumber"),
     },
     {
       name: "durationMonths",
-      label: "Durée du séjour (en mois) *",
+      label: t("fields.durationMonths"),
       type: "number",
-      placeholder: "Ex: 3",
+      dataType: "number",
+      placeholder: t("placeholders.durationMonths"),
     },
     {
       name: "destinationState",
-      label: "Ville de destination *",
+      label: t("fields.destinationState"),
       type: "text",
-      placeholder: "Ex: N'Djamena",
+      dataType: "string",
+      placeholder: t("placeholders.destinationState"),
     },
   ];
 
   const renderStep3 = () => (
-    <StepContainer title="Informations professionnelles et visa">
+    <StepContainer title={t("steps.professionalInfo")}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {fieldsStep3.map((item) => (
           <Field key={item.name} name={item.name}>
@@ -436,7 +477,14 @@ export default function VisaForm({ documentsSize }: Props) {
                 placeholder={item.placeholder}
                 type={item.type}
                 value={state.value}
-                onChange={(value) => handleChange(value as string)}
+                onChange={(value) => {
+                  // Conversion spécifique pour les champs numériques
+                  if (item.dataType === "number") {
+                    handleChange(Number(value));
+                  } else {
+                    handleChange(value as string);
+                  }
+                }}
                 onBlur={handleBlur}
                 errors={state.meta.errors![0]?.message}
               />
@@ -448,7 +496,7 @@ export default function VisaForm({ documentsSize }: Props) {
   );
 
   const renderStep4 = () => (
-    <StepContainer title="Récapitulatif et pièces justificatives">
+    <StepContainer title={t("steps.documents")}>
       <div className="mb-4">
         <PriceViewer price={prixActe ?? 5000} />
       </div>
@@ -475,8 +523,8 @@ export default function VisaForm({ documentsSize }: Props) {
         <Field name="contactPhoneNumber">
           {({ state, handleChange, handleBlur }) => (
             <InputField
-              label="Numéro de contact *"
-              placeholder="Ex: +225 01 23 45 67 89"
+              label={t("fields.contactPhoneNumber")}
+              placeholder={t("placeholders.contactPhoneNumber")}
               type="text"
               value={state.value}
               onChange={(value) => handleChange(value as any)}
@@ -495,7 +543,7 @@ export default function VisaForm({ documentsSize }: Props) {
 
   return (
     <FormContainer
-      title="Formulaire de demande de Visa"
+      title={t("title")}
       currentStep={currentStep}
       totalSteps={totalSteps}
       handleSubmit={handleSubmit}

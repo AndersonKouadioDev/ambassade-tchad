@@ -26,7 +26,7 @@ export const UtilisateurUpdateSchema = z.object({
     password: z.string({ message: "Le mot de passe est requis" })
         .min(8, "Le mot de passe doit contenir au moins 8 caractères")
         .max(100, "Le mot de passe ne doit pas dépasser 100 caractères")
-        .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/, "Le mot de passe doit contenir au moins une majuscule, une minuscule, un chiffre et un caractère spécial"),
+        .regex(/^ (?=.* [a - z])(?=.* [A - Z])(?=.*\d)(?=.* [@$! %*?&.])[A - Za - z\d@$!%*?&.]{ 8,} $ /, "Le mot de passe doit contenir au moins une majuscule, une minuscule, un chiffre et un caractère spécial"),
 }).partial();
 
 export const UtilisateurUpdateMotDePasseSchema = z.object({
@@ -35,11 +35,12 @@ export const UtilisateurUpdateMotDePasseSchema = z.object({
     newPassword: z.string({ message: "Le nouveau mot de passe est requis" })
         .min(8, "Le nouveau mot de passe doit contenir au moins 8 caractères")
         .max(100, "Le nouveau mot de passe ne doit pas dépasser 100 caractères")
-        .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/, "Le nouveau mot de passe doit contenir au moins une majuscule, une minuscule, un chiffre et un caractère spécial"),
+        .regex(/^ (?=.* [a - z])(?=.* [A - Z])(?=.*\d)(?=.* [@$! %*?&.])[A - Za - z\d@$!%*?&.]{ 8,} $ /, "Le nouveau mot de passe doit contenir au moins une majuscule, une minuscule, un chiffre et un caractère spécial"),
 
     confirmNewPassword: z.string({ message: "La confirmation du mot de passe est requise" })
         .min(8, "La confirmation du mot de passe doit contenir au moins 8 caractères")
-        .max(100, "La confirmation du mot de passe ne doit pas dépasser 100 caractères"),
+        .max(100, "La confirmation du mot de passe ne doit pas dépasser 100 caractères")
+        .regex(/^ (?=.* [a - z])(?=.* [A - Z])(?=.*\d)(?=.* [@$! %*?&.])[A - Za - z\d@$!%*?&.]{ 8,} $ /, "La confirmation du mot de passe doit contenir au moins une majuscule, une minuscule, un chiffre et un caractère spécial"),
 
 }).refine((data) => data.newPassword === data.confirmNewPassword, {
     message: "Les mots de passe ne correspondent pas",
