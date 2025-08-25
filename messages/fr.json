@@ -30,16 +30,24 @@
   },
   "home": {
     "hero": {
-      "title": "Ambassade du Tchad en Côte d'Ivoire",
-      "subtitle": "Représentation diplomatique et consulaire",
-      "description": "L'Ambassade du Tchad en Côte d'Ivoire assure la représentation diplomatique et consulaire de la République du Tchad auprès de la République française et des organisations internationales basées à Paris.",
-      "cta": "Nos services",
-      "learnMore": "En savoir plus"
+      "title": "Bienvenue sur le site officiel de l'Ambassade de la République du Tchad en Côte d'Ivoire.",
+      "description_tchad": "de la République du Tchad en Côte d'Ivoire",
+      "description_cote_d_ivoire": ".",
+      "bouton_contact": "Prendre rendez-vous",
+      "demande_carte_consulaire": "Demander une carte consulaire et visa",
+      "bouton_ouvir": "Ouvrir maintenant"
     },
     "about": {
       "title": "À propos de l'Ambassade",
       "description": "L'Ambassade du Tchad en Côte d'Ivoire est la représentation diplomatique de la République du Tchad auprès de la République française. Elle assure également la représentation consulaire pour les ressortissants tchadiens résidant en Côte d'Ivoire.",
-      "readMore": "Lire la suite"
+      "readMore": "Lire la suite",
+      "contactTitle": "Nos Coordonnées",
+      "ctaButton": "En savoir plus",
+      "phoneLabel": "Téléphone",
+      "facebookLabel": "Facebook",
+      "facebookLink": "Ambassade du Tchad en Côte d'Ivoire",
+      "emailLabel": "Email",
+      "emailValue": "info@ambatchad-ci.com"
     },
     "services": {
       "title": "Nos services",
@@ -135,14 +143,6 @@
       "widowed": "Veuf/Veuve",
       "close": "Fermer",
       "submit": "Soumettre"
-    },
-    "hero": {
-      "title": "Bienvenue sur le Site officiel de l'ambassade",
-      "description_tchad": "de la republique de Tchad en Côte d'Ivoire",
-      "description_cote_d_ivoire": ".",
-      "bouton_contact": "Prendre rendez-vous",
-      "demande_carte_consulaire": "Demander une carte consulaire et visa",
-      "bouton_ouvir": "Ouvrir maintenant"
     }
   },
   "ambassade": {
@@ -183,6 +183,7 @@
     "services": {
       "title": "Nos Services Consulaires",
       "description": "L'Ambassade du Tchad en Côte d'Ivoire propose une gamme complète de services consulaires pour répondre aux besoins de la communauté tchadienne.",
+      "cta": "Faire une demande",
       "passport": {
         "title": "Passeport",
         "description": "Renouvellement et délivrance de passeport tchadien"
@@ -321,6 +322,7 @@
       "description": "Quelques chiffres clés sur le Tchad"
     },
     "cultural": {
+      "title": "",
       "cultural-text": {
         "item1": "Le premier recensement de la population a eu lieu en 1993. Il évaluait la population totale du Tchad à 6 280 000 individus, dont 5,7 % de nomades (au sens strict), le reste étant constitué de sédentaires, semi-sédentaires ou transhumants. Le deuxième recensement de l'histoire du Tchad, le dernier en date, a été effectué plus de quinze ans plus tard, en 2009. Voici quelques données clefs de ce dénombrement : la population totale s'élève à 11,03 millions dhabitants (elle est estimée à 12,8 millions en 2016), dont 50,6 % de moins de 15 ans et 50,7 % de femmes. La population urbaine s'élève à 22 %, faisant du Tchad un pays majoritairement rural. Ce recensement met en évidence la très inégale répartition géographique de la population, plus de la moitié étant concentrée dans les 10 % du pays les plus au sud. Ainsi, on trouve au Tchad des disparités de densité énormes, allant de 52,4 hab/km² dans le Logone occidental à 0,1 hab/km² dans les régions du Borkou, de l’Ennedi et du Tibesti, où la population ne dépasse guère 300 000 individus dans les trois régions confondues ; à noter l'extrême disparité entre N'Djamena, près de 1 million d'habitants et la région du Tibesti, 25 000 habitants !",
         "item2": "Les régions les plus densément peuplées sont le Logone oriental et le Logone occidental, le Mayo Kebbi Est et Ouest et le Tandjilé, toutes situées au sud-ouest, et le Ouaddaï (721 000 habitants) à l’est du pays.La population tchadienne est jeune (la moitié a moins de 15 ans), peu instruite (taux d’analphabétisme de 65 %, taux de scolarisation de 75 % dans le Sud, contre moins de 8 % dans le Nord). Elle subsiste grâce à l’agriculture (83 % de la population active dépend du secteur primaire). Les conditions de vie sont précaires : 88,6 % des habitations sont encore construites en matériaux traditionnels, 76,4 % des habitants consomment une eau douteuse (mare ou puits non aménagé) ; 79 % des Tchadiens n’utilisent pas de latrines, 1 % des ménages ont accès à l’électricité, et 99,5 % n’ont recours qu’au bois ou au charbon de bois comme source d’énergie pour la cuisson des aliments.",
@@ -335,6 +337,7 @@
       "title": "Les projets du Président de la République",
       "imageAlt": "Image du président",
       "projectTitle": "Grands projets nationaux",
+      "downloadCta": "Télécharger le plan présidentiel (PDF)",
       "chantiers": [
         {
           "title": "Chantier 1",
@@ -417,9 +420,6 @@
         "Lindépendance a été acquise en 1960, suivie de nombreux défis politiques."
       ]
     },
-    "hero": {
-      "title": "Tourisme au Tchad"
-    },
     "tchad": {
       "hero": {
         "title": "Tchad - Terre d'accueil et de diversité"
@@ -485,7 +485,8 @@
     "loading": "Chargement...",
     "error": "Une erreur est survenue",
     "noNews": "Aucune actualité pour le moment.",
-    "noNewsFound": "Aucune actualité trouvée"
+    "noNewsFound": "Aucune actualité trouvée",
+    "noNewsFoundDescription": "Aucune actualité trouvée"
   },
   "gallery": {
     "title": "Galerie",
@@ -514,7 +515,8 @@
       "previous": "Page précédente",
       "next": "Page suivante",
       "noPhotos": "Aucune photo pour le moment.",
-      "backToList": "Retour à la liste des photos"
+      "backToList": "Retour à la liste des photos",
+      "noPhotosDescription": "Aucune photo trouvée"
     },
     "video": {
       "hero": {
@@ -537,7 +539,8 @@
       "previous": "Page précédente",
       "next": "Page suivante",
       "noVideos": "Aucune vidéo pour le moment.",
-      "backToList": "Retour à la liste des vidéos"
+      "backToList": "Retour à la liste des vidéos",
+      "noVideosDescription": "Aucune vidéo trouvée"
     }
   },
   "contact": {
@@ -1512,6 +1515,8 @@
     },
     "description": "Découvrez tous les événements organisés par l'Ambassade du Tchad en Côte d'Ivoire.",
     "searchPlaceholder": "Rechercher un événement...",
+    "no_event_title": "Aucun événement trouvé",
+    "no_event_description": "Aucun événement trouvé",
     "filters": {
       "all": "Tous",
       "upcoming": "À venir",
@@ -1600,10 +1605,7 @@
       "visa": {
         "title": "Visa",
         "description": "Demande de visa pour séjour au Tchad",
-        "features": [
-          "Court séjour",
-          "Long séjour"
-        ]
+        "features": ["Court séjour", "Long séjour"]
       },
       "birthAct": {
         "title": "Acte de naissance",
@@ -1617,19 +1619,12 @@
       "consularCard": {
         "title": "Carte consulaire",
         "description": "Demande de carte consulaire",
-        "features": [
-          "Carte d’identité nationale",
-          "Justificatif de résidence"
-        ]
+        "features": ["Carte d’identité nationale", "Justificatif de résidence"]
       },
       "laissezPasser": {
         "title": "Laissez-passer",
         "description": "Demande de laissez-passer",
-        "features": [
-          "Urgence",
-          "Voyage temporaire",
-          "Retour au pays d’origine"
-        ]
+        "features": ["Urgence", "Voyage temporaire", "Retour au pays d’origine"]
       },
       "marriageCapacity": {
         "title": "Certificat de capacité de mariage",
@@ -1643,28 +1638,17 @@
       "deathAct": {
         "title": "Acte de décès",
         "description": "Demande d’acte de décès",
-        "features": [
-          "Copie intégrale",
-          "Extrait",
-          "Certificat de décès"
-        ]
+        "features": ["Copie intégrale", "Extrait", "Certificat de décès"]
       },
       "powerOfAttorney": {
         "title": "Procuration",
         "description": "Demande de procuration",
-        "features": [
-          "Procuration générale",
-          "Procuration spéciale",
-          "Mandat"
-        ]
+        "features": ["Procuration générale", "Procuration spéciale", "Mandat"]
       },
       "nationalityCertificate": {
         "title": "Certificat de nationalité",
         "description": "Demande de certificat de nationalité tchadienne",
-        "features": [
-          "Certificat de nationalité",
-          "Preuve de citoyenneté"
-        ]
+        "features": ["Certificat de nationalité", "Preuve de citoyenneté"]
       }
     },
     "startButton": "Commencer"

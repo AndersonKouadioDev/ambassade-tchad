@@ -1,4 +1,3 @@
-// app/[locale]/news/page.tsx
 import Hero from '@/components/events/news/hero';
 import News from '@/features/actualites/components/actualite-list-table/news';
 import { prefetchActualitesList } from '@/features/actualites/queries/actualite-list.query';

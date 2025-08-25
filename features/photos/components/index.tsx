@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { Calendar, ChevronLeft, ChevronRight, Search, X } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useQueryStates } from 'nuqs';
+import { useQueryStates } from "nuqs";
 import { usePhotosList } from "@/features/photos/queries/photo-list.query";
 import { useState } from "react";
 import { photoFiltersClient } from "@/features/photos/filters/photo.filters";
@@ -12,27 +12,24 @@ import { DotLoader } from "react-spinners";
 import { IPhotoRechercheParams } from "@/features/photos/types/photo.type";
 
 interface IProps {
-    searchParams: IPhotoRechercheParams;
+  searchParams: IPhotoRechercheParams;
 }
 
 export default function GaleryPhotos({ searchParams }: IProps) {
   const t = useTranslations("gallery.photo");
-  
-  // Gestion des filtres avec nuqs
+
   const [filters, setFilters] = useQueryStates(
-    photoFiltersClient.filter, 
+    photoFiltersClient.filter,
     photoFiltersClient.option
   );
 
-  // Paramètres de recherche pour l'API
   const currentSearchParams: IPhotoRechercheParams = {
     page: Number(filters.page) || 1,
     limit: Number(filters.limit) || 12,
-    title: filters.title,   
+    title: filters.title,
     createdAt: filters.createdAt,
   };
 
-  // Récupération des photos depuis l'API
   const { data, isLoading, isError } = usePhotosList(currentSearchParams);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
@@ -40,7 +37,7 @@ export default function GaleryPhotos({ searchParams }: IProps) {
     setFilters({
       ...filters,
       title: e.target.value,
-      page: 1 // Reset à la première page lors d'une nouvelle recherche
+      page: 1,
     });
   };
 
@@ -48,7 +45,7 @@ export default function GaleryPhotos({ searchParams }: IProps) {
     setFilters({
       ...filters,
       createdAt: e.target.value,
-      page: 1 // Reset à la première page lors d'un nouveau filtre date
+      page: 1,
     });
   };
 
@@ -64,72 +61,58 @@ export default function GaleryPhotos({ searchParams }: IProps) {
     }
   };
 
-  if (isLoading) {
-    return (
-      <div className="text-center py-12 flex items-center justify-center h-[80vh]">
-        <DotLoader color="#1D4ED8" />
-      </div>
-    );
-  }
-
-  if (isError) {
-    return (
-      <div className="text-center text-red-500 py-12 flex items-center justify-center h-[80vh] w-full">
-        {t("error")}
-      </div>
-    );
-  }
-
   return (
-    <div className="px-6 py-10 mb-6 bg-white">
-      <h2 className="text-3xl font-bold text-center text-secondary mb-8 font-mulish">
-        {t("description")}
-      </h2>
-      
-      {/* Barres de recherche */}
-      <div className="flex flex-col md:flex-row gap-6 justify-center items-center mb-20">
-        <div className="relative w-full max-w-md">
-          <input
-            type="text"
-            placeholder={t("searchPlaceholder")}
-            value={filters.title || ''}
-            onChange={handleSearchChange}
-            className="w-full py-3 pl-12 pr-4 text-sm rounded-full bg-gray-100 focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white shadow-sm"
-          />
-          <Search className="absolute top-1/2 left-4 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
+    <div className="bg-white py-16 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-screen-xl mx-auto">
+        <h2 className="text-4xl md:text-5xl font-extrabold text-center text-primary mb-12">
+          {t("description")}
+        </h2>
+
+        {/* Filtres de recherche */}
+        <div className="flex flex-col md:flex-row gap-6 justify-center items-center mb-12">
+          <div className="relative w-full max-w-md">
+            <input
+              type="text"
+              placeholder={t("searchPlaceholder")}
+              value={filters.title || ""}
+              onChange={handleSearchChange}
+              className="w-full py-3 pl-12 pr-4 text-sm rounded-full bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary focus:bg-white shadow-sm"
+            />
+            <Search className="absolute top-1/2 left-4 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
+          </div>
+          <div className="relative w-full max-w-md">
+            <input
+              type="date"
+              value={filters.createdAt || ""}
+              onChange={handleDateChange}
+              className="w-full py-3 pl-12 pr-4 text-sm rounded-full bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary focus:bg-white shadow-sm appearance-none"
+              aria-label={t("searchByDate")}
+              title={t("searchByDate")}
+            />
+            <Calendar className="absolute top-1/2 left-4 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
+          </div>
         </div>
 
-        <div className="relative w-full max-w-md">
-          <input
-            type="date"
-            value={filters.createdAt || ''}
-            onChange={handleDateChange}
-            className="w-full py-3 pl-12 pr-4 text-sm rounded-full bg-gray-100 focus:outline-none focus:ring-2 focus:ring-secondary focus:bg-white shadow-sm"
-          />
-          <Calendar className="absolute top-1/2 left-4 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
-        </div>
-      </div>
-
-      {/* Galerie de photos */}
-      <div className="flex flex-col items-center ">
+        {/* Galerie de photos */}
         {data?.data && data.data.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-8 px-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 md:gap-12 mt-8">
             {data.data.map((photo) => {
-              // Vérification que imageUrl existe et a au moins un élément
-              const imageUrl = photo.imageUrl?.[0] ? formatImageUrl(photo.imageUrl[0]) : '/placeholder-image.jpg';
-              
+              const imageUrl = photo.imageUrl?.[0]
+                ? formatImageUrl(photo.imageUrl[0])
+                : "/placeholder-image.jpg";
+
               return (
                 <div
                   key={photo.id}
-                  className="bg-card shadow-lg rounded-2xl overflow-hidden cursor-pointer hover:shadow-xl transition-shadow"
+                  className="bg-card shadow-lg rounded-2xl overflow-hidden cursor-pointer hover:shadow-xl transition-shadow group h-full"
                   onClick={() => setSelectedImage(imageUrl)}
                 >
-                  <div className="relative h-80 w-[300px]">
+                  <div className="relative h-64 w-full">
                     <Image
                       src={imageUrl}
                       alt={photo.title || t("untitled")}
                       fill
-                      className="object-cover hover:scale-105 transition-transform"
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     />
                   </div>
@@ -148,38 +131,44 @@ export default function GaleryPhotos({ searchParams }: IProps) {
             })}
           </div>
         ) : (
-          <div className="py-12 text-center">
-            <p className="text-lg text-gray-600">
+          <div className="text-center py-20">
+            <div className="w-24 h-24 mx-auto mb-6 bg-gray-100 rounded-full flex items-center justify-center">
+              <Calendar className="w-12 h-12 text-gray-400" />
+            </div>
+            <h3 className="text-2xl font-bold text-gray-700 mb-2">
               {t("noPhotos")}
-            </p>
+            </h3>
+            <p className="text-gray-500">{t("noPhotosDescription")}</p>
           </div>
         )}
       </div>
-      
+
       {/* Pagination */}
       {data?.meta && data.meta.totalPages > 1 && (
-        <div className="flex justify-center items-center gap-4 mt-8">
+        <div className="flex justify-center items-center mt-12 gap-4">
           <button
             onClick={handlePrev}
             disabled={Number(filters.page) <= 1}
-            className="p-2 bg-gray-100 hover:bg-gray-200 rounded-full shadow disabled:opacity-50"
+            className="p-3 rounded-full bg-gray-100 disabled:opacity-50 hover:bg-gray-200 transition-colors"
+            aria-label="Previous page"
           >
-            <ChevronLeft className="w-6 h-6 text-gray-700" />
+            <ChevronLeft className="w-5 h-5 text-gray-700" />
           </button>
-          
-          <span className="text-sm">
+
+          <span className="text-sm font-medium text-gray-700">
             {t("pagination", {
               current: filters.page,
-              total: data.meta.totalPages
+              total: data.meta.totalPages,
             })}
           </span>
-          
+
           <button
             onClick={handleNext}
             disabled={Number(filters.page) >= data.meta.totalPages}
-            className="p-2 bg-secondary hover:bg-red-600 text-white rounded-full shadow disabled:opacity-70"
+            className="p-3 rounded-full bg-gray-100 disabled:opacity-50 hover:bg-gray-200 transition-colors"
+            aria-label="Next page"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-5 h-5 text-gray-700" />
           </button>
         </div>
       )}

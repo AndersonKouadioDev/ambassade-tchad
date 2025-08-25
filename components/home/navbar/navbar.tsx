@@ -2,7 +2,16 @@
 
 import { Link } from "@/i18n/navigation";
 import Image from "next/image";
-import { Mail, Phone, Search, Menu, X, User, LogOut, Settings } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  Search,
+  Menu,
+  X,
+  User,
+  LogOut,
+  Settings,
+} from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { useLocale, useTranslations } from "next-intl";
@@ -62,8 +71,7 @@ export default function Head() {
       name: t("tourisme"),
       children: [
         { name: t("site"), link: "/tourisme" },
-        { name: t("tchad"), link: "/tourisme/tchad-s" },
-        // { name: t("peuples"), link: "/tourisme/peuples-et-cultures" },
+        { name: t("tchad"), link: "/tourisme/tchad" },
       ],
     },
   ];
@@ -88,7 +96,7 @@ export default function Head() {
               <span className="text-sm font-medium">Mon Espace</span>
             </button>
           </Link>
-          <button 
+          <button
             onClick={handleLogout}
             className="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full transition-colors"
           >
@@ -128,7 +136,9 @@ export default function Head() {
           <div className="flex justify-between items-center w-full">
             <div className="flex flex-col">
               <span className="text-xl font-bold uppercase">{t("titre")}</span>
-              <span className="text-base text-white/80 uppercase">Ghana - Sierra Leone - Guinée Conakry - Liberia</span>
+              <span className="text-base text-white/80 uppercase">
+                Ghana - Sierra Leone - Guinée Conakry - Liberia
+              </span>
             </div>
             <div className="flex gap-4 items-center">
               <div className="flex gap-2">
@@ -357,25 +367,25 @@ export default function Head() {
                 AR
               </button>
             </div>
-            
+
             {/* Boutons d'authentification pour mobile */}
             {status === "loading" ? (
               <div className="flex items-center gap-2 bg-secondary text-white px-4 py-2 rounded-full opacity-50">
                 <User size={16} />
                 <span className="text-sm font-medium">Chargement...</span>
               </div>
-                         ) : session ? (
-               <div className="flex flex-col gap-2 w-full">
-                 <Link href="/espace-client/dashboard" className="w-full">
-                   <button 
-                     className="flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-full transition-colors w-full"
-                     onClick={() => setMenuOpen(false)}
-                   >
-                     <Settings size={16} />
-                     <span className="text-sm font-medium">Mon Espace</span>
-                   </button>
-                 </Link>
-                <button 
+            ) : session ? (
+              <div className="flex flex-col gap-2 w-full">
+                <Link href="/espace-client/dashboard" className="w-full">
+                  <button
+                    className="flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-full transition-colors w-full"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    <Settings size={16} />
+                    <span className="text-sm font-medium">Mon Espace</span>
+                  </button>
+                </Link>
+                <button
                   onClick={() => {
                     handleLogout();
                     setMenuOpen(false);
@@ -388,7 +398,7 @@ export default function Head() {
               </div>
             ) : (
               <Link href="/auth" className="w-full">
-                <button 
+                <button
                   className="flex items-center justify-center gap-2 bg-secondary hover:bg-red-600 text-white px-4 py-2 rounded-full transition-colors w-full"
                   onClick={() => setMenuOpen(false)}
                 >

@@ -1,11 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import { Lock, UserPlus, Key } from "lucide-react";
-// import { useLocale } from "next-intl";
 import LoginForm from "./login-form";
 import RegisterForm from "./register-form";
 import ForgotPasswordForm from "./forgot-password-form";
@@ -15,20 +14,36 @@ type AuthTab = "login" | "register" | "forgot-password";
 export default function AuthForm() {
   const t = useTranslations("auth");
   const searchParams = useSearchParams();
-  // const locale = useLocale();
-  const [activeTab, setActiveTab] = useState<AuthTab>(() => {
-    const tab = searchParams.get("tab");
-    if (tab === "register" || tab === "forgot-password") {
-      return tab as AuthTab;
-    }
-    return "login";
-  });
+  const router = useRouter();
+
+  const initialTab = (searchParams.get("tab") as AuthTab) || "login";
+  const [activeTab, setActiveTab] = useState<AuthTab>(initialTab);
   const message = searchParams.get("message");
 
-  // Si il y a un message de succès d'inscription, afficher l'onglet login
-  if (message === "inscription_success" && activeTab !== "login") {
-    setActiveTab("login");
-  }
+  // Sync state with URL parameter on mount and when params change
+  useEffect(() => {
+    const tabParam = searchParams.get("tab");
+    if (tabParam === "register" || tabParam === "forgot-password") {
+      setActiveTab(tabParam as AuthTab);
+    } else {
+      setActiveTab("login");
+    }
+    // Handle inscription success message
+    if (message === "inscription_success") {
+      setActiveTab("login");
+    }
+  }, [searchParams, message]);
+
+  const handleTabChange = (tabId: AuthTab) => {
+    setActiveTab(tabId);
+    const newParams = new URLSearchParams(searchParams.toString());
+    if (tabId === "login") {
+      newParams.delete("tab");
+    } else {
+      newParams.set("tab", tabId);
+    }
+    router.replace(`?${newParams.toString()}`);
+  };
 
   const tabs = [
     { id: "login", label: t("login.title"), icon: Lock },
@@ -50,31 +65,31 @@ export default function AuthForm() {
   };
 
   return (
-    <div className="w-full min-h-screen bg-gradient-to-br from-blue-50 to-gray-50 px-4 flex items-center justify-center py-8">
-      <div className="w-full max-w-4xl flex flex-col md:flex-row overflow-hidden rounded-2xl shadow-xl bg-white">
+    <div className="w-full min-h-screen bg-gray-50 px-4 flex items-center justify-center py-8">
+      <div className="w-full max-w-4xl flex flex-col md:flex-row overflow-hidden rounded-2xl shadow-2xl">
         {/* Left decorative panel */}
-        <div className="hidden md:flex flex-1 bg-gradient-to-b from-blue-600 to-blue-800 p-8 items-center justify-center">
-          <div className="text-white bg-red text-center space-y-4">
-            <div className="mx-auto w-24 h-24 bg-white/20 rounded-full flex items-center justify-center">
+        <div className="hidden md:flex flex-1 bg-gradient-to-b from-primary to-blue-800 p-12 items-center justify-center relative overflow-hidden">
+          <div className="absolute inset-0 bg-texture opacity-10" />
+          <div className="text-white text-center space-y-4 relative z-10">
+            <div className="mx-auto w-28 h-28 bg-white/20 rounded-full flex items-center justify-center shadow-lg">
               <Image
                 src="/assets/images/logo.png"
                 alt="Logo Ambassade du Tchad"
-                width={80}
-                height={80}
-                className="rounded-full"
+                width={90}
+                height={90}
               />
             </div>
-            <h2 className="text-2xl font-bold">Ambassade du Tchad</h2>
+            <h2 className="text-3xl font-bold">Ambassade du Tchad</h2>
             <p className="text-blue-100 text-sm max-w-xs mx-auto">
               Accédez à votre espace sécurisé pour gérer vos services
-              consulaires
+              consulaires.
             </p>
           </div>
         </div>
 
         {/* Right form panel */}
-        <div className="w-full max-w-lg md:max-w-xl mx-auto flex items-center border border-gray-100 p-4 sm:p-8 flex-col justify-center bg-white overflow-y-auto">
-          {/* Message de succès d'inscription */}
+        <div className="w-full max-w-lg md:max-w-xl mx-auto flex flex-col justify-center bg-white p-6 sm:p-10 overflow-y-auto">
+          {/* Success message */}
           {message === "inscription_success" && (
             <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
               <div className="flex items-center">
@@ -98,41 +113,32 @@ export default function AuthForm() {
             </div>
           )}
 
-          <div className="text-center mb-6">
-            <h2 className="text-3xl font-bold text-gray-800">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-gray-800 mb-2">
               {activeTab === "login" && t("login.title")}
               {activeTab === "register" && t("register.title")}
               {activeTab === "forgot-password" && t("forgotPassword.title")}
             </h2>
-            <p className="text-gray-500 mt-2">
-              {activeTab === "login" && "Accédez à votre espace personnel"}
+            <p className="text-gray-500">
+              {activeTab === "login" && "Accédez à votre espace personnel."}
               {activeTab === "register" &&
-                "Créez votre compte en quelques étapes"}
+                "Créez votre compte en quelques étapes."}
               {activeTab === "forgot-password" &&
-                "Réinitialisez votre mot de passe"}
+                "Réinitialisez votre mot de passe."}
             </p>
           </div>
 
-          {/* Onglets */}
-          <div className="flex mb-6 bg-gray-100 p-1 rounded-lg">
+          {/* Tabs */}
+          <div className="flex mb-6 bg-gray-100 p-1 rounded-xl shadow-inner">
             {tabs.map((tab) => {
               const IconComponent = tab.icon;
               return (
                 <button
                   key={tab.id}
-                  onClick={() => {
-                    setActiveTab(tab.id as AuthTab);
-                    const url = new URL(window.location.href);
-                    if (tab.id === "login") {
-                      url.searchParams.delete("tab");
-                    } else {
-                      url.searchParams.set("tab", tab.id);
-                    }
-                    window.history.replaceState({}, "", url.toString());
-                  }}
-                  className={`flex-1 py-3 px-4 text-sm font-medium transition-colors rounded-md ${
+                  onClick={() => handleTabChange(tab.id as AuthTab)}
+                  className={`flex-1 py-3 px-4 text-sm font-medium transition-colors rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 ${
                     activeTab === tab.id
-                      ? "bg-white text-blue-600 shadow-sm"
+                      ? "bg-white text-primary shadow-sm"
                       : "text-gray-500 hover:text-gray-700"
                   }`}
                 >
@@ -145,7 +151,7 @@ export default function AuthForm() {
             })}
           </div>
 
-          {/* Formulaire actif */}
+          {/* Active Form */}
           <div className="mt-4">{renderForm()}</div>
         </div>
       </div>

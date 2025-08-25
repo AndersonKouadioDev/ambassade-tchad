@@ -2,13 +2,13 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import BreadcrumbNav from "./breadcrumbs";
 
-export default function Hero() {
-  const t = useTranslations("news.hero");
+export default function ConsulaireHero() {
+  const t = useTranslations("consulaire");
   return (
     <div className="relative w-full h-[calc(100vh-200px)] lg:h-[400px] xl:h-[500px]">
       <Image
         className="absolute inset-0 w-full h-full object-cover shrink-0"
-        src="/assets/images/backgrounds/bg-ambassade-1.png"
+        src="/assets/images/illustrations/page-accueil/card-items-2.png"
         alt="herosection"
         fill
       />

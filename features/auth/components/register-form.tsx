@@ -3,17 +3,17 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
-import { useLocale } from "next-intl";
-import { Eye, EyeOff } from "lucide-react";
 import { register } from "../actions/auth.action";
 import { RegisterDTO } from "../schemas/auth.schema";
 import PhoneInput from "@/components/ui/PhoneInput";
+import { Input } from "@/components/ui/Input";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
 
 export default function RegisterForm() {
   const t = useTranslations("auth.register");
   const router = useRouter();
-  const locale = useLocale();
-  
+
   const [formData, setFormData] = useState<RegisterDTO>({
     firstName: "",
     lastName: "",
@@ -22,23 +22,23 @@ export default function RegisterForm() {
     confirmPassword: "",
     phoneNumber: "",
   });
-  
+
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handlePhoneChange = (value: string) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      phoneNumber: value
+      phoneNumber: value,
     }));
   };
 
@@ -49,9 +49,9 @@ export default function RegisterForm() {
 
     try {
       const result = await register(formData);
-      
+
       if (result.success) {
-        router.push(`/${locale}/auth?message=inscription_success`);
+        router.push(`/auth?message=inscription_success`);
       } else {
         setError(result.message);
       }
@@ -64,13 +64,15 @@ export default function RegisterForm() {
   }
 
   return (
-    <form onSubmit={handleRegister} className="space-y-4 max-w-xl ml-0 px-4 max-h-[70vh] overflow-y-auto">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-        <div>
-          <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">
-            Prénom
-          </label>
-          <input
+    <form
+      onSubmit={handleRegister}
+      className="space-y-6 w-full max-w-lg mx-auto overflow-y-auto"
+    >
+      {/* First Name & Last Name */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="space-y-2">
+          <Label htmlFor="firstName">Prénom</Label>
+          <Input
             id="firstName"
             type="text"
             name="firstName"
@@ -78,14 +80,11 @@ export default function RegisterForm() {
             required
             value={formData.firstName}
             onChange={handleInputChange}
-            className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all"
           />
         </div>
-        <div>
-          <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-1">
-            Nom
-          </label>
-          <input
+        <div className="space-y-2">
+          <Label htmlFor="lastName">Nom</Label>
+          <Input
             id="lastName"
             type="text"
             name="lastName"
@@ -93,16 +92,14 @@ export default function RegisterForm() {
             required
             value={formData.lastName}
             onChange={handleInputChange}
-            className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all"
           />
         </div>
       </div>
 
-      <div>
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-          Email
-        </label>
-        <input
+      {/* Email */}
+      <div className="space-y-2">
+        <Label htmlFor="email">Email</Label>
+        <Input
           id="email"
           type="email"
           name="email"
@@ -110,14 +107,12 @@ export default function RegisterForm() {
           required
           value={formData.email}
           onChange={handleInputChange}
-          className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all"
         />
       </div>
 
-      <div>
-        <label htmlFor="phoneNumber" className="block text-sm font-medium text-gray-700 mb-1">
-          Téléphone (optionnel)
-        </label>
+      {/* Phone Number */}
+      <div className="space-y-2">
+        <Label htmlFor="phoneNumber">Téléphone (optionnel)</Label>
         <PhoneInput
           value={formData.phoneNumber}
           onChange={handlePhoneChange}
@@ -126,77 +121,76 @@ export default function RegisterForm() {
         />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-        <div>
-          <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
-            Mot de passe
-          </label>
-          <input
-            id="password"
-            type={showPassword ? "text" : "password"}
-            name="password"
-            placeholder={t("password.placeholder")}
-            required
-            value={formData.password}
-            onChange={handleInputChange}
-            className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all"
-          />
+      {/* Password & Confirm Password */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="space-y-2">
+          <Label htmlFor="password">Mot de passe</Label>
+          <div className="relative">
+            <Input
+              id="password"
+              type={showPassword ? "text" : "password"}
+              name="password"
+              placeholder={t("password.placeholder")}
+              required
+              value={formData.password}
+              onChange={handleInputChange}
+            />
+          </div>
         </div>
-        <div>
-          <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-1">
-            Confirmer le mot de passe
-          </label>
-          <input
-            id="confirmPassword"
-            type={showPassword ? "text" : "password"}
-            name="confirmPassword"
-            placeholder={t("confirmPassword.placeholder")}
-            required
-            value={formData.confirmPassword}
-            onChange={handleInputChange}
-            className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all"
-          />
+        <div className="space-y-2">
+          <Label htmlFor="confirmPassword">Confirmer le mot de passe</Label>
+          <div className="relative">
+            <Input
+              id="confirmPassword"
+              type={showPassword ? "text" : "password"}
+              name="confirmPassword"
+              placeholder={t("confirmPassword.placeholder")}
+              required
+              value={formData.confirmPassword}
+              onChange={handleInputChange}
+            />
+          </div>
         </div>
       </div>
 
-      <div className="flex items-center">
+      {/* Show Password Checkbox */}
+      <div className="flex items-center pt-2">
         <input
-          id="showPassword"
+          id="showPasswordToggle" // Changed ID to avoid conflict with input type
           type="checkbox"
           checked={showPassword}
           onChange={() => setShowPassword(!showPassword)}
-          className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+          className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
         />
-        <label htmlFor="showPassword" className="ml-2 block text-sm text-gray-700">
+        <label
+          htmlFor="showPasswordToggle"
+          className="ml-2 block text-sm text-gray-700"
+        >
           Afficher les mots de passe
         </label>
       </div>
 
+      {/* Error Message */}
       {error && (
-        <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
-          <p className="text-red-600 text-sm flex items-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4 mr-2"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                clipRule="evenodd"
-              />
-            </svg>
-            {error}
-          </p>
+        <div className="p-3 bg-red-50 border border-red-200 rounded-lg flex items-center gap-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5 text-red-600 shrink-0"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fillRule="evenodd"
+              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+              clipRule="evenodd"
+            />
+          </svg>
+          <p className="text-red-600 text-sm">{error}</p>
         </div>
       )}
 
-      <button
-        disabled={loading}
-        type="submit"
-        className="w-full py-2.5 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-lg font-semibold rounded-lg hover:from-blue-700 hover:to-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-70 disabled:cursor-not-allowed transition-all shadow-md hover:shadow-lg"
-      >
+      {/* Submit Button */}
+      <Button type="submit" className="w-full" disabled={loading}>
         {loading ? (
           <span className="flex items-center justify-center">
             <svg
@@ -224,7 +218,7 @@ export default function RegisterForm() {
         ) : (
           "S'inscrire"
         )}
-      </button>
+      </Button>
     </form>
   );
 }

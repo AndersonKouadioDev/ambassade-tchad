@@ -30,16 +30,24 @@
   },
   "home": {
     "hero": {
-      "title": "Embassy of Chad in Côte d'Ivoire",
-      "subtitle": "Diplomatic and Consular Representation",
-      "description": "The Embassy of Chad in Côte d'Ivoire ensures the diplomatic and consular representation of the Republic of Chad to the French Republic and international organizations based in Paris.",
-      "cta": "Our services",
-      "learnMore": "Learn more"
+      "title": "Welcome to the official website of the Embassy of the Republic of Chad in Côte d'Ivoire.",
+      "description_tchad": "of the Republic of Chad in Côte d'Ivoire",
+      "description_cote_d_ivoire": ".",
+      "bouton_contact": "Make an appointment",
+      "demande_carte_consulaire": "Apply for a consular card and visa",
+      "bouton_ouvir": "Open now"
     },
     "about": {
       "title": "About the Embassy",
       "description": "The Embassy of Chad in Côte d'Ivoire is the diplomatic representation of the Republic of Chad to the French Republic. It also provides consular representation for Chadian nationals residing in Côte d'Ivoire.",
-      "readMore": "Read more"
+      "readMore": "Read more",
+      "contactTitle": "Our Contact Details",
+      "ctaButton": "Learn More",
+      "phoneLabel": "Phone",
+      "facebookLabel": "Facebook",
+      "facebookLink": "Embassy of Chad in Côte d'Ivoire",
+      "emailLabel": "Email",
+      "emailValue": "info@ambatchad-ci.com"
     },
     "services": {
       "title": "Our services",
@@ -135,14 +143,6 @@
       "widowed": "Widowed",
       "close": "Close",
       "submit": "Submit"
-    },
-    "hero": {
-      "title": "Welcome to the official website of the Embassy",
-      "description_tchad": "of the Republic of Chad in Côte d'Ivoire",
-      "description_cote_d_ivoire": ".",
-      "bouton_contact": "Make an Appointment",
-      "demande_carte_consulaire": "Request a consular card and visa",
-      "bouton_ouvir": "Open now"
     }
   },
   "ambassade": {
@@ -180,6 +180,7 @@
   "consulaire": {
     "title": "Consular Services",
     "description": "The Embassy of Chad in Côte d'Ivoire offers a complete range of consular services.",
+    "cta": "Make a request",
     "services": {
       "title": "Our Consular Services",
       "description": "The Embassy of Chad in Côte d'Ivoire offers a complete range of consular services to meet the needs of the Chadian community.",
@@ -335,6 +336,7 @@
       "title": "The projects of the President of the Republic",
       "imageAlt": "Image of the president",
       "projectTitle": "Major National Projects",
+      "downloadCta": "Download the presidential plan (PDF)",
       "chantiers": [
         {
           "title": "Project 1",
@@ -485,7 +487,8 @@
     "loading": "Loading...",
     "error": "An error occurred",
     "noNews": "No news at the moment.",
-    "noNewsFound": "No news found"
+    "noNewsFound": "No news found",
+    "noNewsFoundDescription": "No news found"
   },
   "gallery": {
     "title": "Gallery",
@@ -514,7 +517,8 @@
       "previous": "Previous page",
       "next": "Next page",
       "noPhotos": "No photos at the moment.",
-      "backToList": "Back to photos list"
+      "backToList": "Back to photos list",
+      "noPhotosDescription": "No photos found"
     },
     "video": {
       "hero": {
@@ -537,7 +541,8 @@
       "previous": "Previous page",
       "next": "Next page",
       "noVideos": "No videos at the moment.",
-      "backToList": "Back to videos list"
+      "backToList": "Back to videos list",
+      "noVideosDescription": "No videos found"
     }
   },
   "contact": {
@@ -674,16 +679,16 @@
         "help": "Help",
         "feedback": "Give Feedback",
         "emergencyContact": "Emergency Contact",
-        "documents":{
-          "visa":"Visa",
-          "passport":"Passport",
-          "consular":"Consular",
-          "laissezPasser":"Laissez Passer",
-          "procuration":"Procuration",
-          "birthAct":"Birth Act",
-          "deathAct":"Death Act",
-          "marriageCapacity":"Marriage Capacity",
-          "nationality":"Nationality"
+        "documents": {
+          "visa": "Visa",
+          "passport": "Passport",
+          "consular": "Consular",
+          "laissezPasser": "Laissez Passer",
+          "procuration": "Procuration",
+          "birthAct": "Birth Act",
+          "deathAct": "Death Act",
+          "marriageCapacity": "Marriage Capacity",
+          "nationality": "Nationality"
         }
       },
       "recentRequests": {
@@ -1522,6 +1527,8 @@
       "home": "Home",
       "event": "Event"
     },
+    "no_event_title": "No event found",
+    "no_event_description": "No event found",
     "description": "Discover all the events organized by the Embassy of Chad in Côte d'Ivoire.",
     "searchPlaceholder": "Search for an event...",
     "filters": {
@@ -1612,10 +1619,7 @@
       "visa": {
         "title": "Visa",
         "description": "Visa application for stay in Chad",
-        "features": [
-          "Short stay",
-          "Long stay"
-        ]
+        "features": ["Short stay", "Long stay"]
       },
       "birthAct": {
         "title": "Birth Certificate",
@@ -1629,19 +1633,12 @@
       "consularCard": {
         "title": "Consular Card",
         "description": "Consular card application",
-        "features": [
-          "National identity card",
-          "Proof of residence"
-        ]
+        "features": ["National identity card", "Proof of residence"]
       },
       "laissezPasser": {
         "title": "Laissez-passer",
         "description": "Laissez-passer application",
-        "features": [
-          "Emergency",
-          "Temporary travel",
-          "Return to home country"
-        ]
+        "features": ["Emergency", "Temporary travel", "Return to home country"]
       },
       "marriageCapacity": {
         "title": "Marriage Capacity Certificate",
@@ -1655,11 +1652,7 @@
       "deathAct": {
         "title": "Death Certificate",
         "description": "Death certificate application",
-        "features": [
-          "Full copy",
-          "Extract",
-          "Death certificate"
-        ]
+        "features": ["Full copy", "Extract", "Death certificate"]
       },
       "powerOfAttorney": {
         "title": "Power of Attorney",
@@ -1673,10 +1666,7 @@
       "nationalityCertificate": {
         "title": "Nationality Certificate",
         "description": "Chadian nationality certificate application",
-        "features": [
-          "Nationality certificate",
-          "Proof of citizenship"
-        ]
+        "features": ["Nationality certificate", "Proof of citizenship"]
       }
     },
     "startButton": "Start"
