@@ -63,6 +63,7 @@
     "liberia": "Liberia",
     "navTitle": "Navigation",
     "quickLinksTitle": "Quick Links",
+    "copyright": "COPYRIGHT © 2025 Embassy of Chad, Developed by",
     "mainLinks": {
       "ambassade": "Embassy",
       "consulaire": "Consular",
@@ -73,7 +74,10 @@
     "quickLinks": {
       "tchad": "Chad",
       "events": "Events",
-      "sites": "Tourist Sites"
+      "sites": "Tourist Sites",
+      "actuality": "Actualities",
+      "gallery": "Gallery",
+      "videos": "Videos"
     },
     "legal": {
       "a_propos": "About",
