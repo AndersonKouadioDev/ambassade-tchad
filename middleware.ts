@@ -9,7 +9,7 @@ export const publicRoutes = [
   "/auth", 
   "/consulaire", 
   "/ambassade", 
-  "/event", 
+  "/events", 
   "/news",
   "/galerie/galerie-photos", 
   "/galerie/galerie-videos", 
