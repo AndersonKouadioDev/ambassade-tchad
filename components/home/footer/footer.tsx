@@ -64,20 +64,22 @@ const Footer = () => {
               priority
               className="cursor-pointer"
             />
-            <div className="text-2xl font-semibold font-blinker">
+            <div className="text-[16px] font-semibold font-blinker md:text-2xl !sm:text-[12px] !sm:text-center">
               {t("embassy")}
-              <p className="uppercase text-[16px] text-left">{t("ghana")} - {t("sierra_leone")} - {t("guinea")} - {t("liberia")}</p>
+              <p className="uppercase text-[12px] text-left md:text-[12px] !sm:text-[12px] !sm:text-center">{t("ghana")} - {t("sierra_leone")} - {t("guinea")} - {t("liberia")}</p>
             </div>
           </div>
 
-          <Image
-            src="/assets/images/logo.png"
-            alt="Embassy of Chad Logo"
-            width={123}
-            height={96}
-            priority
-            className="cursor-pointer"
-          />
+          <div className="flex justify-end items-center">
+            <Image
+              src="/assets/images/logo.png"
+              alt="Embassy of Chad Logo"
+              width={123}
+              height={96}
+              priority
+              className="cursor-pointer md:w-[123px] md:h-[96px] w-[100px] h-[70px] sm:w-[80px] sm:h-[60px] !sm:mt-4"
+            />
+          </div>
         </div>
 
         {/* Grid principal */}
