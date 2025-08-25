@@ -17,11 +17,11 @@ export default function President() {
           {/* Image */}
           <div className="flex flex-1 justify-center w-full max-w-3xl">
             <Image
-              className="w-auto h-[900px] object-cover md:object-contain"
+              className="w-auto object-cover md:object-contain"
               src="/assets/images/illustrations/tourisme/president-1.png"
               alt={t("imageAlt")}
-              width={300}
-              height={250}
+              width={600}
+              height={900}
             />
           </div>
 
