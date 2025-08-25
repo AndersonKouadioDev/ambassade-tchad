@@ -66,7 +66,9 @@ const Footer = () => {
             />
             <div className="text-2xl font-semibold font-blinker">
               {t("embassy")}
-              <p className="uppercase text-[16px] text-left">Ghana - Sierra Leone - Guinée Conakry - Liberia</p>
+              <p className="uppercase text-[16px] text-left">
+                Ghana - Sierra Leone - Guinée Conakry - Liberia
+              </p>
             </div>
           </div>
 
@@ -167,7 +169,9 @@ const Footer = () => {
             ))}
           </ul>
         </div>
-        <div className="text-center text-xs text-gray-300 mt-4">COPYRIGHT © 2025 Ambassade du Tchad</div>
+        <div className="text-center text-xs text-gray-300 mt-4">
+          COPYRIGHT © 2025 Ambassade du Tchad
+        </div>
       </div>
     </footer>
   );
