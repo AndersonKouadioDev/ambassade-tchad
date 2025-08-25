@@ -82,7 +82,7 @@ export default function Head() {
       return (
         <div className="flex items-center gap-2 bg-secondary text-white px-4 py-2 rounded-full opacity-50">
           <User size={16} />
-          <span className="text-sm font-medium">Chargement...</span>
+          <span className="text-sm font-medium">{t("loading")}</span>
         </div>
       );
     }
@@ -93,7 +93,7 @@ export default function Head() {
           <Link href="/espace-client/dashboard">
             <button className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-full transition-colors">
               <Settings size={16} />
-              <span className="text-sm font-medium">Mon Espace</span>
+              <span className="text-sm font-medium">{t("myAccount")}</span>
             </button>
           </Link>
           <button
@@ -101,7 +101,7 @@ export default function Head() {
             className="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full transition-colors"
           >
             <LogOut size={16} />
-            <span className="text-sm font-medium">Déconnexion</span>
+            <span className="text-sm font-medium">{t("disconnect")}</span>
           </button>
         </div>
       );
@@ -137,7 +137,7 @@ export default function Head() {
             <div className="flex flex-col">
               <span className="text-xl font-bold uppercase">{t("titre")}</span>
               <span className="text-base text-white/80 uppercase">
-                Ghana - Sierra Leone - Guinée Conakry - Liberia
+                {t("ghana")} - {t("sierra_leone")} - {t("guinea")} - {t("liberia")}
               </span>
             </div>
             <div className="flex gap-4 items-center">
