@@ -65,7 +65,7 @@ const DesktopNav = ({
         <div className="flex flex-col">
           <span className="text-xl font-bold uppercase">{t("titre")}</span>
           <span className="text-base text-white/80 uppercase">
-            Ghana - Sierra Leone - Guinée Conakry - Liberia
+            {t("ghana")} - {t("sierra_leone")} - {t("guinea")} - {t("liberia")}
           </span>
         </div>
         <div className="flex gap-4 items-center">

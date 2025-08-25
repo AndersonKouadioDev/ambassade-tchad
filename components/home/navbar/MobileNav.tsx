@@ -150,7 +150,7 @@ const MobileNav = ({
         {status === "loading" ? (
           <div className="flex items-center justify-center gap-2 bg-white/20 text-white px-4 py-3 rounded-full">
             <User size={18} />
-            <span className="text-sm font-medium">Chargement...</span>
+            <span className="text-sm font-medium">{t("loading")}</span>
           </div>
         ) : session ? (
           <div className="space-y-2">
@@ -160,7 +160,7 @@ const MobileNav = ({
                 onClick={() => setMenuOpen(false)}
               >
                 <Settings size={18} />
-                <span className="font-medium">Mon Espace</span>
+                <span className="font-medium">{t("myAccount")}</span>
               </button>
             </Link>
             <button
@@ -171,7 +171,7 @@ const MobileNav = ({
               className="flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white px-4 py-3 rounded-full transition-colors w-full shadow-lg"
             >
               <LogOut size={18} />
-              <span className="font-medium">Déconnexion</span>
+              <span className="font-medium">{t("disconnect")}</span>
             </button>
           </div>
         ) : (

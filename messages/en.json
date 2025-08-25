@@ -28,6 +28,70 @@
     "myRequests": "My Requests",
     "newRequest": "New Request"
   },
+  "header": {
+    "accueil": "Home",
+    "ambassade": "Embassy",
+    "consulaire": "Consular",
+    "media": "Media",
+    "event": "Event",
+    "actualité": "News",
+    "photos": "Photos",
+    "videos": "Videos",
+    "investir": "Invest",
+    "tourisme": "Tourism",
+    "site": "Tourist Sites",
+    "tchad": "Chad",
+    "peuples": "Peoples",
+    "connexion": "Login",
+    "titre": "Embassy of Chad in Côte d'Ivoire",
+    "recherche": "Search...",
+    "tel": "+225 27 22 39 49 13",
+    "email": "ambassade.tchadabj@ambatchad.ci",
+    "loading": "Loading...",
+    "disconnect": "Disconnect",
+    "myAccount": "My Account",
+    "ghana": "Ghana",
+    "sierra_leone": "Sierra Leone",
+    "guinea": "Guinea",
+    "liberia": "Liberia"
+  },
+  "footer": {
+    "embassy": "Embassy of Chad in Côte d'Ivoire",
+    "ghana": "Ghana",
+    "sierra_leone": "Sierra Leone",
+    "guinea": "Guinea",
+    "liberia": "Liberia",
+    "navTitle": "Navigation",
+    "quickLinksTitle": "Quick Links",
+    "copyright": "COPYRIGHT © 2025 Embassy of Chad, Developed by",
+    "mainLinks": {
+      "ambassade": "Embassy",
+      "consulaire": "Consular",
+      "investir": "Invest in Chad",
+      "tourisme": "Tourism",
+      "menus": "Menus"
+    },
+    "quickLinks": {
+      "tchad": "Chad",
+      "events": "Events",
+      "sites": "Tourist Sites",
+      "actuality": "Actualities",
+      "gallery": "Gallery",
+      "videos": "Videos"
+    },
+    "legal": {
+      "a_propos": "About",
+      "criteres": "Criteria",
+      "confidentialite": "Privacy",
+      "conditions": "Terms of Use",
+      "clause": "Disclaimer"
+    },
+    "socials": {
+      "tchad_diplomatie": "Chad Diplomacy",
+      "sgg": "General Secretariat of the Government",
+      "ambassade_ci": "Embassy of Chad in Côte d'Ivoire"
+    }
+  },
   "home": {
     "hero": {
       "title": "Welcome to the official website of the Embassy of the Republic of Chad in Côte d'Ivoire.",
@@ -177,6 +241,34 @@
       "ambassade": "Embassy"
     }
   },
+  "ambassadeur": {
+    "title": "The Ambassador",
+    "nom": "H.E. Gonfouli SOUARIBA",
+    "poste": "Ambassador of Chad to Côte d'Ivoire",
+    "bienvenue": "Welcome to the Embassy of Chad in Côte d'Ivoire",
+    "texte": "The Republic of Chad, the land of Toumaï, thanks to its strategic geographical position, occupies a privileged place at the heart of the African continent. The country, after a successful political transition in three years under the leadership of the Marshal of Chad, Mahamat Idriss DEBY ITNO, President of the Republic, Head of State, is taking giant steps toward economic take-off. The political program of the Head of State is structured around twelve projects, each comprising several actions, notably peace, national security, and the promotion of a united State. The development program entitled \"Vision 2030, the Chad We Want,\" aligned with the African Union Agenda 2063 and the United Nations Agenda 2030, promulgated by the Heads of State of the African Union, is underway. This program, based on pragmatic execution, aims to make Chad an emerging country by 2030. The Embassy of Chad in the Republic of Côte d'Ivoire has jurisdiction in four other countries, namely Ghana, Guinea, Sierra Leone, and Liberia. The main objectives of the mission are to maintain and strengthen diplomatic relations between Chad and these five countries. This all-encompassing diplomacy embraces areas as diverse as the economy, culture, and all that modern cooperation between peace-loving countries with shared common interests entails. The mission of the High Representation of Chad in Côte d'Ivoire also consists in protecting the interests of its community in the five countries under its jurisdiction, in accordance with diplomatic practices. The platform offered to you constitutes a unique and effective reference for obtaining general information about Chad, in order to effectively promote trade, investment, tourism, and culture. The entire Embassy team will always be at your disposal to give you a warm welcome, not only to Chadians but also to all those from other countries who wish to obtain essential information about the services we offer, in particular the issuance of visas and other administrative documents (consular card, birth certificate, marriage and death certificate). While awaiting a physical visit that we hope will be soon, welcome to the \"Virtual Chad.\"",
+    "vision": "“Vision 2030, the Chad We Want”",
+    "salutation": "Sincerely and warmly,",
+    "signature": "His Excellency Mr. Gonfouli SOUARIBA, Ambassador of the Republic of Chad to the Republic of Côte d'Ivoire."
+  },
+  "teams": {
+    "title": "Our Team",
+    "description": "Meet the members of the Embassy team.",
+    "jobs": {
+      "ambassadeur": "Ambassador",
+      "premier_conseiller": "First Counselor",
+      "conseillere_economique": "Economic Counselor",
+      "attache": "Attaché",
+      "charge_communication": "Communication Officer"
+    }
+  },
+  "agents": {
+    "souariba": "H.E. SOUARIBA Gonfouli",
+    "acheikh": "Mr. ACHEIKH MAKAYE NIMIR",
+    "remadji": "Mrs. REMADJI Christelle",
+    "kaina": "Mr. KAINA Nadjo",
+    "alladoum": "Mr. ALLADOUM Félix"
+  },
   "consulaire": {
     "title": "Consular Services",
     "description": "The Embassy of Chad in Côte d'Ivoire offers a comprehensive range of consular services.",
@@ -264,10 +356,6 @@
         }
       }
     },
-    "history": {
-      "title": "History",
-      "description": "Chad's history dates back to antiquity with the Sahelian and Sudanese kingdoms."
-    },
     "peuples-et-cultures": {
       "hero": {
         "title": "Peoples and Cultures"
@@ -322,6 +410,9 @@
       "description": "Some key figures about Chad"
     },
     "cultural": {
+      "alt-left": "left image",
+      "alt-right1": "right image",
+      "alt-right2": "right image",
       "title": "",
       "cultural-text": {
         "item1": "The first population census took place in 1993. It estimated the total population of Chad at 6,280,000 individuals, of whom 5.7% were nomads (in the strict sense), the rest being sedentary, semi-sedentary or transhumant. The second census in Chad's history, the most recent one, was carried out more than fifteen years later, in 2009. Here are some key data from this count: the total population is 11.03 million inhabitants (estimated at 12.8 million in 2016), of which 50.6% are under 15 years old and 50.7% are women. The urban population is 22%, making Chad a predominantly rural country. This census highlights the very unequal geographical distribution of the population, with more than half concentrated in the 10% of the country located in the south. Thus, in Chad there are enormous density disparities, ranging from 52.4 inhab/km² in West Logone to 0.1 inhab/km² in the regions of Borkou, Ennedi and Tibesti, where the population barely exceeds 300,000 individuals in the three regions combined; to note the extreme disparity between N'Djamena, with nearly 1 million inhabitants, and the Tibesti region, with 25,000 inhabitants!",
@@ -390,6 +481,8 @@
       ]
     },
     "statistic": {
+      "title": "Statistics",
+      "description": "Some key figures on Chad",
       "tabs": {
         "key_figures": "Key figures",
         "history": "History",
@@ -409,6 +502,8 @@
       }
     },
     "history": {
+      "title": "History",
+      "description": "Chad's history dates back to antiquity with the Sahelian and Sudanese kingdoms.",
       "tabs": {
         "key_figures": "Key figures",
         "history": "History",
@@ -487,6 +582,31 @@
     "noNews": "No news for the moment.",
     "noNewsFound": "No news found",
     "noNewsFoundDescription": "No news found"
+  },
+  "event": {
+    "hero": {
+      "title": "Featured Event"
+    },
+    "breadcrumbs": {
+      "home": "Home",
+      "event": "Event"
+    },
+    "description": "Discover all the events organized by the Embassy of Chad in Côte d'Ivoire.",
+    "searchPlaceholder": "Search for an event...",
+    "no_event_title": "No event found",
+    "no_event_description": "No event found",
+    "filters": {
+      "all": "All",
+      "upcoming": "Upcoming",
+      "past": "Past",
+      "status": "Status",
+      "allStatus": "All statuses",
+      "published": "Published",
+      "draft": "Drafts",
+      "date": "Date"
+    },
+    "draft": "Draft",
+    "readMore": "Read more"
   },
   "gallery": {
     "title": "Gallery",
