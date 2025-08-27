@@ -82,7 +82,7 @@ export default function PassportForm() {
         />
         {/* Section pièces à fournir */}
         <div className="mb-4 ml-16">
-          <div className="font-semibold text-gray-700 dark:text-white mb-1">Pièces à fournir</div>
+          <div className="font-semibold text-gray-700  mb-1">Pièces à fournir</div>
           <div className="text-xs text-gray-400 mb-2">Importez jusqu&apos;à 10 fichiers compatibles. 100 MB max. par fichier.</div>
           <div className="w-72 border-2 border-blue-800 rounded-full hover:bg-blue-50">
             <label className="flex items-center gap-2 px-4 py-2 text-blue-800 cursor-pointer w-full justify-start">
@@ -104,7 +104,7 @@ export default function PassportForm() {
             </label>
           </div>
           {files.length > 0 && (
-            <div className="mt-2 text-xs text-gray-600 dark:text-gray-300">{files.length} fichier(s) sélectionné(s)</div>
+            <div className="mt-2 text-xs text-gray-600 ">{files.length} fichier(s) sélectionné(s)</div>
           )}
         </div>
         {/* Boutons d'action tout en bas */}

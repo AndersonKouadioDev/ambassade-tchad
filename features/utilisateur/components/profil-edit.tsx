@@ -12,11 +12,11 @@ export const ProfilEdit = ({
   setActiveTab: SetActiveTabType;
 }) => (
   <div>
-    <div className="text-base text-gray-900 dark:text-white mb-2">
+    <div className="text-base text-gray-900  mb-2">
       {t("champsObligatoires")}
     </div>
-    <div className="border-t border-gray-200 dark:border-gray-700 my-6" />
-    <div className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+    <div className="border-t border-gray-200  my-6" />
+    <div className="text-xl font-bold text-gray-900  mb-4">
       {t("monIdentite")}
     </div>
 
@@ -30,7 +30,7 @@ export const ProfilEdit = ({
       {/* Ligne Nom + Prénom */}
       <div className="flex flex-col md:flex-row gap-6">
         <div className="flex-1 min-w-[250px]">
-          <label className="block text-gray-900 dark:text-white font-semibold mb-2">
+          <label className="block text-gray-900  font-semibold mb-2">
             {t("nom")} *
           </label>
           <Field name="lastName">
@@ -39,14 +39,14 @@ export const ProfilEdit = ({
                 type="text"
                 value={field.state.value}
                 onChange={(e) => field.handleChange(e.target.value)}
-                className="w-full rounded-full border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 px-6 py-2 text-gray-900 dark:text-white text-base focus:outline-none focus:border-orange-500"
+                className="w-full rounded-full border border-gray-300  bg-white  px-6 py-2 text-gray-900  text-base focus:outline-none focus:border-orange-500"
               />
             )}
           </Field>
         </div>
 
         <div className="flex-1 min-w-[250px]">
-          <label className="block text-gray-900 dark:text-white font-semibold mb-2">
+          <label className="block text-gray-900  font-semibold mb-2">
             {t("prenom")} *
           </label>
           <Field name="firstName">
@@ -55,7 +55,7 @@ export const ProfilEdit = ({
                 type="text"
                 value={field.state.value}
                 onChange={(e) => field.handleChange(e.target.value)}
-                className="w-full rounded-full border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 px-6 py-2 text-gray-900 dark:text-white text-base focus:outline-none focus:border-orange-500"
+                className="w-full rounded-full border border-gray-300  bg-white  px-6 py-2 text-gray-900  text-base focus:outline-none focus:border-orange-500"
               />
             )}
           </Field>
@@ -65,7 +65,7 @@ export const ProfilEdit = ({
       {/* Ligne Email + Téléphone */}
       <div className="flex flex-col md:flex-row gap-6">
         <div className="flex-1 min-w-[250px]">
-          <label className="block text-gray-900 dark:text-white font-semibold mb-2">
+          <label className="block text-gray-900  font-semibold mb-2">
             Email *
           </label>
           <Field name="email">
@@ -74,14 +74,14 @@ export const ProfilEdit = ({
                 type="email"
                 value={field.state.value}
                 onChange={(e) => field.handleChange(e.target.value)}
-                className="w-full rounded-full border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 px-6 py-2 text-gray-900 dark:text-white text-base focus:outline-none focus:border-orange-500"
+                className="w-full rounded-full border border-gray-300  bg-white  px-6 py-2 text-gray-900  text-base focus:outline-none focus:border-orange-500"
               />
             )}
           </Field>
         </div>
 
         <div className="flex-1 min-w-[250px]">
-          <label className="block text-gray-900 dark:text-white font-semibold mb-2">
+          <label className="block text-gray-900  font-semibold mb-2">
             Téléphone *
           </label>
           <Field name="phoneNumber">
@@ -90,7 +90,7 @@ export const ProfilEdit = ({
                 type="text"
                 value={field.state.value}
                 onChange={(e) => field.handleChange(e.target.value)}
-                className="w-full rounded-full border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 px-6 py-2 text-gray-900 dark:text-white text-base focus:outline-none focus:border-orange-500"
+                className="w-full rounded-full border border-gray-300  bg-white  px-6 py-2 text-gray-900  text-base focus:outline-none focus:border-orange-500"
               />
             )}
           </Field>
@@ -108,7 +108,7 @@ export const ProfilEdit = ({
         <button
           type="button"
           onClick={() => setActiveTab("view")}
-          className="bg-gray-300 dark:bg-gray-700 text-gray-700 dark:text-white rounded-lg px-12 py-2 font-semibold text-base shadow-md hover:bg-gray-400 dark:hover:bg-gray-600 transition"
+          className="bg-gray-300  text-gray-700  rounded-lg px-12 py-2 font-semibold text-base shadow-md hover:bg-gray-400 transition"
         >
           {t("annuler")}
         </button>

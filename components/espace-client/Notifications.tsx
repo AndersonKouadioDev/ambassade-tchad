@@ -18,10 +18,10 @@ interface NotificationsProps {
 }
 
 const notifColors: Record<string, string> = {
-  enCours: "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300",
+  enCours: "bg-green-100 text-green-700  ",
   requis:
-    "bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300",
-  pretARetirer: "bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300",
+    "bg-yellow-100 text-yellow-700",
+  pretARetirer: "bg-blue-100 text-blue-700  ",
 };
 
 export default function Notifications({ notifications }: NotificationsProps) {
@@ -42,15 +42,15 @@ export default function Notifications({ notifications }: NotificationsProps) {
   };
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-xl shadow p-4 md:p-6 mb-6">
-      <div className="font-bold text-black dark:text-white text-base md:text-lg mb-2 md:mb-4">
+    <div className="bg-white  rounded-xl shadow p-4 md:p-6 mb-6">
+      <div className="font-bold text-black  text-base md:text-lg mb-2 md:mb-4">
         {t("title")}
       </div>
       {/* Table sur sm+ */}
       <div className="hidden sm:block overflow-x-auto -mx-2 md:-mx-4">
         <table className="w-full text-xs md:text-sm border-collapse table-fixed">
           <thead>
-            <tr className="bg-slate-100 dark:bg-gray-700 text-gray-900 dark:text-gray-200 uppercase text-xs">
+            <tr className="bg-slate-100  text-gray-900  uppercase text-xs">
               <th className="py-2 md:py-2 px-2 md:px-6 font-semibold w-3/4 text-left">
                 {t("listeAlertes")}
               </th>
@@ -63,9 +63,9 @@ export default function Notifications({ notifications }: NotificationsProps) {
             {notifList.slice(0, 5).map((notif, idx) => (
               <tr
                 key={idx}
-                className="border-b border-gray-200 dark:border-gray-600 last:border-0"
+                className="border-b border-gray-200  last:border-0"
               >
-                <td className="py-2 md:py-4 px-2 md:px-6 text-gray-900 dark:text-gray-200 break-words">
+                <td className="py-2 md:py-4 px-2 md:px-6 text-gray-900  break-words">
                   {notif.text}
                 </td>
                 <td className="py-2 md:py-4 px-2 md:px-6 text-center">
@@ -87,11 +87,11 @@ export default function Notifications({ notifications }: NotificationsProps) {
         {notifList.slice(0, 3).map((notif, idx) => (
           <div
             key={idx}
-            className="rounded-xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-sm p-4 flex flex-col gap-3 w-full"
+            className="rounded-xl border border-gray-100  bg-white  shadow-sm p-4 flex flex-col gap-3 w-full"
           >
             <div className="flex flex-col gap-2">
               <div className="flex items-start justify-between gap-2">
-                <span className="font-bold text-gray-900 dark:text-white text-sm flex-shrink-0">
+                <span className="font-bold text-gray-900  text-sm flex-shrink-0">
                   {t("notification")}
                 </span>
                 <span
@@ -102,7 +102,7 @@ export default function Notifications({ notifications }: NotificationsProps) {
                   {t(`status.${notif.status}`)}
                 </span>
               </div>
-              <div className="text-xs text-gray-900 dark:text-gray-200 break-words leading-relaxed">
+              <div className="text-xs text-gray-900  break-words leading-relaxed">
                 {notif.text}
               </div>
             </div>

@@ -48,14 +48,14 @@ export default function Header() {
             src="/assets/images/logo.png"
             alt="Embassy of Chad Logo"
             width={80}
-            height={80}
+            height={62}
             priority
             className="cursor-pointer"
           />
         </Link>
         <DesktopNav menuItems={menuItems} />
         <button
-          className="lg:hidden text-white"
+          className="md:hidden text-white"
           onClick={() => setMenuOpen(!menuOpen)}
         >
           {menuOpen ? <X size={32} /> : <Menu size={32} />}

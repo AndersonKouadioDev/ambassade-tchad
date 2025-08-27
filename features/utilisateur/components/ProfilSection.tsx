@@ -86,7 +86,7 @@ export default function ProfilSection() {
             <div className="mx-auto">
                 <ProfilHeader t={t}/>
                 <div
-                    className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-8 shadow-sm">
+                    className="bg-white  rounded-xl border border-gray-200  p-8 shadow-sm">
                     <ProfilActions t={t} setActiveTab={setActiveTab}/>
                     <ProfilTabs t={t} activeTab={activeTab} setActiveTab={setActiveTab}/>
 

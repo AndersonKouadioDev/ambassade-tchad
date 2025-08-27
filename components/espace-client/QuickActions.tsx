@@ -28,11 +28,11 @@ export default function QuickActions() {
   return (
     <div className="relative rounded-2xl overflow-hidden mb-4 md:mb-6">
       {/* Dégradé de fond décoratif */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-br from-[#e0e7ff] via-[#f6f8fa] to-[#f3f4f6] dark:from-[#232b4d] dark:via-gray-900 dark:to-gray-800" />
-      <div className="relative z-10 bg-white/80 dark:bg-gray-800/90 rounded-2xl shadow p-4 md:p-8 lg:p-10 border border-[#EDF1F7] dark:border-gray-700 backdrop-blur">
-        <div className="text-2xl md:text-4xl font-extrabold text-[#181F2B] dark:text-white mb-2 text-center tracking-tight drop-shadow-sm">{t('title')}</div>
-        <div className="text-base md:text-lg text-gray-500 dark:text-gray-300 mb-6 text-center">{t('description')}</div>
-        <div className="bg-white/80 dark:bg-gray-900/80 rounded-2xl shadow-md px-2 py-4 md:py-6 flex justify-center items-center transition border border-[#F3F5F8] dark:border-gray-800">
+      <div className="absolute inset-0 z-0 bg-gradient-to-br from-[#e0e7ff] via-[#f6f8fa] to-[#f3f4f6] " />
+      <div className="relative z-10 bg-white/80 /90 rounded-2xl shadow p-4 md:p-8 lg:p-10 border border-[#EDF1F7]  backdrop-blur">
+        <div className="text-2xl md:text-4xl font-extrabold text-[#181F2B]  mb-2 text-center tracking-tight drop-shadow-sm">{t('title')}</div>
+        <div className="text-base md:text-lg text-gray-500  mb-6 text-center">{t('description')}</div>
+        <div className="bg-white/80 /80 rounded-2xl shadow-md px-2 py-4 md:py-6 flex justify-center items-center transition border border-[#F3F5F8] ">
           <button
             className="bg-gradient-to-r from-[#F44C27] to-[#ff7e5f] hover:from-[#e13a1a] hover:to-[#ff7e5f] focus:bg-[#d12d0f] text-white font-semibold text-lg md:text-2xl px-8 md:px-16 py-3 md:py-4 rounded-2xl shadow-lg transition-all duration-200 focus:outline-none w-full max-w-full md:max-w-2xl tracking-wide"
             onClick={() => setModalOpen(true)}
@@ -45,8 +45,8 @@ export default function QuickActions() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 animate-fade-in p-4">
           <div className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto animate-fade-in flex flex-col items-center">
             {/* Dégradé décoratif dans le modal */}
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#e0e7ff] via-[#f6f8fa] to-[#f3f4f6] dark:from-[#232b4d] dark:via-gray-900 dark:to-gray-800 z-0" />
-            <div className="relative z-10 bg-white/90 dark:bg-gray-900/95 rounded-3xl shadow-2xl w-full p-4 md:p-8 flex flex-col items-center animate-scale-in">
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#e0e7ff] via-[#f6f8fa] to-[#f3f4f6] z-0" />
+            <div className="relative z-10 bg-white/90 /95 rounded-3xl shadow-2xl w-full p-4 md:p-8 flex flex-col items-center animate-scale-in">
               <button
                 className="absolute top-6 right-6 text-gray-400 hover:text-gray-700 text-3xl"
                 onClick={() => setModalOpen(false)}
@@ -58,7 +58,7 @@ export default function QuickActions() {
                   <NavigationButton
                     key={doc.key}
                     href={doc.link}
-                    className="group flex flex-col items-center justify-center p-6 rounded-2xl border border-[#EDF1F7] dark:border-gray-700 bg-gray-50/80 dark:bg-gray-800/80 font-semibold text-lg shadow-md hover:shadow-2xl hover:bg-[#F6F8FA] dark:hover:bg-gray-700 transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#F44C27] scale-100 hover:scale-105 hover:-rotate-1 relative"
+                    className="group flex flex-col items-center justify-center p-6 rounded-2xl border border-[#EDF1F7]  bg-gray-50/80 /80 font-semibold text-lg shadow-md hover:shadow-2xl h-48 over:bg-[#F6F8FA] transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#F44C27] scale-100 hover:scale-105 hover:-rotate-1 relative"
                     onClick={() => handleCardClick()}
                   >
                     <span className="relative flex items-center justify-center mb-2">
@@ -66,7 +66,7 @@ export default function QuickActions() {
                     </span>
                     <span className="text-base md:text-lg font-bold text-[#F44C27] group-hover:text-[#F44C27] transition-colors duration-200 drop-shadow-sm">{t(`documents.${doc.key}.label`)}</span>
                     {/* Description sous la card */}
-                    <span className="mt-2 text-xs text-gray-500 dark:text-gray-300 text-center font-normal">
+                    <span className="mt-2 text-xs text-gray-500  text-center font-normal">
                       {t(`documents.${doc.key}.description`)}
                     </span>
                   </NavigationButton>

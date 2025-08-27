@@ -31,21 +31,21 @@ export default function ProcurationForm({ documentsSize }: Props) {
 
   const { Field, handleSubmit, validateField, getAllErrors } = useForm({
     defaultValues: {
-      agentFirstName: "John",
-      agentLastName: "Doe",
+      agentFirstName: "",
+      agentLastName: "",
       agentJustificationDocumentType:
         DocumentJustificationType.NATIONAL_ID_CARD,
-      agentIdDocumentNumber: "123456789",
-      agentAddress: "123 Main St, N'Djamena",
-      principalFirstName: "John",
-      principalLastName: "Doe",
+      agentIdDocumentNumber: "",
+      agentAddress: "",
+      principalFirstName: "",
+      principalLastName: "",
       principalJustificationDocumentType:
         DocumentJustificationType.NATIONAL_ID_CARD,
-      principalIdDocumentNumber: "123456789",
-      principalAddress: "123 Main St, N'Djamena",
-      powerOfType: "General Power of Attorney",
-      reason: "for administrative procedures",
-      contactPhoneNumber: "123-456-7890",
+      principalIdDocumentNumber: "",
+      principalAddress: "",
+      powerOfType: "",
+      reason: "",
+      contactPhoneNumber: "",
       documents: [],
     } as ProcurationDetailsDTO,
     validationLogic: revalidateLogic({

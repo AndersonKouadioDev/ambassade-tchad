@@ -60,7 +60,7 @@ const DesktopNav = ({
   };
 
   return (
-    <div className="hidden lg:flex flex-col text-white w-full">
+    <div className="hidden md:flex flex-col text-white w-full">
       <div className="flex justify-between items-center w-full">
         <div className="flex flex-col">
           <span className="text-xl font-bold uppercase">{t("titre")}</span>

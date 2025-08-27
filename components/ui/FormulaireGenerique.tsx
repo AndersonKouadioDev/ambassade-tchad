@@ -61,11 +61,11 @@ export default function FormulaireGenerique({
   }
 
   return (
-    <div className="flex items-center justify-center w-full p-10 min-h-[calc(100vh-70px)] bg-white dark:bg-gray-900">
-      <div className="relative w-full max-w-5xl mx-auto bg-white dark:bg-gray-900 p-6 pt-0">
+    <div className="flex items-center justify-center w-full p-10 min-h-[calc(100vh-70px)] bg-white ">
+      <div className="relative w-full max-w-5xl mx-auto bg-white  p-6 pt-0">
         {/* Header */}
         <div className="text-center mb-8   ">
-          <h1 className="text-gray-400 text-center dark:text-white mb-4 text-2xl ">{title}</h1>
+          <h1 className="text-gray-400 text-center  mb-4 text-2xl ">{title}</h1>
           {logoSrc && (
             <div className="flex items-center justify-center gap-4">
               <Image
@@ -77,7 +77,7 @@ export default function FormulaireGenerique({
               />
             </div>
           )}
-          {description && <div className="text-gray-500 dark:text-gray-300 mt-2">{description}</div>}
+          {description && <div className="text-gray-500  mt-2">{description}</div>}
         </div>
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
@@ -85,7 +85,7 @@ export default function FormulaireGenerique({
               if (field.type === "file") {
                 return (
                   <div key={field.name} className="col-span-1 md:col-span-2 flex flex-col items-center mb-4">
-                    <div className="w-40 h-40 border-2 border-dashed border-gray-300 rounded-xl flex items-center justify-center bg-white dark:bg-gray-900 bg-opacity-80 relative">
+                    <div className="w-40 h-40 border-2 border-dashed border-gray-300 rounded-xl flex items-center justify-center bg-white  bg-opacity-80 relative">
                       {uploadingFiles[field.name] ? (
                         <div className="flex flex-col items-center">
                           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#F44C27] mb-2"></div>
@@ -106,7 +106,7 @@ export default function FormulaireGenerique({
                         disabled={uploadingFiles[field.name]}
                       />
                     </div>
-                    <span className="mt-2 text-gray-500 dark:text-gray-300 text-sm">{field.label}</span>
+                    <span className="mt-2 text-gray-500  text-sm">{field.label}</span>
                   </div>
                 );
               }
@@ -115,7 +115,7 @@ export default function FormulaireGenerique({
                   <div key={field.name}>
                     <select
                       name={field.name}
-                      className="w-full px-4 py-2 border border-gray-300 dark:border-gray-800 rounded-3xl bg-white dark:bg-gray-900 text-gray-700 dark:text-white"
+                      className="w-full px-4 py-2 border border-gray-300  rounded-3xl bg-white  text-gray-700 "
                       value={values[field.name] as string || ""}
                       onChange={handleChange}
                     >
@@ -123,7 +123,7 @@ export default function FormulaireGenerique({
                         {field.label}
                       </option>
                       {field.options.map((opt) => (
-                        <option key={opt.value} value={opt.value} className="dark:bg-gray-900">
+                        <option key={opt.value} value={opt.value} className="">
                           {opt.label}
                         </option>
                       ))}
@@ -137,7 +137,7 @@ export default function FormulaireGenerique({
                     <textarea
                       name={field.name}
                       placeholder={field.placeholder || field.label}
-                      className={`w-full px-4 py-2 border border-gray-300 dark:border-gray-800 rounded-3xl bg-white dark:bg-gray-900 text-gray-700 dark:text-white resize-none ${(field.className || "")}`}
+                      className={`w-full px-4 py-2 border border-gray-300  rounded-3xl bg-white  text-gray-700  resize-none ${(field.className || "")}`}
                       value={values[field.name] as string || ""}
                       onChange={handleChange}
                     />
@@ -151,7 +151,7 @@ export default function FormulaireGenerique({
                     type="text"
                     name={field.name}
                     placeholder={field.placeholder || field.label}
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-3xl bg-white dark:bg-gray-900 text-gray-700 dark:text-white"
+                    className="w-full px-4 py-3 border border-gray-300  rounded-3xl bg-white  text-gray-700 "
                     value={values[field.name] as string || ""}
                     onChange={handleChange}
                   />

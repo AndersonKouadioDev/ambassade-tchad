@@ -16,7 +16,7 @@ export default function SidebarHeader() {
     }
   };
   return (
-    <div className="h-14 flex items-center w-full justify-center border-b border-gray-200 dark:border-gray-700 px-4 bg-blue-800">
+    <div className="h-14 flex items-center w-full justify-center border-b border-gray-200  px-4 bg-blue-800">
       <div className="flex justify-center mt-2 items-center gap-6 w-full">
         {!collapsed && (
           <>

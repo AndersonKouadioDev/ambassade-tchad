@@ -17,12 +17,12 @@ const AccompagnateurForm = ({
 }) => {
     const { Field, getFieldValue } = useForm({
         defaultValues: initialData || {
-            firstName: 'dd',
-            lastName: 'dd',
-            birthDate: '2000-01-01',
-            birthPlace: 'Douala',
-            nationality: 'Camerounais',
-            domicile: 'Douala',
+            firstName: '',
+            lastName: '',
+            birthDate: '',
+            birthPlace: '',
+            nationality: '',
+            domicile: '',
         },
         validationLogic: revalidateLogic({ mode: 'change' }),
         validators: { onChange: AccompagnateurSchema },

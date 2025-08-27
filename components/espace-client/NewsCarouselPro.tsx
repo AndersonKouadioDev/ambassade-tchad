@@ -36,7 +36,7 @@ export default function NewsCarouselPro() {
 
   if (isLoading) {
     return (
-      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-4 md:p-6 w-full h-[340px] md:h-[500px] flex flex-col">
+      <div className="bg-white  rounded-xl shadow-sm p-4 md:p-6 w-full h-[340px] md:h-[500px] flex flex-col">
         <div className="flex items-center justify-between mb-4">
           <Skeleton className="h-6 w-32" />
           <div className="flex gap-2">
@@ -54,8 +54,8 @@ export default function NewsCarouselPro() {
 
   if (isError || newsItems.length === 0) {
     return (
-      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-4 md:p-6 w-full h-[340px] md:h-[500px] flex flex-col items-center justify-center">
-        <p className="text-gray-500 dark:text-gray-400 text-center">
+      <div className="bg-white  rounded-xl shadow-sm p-4 md:p-6 w-full h-[340px] md:h-[500px] flex flex-col items-center justify-center">
+        <p className="text-gray-500  text-center">
           {t('noNews')}
         </p>
       </div>
@@ -63,9 +63,9 @@ export default function NewsCarouselPro() {
   }
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-4 md:p-6 w-full h-[340px] md:h-[500px] flex flex-col">
+    <div className="bg-white  rounded-xl shadow-sm p-4 md:p-6 w-full h-[340px] md:h-[500px] flex flex-col">
       <div className="flex items-center justify-between mb-2 md:mb-4">
-        <h2 className="text-base md:text-xl font-bold text-gray-900 dark:text-white">
+        <h2 className="text-base md:text-xl font-bold text-gray-900 ">
           {t('title')}
         </h2>
         <div className="flex items-center gap-1 md:gap-2">
@@ -95,7 +95,7 @@ export default function NewsCarouselPro() {
           return (
             <article 
               key={item.id} 
-              className="min-w-[220px] md:min-w-[320px] max-w-xs bg-white dark:bg-gray-800 rounded-lg flex flex-col h-full shadow-sm hover:shadow-md transition-shadow"
+              className="min-w-[220px] md:min-w-[320px] max-w-xs bg-white  rounded-lg flex flex-col h-full shadow-sm hover:shadow-md transition-shadow"
             >
               <div className="w-full h-32 md:h-48 rounded-lg overflow-hidden mb-2 flex-shrink-0 relative">
                 <Image 
@@ -111,11 +111,11 @@ export default function NewsCarouselPro() {
                   <time className="text-xs text-orange-500 font-semibold mb-1">
                     {formatNewsDate(item.createdAt as string)}
                   </time>
-                  <h3 className="font-bold text-gray-900 dark:text-white mb-1 text-sm md:text-base line-clamp-2">
+                  <h3 className="font-bold text-gray-900  mb-1 text-sm md:text-base line-clamp-2">
                     {item.title}
                   </h3>
                   {item.content && (
-                    <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-3">
+                    <p className="text-xs text-gray-500  line-clamp-3">
                       {item.content}
                     </p>
                   )}
