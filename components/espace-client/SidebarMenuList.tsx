@@ -1,4 +1,3 @@
-import SidebarMenuLabel from './SidebarMenuLabel';
 import SidebarMenuItem from './SidebarMenuItem';
 import SidebarMenuItemExpandable from './SidebarMenuItemExpandable';
 import { useSidebarConfig } from './SidebarConfigContext';
