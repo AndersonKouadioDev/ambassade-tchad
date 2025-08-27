@@ -1585,6 +1585,21 @@
       "home": "Home",
       "event": "Event"
     },
+    "loading": "Loading...",
+    "details": {
+      "practicalInfo": "Practical information",
+      "actions": "Actions",
+      "back_button": "Back",
+      "draft": "Draft",
+      "readMore": "Read more",
+      "date": "Date",
+      "time": "Time",
+      "loading": "Loading...",
+      "location": "Location",
+      "organizer": "Organizer",
+      "share": "Share",
+      "backToEvents": "Back to events"
+    },
     "description": "Discover all the events organized by the Embassy of Chad in Côte d'Ivoire.",
     "searchPlaceholder": "Search for an event...",
     "no_event_title": "No events found",

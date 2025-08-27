@@ -5,12 +5,10 @@ import { useEvenementsListQuery } from "../queries/evenement-list.query";
 import { IEvenementRechercheParams } from "../types/evenement.type";
 
 export const useEvenementList = () => {
-  // Gestion des paramètres d'URL via Nuqs
   const [filters, setFilters] = useQueryStates(evenementFiltersClient, {
     clearOnDefault: true
   });
 
-  // Construction des paramètres de recherche par défaut pour React Query
   const currentSearchParams: IEvenementRechercheParams = useMemo(() => {
     const params: IEvenementRechercheParams = {
       // published: true,
@@ -18,7 +16,6 @@ export const useEvenementList = () => {
       limit: Number(filters.limit) || 12,
     };
 
-    // Ajouter seulement les paramètres qui ont des valeurs valides
     if (filters.title && filters.title.trim()) {
       params.title = filters.title.trim();
     }
@@ -31,8 +28,6 @@ export const useEvenementList = () => {
       params.authorId = filters.authorId.trim();
     }
 
-    // Si published est 'all' ou undefined, ne pas l'inclure du tout
-
     return params;
   }, [filters]);
 
@@ -43,7 +38,7 @@ export const useEvenementList = () => {
     setFilters(prev => ({
       ...prev,
       [filterName]: value,
-      page: 1, // Réinitialise à la première page
+      page: 1, 
     }));
   };
 

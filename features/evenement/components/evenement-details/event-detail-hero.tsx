@@ -1,67 +1,38 @@
 "use client";
 
-import React from "react";
-import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import { useTranslations } from "next-intl";
-import { ArrowLeft, Calendar, Clock, Eye, MapPin } from "lucide-react";
-import { Button } from "@heroui/react";
 import { formatEventDate } from "@/lib/events-data";
 import { formatImageUrl } from "@/utils/image-utils";
-import { useParams, useRouter } from "next/navigation";
-import { useEvenementQuery } from "@/features/evenement/queries/evenement-details.query";
+import { Calendar, Clock, MapPin } from "lucide-react";
+import { useTranslations } from "next-intl";
+import Image from "next/image";
+import { IEvenement } from "../../types/evenement.type";
+import { useState } from "react";
+import { cn } from "@/lib/utils";
 
-export default function EventDetailHero() {
+export default function EventDetailHero({ event }: { event: IEvenement }) {
   const t = useTranslations("event");
-  const params = useParams();
-  const router = useRouter();
-  const eventId = params.slug as string;
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
-  const { data: event, isLoading, error } = useEvenementQuery(eventId);
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center space-y-4">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
-          <p className="text-gray-600">{t("loading")}</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (error || !event) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center space-y-4">
-          <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto">
-            <Eye className="w-8 h-8 text-red-600" />
-          </div>
-          <h2 className="text-xl font-semibold text-gray-900">
-            {t("not_found_title")}
-          </h2>
-          <p className="text-gray-600">{t("not_found_description")}</p>
-          <Button onPress={() => router.back()}>
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            {t("back_button")}
-          </Button>
-        </div>
-      </div>
-    );
-  }
+  const hasImages = event.imageUrl && event.imageUrl.length > 0;
+  const selectedImage = hasImages ? event.imageUrl?.[selectedImageIndex] : "";
 
   return (
-    <div className="relative w-full h-[calc(100vh-100px)] lg:h-[600px] xl:h-[700px] flex items-center justify-center">
-      {/* Image d'arrière-plan avec superposition */}
+    <div className="relative w-full h-[calc(100vh-100px)] lg:h-[600px] xl:h-[700px] flex flex-col items-center justify-center">
       <Image
-        className="absolute inset-0 w-full h-full object-cover shrink-0"
-        src={formatImageUrl(event.imageUrl[0])}
+        className="w-full h-full object-cover shrink-0"
+        src={formatImageUrl(selectedImage)}
         alt={event.title}
         fill
         priority
       />
       <div className="absolute w-full h-full bg-gradient-to-r from-primary/90 to-transparent"></div>
-
+      {/* Indicateur d'image */}
+      {(event.imageUrl?.length ?? 0) > 1 && (
+        <div className="absolute  top-4 right-4 bg-black/70 text-white px-3 py-1 rounded-full text-sm">
+          {selectedImageIndex + 1} / {event.imageUrl?.length ?? 0}
+        </div>
+      )}
       {/* Contenu de la section hero */}
       <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8 max-w-screen-xl mx-auto flex flex-col justify-end h-full py-20">
         {/* Fil d'Ariane */}
@@ -102,6 +73,33 @@ export default function EventDetailHero() {
           </div>
         </div>
       </div>
+
+      {/* Miniatures */}
+      {(event.imageUrl?.length ?? 0) > 1 && (
+        <div className="p-4 overflow-x-auto overflow-y-hidden max-w-xl mx-auto rounded-lg">
+          <div className="flex gap-3 pb-2">
+            {event.imageUrl?.map((imageUrl, index) => (
+              <button
+                key={index}
+                onClick={() => setSelectedImageIndex(index)}
+                className={cn(
+                  "relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all",
+                  selectedImageIndex === index
+                    ? "border-primary shadow-lg scale-105"
+                    : "border-gray-200 hover:border-gray-300"
+                )}
+              >
+                <Image
+                  src={formatImageUrl(imageUrl)}
+                  alt={`Image ${index + 1}`}
+                  fill
+                  className="object-cover aspect-square"
+                />
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
