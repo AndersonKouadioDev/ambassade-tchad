@@ -1,16 +1,13 @@
-'use client';
+"use client";
 
-import {
-  Calendar,
-  ChevronRight,
-  MapPin
-} from "lucide-react";
+import { Calendar, ChevronRight, MapPin } from "lucide-react";
 import Image from "next/image";
 
 import { formatEventDate, isEventUpcoming } from "@/lib/events-utils";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { IEvenement } from "../../types/evenement.type";
+import { getFullUrlFile } from "@/utils/getFullUrlFile";
 
 export default function EventCard({ event }: { event: IEvenement }) {
   const t = useTranslations("event");
@@ -24,7 +21,7 @@ export default function EventCard({ event }: { event: IEvenement }) {
         <div className="relative h-48 overflow-hidden">
           {event.imageUrl ? (
             <Image
-              src={event.imageUrl[0]}
+              src={getFullUrlFile(event.imageUrl[0])}
               alt={event.title}
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -69,7 +66,7 @@ export default function EventCard({ event }: { event: IEvenement }) {
 
           {/* Description (remplace l'ancien extrait) */}
           <p className="text-gray-600 text-sm mb-4 line-clamp-3">
-            {event.description.replace(/<[^>]*>/g, '').substring(0, 150)}...
+            {event.description.replace(/<[^>]*>/g, "").substring(0, 150)}...
           </p>
 
           {/* Informations supplémentaires */}
@@ -93,4 +90,4 @@ export default function EventCard({ event }: { event: IEvenement }) {
       </article>
     </Link>
   );
-};
+}

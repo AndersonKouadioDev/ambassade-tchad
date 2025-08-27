@@ -1541,6 +1541,21 @@
       "draft": "Brouillons",
       "date": "Date"
     },
+    "loading": "Chargement...",
+    "details": {
+      "practicalInfo": "Informations pratiques",
+      "actions": "Actions",
+      "back_button": "Retour",
+      "draft": "Brouillon",
+      "readMore": "Lire la suite",
+      "date": "Date",
+      "time": "Heure",
+      "loading": "Chargement...",
+      "location": "Lieu",
+      "organizer": "Organisateur",
+      "share": "Partager",
+      "backToEvents": "Retour aux événements"
+    },
     "draft": "Brouillon",
     "readMore": "Lire la suite",
     "no_event_title":"Aucun événement trouvé",

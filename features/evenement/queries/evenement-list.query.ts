@@ -1,9 +1,10 @@
-import {useQuery} from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import getQueryClient from "@/lib/get-query-client";
-import {IEvenementRechercheParams} from "../types/evenement.type";
-import {getEvenementTousAction} from "../actions/evenement.action";
-import {evenementKeyQuery} from "./index.query";
-
+import { IEvenementRechercheParams } from "../types/evenement.type";
+import { getEvenementTousAction } from "../actions/evenement.action";
+import { evenementKeyQuery } from "./index.query";
+import React from "react";
+import { toast } from "react-toastify";
 
 const queryClient = getQueryClient();
 
@@ -27,7 +28,15 @@ export const evenementListQueryOption = (evenementSearchParams: IEvenementRecher
 
 // Hook pour récupérer les événements
 export const useEvenementsListQuery = (evenementSearchParams: IEvenementRechercheParams) => {
-    return useQuery(evenementListQueryOption(evenementSearchParams));
+    const query = useQuery(evenementListQueryOption(evenementSearchParams));
+
+    React.useEffect(() => {
+        if (query.isError || query.error) {
+            toast.error(query.error?.message);
+        }
+    }, [query]);
+
+    return query;
 };
 
 // Hook pour précharger les événements

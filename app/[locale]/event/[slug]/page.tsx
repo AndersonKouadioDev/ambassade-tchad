@@ -1,6 +1,5 @@
-import EventDetailContent from "@/features/evenement/components/evenement-details/event-detail-content";
+import EventDetail from "@/features/evenement/components/evenement-details";
 import { prefetchEvenementQuery } from "@/features/evenement/queries/evenement-details.query";
-import EventDetailHero from "@/features/evenement/components/evenement-details/event-detail-hero";
 
 export default async function EventDetailPage({
   params,
@@ -12,9 +11,6 @@ export default async function EventDetailPage({
   prefetchEvenementQuery(id);
 
   return (
-    <main>
-      <EventDetailHero />
-      <EventDetailContent />
-    </main>
+    <EventDetail id={id} />
   );
 }

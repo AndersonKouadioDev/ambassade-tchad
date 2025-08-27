@@ -1758,6 +1758,21 @@
       "home": "الرئيسية",
       "event": "حدث"
     },
+    "loading": "جارٍ التحميل...",
+    "details": {
+      "practicalInfo": "معلومات عملية",
+      "actions": "إجراءات",
+      "back_button": "العودة",
+      "draft": "مسودة",
+      "readMore": "اقرأ المزيد",
+      "date": "التاريخ",
+      "time": "الوقت",
+      "location": "الموقع",
+      "loading": "جارٍ التحميل...",
+      "organizer": "المؤسسة",
+      "share": "مشاركة",
+      "backToEvents": "العودة إلى الأحداث"
+    },
     "description": "اكتشف جميع الأحداث التي تنظمها سفارة تشاد في كوت ديفوار.",
     "searchPlaceholder": "البحث عن حدث...",
     "no_event_title": "لم يتم العثور على أي حدث",
