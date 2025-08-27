@@ -70,7 +70,7 @@ const Footer = () => {
               priority
               className="cursor-pointer"
             />
-            <div className="text-2xl font-semibold font-blinker">
+            <div className="text-[16px] font-semibold font-blinker md:text-2xl !sm:text-[12px] !sm:text-center">
               {t("embassy")}
               <p className="uppercase text-[16px] text-center sm:text-left">
                 {t("ghana")} - {t("sierra_leone")} - {t("guinea")} -{" "}

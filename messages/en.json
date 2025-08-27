@@ -19,7 +19,7 @@
     "passport": "Passport",
     "procuration": "Power of Attorney",
     "appointment": "Request an Appointment",
-    "clientSpace": "Client Area",
+    "clientSpace": "Client Space",
     "login": "Login",
     "register": "Register",
     "logout": "Logout",
@@ -145,6 +145,33 @@
       "submit": "Submit"
     }
   },
+  "header": {
+    "accueil": "Home",
+    "ambassade": "Embassy",
+    "consulaire": "Consular",
+    "media": "Media",
+    "event": "Event",
+    "actualité": "News",
+    "photos": "Photos",
+    "videos": "Videos",
+    "investir": "Invest",
+    "tourisme": "Tourism",
+    "site": "Tourist Sites",
+    "tchad": "Chad",
+    "peuples": "Peoples",
+    "connexion": "Login",
+    "titre": "Embassy of Chad in Côte d'Ivoire",
+    "recherche": "Search...",
+    "tel": "+225 27 22 39 49 13",
+    "email": "ambassade.tchadabj@ambatchad.ci",
+    "loading": "Loading...",
+    "disconnect": "Disconnect",
+    "myAccount": "My Account",
+    "ghana": "Ghana",
+    "sierra_leone": "Sierra Leone",
+    "guinea": "Guinea",
+    "liberia": "Liberia"
+  },
   "ambassade": {
     "title": "Embassy of Chad in Côte d'Ivoire",
     "description": "The Embassy of Chad in Côte d'Ivoire ensures the diplomatic and consular representation of the Republic of Chad to the French Republic.",
@@ -158,15 +185,15 @@
       "description": "The Embassy of Chad in Côte d'Ivoire has jurisdiction over metropolitan France and overseas territories.",
       "countries": "Countries of jurisdiction",
       "Côte d'Ivoire": "Metropolitan Côte d'Ivoire",
-      "overseas": "French overseas territories"
+      "overseas": "French Overseas Territories"
     },
     "team": {
-      "title": "Our team",
+      "title": "Our Team",
       "description": "Discover the members of the Embassy team"
     },
     "experience": {
-      "title": "Our experience",
-      "description": "More than 60 years of diplomatic excellence"
+      "title": "Our Experience",
+      "description": "Over 60 years of diplomatic excellence"
     },
     "hero": {
       "title": "Embassy of Chad",
@@ -186,15 +213,15 @@
       "cta": "Make a request",
       "passport": {
         "title": "Passport",
-        "description": "Renewal and issuance of Chadian passport"
+        "description": "Renewal and issuance of Chadian passports"
       },
       "laissezPasser": {
         "title": "Laissez-passer",
         "description": "Issuance of laissez-passer for emergency travel"
       },
       "consularCard": {
-        "title": "Consular card",
-        "description": "Issuance of consular card for nationals"
+        "title": "Consular Card",
+        "description": "Issuance of consular cards for nationals"
       },
       "visa": {
         "title": "Visa",
@@ -213,12 +240,12 @@
         "description": "Issuance of death certificate"
       },
       "marriageCapacity": {
-        "title": "Certificate of marriage capacity",
-        "description": "Issuance of certificate of marriage capacity"
+        "title": "Certificate of Marital Capacity",
+        "description": "Issuance of certificates of marital capacity"
       },
       "nationality": {
-        "title": "Certificate of nationality",
-        "description": "Issuance of certificate of nationality"
+        "title": "Certificate of Nationality",
+        "description": "Issuance of certificates of nationality"
       }
     }
   },
@@ -235,7 +262,7 @@
     "description": "Discover the wonders of Chad",
     "geography": {
       "tabs": {
-        "key_figures": "Key figures",
+        "key_figures": "Key Figures",
         "history": "History",
         "geography": "Geography"
       },
@@ -263,6 +290,20 @@
           ]
         }
       }
+    },
+    "history": {
+      "title": "History",
+      "description": "Chad's history dates back to antiquity with the Sahelian and Sudanese kingdoms.",
+      "tabs": {
+        "key_figures": "Key figures",
+        "history": "History",
+        "geography": "Geography"
+      },
+      "content": [
+        "Chad has a millennium-old history, marked by great Sahelian kingdoms.",
+        "French colonization profoundly transformed the country.",
+        "Independence was gained in 1960, followed by many political challenges."
+      ]
     },
     "peuples-et-cultures": {
       "hero": {
@@ -368,7 +409,7 @@
         },
         {
           "title": "Project 8",
-          "description": "BUILD INFRASTRUCTURES FOR DISENCLAVEMENT"
+          "description": "BUILD INFRASTRUCTURE FOR DE-ENCLAVEMENT"
         },
         {
           "title": "Project 9",
@@ -392,7 +433,7 @@
       "title": "Statistics",
       "description": "Some key figures about Chad",
       "tabs": {
-        "key_figures": "Key figures",
+        "key_figures": "Key Figures",
         "history": "History",
         "geography": "Geography"
       },
@@ -459,6 +500,7 @@
     },
     "title": "News",
     "description": "Stay informed about the latest news from the Embassy",
+    "noNewsFoundDescription":"No news found",
     "latest": "Latest news",
     "viewAll": "View all news",
     "readMore": "Read more",
@@ -509,6 +551,7 @@
       "description": "Discover our photos",
       "viewAll": "View all photos",
       "searchPlaceholder": "Search for a photo",
+      "noPhotosDescription":"No photos found",
       "searchByDate": "Search by date",
       "searchByTitle": "Search by title",
       "searchByContent": "Search by content",
@@ -531,6 +574,7 @@
       },
       "title": "Videos",
       "description": "Discover our videos",
+      "noVideosDescription":"No videos found",
       "viewAll": "View all videos",
       "searchPlaceholder": "Search for a video",
       "searchByDate": "Search by date",
@@ -640,10 +684,14 @@
     "sidebar": {
       "embassyName": "Embassy of Chad",
       "dashboard": "Dashboard",
-      "nouvelleDemandeLabel": "New request",
-      "mesDemandes": "My requests",
-      "monProfil": "My profile",
-      "deconnexion": "Logout"
+      "nouvelleDemandeLabel": "New Request",
+      "mesDemandes": "My Requests",
+      "monProfil": "My Profile",
+      "deconnexion": "Log Out"
+    },
+    "header": {
+      "loading": "Loading...",
+      "searchPlaceholder": "Search..."
     },
     "dashboard": {
       "title": "Dashboard",
@@ -651,7 +699,7 @@
       "description": "Here you can find the history and status of all your requests to the Embassy of Chad.",
       "etapesTitre": "Steps to follow to make a request",
       "etape1Titre": "Step 1",
-      "etape1Description": "Click on the 'New request' button to start.",
+      "etape1Description": "Click on the 'New request' button to begin.",
       "etape2Titre": "Step 2",
       "etape2Description": "Choose the type of service for your request.",
       "etape3Titre": "Step 3",
@@ -678,11 +726,22 @@
         "exportData": "Export data",
         "settings": "Settings",
         "help": "Help",
-        "feedback": "Give feedback",
-        "emergencyContact": "Emergency contact"
+        "feedback": "Give Feedback",
+        "emergencyContact": "Emergency Contact",
+        "documents": {
+          "visa": "Visa",
+          "passport": "Passport",
+          "consular": "Consular",
+          "laissezPasser": "Laissez Passer",
+          "procuration": "Procuration",
+          "birthAct": "Birth Act",
+          "deathAct": "Death Act",
+          "marriageCapacity": "Marriage Capacity",
+          "nationality": "Nationality"
+        }
       },
       "recentRequests": {
-        "title": "Recent requests",
+        "title": "Recent Requests",
         "noRequests": "No recent requests",
         "viewAll": "View all requests"
       },
@@ -697,17 +756,17 @@
         "etape1": "Submission of the file",
         "etape2": "Verification",
         "etape3": "Processing",
-        "etape4": "Agent validation",
-        "etape5": "Head validation",
-        "etape6": "Consul validation",
-        "etape7": "Ready for pickup",
+        "etape4": "Validation by officer",
+        "etape5": "Validation by manager",
+        "etape6": "Validation by consul",
+        "etape7": "Ready for collection",
         "step1": "File submission",
         "step2": "Verification",
         "step3": "Processing",
-        "step4": "Agent validation",
-        "step5": "Head validation",
-        "step6": "Consul validation",
-        "step7": "Ready for pickup",
+        "step4": "Validation by officer",
+        "step5": "Validation by manager",
+        "step6": "Validation by consul",
+        "step7": "Ready for collection",
         "description1": "Description of step 1",
         "description2": "Description of step 2",
         "description3": "Description of step 3",
@@ -743,10 +802,10 @@
         "validCourt": "Short validation",
         "finalCourt": "Short finalization",
         "pretCourt": "Short ready",
-        "retraitCourt": "Short pickup"
+        "retraitCourt": "Short collection"
       },
       "requestsTable": {
-        "title": "My current requests",
+        "title": "My Current Requests",
         "ticketNumber": "TICKET NO.",
         "serviceConcerne": "AFFECTED SERVICE",
         "dateSubmission": "SUBMISSION DATE",
