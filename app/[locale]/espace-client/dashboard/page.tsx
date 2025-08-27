@@ -1,8 +1,6 @@
-import QuickActions from '@/components/espace-client/QuickActions';
 import DashboardHeader from '@/components/espace-client/DashboardHeader';
 import RequestsTablePro from '@/components/espace-client/RequestsTablePro';
 import NewsCarouselPro from '@/components/espace-client/NewsCarouselPro';
-import Notifications from '@/components/espace-client/Notifications';
 
 
 export default function Dashboard() {

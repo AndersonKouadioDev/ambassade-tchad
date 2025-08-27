@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { Mail, Bell, Search, ChevronDown, Check } from "lucide-react";
+import {Search, ChevronDown, Check } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useRouter, usePathname } from "next/navigation";
