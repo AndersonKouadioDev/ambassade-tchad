@@ -58,13 +58,13 @@ export const ActualitePagination: React.FC<ActualitePaginationProps> = ({
   const visiblePages = getVisiblePages();
 
   return (
-    <div className="flex flex-col sm:flex-row items-center justify-between gap-4 px-4 py-6 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+    <div className="flex flex-col sm:flex-row items-center justify-between gap-4 px-4 py-6 bg-white  border-t border-gray-200 ">
       {/* Informations sur les éléments affichés */}
-      <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+      <div className="flex items-center gap-2 text-sm text-gray-600 ">
         <span>
-          Affichage de <span className="font-medium text-gray-900 dark:text-white">{startItem}</span> à{" "}
-          <span className="font-medium text-gray-900 dark:text-white">{endItem}</span> sur{" "}
-          <span className="font-medium text-gray-900 dark:text-white">{totalItems}</span> actualités
+          Affichage de <span className="font-medium text-gray-900 ">{startItem}</span> à{" "}
+          <span className="font-medium text-gray-900 ">{endItem}</span> sur{" "}
+          <span className="font-medium text-gray-900 ">{totalItems}</span> actualités
         </span>
       </div>
 
@@ -76,7 +76,7 @@ export const ActualitePagination: React.FC<ActualitePaginationProps> = ({
           size="sm"
           onClick={() => onPageChange(currentPage - 1)}
           disabled={currentPage <= 1}
-          className="h-9 px-3 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
+          className="h-9 px-3 border-gray-300  text-gray-700  hover:bg-gray-50"
         >
           <ChevronLeft className="w-4 h-4 mr-1" />
           Précédent
@@ -109,7 +109,7 @@ export const ActualitePagination: React.FC<ActualitePaginationProps> = ({
                   "h-9 w-9 p-0",
                   isActive
                     ? "bg-blue-600 hover:bg-blue-700 text-white border-blue-600"
-                    : "border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
+                    : "border-gray-300  text-gray-700  hover:bg-gray-50"
                 )}
               >
                 {pageNumber}
@@ -124,7 +124,7 @@ export const ActualitePagination: React.FC<ActualitePaginationProps> = ({
           size="sm"
           onClick={() => onPageChange(currentPage + 1)}
           disabled={currentPage >= totalPages}
-          className="h-9 px-3 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
+          className="h-9 px-3 border-gray-300  text-gray-700  hover:bg-gray-50"
         >
           Suivant
           <ChevronRight className="w-4 h-4 ml-1" />
@@ -132,12 +132,12 @@ export const ActualitePagination: React.FC<ActualitePaginationProps> = ({
       </div>
 
       {/* Sélecteur d'éléments par page */}
-      <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+      <div className="flex items-center gap-2 text-sm text-gray-600 ">
         <span>Éléments par page :</span>
         <select
           value={itemsPerPage}
           onChange={(e) => onItemsPerPageChange(Number(e.target.value))}
-          className="px-2 py-1 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className="px-2 py-1 border border-gray-300  rounded-md bg-white  text-gray-700  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         >
           <option value={6}>6</option>
           <option value={12}>12</option>

@@ -34,21 +34,21 @@ const STATUS_OPTIONS = [
 
 export default function MesDemandesClient() {
   const t = useTranslations("espaceClient.mesDemandesClient");
-  
+
   const translateStatus = (statuts: string) => {
     const translations: Record<string, string> = {
-      'NEW': t('statuts.NEW'),
-      'IN_REVIEW_DOCS': t('statuts.IN_REVIEW_DOCS'),
-      'PENDING_ADDITIONAL_INFO': t('statuts.PENDING_ADDITIONAL_INFO'),
-      'APPROVED_BY_AGENT': t('statuts.APPROVED_BY_AGENT'),
-      'APPROVED_BY_CHEF': t('statuts.APPROVED_BY_CHEF'),
-      'APPROVED_BY_CONSUL': t('statuts.APPROVED_BY_CONSUL'),
-      'READY_FOR_PICKUP': t('statuts.READY_FOR_PICKUP'),
-      'DELIVERED': t('statuts.DELIVERED'),
-      'ARCHIVED': t('statuts.ARCHIVED'),
-      'EXPIRED': t('statuts.EXPIRED'),
-      'RENEWAL_REQUESTED': t('statuts.RENEWAL_REQUESTED'),
-      'REJECTED': t('statuts.REJECTED'),
+      NEW: t("statuts.NEW"),
+      IN_REVIEW_DOCS: t("statuts.IN_REVIEW_DOCS"),
+      PENDING_ADDITIONAL_INFO: t("statuts.PENDING_ADDITIONAL_INFO"),
+      APPROVED_BY_AGENT: t("statuts.APPROVED_BY_AGENT"),
+      APPROVED_BY_CHEF: t("statuts.APPROVED_BY_CHEF"),
+      APPROVED_BY_CONSUL: t("statuts.APPROVED_BY_CONSUL"),
+      READY_FOR_PICKUP: t("statuts.READY_FOR_PICKUP"),
+      DELIVERED: t("statuts.DELIVERED"),
+      ARCHIVED: t("statuts.ARCHIVED"),
+      EXPIRED: t("statuts.EXPIRED"),
+      RENEWAL_REQUESTED: t("statuts.RENEWAL_REQUESTED"),
+      REJECTED: t("statuts.REJECTED"),
     };
     return translations[statuts] || statuts;
   };
@@ -116,7 +116,7 @@ export default function MesDemandesClient() {
 
     return (
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-6">
-        <div className="text-sm text-gray-600 dark:text-gray-400">
+        <div className="text-sm text-gray-600 ">
           {total} {t("demandes")} • {t("page")} {page} {t("sur")} {totalPages}
         </div>
 
@@ -128,12 +128,16 @@ export default function MesDemandesClient() {
             className={`p-2 rounded-lg transition-colors ${
               page === 1
                 ? "text-gray-400 cursor-not-allowed"
-                : "text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-300"
+                : "text-gray-700 hover:bg-gray-100 "
             }`}
             aria-label={t("pagePrecedente")}
           >
             <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
+              <path
+                fillRule="evenodd"
+                d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                clipRule="evenodd"
+              />
             </svg>
           </button>
 
@@ -145,7 +149,7 @@ export default function MesDemandesClient() {
                 className={`w-10 h-10 rounded-lg transition-colors ${
                   1 === page
                     ? "bg-orange-500 text-white"
-                    : "text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-300"
+                    : "text-gray-700 hover:bg-gray-100 "
                 }`}
               >
                 1
@@ -162,7 +166,7 @@ export default function MesDemandesClient() {
               className={`w-10 h-10 rounded-lg transition-colors ${
                 p === page
                   ? "bg-orange-500 text-white"
-                  : "text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-300"
+                  : "text-gray-700 hover:bg-gray-100 "
               }`}
             >
               {p}
@@ -172,13 +176,15 @@ export default function MesDemandesClient() {
           {/* Dernière page */}
           {endPage < totalPages && (
             <>
-              {endPage < totalPages - 1 && <span className="px-1 text-gray-500">...</span>}
+              {endPage < totalPages - 1 && (
+                <span className="px-1 text-gray-500">...</span>
+              )}
               <button
                 onClick={() => setPage(totalPages)}
                 className={`w-10 h-10 rounded-lg transition-colors ${
                   totalPages === page
                     ? "bg-orange-500 text-white"
-                    : "text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-300"
+                    : "text-gray-700 hover:bg-gray-100 "
                 }`}
               >
                 {totalPages}
@@ -193,12 +199,16 @@ export default function MesDemandesClient() {
             className={`p-2 rounded-lg transition-colors ${
               page === totalPages
                 ? "text-gray-400 cursor-not-allowed"
-                : "text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-300"
+                : "text-gray-700 hover:bg-gray-100 "
             }`}
             aria-label={t("pageSuivante")}
           >
             <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+              <path
+                fillRule="evenodd"
+                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                clipRule="evenodd"
+              />
             </svg>
           </button>
         </div>
@@ -218,32 +228,54 @@ export default function MesDemandesClient() {
 
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden">
+      <div className="bg-white  rounded-xl shadow-sm overflow-hidden">
         {/* En-tête */}
-        <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+        <div className="px-6 py-4 border-b border-gray-200 ">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
-              <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{t("title")}</h1>
-              <p className="text-gray-600 dark:text-gray-400">{t("description")}</p>
+              <h1 className="text-2xl font-bold text-gray-900 ">
+                {t("title")}
+              </h1>
+              <p className="text-gray-600 ">{t("description")}</p>
             </div>
             <div className="flex items-center gap-3">
               {hasActiveFilters && (
                 <button
                   onClick={clearFilters}
-                  className="inline-flex items-center px-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
+                  className="inline-flex items-center px-3 py-2 text-sm text-gray-600  hover:text-gray-800 transition-colors"
                 >
-                  <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  <svg
+                    className="w-4 h-4 mr-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
                   </svg>
                   {t("effacerFiltres")}
                 </button>
               )}
               <button
-                className="inline-flex items-center justify-center px-4 py-2 border border-orange-500 text-orange-500 dark:text-orange-400 font-medium rounded-lg hover:bg-orange-50 dark:hover:bg-orange-900/20 transition-colors"
+                className="inline-flex items-center justify-center px-4 py-2 border border-orange-500 text-orange-500  font-medium rounded-lg hover:bg-orange-50 transition-colors"
                 onClick={() => setShowFilter((v) => !v)}
               >
-                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.707A1 1 0 013 7V4z" />
+                <svg
+                  className="w-4 h-4 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.707A1 1 0 013 7V4z"
+                  />
                 </svg>
                 {t("filtrer")}
                 <svg
@@ -254,7 +286,12 @@ export default function MesDemandesClient() {
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
                 </svg>
               </button>
             </div>
@@ -263,10 +300,10 @@ export default function MesDemandesClient() {
 
         {/* Filtres */}
         {showFilter && (
-          <div className="px-6 py-4 bg-gray-50 dark:bg-gray-700 border-b border-gray-200 dark:border-gray-600">
+          <div className="px-6 py-4 bg-gray-50  border-b border-gray-200 ">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-gray-700  mb-2">
                   {t("noTicket")}
                 </label>
                 <div className="relative">
@@ -274,24 +311,38 @@ export default function MesDemandesClient() {
                     type="text"
                     placeholder={t("placeholderTicket")}
                     value={filters.ticket}
-                    onChange={(e) => setFilters((f) => ({ ...f, ticket: e.target.value }))}
-                    className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors"
+                    onChange={(e) =>
+                      setFilters((f) => ({ ...f, ticket: e.target.value }))
+                    }
+                    className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-gray-300  bg-white  text-gray-900  placeholder-gray-500 focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors"
                   />
-                  <svg className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  <svg
+                    className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                    />
                   </svg>
                 </div>
               </div>
-              
+
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-gray-700  mb-2">
                   {t("typeService")}
                 </label>
                 <div className="relative">
                   <select
                     value={filters.service}
-                    onChange={(e) => setFilters((f) => ({ ...f, service: e.target.value }))}
-                    className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors appearance-none"
+                    onChange={(e) =>
+                      setFilters((f) => ({ ...f, service: e.target.value }))
+                    }
+                    className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-gray-300  bg-white  text-gray-900  focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors appearance-none"
                   >
                     <option value="">{t("tous")}</option>
                     {SERVICES.map((s) => (
@@ -300,21 +351,33 @@ export default function MesDemandesClient() {
                       </option>
                     ))}
                   </select>
-                  <svg className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  <svg
+                    className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
                   </svg>
                 </div>
               </div>
-              
+
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-gray-700  mb-2">
                   {t("statut")}
                 </label>
                 <div className="relative">
                   <select
                     value={filters.statuts}
-                    onChange={(e) => setFilters((f) => ({ ...f, statuts: e.target.value }))}
-                    className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors appearance-none"
+                    onChange={(e) =>
+                      setFilters((f) => ({ ...f, statuts: e.target.value }))
+                    }
+                    className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-gray-300  bg-white  text-gray-900  focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors appearance-none"
                   >
                     <option value="">{t("tous")}</option>
                     {STATUS_OPTIONS.map((s) => (
@@ -323,8 +386,18 @@ export default function MesDemandesClient() {
                       </option>
                     ))}
                   </select>
-                  <svg className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  <svg
+                    className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
                   </svg>
                 </div>
               </div>
@@ -332,7 +405,7 @@ export default function MesDemandesClient() {
             <div className="flex justify-end mt-4 gap-3">
               <button
                 onClick={clearFilters}
-                className="px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-medium rounded-lg hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"
+                className="px-4 py-2 border border-gray-300  text-gray-700  font-medium rounded-lg hover:bg-gray-50 transition-colors"
               >
                 {t("effacer")}
               </button>
@@ -349,7 +422,7 @@ export default function MesDemandesClient() {
         {/* Contenu principal */}
         <div className="px-6 py-4">
           <div className="mb-4">
-            <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
+            <h2 className="text-lg font-semibold text-gray-900 ">
               {t("listeDemandes")}
             </h2>
           </div>
@@ -359,7 +432,7 @@ export default function MesDemandesClient() {
               <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-orange-500"></div>
             </div>
           ) : error ? (
-            <div className="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 p-4 rounded-r">
+            <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-r">
               <div className="flex">
                 <div className="flex-shrink-0">
                   <svg
@@ -375,7 +448,7 @@ export default function MesDemandesClient() {
                   </svg>
                 </div>
                 <div className="ml-3">
-                  <p className="text-sm text-red-700 dark:text-red-300">{error.message}</p>
+                  <p className="text-sm text-red-700">{error.message}</p>
                   <button
                     onClick={() => window.location.reload()}
                     className="mt-2 inline-flex items-center px-3 py-1 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
@@ -400,10 +473,10 @@ export default function MesDemandesClient() {
                   d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
                 />
               </svg>
-              <h3 className="mt-2 text-sm font-medium text-gray-900 dark:text-white">
+              <h3 className="mt-2 text-sm font-medium text-gray-900 ">
                 {t("aucuneDemandeTrouvee")}
               </h3>
-              <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+              <p className="mt-1 text-sm text-gray-500 ">
                 {t("aucuneDemandeMessage")}
               </p>
             </div>
@@ -420,8 +493,8 @@ export default function MesDemandesClient() {
                 return pendingRequests.length > 0 ? (
                   <div className="mb-8">
                     <div className="flex items-center justify-between mb-4">
-                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200">
+                      <h3 className="text-lg font-semibold text-gray-900 ">
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800">
                           {pendingRequests.length}
                         </span>
                         <span className="ml-2">{t("demandesEnAttente")}</span>
@@ -437,7 +510,7 @@ export default function MesDemandesClient() {
 
               {/* Toutes les demandes */}
               <div className="mb-4">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                <h3 className="text-lg font-semibold text-gray-900 ">
                   {t("toutesVosDemandes")} ({total})
                 </h3>
               </div>

@@ -82,8 +82,8 @@ export default function HistoriqueTraitement({
   const daysRemaining = getDaysRemaining();
 
   return (
-    <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 md:p-6 mb-6">
-      <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+    <div className="bg-gray-50  rounded-lg p-4 md:p-6 mb-6">
+      <h2 className="text-xl font-bold text-gray-900  mb-4">
         {t('historiqueTraitement.titre')}
       </h2>
       
@@ -93,32 +93,32 @@ export default function HistoriqueTraitement({
         <div className="flex-1">
           <div className="space-y-2">
             <div className="flex flex-col sm:flex-row sm:items-center gap-2">
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-200 min-w-[120px]">
+              <span className="text-sm font-medium text-gray-700  min-w-[120px]">
                 {t('historiqueTraitement.service')}:
               </span>
-              <span className="text-gray-900 dark:text-white font-semibold">
+              <span className="text-gray-900  font-semibold">
                 {translateServiceType(serviceType)}
               </span>
             </div>
             
             <div className="flex flex-col sm:flex-row sm:items-center gap-2">
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-200 min-w-[120px]">
+              <span className="text-sm font-medium text-gray-700  min-w-[120px]">
                 {t('historiqueTraitement.statut')}:
               </span>
               <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                status === 'REJECTED' ? 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200' :
-                status === 'DELIVERED' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' :
-                'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200'
+                status === 'REJECTED' ? 'bg-red-100 text-red-800 ' :
+                status === 'DELIVERED' ? 'bg-green-100 text-green-800  ' :
+                'bg-blue-100 text-blue-800  '
               }`}>
                 {translateStatus(status)}
               </span>
             </div>
             
             <div className="flex flex-col sm:flex-row sm:items-center gap-2">
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-200 min-w-[120px]">
+              <span className="text-sm font-medium text-gray-700  min-w-[120px]">
                 {t('historiqueTraitement.soumission')}:
               </span>
-              <span className="text-gray-600 dark:text-gray-300 text-sm">
+              <span className="text-gray-600  text-sm">
                 {new Date(submissionDate).toLocaleDateString('fr-FR', {
                   day: '2-digit',
                   month: '2-digit',
@@ -132,14 +132,14 @@ export default function HistoriqueTraitement({
         {/* Barre de progression - centrée sur mobile */}
         <div className="flex flex-col items-center justify-center">
           <div className="text-center mb-2">
-            <div className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">
+            <div className="text-sm font-medium text-gray-700  mb-1">
               {t('historiqueTraitement.progression')}
             </div>
             <div className="flex items-center gap-2">
               <span className="text-xl font-bold text-orange-500">{progression}%</span>
             </div>
           </div>
-          <div className="w-32 h-2 bg-gray-200 dark:bg-gray-600 rounded-full overflow-hidden">
+          <div className="w-32 h-2 bg-gray-200  rounded-full overflow-hidden">
             <div
               className="h-2 bg-orange-500 transition-all duration-500"
               style={{ width: `${progression}%` }}
@@ -150,10 +150,10 @@ export default function HistoriqueTraitement({
         {/* Date d'achèvement - centrée sur mobile */}
         <div className="flex flex-col items-center justify-center">
           <div className="text-center">
-            <div className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">
+            <div className="text-sm font-medium text-gray-700  mb-1">
               {t('historiqueTraitement.achevementPrevu')}
             </div>
-            <div className="text-gray-900 dark:text-white font-semibold text-sm mb-1">
+            <div className="text-gray-900  font-semibold text-sm mb-1">
               {estimatedDate.toLocaleDateString('fr-FR', {
                 day: '2-digit',
                 month: '2-digit',
@@ -161,9 +161,9 @@ export default function HistoriqueTraitement({
               })}
             </div>
             <div className={`text-xs font-medium px-2 py-1 rounded-full ${
-              daysRemaining <= 3 ? 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200' :
-              daysRemaining <= 7 ? 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200' :
-              'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
+              daysRemaining <= 3 ? 'bg-red-100 text-red-800 ' :
+              daysRemaining <= 7 ? 'bg-orange-100 text-orange-800 ' :
+              'bg-green-100 text-green-800 '
             }`}>
               {daysRemaining > 0 
                 ? `${daysRemaining} ${t('historiqueTraitement.jours')}`

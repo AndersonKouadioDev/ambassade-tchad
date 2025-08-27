@@ -30,7 +30,7 @@ export default function Hero() {
         <div className="w-full flex flex-col items-center xl:items-start text-left text-white text-xl sm:text-2xl lg:text-2xl font-semibold gap-20 lg:gap-32">
           {/* Texte principal */}
           <div className="bg-black/30 max-w-screen-md p-8 flex flex-col gap-6 lg:ml-4">
-            <div className="text-4xl md:text-6xl font-extralight tracking-wide">
+            <div className="text-3xl sm:text-4xl md:text-6xl font-extralight tracking-wide">
               {t("title")}
             </div>
           </div>

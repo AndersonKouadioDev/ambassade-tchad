@@ -132,7 +132,7 @@ export default function VisaForm({ documentsSize }: Props) {
   const currentServicePrice = servicesPrices?.find(
     (service) => service.type === "VISA"
   );
-  const prixActe = currentServicePrice?.defaultPrice;
+  const prixActe = durationMonths <= 3 ? currentServicePrice?.defaultPrice : (currentServicePrice?.defaultPrice || 0) * 2;
 
   const validateStep = async (step: number): Promise<boolean> => {
     let fieldsToValidate: (keyof VisaRequestDetailsDTO)[] = [];

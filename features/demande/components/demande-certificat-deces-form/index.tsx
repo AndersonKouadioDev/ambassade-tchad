@@ -25,7 +25,6 @@ export default function CertificatDecesForm({ documentsSize }: Props) {
   const t = useTranslations("CertificatDecesForm");
   const tErrors = useTranslations("errors");
 
-  // Form validation
   const { Field, handleSubmit, validateField, getAllErrors } = useForm({
     defaultValues: {
       deceasedFirstName: "",

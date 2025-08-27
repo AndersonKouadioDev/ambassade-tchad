@@ -107,7 +107,7 @@ export default function RequestsTablePro({ filters, requests = [] }: RequestsTab
                 </span>
               </td>
               <td className="py-2 md:py-3 px-2 md:px-6">
-                <Link href={`/${locale}/espace-client/mes-demandes/${req.ticket}`} className="w-full md:w-auto px-2 md:px-4 py-1 rounded border border-[#F44C27] text-[#F44C27] font-semibold text-xs md:text-sm bg-white dark:bg-gray-700 hover:bg-[#F44C27] hover:text-white transition block text-center">
+                <Link href={`/${locale}/espace-client/mes-demandes/${req.ticket}`} className="w-full md:w-auto px-2 md:px-4 py-1 rounded border border-[#F44C27] text-[#F44C27] font-semibold text-xs md:text-sm bg-white  hover:bg-[#F44C27] hover:text-white transition block text-center">
                   Voir
                 </Link>
               </td>

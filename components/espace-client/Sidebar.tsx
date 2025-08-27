@@ -2,7 +2,6 @@
 import { SidebarConfigProvider, useSidebarConfig } from './SidebarConfigContext';
 import SidebarHeader from './SidebarHeader';
 import SidebarMenuList from './SidebarMenuList';
-import SidebarFooter from './SidebarFooter';
 
 export default function Sidebar({ open, setOpen }: { open: boolean; setOpen: (b: boolean) => void }) {
   return (
@@ -34,7 +33,7 @@ function SidebarInner({ open }: { open: boolean }) {
     >
       <SidebarHeader />
       <SidebarMenuList />
-      <SidebarFooter />
+      {/* <SidebarFooter /> */}
     </aside>
   );
 } 

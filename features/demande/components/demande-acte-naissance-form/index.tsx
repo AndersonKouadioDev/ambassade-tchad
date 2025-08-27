@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import FileUploadView from "@/components/block/file-upload-view";
 import { InputField } from "@/components/form/input-field";
@@ -12,7 +12,6 @@ import {
   ActeNaissanceDetailsDTO,
   ActeNaissanceDetailsSchema,
 } from "@/features/demande/schema/acte-naissance.schema";
-import { Genre } from "@/features/demande/types/demande.type";
 import { handleFormSubmit } from "@/features/demande/utils/form-submit-handler";
 import { useFileUpload } from "@/hooks/use-file-upload";
 import { useMultistepForm } from "@/hooks/use-multistep-form";
@@ -27,15 +26,15 @@ function ActeNaissanceForm({ documentsSize }: { documentsSize: number }) {
 
   const { Field, handleSubmit, validateField, getAllErrors } = useForm({
     defaultValues: {
-      personFirstName: "John",
-      personLastName: "Doe",
-      personBirthDate: "1990-01-01",
-      personBirthPlace: "Paris, France",
-      personNationality: "French",
-      personDomicile: "12 Peace Street, Paris",
-      fatherFullName: "Pierre Doe",
-      motherFullName: "Marie Doe",
-      contactPhoneNumber: "+1 123 456 7890",
+      personFirstName: "",
+      personLastName: "",
+      personBirthDate: "",
+      personBirthPlace: "",
+      personNationality: "",
+      personDomicile: "",
+      fatherFullName: "",
+      motherFullName: "",
+      contactPhoneNumber: "",
       requestType: ActeNaissanceType.NEWBORN,
     } as ActeNaissanceDetailsDTO,
     validationLogic: revalidateLogic({
@@ -66,6 +65,7 @@ function ActeNaissanceForm({ documentsSize }: { documentsSize: number }) {
 
   const maxFiles = 10;
   const maxSizeMB = 20;
+
   const [
     { files, isDragging, errors },
     {
@@ -85,7 +85,6 @@ function ActeNaissanceForm({ documentsSize }: { documentsSize: number }) {
     initialFiles: [],
   });
 
-  // Get dynamic price
   const { data: servicesPrices, isLoading: isLoadingServicesPrices } =
     useServicesPricesQuery();
 
@@ -115,13 +114,10 @@ function ActeNaissanceForm({ documentsSize }: { documentsSize: number }) {
         fieldsToValidate = ["fatherFullName", "motherFullName"];
         break;
       case 3:
-        fieldsToValidate = ["requestType"];
-        break;
-      case 4:
-        fieldsToValidate = ["contactPhoneNumber"];
+        fieldsToValidate = ["requestType", "contactPhoneNumber"];
         break;
       default:
-        return true; // No validation for subsequent steps
+        return true;
     }
 
     return validateStepFields(fieldsToValidate, validateField, getAllErrors);
@@ -167,10 +163,10 @@ function ActeNaissanceForm({ documentsSize }: { documentsSize: number }) {
       type: "text",
       placeholder: t("placeholders.lastName"),
     },
-    { 
-      name: "personBirthDate", 
-      label: t("fields.birthDate"), 
-      type: "date" 
+    {
+      name: "personBirthDate",
+      label: t("fields.birthDate"),
+      type: "date",
     },
     {
       name: "personBirthPlace",
@@ -272,6 +268,9 @@ function ActeNaissanceForm({ documentsSize }: { documentsSize: number }) {
 
   const renderStep3 = () => (
     <StepContainer title={t("steps.agentInfo.title")}>
+      <div className="mb-4">
+        <PriceViewer price={prixActe ?? 5000} />
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {fieldsStep3.map((item) => (
           <Field key={item.name} name={item.name}>
@@ -300,6 +299,7 @@ function ActeNaissanceForm({ documentsSize }: { documentsSize: number }) {
             }
           </Field>
         ))}
+
         {documentsSize > 0 && (
           <div className="mb-4 col-span-full">
             <FileUploadView

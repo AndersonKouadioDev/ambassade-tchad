@@ -778,7 +778,8 @@
         "title": "Actualités",
         "readMore": "Lire la suite",
         "previous": "Précédent",
-        "next": "Suivant"
+        "next": "Suivant",
+        "noNews": "Aucune actualité"
       },
       "messages": {
         "title": "Messages",
@@ -1006,6 +1007,7 @@
       }
     },
     "services": {
+      "overview": "Aperçu",
       "visa": "Demande de Visa",
       "carteConsulaire": "Carte Consulaire",
       "passeport": "Passeport",
@@ -2043,7 +2045,8 @@
     "description": "Remplissez le formulaire ci-dessous pour soumettre votre demande.",
     "next": "Suivant",
     "previous": "Précédent",
-    "submit": "Soumettre"
+    "submit": "Soumettre",
+    "loading": "Envoi en cours..."
   },
   "DemandeHeader": {
     "back": "Retour",

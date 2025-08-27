@@ -34,8 +34,8 @@ export default function ProgressSteps({ percent, steps, labels }: ProgressStepsP
                   ${i < completed 
                     ? 'bg-orange-500 border-orange-500' 
                     : i === completed && progressInStep > 0
-                    ? 'bg-orange-100 border-orange-500 dark:bg-orange-900/30'
-                    : 'bg-white border-gray-300 dark:bg-gray-700 dark:border-gray-500'
+                    ? 'bg-orange-100 border-orange-500'
+                    : 'bg-white border-gray-300  '
                   }
                 `}>
                   {i < completed && (
@@ -49,7 +49,7 @@ export default function ProgressSteps({ percent, steps, labels }: ProgressStepsP
                 </div>
                 
                 {/* Label au-dessus sur mobile */}
-                <span className="lg:hidden text-[10px] xs:text-xs font-medium text-gray-700 dark:text-gray-300 mt-1 text-center leading-tight px-0.5 whitespace-nowrap">
+                <span className="lg:hidden text-[10px] xs:text-xs font-medium text-gray-700  mt-1 text-center leading-tight px-0.5 whitespace-nowrap">
                   {i === 0 ? t('depot') : 
                    i === 1 ? t('verification') : 
                    i === 2 ? t('traitement') : 
@@ -62,7 +62,7 @@ export default function ProgressSteps({ percent, steps, labels }: ProgressStepsP
               
               {/* Barre de connexion entre les étapes */}
               {i < maxSteps - 1 && (
-                <div className="h-1 sm:h-1.5 w-8 sm:w-12 md:w-16 lg:w-20 mx-0.5 sm:mx-1 relative bg-gray-200 dark:bg-gray-600 rounded-full overflow-hidden shrink-0">
+                <div className="h-1 sm:h-1.5 w-8 sm:w-12 md:w-16 lg:w-20 mx-0.5 sm:mx-1 relative bg-gray-200  rounded-full overflow-hidden shrink-0">
                   {/* Barre pleine pour les étapes complétées */}
                   {i < completed && (
                     <div className="absolute top-0 left-0 h-full bg-orange-500 transition-all duration-300 w-full" />
@@ -82,16 +82,16 @@ export default function ProgressSteps({ percent, steps, labels }: ProgressStepsP
       </div>
       
       {/* Labels des étapes - version desktop (toujours affichés pour maxSteps <= 7) */}
-      <div className="hidden lg:flex justify-between w-full max-w-5xl mx-auto mt-3 text-sm text-gray-700 dark:text-gray-300 font-medium">
+      <div className="hidden lg:flex justify-between w-full max-w-5xl mx-auto mt-3 text-sm text-gray-700  font-medium">
         {[...Array(maxSteps)].map((_, i) => (
           <div key={i} className="flex-1 text-center px-1 first:text-left last:text-right min-w-0">
             <div className="leading-tight">
               {labels && labels[i] ? labels[i] : (
                 <>
-                  <div className="font-semibold text-gray-900 dark:text-white">
+                  <div className="font-semibold text-gray-900 ">
                     {t(`step${i + 1}`)}
                   </div>
-                  <div className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
+                  <div className="text-xs text-gray-500  mt-0.5">
                     {t(`description${i + 1}`)}
                   </div>
                 </>
@@ -102,7 +102,7 @@ export default function ProgressSteps({ percent, steps, labels }: ProgressStepsP
       </div>
       
       {/* Labels des étapes - version tablette (texte simplifié) */}
-      <div className="hidden md:flex lg:hidden justify-between w-full max-w-3xl mx-auto mt-3 text-xs text-gray-700 dark:text-gray-300 font-medium">
+      <div className="hidden md:flex lg:hidden justify-between w-full max-w-3xl mx-auto mt-3 text-xs text-gray-700  font-medium">
         {[...Array(maxSteps)].map((_, i) => (
           <div key={i} className="text-center px-0.5 min-w-0">
             <div className="truncate">
@@ -120,17 +120,17 @@ export default function ProgressSteps({ percent, steps, labels }: ProgressStepsP
 
       {/* Indicateur de pourcentage global */}
       <div className="mt-3 text-center px-2">
-        <div className="text-base sm:text-lg font-bold text-orange-600 dark:text-orange-500">
+        <div className="text-base sm:text-lg font-bold text-orange-600 ">
           {percent}% {t('complete')}
         </div>
-        <div className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
+        <div className="text-xs text-gray-500  mt-0.5">
           {t('estimatedCompletion')}: {Math.max(0, Math.ceil((100 - percent) / (100 / maxSteps)))} {t('days')}
         </div>
       </div>
 
       {/* Message d'information si plus de 7 étapes originales
       {steps > 7 && (
-        <div className="mt-2 text-xs text-gray-500 dark:text-gray-400 text-center">
+        <div className="mt-2 text-xs text-gray-500  text-center">
           {t('stepsLimited', { total: steps, shown: maxSteps })}
         </div>
       )} */}

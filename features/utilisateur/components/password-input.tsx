@@ -11,7 +11,7 @@ export const PasswordInput = ({field, showPassword, togglePassword}: {
             type={showPassword ? 'text' : 'password'}
             value={field.state.value}
             onChange={(e) => field.handleChange(e.target.value)}
-            className="w-full rounded-full border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 px-6 py-2 text-gray-900 dark:text-white text-base focus:outline-none focus:border-orange-500 pr-12"
+            className="w-full rounded-full border border-gray-300  bg-white  px-6 py-2 text-gray-900  text-base focus:outline-none focus:border-orange-500 pr-12"
         />
         <button
             type="button"

@@ -28,8 +28,8 @@ const Footer = () => {
   const quickLinks: LinkProps[] = [
     { name: t("quickLinks.events"), href: "/event" },
     { name: t("quickLinks.actuality"), href: "/news" },
-    { name: t("quickLinks.gallery"), href: "/gallery" },
-    { name: t("quickLinks.videos"), href: "/videos" },
+    { name: t("quickLinks.gallery"), href: "/galerie/galerie-photos" },
+    { name: t("quickLinks.videos"), href: "/galerie/galerie-videos" },
   ];
 
   const legalLinks: LinkProps[] = [
@@ -60,7 +60,7 @@ const Footer = () => {
   return (
     <footer className="w-full bg-primary text-white pt-8 pb-6">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="flex flex-row border-b border-white pb-3 justify-between">
+        <div className="flex flex-col gap-4 sm:flex-row border-b border-white pb-3 items-center justify-between">
           <div className="flex flex-row text-center items-center gap-2">
             <Image
               src="/assets/images/logo_2.png"
@@ -72,7 +72,7 @@ const Footer = () => {
             />
             <div className="text-2xl font-semibold font-blinker">
               {t("embassy")}
-              <p className="uppercase text-[16px] text-left">
+              <p className="uppercase text-[16px] text-center sm:text-left">
                 {t("ghana")} - {t("sierra_leone")} - {t("guinea")} -{" "}
                 {t("liberia")}
               </p>
@@ -82,8 +82,8 @@ const Footer = () => {
           <Image
             src="/assets/images/logo.png"
             alt="Embassy of Chad Logo"
-            width={100}
-            height={78}
+            width={80}
+            height={62}
             priority
             className="cursor-pointer"
           />
