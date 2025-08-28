@@ -17,7 +17,7 @@ export default async function galeryPhotos() {
   return (
     <div>
       <Hero />
-      <GaleryPhotos searchParams={params} />
+      <GaleryPhotos />
     </div>
   );
 }

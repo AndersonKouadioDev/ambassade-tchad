@@ -7,15 +7,10 @@ import { useQueryStates } from "nuqs";
 import { usePhotosList } from "@/features/photos/queries/photo-list.query";
 import { useState } from "react";
 import { photoFiltersClient } from "@/features/photos/filters/photo.filters";
-import { formatImageUrl } from "@/features/actualites/utils/image-utils";
-import { DotLoader } from "react-spinners";
 import { IPhotoRechercheParams } from "@/features/photos/types/photo.type";
+import { getFullUrlFile } from "@/utils/getFullUrlFile";
 
-interface IProps {
-  searchParams: IPhotoRechercheParams;
-}
-
-export default function GaleryPhotos({ searchParams }: IProps) {
+export default function GaleryPhotos() {
   const t = useTranslations("gallery.photo");
 
   const [filters, setFilters] = useQueryStates(
@@ -30,7 +25,7 @@ export default function GaleryPhotos({ searchParams }: IProps) {
     createdAt: filters.createdAt,
   };
 
-  const { data, isLoading, isError } = usePhotosList(currentSearchParams);
+  const { data } = usePhotosList(currentSearchParams);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -98,7 +93,7 @@ export default function GaleryPhotos({ searchParams }: IProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 md:gap-12 mt-8">
             {data.data.map((photo) => {
               const imageUrl = photo.imageUrl?.[0]
-                ? formatImageUrl(photo.imageUrl[0])
+                ? getFullUrlFile(photo.imageUrl[0])
                 : "/placeholder-image.jpg";
 
               return (
@@ -185,9 +180,10 @@ export default function GaleryPhotos({ searchParams }: IProps) {
             </button>
             <div className="relative aspect-video w-full">
               <Image
-                src={selectedImage}
-                alt={t("fullImage")}
-                fill
+                src={getFullUrlFile(selectedImage)}
+                alt={"image"}
+                width={1000}
+                height={1000}
                 className="object-contain rounded-lg"
                 priority
               />

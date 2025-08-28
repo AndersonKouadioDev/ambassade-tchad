@@ -498,9 +498,11 @@
       "home": "Home",
       "news": "News"
     },
+    "practicalInfo": "Practical information",
+    "date": "Date",
+    "backToNews": "Back to news",
     "title": "News",
     "description": "Stay informed about the latest news from the Embassy",
-    "noNewsFoundDescription":"No news found",
     "latest": "Latest news",
     "viewAll": "View all news",
     "readMore": "Read more",

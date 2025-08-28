@@ -2,35 +2,41 @@
 
 import { Link } from "@/i18n/navigation";
 import { formatEventDate } from "@/lib/events-data";
-import { Calendar, Clock, MapPin } from "lucide-react";
-import { useTranslations } from "next-intl";
-import Image from "next/image";
-import { IEvenement } from "../../types/evenement.type";
-import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { getFullUrlFile } from "@/utils/getFullUrlFile";
+import { Calendar } from "lucide-react";
+import { useTranslations } from "next-intl";
+import Image from "next/image";
+import { useState } from "react";
+import { IActualite } from "../../types/actualites.type";
 
-export default function EventDetailHero({ event }: { event: IEvenement }) {
-  const t = useTranslations("event");
+export default function ActualiteDetailHero({
+  actualite,
+}: {
+  actualite: IActualite;
+}) {
+  const t = useTranslations("news");
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
-  const hasImages = event.imageUrl && event.imageUrl.length > 0;
-  const selectedImage = hasImages ? event.imageUrl?.[selectedImageIndex] : "";
+  const hasImages = actualite?.imageUrls && actualite?.imageUrls?.length > 0;
+  const selectedImage = hasImages
+    ? actualite?.imageUrls?.[selectedImageIndex]!
+    : "";
 
   return (
     <div className="relative w-full h-[calc(100vh-100px)] lg:h-[600px] xl:h-[700px] flex flex-col items-center justify-center">
       <Image
-        className="w-full h-full object-cover shrink-0"
+        className="w-full h-full object-cover object-top shrink-0"
         src={getFullUrlFile(selectedImage)}
-        alt={event.title}
+        alt={actualite.title}
         fill
         priority
       />
       <div className="absolute w-full h-full bg-gradient-to-r from-primary/90 to-transparent"></div>
       {/* Indicateur d'image */}
-      {(event.imageUrl?.length ?? 0) > 1 && (
+      {(actualite?.imageUrls?.length ?? 0) > 1 && (
         <div className="absolute  top-4 right-4 bg-black/70 text-white px-3 py-1 rounded-full text-sm">
-          {selectedImageIndex + 1} / {event.imageUrl?.length ?? 0}
+          {selectedImageIndex + 1} / {actualite?.imageUrls?.length ?? 0}
         </div>
       )}
       {/* Contenu de la section hero */}
@@ -42,43 +48,37 @@ export default function EventDetailHero({ event }: { event: IEvenement }) {
               {t("breadcrumbs.home")}
             </Link>
             <span>/</span>
-            <Link href="/event" className="hover:underline">
-              {t("breadcrumbs.event")}
+            <Link href="/news" className="hover:underline">
+              {t("breadcrumbs.news")}
             </Link>
             <span>/</span>
-            <span className="opacity-80 line-clamp-1">{event.title}</span>
+            <span className="opacity-80 line-clamp-1">{actualite.title}</span>
           </div>
         </nav>
 
         {/* En-tête de l'événement */}
         <div className="max-w-4xl text-white">
           <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
-            {event.title}
+            {actualite.title}
           </h1>
 
           {/* Métadonnées de l'événement */}
           <div className="flex flex-wrap items-center gap-4 md:gap-6 text-sm md:text-base font-medium opacity-90">
             <div className="flex items-center gap-2">
               <Calendar size={20} />
-              <span>{formatEventDate(event.eventDate.toString())}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Clock size={20} />
-              <span>{event.eventDate.toString()}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <MapPin size={20} />
-              <span>{event.location}</span>
+              <span>
+                {formatEventDate(actualite.createdAt?.toString() ?? "")}
+              </span>
             </div>
           </div>
         </div>
       </div>
 
       {/* Miniatures */}
-      {(event.imageUrl?.length ?? 0) > 1 && (
+      {(actualite?.imageUrls?.length ?? 0) > 1 && (
         <div className="p-4 overflow-x-auto overflow-y-hidden max-w-xl mx-auto rounded-lg">
           <div className="flex gap-3 pb-2">
-            {event.imageUrl?.map((imageUrl, index) => (
+            {actualite?.imageUrls?.map((imageUrl, index) => (
               <button
                 key={index}
                 onClick={() => setSelectedImageIndex(index)}

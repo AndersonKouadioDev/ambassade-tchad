@@ -461,6 +461,9 @@
       "home": "Accueil",
       "news": "Actualités"
     },
+    "practicalInfo": "Informations pratiques",
+    "date": "Date",
+    "backToNews": "Retour aux actualités",
     "title": "Actualités",
     "description": "Restez informé des dernières nouvelles de l'Ambassade",
     "noNewsFoundDescription":"Aucune actualité trouvée",
