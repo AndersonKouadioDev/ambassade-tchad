@@ -3,12 +3,16 @@
 import { Link } from "@/i18n/navigation";
 import { formatEventDate } from "@/lib/events-data";
 import { Button } from "@heroui/react";
-import { ArrowLeft, Calendar, MapPin, User } from "lucide-react";
+import { ArrowLeft, Calendar } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { IEvenement } from "../../types/evenement.type";
+import { IActualite } from "../../types/actualites.type";
 
-export default function EventDetailContent({ event }: { event: IEvenement }) {
-  const t = useTranslations("event.details");
+export default function ActualiteDetailContent({
+  actualite,
+}: {
+  actualite: IActualite;
+}) {
+  const t = useTranslations("news");
 
   return (
     <div className="max-w-screen-xl mx-auto px-4 py-8">
@@ -26,27 +30,7 @@ export default function EventDetailContent({ event }: { event: IEvenement }) {
                   {t("date")}:
                 </span>
                 <p className="text-gray-600 mt-1">
-                  {formatEventDate(event.eventDate.toString())}
-                </p>
-              </div>
-            </li>
-            <li className="flex items-start gap-4">
-              <MapPin className="w-6 h-6 text-secondary mt-1" />
-              <div>
-                <span className="text-gray-700 font-semibold">
-                  {t("location")}:
-                </span>
-                <p className="text-gray-600 mt-1">{event.location}</p>
-              </div>
-            </li>
-            <li className="flex items-start gap-4">
-              <User className="w-6 h-6 text-secondary mt-1" />
-              <div>
-                <span className="text-gray-700 font-semibold">
-                  {t("organizer")}:
-                </span>
-                <p className="text-gray-600 mt-1">
-                  {event.author?.firstName + " " + event.author?.lastName}
+                  {formatEventDate(actualite.createdAt?.toString() ?? "")}
                 </p>
               </div>
             </li>
@@ -58,7 +42,7 @@ export default function EventDetailContent({ event }: { event: IEvenement }) {
           <div className="prose prose-lg max-w-none text-gray-800">
             <div
               className="text-gray-700 leading-relaxed space-y-6"
-              dangerouslySetInnerHTML={{ __html: event.description }}
+              dangerouslySetInnerHTML={{ __html: actualite.content }}
             />
           </div>
         </main>
@@ -66,14 +50,14 @@ export default function EventDetailContent({ event }: { event: IEvenement }) {
 
       {/* Navigation et lien de retour */}
       <div className="flex justify-start mt-12 pt-8 border-t border-gray-200">
-        <Link href="/event">
+        <Link href="/news">
           <Button
             variant="bordered"
             color="primary"
             startContent={<ArrowLeft size={16} />}
             className="hover:bg-primary-50"
           >
-            {t("backToEvents")}
+            {t("backToNews")}
           </Button>
         </Link>
       </div>

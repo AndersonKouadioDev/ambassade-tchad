@@ -7,9 +7,9 @@ import { useQueryStates } from 'nuqs';
 import { usePhotosList } from "@/features/photos/queries/photo-list.query";
 import { useState } from "react";
 import { photoFiltersClient } from "@/features/photos/filters/photo.filters";
-import { formatImageUrl } from "@/features/actualites/utils/image-utils";
 import { DotLoader } from "react-spinners";
 import { IPhotoRechercheParams } from "@/features/photos/types/photo.type";
+import { getFullUrlFile } from "@/utils/getFullUrlFile";
 
 export default function GaleryPhotos() {
   const t = useTranslations("gallery.photo");
@@ -112,7 +112,7 @@ export default function GaleryPhotos() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-8 px-10">
             {data.data.map((photo) => {
               // Vérification que imageUrl existe et a au moins un élément
-              const imageUrl = photo.imageUrl?.[0] ? formatImageUrl(photo.imageUrl[0]) : '/placeholder-image.jpg';
+              const imageUrl = photo.imageUrl?.[0] ? getFullUrlFile(photo.imageUrl[0]) : '/placeholder-image.jpg';
               
               return (
                 <div

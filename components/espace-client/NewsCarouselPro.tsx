@@ -5,9 +5,9 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { useActualitesList } from '@/features/actualites/queries/actualite-list.query';
-import { formatImageUrl } from '@/features/actualites/utils/image-utils';
 import { Skeleton } from '@heroui/react';
 import { formatNewsDate } from '@/lib/news-utils';
+import { getFullUrlFile } from '@/utils/getFullUrlFile';
 
 export default function NewsCarouselPro() {
   const t = useTranslations('espaceClient.dashboard.newsCarousel');
@@ -90,7 +90,7 @@ export default function NewsCarouselPro() {
 
       <div className="flex gap-2 md:gap-4 overflow-x-auto flex-1 items-stretch pb-2">
         {visibleItems.map((item) => {
-          const imageUrl = item.imageUrls?.[0] ? formatImageUrl(item.imageUrls[0]) : '/placeholder-news.jpg';
+          const imageUrl = item.imageUrls?.[0] ? getFullUrlFile(item.imageUrls[0]) : '/placeholder-news.jpg';
           
           return (
             <article 

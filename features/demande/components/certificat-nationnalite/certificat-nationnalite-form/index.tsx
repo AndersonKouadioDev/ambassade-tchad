@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import FileUploadView from "@/components/block/file-upload-view";
 import { InputField } from "@/components/form/input-field";
@@ -161,34 +161,34 @@ export default function CertificatNationaliteForm({ documentsSize }: Props) {
     type?: string;
     placeholder?: string;
   }[] = [
-    { 
-      name: "applicantFirstName", 
-      label: tForm("fields.firstName"), 
+    {
+      name: "applicantFirstName",
+      label: tForm("fields.firstName"),
       type: "text",
-      placeholder: tForm("placeholders.firstName")
+      placeholder: tForm("placeholders.firstName"),
     },
-    { 
-      name: "applicantLastName", 
-      label: tForm("fields.lastName"), 
+    {
+      name: "applicantLastName",
+      label: tForm("fields.lastName"),
       type: "text",
-      placeholder: tForm("placeholders.lastName")
+      placeholder: tForm("placeholders.lastName"),
     },
-    { 
-      name: "applicantBirthDate", 
-      label: tForm("fields.birthDate"), 
-      type: "date"
+    {
+      name: "applicantBirthDate",
+      label: tForm("fields.birthDate"),
+      type: "date",
     },
-    { 
-      name: "applicantBirthPlace", 
-      label: tForm("fields.birthPlace"), 
+    {
+      name: "applicantBirthPlace",
+      label: tForm("fields.birthPlace"),
       type: "text",
-      placeholder: tForm("placeholders.birthPlace")
+      placeholder: tForm("placeholders.birthPlace"),
     },
-    { 
-      name: "applicantNationality", 
-      label: tForm("fields.nationality"), 
+    {
+      name: "applicantNationality",
+      label: tForm("fields.nationality"),
       type: "text",
-      placeholder: tForm("placeholders.nationality")
+      placeholder: tForm("placeholders.nationality"),
     },
   ];
 
@@ -220,17 +220,17 @@ export default function CertificatNationaliteForm({ documentsSize }: Props) {
     type?: string;
     placeholder?: string;
   }[] = [
-    { 
-      name: "originCountryParentFirstName", 
-      label: tForm("fields.parentFirstName"), 
+    {
+      name: "originCountryParentFirstName",
+      label: tForm("fields.parentFirstName"),
       type: "text",
-      placeholder: tForm("placeholders.firstName")
+      placeholder: tForm("placeholders.firstName"),
     },
-    { 
-      name: "originCountryParentLastName", 
-      label: tForm("fields.parentLastName"), 
+    {
+      name: "originCountryParentLastName",
+      label: tForm("fields.parentLastName"),
       type: "text",
-      placeholder: tForm("placeholders.lastName")
+      placeholder: tForm("placeholders.lastName"),
     },
   ];
 

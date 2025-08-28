@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import NewsDetailHero from "@/components/events/news/news-detail-hero";
-import NewsDetailContent from "@/components/events/news/news-detail-content";
-import { getNewsBySlug } from "@/lib/news-data";
+import { getActualitesDetailAction } from "@/features/actualites/actions/actualites.action";
+import { prefetchActualiteDetailQuery } from "@/features/actualites/queries/actualite-details.query";
+import ActualiteDetail from "@/features/actualites/components/actualite-detail";
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -10,34 +10,26 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
-  const news = getNewsBySlug(id);
+  const result = await getActualitesDetailAction(id);
 
-  if (!news) {
+  if (!result.success) {
     return {
       title: "Actualité non trouvée - Ambassade du Tchad",
     };
   }
 
   return {
-    title: `${news.title} - Ambassade du Tchad`,
-    description: news.excerpt,
-    keywords: `actualité, ambassade tchad, ${news.tags.join(", ")}`,
+    title: `${result.data?.title} - Ambassade du Tchad`,
+    description: result.data?.content,
   };
 }
 
 export default async function NewsDetailPage({ params }: Props) {
   const { id } = await params;
 
-  const news = getNewsBySlug(id);
-
-  if (!news) {
+  if (!id) {
     notFound();
   }
-
-  return (
-    <div>
-      <NewsDetailHero news={news} />
-      <NewsDetailContent news={news} />
-    </div>
-  );
+  await prefetchActualiteDetailQuery(id);
+  return <ActualiteDetail id={id} />;
 }

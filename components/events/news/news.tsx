@@ -8,10 +8,10 @@ import { useTranslations } from "next-intl";
 import { useActualitesList } from "@/features/actualites/queries/actualite-list.query";
 import { IActualiteRechercheParams } from "@/features/actualites/types/actualites.type";
 import { getNewsExcerpt } from "@/lib/news-utils";
-import { formatImageUrl } from "@/features/actualites/utils/image-utils";
 import { formatNewsDate } from "@/lib/news-utils";
 import { useQueryStates } from 'nuqs';
 import { actualiteFiltersClient } from "@/features/actualites/filters/actualite.filters";
+import { getFullUrlFile } from "@/utils/getFullUrlFile";
 
 export default function NewsComponent() {
   const t = useTranslations("news");
@@ -106,7 +106,7 @@ export default function NewsComponent() {
                 <div className="relative h-64 mb-4 rounded-xl overflow-hidden">
                   {item.imageUrls?.[0] ? (
                     <Image
-                      src={formatImageUrl(item.imageUrls[0])}
+                      src={getFullUrlFile(item.imageUrls[0])}
                       alt={item.title}
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-300"
