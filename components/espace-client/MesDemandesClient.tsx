@@ -54,7 +54,6 @@ export default function MesDemandesClient() {
     return translations[statuts] || statuts;
   };
 
-  // Traduction des services
   const translateServiceType = (serviceType: string) => {
     const translations: Record<string, string> = {
       CONSULAR_CARD: t("services.carteConsulaire"),
@@ -69,46 +68,6 @@ export default function MesDemandesClient() {
     return translations[serviceType] || serviceType;
   };
 
-  // Traduction des statuts
-  const translateStatus = (status: string) => {
-    const translations: Record<string, string> = {
-      NEW: t("statuts.NEW"),
-      IN_PROGRESS: t("statuts.IN_PROGRESS"),
-      COMPLETED: t("statuts.COMPLETED"),
-      READY_TO_PICKUP: t("statuts.READY_TO_PICKUP"),
-      REJECTED: t("statuts.REJECTED"),
-      IN_REVIEW_DOCS: t("statuts.IN_REVIEW_DOCS"),
-      PENDING_ADDITIONAL_INFO: t("statuts.PENDING_ADDITIONAL_INFO"),
-      APPROVED_BY_AGENT: t("statuts.APPROVED_BY_AGENT"),
-      APPROVED_BY_CHEF: t("statuts.APPROVED_BY_CHEF"),
-      APPROVED_BY_CONSUL: t("statuts.APPROVED_BY_CONSUL"),
-      DELIVERED: t("statuts.DELIVERED"),
-      ARCHIVED: t("statuts.ARCHIVED"),
-      EXPIRED: t("statuts.EXPIRED"),
-      RENEWAL_REQUESTED: t("statuts.RENEWAL_REQUESTED"),
-    };
-    return translations[status] || status;
-  };
-
-  // Liste des statuts pour le filtre
-  const STATUS = [
-    { value: "ALL", label: t("tous") },
-    { value: "NEW", label: t("statuts.NEW") },
-    { value: "IN_PROGRESS", label: t("statuts.IN_PROGRESS") },
-    { value: "COMPLETED", label: t("statuts.COMPLETED") },
-    { value: "READY_TO_PICKUP", label: t("statuts.READY_TO_PICKUP") },
-    { value: "REJECTED", label: t("statuts.REJECTED") },
-    { value: "IN_REVIEW_DOCS", label: t("statuts.IN_REVIEW_DOCS") },
-    { value: "PENDING_ADDITIONAL_INFO", label: t("statuts.PENDING_ADDITIONAL_INFO") },
-    { value: "APPROVED_BY_AGENT", label: t("statuts.APPROVED_BY_AGENT") },
-    { value: "APPROVED_BY_CHEF", label: t("statuts.APPROVED_BY_CHEF") },
-    { value: "APPROVED_BY_CONSUL", label: t("statuts.APPROVED_BY_CONSUL") },
-    { value: "DELIVERED", label: t("statuts.DELIVERED") },
-    { value: "ARCHIVED", label: t("statuts.ARCHIVED") },
-    { value: "EXPIRED", label: t("statuts.EXPIRED") },
-    { value: "RENEWAL_REQUESTED", label: t("statuts.RENEWAL_REQUESTED") },
-  ];
-
   const [showFilter, setShowFilter] = useState(false);
   const [filters, setFilters] = useState({
     ticket: "",
@@ -118,7 +77,11 @@ export default function MesDemandesClient() {
   const [page, setPage] = useState(1);
   const limit = 10;
 
-  const { data, isLoading: loading, error } = useMyDemandesListQuery({
+  const {
+    data,
+    isLoading: loading,
+    error,
+  } = useMyDemandesListQuery({
     page,
     limit,
   });
@@ -253,6 +216,7 @@ export default function MesDemandesClient() {
             </svg>
           </button>
         </div>
+      </div>
     );
   };
 
@@ -450,28 +414,14 @@ export default function MesDemandesClient() {
                 {t("effacer")}
               </button>
               <button
-                  className="inline-flex items-center justify-center px-4 py-2 border border-orange-500 text-orange-500 font-medium rounded-lg hover:bg-orange-50 transition-colors"
-                  onClick={() => setShowFilter((v) => !v)}
+                className="px-4 py-2 bg-orange-500 text-white font-medium rounded-lg hover:bg-orange-600 transition-colors"
+                onClick={() => setShowFilter(false)}
               >
-                {t("filtrer")}
-                <svg
-                    className={`ml-2 h-4 w-4 transition-transform ${
-                        showFilter ? "rotate-180" : ""
-                    }`}
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                >
-                  <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 9l-7 7-7-7"
-                  />
-                </svg>
+                {t("appliquer")}
               </button>
             </div>
           </div>
+        )}
 
         {/* Contenu principal */}
         <div className="px-6 py-4">
@@ -499,63 +449,18 @@ export default function MesDemandesClient() {
                       d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
                       clipRule="evenodd"
                     />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      {t("typeService")}
-                    </label>
-                    <select
-                        value={filters.service}
-                        onChange={(e) =>
-                            setFilters((f) => ({ ...f, service: e.target.value }))
-                        }
-                        className="w-full rounded-lg border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
-                    >
-                      <option value="">{t("tous")}</option>
-                      {SERVICES.map((s) => (
-                          <option key={s} value={s}>
-                            {s}
-                          </option>
-                      ))}
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      {t("statut")}
-                    </label>
-                    <select
-                        value={filters.status}
-                        onChange={(e) =>
-                            setFilters((f) => ({ ...f, status: e.target.value }))
-                        }
-                        className="w-full rounded-lg border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500"
-                    >
-                      <option value="">{t("tous")}</option>
-                      {STATUS.map((s) => (
-                          <option key={s.value} value={s.value}>
-                            {s.label}
-                          </option>
-                      ))}
-                    </select>
-                  </div>
+                  </svg>
                 </div>
-                <div className="flex justify-end mt-4">
+                <div className="ml-3">
+                  <p className="text-sm text-red-700">{error.message}</p>
                   <button
-                      className="px-4 py-2 bg-orange-500 text-white font-medium rounded-lg hover:bg-orange-600 transition-colors"
-                      onClick={() => setShowFilter(false)}
+                    onClick={() => window.location.reload()}
+                    className="mt-2 inline-flex items-center px-3 py-1 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
                   >
-                    {t("appliquer")}
+                    {t("reessayer")}
                   </button>
                 </div>
               </div>
-          )}
-
-          {/* Contenu principal */}
-          <div className="px-6 py-4">
-            <div className="mb-4">
-              <h2 className="text-lg font-semibold text-gray-900">
-                {t("listeDemandes")}
-              </h2>
             </div>
           ) : requests.length === 0 ? (
             <div className="text-center py-12">
@@ -596,33 +501,30 @@ export default function MesDemandesClient() {
                         <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800">
                           {pendingRequests.length}
                         </span>
-                              <span className="ml-2">{t("demandesEnAttente")}</span>
-                            </h3>
-                          </div>
-                          <RequestsTablePro
-                              filters={filters}
-                              requests={pendingRequests}
-                          />
-                        </div>
-                    ) : null;
-                  })()}
-
-                  {/* Toutes les demandes */}
-                  <div className="mb-4">
-                    <h3 className="text-lg font-semibold text-gray-900">
-                      {t("toutesVosDemandes")} ({total})
-                    </h3>
+                        <span className="ml-2">{t("demandesEnAttente")}</span>
+                      </h3>
+                    </div>
+                    <RequestsTablePro
+                      filters={filters}
+                      requests={pendingRequests}
+                    />
                   </div>
+                ) : null;
+              })()}
 
               {/* Toutes les demandes */}
               <Divider className="mb-4" />
 
-                  {/* Pagination */}
-                  {renderPagination()}
-                </>
-            )}
-          </div>
+              <div className="overflow-x-auto">
+                <RequestsTablePro filters={filters} requests={requests} />
+              </div>
+
+              {/* Pagination */}
+              {renderPagination()}
+            </>
+          )}
         </div>
       </div>
+    </div>
   );
 }
