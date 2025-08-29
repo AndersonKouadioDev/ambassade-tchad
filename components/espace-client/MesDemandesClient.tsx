@@ -4,7 +4,8 @@ import { useState } from "react";
 import RequestsTablePro from "@/components/espace-client/RequestsTablePro";
 import { useTranslations } from "next-intl";
 import { useMyDemandesListQuery } from "@/features/demande/queries/demande-me-list.query";
-import { DemandeStatus, IDemande } from "@/features/demande/types/demande.type";
+import { IDemande } from "@/features/demande/types/demande.type";
+import { Alert, Divider } from "@heroui/react";
 
 const SERVICES = [
   "Carte Consulaire",
@@ -89,16 +90,19 @@ export default function MesDemandesClient() {
   const totalPages = data?.meta?.totalPages || 1;
   const total = data?.meta?.total || 0;
 
-  const requests = demandes.map((d: IDemande) => ({
-    ticket: d.ticketNumber || d.id || "",
-    service: translateServiceType(d.serviceType || ""),
-    date: d.submissionDate
-      ? new Date(d.submissionDate).toLocaleDateString("fr-FR")
-      : "",
-    status: d.status || "",
-    statusTranslated: translateStatus(d.status || ""),
-  }));
-
+  const requests = demandes.map(
+    (d: IDemande) =>
+      ({
+        ...d,
+        ticketNumber: d.ticketNumber || d.id || "",
+        serviceType: translateServiceType(d.serviceType || ""),
+        submissionDate: d.submissionDate
+          ? new Date(d.submissionDate).toLocaleDateString("fr-FR")
+          : "",
+        status: translateStatus(d.status || ""),
+        paied: d.paied || false,
+      } as IDemande)
+  );
   // Fonction pour générer les boutons
   const renderPagination = () => {
     const pagesToShow = 5;
@@ -482,17 +486,17 @@ export default function MesDemandesClient() {
             </div>
           ) : (
             <>
-              {/* Demandes en attente */}
+              {/* Demandes en attente de paiement */}
               {(() => {
                 const pendingRequests = requests.filter(
-                  (req) =>
-                    req.status === DemandeStatus.NEW ||
-                    req.status === DemandeStatus.IN_REVIEW_DOCS ||
-                    req.status === DemandeStatus.PENDING_ADDITIONAL_INFO
+                  (req) => req.paied === false
                 );
                 return pendingRequests.length > 0 ? (
                   <div className="mb-8">
-                    <div className="flex items-center justify-between mb-4">
+                    <Alert color="danger" className="mb-4">
+                      {t("alert_paiement")}
+                    </Alert>
+                    <div className="mb-4">
                       <h3 className="text-lg font-semibold text-gray-900 ">
                         <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800">
                           {pendingRequests.length}
@@ -509,11 +513,7 @@ export default function MesDemandesClient() {
               })()}
 
               {/* Toutes les demandes */}
-              <div className="mb-4">
-                <h3 className="text-lg font-semibold text-gray-900 ">
-                  {t("toutesVosDemandes")} ({total})
-                </h3>
-              </div>
+              <Divider className="mb-4" />
 
               <div className="overflow-x-auto">
                 <RequestsTablePro filters={filters} requests={requests} />

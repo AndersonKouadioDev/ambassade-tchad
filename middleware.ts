@@ -5,15 +5,15 @@ import { routing } from "./i18n/routing";
 import { auth } from "@/lib/auth";
 
 export const publicRoutes = [
-  "/", 
-  "/auth", 
-  "/consulaire", 
-  "/ambassade", 
-  "/event", 
+  "/",
+  "/auth",
+  "/consulaire",
+  "/ambassade",
+  "/event",
   "/news",
-  "/galerie/galerie-photos", 
-  "/galerie/galerie-videos", 
-  "/tourisme", 
+  "/galerie/galerie-photos",
+  "/galerie/galerie-videos",
+  "/tourisme",
   "/tchad",
 ];
 

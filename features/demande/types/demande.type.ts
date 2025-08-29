@@ -53,7 +53,10 @@ export interface IDemande {
     amount: number;
     createdAt: string;
     updatedAt: string;
+    paied: boolean;
+    paied_at?: string;
 
+    
     user?: IUser;
     documents?: IDocument[];
     statusHistory?: IHistoriqueStatutDemande[];

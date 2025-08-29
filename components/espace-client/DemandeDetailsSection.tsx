@@ -1,20 +1,21 @@
 "use client";
 
-import Image from "next/image";
-import { useGetDemandeByTicketQuery } from "@/features/demande/queries/demande-detail.query";
-import DemandeTable from "@/components/espace-client/DemandeTable";
 import HistoriqueTraitement from "@/components/espace-client/HistoriqueTraitement";
-import ProgressSteps from "@/components/espace-client/ProgressSteps";
 import StatusTimeline from "@/components/espace-client/StatusTimeline";
-import React from "react";
+import { useGetDemandeByTicketQuery } from "@/features/demande/queries/demande-detail.query";
 import { AccompagnateurDTO } from "@/features/demande/schema/laissez-passer.schema";
 import {
   DocumentJustificationType,
   DocumentJustificationTypeLabels,
 } from "@/features/demande/types/carte-consulaire.type";
+import { Link } from "@/i18n/navigation";
+import { Alert, Button } from "@heroui/react";
+import { useTranslations } from "next-intl";
+import Image from "next/image";
 
 export default function DemandeDetailsSection({ ticket }: { ticket: string }) {
   const { data: demande } = useGetDemandeByTicketQuery(ticket);
+  const t = useTranslations("espaceClient.mesDemandesClient");
 
   // Fonction pour traduire les types de service
   const translateServiceType = (serviceType: string) => {
@@ -438,23 +439,6 @@ export default function DemandeDetailsSection({ ticket }: { ticket: string }) {
 
   const fields = getFields();
 
-  const demandeFormatted = demande
-    ? {
-        ticket: demande.ticketNumber,
-        service: translateServiceType(demande.serviceType),
-        dateSoumission: new Date(demande.submissionDate).toLocaleDateString(
-          "fr-FR"
-        ),
-        status: translateStatus(demande.status),
-        montant: demande.amount
-          ? `${demande.amount.toLocaleString()} FCFA`
-          : "",
-        dateDelivrance: demande.issuedDate
-          ? new Date(demande.issuedDate).toLocaleDateString("fr-FR")
-          : "",
-      }
-    : null;
-
   // Étapes de progression basées sur le statut
   const getSteps = (status: string) => {
     const allSteps = [
@@ -532,28 +516,31 @@ export default function DemandeDetailsSection({ ticket }: { ticket: string }) {
           Retrouvez ici l&apos;historique et le statut de votre demande auprès
           de l&apos;Ambassade du Tchad.
         </p>
-
-        <div className="bg-white  rounded-xl shadow p-0 md:p-8 mb-8">
-          <div className="text-xl font-bold text-gray-900 mb-4 px-4 pt-4">
-            Détails de la demande
+        {!demande.paied && (
+          <div className="flex flex-col gap-4">
+            <Alert color="danger" className="mb-4">
+              {t("alert_paiement")}
+            </Alert>
+            <div>
+              <Button
+                as={Link}
+                size="sm"
+                href={`/espace-client/payment?amount=${demande.amount}&ticketNumber=${demande.ticketNumber}`}
+                color="warning"
+              >
+                {t("payer")}
+              </Button>
+            </div>
           </div>
-          {demandeFormatted && <DemandeTable demande={demandeFormatted} />}
-          <HistoriqueTraitement
-            steps={steps}
-            progression={progression}
-            serviceType={demande.serviceType}
-            status={demande.status}
-            submissionDate={demande.submissionDate}
-          />
-          <div className="w-full flex justify-center">
-            <ProgressSteps
-              percent={progression}
-              steps={steps.length}
-              labels={steps.map((s) => s.label)}
-            />
-          </div>
-        </div>
+        )}
 
+        <HistoriqueTraitement
+          steps={steps}
+          progression={progression}
+          serviceType={demande.serviceType}
+          status={demande.status}
+          submissionDate={demande.submissionDate}
+        />
         {/*Timeline détaillée du statut*/}
         <StatusTimeline
           currentStatus={demande.status}
