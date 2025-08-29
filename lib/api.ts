@@ -28,5 +28,5 @@ export const api = new Api({
   signOut: async () => {
     await logout();
   }, // Déconnexion automatique si la requête échoue avec un code 401
-  debug: process.env.NODE_ENV === "development", // Debug activé en mode développement
+  debug: process.env.NODE_ENV === "production", // Debug activé en mode développement
 });
