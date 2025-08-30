@@ -64,7 +64,7 @@ export default async function RootLayout({
 
   const queryClient = getQueryClient();
   return (
-    <html lang={locale} dir={langDir} suppressHydrationWarning>
+    <html lang={locale} dir={langDir} suppressHydrationWarning className="light">
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} ${signature.variable} ${mulish.variable} ${blinker.variable} antialiased`}
       >
