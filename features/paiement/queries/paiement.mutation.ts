@@ -14,11 +14,15 @@ export const usePaiementCreateMutation = () => {
 
     return useMutation({
         mutationFn: async ({ data }: { data: CreatePaiementKkiapayDTO }) => {
-
+            console.log(data);
             const result = processAndValidateFormData(createPaiementKkiapaySchema, data, {
-                outputFormat: "object"
+                outputFormat: "object",
+                transformations: {
+                    transactionRef: (value) => value.toString().trim(),
+                    ticketNumber: (value) => value.toString().trim(),
+                },
             });
-
+            console.log(result);
             if (!result.success) {
                 throw new Error(result.errorsInString || "Une erreur est survenue lors de la validation des données.");
             }

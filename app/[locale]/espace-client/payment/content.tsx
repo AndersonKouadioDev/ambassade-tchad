@@ -65,8 +65,7 @@ export default function Content({
     useKKiaPay();
 
   // Mutation pour créer le paiement
-  const { mutateAsync: createPaiement, isPending: isCreatingPaiement } =
-    usePaiementCreateMutation();
+  const { mutateAsync: createPaiement } = usePaiementCreateMutation();
 
   const router = useRouter();
 
@@ -97,9 +96,9 @@ export default function Content({
   // Gestionnaire de succès du paiement
   const handlePaymentSuccess = useCallback(
     async (response: ResponseKkiaPay) => {
-      if (isPaymentProcessing) return; // Éviter les doublons
-
+      if (isPaymentProcessing) return;
       setIsPaymentProcessing(true);
+
       await createPaiement({
         data: {
           transactionRef: response.transactionId,
@@ -107,9 +106,9 @@ export default function Content({
         },
       });
 
+      setIsPaymentProcessing(false);
       // Redirection après succès
       router.push("/espace-client/mes-demandes");
-      setIsPaymentProcessing(false);
     },
     [createPaiement, ticketNumber, router, isPaymentProcessing]
   );
@@ -211,11 +210,11 @@ export default function Content({
             color="primary"
             size="lg"
             onPress={openPaymentWidget}
-            isDisabled={isPaymentProcessing || isCreatingPaiement}
-            isLoading={isPaymentProcessing || isCreatingPaiement}
+            isDisabled={isPaymentProcessing}
+            isLoading={isPaymentProcessing}
             className="w-full"
           >
-            {isPaymentProcessing || isCreatingPaiement
+            {isPaymentProcessing
               ? "Traitement en cours..."
               : `Payer ${amount} FCFA`}
           </Button>
@@ -226,7 +225,7 @@ export default function Content({
             href="/espace-client/mes-demandes"
             color="primary"
             size="lg"
-            isDisabled={isPaymentProcessing || isCreatingPaiement}
+            isDisabled={isPaymentProcessing}
             className="w-full"
           >
             Annuler
