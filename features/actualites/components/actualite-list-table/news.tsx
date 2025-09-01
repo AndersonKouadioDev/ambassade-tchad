@@ -99,7 +99,7 @@ export default function NewsComponent({ searchParams }: Props) {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mt-8">
             {newsList.map((item) => (
-              <Link key={item.id} href={`/news/${item.id}`}>
+              <Link key={item.id} href={`/news/${item.id}`} className="h-full">
                 <article className="flex flex-col group cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 h-full">
                   <div className="relative h-64 w-full">
                     {item.imageUrls?.[0] ? (
@@ -119,10 +119,10 @@ export default function NewsComponent({ searchParams }: Props) {
                     </div>
                   </div>
                   <div className="p-6 flex flex-col justify-between flex-grow">
-                    <h3 className="text-xl font-bold leading-tight group-hover:text-primary transition-colors line-clamp-2">
+                    <h3 className="text-xl font-bold leading-tight group-hover:text-primary transition-colors line-clamp-2 min-h-[3rem]">
                       {item.title}
                     </h3>
-                    <p className="text-sm text-gray-600 mt-3 line-clamp-3 flex-grow">
+                    <p className="text-sm text-gray-600 mt-3 line-clamp-3">
                       {getNewsExcerpt(item.content, 120)}
                     </p>
                   </div>

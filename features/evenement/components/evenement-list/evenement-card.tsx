@@ -2,10 +2,10 @@
 
 import { Calendar, ChevronRight, MapPin } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 import { formatEventDate, isEventUpcoming } from "@/lib/events-utils";
-import { useTranslations } from "next-intl";
-import Link from "next/link";
 import { IEvenement } from "../../types/evenement.type";
 import { getFullUrlFile } from "@/utils/getFullUrlFile";
 
@@ -15,8 +15,8 @@ export default function EventCard({ event }: { event: IEvenement }) {
   const eventId = event.id.toString();
 
   return (
-    <Link href={`/event/${eventId}`} className="group">
-      <article className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group-hover:border-secondary/20 group-hover:-translate-y-1">
+    <Link href={`/event/${eventId}`} className="group h-full">
+      <article className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group-hover:border-secondary/20 group-hover:-translate-y-1 h-full flex flex-col">
         {/* Image */}
         <div className="relative h-48 overflow-hidden">
           {event.imageUrl ? (
@@ -50,7 +50,7 @@ export default function EventCard({ event }: { event: IEvenement }) {
         </div>
 
         {/* Contenu */}
-        <div className="p-6">
+        <div className="p-6 flex flex-col flex-grow">
           {/* Date et heure */}
           <div className="flex items-center gap-4 mb-3 text-sm text-gray-600">
             <div className="flex items-center gap-1">
@@ -60,12 +60,12 @@ export default function EventCard({ event }: { event: IEvenement }) {
           </div>
 
           {/* Titre */}
-          <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-secondary transition-colors line-clamp-2">
+          <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-secondary transition-colors line-clamp-2 min-h-[3rem]">
             {event.title}
           </h3>
 
-          {/* Description (remplace l'ancien extrait) */}
-          <p className="text-gray-600 text-sm mb-4 line-clamp-3">
+          {/* Description */}
+          <p className="text-gray-600 text-sm mb-4 line-clamp-3 flex-grow">
             {event.description.replace(/<[^>]*>/g, "").substring(0, 150)}...
           </p>
 
@@ -80,7 +80,7 @@ export default function EventCard({ event }: { event: IEvenement }) {
           )}
 
           {/* Call to action */}
-          <div className="flex items-center justify-end">
+          <div className="flex items-center justify-end mt-auto">
             <div className="flex items-center gap-1 text-secondary font-medium text-sm group-hover:gap-2 transition-all">
               <span>{t("readMore")}</span>
               <ChevronRight className="w-4 h-4" />

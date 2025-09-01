@@ -15,7 +15,6 @@ export default function EventDetail({ id }: { id: string }) {
 
   const t = useTranslations("event.details");
 
-
   const hasImages = event?.imageUrl && event.imageUrl.length > 0;
 
   if (isLoading) {
@@ -55,7 +54,7 @@ export default function EventDetail({ id }: { id: string }) {
 
   return (
     <main>
-     {hasImages && <EventDetailHero event={event} />}
+      {hasImages && <EventDetailHero event={event} />}
       <EventDetailContent event={event} />
     </main>
   );

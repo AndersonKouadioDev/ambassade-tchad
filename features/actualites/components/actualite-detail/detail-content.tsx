@@ -15,51 +15,70 @@ export default function ActualiteDetailContent({
   const t = useTranslations("news");
 
   return (
-    <div className="max-w-screen-xl mx-auto px-4 py-8">
-      <div className="flex flex-col lg:flex-row gap-12">
-        {/* Section Informations pratiques */}
-        <aside className="lg:w-1/3 bg-gray-50 rounded-2xl p-8 sticky top-24 h-fit">
-          <h3 className="text-2xl font-bold text-primary mb-6">
-            {t("practicalInfo")}
-          </h3>
-          <ul className="space-y-6">
-            <li className="flex items-start gap-4">
-              <Calendar className="w-6 h-6 text-secondary mt-1" />
-              <div>
-                <span className="text-gray-700 font-semibold">
-                  {t("date")}:
-                </span>
-                <p className="text-gray-600 mt-1">
-                  {formatEventDate(actualite.createdAt?.toString() ?? "")}
-                </p>
-              </div>
-            </li>
-          </ul>
-        </aside>
-
-        {/* Section Contenu de l'événement */}
-        <main className="lg:w-2/3 p-8">
-          <div className="prose prose-lg max-w-none text-gray-800">
-            <div
-              className="text-gray-700 leading-relaxed space-y-6"
-              dangerouslySetInnerHTML={{ __html: actualite.content }}
-            />
+    <div className="relative">
+      {/* Header avec breadcrumb */}
+      <div className="bg-gray-50 border-b border-gray-100">
+        <div className="max-w-4xl mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            {/* Breadcrumb */}
+            <nav className="flex items-center text-sm text-gray-600">
+              <Link href="/" className="hover:text-gray-900 transition-colors">
+                Accueil
+              </Link>
+              <span className="mx-2">/</span>
+              <Link
+                href="/news"
+                className="hover:text-gray-900 transition-colors"
+              >
+                Actualités
+              </Link>
+              <span className="mx-2">/</span>
+              <span className="text-gray-900 font-medium truncate max-w-48">
+                {actualite.title}
+              </span>
+            </nav>
           </div>
-        </main>
+        </div>
       </div>
 
-      {/* Navigation et lien de retour */}
-      <div className="flex justify-start mt-12 pt-8 border-t border-gray-200">
-        <Link href="/news">
+      <div className="max-w-4xl mx-auto px-6 py-12">
+        {/* En-tête de l'article */}
+        <header className="mb-12">
+          <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6">
+            {actualite.title}
+          </h1>
+
+          {/* Métadonnées de l'actualité */}
+          <div className="flex flex-wrap items-center gap-6 text-gray-600 mb-8">
+            <div className="flex items-center gap-2">
+              <Calendar className="w-5 h-5 text-blue-600" />
+              <span className="font-medium">
+                {formatEventDate(actualite.createdAt?.toString() ?? "")}
+              </span>
+            </div>
+          </div>
+        </header>
+
+        {/* Contenu principal */}
+        <article className="prose prose-lg max-w-none">
+          <div
+            className="text-gray-700 leading-relaxed space-y-6 [&>p]:text-lg [&>p]:leading-8 [&>p]:mb-6"
+            dangerouslySetInnerHTML={{ __html: actualite.content }}
+          />
+        </article>
+
+        {/* Navigation de retour */}
+        <div className="mt-12 pt-8 border-t border-gray-200">
           <Button
-            variant="bordered"
+            as={Link}
+            href="/news"
+            startContent={<ArrowLeft className="w-5 h-5" />}
+            variant="solid"
             color="primary"
-            startContent={<ArrowLeft size={16} />}
-            className="hover:bg-primary-50"
           >
-            {t("backToNews")}
+            <span className="font-medium"> {t("backToNews")}</span>
           </Button>
-        </Link>
+        </div>
       </div>
     </div>
   );

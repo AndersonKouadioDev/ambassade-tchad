@@ -126,7 +126,7 @@ export const eventsData: Event[] = [
     date: '2024-10-05',
     time: '18:00',
     location: 'Centre Culturel d\'Abidjan, Plateau',
-     image: '/assets/images/illustrations/page-accueil/cards-1.png',
+    image: '/assets/images/illustrations/page-accueil/cards-1.png',
     category: 'cultural',
     featured: false,
     tags: ['culture', 'musique', 'danse', 'gastronomie', 'tradition'],
@@ -160,7 +160,7 @@ export const eventsData: Event[] = [
     date: '2024-11-20',
     time: '14:00',
     location: 'Ambassade du Tchad, Salle de Conférence',
-     image: '/assets/images/illustrations/page-accueil/cards-1.png',
+    image: '/assets/images/illustrations/page-accueil/cards-1.png',
     category: 'meeting',
     featured: false,
     tags: ['consulaire', 'administration', 'passeport', 'légalisation'],
@@ -285,10 +285,10 @@ export function getRelatedEvents(currentSlug: string, limit: number = 3): Event[
   if (!currentEvent) return [];
 
   return eventsData
-    .filter(event => 
-      event.slug !== currentSlug && 
-      (event.category === currentEvent.category || 
-       event.tags.some(tag => currentEvent.tags.includes(tag)))
+    .filter(event =>
+      event.slug !== currentSlug &&
+      (event.category === currentEvent.category ||
+        event.tags.some(tag => currentEvent.tags.includes(tag)))
     )
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, limit);
@@ -304,8 +304,12 @@ export function formatEventDate(dateString: string): string {
   });
 }
 
-export function formatEventTime(timeString: string): string {
-  return timeString;
+export function formatEventTime(dateString: string): string {
+  const date = new Date(dateString);
+  return date.toLocaleTimeString('fr-FR', {
+    hour: '2-digit',
+    minute: '2-digit'
+  });
 }
 
 export function isEventUpcoming(dateString: string): boolean {
